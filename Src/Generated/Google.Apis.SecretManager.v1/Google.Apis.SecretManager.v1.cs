@@ -937,6 +937,73 @@ namespace Google.Apis.SecretManager.v1
                     }
                 }
 
+                /// <summary>
+                /// Enables the managed rotation feature for a Secret. This method can only be triggered once for a
+                /// secret. In order to do further rotations, RotateSecret should be used. This method will add a secret
+                /// version and update the password in Cloud SQL.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+                /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                /// </param>
+                public virtual EnableManagedRotationRequest EnableManagedRotation(Google.Apis.SecretManager.v1.Data.EnableManagedRotationRequest body, string parent)
+                {
+                    return new EnableManagedRotationRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Enables the managed rotation feature for a Secret. This method can only be triggered once for a
+                /// secret. In order to do further rotations, RotateSecret should be used. This method will add a secret
+                /// version and update the password in Cloud SQL.
+                /// </summary>
+                public class EnableManagedRotationRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+                {
+                    /// <summary>Constructs a new EnableManagedRotation request.</summary>
+                    public EnableManagedRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.EnableManagedRotationRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+                    /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecretManager.v1.Data.EnableManagedRotationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableManagedRotation";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:enableManagedRotation";
+
+                    /// <summary>Initializes EnableManagedRotation parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets metadata for a given Secret.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the Secret, in the format `projects/*/secrets/*` or
@@ -1230,6 +1297,71 @@ namespace Google.Apis.SecretManager.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Do a managed rotation for a Secret. This can only be triggered after Managed rotation has been
+                /// enabled. This method will add a secret version and update the password in Cloud SQL.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+                /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                /// </param>
+                public virtual RotateSecretRequest RotateSecret(Google.Apis.SecretManager.v1.Data.RotateSecretRequest body, string parent)
+                {
+                    return new RotateSecretRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Do a managed rotation for a Secret. This can only be triggered after Managed rotation has been
+                /// enabled. This method will add a secret version and update the password in Cloud SQL.
+                /// </summary>
+                public class RotateSecretRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+                {
+                    /// <summary>Constructs a new RotateSecret request.</summary>
+                    public RotateSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.RotateSecretRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+                    /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecretManager.v1.Data.RotateSecretRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rotateSecret";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:rotateSecret";
+
+                    /// <summary>Initializes RotateSecret parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
                         });
                     }
                 }
@@ -2181,6 +2313,73 @@ namespace Google.Apis.SecretManager.v1
                 }
             }
 
+            /// <summary>
+            /// Enables the managed rotation feature for a Secret. This method can only be triggered once for a secret.
+            /// In order to do further rotations, RotateSecret should be used. This method will add a secret version and
+            /// update the password in Cloud SQL.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+            /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+            /// </param>
+            public virtual EnableManagedRotationRequest EnableManagedRotation(Google.Apis.SecretManager.v1.Data.EnableManagedRotationRequest body, string parent)
+            {
+                return new EnableManagedRotationRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Enables the managed rotation feature for a Secret. This method can only be triggered once for a secret.
+            /// In order to do further rotations, RotateSecret should be used. This method will add a secret version and
+            /// update the password in Cloud SQL.
+            /// </summary>
+            public class EnableManagedRotationRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+            {
+                /// <summary>Constructs a new EnableManagedRotation request.</summary>
+                public EnableManagedRotationRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.EnableManagedRotationRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+                /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecretManager.v1.Data.EnableManagedRotationRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "enableManagedRotation";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:enableManagedRotation";
+
+                /// <summary>Initializes EnableManagedRotation parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/secrets/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets metadata for a given Secret.</summary>
             /// <param name="name">
             /// Required. The resource name of the Secret, in the format `projects/*/secrets/*` or
@@ -2472,6 +2671,71 @@ namespace Google.Apis.SecretManager.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Do a managed rotation for a Secret. This can only be triggered after Managed rotation has been enabled.
+            /// This method will add a secret version and update the password in Cloud SQL.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+            /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+            /// </param>
+            public virtual RotateSecretRequest RotateSecret(Google.Apis.SecretManager.v1.Data.RotateSecretRequest body, string parent)
+            {
+                return new RotateSecretRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Do a managed rotation for a Secret. This can only be triggered after Managed rotation has been enabled.
+            /// This method will add a secret version and update the password in Cloud SQL.
+            /// </summary>
+            public class RotateSecretRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+            {
+                /// <summary>Constructs a new RotateSecret request.</summary>
+                public RotateSecretRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.RotateSecretRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+                /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecretManager.v1.Data.RotateSecretRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "rotateSecret";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:rotateSecret";
+
+                /// <summary>Initializes RotateSecret parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/secrets/[^/]+$",
                     });
                 }
             }
@@ -2802,6 +3066,27 @@ namespace Google.Apis.SecretManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>These are the credentials required for Cloud SQL DB for Single user Managed Rotation.</summary>
+    public class CloudSQLSingleUserCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Instance ID of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>
+        /// Optional. Password of the Cloud SQL instance. If this is not provided, a random password will be generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>Required. Username of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for encrypting secret payloads using customer-managed encryption keys (CMEK).</summary>
     public class CustomerManagedEncryption : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2861,6 +3146,17 @@ namespace Google.Apis.SecretManager.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SecretManagerService.EnableManagedRotation.</summary>
+    public class EnableManagedRotationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Credentials required for Cloud SQL DB for Single user Managed Rotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlSingleUserCredentials")]
+        public virtual CloudSQLSingleUserCredentials CloudSqlSingleUserCredentials { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3006,6 +3302,27 @@ namespace Google.Apis.SecretManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the status of a managed rotation. This is applicable only to Typed Secrets. It indicates whether the
+    /// rotation is active and any errors that may have occurred during the asynchronous managed rotation.
+    /// </summary>
+    public class ManagedRotationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Displays customer-facing issues that occurred during an asynchronous managed rotation. For
+        /// example, if there are some permission errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Output only. Indicates whether the Managed Rotation is active or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3337,12 +3654,51 @@ namespace Google.Apis.SecretManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Output-only policy member strings of a Google Cloud resource's built-in identity.</summary>
+    public class ResourcePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name
+        /// (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be
+        /// applicable to the new resource. Example:
+        /// `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyNamePrincipal")]
+        public virtual string IamPolicyNamePrincipal { get; set; }
+
+        /// <summary>
+        /// Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique
+        /// identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the
+        /// binding will not be applicable to the new resource Example:
+        /// `principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyUidPrincipal")]
+        public virtual string IamPolicyUidPrincipal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SecretManagerService.RotateSecret.</summary>
+    public class RotateSecretRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub
     /// notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
     /// </summary>
     public class Rotation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The current status of the managed rotation. This field is only applicable to Typed Secrets.
+        /// This field is set by the service and cannot be set by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedRotationStatus")]
+        public virtual ManagedRotationStatus ManagedRotationStatus { get; set; }
+
         private string _nextRotationTimeRaw;
 
         private object _nextRotationTime;
@@ -3519,6 +3875,13 @@ namespace Google.Apis.SecretManager.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. Defines the policy member for the secret. This will be used to check if the caller has the
+        /// permission to perform certain operations on the typed secret.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyMember")]
+        public virtual ResourcePolicyMember PolicyMember { get; set; }
+
+        /// <summary>
         /// Optional. Immutable. The replication policy of the secret data attached to the Secret. The replication
         /// policy cannot be changed after the Secret has been created.
         /// </summary>
@@ -3530,6 +3893,13 @@ namespace Google.Apis.SecretManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotation")]
         public virtual Rotation Rotation { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. This defines the type of the secret. Enforces certain structural requirements on the
+        /// SecretVersions. For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
+        public virtual string SecretType { get; set; }
 
         /// <summary>
         /// Optional. Input only. Immutable. Mapping of Tag keys/values directly bound to this resource. For example:
