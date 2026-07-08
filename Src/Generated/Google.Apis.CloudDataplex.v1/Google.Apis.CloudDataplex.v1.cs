@@ -20263,6 +20263,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentDataDomain")]
         public virtual string ParentDataDomain { get; set; }
 
+        /// <summary>Output only. Output-only policy member strings of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyMember")]
+        public virtual GoogleIamV1ResourcePolicyMember PolicyMember { get; set; }
+
         /// <summary>Output only. System-generated globally unique ID for the DataDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -28506,6 +28510,31 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Output-only policy member strings of a Google Cloud resource's built-in identity.</summary>
+    public class GoogleIamV1ResourcePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name
+        /// (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be
+        /// applicable to the new resource.Example:
+        /// principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyNamePrincipal")]
+        public virtual string IamPolicyNamePrincipal { get; set; }
+
+        /// <summary>
+        /// Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique
+        /// identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the
+        /// binding will not be applicable to the new resourceExample:
+        /// principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyUidPrincipal")]
+        public virtual string IamPolicyUidPrincipal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for SetIamPolicy method.</summary>
