@@ -6578,7 +6578,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>
         /// [Optional] The length of time the enrollment token is valid, ranging from 1 minute to
         /// [`Durations.MAX_VALUE`](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE),
-        /// approximately 10,000 years. If not specified, the default duration is 1 hour.
+        /// approximately 10,000 years. If not specified, the default duration is 1 hour. In the JSON REST API, this is
+        /// represented as a string (e.g., `3600s`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
