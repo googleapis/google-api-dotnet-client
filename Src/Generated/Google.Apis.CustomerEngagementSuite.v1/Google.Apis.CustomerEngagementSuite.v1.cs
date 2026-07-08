@@ -4250,6 +4250,51 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                     }
                 }
 
+                /// <summary>Gets the extended agent card for the authenticated agent.</summary>
+                /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                public virtual GetExtendedAgentCardRequest GetExtendedAgentCard(string tenant)
+                {
+                    return new GetExtendedAgentCardRequest(this.service, tenant);
+                }
+
+                /// <summary>Gets the extended agent card for the authenticated agent.</summary>
+                public class GetExtendedAgentCardRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1.Data.LfA2aV1AgentCard>
+                {
+                    /// <summary>Constructs a new GetExtendedAgentCard request.</summary>
+                    public GetExtendedAgentCardRequest(Google.Apis.Services.IClientService service, string tenant) : base(service)
+                    {
+                        Tenant = tenant;
+                        InitParameters();
+                    }
+
+                    /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Tenant { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getExtendedAgentCard";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+tenant}/extendedAgentCard";
+
+                    /// <summary>Initializes GetExtendedAgentCard parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tenant",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Imports the specified app.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -5491,13 +5536,6 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Optional. Deprecated: Use `agent` instead. The resource name of the root agent that is the entry point of
-        /// the tool. Format: `projects/{project}/locations/{location}/agents/{agent}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rootAgent")]
-        public virtual string RootAgent { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6026,9 +6064,9 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual System.Nullable<bool> BargeInAwareness { get; set; }
 
         /// <summary>
-        /// Optional. Disables user barge-in while the agent is speaking. If true, user input during agent response
-        /// playback will be ignored. Deprecated: `disable_barge_in` is deprecated in favor of
-        /// `disable_barge_in_control` in ChannelProfile.
+        /// Optional. Deprecated: `disable_barge_in` is deprecated in favor of `disable_barge_in_control` in
+        /// ChannelProfile. Disables user barge-in while the agent is speaking. If true, user input during agent
+        /// response playback will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableBargeIn")]
         public virtual System.Nullable<bool> DisableBargeIn { get; set; }
@@ -6250,6 +6288,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableDtmf")]
         public virtual System.Nullable<bool> DisableDtmf { get; set; }
 
+        /// <summary>Optional. Configuration specific to Instagram deployments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instagramConfig")]
+        public virtual ChannelProfileInstagramConfig InstagramConfig { get; set; }
+
         /// <summary>
         /// Optional. The noise suppression level of the channel profile. Available values are "low", "moderate",
         /// "high", "very_high".
@@ -6268,6 +6310,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Optional. The configuration for the web widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webWidgetConfig")]
         public virtual ChannelProfileWebWidgetConfig WebWidgetConfig { get; set; }
+
+        /// <summary>Optional. Configuration specific to WhatsApp deployments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whatsappConfig")]
+        public virtual ChannelProfileWhatsAppConfig WhatsappConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration specific to Instagram deployments.</summary>
+    public class ChannelProfileInstagramConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Instagram Account ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instagramAccountId")]
+        public virtual string InstagramAccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6341,6 +6398,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration specific to WhatsApp deployments.</summary>
+    public class ChannelProfileWhatsAppConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Meta phone number ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumberId")]
+        public virtual string PhoneNumberId { get; set; }
+
+        /// <summary>Required. The WhatsApp Business Account ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wabaId")]
+        public virtual string WabaId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A chunk of content within a message.</summary>
     public class Chunk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6406,6 +6478,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Piece of cited information.</summary>
     public class CitationsCitedChunk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether this citation requires attribution to be shown to the end users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiresAttribution")]
+        public virtual System.Nullable<bool> RequiresAttribution { get; set; }
+
         /// <summary>Text used for citation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -7238,6 +7314,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual ExperimentConfig ExperimentConfig { get; set; }
 
         /// <summary>
+        /// Optional. Input only. Ephemeral Instagram credentials required when configuring a Instagram channel profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instagramCredentials")]
+        public virtual InstagramCredentials InstagramCredentials { get; set; }
+
+        /// <summary>
         /// Identifier. The resource name of the deployment. Format:
         /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
         /// </summary>
@@ -7280,6 +7362,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. Input only. Ephemeral WhatsApp credentials required when configuring a WhatsApp channel profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whatsappCredentials")]
+        public virtual WhatsAppCredentials WhatsappCredentials { get; set; }
     }
 
     /// <summary>
@@ -7720,6 +7808,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Response message for ToolService.ExecuteTool.</summary>
     public class ExecuteToolResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Citations that provide the source information for the tool's execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual Citations Citations { get; set; }
+
+        /// <summary>
+        /// The suggestions returned from Google Search as a result of invoking the Google Search Tool during the tool
+        /// execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchSuggestions")]
+        public virtual GoogleSearchSuggestions GoogleSearchSuggestions { get; set; }
+
         /// <summary>
         /// The tool execution result in JSON object format. Use "output" key to specify tool response and "error" key
         /// to specify error details (if any). If "output" and "error" keys are not specified, then whole "response" is
@@ -8481,6 +8580,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Ephemeral Meta credentials for Instagram native integration.</summary>
+    public class InstagramCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Meta auth code provided by the embedded signup flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
+        public virtual string AuthCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Language settings of the app.</summary>
     public class LanguageSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8510,6 +8620,262 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedLanguageCodes")]
         public virtual System.Collections.Generic.IList<string> SupportedLanguageCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a security scheme using an API key.</summary>
+    public class LfA2aV1APIKeySecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description for the security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The location of the API key. Valid values are "query", "header", or "cookie".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Required. The name of the header, query, or cookie parameter to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines optional capabilities supported by an agent.</summary>
+    public class LfA2aV1AgentCapabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if the agent supports providing an extended agent card when authenticated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedAgentCard")]
+        public virtual System.Nullable<bool> ExtendedAgentCard { get; set; }
+
+        /// <summary>A list of protocol extensions supported by the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<LfA2aV1AgentExtension> Extensions { get; set; }
+
+        /// <summary>Indicates if the agent supports sending push notifications for asynchronous task updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushNotifications")]
+        public virtual System.Nullable<bool> PushNotifications { get; set; }
+
+        /// <summary>Indicates if the agent supports streaming responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streaming")]
+        public virtual System.Nullable<bool> Streaming { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A self-describing manifest for an agent. It provides essential metadata including the agent's identity,
+    /// capabilities, skills, supported communication methods, and security requirements. Next ID: 20
+    /// </summary>
+    public class LfA2aV1AgentCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A2A Capability set supported by the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
+        public virtual LfA2aV1AgentCapabilities Capabilities { get; set; }
+
+        /// <summary>
+        /// Required. protolint:enable REPEATED_FIELD_NAMES_PLURALIZED The set of interaction modes that the agent
+        /// supports across all skills. This can be overridden per skill. Defined as media types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultInputModes")]
+        public virtual System.Collections.Generic.IList<string> DefaultInputModes { get; set; }
+
+        /// <summary>Required. The media types supported as outputs from this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultOutputModes")]
+        public virtual System.Collections.Generic.IList<string> DefaultOutputModes { get; set; }
+
+        /// <summary>
+        /// Required. A human-readable description of the agent, assisting users and other agents in understanding its
+        /// purpose. Example: "Agent that helps users with recipes and cooking."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>A URL providing additional documentation about the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUrl")]
+        public virtual string DocumentationUrl { get; set; }
+
+        /// <summary>Optional. A URL to an icon for the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
+        /// <summary>Required. A human readable name for the agent. Example: "Recipe Agent"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The service provider of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual LfA2aV1AgentProvider Provider { get; set; }
+
+        /// <summary>Security requirements for contacting the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityRequirements")]
+        public virtual System.Collections.Generic.IList<LfA2aV1SecurityRequirement> SecurityRequirements { get; set; }
+
+        /// <summary>The security scheme details used for authenticating with this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securitySchemes")]
+        public virtual System.Collections.Generic.IDictionary<string, LfA2aV1SecurityScheme> SecuritySchemes { get; set; }
+
+        /// <summary>JSON Web Signatures computed for this `AgentCard`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<LfA2aV1AgentCardSignature> Signatures { get; set; }
+
+        /// <summary>
+        /// Required. Skills represent the abilities of an agent. It is largely a descriptive concept but represents a
+        /// more focused set of behaviors that the agent is likely to succeed at.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skills")]
+        public virtual System.Collections.Generic.IList<LfA2aV1AgentSkill> Skills { get; set; }
+
+        /// <summary>Required. Ordered list of supported interfaces. The first entry is preferred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedInterfaces")]
+        public virtual System.Collections.Generic.IList<LfA2aV1AgentInterface> SupportedInterfaces { get; set; }
+
+        /// <summary>Required. The version of the agent. Example: "1.0.0"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AgentCardSignature represents a JWS signature of an AgentCard. This follows the JSON format of an RFC 7515 JSON
+    /// Web Signature (JWS).
+    /// </summary>
+    public class LfA2aV1AgentCardSignature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unprotected JWS header values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Header { get; set; }
+
+        /// <summary>
+        /// Required. Required. The protected JWS header for the signature. This is always a base64url-encoded JSON
+        /// object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protected")]
+        public virtual string Protected__ { get; set; }
+
+        /// <summary>Required. The computed signature, base64url-encoded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
+        public virtual string Signature { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A declaration of a protocol extension supported by an Agent.</summary>
+    public class LfA2aV1AgentExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A human-readable description of how this agent uses the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Extension-specific configuration parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>If true, the client must understand and comply with the extension's requirements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>The unique URI identifying the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Declares a combination of a target URL, transport and protocol version for interacting with the agent. This
+    /// allows agents to expose the same functionality over multiple protocol binding mechanisms.
+    /// </summary>
+    public class LfA2aV1AgentInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The protocol binding supported at this URL. This is an open form string, to be easily extended for
+        /// other protocol bindings. The core ones officially supported are `JSONRPC`, `GRPC` and `HTTP+JSON`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocolBinding")]
+        public virtual string ProtocolBinding { get; set; }
+
+        /// <summary>
+        /// Required. The version of the A2A protocol this interface exposes. Use the latest supported minor version per
+        /// major version. Examples: "0.3", "1.0"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocolVersion")]
+        public virtual string ProtocolVersion { get; set; }
+
+        /// <summary>Tenant ID to be used in the request when calling the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual string Tenant { get; set; }
+
+        /// <summary>
+        /// Required. The URL where this interface is available. Must be a valid absolute HTTPS URL in production.
+        /// Example: "https://api.example.com/a2a/v1", "https://grpc.example.com/a2a"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the service provider of an agent.</summary>
+    public class LfA2aV1AgentProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the agent provider's organization. Example: "Google"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>
+        /// Required. A URL for the agent provider's website or relevant documentation. Example: "https://ai.google.dev"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a distinct capability or function that an agent can perform.</summary>
+    public class LfA2aV1AgentSkill : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A detailed description of the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Example prompts or scenarios that this skill can handle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("examples")]
+        public virtual System.Collections.Generic.IList<string> Examples { get; set; }
+
+        /// <summary>Required. A unique identifier for the agent's skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The set of supported input media types for this skill, overriding the agent's defaults.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputModes")]
+        public virtual System.Collections.Generic.IList<string> InputModes { get; set; }
+
+        /// <summary>Required. A human-readable name for the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The set of supported output media types for this skill, overriding the agent's defaults.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputModes")]
+        public virtual System.Collections.Generic.IList<string> OutputModes { get; set; }
+
+        /// <summary>Security schemes necessary for this skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityRequirements")]
+        public virtual System.Collections.Generic.IList<LfA2aV1SecurityRequirement> SecurityRequirements { get; set; }
+
+        /// <summary>Required. A set of keywords describing the skill's capabilities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8567,6 +8933,134 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines configuration details for the OAuth 2.0 Authorization Code flow.</summary>
+    public class LfA2aV1AuthorizationCodeOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The authorization URL to be used for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
+        public virtual string AuthorizationUrl { get; set; }
+
+        /// <summary>
+        /// Indicates if PKCE (RFC 7636) is required for this flow. PKCE should always be used for public clients and is
+        /// recommended for all clients.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkceRequired")]
+        public virtual System.Nullable<bool> PkceRequired { get; set; }
+
+        /// <summary>The URL to be used for obtaining refresh tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>Required. The available scopes for the OAuth2 security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>Required. The token URL to be used for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
+        public virtual string TokenUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines configuration details for the OAuth 2.0 Client Credentials flow.</summary>
+    public class LfA2aV1ClientCredentialsOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL to be used for obtaining refresh tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>Required. The available scopes for the OAuth2 security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>Required. The token URL to be used for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
+        public virtual string TokenUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines configuration details for the OAuth 2.0 Device Code flow (RFC 8628). This flow is designed for
+    /// input-constrained devices such as IoT devices, and CLI tools where the user authenticates on a separate device.
+    /// </summary>
+    public class LfA2aV1DeviceCodeOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The device authorization endpoint URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceAuthorizationUrl")]
+        public virtual string DeviceAuthorizationUrl { get; set; }
+
+        /// <summary>The URL to be used for obtaining refresh tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>Required. The available scopes for the OAuth2 security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>Required. The token URL to be used for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
+        public virtual string TokenUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a security scheme using HTTP authentication.</summary>
+    public class LfA2aV1HTTPAuthSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A hint to the client to identify how the bearer token is formatted (e.g., "JWT"). Primarily for
+        /// documentation purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bearerFormat")]
+        public virtual string BearerFormat { get; set; }
+
+        /// <summary>An optional description for the security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The name of the HTTP Authentication scheme to be used in the Authorization header, as defined in
+        /// RFC7235 (e.g., "Bearer"). This value should be registered in the IANA Authentication Scheme registry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
+        public virtual string Scheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deprecated: Use Authorization Code + PKCE instead.</summary>
+    public class LfA2aV1ImplicitOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The authorization URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
+        public virtual string AuthorizationUrl { get; set; }
+
+        /// <summary>
+        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>
+        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
+        /// for it. The map MAY be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `Message` is one unit of communication between client and server. It can be associated with a context and/or a
     /// task. For server messages, `context_id` must be provided, and `task_id` only if a task was created. For client
@@ -8618,6 +9112,86 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a security scheme using mTLS authentication.</summary>
+    public class LfA2aV1MutualTlsSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description for the security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a security scheme using OAuth 2.0.</summary>
+    public class LfA2aV1OAuth2SecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description for the security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. An object containing configuration information for the supported OAuth 2.0 flows.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flows")]
+        public virtual LfA2aV1OAuthFlows Flows { get; set; }
+
+        /// <summary>
+        /// URL to the OAuth2 authorization server metadata [RFC 8414](https://datatracker.ietf.org/doc/html/rfc8414).
+        /// TLS is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2MetadataUrl")]
+        public virtual string Oauth2MetadataUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the configuration for the supported OAuth 2.0 flows.</summary>
+    public class LfA2aV1OAuthFlows : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for the OAuth Authorization Code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationCode")]
+        public virtual LfA2aV1AuthorizationCodeOAuthFlow AuthorizationCode { get; set; }
+
+        /// <summary>Configuration for the OAuth Client Credentials flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCredentials")]
+        public virtual LfA2aV1ClientCredentialsOAuthFlow ClientCredentials { get; set; }
+
+        /// <summary>Configuration for the OAuth Device Code flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCode")]
+        public virtual LfA2aV1DeviceCodeOAuthFlow DeviceCode { get; set; }
+
+        /// <summary>Deprecated: Use Authorization Code + PKCE instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("implicit")]
+        public virtual LfA2aV1ImplicitOAuthFlow Implicit__ { get; set; }
+
+        /// <summary>Deprecated: Use Authorization Code + PKCE or Device Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual LfA2aV1PasswordOAuthFlow Password { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a security scheme using OpenID Connect.</summary>
+    public class LfA2aV1OpenIdConnectSecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description for the security scheme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The [OpenID Connect Discovery URL](https://openid.net/specs/openid-connect-discovery-1_0.html) for
+        /// the OIDC provider's metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openIdConnectUrl")]
+        public virtual string OpenIdConnectUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `Part` represents a container for a section of communication content. Parts can be purely textual, some sort of
     /// file (image, video, etc) or a structured data blob (i.e. JSON).
@@ -8658,6 +9232,76 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>A `url` pointing to the file's content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deprecated: Use Authorization Code + PKCE or Device Code.</summary>
+    public class LfA2aV1PasswordOAuthFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard
+        /// requires the use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshUrl")]
+        public virtual string RefreshUrl { get; set; }
+
+        /// <summary>
+        /// The available scopes for the OAuth2 security scheme. A map between the scope name and a short description
+        /// for it. The map MAY be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Scopes { get; set; }
+
+        /// <summary>
+        /// The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the
+        /// use of TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
+        public virtual string TokenUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the security requirements for an agent.</summary>
+    public class LfA2aV1SecurityRequirement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A map of security schemes to the required scopes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemes")]
+        public virtual System.Collections.Generic.IDictionary<string, LfA2aV1StringList> Schemes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines a security scheme that can be used to secure an agent's endpoints. This is a discriminated union type
+    /// based on the OpenAPI 3.2 Security Scheme Object. See:
+    /// https://spec.openapis.org/oas/v3.2.0.html#security-scheme-object
+    /// </summary>
+    public class LfA2aV1SecurityScheme : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>API key-based authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeySecurityScheme")]
+        public virtual LfA2aV1APIKeySecurityScheme ApiKeySecurityScheme { get; set; }
+
+        /// <summary>HTTP authentication (Basic, Bearer, etc.).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpAuthSecurityScheme")]
+        public virtual LfA2aV1HTTPAuthSecurityScheme HttpAuthSecurityScheme { get; set; }
+
+        /// <summary>Mutual TLS authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtlsSecurityScheme")]
+        public virtual LfA2aV1MutualTlsSecurityScheme MtlsSecurityScheme { get; set; }
+
+        /// <summary>OAuth 2.0 authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2SecurityScheme")]
+        public virtual LfA2aV1OAuth2SecurityScheme Oauth2SecurityScheme { get; set; }
+
+        /// <summary>OpenID Connect authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openIdConnectSecurityScheme")]
+        public virtual LfA2aV1OpenIdConnectSecurityScheme OpenIdConnectSecurityScheme { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8729,6 +9373,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>The task created or updated by the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("task")]
         public virtual LfA2aV1Task Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>protolint:disable REPEATED_FIELD_NAMES_PLURALIZED A list of strings.</summary>
+    public class LfA2aV1StringList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The individual string values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("list")]
+        public virtual System.Collections.Generic.IList<string> List { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9165,6 +9820,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unredactedAudioRecordingConfig")]
         public virtual AudioRecordingConfig UnredactedAudioRecordingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Configures the BigQuery export behaviors for the app. The unredacted conversation data will be
+        /// exported to BigQuery tables if it is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unredactedBigqueryExportSettings")]
+        public virtual BigQueryExportSettings UnredactedBigqueryExportSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10386,6 +11048,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
         public virtual Citations Citations { get; set; }
 
+        /// <summary>Context messages for external supervision guardrails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Context { get; set; }
+
         /// <summary>
         /// Optional. Diagnostic information contains execution details during the processing of the input. Only
         /// populated in the last SessionOutput (with `turn_completed=true`) for each turn.
@@ -11243,6 +11909,29 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>The URI to the Google Search results page for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ephemeral Meta credentials for WhatsApp native integration.</summary>
+    public class WhatsAppCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Meta auth code provided by the embedded signup flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
+        public virtual string AuthCode { get; set; }
+
+        /// <summary>Required. The Business Account ID to use for the phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessAccountId")]
+        public virtual string BusinessAccountId { get; set; }
+
+        /// <summary>Required. The phone number to register with WhatsApp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>Required. The 6-digit PIN created by the user for two-step verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pin")]
+        public virtual string Pin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
