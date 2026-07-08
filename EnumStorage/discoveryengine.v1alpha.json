@@ -45,6 +45,13 @@
     "ORGANIZATION",
     "USER"
   ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+EnginesResource+SessionsResource+AlphaEvolveExperimentsResource+AlphaEvolveProgramsResource+ListRequest.StateFilterEnum": [
+    "PROGRAM_STATE_UNSPECIFIED",
+    "INITIALIZED",
+    "GENERATING",
+    "EVALUATING",
+    "COMPLETED"
+  ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CompleteExternalIdentitiesRequest.EntityTypeFilterEnum": [
     "ENTITY_TYPE_FILTER_UNSPECIFIED",
     "USERS",

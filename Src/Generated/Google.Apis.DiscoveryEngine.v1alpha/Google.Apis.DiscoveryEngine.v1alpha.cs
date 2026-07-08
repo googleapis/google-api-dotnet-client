@@ -13458,7 +13458,291 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             public AlphaEvolveExperimentsResource(Google.Apis.Services.IClientService service)
                             {
                                 this.service = service;
+                                AlphaEvolvePrograms = new AlphaEvolveProgramsResource(service);
                                 Operations = new OperationsResource(service);
+                            }
+
+                            /// <summary>Gets the AlphaEvolvePrograms resource.</summary>
+                            public virtual AlphaEvolveProgramsResource AlphaEvolvePrograms { get; }
+
+                            /// <summary>The "alphaEvolvePrograms" collection of methods.</summary>
+                            public class AlphaEvolveProgramsResource
+                            {
+                                private const string Resource = "alphaEvolvePrograms";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public AlphaEvolveProgramsResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>Creates a new AlphaEvolveProgram.</summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="parent">
+                                /// Required. The parent resource name (AlphaEvolveExperiment) of the
+                                /// AlphaEvolveProgram. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                /// </param>
+                                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram body, string parent)
+                                {
+                                    return new CreateRequest(this.service, body, parent);
+                                }
+
+                                /// <summary>Creates a new AlphaEvolveProgram.</summary>
+                                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram>
+                                {
+                                    /// <summary>Constructs a new Create request.</summary>
+                                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram body, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The parent resource name (AlphaEvolveExperiment) of the
+                                    /// AlphaEvolveProgram. Format:
+                                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "create";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "POST";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1alpha/{+parent}/alphaEvolvePrograms";
+
+                                    /// <summary>Initializes Create parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>Gets an existing AlphaEvolveProgram.</summary>
+                                /// <param name="name">
+                                /// Required. The full resource name of the program. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}/alphaEvolvePrograms/{alpha_evolve_program}`
+                                /// </param>
+                                public virtual GetRequest Get(string name)
+                                {
+                                    return new GetRequest(this.service, name);
+                                }
+
+                                /// <summary>Gets an existing AlphaEvolveProgram.</summary>
+                                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram>
+                                {
+                                    /// <summary>Constructs a new Get request.</summary>
+                                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The full resource name of the program. Format:
+                                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}/alphaEvolvePrograms/{alpha_evolve_program}`
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "get";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1alpha/{+name}";
+
+                                    /// <summary>Initializes Get parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+/alphaEvolvePrograms/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>
+                                /// List all AlphaEvolvePrograms in a given experiment that follow the criteria provided
+                                /// in the request.
+                                /// </summary>
+                                /// <param name="parent">
+                                /// Required. The parent resource name (AlphaEvolveExperiment) of the experiment.
+                                /// Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                /// </param>
+                                public virtual ListRequest List(string parent)
+                                {
+                                    return new ListRequest(this.service, parent);
+                                }
+
+                                /// <summary>
+                                /// List all AlphaEvolvePrograms in a given experiment that follow the criteria provided
+                                /// in the request.
+                                /// </summary>
+                                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListAlphaEvolveProgramsResponse>
+                                {
+                                    /// <summary>Constructs a new List request.</summary>
+                                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The parent resource name (AlphaEvolveExperiment) of the experiment.
+                                    /// Format:
+                                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>
+                                    /// Optional. Sorting criterion for the programs. Comma separated list of metrics to
+                                    /// sort by and optionally sort order, e.g. "score1 desc, score2". The criteria are
+                                    /// applied in the order listed in the field. An implicit criterion of sorting by
+                                    /// create_time descending is always applied as the final tie-breaker after all
+                                    /// other specified criteria.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual string OrderBy { get; set; }
+
+                                    /// <summary>
+                                    /// Optional. The maximum number of programs to return. The service may return fewer
+                                    /// than this value.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                                    /// <summary>
+                                    /// Optional. A page token, received from a previous `ListAlphaEvolvePrograms` call.
+                                    /// Provide this to retrieve the subsequent page.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual string PageToken { get; set; }
+
+                                    /// <summary>
+                                    /// Optional. Filter to apply to the programs. Examples: "state_filter =
+                                    /// \'COMPLETED\'" "state_filter = \'INITIALIZED\' OR "state_filter =
+                                    /// \'EVALUATING\'" If empty, the behavior defaults to listing programs in
+                                    /// REGISTRATION_COMPLETE state or processing state is NULL.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("stateFilter", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual System.Nullable<StateFilterEnum> StateFilter { get; set; }
+
+                                    /// <summary>
+                                    /// Optional. Filter to apply to the programs. Examples: "state_filter =
+                                    /// \'COMPLETED\'" "state_filter = \'INITIALIZED\' OR "state_filter =
+                                    /// \'EVALUATING\'" If empty, the behavior defaults to listing programs in
+                                    /// REGISTRATION_COMPLETE state or processing state is NULL.
+                                    /// </summary>
+                                    public enum StateFilterEnum
+                                    {
+                                        /// <summary>Default value. This value is unused.</summary>
+                                        [Google.Apis.Util.StringValueAttribute("PROGRAM_STATE_UNSPECIFIED")]
+                                        PROGRAMSTATEUNSPECIFIED = 0,
+
+                                        /// <summary>The program is initialized.</summary>
+                                        [Google.Apis.Util.StringValueAttribute("INITIALIZED")]
+                                        INITIALIZED = 1,
+
+                                        /// <summary>The program is in generation.</summary>
+                                        [Google.Apis.Util.StringValueAttribute("GENERATING")]
+                                        GENERATING = 2,
+
+                                        /// <summary>The program is pending evaluation.</summary>
+                                        [Google.Apis.Util.StringValueAttribute("EVALUATING")]
+                                        EVALUATING = 3,
+
+                                        /// <summary>The program is completed.</summary>
+                                        [Google.Apis.Util.StringValueAttribute("COMPLETED")]
+                                        COMPLETED = 4,
+                                    }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "list";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1alpha/{+parent}/alphaEvolvePrograms";
+
+                                    /// <summary>Initializes List parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+$",
+                                        });
+                                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "orderBy",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageSize",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageToken",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                        RequestParameters.Add("stateFilter", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "stateFilter",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    }
+                                }
                             }
 
                             /// <summary>Gets the Operations resource.</summary>
@@ -13527,6 +13811,498 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                             Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+/operations/[^/]+$",
                                         });
                                     }
+                                }
+                            }
+
+                            /// <summary>
+                            /// Acquires one or more AlphaEvolveProgram from the generated queue of programs for
+                            /// evaluation.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The parent resource name (AlphaEvolveExperiment) of the AlphaEvolveExperiment.
+                            /// Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                            /// </param>
+                            public virtual AcquireProgramsRequest AcquirePrograms(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAcquireProgramsRequest body, string parent)
+                            {
+                                return new AcquireProgramsRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>
+                            /// Acquires one or more AlphaEvolveProgram from the generated queue of programs for
+                            /// evaluation.
+                            /// </summary>
+                            public class AcquireProgramsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAcquireProgramsResponse>
+                            {
+                                /// <summary>Constructs a new AcquirePrograms request.</summary>
+                                public AcquireProgramsRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAcquireProgramsRequest body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name (AlphaEvolveExperiment) of the
+                                /// AlphaEvolveExperiment. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAcquireProgramsRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "acquirePrograms";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}:acquirePrograms";
+
+                                /// <summary>Initializes AcquirePrograms parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Creates a new AlphaEvolveExperiment.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The parent resource name (Session) of the experiment. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+                            /// </param>
+                            public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment body, string parent)
+                            {
+                                return new CreateRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>Creates a new AlphaEvolveExperiment.</summary>
+                            public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name (Session) of the experiment. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "create";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}/alphaEvolveExperiments";
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Deletes an experiment provided the experiment is in an end state (e.g. created, failed,
+                            /// succeeded).
+                            /// </summary>
+                            /// <param name="name">
+                            /// Required. The full resource name of the experiment to delete. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                            /// </param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(this.service, name);
+                            }
+
+                            /// <summary>
+                            /// Deletes an experiment provided the experiment is in an end state (e.g. created, failed,
+                            /// succeeded).
+                            /// </summary>
+                            public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The full resource name of the experiment to delete. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "delete";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Get an existing Experiment.</summary>
+                            /// <param name="name">
+                            /// Required. The full resource name of the experiment. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Get an existing Experiment.</summary>
+                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The full resource name of the experiment. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>List all AlphaEvolveExperiments in a given session.</summary>
+                            /// <param name="parent">
+                            /// Required. The parent resource name (Session) of the Session. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>List all AlphaEvolveExperiments in a given session.</summary>
+                            public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListAlphaEvolveExperimentsResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name (Session) of the Session. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Optional. The maximum number of experiments to return. The service may return fewer
+                                /// than this value.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>
+                                /// Optional. A page token, received from a previous `ListAlphaEvolveExperiments` call.
+                                /// Provide this to retrieve the subsequent page.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}/alphaEvolveExperiments";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
+                            /// <summary>Resumes a workflow to process the AlphaEvolveExperiment.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">
+                            /// Required. Experiment to resume. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                            /// </param>
+                            public virtual ResumeRequest Resume(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaResumeExperimentRequest body, string name)
+                            {
+                                return new ResumeRequest(this.service, body, name);
+                            }
+
+                            /// <summary>Resumes a workflow to process the AlphaEvolveExperiment.</summary>
+                            public class ResumeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Resume request.</summary>
+                                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaResumeExperimentRequest body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Experiment to resume. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaResumeExperimentRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "resume";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}:resume";
+
+                                /// <summary>Initializes Resume parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Starts a workflow to process the AlphaEvolveExperiment.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">
+                            /// Required. Experiment to start. Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                            /// </param>
+                            public virtual StartRequest Start(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaStartExperimentRequest body, string name)
+                            {
+                                return new StartRequest(this.service, body, name);
+                            }
+
+                            /// <summary>Starts a workflow to process the AlphaEvolveExperiment.</summary>
+                            public class StartRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Start request.</summary>
+                                public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaStartExperimentRequest body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Experiment to start. Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaStartExperimentRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "start";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}:start";
+
+                                /// <summary>Initializes Start parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Adds an AlphaEvolveProgramEvaluation to the experiment.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The parent resource name (AlphaEvolveExperiment) of the Format:
+                            /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                            /// </param>
+                            public virtual SubmitProgramsEvaluationsRequest SubmitProgramsEvaluations(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSubmitProgramsEvaluationsRequest body, string parent)
+                            {
+                                return new SubmitProgramsEvaluationsRequest(this.service, body, parent);
+                            }
+
+                            /// <summary>Adds an AlphaEvolveProgramEvaluation to the experiment.</summary>
+                            public class SubmitProgramsEvaluationsRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSubmitProgramsEvaluationsResponse>
+                            {
+                                /// <summary>Constructs a new SubmitProgramsEvaluations request.</summary>
+                                public SubmitProgramsEvaluationsRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSubmitProgramsEvaluationsRequest body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name (AlphaEvolveExperiment) of the Format:
+                                /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSubmitProgramsEvaluationsRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "submitProgramsEvaluations";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}:submitProgramsEvaluations";
+
+                                /// <summary>Initializes SubmitProgramsEvaluations parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/alphaEvolveExperiments/[^/]+$",
+                                    });
                                 }
                             }
                         }
@@ -26918,6 +27694,77 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Exports all the UserLicenses under the parent UserStore as a single CSV document. This is the
+                    /// backend for the admin console "Download as CSV" action: it reuses the ListUserLicenses read path
+                    /// so admins can sort/filter offline in Excel or Sheets. The response carries the full CSV (header
+                    /// row followed by data rows) inline in ExportUserLicensesResponse.csv_data.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent UserStore resource name, format:
+                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`. All UserLicenses under
+                    /// this UserStore are exported.
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaExportUserLicensesRequest body, string parent)
+                    {
+                        return new ExportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Exports all the UserLicenses under the parent UserStore as a single CSV document. This is the
+                    /// backend for the admin console "Download as CSV" action: it reuses the ListUserLicenses read path
+                    /// so admins can sort/filter offline in Excel or Sheets. The response carries the full CSV (header
+                    /// row followed by data rows) inline in ExportUserLicensesResponse.csv_data.
+                    /// </summary>
+                    public class ExportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaExportUserLicensesResponse>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaExportUserLicensesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent UserStore resource name, format:
+                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`. All UserLicenses under
+                        /// this UserStore are exported.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaExportUserLicensesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/userLicenses:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Lists the User Licenses.</summary>
                     /// <param name="parent">
                     /// Required. The parent UserStore resource name, format:
@@ -31217,6 +32064,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncTime")]
         public virtual GoogleTypeDateTime NextSyncTime { get; set; }
 
+        /// <summary>
+        /// Output only. The static IP addresses used by this connector for OAuth APIs (e.g. end user authentication).
+        /// These are surfaced separately from `static_ip_addresses` so that customers can apply granular firewall
+        /// settings for OAuth endpoints. Only populated for connectors that have static IP enabled and are used for
+        /// actions and/or federated search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthStaticIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> OauthStaticIpAddresses { get; set; }
+
         /// <summary>Required data connector parameters in structured json format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
@@ -33011,8 +33867,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
-        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
-        /// is required if the engine has an Agent Gateway setting.
+        /// Output only. The Agent registry containing the agents, MCP servers and tools associated with this engine.
+        /// Derived server-side from the linked Agent Gateway's registry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
         public virtual string AssociatedAgentRegistry { get; set; }
@@ -33115,7 +33971,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence` * `deep-research`
         /// </summary>
@@ -33500,9 +34356,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
-        /// the required subscription tier is search, user with higher license tier like assist can still access the
-        /// standalone app associated with this engine.
+        /// Optional. The required subscription tier of this engine. If the required subscription tier is search, user
+        /// with higher license tier like assist can still access the standalone app associated with this engine. Web
+        /// grounding feature is only available on the app if it is set as
+        /// SubscriptionTier.SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
         public virtual string RequiredSubscriptionTier { get; set; }
@@ -36734,6 +37591,31 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for AlphaEvolveService.AcquirePrograms.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAcquireProgramsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Number of evolved programs to acquire. If not set, the default value is 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredProgramsCount")]
+        public virtual System.Nullable<int> DesiredProgramsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AlphaEvolveService.AcquirePrograms.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAcquireProgramsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. List of acquired program candidates to be evaluated. Note: The number of programs acquired
+        /// might be lower than requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram> Programs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Informations to support actions on the connector.</summary>
     public class GoogleCloudDiscoveryengineV1alphaActionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -37577,6 +38459,462 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The AlloyDB table to copy the data from with a length limit of 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation insights for a program.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsights : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of evaluation insights.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsightsAlphaEvolveEvaluationInsight> Insights { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single evaluation insight.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsightsAlphaEvolveEvaluationInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Label of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Optional. Text of the insight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the evaluation scores for the target metrics to optimize.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScores : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of evaluation scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScoresAlphaEvolveEvaluationScore> Scores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Score for a single metric.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScoresAlphaEvolveEvaluationScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>Required. Score of a program for this metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An experiment is a single run of the AlphaEvolve agent, an evolutionary coding agent powered by LLM for
+    /// algorithm discovery and optimization.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Experiment configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfig Config { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the experiment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Specifies the name of the seed program used to start the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialAlphaEvolveProgram")]
+        public virtual string InitialAlphaEvolveProgram { get; set; }
+
+        /// <summary>
+        /// Identifier. The full resource name of the experiment. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Experiment stats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentStats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of an experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Evolution settings for the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evolutionSettings")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettings EvolutionSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Generation settings for the experiment, controlling how new program candidates are generated,
+        /// including things LLM parameters and user-provided context and prompts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationSettings")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettings GenerationSettings { get; set; }
+
+        /// <summary>Required. Description of the problem to be solved by the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("problemDescription")]
+        public virtual string ProblemDescription { get; set; }
+
+        /// <summary>Required. Primary programming language of the code being optimized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programLanguage")]
+        public virtual string ProgramLanguage { get; set; }
+
+        /// <summary>
+        /// Required. Run settings for the experiment, controlling the overall behavior of the experiment run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSettings")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigRunSettings RunSettings { get; set; }
+
+        /// <summary>Required. Title of the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evolution settings for the experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Parent sampling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentSamplingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfig ParentSamplingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for parent sampling.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Pareto sampling configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paretoSamplingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfigParetoSamplingConfig ParetoSamplingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Pareto sampling.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigEvolutionSettingsParentSamplingConfigParetoSamplingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Probability [0.0, 1.0] of sampling parent programs from the Pareto frontier instead of normal
+        /// fitness-based sampling during candidate generation. Useful when optimizing multiple metrics simultaneously.
+        /// Default 0.0 (disabled). Only effective when evaluation returns multiple metrics in scores_to_optimize.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paretoSamplingProbability")]
+        public virtual System.Nullable<float> ParetoSamplingProbability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generation settings for the experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional user-provided context to be used during generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual string Context { get; set; }
+
+        /// <summary>
+        /// Optional. When true, the LLM prompt includes the full program text (both mutable EVOLVE-BLOCK regions and
+        /// immutable boilerplate). When false (default), only the mutable EVOLVE-BLOCK regions are shown, saving
+        /// context window.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeFullProgramInPrompt")]
+        public virtual System.Nullable<bool> IncludeFullProgramInPrompt { get; set; }
+
+        /// <summary>
+        /// Optional. Per-model configuration. See `ModelConfig` for details. If left unset, the server selects a
+        /// default model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettingsModelConfig> Models { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Per-model configuration. Mutually exclusive with `model_mixture` and `model`: when `models` is set, both
+    /// `model_mixture` and `model` must be left unset. The same allowed-model list and at-most-2-models rule as for
+    /// `model_mixture` apply. In addition, each entry may specify a per-model `temperature` for LLM sampling. Unlike
+    /// `model_mixture`, weights here are *relative*: only their ratios matter (the server normalizes them), so callers
+    /// may use any positive numbers without having to ensure they sum to 1.0.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigGenerationSettingsModelConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Model name (e.g. `gemini-2.5-flash`, `gemini-3.1-pro-preview`). See `model_mixture` for the list
+        /// of allowed models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Relative weight for this model in the mixture. Must be a finite, strictly positive value. Weights
+        /// across all entries are normalized server-side, so they need not sum to 1.0. Defaults to 1.0 when unset,
+        /// which is convenient when configuring a single model or an even mixture. Some Pro-tier models are capped at
+        /// most 50% of the total weight; requests violating that cap are rejected with INVALID_ARGUMENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<float> Weight { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Run settings for the experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentConfigRunSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Maximum number of programs that can be generated in parallel. Must be positive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrency")]
+        public virtual System.Nullable<int> Concurrency { get; set; }
+
+        /// <summary>Optional. Maximum duration of the experiment. If unset, defaults to 24 hours.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDuration")]
+        public virtual object MaxDuration { get; set; }
+
+        /// <summary>
+        /// Required. Maximum number of programs to generate during the experiment run. The initial program counts
+        /// towards this limit. Must be greater than 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPrograms")]
+        public virtual System.Nullable<int> MaxPrograms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stats about the experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperimentStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of candidates generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesCount")]
+        public virtual System.Nullable<int> CandidatesCount { get; set; }
+
+        /// <summary>Output only. Number of candidates evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluatedCandidatesCount")]
+        public virtual System.Nullable<int> EvaluatedCandidatesCount { get; set; }
+
+        /// <summary>Output only. Number of billed input tokens consumed by the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputTokenCount")]
+        public virtual System.Nullable<long> InputTokenCount { get; set; }
+
+        /// <summary>Output only. Number of billed output tokens consumed by the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputTokenCount")]
+        public virtual System.Nullable<long> OutputTokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single program to be used within the context of an AlphaEvolve experiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Content of the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramContent Content { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the program was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Evaluation results for the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluation Evaluation { get; set; }
+
+        /// <summary>Optional. Lock token for the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockToken")]
+        public virtual string LockToken { get; set; }
+
+        /// <summary>
+        /// Identifier. Unique identifier for the program. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}/alphaEvolvePrograms/{alpha_evolve_program}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Optionally specifies which parent programs this program was evolved from. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}/alphaEvolvePrograms/{alpha_evolve_program}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentPrograms")]
+        public virtual System.Collections.Generic.IList<string> ParentPrograms { get; set; }
+
+        /// <summary>Output only. State of the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A self-contained message containing the content of a program. Can represent a collection of files.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Description of the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. A list of source files that make up the overall program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveSourceFile> Files { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation results for a program candidate.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Represents various insights about the candidate, which are not directly used as optimization
+        /// target, but that can be used to improve subsequent generations, and as such can be used to construct the
+        /// evolution prompt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insights")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationInsights Insights { get; set; }
+
+        /// <summary>Optional. Contains the evaluation scores for the target metrics to optimize.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveEvaluationScores Scores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation submission for a program candidate.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluationSubmission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Evaluation results for the program candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluation Evaluation { get; set; }
+
+        /// <summary>Required. Lock token for the program obtained in the AcquireAlphaEvolvePrograms call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockToken")]
+        public virtual string LockToken { get; set; }
+
+        /// <summary>
+        /// Required. Unique identifier for the program. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}/alphaEvolvePrograms/{alpha_evolve_program}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("program")]
+        public virtual string Program { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single source file with its path, content and metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlphaEvolveSourceFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The raw content of the file. This is a string and not bytes, because it should be ultimately
+        /// processed by the LLM as text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Optional. Additional description of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The relative path of the file, including the filename. e.g., "src/main.py", "utils/helpers.js",
+        /// "README.md"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Optional. The programming language of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programLanguage")]
+        public virtual string ProgramLanguage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41295,7 +42633,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// This field is only meaningful for suggestions generated from user events or search history. If a query shows
         /// up less than this threshold, it may indicate that the query is rarely searched and thus will not be
         /// generated as a suggestion. This is field can be helpful for preventing PII queries becoming suggestions, as
-        /// those queries are usually uniquely searched. If not set, the default value is 8 used in the generation
+        /// those queries are usually uniquely searched. If not set, the default value is 3 used in the generation
         /// pipeline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryFrequencyThreshold")]
@@ -43292,6 +44630,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSyncTime")]
         public virtual GoogleTypeDateTime NextSyncTime { get; set; }
 
+        /// <summary>
+        /// Output only. The static IP addresses used by this connector for OAuth APIs (e.g. end user authentication).
+        /// These are surfaced separately from `static_ip_addresses` so that customers can apply granular firewall
+        /// settings for OAuth endpoints. Only populated for connectors that have static IP enabled and are used for
+        /// actions and/or federated search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthStaticIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> OauthStaticIpAddresses { get; set; }
+
         /// <summary>Required data connector parameters in structured json format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
@@ -44869,6 +46216,43 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
         public virtual System.Nullable<long> SuccessCount { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -45672,8 +47056,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
-        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
-        /// is required if the engine has an Agent Gateway setting.
+        /// Output only. The Agent registry containing the agents, MCP servers and tools associated with this engine.
+        /// Derived server-side from the linked Agent Gateway's registry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
         public virtual string AssociatedAgentRegistry { get; set; }
@@ -45776,7 +47160,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence` * `deep-research`
         /// </summary>
@@ -46281,9 +47665,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
-        /// the required subscription tier is search, user with higher license tier like assist can still access the
-        /// standalone app associated with this engine.
+        /// Optional. The required subscription tier of this engine. If the required subscription tier is search, user
+        /// with higher license tier like assist can still access the standalone app associated with this engine. Web
+        /// grounding feature is only available on the app if it is set as
+        /// SubscriptionTier.SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
         public virtual string RequiredSubscriptionTier { get; set; }
@@ -46695,6 +48080,27 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaExportMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UserLicenseService.ExportUserLicenses.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportUserLicensesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UserLicenseService.ExportUserLicenses.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportUserLicensesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full CSV document as raw bytes: the header row followed by one row per UserLicense. Contains user
+        /// license data (e.g. user emails). An export with no matching licenses contains only the header row.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvData")]
+        public virtual string CsvData { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -48714,6 +50120,42 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// A token that can be sent as ListAgentsRequest.page_token to retrieve the next page. If this field is
         /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AlphaEvolveService.ListAlphaEvolveExperiments.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListAlphaEvolveExperimentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of experiments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alphaEvolveExperiments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveExperiment> AlphaEvolveExperiments { get; set; }
+
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AlphaEvolveService.ListAlphaEvolvePrograms.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListAlphaEvolveProgramsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of programs matching the criteria provided in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alphaEvolvePrograms")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgram> AlphaEvolvePrograms { get; set; }
+
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -52178,6 +53620,94 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for AlphaEvolveService.ResumeExperiment long running operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaResumeExperimentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the operation was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AlphaEvolveService.ResumeExperiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaResumeExperimentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for LicenseConfigService.RetractLicenseConfig method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaRetractLicenseConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -55466,6 +56996,101 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for AlphaEvolveService.StartExperiment long running operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaStartExperimentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the operation was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AlphaEvolveService.StartExperiment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaStartExperimentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Experiment to start. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/alphaEvolveExperiments/{alpha_evolve_experiment}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the AssistantService.StreamAssist method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaStreamAssistRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -55696,6 +57321,26 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AlphaEvolveService.SubmitProgramsEvaluations.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSubmitProgramsEvaluationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. List of program evaluations to submit. At this time, only one evaluation submission is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationSubmissions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAlphaEvolveProgramEvaluationSubmission> EvaluationSubmissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AlphaEvolveService.SubmitProgramsEvaluations.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSubmitProgramsEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -57730,7 +59375,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence` * `deep-research`
         /// </summary>
@@ -57740,6 +59385,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Describes generative answer configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generativeAnswerConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsGenerativeAnswerConfig GenerativeAnswerConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the Google Drive file picker is available to end-users. Declared `optional` for the
+        /// same field-presence reason as `onedrive_picker_enabled` above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDrivePickerEnabled")]
+        public virtual System.Nullable<bool> GoogleDrivePickerEnabled { get; set; }
 
         /// <summary>Describes widget (or web app) interaction type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactionType")]
@@ -57764,6 +59416,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, string> ModelConfigs { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the OneDrive file picker is available to end-users. Computed by the backend from admin
+        /// connector enablement (Business edition) or attached OneDrive connectors (Enterprise edition), combined with
+        /// the existing `disable-onedrive-upload` admin feature. Declared `optional` so an explicitly-computed `false`
+        /// is serialized with field presence. A plain proto3 `bool` drops a default `false` on the wire, which
+        /// prevented clients from distinguishing "picker disabled" (`false`) from "field not populated" (unset).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onedrivePickerEnabled")]
+        public virtual System.Nullable<bool> OnedrivePickerEnabled { get; set; }
 
         /// <summary>
         /// Controls whether result extract is display and how (snippet or extractive answer). Default to no result if
@@ -57875,6 +59537,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfoResolvedModel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Admin-surface metadata; populated only for the Console admin Feature Control page (see
+        /// `AdminView`). Unset for end-user surfaces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminView")]
+        public virtual GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfoResolvedModelAdminView AdminView { get; set; }
+
+        /// <summary>
         /// Output only. Localized description text (e.g. `State-of-the-art reasoning`). Localized using the same locale
         /// as `display_name`.
         /// </summary>
@@ -57909,6 +59578,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Admin-surface metadata. Populated only when the request originates from the Cloud Console admin "Feature
+    /// Control" page; left unset for end-user surfaces (Web, Mobile). Lets the admin page render its toggle table
+    /// directly from the backend instead of a hardcoded client-side registry.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfoResolvedModelAdminView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether the admin can toggle this model's enabled/disabled state via
+        /// `UiSettings.model_configs`. Derived from `MODEL_TAG_ADMIN_OVERRIDABLE`. When false, the model is "forced"
+        /// and its state is governed by `enabled_by_default`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminOverridable")]
+        public virtual System.Nullable<bool> AdminOverridable { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the model is enabled when the admin has set no explicit override in
+        /// `UiSettings.model_configs`. Derived from `MODEL_TAG_ENABLED_BY_DEFAULT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledByDefault")]
+        public virtual System.Nullable<bool> EnabledByDefault { get; set; }
+
+        /// <summary>Output only. Regions where this model is launched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<string> Regions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60486,8 +62185,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string AppType { get; set; }
 
         /// <summary>
-        /// Optional. The Agent registry containing the agents, MCP servers and tools associated with this engine. Field
-        /// is required if the engine has an Agent Gateway setting.
+        /// Output only. The Agent registry containing the agents, MCP servers and tools associated with this engine.
+        /// Derived server-side from the linked Agent Gateway's registry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedAgentRegistry")]
         public virtual string AssociatedAgentRegistry { get; set; }
@@ -60590,7 +62289,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` *
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
         /// `cross-product-intelligence` * `deep-research`
         /// </summary>
@@ -60975,9 +62674,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If
-        /// the required subscription tier is search, user with higher license tier like assist can still access the
-        /// standalone app associated with this engine.
+        /// Optional. The required subscription tier of this engine. If the required subscription tier is search, user
+        /// with higher license tier like assist can still access the standalone app associated with this engine. Web
+        /// grounding feature is only available on the app if it is set as
+        /// SubscriptionTier.SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredSubscriptionTier")]
         public virtual string RequiredSubscriptionTier { get; set; }
