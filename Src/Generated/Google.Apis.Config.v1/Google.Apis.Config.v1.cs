@@ -4785,6 +4785,10 @@ namespace Google.Apis.Config.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applyResults")]
         public virtual ApplyResults ApplyResults { get; set; }
 
+        /// <summary>Output only. Indicating if early apply results are available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyResultsAvailable")]
+        public virtual System.Nullable<bool> ApplyResultsAvailable { get; set; }
+
         /// <summary>Output only. Cloud Build instance UUID associated with this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual string Build { get; set; }
