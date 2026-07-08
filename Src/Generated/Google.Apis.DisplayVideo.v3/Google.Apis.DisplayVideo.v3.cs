@@ -38,7 +38,6 @@ namespace Google.Apis.DisplayVideo.v3
             CombinedAudiences = new CombinedAudiencesResource(this);
             CustomBiddingAlgorithms = new CustomBiddingAlgorithmsResource(this);
             CustomLists = new CustomListsResource(this);
-            FirstAndThirdPartyAudiences = new FirstAndThirdPartyAudiencesResource(this);
             FloodlightGroups = new FloodlightGroupsResource(this);
             GoogleAudiences = new GoogleAudiencesResource(this);
             GuaranteedOrders = new GuaranteedOrdersResource(this);
@@ -121,9 +120,6 @@ namespace Google.Apis.DisplayVideo.v3
 
         /// <summary>Gets the CustomLists resource.</summary>
         public virtual CustomListsResource CustomLists { get; }
-
-        /// <summary>Gets the FirstAndThirdPartyAudiences resource.</summary>
-        public virtual FirstAndThirdPartyAudiencesResource FirstAndThirdPartyAudiences { get; }
 
         /// <summary>Gets the FloodlightGroups resource.</summary>
         public virtual FloodlightGroupsResource FloodlightGroups { get; }
@@ -377,11 +373,7 @@ namespace Google.Apis.DisplayVideo.v3
                 this.service = service;
             }
 
-            /// <summary>
-            /// Creates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently rolling out. This method will be available to all partners by *June
-            /// 24, 2026*.
-            /// </summary>
+            /// <summary>Creates an ad group ad. This method is only supported for Demand Gen ads.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AdGroupAd body, long advertiserId)
@@ -389,11 +381,7 @@ namespace Google.Apis.DisplayVideo.v3
                 return new CreateRequest(this.service, body, advertiserId);
             }
 
-            /// <summary>
-            /// Creates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently rolling out. This method will be available to all partners by *June
-            /// 24, 2026*.
-            /// </summary>
+            /// <summary>Creates an ad group ad. This method is only supported for Demand Gen ads.</summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -438,11 +426,7 @@ namespace Google.Apis.DisplayVideo.v3
                 }
             }
 
-            /// <summary>
-            /// Deletes an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently rolling out. This method will be available to all partners by *June
-            /// 24, 2026*.
-            /// </summary>
+            /// <summary>Deletes an ad group ad. This method is only supported for Demand Gen ads.</summary>
             /// <param name="advertiserId">Required. The ID of the advertiser the ad belongs to.</param>
             /// <param name="adGroupAdId">
             /// Required. The ID of the ad to delete. Only Demand Gen ads are supported.
@@ -452,11 +436,7 @@ namespace Google.Apis.DisplayVideo.v3
                 return new DeleteRequest(this.service, advertiserId, adGroupAdId);
             }
 
-            /// <summary>
-            /// Deletes an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently rolling out. This method will be available to all partners by *June
-            /// 24, 2026*.
-            /// </summary>
+            /// <summary>Deletes an ad group ad. This method is only supported for Demand Gen ads.</summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -681,11 +661,7 @@ namespace Google.Apis.DisplayVideo.v3
                 }
             }
 
-            /// <summary>
-            /// Updates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently rolling out. This method will be available to all partners by *June
-            /// 24, 2026*.
-            /// </summary>
+            /// <summary>Updates an ad group ad. This method is only supported for Demand Gen ads.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
             /// <param name="adGroupAdId">Output only. The unique ID of the ad. Assigned by the system.</param>
@@ -694,11 +670,7 @@ namespace Google.Apis.DisplayVideo.v3
                 return new PatchRequest(this.service, body, advertiserId, adGroupAdId);
             }
 
-            /// <summary>
-            /// Updates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of
-            /// Demand Gen resources is currently rolling out. This method will be available to all partners by *June
-            /// 24, 2026*.
-            /// </summary>
+            /// <summary>Updates an ad group ad. This method is only supported for Demand Gen ads.</summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -824,9 +796,7 @@ namespace Google.Apis.DisplayVideo.v3
 
                     /// <summary>
                     /// Assigns a targeting option to an ad group. Returns the assigned targeting option if successful.
-                    /// This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen
-                    /// resources is currently rolling out. This method will be available to all partners by *June 24,
-                    /// 2026*.
+                    /// This method is only supported for Demand Gen ad groups.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
@@ -848,9 +818,7 @@ namespace Google.Apis.DisplayVideo.v3
 
                     /// <summary>
                     /// Assigns a targeting option to an ad group. Returns the assigned targeting option if successful.
-                    /// This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen
-                    /// resources is currently rolling out. This method will be available to all partners by *June 24,
-                    /// 2026*.
+                    /// This method is only supported for Demand Gen ad groups.
                     /// </summary>
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AssignedTargetingOption>
                     {
@@ -1203,9 +1171,7 @@ namespace Google.Apis.DisplayVideo.v3
 
                     /// <summary>
                     /// Deletes an assigned targeting option from an ad group. This method is only supported for Demand
-                    /// Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
-                    /// Demand Gen resources is currently rolling out. This method will be available to all partners by
-                    /// *June 24, 2026*.
+                    /// Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`.
                     /// </summary>
                     /// <param name="advertiserId">Required. The ID of the advertiser the ad group belongs to.</param>
                     /// <param name="adGroupId">
@@ -1229,9 +1195,7 @@ namespace Google.Apis.DisplayVideo.v3
 
                     /// <summary>
                     /// Deletes an assigned targeting option from an ad group. This method is only supported for Demand
-                    /// Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of
-                    /// Demand Gen resources is currently rolling out. This method will be available to all partners by
-                    /// *June 24, 2026*.
+                    /// Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`.
                     /// </summary>
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
                     {
@@ -2424,8 +2388,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group,
             /// and then create the assigned targeting options provided in
             /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand
-            /// Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This method
-            /// will be available to all partners by *June 24, 2026*.
+            /// Gen ad groups.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser the ad groups belong to.</param>
@@ -2440,8 +2403,7 @@ namespace Google.Apis.DisplayVideo.v3
             /// options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group,
             /// and then create the assigned targeting options provided in
             /// BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand
-            /// Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This method
-            /// will be available to all partners by *June 24, 2026*.
+            /// Gen ad groups.
             /// </summary>
             public class BulkEditAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.BulkEditAdGroupAssignedTargetingOptionsResponse>
             {
@@ -2621,8 +2583,7 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Creates a new ad group. Returns the newly created ad group if successful. This method is only supported
-            /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out.
-            /// This method will be available to all partners by *June 24, 2026*.
+            /// for Demand Gen ad groups.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad group belongs to.</param>
@@ -2633,8 +2594,7 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Creates a new ad group. Returns the newly created ad group if successful. This method is only supported
-            /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out.
-            /// This method will be available to all partners by *June 24, 2026*.
+            /// for Demand Gen ad groups.
             /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroup>
             {
@@ -2682,8 +2642,7 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only
-            /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently
-            /// rolling out. This method will be available to all partners by *June 24, 2026*.
+            /// supported for Demand Gen ad groups.
             /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser this ad group belongs to.</param>
             /// <param name="adGroupId">Required. The ID of the ad group to delete.</param>
@@ -2694,8 +2653,7 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only
-            /// supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently
-            /// rolling out. This method will be available to all partners by *June 24, 2026*.
+            /// supported for Demand Gen ad groups.
             /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
@@ -2923,8 +2881,7 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Updates an existing ad group. Returns the updated ad group if successful. This method is only supported
-            /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out.
-            /// This method will be available to all partners by *June 24, 2026*.
+            /// for Demand Gen ad groups.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad group belongs to.</param>
@@ -2936,8 +2893,7 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Updates an existing ad group. Returns the updated ad group if successful. This method is only supported
-            /// for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out.
-            /// This method will be available to all partners by *June 24, 2026*.
+            /// for Demand Gen ad groups.
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroup>
             {
@@ -13293,430 +13249,6 @@ namespace Google.Apis.DisplayVideo.v3
         }
     }
 
-    /// <summary>The "firstAndThirdPartyAudiences" collection of methods.</summary>
-    public class FirstAndThirdPartyAudiencesResource
-    {
-        private const string Resource = "firstAndThirdPartyAudiences";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public FirstAndThirdPartyAudiencesResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>
-        /// Creates a FirstAndThirdPartyAudience. Only supported for the following audience_type: *
-        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body)
-        {
-            return new CreateRequest(this.service, body);
-        }
-
-        /// <summary>
-        /// Creates a FirstAndThirdPartyAudience. Only supported for the following audience_type: *
-        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience>
-        {
-            /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The ID of the advertiser under whom the FirstAndThirdPartyAudience will be created.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "create";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v3/firstAndThirdPartyAudiences";
-
-            /// <summary>Initializes Create parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
-        /// Updates the member list of a Customer Match audience. Only supported for the following audience_type: *
-        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="firstAndThirdPartyAudienceId">
-        /// Required. The ID of the Customer Match FirstAndThirdPartyAudience whose members will be edited.
-        /// </param>
-        public virtual EditCustomerMatchMembersRequest EditCustomerMatchMembers(Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId)
-        {
-            return new EditCustomerMatchMembersRequest(this.service, body, firstAndThirdPartyAudienceId);
-        }
-
-        /// <summary>
-        /// Updates the member list of a Customer Match audience. Only supported for the following audience_type: *
-        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        public class EditCustomerMatchMembersRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersResponse>
-        {
-            /// <summary>Constructs a new EditCustomerMatchMembers request.</summary>
-            public EditCustomerMatchMembersRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersRequest body, long firstAndThirdPartyAudienceId) : base(service)
-            {
-                FirstAndThirdPartyAudienceId = firstAndThirdPartyAudienceId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The ID of the Customer Match FirstAndThirdPartyAudience whose members will be edited.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("firstAndThirdPartyAudienceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long FirstAndThirdPartyAudienceId { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v3.Data.EditCustomerMatchMembersRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "editCustomerMatchMembers";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}:editCustomerMatchMembers";
-
-            /// <summary>Initializes EditCustomerMatchMembers parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("firstAndThirdPartyAudienceId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "firstAndThirdPartyAudienceId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>Gets a first and third party audience.</summary>
-        /// <param name="firstAndThirdPartyAudienceId">
-        /// Required. The ID of the first and third party audience to fetch.
-        /// </param>
-        public virtual GetRequest Get(long firstAndThirdPartyAudienceId)
-        {
-            return new GetRequest(this.service, firstAndThirdPartyAudienceId);
-        }
-
-        /// <summary>Gets a first and third party audience.</summary>
-        public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long firstAndThirdPartyAudienceId) : base(service)
-            {
-                FirstAndThirdPartyAudienceId = firstAndThirdPartyAudienceId;
-                InitParameters();
-            }
-
-            /// <summary>Required. The ID of the first and third party audience to fetch.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("firstAndThirdPartyAudienceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long FirstAndThirdPartyAudienceId { get; private set; }
-
-            /// <summary>
-            /// The ID of the advertiser that has access to the fetched first and third party audience.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-            /// <summary>The ID of the partner that has access to the fetched first and third party audience.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> PartnerId { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "get";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}";
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("firstAndThirdPartyAudienceId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "firstAndThirdPartyAudienceId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "partnerId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Lists first and third party audiences. The order is defined by the order_by parameter.</summary>
-        public virtual ListRequest List()
-        {
-            return new ListRequest(this.service);
-        }
-
-        /// <summary>Lists first and third party audiences. The order is defined by the order_by parameter.</summary>
-        public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListFirstAndThirdPartyAudiencesResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
-            {
-                InitParameters();
-            }
-
-            /// <summary>
-            /// The ID of the advertiser that has access to the fetched first and third party audiences.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-            /// <summary>
-            /// Allows filtering by first and third party audience fields. Supported syntax: * Filter expressions for
-            /// first and third party audiences can only contain at most one restriction. * A restriction has the form
-            /// of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: *
-            /// `displayName` Examples: * All first and third party audiences for which the display name contains
-            /// "Google": `displayName:"Google"`. The length of this field should be no more than 500 characters.
-            /// Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more
-            /// information.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>
-            /// Field by which to sort the list. Acceptable values are: * `firstAndThirdPartyAudienceId` (default) *
-            /// `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix
-            /// "desc" should be added to the field name. Example: `displayName desc`.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>
-            /// Requested page size. Must be between `1` and `5000`. If unspecified, this value defaults to `5000`.
-            /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>
-            /// A token identifying a page of results the server should return. Typically, this is the value of
-            /// next_page_token returned from the previous call to `ListFirstAndThirdPartyAudiences` method. If not
-            /// specified, the first page of results will be returned.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The ID of the partner that has access to the fetched first and third party audiences.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> PartnerId { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "list";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v3/firstAndThirdPartyAudiences";
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "orderBy",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageSize",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "partnerId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
-        /// Updates an existing FirstAndThirdPartyAudience. Only supported for the following audience_type: *
-        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="firstAndThirdPartyAudienceId">
-        /// Output only. The unique ID of the first and third party audience. Assigned by the system.
-        /// </param>
-        public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId)
-        {
-            return new PatchRequest(this.service, body, firstAndThirdPartyAudienceId);
-        }
-
-        /// <summary>
-        /// Updates an existing FirstAndThirdPartyAudience. Only supported for the following audience_type: *
-        /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience>
-        {
-            /// <summary>Constructs a new Patch request.</summary>
-            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience body, long firstAndThirdPartyAudienceId) : base(service)
-            {
-                FirstAndThirdPartyAudienceId = firstAndThirdPartyAudienceId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Output only. The unique ID of the first and third party audience. Assigned by the system.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("firstAndThirdPartyAudienceId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long FirstAndThirdPartyAudienceId { get; private set; }
-
-            /// <summary>Required. The ID of the owner advertiser of the updated FirstAndThirdPartyAudience.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-            /// <summary>
-            /// Required. The mask to control which fields to update. Updates are only supported for the following
-            /// fields: * `displayName` * `description` * `membershipDurationDays`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DisplayVideo.v3.Data.FirstAndThirdPartyAudience Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "patch";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}";
-
-            /// <summary>Initializes Patch parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("firstAndThirdPartyAudienceId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "firstAndThirdPartyAudienceId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^[^/]+$",
-                });
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "updateMask",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-    }
-
     /// <summary>The "floodlightGroups" collection of methods.</summary>
     public class FloodlightGroupsResource
     {
@@ -20323,8 +19855,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
 
         /// <summary>
         /// Optional. The DCM tracking ad info. Only valid for Demand Gen ads. To remove the DCM tracking ad info,
-        /// please leave this field empty. Retrieval and management of Demand Gen resources is currently rolling out.
-        /// This field will be available to all partners by *June 24, 2026*.
+        /// please leave this field empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dcmTrackingInfo")]
         public virtual DcmTrackingInfo DcmTrackingInfo { get; set; }
@@ -20332,8 +19863,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Details of a [Demand Gen carousel
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#CarouselAd).
-        /// Retrieval and management of Demand Gen resources is currently rolling out. This field will be available to
-        /// all partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenCarouselAd")]
         public virtual DemandGenCarouselAd DemandGenCarouselAd { get; set; }
@@ -20341,8 +19870,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Details of a [Demand Gen image
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#ImageAd).
-        /// Retrieval and management of Demand Gen resources is currently rolling out. This field will be available to
-        /// all partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenImageAd")]
         public virtual DemandGenImageAd DemandGenImageAd { get; set; }
@@ -20350,8 +19877,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Details of a [Demand Gen product
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#Product-onlyAd).
-        /// Retrieval and management of Demand Gen resources is currently rolling out. This field will be available to
-        /// all partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenProductAd")]
         public virtual DemandGenProductAd DemandGenProductAd { get; set; }
@@ -20359,8 +19884,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Details of a [Demand Gen video
         /// ad](//support.google.com/displayvideo/answer/15598924?&amp;amp;sjid=11207068802760924844-NC#VideoAd).
-        /// Retrieval and management of Demand Gen resources is currently rolling out. This field will be available to
-        /// all partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenVideoAd")]
         public virtual DemandGenVideoAd DemandGenVideoAd { get; set; }
@@ -23615,92 +23138,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>User consent status.</summary>
-    public class Consent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Represents consent for ad personalization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adPersonalization")]
-        public virtual string AdPersonalization { get; set; }
-
-        /// <summary>Represents consent for ad user data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adUserData")]
-        public virtual string AdUserData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contact information defining a Customer Match audience member.</summary>
-    public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Country code of the member. Must also be set with the following fields: * hashed_first_name *
-        /// hashed_last_name * zip_codes
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; }
-
-        /// <summary>
-        /// A list of SHA256 hashed email of the member. Before hashing, remove all whitespace and make sure the string
-        /// is all lowercase.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hashedEmails")]
-        public virtual System.Collections.Generic.IList<string> HashedEmails { get; set; }
-
-        /// <summary>
-        /// SHA256 hashed first name of the member. Before hashing, remove all whitespace and make sure the string is
-        /// all lowercase. Must also be set with the following fields: * country_code * hashed_last_name * zip_codes
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hashedFirstName")]
-        public virtual string HashedFirstName { get; set; }
-
-        /// <summary>
-        /// SHA256 hashed last name of the member. Before hashing, remove all whitespace and make sure the string is all
-        /// lowercase. Must also be set with the following fields: * country_code * hashed_first_name * zip_codes
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hashedLastName")]
-        public virtual string HashedLastName { get; set; }
-
-        /// <summary>
-        /// A list of SHA256 hashed phone numbers of the member. Before hashing, all phone numbers must be formatted
-        /// using the [E.164 format](//en.wikipedia.org/wiki/E.164) and include the country calling code.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hashedPhoneNumbers")]
-        public virtual System.Collections.Generic.IList<string> HashedPhoneNumbers { get; set; }
-
-        /// <summary>
-        /// A list of zip codes of the member. Must also be set with the following fields: * country_code *
-        /// hashed_first_name * hashed_last_name
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zipCodes")]
-        public virtual System.Collections.Generic.IList<string> ZipCodes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Wrapper message for a list of contact information defining Customer Match audience members.</summary>
-    public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Input only. The consent setting for the users in contact_infos. Leaving this field unset indicates that
-        /// consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`,
-        /// the request will return an error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consent")]
-        public virtual Consent Consent { get; set; }
-
-        /// <summary>
-        /// A list of ContactInfo objects defining Customer Match audience members. The size of members after splitting
-        /// the contact_infos mustn't be greater than 500,000.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactInfos")]
-        public virtual System.Collections.Generic.IList<ContactInfo> ContactInfos { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Details for content duration assigned targeting option. This will be populated in the content_duration_details
     /// field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting all options is not
@@ -23951,8 +23388,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// Optional. The attribution model to use for conversion measurement. This attribution model will determine how
         /// conversions are counted. The Primary model can be set by you for a floodlight config or group. More details
         /// [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items.
-        /// Retrieval and management of Demand Gen resources is currently rolling out. This field will be available to
-        /// all partners by *June 24, 2026*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryAttributionModelId")]
         public virtual System.Nullable<long> PrimaryAttributionModelId { get; set; }
@@ -24990,7 +24425,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Details for a Demand Gen carousel ad.</summary>
     public class DemandGenCarouselAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The business name shown on the ad.</summary>
+        /// <summary>
+        /// Required. The business name shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no
+        /// longer be required if a default value is set at the advertiser level. If left unset, the default value will
+        /// be applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
 
@@ -25018,7 +24457,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headline")]
         public virtual string Headline { get; set; }
 
-        /// <summary>Required. The logo image used by this ad.</summary>
+        /// <summary>
+        /// Required. The logo image used by this ad. *Warning*: Starting **July 13, 2026**, this setting will no longer
+        /// be required if a default value is set at the advertiser level. If left unset, the default value will be
+        /// applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
 
@@ -25037,7 +24480,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Details for a Demand Gen image ad.</summary>
     public class DemandGenImageAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The business name shown on the ad.</summary>
+        /// <summary>
+        /// Required. The business name shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no
+        /// longer be required if a default value is set at the advertiser level. If left unset, the default value will
+        /// be applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
 
@@ -25071,7 +24518,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
-        /// <summary>The list of logo images shown on the ad.</summary>
+        /// <summary>
+        /// The list of logo images shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no longer
+        /// be required if a default value is set at the advertiser level. If left unset, the default value will be
+        /// applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoImages")]
         public virtual System.Collections.Generic.IList<ImageAsset> LogoImages { get; set; }
 
@@ -25102,7 +24553,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Details for a Demand Gen product ad.</summary>
     public class DemandGenProductAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The business name shown on the ad.</summary>
+        /// <summary>
+        /// Required. The business name shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no
+        /// longer be required if a default value is set at the advertiser level. If left unset, the default value will
+        /// be applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
 
@@ -25141,7 +24596,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headline")]
         public virtual string Headline { get; set; }
 
-        /// <summary>Required. The logo image used by this ad.</summary>
+        /// <summary>
+        /// Required. The logo image used by this ad. *Warning*: Starting **July 13, 2026**, this setting will no longer
+        /// be required if a default value is set at the advertiser level. If left unset, the default value will be
+        /// applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
 
@@ -25185,7 +24644,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Details for a Demand Gen video ad.</summary>
     public class DemandGenVideoAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The business name shown on the ad.</summary>
+        /// <summary>
+        /// Required. The business name shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no
+        /// longer be required if a default value is set at the advertiser level. If left unset, the default value will
+        /// be applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
 
@@ -25236,7 +24699,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
-        /// <summary>Required. The logo image used by this ad.</summary>
+        /// <summary>
+        /// Required. The logo image used by this ad. *Warning*: Starting **July 13, 2026**, this setting will no longer
+        /// be required if a default value is set at the advertiser level. If left unset, the default value will be
+        /// applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
 
@@ -25546,46 +25013,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.</summary>
-    public class EditCustomerMatchMembersRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. A list of contact information to define the members to be added.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addedContactInfoList")]
-        public virtual ContactInfoList AddedContactInfoList { get; set; }
-
-        /// <summary>Input only. A list of mobile device IDs to define the members to be added.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addedMobileDeviceIdList")]
-        public virtual MobileDeviceIdList AddedMobileDeviceIdList { get; set; }
-
-        /// <summary>
-        /// Required. The ID of the owner advertiser of the updated Customer Match FirstAndThirdPartyAudience.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-        /// <summary>Input only. A list of contact information to define the members to be removed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("removedContactInfoList")]
-        public virtual ContactInfoList RemovedContactInfoList { get; set; }
-
-        /// <summary>Input only. A list of mobile device IDs to define the members to be removed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("removedMobileDeviceIdList")]
-        public virtual MobileDeviceIdList RemovedMobileDeviceIdList { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response of FirstAndThirdPartyAudienceService.EditCustomerMatchMembers.</summary>
-    public class EditCustomerMatchMembersResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The ID of the updated Customer Match FirstAndThirdPartyAudience.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
-        public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors.</summary>
     public class EditGuaranteedOrderReadAccessorsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25777,131 +25204,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Describes a first or third party audience list used for targeting. First party audiences are created via usage
-    /// of client data. Third party audiences are provided by Third Party data providers and can only be licensed to
-    /// customers.
-    /// </summary>
-    public class FirstAndThirdPartyAudience : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. The estimated audience size for the Display network in the past month. If the size is less than
-        /// 1000, the number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be
-        /// rounded off to two significant digits. Only returned in GET request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activeDisplayAudienceSize")]
-        public virtual System.Nullable<long> ActiveDisplayAudienceSize { get; set; }
-
-        /// <summary>
-        /// The app_id matches with the type of the mobile_device_ids being uploaded. Only applicable to audience_type
-        /// `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual string AppId { get; set; }
-
-        /// <summary>Output only. The source of the audience.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audienceSource")]
-        public virtual string AudienceSource { get; set; }
-
-        /// <summary>The type of the audience.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audienceType")]
-        public virtual string AudienceType { get; set; }
-
-        /// <summary>
-        /// Input only. A list of contact information to define the initial audience members. Only applicable to
-        /// audience_type `CUSTOMER_MATCH_CONTACT_INFO`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactInfoList")]
-        public virtual ContactInfoList ContactInfoList { get; set; }
-
-        /// <summary>The user-provided description of the audience. Only applicable to first party audiences.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// Output only. The estimated audience size for the Display network. If the size is less than 1000, the number
-        /// will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded off to
-        /// two significant digits. Only returned in GET request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayAudienceSize")]
-        public virtual System.Nullable<long> DisplayAudienceSize { get; set; }
-
-        /// <summary>
-        /// Output only. The estimated desktop audience size in Display network. If the size is less than 1000, the
-        /// number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded
-        /// off to two significant digits. Only applicable to first party audiences. Only returned in GET request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayDesktopAudienceSize")]
-        public virtual System.Nullable<long> DisplayDesktopAudienceSize { get; set; }
-
-        /// <summary>
-        /// Output only. The estimated mobile app audience size in Display network. If the size is less than 1000, the
-        /// number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded
-        /// off to two significant digits. Only applicable to first party audiences. Only returned in GET request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayMobileAppAudienceSize")]
-        public virtual System.Nullable<long> DisplayMobileAppAudienceSize { get; set; }
-
-        /// <summary>
-        /// Output only. The estimated mobile web audience size in Display network. If the size is less than 1000, the
-        /// number will be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded
-        /// off to two significant digits. Only applicable to first party audiences. Only returned in GET request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayMobileWebAudienceSize")]
-        public virtual System.Nullable<long> DisplayMobileWebAudienceSize { get; set; }
-
-        /// <summary>The display name of the first and third party audience.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Output only. The unique ID of the first and third party audience. Assigned by the system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceId")]
-        public virtual System.Nullable<long> FirstAndThirdPartyAudienceId { get; set; }
-
-        /// <summary>Whether the audience is a first or third party audience.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudienceType")]
-        public virtual string FirstAndThirdPartyAudienceType { get; set; }
-
-        /// <summary>
-        /// Output only. The estimated audience size for Gmail network. If the size is less than 1000, the number will
-        /// be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded off to two
-        /// significant digits. Only applicable to first party audiences. Only returned in GET request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gmailAudienceSize")]
-        public virtual System.Nullable<long> GmailAudienceSize { get; set; }
-
-        /// <summary>
-        /// The duration in days that an entry remains in the audience after the qualifying event. The set value must be
-        /// greater than 0 and less than or equal to 540. Only applicable to first party audiences. This field is
-        /// required if one of the following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` *
-        /// `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipDurationDays")]
-        public virtual System.Nullable<long> MembershipDurationDays { get; set; }
-
-        /// <summary>
-        /// Input only. A list of mobile device IDs to define the initial audience members. Only applicable to
-        /// audience_type `CUSTOMER_MATCH_DEVICE_ID`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceIdList")]
-        public virtual MobileDeviceIdList MobileDeviceIdList { get; set; }
-
-        /// <summary>Output only. The resource name of the first and third party audience.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Output only. The estimated audience size for YouTube network. If the size is less than 1000, the number will
-        /// be hidden and 0 will be returned due to privacy reasons. Otherwise, the number will be rounded off to two
-        /// significant digits. Only applicable to first party audiences. Only returned in GET request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("youtubeAudienceSize")]
-        public virtual System.Nullable<long> YoutubeAudienceSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27182,9 +26484,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CreativeIds { get; set; }
 
         /// <summary>
-        /// Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items. Retrieval
-        /// and management of Demand Gen resources is currently rolling out. This field will be available to all
-        /// partners by *June 24, 2026*.
+        /// Optional. Settings specific to Demand Gen line items. Only applicable to Demand Gen line items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("demandGenSettings")]
         public virtual DemandGenSettings DemandGenSettings { get; set; }
@@ -27677,26 +26977,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    public class ListFirstAndThirdPartyAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The list of first and third party audiences. Audience size properties will not be included. This list will
-        /// be absent if empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstAndThirdPartyAudiences")]
-        public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudience> FirstAndThirdPartyAudiences { get; set; }
-
-        /// <summary>
-        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
-        /// to `ListFirstAndThirdPartyAudiences` method to retrieve the next page of results.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class ListFloodlightActivitiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of Floodlight activities. This list will be absent if empty.</summary>
@@ -28162,28 +27442,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>Output only. The app publisher.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual string Publisher { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Wrapper message for a list of mobile device IDs defining Customer Match audience members.</summary>
-    public class MobileDeviceIdList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Input only. The consent setting for the users in mobile_device_ids. Leaving this field unset indicates that
-        /// consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`,
-        /// the request will return an error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consent")]
-        public virtual Consent Consent { get; set; }
-
-        /// <summary>
-        /// A list of mobile device IDs defining Customer Match audience members. The size of mobile_device_ids mustn't
-        /// be greater than 500,000.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceIds")]
-        public virtual System.Collections.Generic.IList<string> MobileDeviceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29636,8 +28894,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
 
         /// <summary>
         /// Optional. Whether to exclude demographic expansion for Optimized Targeting. This field can only be set for
-        /// Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This field
-        /// will be available to all partners by *June 24, 2026*.
+        /// Demand Gen ad groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDemographicExpansion")]
         public virtual System.Nullable<bool> ExcludeDemographicExpansion { get; set; }
@@ -29810,7 +29067,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>
         /// Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: *
         /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` *
-        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
+        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL` *Warning*: Starting **July 13, 2026**, this
+        /// field will no longer support `THIRD_PARTY_VENDOR_NIELSEN`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandLiftVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandLiftVendorConfigs { get; set; }
