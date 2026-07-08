@@ -4332,13 +4332,25 @@ namespace Google.Apis.HangoutsChat.v1
             /// [import mode](https://developers.google.com/workspace/chat/import-data-overview). To learn more, see
             /// [Make a space discoverable to specific
             /// users](https://developers.google.com/workspace/chat/space-target-audience). `access_settings.audience`
-            /// is not supported with `useAdminAccess`. `permission_settings`: Supports changing the [permission
-            /// settings](https://support.google.com/chat/answer/13340792) of a space. When updating permission
-            /// settings, you can only specify `permissionSettings` field masks; you cannot update other field masks at
-            /// the same time. The supported field masks include: - `permission_settings.manageMembersAndGroups` -
-            /// `permission_settings.modifySpaceDetails` - `permission_settings.toggleHistory` -
-            /// `permission_settings.useAtMentionAll` - `permission_settings.manageApps` -
-            /// `permission_settings.manageWebhooks` - `permission_settings.replyMessages`
+            /// is not supported with `useAdminAccess`. `access_settings.access_permission_settings`: Updates the
+            /// [access permission settings](https://support.google.com/chat/answer/11971020) of who can discover and
+            /// join the space where `spaceType` field is `SPACE`. Principals allowed to join the space must also be
+            /// allowed to discover it. To update access permission settings for a space, the authenticating user must
+            /// be a space manager or assistant manager and omit all other field masks in the request. You can't update
+            /// this field if the space is in [import
+            /// mode](https://developers.google.com/workspace/chat/import-data-overview). To learn more, see [Make a
+            /// space discoverable to specific
+            /// users](https://developers.google.com/workspace/chat/space-target-audience).
+            /// `access_settings.access_permission_settings` is not supported with `useAdminAccess`. The supported field
+            /// masks include: - `access_settings.access_permission_settings.discoverSpaceSetting` -
+            /// `access_settings.access_permission_settings.joinSpaceSetting` `permission_settings`: Supports changing
+            /// the [permission settings](https://support.google.com/chat/answer/13340792) of a space. When updating
+            /// permission settings, you can only specify `permissionSettings` field masks; you cannot update other
+            /// field masks at the same time. The supported field masks include: -
+            /// `permission_settings.manageMembersAndGroups` - `permission_settings.modifySpaceDetails` -
+            /// `permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` -
+            /// `permission_settings.manageApps` - `permission_settings.manageWebhooks` -
+            /// `permission_settings.replyMessages`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -4743,9 +4755,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// The user's email address or `me` can also be used as an alias to refer to the caller. For example,
             /// `users/user@example.com` or `users/me`.
             /// </param>
-            public virtual GetAvailabilityRequest GetAvailability(string name)
+            public virtual GetRequest Get(string name)
             {
-                return new GetAvailabilityRequest(this.service, name);
+                return new GetRequest(this.service, name);
             }
 
             /// <summary>
@@ -4758,10 +4770,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// `https://www.googleapis.com/auth/chat.users.availability.readonly` -
             /// `https://www.googleapis.com/auth/chat.users.availability`
             /// </summary>
-            public class GetAvailabilityRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Availability>
+            public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Availability>
             {
-                /// <summary>Constructs a new GetAvailability request.</summary>
-                public GetAvailabilityRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                 {
                     Name = name;
                     InitParameters();
@@ -4777,7 +4789,7 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>Gets the method name.</summary>
-                public override string MethodName => "getAvailability";
+                public override string MethodName => "get";
 
                 /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "GET";
@@ -4785,7 +4797,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
-                /// <summary>Initializes GetAvailability parameter list.</summary>
+                /// <summary>Initializes Get parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -4959,9 +4971,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Marks user as`DO_NOT_DISTURB` in Google Chat. Sets a user's availability state to `DO_NOT_DISTURB` until
-            /// a specified expiration time. When in `DO_NOT_DISTURB`, users typically won't receive notifications. This
-            /// method only updates the authenticated user's availability. Requires [user
+            /// Marks user as `DO_NOT_DISTURB` in Google Chat. Sets a user's availability state to `DO_NOT_DISTURB`
+            /// until a specified expiration time. When in `DO_NOT_DISTURB`, users typically won't receive
+            /// notifications. This method only updates the authenticated user's availability. Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -4980,9 +4992,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Marks user as`DO_NOT_DISTURB` in Google Chat. Sets a user's availability state to `DO_NOT_DISTURB` until
-            /// a specified expiration time. When in `DO_NOT_DISTURB`, users typically won't receive notifications. This
-            /// method only updates the authenticated user's availability. Requires [user
+            /// Marks user as `DO_NOT_DISTURB` in Google Chat. Sets a user's availability state to `DO_NOT_DISTURB`
+            /// until a specified expiration time. When in `DO_NOT_DISTURB`, users typically won't receive
+            /// notifications. This method only updates the authenticated user's availability. Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
             /// [authorization
             /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
@@ -5052,9 +5064,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// user's email address or `me` can also be used as an alias to refer to the caller. For example,
             /// `users/user@example.com` or `users/me`.
             /// </param>
-            public virtual UpdateAvailabilityRequest UpdateAvailability(Google.Apis.HangoutsChat.v1.Data.Availability body, string name)
+            public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Availability body, string name)
             {
-                return new UpdateAvailabilityRequest(this.service, body, name);
+                return new PatchRequest(this.service, body, name);
             }
 
             /// <summary>
@@ -5065,10 +5077,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
             /// `https://www.googleapis.com/auth/chat.users.availability`
             /// </summary>
-            public class UpdateAvailabilityRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Availability>
+            public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Availability>
             {
-                /// <summary>Constructs a new UpdateAvailability request.</summary>
-                public UpdateAvailabilityRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Availability body, string name) : base(service)
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Availability body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
@@ -5097,7 +5109,7 @@ namespace Google.Apis.HangoutsChat.v1
                 protected override object GetBody() => Body;
 
                 /// <summary>Gets the method name.</summary>
-                public override string MethodName => "updateAvailability";
+                public override string MethodName => "patch";
 
                 /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "PATCH";
@@ -5105,7 +5117,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+name}";
 
-                /// <summary>Initializes UpdateAvailability parameter list.</summary>
+                /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -6229,11 +6241,44 @@ namespace Google.Apis.HangoutsChat.v1
 }
 namespace Google.Apis.HangoutsChat.v1.Data
 {
+    /// <summary>An access permission setting.</summary>
+    public class AccessPermissionSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Unordered list. Allowed principals for this permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
+        public virtual System.Collections.Generic.IList<Principal> Principals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Access permission settings for a space.</summary>
+    public class AccessPermissionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Access permission setting for discovering the space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoverSpaceSetting")]
+        public virtual AccessPermissionSetting DiscoverSpaceSetting { get; set; }
+
+        /// <summary>Optional. Access permission setting for joining the space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinSpaceSetting")]
+        public virtual AccessPermissionSetting JoinSpaceSetting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents the [access setting](https://support.google.com/chat/answer/11971020) of the space.
     /// </summary>
     public class AccessSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Access permission settings for the space. To set the target audience when creating a space,
+        /// specify the `accessSettings.audience` field in your request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessPermissionSettings")]
+        public virtual AccessPermissionSettings AccessPermissionSettings { get; set; }
+
         /// <summary>Output only. Indicates the access state of the space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessState")]
         public virtual string AccessState { get; set; }
@@ -6494,6 +6539,29 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A target audience in Google Chat. A target audience represents a group of users within a Google Workspace
+    /// organization, defined by an administrator. Target audiences are used to configure access and visibility settings
+    /// for resources, such as making a space discoverable to a specific group of users. For more details, see [Target
+    /// audiences](https://support.google.com/a/answer/9934697) and [Make a space discoverable to a target
+    /// audience](https://developers.google.com/workspace/chat/space-target-audience).
+    /// </summary>
+    public class Audience : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the [target audience](https://support.google.com/a/answer/9934697) who can discover or
+        /// join the space. For details, see [Make a space discoverable to a target
+        /// audience](https://developers.google.com/workspace/chat/space-target-audience). Format:
+        /// `audiences/{audience}` To use the default target audience for the Google Workspace organization, set to
+        /// `audiences/default`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10758,6 +10826,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The updated section.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("section")]
         public virtual GoogleChatV1Section Section { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A principal representing an entity granted access.</summary>
+    public class Principal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual Audience Audience { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
