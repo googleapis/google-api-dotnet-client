@@ -1488,6 +1488,59 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             }
                         }
 
+                        /// <summary>Suspends a workstation to reduce costs.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. Name of the workstation to suspend.</param>
+                        public virtual SuspendRequest Suspend(Google.Apis.CloudWorkstations.v1beta.Data.SuspendWorkstationRequest body, string name)
+                        {
+                            return new SuspendRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Suspends a workstation to reduce costs.</summary>
+                        public class SuspendRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1beta.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Suspend request.</summary>
+                            public SuspendRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudWorkstations.v1beta.Data.SuspendWorkstationRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Name of the workstation to suspend.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudWorkstations.v1beta.Data.SuspendWorkstationRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "suspend";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}:suspend";
+
+                            /// <summary>Initializes Suspend parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workstationClusters/[^/]+/workstationConfigs/[^/]+/workstations/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>
                         /// Returns permissions that a caller has on the specified resource. If the resource does not
                         /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
@@ -4201,6 +4254,23 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
+    /// <summary>Request message for SuspendWorkstation.</summary>
+    public class SuspendWorkstationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set, the request will be rejected if the latest version of the workstation on the server does
+        /// not have this ETag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. If set, validate the request and preview the result, but do not actually apply it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4924,6 +4994,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpOptions")]
         public virtual HttpOptions HttpOptions { get; set; }
+
+        /// <summary>
+        /// Optional. The action to take when the workstation has been idle for the duration specified in idle_timeout.
+        /// Defaults to STOP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleAction")]
+        public virtual string IdleAction { get; set; }
 
         /// <summary>
         /// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user
