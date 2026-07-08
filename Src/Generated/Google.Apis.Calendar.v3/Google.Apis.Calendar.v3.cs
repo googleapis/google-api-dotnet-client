@@ -1872,6 +1872,103 @@ namespace Google.Apis.Calendar.v3
             }
         }
 
+        /// <summary>
+        /// Transfers a secondary calendar between users within a Google Workspace organization. Requires user
+        /// authentication with Manage Calendars administrator privilege, and one of the following authorization scopes:
+        ///  - https://www.googleapis.com/auth/calendar  - https://www.googleapis.com/auth/calendar.calendars In the
+        /// request, set useAdminAccess to true. The secondary calendar must be active to be transferred. Transferring
+        /// disabled or deleted calendars isn't supported.
+        /// </summary>
+        /// <param name="calendarId">
+        /// Calendar identifier. To retrieve calendar IDs, call the calendarList.list method.
+        /// </param>
+        /// <param name="newDataOwner">
+        /// The email address of a user who will become the data owner of the calendar.
+        /// </param>
+        /// <param name="useAdminAccess">
+        /// When true, the method runs using the user's Google Workspace administrator privileges. The calling user must
+        /// be a Google Workspace administrator with the Manage Calendars privilege. This method currently only supports
+        /// admin access, thus only true is accepted for this field.
+        /// </param>
+        public virtual TransferOwnershipRequest TransferOwnership(string calendarId, string newDataOwner, bool useAdminAccess)
+        {
+            return new TransferOwnershipRequest(this.service, calendarId, newDataOwner, useAdminAccess);
+        }
+
+        /// <summary>
+        /// Transfers a secondary calendar between users within a Google Workspace organization. Requires user
+        /// authentication with Manage Calendars administrator privilege, and one of the following authorization scopes:
+        ///  - https://www.googleapis.com/auth/calendar  - https://www.googleapis.com/auth/calendar.calendars In the
+        /// request, set useAdminAccess to true. The secondary calendar must be active to be transferred. Transferring
+        /// disabled or deleted calendars isn't supported.
+        /// </summary>
+        public class TransferOwnershipRequest : CalendarBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new TransferOwnership request.</summary>
+            public TransferOwnershipRequest(Google.Apis.Services.IClientService service, string calendarId, string newDataOwner, bool useAdminAccess) : base(service)
+            {
+                CalendarId = calendarId;
+                NewDataOwner = newDataOwner;
+                UseAdminAccess = useAdminAccess;
+                InitParameters();
+            }
+
+            /// <summary>Calendar identifier. To retrieve calendar IDs, call the calendarList.list method.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("calendarId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CalendarId { get; private set; }
+
+            /// <summary>The email address of a user who will become the data owner of the calendar.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("newDataOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NewDataOwner { get; private set; }
+
+            /// <summary>
+            /// When true, the method runs using the user's Google Workspace administrator privileges. The calling user
+            /// must be a Google Workspace administrator with the Manage Calendars privilege. This method currently only
+            /// supports admin access, thus only true is accepted for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("useAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual bool UseAdminAccess { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "transferOwnership";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "calendars/{calendarId}/transferOwnership";
+
+            /// <summary>Initializes TransferOwnership parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("calendarId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "calendarId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("newDataOwner", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "newDataOwner",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("useAdminAccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "useAdminAccess",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Updates metadata for a calendar.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="calendarId">
@@ -2323,6 +2420,15 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
 
             /// <summary>
+            /// Version number of the event label feature supported by the API client. Version 0 assumes no event label
+            /// support and processes the colorId field for color management. Version 1 enables support for event
+            /// labels, and processes the eventLabelId in the event's body. In this case, the colorId field is ignored.
+            /// The default is 0.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("eventLabelVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> EventLabelVersion { get; set; }
+
+            /// <summary>
             /// Whether API client performing operation supports event attachments. Optional. The default is False.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("supportsAttachments", Google.Apis.Util.RequestParameterType.Query)]
@@ -2358,6 +2464,14 @@ namespace Google.Apis.Calendar.v3
                 RequestParameters.Add("conferenceDataVersion", new Google.Apis.Discovery.Parameter
                 {
                     Name = "conferenceDataVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventLabelVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventLabelVersion",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2411,6 +2525,15 @@ namespace Google.Apis.Calendar.v3
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
+
+            /// <summary>
+            /// Version number of the event label feature supported by the API client. Version 0 assumes no event label
+            /// support and processes the colorId field for color management. Version 1 enables support for event
+            /// labels, and processes the eventLabelId in the event's body. In this case, the colorId field is ignored.
+            /// The default is 0.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("eventLabelVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> EventLabelVersion { get; set; }
 
             /// <summary>
             /// The maximum number of attendees to include in the response. If there are more than the specified number
@@ -2493,6 +2616,14 @@ namespace Google.Apis.Calendar.v3
                 RequestParameters.Add("conferenceDataVersion", new Google.Apis.Discovery.Parameter
                 {
                     Name = "conferenceDataVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventLabelVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventLabelVersion",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -3404,6 +3535,15 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
 
             /// <summary>
+            /// Version number of the event label feature supported by the API client. Version 0 assumes no event label
+            /// support and processes the colorId field for color management. Version 1 enables support for event
+            /// labels, and processes the eventLabelId in the event's body. In this case, the colorId field is ignored.
+            /// The default is 0.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("eventLabelVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> EventLabelVersion { get; set; }
+
+            /// <summary>
             /// The maximum number of attendees to include in the response. If there are more than the specified number
             /// of attendees, only the participant is returned. Optional.
             /// </summary>
@@ -3497,6 +3637,14 @@ namespace Google.Apis.Calendar.v3
                 RequestParameters.Add("conferenceDataVersion", new Google.Apis.Discovery.Parameter
                 {
                     Name = "conferenceDataVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventLabelVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventLabelVersion",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -3702,6 +3850,15 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
 
             /// <summary>
+            /// Version number of the event label feature supported by the API client. Version 0 assumes no event label
+            /// support and processes the colorId field for color management. Version 1 enables support for event
+            /// labels, and processes the eventLabelId in the event's body. In this case, the colorId field is ignored.
+            /// The default is 0.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("eventLabelVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> EventLabelVersion { get; set; }
+
+            /// <summary>
             /// The maximum number of attendees to include in the response. If there are more than the specified number
             /// of attendees, only the participant is returned. Optional.
             /// </summary>
@@ -3795,6 +3952,14 @@ namespace Google.Apis.Calendar.v3
                 RequestParameters.Add("conferenceDataVersion", new Google.Apis.Discovery.Parameter
                 {
                     Name = "conferenceDataVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("eventLabelVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "eventLabelVersion",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4691,6 +4856,13 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>
+        /// Label properties defined on this calendar. If specified, overwrites the existing label properties. If not
+        /// specified, the label properties remain unchanged.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelProperties")]
+        public virtual LabelProperties LabelProperties { get; set; }
+
         /// <summary>Geographic location of the calendar as free-form text. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -5378,6 +5550,16 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// The ID of the event label assigned to the event. Optional. This refers to the ID of an entry in the
+        /// labelProperties.eventLabels property of the calendar (see the Calendars.get endpoint.) This property
+        /// supersedes the index-based colorId property. To set or change this property, you need to specify
+        /// eventLabelVersion=1 in the parameters of the insert, import, update, and patch methods. Setting an empty
+        /// string, or not setting this field at all, will remove the existing label from the event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventLabelId")]
+        public virtual string EventLabelId { get; set; }
+
+        /// <summary>
         /// Specific type of the event. This cannot be modified after the event is created. Possible values are:   -
         /// "birthday" - A special all-day event with an annual recurrence.  - "default" - A regular event or not
         /// further specified.  - "focusTime" - A focus-time event.  - "fromGmail" - An event from Gmail. This type of
@@ -5963,6 +6145,31 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    public class EventLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Background color of the label in hexadecimal format, such as "#039be5". Events with this label are displayed
+        /// in this color. Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual string BackgroundColor { get; set; }
+
+        /// <summary>
+        /// The ID of the label. Optional when inserting a new label. If not provided, a unique ID will be generated.
+        /// Required when updating a label. If provided, the ID must be unique within the calendar and follow UUID
+        /// format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Name of the label. Optional. If provided this must have at most 50 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class EventOutOfOfficeProperties : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6314,6 +6521,20 @@ namespace Google.Apis.Calendar.v3.Data
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeMinRaw);
             set => TimeMinRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LabelProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Event labels defined on this calendar. If this is present when updating the calendar, it will replace the
+        /// existing event labels. Extend the list to add a new event label, and remove entities from the list to delete
+        /// a label from calendar. Each calendar can have a maximum of 200 labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventLabels")]
+        public virtual System.Collections.Generic.IList<EventLabel> EventLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
