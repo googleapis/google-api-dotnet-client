@@ -18990,7 +18990,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
         public virtual string CustomMirroringProfile { get; set; }
 
-        /// <summary>Output only. Identifier used by the data-path. Unique within {container, location}.</summary>
+        /// <summary>Output only. Identifier used by the data-path. Unique within \{container, location\}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataPathId")]
         public virtual System.Nullable<ulong> DataPathId { get; set; }
 
