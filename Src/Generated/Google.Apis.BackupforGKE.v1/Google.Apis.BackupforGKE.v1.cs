@@ -5674,7 +5674,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     }
 
     /// <summary>
-    /// Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 25
+    /// Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 26
     /// </summary>
     public class BDRBackupRestoreJobLog : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5907,6 +5907,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The storage tier associated with the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageTier")]
+        public virtual string StorageTier { get; set; }
 
         /// <summary>The target resource type for restore jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResourceType")]
