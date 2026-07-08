@@ -8724,7 +8724,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. A list of Agent registries containing the agents, MCP servers and tools governed by the Agent
         /// Gateway. Note: Currently limited to project-scoped registries Must be of format
-        /// `//agentregistry.googleapis.com/projects/{project}/locations/{location}/
+        /// `//agentregistry.googleapis.com/projects/{project}/locations/{location}/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registries")]
         public virtual System.Collections.Generic.IList<string> Registries { get; set; }
@@ -8854,24 +8854,6 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>Optional. The URI of the Network Attachment resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
         public virtual string NetworkAttachment { get; set; }
-
-        /// <summary>Optional. TrustConfig defines the trust configuration for egress.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trustConfig")]
-        public virtual AgentGatewayNetworkConfigEgressTrustConfig TrustConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>TrustConfig defines the trust configuration for egress.</summary>
-    public class AgentGatewayNetworkConfigEgressTrustConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. PEM encoded root certificates used to validate the identity of the upstream servers/destinations
-        /// during egress connections.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificates")]
-        public virtual System.Collections.Generic.IList<string> PemCertificates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
