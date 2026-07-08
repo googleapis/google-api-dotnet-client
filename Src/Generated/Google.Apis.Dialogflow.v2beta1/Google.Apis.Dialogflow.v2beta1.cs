@@ -25771,6 +25771,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticPunctuation")]
         public virtual System.Nullable<bool> EnableAutomaticPunctuation { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVoiceActivityEvents")]
+        public virtual System.Nullable<bool> EnableVoiceActivityEvents { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordInfo")]
         public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
@@ -27754,6 +27757,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     public class GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("cesDebugInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CesDebugInfo { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreResponseReason")]
         public virtual string DatastoreResponseReason { get; set; }
 
