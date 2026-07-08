@@ -14534,9 +14534,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// that wrote the message fanFundingEvent - the user that funded the broadcast newSponsorEvent - the user that
         /// just became a sponsor memberMilestoneChatEvent - the member that sent the message membershipGiftingEvent -
         /// the user that made the purchase giftMembershipReceivedEvent - the user that received the gift membership
-        /// messageDeletedEvent - the moderator that took the action messageRetractedEvent - the author that retracted
-        /// their message userBannedEvent - the moderator that took the action superChatEvent - the user that made the
-        /// purchase superStickerEvent - the user that made the purchase pollEvent - the user that created the poll
+        /// messageDeletedEvent - the moderator that took the action. Unused. messageRetractedEvent - the author that
+        /// retracted their message. Unused. userBannedEvent - the moderator that took the action superChatEvent - the
+        /// user that made the purchase superStickerEvent - the user that made the purchase pollEvent - the user that
+        /// created the poll
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
         public virtual string AuthorChannelId { get; set; }
