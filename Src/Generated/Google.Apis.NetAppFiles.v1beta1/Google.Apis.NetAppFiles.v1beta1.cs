@@ -7828,6 +7828,10 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
     /// <summary>Metadata for a given google.cloud.location.Location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Indicates the flex performance tier of this location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexPerformanceTier")]
+        public virtual string FlexPerformanceTier { get; set; }
+
         /// <summary>Output only. Indicates if the location has ONTAP Proxy support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasOntapProxy")]
         public virtual System.Nullable<bool> HasOntapProxy { get; set; }
