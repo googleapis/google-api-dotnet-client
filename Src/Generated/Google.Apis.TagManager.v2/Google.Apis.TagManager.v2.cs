@@ -8215,18 +8215,6 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    public class CompilerErrorLite : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
-        public virtual string ErrorType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents a predicate.</summary>
     public class Condition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8578,10 +8566,6 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>Compiler errors or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compilerError")]
         public virtual System.Nullable<bool> CompilerError { get; set; }
-
-        /// <summary>Compiler error details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("compilerErrors")]
-        public virtual System.Collections.Generic.IList<CompilerErrorLite> CompilerErrors { get; set; }
 
         /// <summary>The container version created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersion")]
@@ -9384,10 +9368,6 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compilerError")]
         public virtual System.Nullable<bool> CompilerError { get; set; }
 
-        /// <summary>Compiler error details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("compilerErrors")]
-        public virtual System.Collections.Generic.IList<CompilerErrorLite> CompilerErrors { get; set; }
-
         /// <summary>The container version created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersion")]
         public virtual ContainerVersion ContainerVersion { get; set; }
@@ -9402,10 +9382,6 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>Were there compiler errors or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compilerError")]
         public virtual System.Nullable<bool> CompilerError { get; set; }
-
-        /// <summary>Compiler error details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("compilerErrors")]
-        public virtual System.Collections.Generic.IList<CompilerErrorLite> CompilerErrors { get; set; }
 
         /// <summary>The quick previewed container version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerVersion")]
