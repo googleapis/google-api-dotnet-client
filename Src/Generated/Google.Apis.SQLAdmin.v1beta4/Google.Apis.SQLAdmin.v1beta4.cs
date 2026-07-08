@@ -1172,31 +1172,31 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>Retrieves connect settings about a Cloud SQL instance using the instance DNS name.</summary>
-        /// <param name="dnsName">Required. Cloud SQL instance ID. This does not include the project ID.</param>
         /// <param name="location">Required. The region of the instance.</param>
-        public virtual ResolveRequest Resolve(string dnsName, string location)
+        /// <param name="dnsName">Required. Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual ResolveRequest Resolve(string location, string dnsName)
         {
-            return new ResolveRequest(this.service, dnsName, location);
+            return new ResolveRequest(this.service, location, dnsName);
         }
 
         /// <summary>Retrieves connect settings about a Cloud SQL instance using the instance DNS name.</summary>
         public class ResolveRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.ConnectSettings>
         {
             /// <summary>Constructs a new Resolve request.</summary>
-            public ResolveRequest(Google.Apis.Services.IClientService service, string dnsName, string location) : base(service)
+            public ResolveRequest(Google.Apis.Services.IClientService service, string location, string dnsName) : base(service)
             {
-                DnsName = dnsName;
                 Location = location;
+                DnsName = dnsName;
                 InitParameters();
             }
-
-            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("dnsName", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string DnsName { get; private set; }
 
             /// <summary>Required. The region of the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Location { get; private set; }
+
+            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dnsName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DnsName { get; private set; }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resolve";
@@ -1205,23 +1205,23 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "sql/v1beta4/dns/{dnsName}/locations/{location}:resolveConnectSettings";
+            public override string RestPath => "sql/v1beta4/locations/{location}/dns/{dnsName}:resolveConnectSettings";
 
             /// <summary>Initializes Resolve parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
-                RequestParameters.Add("dnsName", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "dnsName",
+                    Name = "location",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("dnsName", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "location",
+                    Name = "dnsName",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -3310,6 +3310,19 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>
+            /// Optional. Set PSC config to the same value as the existing config to reconcile the PSC networking.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("reconcilePscNetworking", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReconcilePscNetworking { get; set; }
+
+            /// <summary>
+            /// Optional. Set PSC config to the same value as the existing config and force reconcile the PSC
+            /// networking.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("reconcilePscNetworkingForce", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReconcilePscNetworkingForce { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance Body { get; set; }
 
@@ -3342,6 +3355,22 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reconcilePscNetworking", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reconcilePscNetworking",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("reconcilePscNetworkingForce", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reconcilePscNetworkingForce",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -6329,7 +6358,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTimeRecoveryEnabled")]
         public virtual System.Nullable<bool> PointInTimeRecoveryEnabled { get; set; }
 
-        /// <summary>Reserved for future use.</summary>
+        /// <summary>
+        /// Optional. Deprecated: replication_log_archiving_enabled is deprecated and will be removed from a future
+        /// version of the API. Use point_in_time_recovery_enabled instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationLogArchivingEnabled")]
         public virtual System.Nullable<bool> ReplicationLogArchivingEnabled { get; set; }
 
@@ -6888,6 +6920,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
         public virtual string BackendType { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. Connection name of the Cloud SQL instance used in connection strings, in the format
+        /// project:region:instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
+        public virtual string ConnectionName { get; set; }
 
         /// <summary>Custom subject alternative names for the server certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customSubjectAlternativeNames")]
@@ -9775,9 +9814,30 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Performance capture configuration.</summary>
     public class PerformanceCaptureConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Specifies the minimum percentage of CPU utilization to trigger the performance capture. Valid
+        /// integers range from `10` to `99`. Enter `0` to disable the check.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationThresholdPercent")]
+        public virtual System.Nullable<int> CpuUtilizationThresholdPercent { get; set; }
+
         /// <summary>Optional. Enables or disables the performance capture feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the minimum number of undo log entries in the history list length to trigger the
+        /// performance capture. Valid integers range from `10000` to `10000000`. Enter `0` to disable the check.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("historyListLengthThresholdCount")]
+        public virtual System.Nullable<int> HistoryListLengthThresholdCount { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the minimum percentage of memory usage to trigger the performance capture. Valid
+        /// integers range from `10` to `99`. Enter `0` to disable the check.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsageThresholdPercent")]
+        public virtual System.Nullable<int> MemoryUsageThresholdPercent { get; set; }
 
         /// <summary>
         /// Optional. Specifies the minimum number of consecutive probe threshold that triggers performance capture.
@@ -9807,11 +9867,52 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<int> SecondsBehindSourceThreshold { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the minimum allowed number of semaphore waits to trigger the performance capture. Valid
+        /// integers range from `10` to `10000`. Enter `0` to disable the check.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semaphoreWaitThresholdCount")]
+        public virtual System.Nullable<int> SemaphoreWaitThresholdCount { get; set; }
+
+        /// <summary>
         /// Optional. Specifies the amount of time in seconds that a transaction needs to have been open before the
         /// watcher starts recording it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionDurationThreshold")]
         public virtual System.Nullable<int> TransactionDurationThreshold { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies a customer-defined list of users to exclude from transaction termination. Entries can be
+        /// in the format 'user@host' or just 'user'. A standalone 'user' implies 'user@%', excluding the user from any
+        /// host. Wildcard '%' is allowed in the host part of the 'user@host' format. Example: `["app_user",
+        /// "db_admin@10.1.2.3", "report_user@%"]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionKillExcludedUserHosts")]
+        public virtual System.Collections.Generic.IList<string> TransactionKillExcludedUserHosts { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the amount of time in seconds that a transaction needs to have been open before the
+        /// watcher starts terminating it. Valid integers range from `60` to `604800` (7 days). Enter `0` to disable. If
+        /// enabled (i.e., &amp;gt; 0), this value must be greater than or equal to `transaction_duration_threshold`.
+        /// Configurations where `0 &amp;lt; transaction_kill_threshold_seconds &amp;lt; transaction_duration_threshold`
+        /// will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionKillThresholdSeconds")]
+        public virtual System.Nullable<int> TransactionKillThresholdSeconds { get; set; }
+
+        /// <summary>
+        /// Optional. Determines which transactions are allowed to be terminated when they exceed
+        /// `transaction_kill_threshold_seconds`. This allows protecting write-heavy transactions from auto-termination
+        /// if desired. Defaults to `READ_ONLY_TRANSACTIONS` if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionKillType")]
+        public virtual string TransactionKillType { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the minimum allowed number of transactions in lock wait state to trigger the performance
+        /// capture. Valid integers range from `10` to `10000`. Enter `0` to disable the check.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionLockWaitThresholdCount")]
+        public virtual System.Nullable<int> TransactionLockWaitThresholdCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10033,6 +10134,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerProject")]
         public virtual string ConsumerProject { get; set; }
 
+        /// <summary>Output only. The status of automated DNS provisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceAutoDnsStatus")]
+        public virtual string InstanceAutoDnsStatus { get; set; }
+
         /// <summary>The IP address of the consumer endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
@@ -10053,6 +10158,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The connection status of the consumer endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>Output only. The status of automated DNS provisioning for the write endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeEndpointAutoDnsStatus")]
+        public virtual string WriteEndpointAutoDnsStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
