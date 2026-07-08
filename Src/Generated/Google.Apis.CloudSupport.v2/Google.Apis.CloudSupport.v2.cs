@@ -2071,7 +2071,25 @@ namespace Google.Apis.CloudSupport.v2
             this.service = service;
         }
 
-        /// <summary>Creates a support event subscription for an organization.</summary>
+        /// <summary>
+        /// Creates a support event subscription for an organization. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// parent="organizations/123456789" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth
+        /// print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "pub_sub_topic":
+        /// "projects/my-project/topics/my-topic" }' \
+        /// "https://cloudsupport.googleapis.com/v2/$parent/supportEventSubscriptions"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().create( parent="organizations/123456789", body={
+        /// "pub_sub_topic": "projects/my-project/topics/my-topic" }, ) print(request.execute())
+        /// ```
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
         /// Required. The parent resource name where the support event subscription will be created. Format:
@@ -2082,7 +2100,25 @@ namespace Google.Apis.CloudSupport.v2
             return new CreateRequest(this.service, body, parent);
         }
 
-        /// <summary>Creates a support event subscription for an organization.</summary>
+        /// <summary>
+        /// Creates a support event subscription for an organization. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// parent="organizations/123456789" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth
+        /// print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "pub_sub_topic":
+        /// "projects/my-project/topics/my-topic" }' \
+        /// "https://cloudsupport.googleapis.com/v2/$parent/supportEventSubscriptions"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().create( parent="organizations/123456789", body={
+        /// "pub_sub_topic": "projects/my-project/topics/my-topic" }, ) print(request.execute())
+        /// ```
+        /// </summary>
         public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.SupportEventSubscription>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2130,7 +2166,24 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Soft deletes a support event subscription.</summary>
+        /// <summary>
+        /// Soft deletes a support event subscription. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request
+        /// DELETE \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService).supportEventSubscriptions().delete(
+        /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute())
+        /// ```
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the support event subscription to delete. Format:
         /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
@@ -2140,7 +2193,24 @@ namespace Google.Apis.CloudSupport.v2
             return new DeleteRequest(this.service, name);
         }
 
-        /// <summary>Soft deletes a support event subscription.</summary>
+        /// <summary>
+        /// Soft deletes a support event subscription. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request
+        /// DELETE \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService).supportEventSubscriptions().delete(
+        /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute())
+        /// ```
+        /// </summary>
         public class DeleteRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.SupportEventSubscription>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2181,7 +2251,83 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Gets a support event subscription.</summary>
+        /// <summary>Expunges a support event subscription.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The name of the support event subscription to expunge. Format:
+        /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+        /// </param>
+        public virtual ExpungeRequest Expunge(Google.Apis.CloudSupport.v2.Data.ExpungeSupportEventSubscriptionRequest body, string name)
+        {
+            return new ExpungeRequest(this.service, body, name);
+        }
+
+        /// <summary>Expunges a support event subscription.</summary>
+        public class ExpungeRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Empty>
+        {
+            /// <summary>Constructs a new Expunge request.</summary>
+            public ExpungeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSupport.v2.Data.ExpungeSupportEventSubscriptionRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the support event subscription to expunge. Format:
+            /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSupport.v2.Data.ExpungeSupportEventSubscriptionRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "expunge";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2/{+name}:expunge";
+
+            /// <summary>Initializes Expunge parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/supportEventSubscriptions/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Gets a support event subscription. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().get(
+        /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute())
+        /// ```
+        /// </summary>
         /// <param name="name">
         /// Required. The name of the support event subscription to retrieve. Format:
         /// organizations/{organization_id}/supportEventSubscriptions/{subscription_id}
@@ -2191,7 +2337,24 @@ namespace Google.Apis.CloudSupport.v2
             return new GetRequest(this.service, name);
         }
 
-        /// <summary>Gets a support event subscription.</summary>
+        /// <summary>
+        /// Gets a support event subscription. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().get(
+        /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute())
+        /// ```
+        /// </summary>
         public class GetRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.SupportEventSubscription>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2232,7 +2395,23 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Lists support event subscriptions.</summary>
+        /// <summary>
+        /// Lists support event subscriptions. EXAMPLES: cURL:
+        /// ```
+        /// shell parent="organizations/123456789" curl \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$parent/supportEventSubscriptions"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().list( parent="organizations/123456789" )
+        /// print(request.execute())
+        /// ```
+        /// </summary>
         /// <param name="parent">
         /// Required. The fully qualified name of the Cloud resource to list support event subscriptions under. Format:
         /// organizations/{organization_id}
@@ -2242,7 +2421,23 @@ namespace Google.Apis.CloudSupport.v2
             return new ListRequest(this.service, parent);
         }
 
-        /// <summary>Lists support event subscriptions.</summary>
+        /// <summary>
+        /// Lists support event subscriptions. EXAMPLES: cURL:
+        /// ```
+        /// shell parent="organizations/123456789" curl \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$parent/supportEventSubscriptions"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().list( parent="organizations/123456789" )
+        /// print(request.execute())
+        /// ```
+        /// </summary>
         public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.ListSupportEventSubscriptionsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2341,7 +2536,25 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Updates a support event subscription.</summary>
+        /// <summary>
+        /// Updates a support event subscription. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request
+        /// PATCH \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type:
+        /// application/json" \ --data '{ "pub_sub_topic": "projects/my-project/topics/new-topic" }' \
+        /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription?updateMask=pub_sub_topic"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+        /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().patch(
+        /// name="organizations/123456789/supportEventSubscriptions/abcdef123456", body={ "pub_sub_topic":
+        /// "projects/my-project/topics/new-topic" }, ) print(request.execute())
+        /// ```
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Identifier. The resource name of the support event subscription.</param>
         public virtual PatchRequest Patch(Google.Apis.CloudSupport.v2.Data.SupportEventSubscription body, string name)
@@ -2349,7 +2562,25 @@ namespace Google.Apis.CloudSupport.v2
             return new PatchRequest(this.service, body, name);
         }
 
-        /// <summary>Updates a support event subscription.</summary>
+        /// <summary>
+        /// Updates a support event subscription. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request
+        /// PATCH \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type:
+        /// application/json" \ --data '{ "pub_sub_topic": "projects/my-project/topics/new-topic" }' \
+        /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription?updateMask=pub_sub_topic"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+        /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().patch(
+        /// name="organizations/123456789/supportEventSubscriptions/abcdef123456", body={ "pub_sub_topic":
+        /// "projects/my-project/topics/new-topic" }, ) print(request.execute())
+        /// ```
+        /// </summary>
         public class PatchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.SupportEventSubscription>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2406,7 +2637,25 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Undeletes a support event subscription.</summary>
+        /// <summary>
+        /// Undeletes a support event subscription. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request
+        /// POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription:undelete"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().undelete(
+        /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute())
+        /// ```
+        /// Undeletes a support event subscription.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Required. The name of the support event subscription to undelete. Format:
@@ -2417,7 +2666,25 @@ namespace Google.Apis.CloudSupport.v2
             return new UndeleteRequest(this.service, body, name);
         }
 
-        /// <summary>Undeletes a support event subscription.</summary>
+        /// <summary>
+        /// Undeletes a support event subscription. EXAMPLES: cURL:
+        /// ```
+        /// shell
+        /// support_event_subscription="organizations/123456789/supportEventSubscriptions/abcdef123456" curl \ --request
+        /// POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$support_event_subscription:undelete"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.supportEventSubscriptions().undelete(
+        /// name="organizations/123456789/supportEventSubscriptions/abcdef123456" ) print(request.execute())
+        /// ```
+        /// Undeletes a support event subscription.
+        /// </summary>
         public class UndeleteRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.SupportEventSubscription>
         {
             /// <summary>Constructs a new Undelete request.</summary>
@@ -3081,6 +3348,17 @@ namespace Google.Apis.CloudSupport.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for the EscalateCase endpoint.</summary>
     public class EscalateCaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3106,6 +3384,13 @@ namespace Google.Apis.CloudSupport.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ExpungeSupportEventSubscription.</summary>
+    public class ExpungeSupportEventSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
