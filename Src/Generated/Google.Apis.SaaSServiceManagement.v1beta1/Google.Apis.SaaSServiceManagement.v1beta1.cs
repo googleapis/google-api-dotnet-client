@@ -7579,10 +7579,10 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ComponentRef represents a reference to a component resource. Next ID: 4</summary>
+    /// <summary>ComponentRef represents a reference to a component resource.</summary>
     public class ComponentRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the component in composite.Components</summary>
+        /// <summary>Optional. Name of the component in composite.Components</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("component")]
         public virtual string Component { get; set; }
 
@@ -7601,7 +7601,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CompositeRef represents a reference to a composite resource. Next ID: 4</summary>
+    /// <summary>CompositeRef represents a reference to a composite resource.</summary>
     public class CompositeRef : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Reference to the ApplicationTemplate resource.</summary>
@@ -8177,7 +8177,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flagRevisions")]
         public virtual System.Collections.Generic.IList<string> FlagRevisions { get; set; }
 
-        /// <summary>Optional. Immutable. Specifies the release consists of a list of flag revisions.</summary>
+        /// <summary>Optional. Immutable. Specifies the release consisting of a list of flag revisions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flagRevisionsRelease")]
         public virtual FlagRevisionList FlagRevisionsRelease { get; set; }
 
@@ -8188,7 +8188,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flagSets")]
         public virtual System.Collections.Generic.IList<string> FlagSets { get; set; }
 
-        /// <summary>Optional. Immutable. Specifies the release consists of a list of flag sets.</summary>
+        /// <summary>Optional. Immutable. Specifies the release consisting of a list of flag sets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flagSetsRelease")]
         public virtual FlagSetList FlagSetsRelease { get; set; }
 
@@ -10925,7 +10925,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appParams")]
         public virtual AppParams AppParams { get; set; }
 
-        /// <summary>Output only. Reference to component and revision in a composite ApplicationTemplate.</summary>
+        /// <summary>Optional. Reference to component and revision in a composite ApplicationTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplateComponent")]
         public virtual ComponentRef ApplicationTemplateComponent { get; set; }
 
