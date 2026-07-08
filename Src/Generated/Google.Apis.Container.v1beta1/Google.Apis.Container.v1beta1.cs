@@ -8364,6 +8364,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
 
+        /// <summary>Optional. The desired emulated version for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEmulatedVersion")]
+        public virtual string DesiredEmulatedVersion { get; set; }
+
         /// <summary>Enable/Disable Cilium Clusterwide Network Policy for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableCiliumClusterwideNetworkPolicy")]
         public virtual System.Nullable<bool> DesiredEnableCiliumClusterwideNetworkPolicy { get; set; }
@@ -9378,6 +9382,27 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>desired_tier specifies the desired tier of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredTier")]
         public virtual string DesiredTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DiskIoScheduler contains the configuration for the disk IO scheduler.</summary>
+    public class DiskIoScheduler : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Configures the IO scheduler for the attached disks. Supported values are `mq-deadline`, `bfq`,
+        /// `kyber`, `none`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeAttachedDiskIoScheduler")]
+        public virtual string NodeAttachedDiskIoScheduler { get; set; }
+
+        /// <summary>
+        /// Optional. Configures the IO scheduler for the boot disk or ephemeral lssd that runs node system workloads.
+        /// Supported values are `mq-deadline`, `bfq`, `kyber`, `none`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSystemIoScheduler")]
+        public virtual string NodeSystemIoScheduler { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10675,6 +10700,93 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains expiry information about the kubelet certificate.</summary>
+    public class KubeletCertInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _nonTpmBootstrapCertExpireTimeRaw;
+
+        private object _nonTpmBootstrapCertExpireTime;
+
+        /// <summary>Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonTpmBootstrapCertExpireTime")]
+        public virtual string NonTpmBootstrapCertExpireTimeRaw
+        {
+            get => _nonTpmBootstrapCertExpireTimeRaw;
+            set
+            {
+                _nonTpmBootstrapCertExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nonTpmBootstrapCertExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="NonTpmBootstrapCertExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NonTpmBootstrapCertExpireTimeDateTimeOffset instead.")]
+        public virtual object NonTpmBootstrapCertExpireTime
+        {
+            get => _nonTpmBootstrapCertExpireTime;
+            set
+            {
+                _nonTpmBootstrapCertExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nonTpmBootstrapCertExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NonTpmBootstrapCertExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NonTpmBootstrapCertExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NonTpmBootstrapCertExpireTimeRaw);
+            set => NonTpmBootstrapCertExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _tpmBootstrapCertExpireTimeRaw;
+
+        private object _tpmBootstrapCertExpireTime;
+
+        /// <summary>Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpmBootstrapCertExpireTime")]
+        public virtual string TpmBootstrapCertExpireTimeRaw
+        {
+            get => _tpmBootstrapCertExpireTimeRaw;
+            set
+            {
+                _tpmBootstrapCertExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _tpmBootstrapCertExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TpmBootstrapCertExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TpmBootstrapCertExpireTimeDateTimeOffset instead.")]
+        public virtual object TpmBootstrapCertExpireTime
+        {
+            get => _tpmBootstrapCertExpireTime;
+            set
+            {
+                _tpmBootstrapCertExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _tpmBootstrapCertExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TpmBootstrapCertExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TpmBootstrapCertExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TpmBootstrapCertExpireTimeRaw);
+            set => TpmBootstrapCertExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the Kubernetes Dashboard.</summary>
     public class KubernetesDashboard : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10716,6 +10828,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customNodeInit")]
         public virtual CustomNodeInit CustomNodeInit { get; set; }
 
+        /// <summary>Optional. Controls the configuration for the disk IO scheduler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskIoScheduler")]
+        public virtual DiskIoScheduler DiskIoScheduler { get; set; }
+
         /// <summary>Optional. Amounts for 2M and 1G hugepages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hugepages")]
         public virtual HugepagesConfig Hugepages { get; set; }
@@ -10726,6 +10842,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeKernelModuleLoading")]
         public virtual NodeKernelModuleLoading NodeKernelModuleLoading { get; set; }
+
+        /// <summary>Optional. Contains VFIO-related configurations for this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeVfioConfig")]
+        public virtual NodeVfioConfig NodeVfioConfig { get; set; }
 
         /// <summary>Optional. Enables and configures swap space on nodes. If omitted, swap is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("swapConfig")]
@@ -10742,10 +10862,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// net.netfilter.nf_conntrack_buckets net.netfilter.nf_conntrack_tcp_timeout_close_wait
         /// net.netfilter.nf_conntrack_tcp_timeout_time_wait net.netfilter.nf_conntrack_tcp_timeout_established
         /// net.netfilter.nf_conntrack_acct kernel.keys.maxkeys kernel.keys.maxbytes kernel.shmmni kernel.shmmax
-        /// kernel.shmall kernel.perf_event_paranoid kernel.sched_rt_runtime_us kernel.softlockup_panic
-        /// kernel.yama.ptrace_scope kernel.kptr_restrict kernel.dmesg_restrict kernel.sysrq fs.aio-max-nr fs.file-max
-        /// fs.inotify.max_user_instances fs.inotify.max_user_watches fs.nr_open vm.dirty_background_ratio
-        /// vm.dirty_background_bytes vm.dirty_expire_centisecs vm.dirty_ratio vm.dirty_bytes
+        /// kernel.shmall kernel.core_pattern kernel.perf_event_paranoid kernel.sched_rt_runtime_us
+        /// kernel.softlockup_panic kernel.yama.ptrace_scope kernel.kptr_restrict kernel.dmesg_restrict kernel.sysrq
+        /// fs.aio-max-nr fs.file-max fs.inotify.max_user_instances fs.inotify.max_user_watches fs.nr_open
+        /// vm.dirty_background_ratio vm.dirty_background_bytes vm.dirty_expire_centisecs vm.dirty_ratio vm.dirty_bytes
         /// vm.dirty_writeback_centisecs vm.max_map_count vm.overcommit_memory vm.overcommit_ratio vm.vfs_cache_pressure
         /// vm.swappiness vm.watermark_scale_factor vm.min_free_kbytes
         /// </summary>
@@ -12258,6 +12378,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
         public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; }
 
+        /// <summary>Output only. Contains expiry information about the kubelet certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubeletCertInfo")]
+        public virtual KubeletCertInfo KubeletCertInfo { get; set; }
+
         /// <summary>
         /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which
         /// the NodePool's nodes should be located. If this value is unspecified during node pool creation, the
@@ -12554,6 +12678,27 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>List of node taints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taints")]
         public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration settings for VFIO (Virtual Function I/O) on a node. VFIO allows safe, unprivileged, userspace
+    /// drivers to access I/O devices.
+    /// </summary>
+    public class NodeVfioConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the maximum number of DMA entries (pages) that can be mapped by the VFIO IOMMU type 1
+        /// driver for a container. This limit affects the total amount of host memory that can be pinned for direct
+        /// device access, which is often critical for high-performance devices like TPUs and GPUs. This setting
+        /// corresponds to the kernel parameter at: `/sys/module/vfio_iommu_type1/parameters/dma_entry_limit`. The
+        /// default value in the kernel is `65535`. Higher values may be needed for workloads mapping large memory
+        /// regions. Supported values are integers between `65535` and `4194304`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmaEntryLimit")]
+        public virtual System.Nullable<int> DmaEntryLimit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14682,8 +14827,10 @@ namespace Google.Apis.Container.v1beta1.Data
     }
 
     /// <summary>
-    /// TopologyManager defines the configuration options for Topology Manager feature. See
-    /// https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
+    /// TopologyManager defines the configuration options for the [`kubelet` Topology Manager
+    /// component](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/). For more information about
+    /// the supported machine types and versions for the Topology Manager in GKE, see [Customizing node system
+    /// configuration](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-resource-managers).
     /// </summary>
     public class TopologyManager : Google.Apis.Requests.IDirectResponseSchema
     {
