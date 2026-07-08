@@ -5404,6 +5404,49 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Arrow RecordBatch. This feature is not yet available.</summary>
+    public class ArrowRecordBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IPC-serialized Arrow RecordBatch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serializedRecordBatch")]
+        public virtual string SerializedRecordBatch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Arrow schema as specified in https://arrow.apache.org/docs/python/api/datatypes.html and serialized to bytes
+    /// using IPC: https://arrow.apache.org/docs/format/Columnar.html#serialization-and-interprocess-communication-ipc
+    /// See code samples on how this message can be deserialized. This feature is not yet available.
+    /// </summary>
+    public class ArrowSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IPC serialized Arrow schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serializedSchema")]
+        public virtual string SerializedSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains options specific to Arrow Serialization. This feature is not yet available.</summary>
+    public class ArrowSerializationOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The compression codec to use for Arrow buffers in serialized record batches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bufferCompression")]
+        public virtual string BufferCompression { get; set; }
+
+        /// <summary>
+        /// Optional. Set timestamp precision option. If not set, the default precision is microseconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("picosTimestampPrecision")]
+        public virtual string PicosTimestampPrecision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -7910,7 +7953,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("asynchronous")]
         public virtual System.Nullable<bool> Asynchronous { get; set; }
 
-        /// <summary>Optional. The generation expression (e.g. AI.EMBED(...)) used to generated the field.</summary>
+        /// <summary>Optional. The generation expression (e.g. AI.EMBED(...)) used to generate the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationExpression")]
         public virtual string GenerationExpression { get; set; }
 
@@ -11364,6 +11407,10 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Describes the format of the jobs.query request.</summary>
     public class QueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Options specific to the Apache Arrow output format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrowSerializationOptions")]
+        public virtual ArrowSerializationOptions ArrowSerializationOptions { get; set; }
+
         /// <summary>Optional. Connection properties which can modify the query behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProperties")]
         public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
@@ -11490,6 +11537,16 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; }
 
         /// <summary>
+        /// Optional. The query results format. If the value is anything other than `STRUCT_ENCODING` or unspecified: *
+        /// The schema of the results will be provided in `QueryResponse.results_schema` field. * The results of the
+        /// first page will be provided in `QueryResponse.results` field. * The `QueryResponse.rows` will not be
+        /// populated. * The `QueryResponse.schema` for `QueryResponse.rows` will also not be populated since it is the
+        /// schema of the `QueryResponse.rows`. This feature is not yet available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryResultsFormat")]
+        public virtual string QueryResultsFormat { get; set; }
+
+        /// <summary>
         /// Optional. A unique user provided identifier to ensure idempotent behavior for queries. Note that this is
         /// different from the job_id. It has the following properties: 1. It is case-sensitive, limited to up to 36
         /// ASCII characters. A UUID is recommended. 2. Read only queries can ignore this token since they are
@@ -11558,6 +11615,14 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class QueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Serialized row data in Arrow RecordBatch format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrowRecordBatch")]
+        public virtual ArrowRecordBatch ArrowRecordBatch { get; set; }
+
+        /// <summary>Output only. Arrow schema</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrowSchema")]
+        public virtual ArrowSchema ArrowSchema { get; set; }
+
         /// <summary>Whether the query result was fetched from the query cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; }
@@ -11632,6 +11697,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
+
+        /// <summary>
+        /// Output only. The number of rows out of `total_rows` returned in this response. This feature is not yet
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageRowCount")]
+        public virtual System.Nullable<long> PageRowCount { get; set; }
 
         /// <summary>
         /// A token used for paging results. A non-empty token indicates that additional results are available. To see
