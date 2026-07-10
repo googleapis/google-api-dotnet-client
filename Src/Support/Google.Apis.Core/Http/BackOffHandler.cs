@@ -179,10 +179,10 @@ namespace Google.Apis.Http
                 return false;
             }
 
-            // If the Retry-After header provided a valid delay, honor it.
+            // If the Retry-After header is present, honor it (clamping negative values to Zero due to potential clock skew).
             // Otherwise, fallback to the standard exponential back-off algorithm.
-            TimeSpan ts = (retryAfterDelay.HasValue && retryAfterDelay.Value > TimeSpan.Zero) 
-                ? retryAfterDelay.Value 
+            TimeSpan ts = retryAfterDelay.HasValue
+                ? (retryAfterDelay.Value < TimeSpan.Zero ? TimeSpan.Zero : retryAfterDelay.Value)
                 : BackOff.GetNextBackOff(currentFailedTry);
 
             if (ts > MaxTimeSpan || ts < TimeSpan.Zero)

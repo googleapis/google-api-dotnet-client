@@ -472,6 +472,44 @@ namespace Google.Apis.Tests.Apis.Http
             }
         }
         
+        
+        /// <summary>
+        /// Tests that the back-off handler respects a zero or negative Retry-After header 
+        /// by clamping it to Zero instead of falling back to exponential back-off.
+        /// </summary>
+        [Fact]
+        public async Task SendAsync_BackOffUnsuccessfulResponseHandler_RetryAfter_ZeroOrNegative()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.FromSeconds(10)))
+            {
+                HandleUnsuccessfulResponseFunc = (r) => (int)r.StatusCode == 429
+            };
+
+            var handler = new UnsuccessfulResponseMessageHandler 
+            { 
+                ResponseStatusCode = (HttpStatusCode)429,
+                ConfigureResponseAction = (response) =>
+                {
+                    // Simulate a negative delay (e.g., clock skew where server time is slightly in the past)
+                    response.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(-2));
+                }
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 2 };
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after-negative");
+                await client.SendAsync(request);
+
+                Assert.Single(boHandler.Waits);
+                // Crucial: It must be clamped to EXACTLY 0 seconds, NOT fallback to the 10 seconds of ExponentialBackOff
+                Assert.Equal(0, boHandler.Waits[0].TotalSeconds);
+            }
+        }
+        
         #endregion
 
         #region Exception Handler
