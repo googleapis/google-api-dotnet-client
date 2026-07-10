@@ -311,6 +311,9 @@ namespace Google.Apis.Tests.Apis.Http
             /// </summary>
             public int CancelRequestNum { get; set; }
 
+            /// <summary>Gets or sets an optional action to configure the response message.</summary>
+            public Action<HttpResponseMessage> ConfigureResponseAction { get; set; }
+
             protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
@@ -320,7 +323,12 @@ namespace Google.Apis.Tests.Apis.Http
                 }
 
                 TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
-                tcs.SetResult(new HttpResponseMessage { StatusCode = ResponseStatusCode });
+                var response = new HttpResponseMessage { StatusCode = ResponseStatusCode };
+                
+                // If a custom action is provided, run it to inject headers like Retry-After
+                ConfigureResponseAction?.Invoke(response);
+
+                tcs.SetResult(response);
                 return tcs.Task;
             }
 
@@ -394,7 +402,76 @@ namespace Google.Apis.Tests.Apis.Http
                 Assert.Equal(1, handler.Calls);
             }
         }
+        
+        /// <summary>
+        /// Tests that the back-off handler respects the Retry-After header with a delta interval.
+        /// </summary>
+        [Fact]
+        public async Task SendAsync_BackOffUnsuccessfulResponseHandler_RetryAfter_Delta()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+            {
+                HandleUnsuccessfulResponseFunc = (r) => (int)r.StatusCode == 429
+            };
 
+            var handler = new UnsuccessfulResponseMessageHandler 
+            { 
+                ResponseStatusCode = (HttpStatusCode)429,
+                ConfigureResponseAction = (response) =>
+                {
+                    response.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(5));
+                }
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 2 };
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after-delta");
+                await client.SendAsync(request);
+
+                Assert.Single(boHandler.Waits);
+                Assert.Equal(5, boHandler.Waits[0].TotalSeconds);
+            }
+        }
+
+        /// <summary>
+        /// Tests that the back-off handler respects the Retry-After header with an absolute date.
+        /// </summary>
+        [Fact]
+        public async Task SendAsync_BackOffUnsuccessfulResponseHandler_RetryAfter_Date()
+        {
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+            {
+                HandleUnsuccessfulResponseFunc = (r) => (int)r.StatusCode == 429
+            };
+
+            var handler = new UnsuccessfulResponseMessageHandler 
+            { 
+                ResponseStatusCode = (HttpStatusCode)429,
+                ConfigureResponseAction = (response) =>
+                {
+                    response.Headers.RetryAfter = new RetryConditionHeaderValue(DateTimeOffset.UtcNow.AddSeconds(8));
+                }
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 2 };
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after-date");
+                await client.SendAsync(request);
+
+                Assert.Single(boHandler.Waits);
+                Assert.True(boHandler.Waits[0].TotalSeconds >= 7 && boHandler.Waits[0].TotalSeconds <= 9, 
+                    $"Expected wait around 8 seconds, but was {boHandler.Waits[0].TotalSeconds}");
+            }
+        }
+        
         #endregion
 
         #region Exception Handler

@@ -18,7 +18,6 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Google.Apis.Logging;
 using Google.Apis.Util;
 
@@ -122,10 +121,27 @@ namespace Google.Apis.Http
         /// <inheritdoc/>
         public virtual async Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
         {
-            // if the func returns true try to handle this current failed try
+            // If the func returns true try to handle this current failed try
             if (HandleUnsuccessfulResponseFunc != null && HandleUnsuccessfulResponseFunc(args.Response))
             {
-                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken)
+                TimeSpan? retryAfterDelay = null;
+
+                // Extract the Retry-After header if present in the HTTP response
+                if (args.Response.Headers?.RetryAfter != null)
+                {
+                    if (args.Response.Headers.RetryAfter.Delta.HasValue)
+                    {
+                        // Case 1: It's a relative delay (e.g., seconds to wait)
+                        retryAfterDelay = args.Response.Headers.RetryAfter.Delta.Value;
+                    }
+                    else if (args.Response.Headers.RetryAfter.Date.HasValue)
+                    {
+                        // Case 2: It's an absolute date/time. Calculate the difference from now
+                        retryAfterDelay = args.Response.Headers.RetryAfter.Date.Value - DateTimeOffset.UtcNow;
+                    }
+                }
+
+                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, retryAfterDelay, args.CancellationToken)
                     .ConfigureAwait(false);
             }
             return false;
@@ -138,10 +154,10 @@ namespace Google.Apis.Http
         /// <inheritdoc/>
         public virtual async Task<bool> HandleExceptionAsync(HandleExceptionArgs args)
         {
-            // if the func returns true try to handle this current failed try
             if (HandleExceptionFunc != null && HandleExceptionFunc(args.Exception))
             {
-                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken)
+                // Raw exceptions (e.g., network timeouts) do not have an HTTP response, so pass null
+                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, null, args.CancellationToken)
                     .ConfigureAwait(false);
             }
             return false;
@@ -152,10 +168,10 @@ namespace Google.Apis.Http
         /// <summary>
         /// Handles back-off. In case the request doesn't support retry or the back-off time span is greater than the
         /// maximum time span allowed for a request, the handler returns <c>false</c>. Otherwise the current thread 
-        /// will block for x milliseconds (x is defined by the <see cref="BackOff"/> instance), and this handler 
-        /// returns <c>true</c>.
+        /// will block for x milliseconds (x is defined by the <see cref="BackOff"/> instance or the Retry-After header), 
+        /// and this handler returns <c>true</c>.
         /// </summary>
-        private async Task<bool> HandleAsync(bool supportsRetry, int currentFailedTry,
+        private async Task<bool> HandleAsync(bool supportsRetry, int currentFailedTry, TimeSpan? retryAfterDelay,
             CancellationToken cancellationToken)
         {
             if (!supportsRetry || BackOff.MaxNumOfRetries < currentFailedTry)
@@ -163,7 +179,12 @@ namespace Google.Apis.Http
                 return false;
             }
 
-            TimeSpan ts = BackOff.GetNextBackOff(currentFailedTry);
+            // If the Retry-After header provided a valid delay, honor it.
+            // Otherwise, fallback to the standard exponential back-off algorithm.
+            TimeSpan ts = (retryAfterDelay.HasValue && retryAfterDelay.Value > TimeSpan.Zero) 
+                ? retryAfterDelay.Value 
+                : BackOff.GetNextBackOff(currentFailedTry);
+
             if (ts > MaxTimeSpan || ts < TimeSpan.Zero)
             {
                 return false;
