@@ -4239,7 +4239,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Required. Management type of the Realm.</summary>
+        /// <summary>Optional. Management type of the Realm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; }
 
