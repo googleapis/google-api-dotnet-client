@@ -3349,7 +3349,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>The status of individual documents in the auto-labeling process.</summary>
     public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The document id of the auto-labeled document. This will replace the gcs_uri.</summary>
+        /// <summary>The document ID of the auto-labeled document. This will replace the gcs_uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
 
@@ -3393,7 +3393,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>The status of each individual document in the batch delete process.</summary>
     public class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The document id of the document.</summary>
+        /// <summary>The document ID of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
 
@@ -3437,7 +3437,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>The status of each individual document in the batch move process.</summary>
     public class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadataIndividualBatchMoveStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The document id of the document.</summary>
+        /// <summary>The document ID of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
 
@@ -3473,7 +3473,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>The status of each individual document in the batch update process.</summary>
     public class GoogleCloudDocumentaiUiv1beta3BatchUpdateDocumentsMetadataIndividualBatchUpdateStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The document id of the document.</summary>
+        /// <summary>The document ID of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
 
@@ -3670,7 +3670,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Document Identifier.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A document id within user-managed Cloud Storage.</summary>
+        /// <summary>A document ID within user-managed Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
 
@@ -3678,7 +3678,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionRef")]
         public virtual GoogleCloudDocumentaiUiv1beta3RevisionRef RevisionRef { get; set; }
 
-        /// <summary>A document id within unmanaged dataset.</summary>
+        /// <summary>A document ID within unmanaged dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmanagedDocId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId UnmanagedDocId { get; set; }
 
@@ -3691,7 +3691,7 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Id of the document (indexed) managed by Content Warehouse.</summary>
+        /// <summary>ID of the document (indexed) managed by Content Warehouse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cwDocId")]
         public virtual string CwDocId { get; set; }
 
@@ -3706,7 +3706,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Identifies a document uniquely within the scope of a dataset in unmanaged option.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The id of the document.</summary>
+        /// <summary>Required. The ID of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("docId")]
         public virtual string DocId { get; set; }
 
@@ -3726,7 +3726,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Document level prompt provided by the user. This custom text is injected into the AI model's
+        /// Optional. Document-level prompt provided by the user. This custom text is injected into the AI model's
         /// prompt to provide extra, document-wide guidance for processing.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentPrompt")]
@@ -3782,8 +3782,8 @@ namespace Google.Apis.Document.v1.Data
         /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
         /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
         /// compatibility, internal infrastructure and tooling can handle any ASCII character.) - The `/` is sometimes
-        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
-        /// still be honored for backward compatibility.
+        /// used to denote a property of a type. For example, `line_item/amount`. This convention is deprecated, but
+        /// will still be honored for backward compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4224,7 +4224,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
         public virtual string InputGcsSource { get; set; }
 
-        /// <summary>The document id of imported document if it was successful, otherwise empty.</summary>
+        /// <summary>The document ID of imported document if it was successful, otherwise empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDocumentId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentId OutputDocumentId { get; set; }
 
@@ -4279,7 +4279,7 @@ namespace Google.Apis.Document.v1.Data
     {
         /// <summary>
         /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
-        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
         public virtual string ActiveSchemaVersion { get; set; }
@@ -5442,7 +5442,7 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>
         /// Optional. The blob assets in this document. This is used to store the content of the inline blobs in this
         /// document, for example, image bytes, such that it can be referenced by other fields in the document via asset
-        /// id.
+        /// ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobAssets")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentBlobAsset> BlobAssets { get; set; }
@@ -5474,10 +5474,9 @@ namespace Google.Apis.Document.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentEntity> Entities { get; set; }
 
         /// <summary>
-        /// The entity revision ID that `document.entities` field is based on. If this field is set and
-        /// `entities_revisions` is not empty, the entities in `document.entities` field are the entities in the entity
-        /// revision with this id and `document.entity_validation_output` field is the `entity_validation_output` field
-        /// in this entity revision.
+        /// The entity revision ID that `document.entities` field is based on. If this field and `entities_revisions`
+        /// are set, the entities in `document.entities` are the entities in the entity revision with this ID. The
+        /// `document.entity_validation_output` field is the `entity_validation_output` field in this entity revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitiesRevisionId")]
         public virtual string EntitiesRevisionId { get; set; }
@@ -5568,7 +5567,7 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1DocumentBlobAsset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The id of the blob asset.</summary>
+        /// <summary>Optional. The ID of the blob asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
         public virtual string AssetId { get; set; }
 
@@ -5704,19 +5703,19 @@ namespace Google.Apis.Document.v1.Data
         public virtual GoogleCloudDocumentaiV1DocumentAnnotations Annotations { get; set; }
 
         /// <summary>
-        /// Optional. Asset id of the inline image. If set, find the image content in the blob_assets field.
+        /// Optional. Asset ID of the inline image. If set, find the image content in the blob_assets field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobAssetId")]
         public virtual string BlobAssetId { get; set; }
 
         /// <summary>
-        /// Optional. Data uri of the image. It is composed of four parts: a prefix (data:), a MIME type indicating the
+        /// Optional. Data URI of the image. It is composed of four parts: a prefix (data:), a MIME type indicating the
         /// type of data, an optional base64 token if non-textual, and the data itself: data:,
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataUri")]
         public virtual string DataUri { get; set; }
 
-        /// <summary>Optional. Google Cloud Storage uri of the image.</summary>
+        /// <summary>Optional. Google Cloud Storage URI of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
@@ -5791,19 +5790,19 @@ namespace Google.Apis.Document.v1.Data
         public virtual GoogleCloudDocumentaiV1DocumentAnnotations Annotations { get; set; }
 
         /// <summary>
-        /// Optional. Asset id of the inline image. If set, find the image content in the blob_assets field.
+        /// Optional. Asset ID of the inline image. If set, find the image content in the blob_assets field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blobAssetId")]
         public virtual string BlobAssetId { get; set; }
 
         /// <summary>
-        /// Optional. Data uri of the image. It is composed of four parts: a prefix (data:), a MIME type indicating the
+        /// Optional. Data URI of the image. It is composed of four parts: a prefix (data:), a MIME type indicating the
         /// type of data, an optional base64 token if non-textual, and the data itself: data:,
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataUri")]
         public virtual string DataUri { get; set; }
 
-        /// <summary>Optional. Google Cloud Storage uri of the image.</summary>
+        /// <summary>Optional. Google Cloud Storage URI of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
@@ -6081,7 +6080,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual GoogleTypeMoney MoneyValue { get; set; }
 
         /// <summary>
-        /// A signature - a graphical representation of a person's name, often used to sign a document.
+        /// A signature, which is a graphical representation of a person's name, often used to sign a document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureValue")]
         public virtual System.Nullable<bool> SignatureValue { get; set; }
@@ -6845,7 +6844,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Structure to identify provenance relationships between annotations in different revisions.</summary>
     public class GoogleCloudDocumentaiV1DocumentProvenance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Id of this operation. Needs to be unique within the scope of the revision.</summary>
+        /// <summary>The ID of this operation. Needs to be unique within the scope of the revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<int> Id { get; set; }
 
@@ -6871,7 +6870,7 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1DocumentProvenanceParent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the parent provenance.</summary>
+        /// <summary>The ID of the parent provenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<int> Id { get; set; }
 
@@ -6893,7 +6892,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Contains past or forward revisions of this document.</summary>
     public class GoogleCloudDocumentaiV1DocumentRevision : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the change was made by a person specify the name or id of that person.</summary>
+        /// <summary>If the change was made by a person specify the name or ID of that person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
 
@@ -6941,7 +6940,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual GoogleCloudDocumentaiV1DocumentRevisionHumanReview HumanReview { get; set; }
 
         /// <summary>
-        /// Id of the revision, internally generated by doc proto storage. Unique within the context of the document.
+        /// ID of the revision, internally generated by doc proto storage. Unique within the context of the document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -6998,7 +6997,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Document level prompt provided by the user. This custom text is injected into the AI model's
+        /// Optional. Document-level prompt provided by the user. This custom text is injected into the AI model's
         /// prompt to provide extra, document-wide guidance for processing.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentPrompt")]
@@ -7043,8 +7042,8 @@ namespace Google.Apis.Document.v1.Data
         /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
         /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
         /// compatibility, internal infrastructure and tooling can handle any ASCII character.) - The `/` is sometimes
-        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
-        /// still be honored for backward compatibility.
+        /// used to denote a property of a type. For example, `line_item/amount`. This convention is deprecated, but
+        /// will still be honored for backward compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8202,7 +8201,7 @@ namespace Google.Apis.Document.v1.Data
     {
         /// <summary>
         /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
-        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
         public virtual string ActiveSchemaVersion { get; set; }
@@ -8893,7 +8892,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual System.Nullable<float> LearningRateMultiplier { get; set; }
 
         /// <summary>
-        /// Optional. Resource name of a previously fine tuned version id to copy the overwritten configs from. The
+        /// Optional. Resource name of a previously fine tuned version ID to copy the overwritten configs from. The
         /// base_processor_version should be newer than the base processor version used to fine tune this provided
         /// processor version. Format:
         /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`.
@@ -9006,7 +9005,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>The status of each individual document in the batch delete process.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The document id of the document.</summary>
+        /// <summary>The document ID of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentId DocumentId { get; set; }
 
@@ -9399,7 +9398,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Document Identifier.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A document id within user-managed Cloud Storage.</summary>
+        /// <summary>A document ID within user-managed Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
 
@@ -9407,7 +9406,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionRef")]
         public virtual GoogleCloudDocumentaiV1beta3RevisionRef RevisionRef { get; set; }
 
-        /// <summary>A document id within unmanaged dataset.</summary>
+        /// <summary>A document ID within unmanaged dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmanagedDocId")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId UnmanagedDocId { get; set; }
 
@@ -9420,7 +9419,7 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Id of the document (indexed) managed by Content Warehouse.</summary>
+        /// <summary>ID of the document (indexed) managed by Content Warehouse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cwDocId")]
         public virtual string CwDocId { get; set; }
 
@@ -9435,7 +9434,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Identifies a document uniquely within the scope of a dataset in unmanaged option.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The id of the document.</summary>
+        /// <summary>Required. The ID of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("docId")]
         public virtual string DocId { get; set; }
 
@@ -9455,7 +9454,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Document level prompt provided by the user. This custom text is injected into the AI model's
+        /// Optional. Document-level prompt provided by the user. This custom text is injected into the AI model's
         /// prompt to provide extra, document-wide guidance for processing.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentPrompt")]
@@ -9511,8 +9510,8 @@ namespace Google.Apis.Document.v1.Data
         /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
         /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
         /// compatibility, internal infrastructure and tooling can handle any ASCII character.) - The `/` is sometimes
-        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
-        /// still be honored for backward compatibility.
+        /// used to denote a property of a type. For example, `line_item/amount`. This convention is deprecated, but
+        /// will still be honored for backward compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9826,7 +9825,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
         public virtual string InputGcsSource { get; set; }
 
-        /// <summary>The document id of imported document if it was successful, otherwise empty.</summary>
+        /// <summary>The document ID of imported document if it was successful, otherwise empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputDocumentId")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentId OutputDocumentId { get; set; }
 
@@ -9875,7 +9874,7 @@ namespace Google.Apis.Document.v1.Data
     {
         /// <summary>
         /// Optional. SchemaVersion used by the Processor. It is the same as Processor's DatasetSchema.schema_version
-        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+        /// Format is `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeSchemaVersion")]
         public virtual string ActiveSchemaVersion { get; set; }
