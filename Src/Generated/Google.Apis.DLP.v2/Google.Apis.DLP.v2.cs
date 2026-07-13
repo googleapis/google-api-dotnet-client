@@ -16866,7 +16866,7 @@ namespace Google.Apis.DLP.v2.Data
 
         private object _createTime;
 
-        /// <summary>Time when the job was created.</summary>
+        /// <summary>Output only. Time when the job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -16903,7 +16903,7 @@ namespace Google.Apis.DLP.v2.Data
 
         private object _endTime;
 
-        /// <summary>Time when the job finished.</summary>
+        /// <summary>Output only. Time when the job finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -16936,7 +16936,7 @@ namespace Google.Apis.DLP.v2.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>A stream of errors encountered running the job.</summary>
+        /// <summary>Output only. A stream of errors encountered running the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
 
@@ -16944,7 +16944,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectDetails")]
         public virtual GooglePrivacyDlpV2InspectDataSourceDetails InspectDetails { get; set; }
 
-        /// <summary>If created by a job trigger, the resource name of the trigger that instantiated the job.</summary>
+        /// <summary>
+        /// Output only. If created by a job trigger, the resource name of the trigger that instantiated the job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTriggerName")]
         public virtual string JobTriggerName { get; set; }
 
@@ -16952,7 +16954,7 @@ namespace Google.Apis.DLP.v2.Data
 
         private object _lastModified;
 
-        /// <summary>Time when the job was last modified by the system.</summary>
+        /// <summary>Output only. Time when the job was last modified by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
         public virtual string LastModifiedRaw
         {
@@ -16985,7 +16987,7 @@ namespace Google.Apis.DLP.v2.Data
             set => LastModifiedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The server-assigned name.</summary>
+        /// <summary>Output only. The server-assigned name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -16997,7 +16999,7 @@ namespace Google.Apis.DLP.v2.Data
 
         private object _startTime;
 
-        /// <summary>Time when the job started.</summary>
+        /// <summary>Output only. Time when the job started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
@@ -17030,7 +17032,7 @@ namespace Google.Apis.DLP.v2.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>State of a job.</summary>
+        /// <summary>Output only. State of a job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
