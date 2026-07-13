@@ -1336,7 +1336,7 @@ namespace Google.Apis.ChromeManagement.v1
 
                 /// <summary>
                 /// Optional. ID to use for the connector config, which becomes the final component of the connector
-                /// config's resource name. If provided, the ID must be 1-63 characters long, and contain only lowercase
+                /// config's resource name. If provided, the ID must be 1-36 characters long, and contain only lowercase
                 /// letters, digits, and hyphens. It must start with a letter, and end with a letter or number. If not
                 /// provided, the connector config will be assigned a random UUID.
                 /// </summary>
