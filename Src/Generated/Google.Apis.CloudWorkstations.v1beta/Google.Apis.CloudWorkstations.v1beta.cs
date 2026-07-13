@@ -3734,14 +3734,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>OAuth token.</summary>
+    /// <summary>Represents an OAuth 2.0 access token and its associated metadata.</summary>
     public class OAuthToken : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The OAuth token.</summary>
+        /// <summary>Required. The OAuth 2.0 access token value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
         public virtual string AccessToken { get; set; }
 
-        /// <summary>Optional. The email address encapsulated in the OAuth token.</summary>
+        /// <summary>Optional. The email address associated with the OAuth 2.0 access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
@@ -3751,7 +3751,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Optional. The time the OAuth access token will expire. This should be the time the access token was
-        /// generated plus the expires_in offset returned from the Access Token Response.
+        /// generated plus the expires_in offset returned from the Access Token Response. Only one of `expire_time` or
+        /// `expires_in` should be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
@@ -3786,7 +3787,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         }
 
         /// <summary>
-        /// Optional. The scopes encapsulated in the OAuth token. See
+        /// Optional. The lifetime duration of the access token. Only one of `expire_time` or `expires_in` should be
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiresIn")]
+        public virtual object ExpiresIn { get; set; }
+
+        /// <summary>
+        /// Optional. The scopes associated with the OAuth 2.0 access token. See
         /// https://developers.google.com/identity/protocols/oauth2/scopes for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
@@ -4103,7 +4111,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     {
         /// <summary>
         /// Optional. Credentials used by Cloud Client Libraries, Google API Client Libraries, and other tooling within
-        /// the user conainer: https://cloud.google.com/docs/authentication/application-default-credentials
+        /// the user container. For more information, see
+        /// https://cloud.google.com/docs/authentication/application-default-credentials
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationDefaultCredentials")]
         public virtual OAuthToken ApplicationDefaultCredentials { get; set; }
