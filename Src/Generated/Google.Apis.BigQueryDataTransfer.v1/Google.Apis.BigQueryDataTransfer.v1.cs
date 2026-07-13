@@ -5089,10 +5089,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorStatus")]
         public virtual Status ErrorStatus { get; set; }
 
-        /// <summary>Output only. The metadata destination of the transfer run.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadataDestination")]
-        public virtual MetadataDestination MetadataDestination { get; set; }
-
         /// <summary>
         /// Identifier. The resource name of the transfer run. Transfer run names have the form
         /// `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`. The name is ignored
