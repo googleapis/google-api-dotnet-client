@@ -63,6 +63,12 @@ namespace Google.Apis.Backupdr.v1
         public class Scope
         {
             /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Backup and DR data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public static string CloudBackupdr = "https://www.googleapis.com/auth/cloud-backupdr";
+
+            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
@@ -72,6 +78,12 @@ namespace Google.Apis.Backupdr.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Backup and DR Service API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Backup and DR data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public const string CloudBackupdr = "https://www.googleapis.com/auth/cloud-backupdr";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
