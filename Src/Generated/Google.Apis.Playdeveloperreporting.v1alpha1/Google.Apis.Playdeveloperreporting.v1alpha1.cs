@@ -2358,6 +2358,51 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
 namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
 {
     /// <summary>
+    /// Profile describing the visibility restriction of an MCP tool. Key:
+    /// "google.com/tool.profiles/visibility.restriction"
+    /// </summary>
+    public class ApiservingMcpMcpToolVisibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of field-level visibility restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldVisibility")]
+        public virtual System.Collections.Generic.IList<ApiservingMcpMcpToolVisibilityFieldVisibility> FieldVisibility { get; set; }
+
+        /// <summary>
+        /// The strategy used to enforce visibility restrictions. DO NOT USE. This field is not yet implemented.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibilityEnforcementStrategy")]
+        public virtual string VisibilityEnforcementStrategy { get; set; }
+
+        /// <summary>
+        /// The visibility restriction labels for the tool itself (e.g., "PRODUCER_DEFINED_PREVIEW"). Multiple labels
+        /// can be provided as a comma-separated string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibilityRestriction")]
+        public virtual string VisibilityRestriction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Visibility rules for individual tool parameters (fields). This allows producers to hide specific fields in
+    /// tools/list and tools/call.
+    /// </summary>
+    public class ApiservingMcpMcpToolVisibilityFieldVisibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The visibility restriction labels for this field (comma-separated).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restriction")]
+        public virtual string Restriction { get; set; }
+
+        /// <summary>The name of the parameter in the input_schema or output_schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual string Selector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents an anomaly detected in a dataset. Our anomaly detection systems flag datapoints in a time series that
     /// fall outside of and expected range derived from historical data. Although those expected ranges have an upper
     /// and a lower bound, we only flag anomalies when the data has become unexpectedly _worse_, which usually
