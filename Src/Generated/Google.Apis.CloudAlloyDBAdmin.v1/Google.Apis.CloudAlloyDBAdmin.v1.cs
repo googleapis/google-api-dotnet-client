@@ -5039,6 +5039,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authproxyPoolerCount")]
         public virtual System.Nullable<int> AuthproxyPoolerCount { get; set; }
 
+        /// <summary>Optional. The scaling type of the AuthProxy pooler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authproxyPoolerScalingType")]
+        public virtual string AuthproxyPoolerScalingType { get; set; }
+
         /// <summary>Optional. Whether to enable Managed Connection Pool (MCP).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -5050,6 +5054,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Output only. The number of running poolers per instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("poolerCount")]
         public virtual System.Nullable<int> PoolerCount { get; set; }
+
+        /// <summary>Optional. The scaling type of the regular pooler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poolerScalingType")]
+        public virtual string PoolerScalingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7449,12 +7457,15 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feedType")]
         public virtual string FeedType { get; set; }
 
+        /// <summary>Observability metric data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMetricData")]
         public virtual StorageDatabasecenterPartnerapiV1mainObservabilityMetricData ObservabilityMetricData { get; set; }
 
+        /// <summary>Database resource recommendation signal data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationSignalData")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData RecommendationSignalData { get; set; }
 
+        /// <summary>Database resource health signal data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceHealthSignalData")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData ResourceHealthSignalData { get; set; }
 
@@ -7464,6 +7475,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
 
+        /// <summary>Database resource metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceMetadata")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata ResourceMetadata { get; set; }
 
@@ -7592,6 +7604,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
         public virtual string SignalType { get; set; }
 
+        /// <summary>Required. The state of the signal, such as if it's ACTIVE or RESOLVED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -7614,7 +7627,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// Required. The type of resource this ID is identifying. Ex go/keep-sorted start
         /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
         /// bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database,
-        /// redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
+        /// memorystore.googleapis.com/Instance, redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
         /// oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
         /// oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/Instance,
         /// spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer
@@ -8075,6 +8088,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
         public virtual System.Nullable<bool> IsDeletionProtectionEnabled { get; set; }
 
+        /// <summary>The product this resource represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual StorageDatabasecenterProtoCommonProduct Product { get; set; }
 
@@ -8350,6 +8364,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("durationBasedRetention")]
         public virtual object DurationBasedRetention { get; set; }
 
+        /// <summary>Quantity based retention period i.e. 7 backups</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityBasedRetention")]
         public virtual System.Nullable<int> QuantityBasedRetention { get; set; }
 
@@ -8357,6 +8372,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retentionUnit")]
         public virtual string RetentionUnit { get; set; }
 
+        /// <summary>Duration based retention period i.e. 172800 seconds (2 days)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
         public virtual object TimeBasedRetention { get; set; }
 
