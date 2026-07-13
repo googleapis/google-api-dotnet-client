@@ -11611,6 +11611,23 @@ namespace Google.Apis.YouTube.v3.Data
     }
 
     /// <summary>
+    /// Details about the brand partner linked to the video for Creator Initiated Linking (CIL). Next ID: 6
+    /// </summary>
+    public class BrandPartner : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Channel handle, must begin with "@"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelHandle")]
+        public virtual string ChannelHandle { get; set; }
+
+        /// <summary>Required. External Channel ID, must begin with "UC"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
+        public virtual string ChannelId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A *caption* resource represents a YouTube caption track. A caption track is associated with exactly one YouTube
     /// video.
     /// </summary>
@@ -16628,6 +16645,9 @@ namespace Google.Apis.YouTube.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageGating")]
         public virtual VideoAgeGating AgeGating { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("brandPartner")]
+        public virtual BrandPartner BrandPartner { get; set; }
 
         /// <summary>
         /// The contentDetails object contains information about the video content, including the length of the video
