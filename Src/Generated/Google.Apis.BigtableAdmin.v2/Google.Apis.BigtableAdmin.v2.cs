@@ -5619,8 +5619,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// Currently UpdateTable is only supported for the following fields: * `change_stream_config` *
                     /// `change_stream_config.retention_period` * `deletion_protection` * `automated_backup_policy` *
                     /// `automated_backup_policy.retention_period` * `automated_backup_policy.frequency` *
-                    /// `row_key_schema` If `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED
-                    /// error.
+                    /// `automated_backup_policy.locations` * `row_key_schema` If `column_families` is set in
+                    /// `update_mask`, it will return an UNIMPLEMENTED error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
