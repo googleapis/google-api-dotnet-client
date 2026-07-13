@@ -1426,6 +1426,78 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     public DeploymentsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Message = new MessageResource(service);
+                    }
+
+                    /// <summary>Gets the Message resource.</summary>
+                    public virtual MessageResource Message { get; }
+
+                    /// <summary>The "message" collection of methods.</summary>
+                    public class MessageResource
+                    {
+                        private const string Resource = "message";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public MessageResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Sends a message to an agent.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                        public virtual SendRequest Send(Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant)
+                        {
+                            return new SendRequest(this.service, body, tenant);
+                        }
+
+                        /// <summary>Sends a message to an agent.</summary>
+                        public class SendRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageResponse>
+                        {
+                            /// <summary>Constructs a new Send request.</summary>
+                            public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant) : base(service)
+                            {
+                                Tenant = tenant;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Tenant { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "send";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+tenant}/message:send";
+
+                            /// <summary>Initializes Send parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "tenant",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/deployments/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Creates a new deployment in the given app.</summary>
@@ -1610,6 +1682,51 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/deployments/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the extended agent card for the authenticated agent.</summary>
+                    /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                    public virtual GetExtendedAgentCardRequest GetExtendedAgentCard(string tenant)
+                    {
+                        return new GetExtendedAgentCardRequest(this.service, tenant);
+                    }
+
+                    /// <summary>Gets the extended agent card for the authenticated agent.</summary>
+                    public class GetExtendedAgentCardRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1AgentCard>
+                    {
+                        /// <summary>Constructs a new GetExtendedAgentCard request.</summary>
+                        public GetExtendedAgentCardRequest(Google.Apis.Services.IClientService service, string tenant) : base(service)
+                        {
+                            Tenant = tenant;
+                            InitParameters();
+                        }
+
+                        /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Tenant { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getExtendedAgentCard";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+tenant}/extendedAgentCard";
+
+                        /// <summary>Initializes GetExtendedAgentCard parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "tenant",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -6030,6 +6147,78 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     public VersionsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Message = new MessageResource(service);
+                    }
+
+                    /// <summary>Gets the Message resource.</summary>
+                    public virtual MessageResource Message { get; }
+
+                    /// <summary>The "message" collection of methods.</summary>
+                    public class MessageResource
+                    {
+                        private const string Resource = "message";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public MessageResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Sends a message to an agent.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                        public virtual SendRequest Send(Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant)
+                        {
+                            return new SendRequest(this.service, body, tenant);
+                        }
+
+                        /// <summary>Sends a message to an agent.</summary>
+                        public class SendRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageResponse>
+                        {
+                            /// <summary>Constructs a new Send request.</summary>
+                            public SendRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant) : base(service)
+                            {
+                                Tenant = tenant;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Tenant { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "send";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+tenant}/message:send";
+
+                            /// <summary>Initializes Send parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "tenant",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/versions/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Creates a new app version in the given app.</summary>
@@ -6199,6 +6388,51 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the extended agent card for the authenticated agent.</summary>
+                    /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                    public virtual GetExtendedAgentCardRequest GetExtendedAgentCard(string tenant)
+                    {
+                        return new GetExtendedAgentCardRequest(this.service, tenant);
+                    }
+
+                    /// <summary>Gets the extended agent card for the authenticated agent.</summary>
+                    public class GetExtendedAgentCardRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1AgentCard>
+                    {
+                        /// <summary>Constructs a new GetExtendedAgentCard request.</summary>
+                        public GetExtendedAgentCardRequest(Google.Apis.Services.IClientService service, string tenant) : base(service)
+                        {
+                            Tenant = tenant;
+                            InitParameters();
+                        }
+
+                        /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Tenant { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getExtendedAgentCard";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+tenant}/extendedAgentCard";
+
+                        /// <summary>Initializes GetExtendedAgentCard parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "tenant",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -9267,9 +9501,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Configuration specific to Instagram deployments.</summary>
     public class ChannelProfileInstagramConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The description of the Meta business page or profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The fetched Meta business page name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Required. The Instagram Account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instagramAccountId")]
         public virtual string InstagramAccountId { get; set; }
+
+        /// <summary>Output only. The fetched Meta business profile thumbnail URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9346,9 +9592,25 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Configuration specific to WhatsApp deployments.</summary>
     public class ChannelProfileWhatsAppConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The description of the Meta business page or profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The fetched Meta business page name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The phone number in E.164 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
         /// <summary>Required. The Meta phone number ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumberId")]
         public virtual string PhoneNumberId { get; set; }
+
+        /// <summary>Output only. The fetched Meta business profile thumbnail URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; }
 
         /// <summary>Required. The WhatsApp Business Account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wabaId")]
@@ -13229,6 +13491,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>The configuration to be used for quality report generation.</summary>
     public class GenerateAppResourceRequestQualityReportGenerationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The loss attribution algorithm to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
+        public virtual string Algorithm { get; set; }
+
         /// <summary>Required. The evaluation run used to inform quality report analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationRun")]
         public virtual string EvaluationRun { get; set; }
@@ -13506,6 +13772,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Request message for EvaluationService.GenerateEvaluation.</summary>
     public class GenerateEvaluationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The type of evaluation to generate. Defaults to GOLDEN if unspecified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationType")]
+        public virtual string EvaluationType { get; set; }
+
         /// <summary>
         /// Optional. Indicate the source of the conversation. If not set, all sources will be searched.
         /// </summary>
@@ -14237,6 +14507,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Required. The Meta auth code provided by the embedded signup flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
         public virtual string AuthCode { get; set; }
+
+        /// <summary>Optional. The Conversation Profile ID to use for the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfileId")]
+        public virtual string ConversationProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17570,6 +17844,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Configuration for how the agent response should be synthesized.</summary>
     public class SynthesizeSpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The instruction used to synthesize speech when using a generative model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instruction")]
+        public virtual string Instruction { get; set; }
+
+        /// <summary>
+        /// Optional. The model used to synthesize audio. Currently supported values: - "gemini-3.1-flash-tts-preview"
+        /// If empty, Chirp3-HD is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
         /// <summary>
         /// Optional. The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native speed supported by the
         /// specific voice. 2.0 is twice as fast, and 0.5 is half as fast. Values outside of the range [0.25, 2.0] will
@@ -17585,6 +17870,15 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voice")]
         public virtual string Voice { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage URI to the audio sample for voice cloning. The audio sample should be a
+        /// mono-channel, 24kHz WAV file. Note: Please make sure the CES service agent
+        /// `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get` permission to the Cloud Storage
+        /// object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceSampleGcsUri")]
+        public virtual string VoiceSampleGcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18042,6 +18336,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("openApiToolset")]
         public virtual OpenApiToolset OpenApiToolset { get; set; }
 
+        /// <summary>
+        /// Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for
+        /// `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
         /// <summary>Optional. Configuration for tools behavior in fake mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolFakeConfig")]
         public virtual ToolFakeConfig ToolFakeConfig { get; set; }
@@ -18317,6 +18618,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("businessAccountId")]
         public virtual string BusinessAccountId { get; set; }
 
+        /// <summary>Optional. The Conversation Profile ID to use for the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfileId")]
+        public virtual string ConversationProfileId { get; set; }
+
         /// <summary>Required. The phone number to register with WhatsApp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
@@ -18324,6 +18629,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Required. The 6-digit PIN created by the user for two-step verification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pin")]
         public virtual string Pin { get; set; }
+
+        /// <summary>Required. The WhatsApp Business Account ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wabaId")]
+        public virtual string WabaId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
