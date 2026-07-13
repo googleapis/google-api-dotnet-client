@@ -1,0 +1,83 @@
+{
+  "Google.Apis.FirebaseCrashlytics.v1alpha.FirebaseCrashlyticsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.FirebaseCrashlyticsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+EventsResource+ListRequest.FilterDeviceFormFactorsEnum": [
+    "FORM_FACTOR_UNSPECIFIED",
+    "PHONE",
+    "TABLET",
+    "DESKTOP",
+    "TV",
+    "WATCH"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+EventsResource+ListRequest.FilterIssueErrorTypesEnum": [
+    "ERROR_TYPE_UNSPECIFIED",
+    "FATAL",
+    "NON_FATAL",
+    "ANR"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+EventsResource+ListRequest.FilterIssueSignalsEnum": [
+    "SIGNAL_UNSPECIFIED",
+    "SIGNAL_EARLY",
+    "SIGNAL_FRESH",
+    "SIGNAL_REGRESSED",
+    "SIGNAL_REPETITIVE"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+EventsResource+ListRequest.FilterIssueStateEnum": [
+    "STATE_UNSPECIFIED",
+    "OPEN",
+    "CLOSED",
+    "MUTED"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+EventsResource+ListRequest.FilterIssueStatesEnum": [
+    "STATE_UNSPECIFIED",
+    "OPEN",
+    "CLOSED",
+    "MUTED"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+ReportsResource+GetRequest.FilterDeviceFormFactorsEnum": [
+    "FORM_FACTOR_UNSPECIFIED",
+    "PHONE",
+    "TABLET",
+    "DESKTOP",
+    "TV",
+    "WATCH"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+ReportsResource+GetRequest.FilterIssueErrorTypesEnum": [
+    "ERROR_TYPE_UNSPECIFIED",
+    "FATAL",
+    "NON_FATAL",
+    "ANR"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+ReportsResource+GetRequest.FilterIssueSignalsEnum": [
+    "SIGNAL_UNSPECIFIED",
+    "SIGNAL_EARLY",
+    "SIGNAL_FRESH",
+    "SIGNAL_REGRESSED",
+    "SIGNAL_REPETITIVE"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+ReportsResource+GetRequest.FilterIssueStateEnum": [
+    "STATE_UNSPECIFIED",
+    "OPEN",
+    "CLOSED",
+    "MUTED"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+ReportsResource+GetRequest.FilterIssueStatesEnum": [
+    "STATE_UNSPECIFIED",
+    "OPEN",
+    "CLOSED",
+    "MUTED"
+  ],
+  "Google.Apis.FirebaseCrashlytics.v1alpha.ProjectsResource+AppsResource+ReportsResource+GetRequest.GranularityEnum": [
+    "TIME_GRANULARITY_UNSPECIFIED",
+    "TIME_GRANULARITY_NONE",
+    "TIME_GRANULARITY_HOUR",
+    "TIME_GRANULARITY_DAY"
+  ]
+}
