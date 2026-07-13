@@ -1514,6 +1514,10 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.Document Body { get; set; }
 
@@ -1560,6 +1564,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
                         {
                             Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1635,6 +1647,10 @@ namespace Google.Apis.Firestore.v1
                         }
                     }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -1667,6 +1683,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("currentDocument.updateTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "currentDocument.updateTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1796,6 +1820,10 @@ namespace Google.Apis.Firestore.v1
                         }
                     }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>Reads the document in a transaction.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Transaction { get; set; }
@@ -1832,6 +1860,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1956,6 +1992,20 @@ namespace Google.Apis.Firestore.v1
                     }
 
                     /// <summary>
+                    /// Optional. If the list should recursively include all documents nested under the parent at any
+                    /// level. If the request specifies a `collection_id`, then the list will include all nested
+                    /// documents in the collection under the parent. This is optional, and when not provided, Firestore
+                    /// will only list documents nested immediately under the parent. Requests with `recursive` may not
+                    /// specify `show_missing`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Recursive { get; set; }
+
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
+                    /// <summary>
                     /// If the list should show missing documents. A document is missing if it does not exist, but there
                     /// are sub-documents nested underneath it. When true, such missing documents will be returned with
                     /// a key but will not have fields, `create_time`, or `update_time` set. Requests with
@@ -2032,6 +2082,22 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("recursive", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "recursive",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2227,6 +2293,20 @@ namespace Google.Apis.Firestore.v1
                     }
 
                     /// <summary>
+                    /// Optional. If the list should recursively include all documents nested under the parent at any
+                    /// level. If the request specifies a `collection_id`, then the list will include all nested
+                    /// documents in the collection under the parent. This is optional, and when not provided, Firestore
+                    /// will only list documents nested immediately under the parent. Requests with `recursive` may not
+                    /// specify `show_missing`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Recursive { get; set; }
+
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
+                    /// <summary>
                     /// If the list should show missing documents. A document is missing if it does not exist, but there
                     /// are sub-documents nested underneath it. When true, such missing documents will be returned with
                     /// a key but will not have fields, `create_time`, or `update_time` set. Requests with
@@ -2303,6 +2383,22 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("recursive", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "recursive",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2532,6 +2628,10 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>
                     /// The list of field paths in the mask. See Document.fields for a field path syntax reference.
                     /// </summary>
@@ -2584,6 +2684,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
                         {
                             Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4789,6 +4897,10 @@ namespace Google.Apis.Firestore.v1.Data
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>Reads documents in a transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -4869,6 +4981,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>
         /// The writes to apply. Method does not apply writes atomically and does not guarantee ordering. Each write
         /// succeeds or fails independently. You cannot write to the same document more than once per request.
@@ -4905,6 +5021,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The options for the transaction. Defaults to a read-write transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual TransactionOptions Options { get; set; }
+
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4991,6 +5111,10 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The request for Firestore.Commit.</summary>
     public class CommitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>If set, applies all writes in this transaction, and commits it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -5487,6 +5611,10 @@ namespace Google.Apis.Firestore.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>A pipelined operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredPipeline")]
@@ -8427,6 +8555,10 @@ namespace Google.Apis.Firestore.v1.Data
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8492,6 +8624,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The ID of a target to remove from this stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeTarget")]
         public virtual System.Nullable<int> RemoveTarget { get; set; }
+
+        /// <summary>Optional. The request options for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8663,6 +8799,10 @@ namespace Google.Apis.Firestore.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The request options for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>
         /// A structured query. Query must specify collection with all descendants and be ordered by name ascending.
@@ -8881,9 +9021,24 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for a server request.</summary>
+    public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The request tags for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTags")]
+        public virtual System.Collections.Generic.IList<string> RequestTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Firestore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>Required. The transaction to roll back.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -8949,6 +9104,10 @@ namespace Google.Apis.Firestore.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The request options for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>An aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredAggregationQuery")]
@@ -9089,6 +9248,10 @@ namespace Google.Apis.Firestore.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>A structured query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
@@ -9775,6 +9938,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>Labels associated with this write request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. The request options for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>
         /// The ID of the write stream to resume. This may only be set in the first message. When left empty, a new
