@@ -35,6 +35,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
         public GoogleHealthAPIService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
+            Shl = new ShlResource(this);
             Users = new UsersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://health.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://health.googleapis.com/batch");
@@ -174,6 +175,9 @@ namespace Google.Apis.GoogleHealthAPI.v4
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
+
+        /// <summary>Gets the Shl resource.</summary>
+        public virtual ShlResource Shl { get; }
 
         /// <summary>Gets the Users resource.</summary>
         public virtual UsersResource Users { get; }
@@ -1104,6 +1108,185 @@ namespace Google.Apis.GoogleHealthAPI.v4
                         Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+    }
+
+    /// <summary>The "shl" collection of methods.</summary>
+    public class ShlResource
+    {
+        private const string Resource = "shl";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ShlResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            M = new MResource(service);
+            R = new RResource(service);
+        }
+
+        /// <summary>Gets the M resource.</summary>
+        public virtual MResource M { get; }
+
+        /// <summary>The "m" collection of methods.</summary>
+        public class MResource
+        {
+            private const string Resource = "m";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Forward a manifest request for a given SHL</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="externalShlId">
+            /// Required. External ID mapping to a ShlSharedLinkCapabilityToken object See
+            /// https://docs.google.com/document/d/1Pch20pxJHRbsaMxp0EYgs3ZU0Gu7QTUznk8LhvbQvfY/edit?tab=t.0#heading=h.17wg41voij6q
+            /// </param>
+            public virtual GetShlManifestRequest GetShlManifest(Google.Apis.GoogleHealthAPI.v4.Data.ManifestParams body, string externalShlId)
+            {
+                return new GetShlManifestRequest(this.service, body, externalShlId);
+            }
+
+            /// <summary>Forward a manifest request for a given SHL</summary>
+            public class GetShlManifestRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.HttpBody>
+            {
+                /// <summary>Constructs a new GetShlManifest request.</summary>
+                public GetShlManifestRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleHealthAPI.v4.Data.ManifestParams body, string externalShlId) : base(service)
+                {
+                    ExternalShlId = externalShlId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. External ID mapping to a ShlSharedLinkCapabilityToken object See
+                /// https://docs.google.com/document/d/1Pch20pxJHRbsaMxp0EYgs3ZU0Gu7QTUznk8LhvbQvfY/edit?tab=t.0#heading=h.17wg41voij6q
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("externalShlId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ExternalShlId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleHealthAPI.v4.Data.ManifestParams Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getShlManifest";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/shl/m/{externalShlId}";
+
+                /// <summary>Initializes GetShlManifest parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("externalShlId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "externalShlId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the R resource.</summary>
+        public virtual RResource R { get; }
+
+        /// <summary>The "r" collection of methods.</summary>
+        public class RResource
+        {
+            private const string Resource = "r";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Forward a resource request for a given SHL</summary>
+            /// <param name="externalShlId">
+            /// Required. External ID mapping to a ShlSharedLinkCapabilityToken object See
+            /// https://docs.google.com/document/d/1Pch20pxJHRbsaMxp0EYgs3ZU0Gu7QTUznk8LhvbQvfY/edit?tab=t.0#heading=h.17wg41voij6q
+            /// </param>
+            /// <param name="resourceToken">
+            /// Required. Encoded, encrypted message containing resource access details
+            /// </param>
+            public virtual GetRequest Get(string externalShlId, string resourceToken)
+            {
+                return new GetRequest(this.service, externalShlId, resourceToken);
+            }
+
+            /// <summary>Forward a resource request for a given SHL</summary>
+            public class GetRequest : GoogleHealthAPIBaseServiceRequest<Google.Apis.GoogleHealthAPI.v4.Data.HttpBody>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string externalShlId, string resourceToken) : base(service)
+                {
+                    ExternalShlId = externalShlId;
+                    ResourceToken = resourceToken;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. External ID mapping to a ShlSharedLinkCapabilityToken object See
+                /// https://docs.google.com/document/d/1Pch20pxJHRbsaMxp0EYgs3ZU0Gu7QTUznk8LhvbQvfY/edit?tab=t.0#heading=h.17wg41voij6q
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("externalShlId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ExternalShlId { get; private set; }
+
+                /// <summary>Required. Encoded, encrypted message containing resource access details</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceToken", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ResourceToken { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/shl/r/{externalShlId}/{resourceToken}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("externalShlId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "externalShlId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceToken",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3953,9 +4136,9 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
 
     /// <summary>
     /// Authorization mechanism for a subscriber endpoint. For all requests sent by the Webhooks service, the JSON
-    /// payload is cryptographically signed. The signature is delivered in the `X-HEALTHAPI-SIGNATURE` HTTP header. This
-    /// is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify this signature using Google Health
-    /// API's public key to confirm the payload was sent by the Health API.
+    /// payload is cryptographically signed. The signature is delivered in the `GOOGLE-HEALTH-API-SIGNATURE` HTTP
+    /// header. This is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify this signature using
+    /// Google Health API's public key to confirm the payload was sent by the Health API.
     /// </summary>
     public class EndpointAuthorization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3980,7 +4163,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents the energy quantity.</summary>
     public class EnergyQuantity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Value representing the energy in kilocalories.</summary>
+        /// <summary>Required. The energy value in kilocalories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kcal")]
         public virtual System.Nullable<double> Kcal { get; set; }
 
@@ -4606,6 +4789,39 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
+    /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
+    /// non-streaming API methods in the request as well as the response. It can be used as a top-level request field,
+    /// which is convenient if one wants to extract parameters from either the URL or HTTP template into the request
+    /// fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id.
+    /// string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
+    /// ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service
+    /// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes
+    /// how the request and response bodies are handled, all other features will continue to work unchanged.
+    /// </summary>
+    public class HttpBody : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>The HTTP request/response body as raw binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an HTTP header.</summary>
     public class HttpHeader : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4963,6 +5179,31 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     }
 
     /// <summary>
+    /// Represents the POST body contained in a GetShlManifestRequest This message is nested to represent that See
+    /// https://build.fhir.org/ig/HL7/smart-health-cards-and-links/links-specification.html#smart-health-link-manifest-request
+    /// </summary>
+    public class ManifestParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Integer upper bound on the length of embedded payloads</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddedLengthMax")]
+        public virtual System.Nullable<int> EmbeddedLengthMax { get; set; }
+
+        /// <summary>Optional. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passcode")]
+        public virtual string Passcode { get; set; }
+
+        /// <summary>
+        /// Required. A string describing the recipient (e.g.,the name of an organization or person) suitable for
+        /// display to the Receiving User
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipient")]
+        public virtual string Recipient { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Software as Medical Device (SaMD) metadata. Used to construct the Unique Device Identifier (UDI).
     /// </summary>
     public class MedicalDeviceInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -5096,11 +5337,11 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents the quantity of a nutrient.</summary>
     public class NutrientQuantity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Value representing the nutrient.</summary>
+        /// <summary>Required. The nutrient type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nutrient")]
         public virtual string Nutrient { get; set; }
 
-        /// <summary>Required. Value representing the quantity of the nutrient.</summary>
+        /// <summary>Required. The quantity of the nutrient, measured in grams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual WeightQuantity Quantity { get; set; }
 
@@ -5124,72 +5365,58 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     }
 
     /// <summary>
-    /// Holds information about a user logged food. There are two ways of creating a nutrition log based on the food
+    /// Holds information about food logged by a user. There are two ways of creating a nutrition log based on the food
     /// type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields
     /// `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be
     /// populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the
     /// `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food
-    /// is preferred over the anonymous food. Nutrition logs created from anonymous food are not be editable.
+    /// is preferred over the anonymous food. Nutrition logs created from anonymous food are not editable.
     /// </summary>
     public class NutritionLog : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Value representing the energy of the nutrition log. For nutrition logs created from an identified
-        /// food, this field will be populated based on the referenced food. For anonymous food, this field will be
-        /// populated manually.
-        /// </summary>
+        /// <summary>Optional. The total energy of the food, measured in kilocalories (`kcal`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("energy")]
         public virtual EnergyQuantity Energy { get; set; }
 
-        /// <summary>
-        /// Optional. Value representing the energy from fat of the nutrition log. For nutrition logs created from an
-        /// identified food, this field will be populated based on the referenced food. For anonymous food, this field
-        /// will be populated manually.
-        /// </summary>
+        /// <summary>Optional. The energy from fat, measured in kilocalories (`kcal`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("energyFromFat")]
         public virtual EnergyQuantity EnergyFromFat { get; set; }
 
-        /// <summary>Required. Represents the food ID.</summary>
+        /// <summary>
+        /// Optional. The resource name of the Food item. Required when creating a nutrition log from an identified
+        /// food. For anonymous food logs, use the `food_display_name` field instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("food")]
         public virtual string Food { get; set; }
 
         /// <summary>
-        /// Value representing the display name of the food. For nutrition logs created from an identified food, this
-        /// field will be populated based on the referenced food. For anonymous food, this field will be populated
-        /// manually.
+        /// The display name of the food. For identified food logs, this is populated automatically from the referenced
+        /// food.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("foodDisplayName")]
         public virtual string FoodDisplayName { get; set; }
 
-        /// <summary>Required. Observed interval.</summary>
+        /// <summary>Required. The time window when the food was logged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual SessionTimeInterval Interval { get; set; }
 
-        /// <summary>Optional. Value representing the meal type of the nutrition log.</summary>
+        /// <summary>Optional. The meal category. One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mealType")]
         public virtual string MealType { get; set; }
 
-        /// <summary>Optional. Value representing the nutrients of the nutrition log.</summary>
+        /// <summary>Optional. An array of individual nutrient values for the nutrition log.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nutrients")]
         public virtual System.Collections.Generic.IList<NutrientQuantity> Nutrients { get; set; }
 
-        /// <summary>Optional. Value representing the nutrition log serving.</summary>
+        /// <summary>Optional. The serving information for the logged food.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serving")]
         public virtual Serving Serving { get; set; }
 
-        /// <summary>
-        /// Optional. Value representing the total carbohydrate of the nutrition log. For nutrition logs created from an
-        /// identified food, this field will be populated based on the referenced food. For anonymous food, this field
-        /// will be populated manually.
-        /// </summary>
+        /// <summary>Optional. The total carbohydrate content, measured in grams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCarbohydrate")]
         public virtual WeightQuantity TotalCarbohydrate { get; set; }
 
-        /// <summary>
-        /// Optional. Value representing the total fat of the nutrition log. For nutrition logs created from an
-        /// identified food, this field will be populated based on the referenced food. For anonymous food, this field
-        /// will be populated manually.
-        /// </summary>
+        /// <summary>Optional. The total fat content, measured in grams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalFat")]
         public virtual WeightQuantity TotalFat { get; set; }
 
@@ -6314,7 +6541,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents different properties and information about the serving of a specific food.</summary>
     public class Serving : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Amount of food consumed, fractional values are supported.</summary>
+        /// <summary>Optional. The number of servings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual System.Nullable<double> Amount { get; set; }
 
@@ -7467,7 +7694,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents the weight quantity.</summary>
     public class WeightQuantity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Value representing the weight in grams.</summary>
+        /// <summary>Required. The weight value in grams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grams")]
         public virtual System.Nullable<double> Grams { get; set; }
 
