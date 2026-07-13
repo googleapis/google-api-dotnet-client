@@ -663,7 +663,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Cancels a build in progress.</summary>
+            /// <summary>
+            /// Cancels a build in progress. Note: This method only applies to global (non-regional) builds when using
+            /// the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional builds, use the
+            /// regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project.</param>
             /// <param name="id">Required. ID of the build.</param>
@@ -672,7 +676,11 @@ namespace Google.Apis.CloudBuild.v1
                 return new CancelRequest(this.service, body, projectId, id);
             }
 
-            /// <summary>Cancels a build in progress.</summary>
+            /// <summary>
+            /// Cancels a build in progress. Note: This method only applies to global (non-regional) builds when using
+            /// the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional builds, use the
+            /// regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
+            /// </summary>
             public class CancelRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -733,7 +741,9 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>
             /// Starts a build with the specified configuration. This method returns a long-running `Operation`, which
             /// includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS`
-            /// or `FAILURE`).
+            /// or `FAILURE`). Note: This method only creates global (non-regional) builds when using the legacy
+            /// resource path `projects/{project_id}/builds`. To create regional builds, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/builds`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project.</param>
@@ -745,7 +755,9 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>
             /// Starts a build with the specified configuration. This method returns a long-running `Operation`, which
             /// includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS`
-            /// or `FAILURE`).
+            /// or `FAILURE`). Note: This method only creates global (non-regional) builds when using the legacy
+            /// resource path `projects/{project_id}/builds`. To create regional builds, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/builds`.
             /// </summary>
             public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
@@ -808,7 +820,10 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Returns information about a previously requested build. The `Build` that is returned includes its status
-            /// (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
+            /// (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only applies to
+            /// global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}`. To
+            /// fetch regional builds, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/builds/{id}`.
             /// </summary>
             /// <param name="projectId">Required. ID of the project.</param>
             /// <param name="id">Required. ID of the build.</param>
@@ -819,7 +834,10 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Returns information about a previously requested build. The `Build` that is returned includes its status
-            /// (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
+            /// (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only applies to
+            /// global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}`. To
+            /// fetch regional builds, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/builds/{id}`.
             /// </summary>
             public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
             {
@@ -888,7 +906,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Lists previously requested builds. Previously requested builds may still be in-progress, or may have
-            /// finished successfully or unsuccessfully.
+            /// finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds when
+            /// using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the regional
+            /// resource path: `projects/{project_id}/locations/{location}/builds`.
             /// </summary>
             /// <param name="projectId">Required. ID of the project.</param>
             public virtual ListRequest List(string projectId)
@@ -898,7 +918,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Lists previously requested builds. Previously requested builds may still be in-progress, or may have
-            /// finished successfully or unsuccessfully.
+            /// finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds when
+            /// using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the regional
+            /// resource path: `projects/{project_id}/locations/{location}/builds`.
             /// </summary>
             public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildsResponse>
             {
@@ -993,16 +1015,19 @@ namespace Google.Apis.CloudBuild.v1
             }
 
             /// <summary>
-            /// Creates a new build based on the specified build. This method creates a new build using the original
-            /// build request, which may or may not result in an identical build. For triggered builds: * Triggered
-            /// builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that
-            /// uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build
-            /// built from the tip of a branch, the retried build will build from the tip of that branch, which may not
-            /// be the same revision as the original build. * If the original build specified a commit sha or revision
-            /// ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the
-            /// original build pulled source from Cloud Storage without specifying the generation of the object, the new
-            /// build will use the current object, which may be different from the original build source. * If the
-            /// original build pulled source from Cloud Storage and specified the generation of the object, the new
+            /// Creates a new build based on the specified build. Note: This method only applies to global
+            /// (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`. To
+            /// retry regional builds, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build using
+            /// the original build request, which may or may not result in an identical build. For triggered builds: *
+            /// Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a
+            /// build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original
+            /// build built from the tip of a branch, the retried build will build from the tip of that branch, which
+            /// may not be the same revision as the original build. * If the original build specified a commit sha or
+            /// revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: *
+            /// If the original build pulled source from Cloud Storage without specifying the generation of the object,
+            /// the new build will use the current object, which may be different from the original build source. * If
+            /// the original build pulled source from Cloud Storage and specified the generation of the object, the new
             /// build will attempt to use the same object, which may or may not be available depending on the bucket's
             /// lifecycle management settings.
             /// </summary>
@@ -1015,16 +1040,19 @@ namespace Google.Apis.CloudBuild.v1
             }
 
             /// <summary>
-            /// Creates a new build based on the specified build. This method creates a new build using the original
-            /// build request, which may or may not result in an identical build. For triggered builds: * Triggered
-            /// builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that
-            /// uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build
-            /// built from the tip of a branch, the retried build will build from the tip of that branch, which may not
-            /// be the same revision as the original build. * If the original build specified a commit sha or revision
-            /// ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the
-            /// original build pulled source from Cloud Storage without specifying the generation of the object, the new
-            /// build will use the current object, which may be different from the original build source. * If the
-            /// original build pulled source from Cloud Storage and specified the generation of the object, the new
+            /// Creates a new build based on the specified build. Note: This method only applies to global
+            /// (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`. To
+            /// retry regional builds, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build using
+            /// the original build request, which may or may not result in an identical build. For triggered builds: *
+            /// Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a
+            /// build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original
+            /// build built from the tip of a branch, the retried build will build from the tip of that branch, which
+            /// may not be the same revision as the original build. * If the original build specified a commit sha or
+            /// revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: *
+            /// If the original build pulled source from Cloud Storage without specifying the generation of the object,
+            /// the new build will use the current object, which may be different from the original build source. * If
+            /// the original build pulled source from Cloud Storage and specified the generation of the object, the new
             /// build will attempt to use the same object, which may or may not be available depending on the bucket's
             /// lifecycle management settings.
             /// </summary>
@@ -1403,7 +1431,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The full resource name for the GitHubEnterpriseConfig For example:
+            /// Identifier. The full resource name for the GitHubEnterpriseConfig For example:
             /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
@@ -1423,7 +1451,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// The full resource name for the GitHubEnterpriseConfig For example:
+                /// Identifier. The full resource name for the GitHubEnterpriseConfig For example:
                 /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1932,7 +1960,7 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>Updates an existing `BitbucketServerConfig`. This API is experimental.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name for the config.</param>
+                /// <param name="name">Identifier. The resource name for the config.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.BitbucketServerConfig body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -1949,7 +1977,7 @@ namespace Google.Apis.CloudBuild.v1
                         InitParameters();
                     }
 
-                    /// <summary>The resource name for the config.</summary>
+                    /// <summary>Identifier. The resource name for the config.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2146,7 +2174,12 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Cancels a build in progress.</summary>
+                /// <summary>
+                /// Cancels a build in progress. Note: This method only applies to global (non-regional) builds when
+                /// using the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional
+                /// builds, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The name of the `Build` to cancel. Format: `projects/{project}/locations/{location}/builds/{build}`
@@ -2156,7 +2189,12 @@ namespace Google.Apis.CloudBuild.v1
                     return new CancelRequest(this.service, body, name);
                 }
 
-                /// <summary>Cancels a build in progress.</summary>
+                /// <summary>
+                /// Cancels a build in progress. Note: This method only applies to global (non-regional) builds when
+                /// using the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional
+                /// builds, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
+                /// </summary>
                 public class CancelRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
@@ -2207,7 +2245,9 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>
                 /// Starts a build with the specified configuration. This method returns a long-running `Operation`,
                 /// which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as
-                /// `SUCCESS` or `FAILURE`).
+                /// `SUCCESS` or `FAILURE`). Note: This method only creates global (non-regional) builds when using the
+                /// legacy resource path `projects/{project_id}/builds`. To create regional builds, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/builds`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2222,7 +2262,9 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>
                 /// Starts a build with the specified configuration. This method returns a long-running `Operation`,
                 /// which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as
-                /// `SUCCESS` or `FAILURE`).
+                /// `SUCCESS` or `FAILURE`). Note: This method only creates global (non-regional) builds when using the
+                /// legacy resource path `projects/{project_id}/builds`. To create regional builds, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/builds`.
                 /// </summary>
                 public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
@@ -2285,7 +2327,10 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Returns information about a previously requested build. The `Build` that is returned includes its
-                /// status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
+                /// status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only
+                /// applies to global (non-regional) builds when using the legacy resource path
+                /// `projects/{project_id}/builds/{id}`. To fetch regional builds, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/builds/{id}`.
                 /// </summary>
                 /// <param name="name">
                 /// The name of the `Build` to retrieve. Format:
@@ -2298,7 +2343,10 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Returns information about a previously requested build. The `Build` that is returned includes its
-                /// status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information.
+                /// status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only
+                /// applies to global (non-regional) builds when using the legacy resource path
+                /// `projects/{project_id}/builds/{id}`. To fetch regional builds, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/builds/{id}`.
                 /// </summary>
                 public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
                 {
@@ -2366,7 +2414,9 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Lists previously requested builds. Previously requested builds may still be in-progress, or may have
-                /// finished successfully or unsuccessfully.
+                /// finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds
+                /// when using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the
+                /// regional resource path: `projects/{project_id}/locations/{location}/builds`.
                 /// </summary>
                 /// <param name="parent">
                 /// The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}`
@@ -2378,7 +2428,9 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Lists previously requested builds. Previously requested builds may still be in-progress, or may have
-                /// finished successfully or unsuccessfully.
+                /// finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds
+                /// when using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the
+                /// regional resource path: `projects/{project_id}/locations/{location}/builds`.
                 /// </summary>
                 public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildsResponse>
                 {
@@ -2473,18 +2525,21 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Creates a new build based on the specified build. This method creates a new build using the original
-                /// build request, which may or may not result in an identical build. For triggered builds: * Triggered
-                /// builds resolve to a precise revision; therefore a retry of a triggered build will result in a build
-                /// that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original
-                /// build built from the tip of a branch, the retried build will build from the tip of that branch,
-                /// which may not be the same revision as the original build. * If the original build specified a commit
-                /// sha or revision ID, the retried build will use the identical source. For builds that specify
-                /// `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the
-                /// generation of the object, the new build will use the current object, which may be different from the
-                /// original build source. * If the original build pulled source from Cloud Storage and specified the
-                /// generation of the object, the new build will attempt to use the same object, which may or may not be
-                /// available depending on the bucket's lifecycle management settings.
+                /// Creates a new build based on the specified build. Note: This method only applies to global
+                /// (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`.
+                /// To retry regional builds, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build
+                /// using the original build request, which may or may not result in an identical build. For triggered
+                /// builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build
+                /// will result in a build that uses the same revision. For non-triggered builds that specify
+                /// `RepoSource`: * If the original build built from the tip of a branch, the retried build will build
+                /// from the tip of that branch, which may not be the same revision as the original build. * If the
+                /// original build specified a commit sha or revision ID, the retried build will use the identical
+                /// source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud
+                /// Storage without specifying the generation of the object, the new build will use the current object,
+                /// which may be different from the original build source. * If the original build pulled source from
+                /// Cloud Storage and specified the generation of the object, the new build will attempt to use the same
+                /// object, which may or may not be available depending on the bucket's lifecycle management settings.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2496,18 +2551,21 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Creates a new build based on the specified build. This method creates a new build using the original
-                /// build request, which may or may not result in an identical build. For triggered builds: * Triggered
-                /// builds resolve to a precise revision; therefore a retry of a triggered build will result in a build
-                /// that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original
-                /// build built from the tip of a branch, the retried build will build from the tip of that branch,
-                /// which may not be the same revision as the original build. * If the original build specified a commit
-                /// sha or revision ID, the retried build will use the identical source. For builds that specify
-                /// `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the
-                /// generation of the object, the new build will use the current object, which may be different from the
-                /// original build source. * If the original build pulled source from Cloud Storage and specified the
-                /// generation of the object, the new build will attempt to use the same object, which may or may not be
-                /// available depending on the bucket's lifecycle management settings.
+                /// Creates a new build based on the specified build. Note: This method only applies to global
+                /// (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`.
+                /// To retry regional builds, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build
+                /// using the original build request, which may or may not result in an identical build. For triggered
+                /// builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build
+                /// will result in a build that uses the same revision. For non-triggered builds that specify
+                /// `RepoSource`: * If the original build built from the tip of a branch, the retried build will build
+                /// from the tip of that branch, which may not be the same revision as the original build. * If the
+                /// original build specified a commit sha or revision ID, the retried build will use the identical
+                /// source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud
+                /// Storage without specifying the generation of the object, the new build will use the current object,
+                /// which may be different from the original build source. * If the original build pulled source from
+                /// Cloud Storage and specified the generation of the object, the new build will attempt to use the same
+                /// object, which may or may not be available depending on the bucket's lifecycle management settings.
                 /// </summary>
                 public class RetryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
@@ -2594,7 +2652,8 @@ namespace Google.Apis.CloudBuild.v1
                     }
 
                     /// <summary>
-                    /// Batch connecting GitLab repositories to Cloud Build. This API is experimental.
+                    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Batch connecting GitLab repositories
+                    /// to Cloud Build. This API is experimental.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -2607,7 +2666,8 @@ namespace Google.Apis.CloudBuild.v1
                     }
 
                     /// <summary>
-                    /// Batch connecting GitLab repositories to Cloud Build. This API is experimental.
+                    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Batch connecting GitLab repositories
+                    /// to Cloud Build. This API is experimental.
                     /// </summary>
                     public class BatchCreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                     {
@@ -2674,14 +2734,20 @@ namespace Google.Apis.CloudBuild.v1
                         this.service = service;
                     }
 
-                    /// <summary>List all repositories for a given `GitLabConfig`. This API is experimental</summary>
+                    /// <summary>
+                    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. List all repositories for a given
+                    /// `GitLabConfig`. This API is experimental
+                    /// </summary>
                     /// <param name="parent">Required. Name of the parent resource.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>List all repositories for a given `GitLabConfig`. This API is experimental</summary>
+                    /// <summary>
+                    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. List all repositories for a given
+                    /// `GitLabConfig`. This API is experimental
+                    /// </summary>
                     public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListGitLabRepositoriesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -2750,7 +2816,10 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Creates a new `GitLabConfig`. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Creates a new `GitLabConfig`. This API
+                /// is experimental
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. Name of the parent resource.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitLabConfig body, string parent)
@@ -2758,7 +2827,10 @@ namespace Google.Apis.CloudBuild.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new `GitLabConfig`. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Creates a new `GitLabConfig`. This API
+                /// is experimental
+                /// </summary>
                 public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2820,14 +2892,20 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Delete a `GitLabConfig`. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Delete a `GitLabConfig`. This API is
+                /// experimental
+                /// </summary>
                 /// <param name="name">Required. The config resource name.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Delete a `GitLabConfig`. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Delete a `GitLabConfig`. This API is
+                /// experimental
+                /// </summary>
                 public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2865,14 +2943,20 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Retrieves a `GitLabConfig`. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Retrieves a `GitLabConfig`. This API is
+                /// experimental
+                /// </summary>
                 /// <param name="name">Required. The config resource name.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Retrieves a `GitLabConfig`. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Retrieves a `GitLabConfig`. This API is
+                /// experimental
+                /// </summary>
                 public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.GitLabConfig>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2910,14 +2994,20 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>List all `GitLabConfigs` for a given project. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. List all `GitLabConfigs` for a given
+                /// project. This API is experimental
+                /// </summary>
                 /// <param name="parent">Required. Name of the parent resource</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>List all `GitLabConfigs` for a given project. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. List all `GitLabConfigs` for a given
+                /// project. This API is experimental
+                /// </summary>
                 public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListGitLabConfigsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2987,15 +3077,21 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Updates an existing `GitLabConfig`. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Updates an existing `GitLabConfig`. This
+                /// API is experimental
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name for the config.</param>
+                /// <param name="name">Identifier. The resource name for the config.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitLabConfig body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates an existing `GitLabConfig`. This API is experimental</summary>
+                /// <summary>
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Updates an existing `GitLabConfig`. This
+                /// API is experimental
+                /// </summary>
                 public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -3006,7 +3102,7 @@ namespace Google.Apis.CloudBuild.v1
                         InitParameters();
                     }
 
-                    /// <summary>The resource name for the config.</summary>
+                    /// <summary>Identifier. The resource name for the config.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3056,8 +3152,8 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Remove a GitLab repository from a given GitLabConfig's connected repositories. This API is
-                /// experimental.
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Remove a GitLab repository from a given
+                /// GitLabConfig's connected repositories. This API is experimental.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="config">
@@ -3070,8 +3166,8 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Remove a GitLab repository from a given GitLabConfig's connected repositories. This API is
-                /// experimental.
+                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Remove a GitLab repository from a given
+                /// GitLabConfig's connected repositories. This API is experimental.
                 /// </summary>
                 public class RemoveGitLabConnectedRepositoryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
                 {
@@ -3438,7 +3534,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The full resource name for the GitHubEnterpriseConfig For example:
+                /// Identifier. The full resource name for the GitHubEnterpriseConfig For example:
                 /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
@@ -3458,7 +3554,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
 
                     /// <summary>
-                    /// The full resource name for the GitHubEnterpriseConfig For example:
+                    /// Identifier. The full resource name for the GitHubEnterpriseConfig For example:
                     /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5701,7 +5797,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RPC request object accepted by BatchCreateGitLabConnectedRepositories RPC method.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC request object accepted by
+    /// BatchCreateGitLabConnectedRepositories RPC method.
+    /// </summary>
     public class BatchCreateGitLabConnectedRepositoriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Requests to connect GitLab repositories.</summary>
@@ -5712,7 +5811,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response of BatchCreateGitLabConnectedRepositories RPC method.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Response of BatchCreateGitLabConnectedRepositories
+    /// RPC method.
+    /// </summary>
     public class BatchCreateGitLabConnectedRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The GitLab connected repository requests' responses.</summary>
@@ -5723,7 +5825,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for `BatchCreateGitLabConnectedRepositories` operation.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for
+    /// `BatchCreateGitLabConnectedRepositories` operation.
+    /// </summary>
     public class BatchCreateGitLabConnectedRepositoriesResponseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _completeTimeRaw;
@@ -5869,7 +5974,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
         public virtual string HostUri { get; set; }
 
-        /// <summary>The resource name for the config.</summary>
+        /// <summary>Identifier. The resource name for the config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6727,8 +6832,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual GitHubEventsConfig Github { get; set; }
 
         /// <summary>
-        /// GitLabEnterpriseEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab
-        /// Enterprise event is received.
+        /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEnterpriseEventsConfig describes the
+        /// configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitlabEnterpriseEventsConfig")]
         public virtual GitLabEventsConfig GitlabEnterpriseEventsConfig { get; set; }
@@ -7117,7 +7222,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for `CreateGitLabConfig` operation.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `CreateGitLabConfig` operation.
+    /// </summary>
     public class CreateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _completeTimeRaw;
@@ -7205,7 +7312,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to connect a repository from a connected GitLab host.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Request to connect a repository from a connected
+    /// GitLab host.
+    /// </summary>
     public class CreateGitLabConnectedRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The GitLab repository to connect.</summary>
@@ -7509,7 +7619,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for `DeleteGitLabConfig` operation.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `DeleteGitLabConfig` operation.
+    /// </summary>
     public class DeleteGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _completeTimeRaw;
@@ -7955,7 +8067,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string HostUrl { get; set; }
 
         /// <summary>
-        /// The full resource name for the GitHubEnterpriseConfig For example:
+        /// Identifier. The full resource name for the GitHubEnterpriseConfig For example:
         /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8073,7 +8185,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>GitLabConfig represents the configuration for a GitLab integration.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabConfig represents the configuration for a
+    /// GitLab integration.
+    /// </summary>
     public class GitLabConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Connected GitLab.com or GitLabEnterprise repositories for this config.</summary>
@@ -8121,7 +8236,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseConfig")]
         public virtual GitLabEnterpriseConfig EnterpriseConfig { get; set; }
 
-        /// <summary>The resource name for the config.</summary>
+        /// <summary>Identifier. The resource name for the config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -8143,7 +8258,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>GitLabConnectedRepository represents a GitLab connected repository request response.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabConnectedRepository represents a GitLab
+    /// connected repository request response.
+    /// </summary>
     public class GitLabConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8165,7 +8283,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise integration.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEnterpriseConfig represents the configuration
+    /// for a GitLabEnterprise integration.
+    /// </summary>
     public class GitLabEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Immutable. The URI of the GitlabEnterprise host.</summary>
@@ -8187,8 +8308,8 @@ namespace Google.Apis.CloudBuild.v1.Data
     }
 
     /// <summary>
-    /// GitLabEventsConfig describes the configuration of a trigger that creates a build whenever a GitLab event is
-    /// received.
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEventsConfig describes the configuration of a
+    /// trigger that creates a build whenever a GitLab event is received.
     /// </summary>
     public class GitLabEventsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8216,7 +8337,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Proto Representing a GitLabRepository</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Proto Representing a GitLabRepository
+    /// </summary>
     public class GitLabRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Link to the browse repo page on the GitLab instance</summary>
@@ -8264,7 +8387,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>GitLabSecrets represents the secrets in Secret Manager for a GitLab integration.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabSecrets represents the secrets in Secret
+    /// Manager for a GitLab integration.
+    /// </summary>
     public class GitLabSecrets : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The resource name for the api access token’s secret version</summary>
@@ -8617,7 +8743,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RPC response object returned by ListGitLabConfigs RPC method.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC response object returned by ListGitLabConfigs
+    /// RPC method.
+    /// </summary>
     public class ListGitLabConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of GitLabConfigs</summary>
@@ -8635,7 +8764,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RPC response object returned by the ListGitLabRepositories RPC method.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC response object returned by the
+    /// ListGitLabRepositories RPC method.
+    /// </summary>
     public class ListGitLabRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of GitLab repositories</summary>
@@ -9238,7 +9370,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RPC request object accepted by RemoveGitLabConnectedRepository RPC method.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC request object accepted by
+    /// RemoveGitLabConnectedRepository RPC method.
+    /// </summary>
     public class RemoveGitLabConnectedRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The connected repository to remove.</summary>
@@ -9491,7 +9626,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. ServiceDirectoryConfig represents Service Directory
+    /// configuration for a SCM host connection.
+    /// </summary>
     public class ServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9953,7 +10091,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for `UpdateGitLabConfig` operation.</summary>
+    /// <summary>
+    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `UpdateGitLabConfig` operation.
+    /// </summary>
     public class UpdateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _completeTimeRaw;
