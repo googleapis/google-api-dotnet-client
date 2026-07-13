@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DatabaseCenter.v1beta Client Library</Title>
-    <Version>1.75.0.4187</Version>
+    <Version>1.75.0.4200</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
