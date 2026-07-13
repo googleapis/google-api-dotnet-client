@@ -1618,7 +1618,10 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
         public virtual string AccessLevel { get; set; }
 
-        /// <summary>Requests from this PSC will be allowed from access perimeter data.</summary>
+        /// <summary>
+        /// A PrivateServiceConnectEndpoint that is allowed to access data outside the perimeter. The Private Service
+        /// Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscEndpoint")]
         public virtual GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint PscEndpoint { get; set; }
 
@@ -1757,7 +1760,10 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
         public virtual string AccessLevel { get; set; }
 
-        /// <summary>Requests from this PSC will be allowed to access perimeter data.</summary>
+        /// <summary>
+        /// A PrivateServiceConnectEndpoint that is allowed to access the perimeter. The Private Service Connect
+        /// endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscEndpoint")]
         public virtual GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint PscEndpoint { get; set; }
 
@@ -1864,11 +1870,12 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specifies the PSC an API call refers to.</summary>
+    /// <summary>Specifies the Private Service Connect endpoint that an API call refers to.</summary>
     public class GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The global forwarding rule identifier. Forwarding rule format:
+        /// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        /// Forwarding rule format:
         /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
