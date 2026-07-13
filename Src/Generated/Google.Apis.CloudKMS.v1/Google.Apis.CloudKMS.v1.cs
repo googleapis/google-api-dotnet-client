@@ -392,6 +392,59 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
+        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project or folder.</summary>
+        /// <param name="parent">
+        /// Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for.
+        /// This may be helpful for interrogating the effect of nested folder configurations on a given resource
+        /// project. Format: * projects/{project} * folders/{folder}
+        /// </param>
+        public virtual ShowEffectiveAutokeyConfigRequest ShowEffectiveAutokeyConfig(string parent)
+        {
+            return new ShowEffectiveAutokeyConfigRequest(this.service, parent);
+        }
+
+        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project or folder.</summary>
+        public class ShowEffectiveAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ShowEffectiveAutokeyConfigResponse>
+        {
+            /// <summary>Constructs a new ShowEffectiveAutokeyConfig request.</summary>
+            public ShowEffectiveAutokeyConfigRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration
+            /// for. This may be helpful for interrogating the effect of nested folder configurations on a given
+            /// resource project. Format: * projects/{project} * folders/{folder}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "showEffectiveAutokeyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}:showEffectiveAutokeyConfig";
+
+            /// <summary>Initializes ShowEffectiveAutokeyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>
         /// Updates the AutokeyConfig for a folder or a project. The caller must have both
         /// `cloudkms.autokeyConfigs.update` permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy`
@@ -2236,6 +2289,80 @@ namespace Google.Apis.CloudKMS.v1
                             }
                         }
 
+                        /// <summary>
+                        /// Exports a CryptoKeyVersion with a trusted key. The CryptoKeyVersion must have
+                        /// trusted_wrapping_enabled set to true. The CryptoKeyVersion of the [wrapping_key] must have
+                        /// the AES_WRAPPING purpose. The [wrapping_key] must have the AES_256_KWP algorithm.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the CryptoKeyVersion to export. The CryptoKeyVersion must have
+                        /// trusted_wrapping_enabled set to true.
+                        /// </param>
+                        public virtual ExportTrustedKeyWrappedCryptoKeyVersionRequest ExportTrustedKeyWrappedCryptoKeyVersion(string name)
+                        {
+                            return new ExportTrustedKeyWrappedCryptoKeyVersionRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Exports a CryptoKeyVersion with a trusted key. The CryptoKeyVersion must have
+                        /// trusted_wrapping_enabled set to true. The CryptoKeyVersion of the [wrapping_key] must have
+                        /// the AES_WRAPPING purpose. The [wrapping_key] must have the AES_256_KWP algorithm.
+                        /// </summary>
+                        public class ExportTrustedKeyWrappedCryptoKeyVersionRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ExportTrustedKeyWrappedCryptoKeyVersionResponse>
+                        {
+                            /// <summary>Constructs a new ExportTrustedKeyWrappedCryptoKeyVersion request.</summary>
+                            public ExportTrustedKeyWrappedCryptoKeyVersionRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the CryptoKeyVersion to export. The CryptoKeyVersion must have
+                            /// trusted_wrapping_enabled set to true.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Required. The name of the CryptoKeyVersion to use as a wrapping key. The
+                            /// CryptoKeyVersion must have hsm_trusted set to true.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("wrappingKey", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string WrappingKey { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "exportTrustedKeyWrappedCryptoKeyVersion";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:exportTrustedKeyWrappedCryptoKeyVersion";
+
+                            /// <summary>Initializes ExportTrustedKeyWrappedCryptoKeyVersion parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
+                                });
+                                RequestParameters.Add("wrappingKey", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "wrappingKey",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>Returns metadata for a given CryptoKeyVersion.</summary>
                         /// <param name="name">Required. The name of the CryptoKeyVersion to get.</param>
                         public virtual GetRequest Get(string name)
@@ -2453,6 +2580,71 @@ namespace Google.Apis.CloudKMS.v1
                             public override string RestPath => "v1/{+parent}/cryptoKeyVersions:import";
 
                             /// <summary>Initializes Import parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Import wrapped key material into a CryptoKeyVersion with a trusted key. All requests must
+                        /// specify a CryptoKey. If a CryptoKeyVersion is additionally specified in the request, key
+                        /// material will be reimported into that version. Otherwise, a new version will be created, and
+                        /// will be assigned the next sequential id within the CryptoKey. The CryptoKeyVersion will have
+                        /// trusted_wrapping_enabled set to true.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Required. The name of the CryptoKey to be imported into.</param>
+                        public virtual ImportTrustedKeyWrappedCryptoKeyVersionRequest ImportTrustedKeyWrappedCryptoKeyVersion(Google.Apis.CloudKMS.v1.Data.ImportTrustedKeyWrappedCryptoKeyVersionRequest body, string parent)
+                        {
+                            return new ImportTrustedKeyWrappedCryptoKeyVersionRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Import wrapped key material into a CryptoKeyVersion with a trusted key. All requests must
+                        /// specify a CryptoKey. If a CryptoKeyVersion is additionally specified in the request, key
+                        /// material will be reimported into that version. Otherwise, a new version will be created, and
+                        /// will be assigned the next sequential id within the CryptoKey. The CryptoKeyVersion will have
+                        /// trusted_wrapping_enabled set to true.
+                        /// </summary>
+                        public class ImportTrustedKeyWrappedCryptoKeyVersionRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKeyVersion>
+                        {
+                            /// <summary>Constructs a new ImportTrustedKeyWrappedCryptoKeyVersion request.</summary>
+                            public ImportTrustedKeyWrappedCryptoKeyVersionRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.ImportTrustedKeyWrappedCryptoKeyVersionRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the CryptoKey to be imported into.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudKMS.v1.Data.ImportTrustedKeyWrappedCryptoKeyVersionRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "importTrustedKeyWrappedCryptoKeyVersion";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/cryptoKeyVersions:importTrustedKeyWrappedCryptoKeyVersion";
+
+                            /// <summary>Initializes ImportTrustedKeyWrappedCryptoKeyVersion parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -3047,6 +3239,15 @@ namespace Google.Apis.CloudKMS.v1
                         [Google.Apis.Util.RequestParameterAttribute("skipInitialVersionCreation", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> SkipInitialVersionCreation { get; set; }
 
+                        /// <summary>
+                        /// Optional. Whether trusted wrapping will be enabled on the first CryptoKeyVersions created
+                        /// for this CryptoKey. This field is only supported for keys with
+                        /// CryptoKeyVersionTemplate.protection_level HSM_SINGLE_TENANT. This field is supported for all
+                        /// CryptoKeyPurposes except ENCRYPT_DECRYPT.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("trustedWrappingEnabled", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> TrustedWrappingEnabled { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudKMS.v1.Data.CryptoKey Body { get; set; }
 
@@ -3085,6 +3286,14 @@ namespace Google.Apis.CloudKMS.v1
                             RequestParameters.Add("skipInitialVersionCreation", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "skipInitialVersionCreation",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("trustedWrappingEnabled", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "trustedWrappingEnabled",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6178,17 +6387,18 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
-        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project.</summary>
+        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project or folder.</summary>
         /// <param name="parent">
-        /// Required. Name of the resource project to the show effective Cloud KMS Autokey configuration for. This may
-        /// be helpful for interrogating the effect of nested folder configurations on a given resource project.
+        /// Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for.
+        /// This may be helpful for interrogating the effect of nested folder configurations on a given resource
+        /// project. Format: * projects/{project} * folders/{folder}
         /// </param>
         public virtual ShowEffectiveAutokeyConfigRequest ShowEffectiveAutokeyConfig(string parent)
         {
             return new ShowEffectiveAutokeyConfigRequest(this.service, parent);
         }
 
-        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project.</summary>
+        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project or folder.</summary>
         public class ShowEffectiveAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ShowEffectiveAutokeyConfigResponse>
         {
             /// <summary>Constructs a new ShowEffectiveAutokeyConfig request.</summary>
@@ -6199,8 +6409,9 @@ namespace Google.Apis.CloudKMS.v1
             }
 
             /// <summary>
-            /// Required. Name of the resource project to the show effective Cloud KMS Autokey configuration for. This
-            /// may be helpful for interrogating the effect of nested folder configurations on a given resource project.
+            /// Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration
+            /// for. This may be helpful for interrogating the effect of nested folder configurations on a given
+            /// resource project. Format: * projects/{project} * folders/{folder}
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -7434,6 +7645,13 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string GenerationFailureReason { get; set; }
 
         /// <summary>
+        /// Output only. Field indicating that the key wrapping key is trusted. This field is only valid for key purpose
+        /// AES_256_WRAPPING, and protection level HSM_SINGLE_TENANT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hsmTrusted")]
+        public virtual System.Nullable<bool> HsmTrusted { get; set; }
+
+        /// <summary>
         /// Output only. The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importFailureReason")]
@@ -7508,6 +7726,14 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The current state of the CryptoKeyVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Immutable. Field indicating that the key may be wrapped by a trusted key. This field can be set for all key
+        /// purposes except ENCRYPT_DECRYPT, and is only valid for keys with protection level HSM_SINGLE_TENANT. This
+        /// field can only be set at creation or import time via CreateCryptoKeyVersion, or ImportCryptoKeyVersion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustedWrappingEnabled")]
+        public virtual System.Nullable<bool> TrustedWrappingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7978,6 +8204,31 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for KeyManagementService.ExportTrustedKeyWrappedCryptoKeyVersion.</summary>
+    public class ExportTrustedKeyWrappedCryptoKeyVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The wrapped key material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrappedKey")]
+        public virtual string WrappedKey { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A CRC32C checksum of the returned
+        /// ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key. An integrity check of
+        /// ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key can be performed by computing the CRC32C
+        /// checksum of ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key and comparing your results to this
+        /// field. Discard the response in case of non-matching checksum values, and perform a limited number of
+        /// retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This
+        /// field is defined as int64 for reasons of compatibility across different languages. However, it is a
+        /// non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        /// that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrappedKeyCrc32c")]
+        public virtual System.Nullable<long> WrappedKeyCrc32c { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -8029,13 +8280,21 @@ namespace Google.Apis.CloudKMS.v1.Data
     public class ExternalProtectionLevelOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field
-        /// instead of external_key_uri when using an EkmConnection.
+        /// Optional. The resource name of the backend environment where the key material of CryptoKeyVersions is
+        /// associated with. Setting this field overrides the CryptoKeyBackend. This field may be set when
+        /// CryptoKeyVersions is set to EXTERNAL_VPC. Format: `projects/*/locations/*/ekmConnections/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ekmConnectionBackendOverride")]
+        public virtual string EkmConnectionBackendOverride { get; set; }
+
+        /// <summary>
+        /// Optional. The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set
+        /// this field instead of external_key_uri when using an EkmConnection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmConnectionKeyPath")]
         public virtual string EkmConnectionKeyPath { get; set; }
 
-        /// <summary>The URI for an external resource that this CryptoKeyVersion represents.</summary>
+        /// <summary>Optional. The URI for an external resource that this CryptoKeyVersion represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalKeyUri")]
         public virtual string ExternalKeyUri { get; set; }
 
@@ -8118,6 +8377,14 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rsaAesWrappedKey")]
         public virtual string RsaAesWrappedKey { get; set; }
+
+        /// <summary>
+        /// Optional. Whether trusted wrapping will be enabled on the imported [CryptoKeyVersion]. This field is only
+        /// supported for keys with CryptoKeyVersionTemplate.protection_level HSM_SINGLE_TENANT. This field is supported
+        /// for all CryptoKeyPurposes besides ENCRYPT_DECRYPT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustedWrappingEnabled")]
+        public virtual System.Nullable<bool> TrustedWrappingEnabled { get; set; }
 
         /// <summary>
         /// Optional. The wrapped key material to import. Before wrapping, key material must be formatted. If importing
@@ -8360,6 +8627,44 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Output only. The current state of the ImportJob, indicating if it can be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for KeyManagementService.ImportTrustedKeyWrappedCryptoKeyVersion.</summary>
+    public class ImportTrustedKeyWrappedCryptoKeyVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Required - The algorithm of the key being imported. This does not need to match the
+        /// version_template of the CryptoKey this version imports into.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
+        public virtual string Algorithm { get; set; }
+
+        /// <summary>
+        /// Optional. The optional name of an existing CryptoKeyVersion to target for an import operation. If this field
+        /// is not present, a new CryptoKeyVersion containing the supplied key material is created. If this field is
+        /// present, the supplied key material is imported into the existing CryptoKeyVersion. To import into an
+        /// existing CryptoKeyVersion, the CryptoKeyVersion must be a child of
+        /// ImportTrustedKeyWrappedCryptoKeyVersionRequest.parent, have been previously created via
+        /// ImportTrustedKeyWrappedCryptoKeyVersion, and be in DESTROYED or IMPORT_FAILED state. The key material and
+        /// algorithm must match the previous CryptoKeyVersion exactly if the CryptoKeyVersion has ever contained key
+        /// material
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersion")]
+        public virtual string CryptoKeyVersion { get; set; }
+
+        /// <summary>
+        /// Required. Required - the CKV of the trusted key used to import. This can be the name of a CryptoKeyVersion
+        /// or a CryptoKey.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importingKey")]
+        public virtual string ImportingKey { get; set; }
+
+        /// <summary>Required. The target key pre-wrapped on premises.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrappedKey")]
+        public virtual string WrappedKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9770,9 +10075,17 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Response message for ShowEffectiveAutokeyConfig.</summary>
     public class ShowEffectiveAutokeyConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the key project configured in the resource project's folder ancestry.</summary>
+        /// <summary>Name of the key project configured in the ancestry of the project or folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyProject")]
         public virtual string KeyProject { get; set; }
+
+        /// <summary>The KeyProjectResolutionMode for the AutokeyConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyProjectResolutionMode")]
+        public virtual string KeyProjectResolutionMode { get; set; }
+
+        /// <summary>Source of the effective AutokeyConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual Source Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10213,6 +10526,27 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
 
+        /// <summary>
+        /// Promotes a key with the AES_WRAPPING purpose to a trusted wrapping key. The key must be in the ACTIVE state
+        /// to perform this operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeKeyTrust")]
+        public virtual UpgradeKeyTrust UpgradeKeyTrust { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Source of the effective AutokeyConfig.</summary>
+    public class Source : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Contains the resource name of the AutokeyConfig that is effective, for example, `folders/{FOLDER_NUMBER}` or
+        /// `projects/{PROJECT_NUMBER}` or `organizations/{ORGANIZATION_NUMBER}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10278,6 +10612,26 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Required. The id of the child CryptoKeyVersion to use as primary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersionId")]
         public virtual string CryptoKeyVersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Promotes a key with the AES_WRAPPING purpose to a trusted wrapping key. The key must be in the ACTIVE state to
+    /// perform this operation.
+    /// </summary>
+    public class UpgradeKeyTrust : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the CryptoKeyVersion to promote.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The public key associated with the 2FA key that will sign the login nonce for this operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("twoFactorPublicKeyPem")]
+        public virtual string TwoFactorPublicKeyPem { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
