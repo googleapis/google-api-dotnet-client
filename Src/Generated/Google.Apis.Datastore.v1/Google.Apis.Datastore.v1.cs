@@ -1582,6 +1582,10 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
 
+        /// <summary>Optional. The options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1640,6 +1644,10 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
+        /// <summary>Optional. The options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>Options for a new transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionOptions")]
         public virtual TransactionOptions TransactionOptions { get; set; }
@@ -1681,6 +1689,10 @@ namespace Google.Apis.Datastore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
         public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; }
+
+        /// <summary>Optional. The options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>
         /// Options for beginning a new transaction for this request. The transaction is committed when the request
@@ -2926,6 +2938,10 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readOptions")]
         public virtual ReadOptions ReadOptions { get; set; }
 
+        /// <summary>Optional. The options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3727,6 +3743,20 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for a request.</summary>
+    public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The request tags for the request. The tags are processed as follows: - Truncated to 510
+        /// characters. - Filtered out if empty. - Deduplicated. - Limited to 50 tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTags")]
+        public virtual System.Collections.Generic.IList<string> RequestTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Datastore.ReserveIds.</summary>
     public class ReserveIdsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3742,6 +3772,10 @@ namespace Google.Apis.Datastore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
+
+        /// <summary>Optional. The options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3763,6 +3797,10 @@ namespace Google.Apis.Datastore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
+
+        /// <summary>Optional. The options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>Required. The transaction identifier, returned by a call to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
@@ -3814,6 +3852,10 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The options for this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOptions")]
         public virtual ReadOptions ReadOptions { get; set; }
+
+        /// <summary>Optional. The options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3890,6 +3932,10 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The options for this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOptions")]
         public virtual ReadOptions ReadOptions { get; set; }
+
+        /// <summary>Optional. The options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
