@@ -981,6 +981,29 @@ namespace Google.Apis.Merchant.inventories_v1
 namespace Google.Apis.Merchant.inventories_v1.Data
 {
     /// <summary>
+    /// A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty.
+    /// </summary>
+    public class CustomAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupValues")]
+        public virtual System.Collections.Generic.IList<CustomAttribute> GroupValues { get; set; }
+
+        /// <summary>The name of the attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The value of the attribute. If `value` is not empty, `group_values` must be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -1244,6 +1267,17 @@ namespace Google.Apis.Merchant.inventories_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; }
+
+        /// <summary>
+        /// Optional. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute
+        /// of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`).
+        /// This is useful for submitting attributes not explicitly exposed by the API. Maximum allowed number of
+        /// characters for each custom attribute is 10240 (represents sum of characters for name and value). Maximum
+        /// 2500 custom attributes can be set, with total size of 102.4kB. Underscores in custom attribute names are
+        /// replaced by spaces upon insertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customAttributes")]
+        public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
         /// <summary>Optional. Location of the product inside the store. Maximum length is 20 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instoreProductLocation")]
