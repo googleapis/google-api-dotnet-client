@@ -2047,6 +2047,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>A release of a Firebase app.</summary>
     public class GoogleFirebaseAppdistroV1Release : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Registration state of the Android package (BinaryType.APK).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidPackageRegistrationState")]
+        public virtual string AndroidPackageRegistrationState { get; set; }
+
         /// <summary>
         /// Output only. A signed link (which expires in one hour) to directly download the app binary (IPA/APK/AAB)
         /// file.
@@ -2152,7 +2156,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Notes of the release.</summary>
+        /// <summary>Notes about the release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseNotes")]
         public virtual GoogleFirebaseAppdistroV1ReleaseNotes ReleaseNotes { get; set; }
 
