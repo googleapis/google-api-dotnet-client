@@ -14680,7 +14680,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         /// DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches
         /// with the rule. Limited to 50 principals per Authorization Policy for regional internal Application Load
         /// Balancers, regional external Application Load Balancers, cross-region internal Application Load Balancers,
-        /// and Cloud Service Mesh. This field is not supported for global external Application Load Balancers.
+        /// and Cloud Service Mesh while 25 principals per Authorization Policy for global external Application Load
+        /// Balancers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principals")]
         public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRulePrincipal> Principals { get; set; }
@@ -18990,7 +18991,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
         public virtual string CustomMirroringProfile { get; set; }
 
-        /// <summary>Output only. Identifier used by the data-path. Unique within \{container, location\}.</summary>
+        /// <summary>Output only. Identifier used by the data-path. Unique within `{container, location}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataPathId")]
         public virtual System.Nullable<ulong> DataPathId { get; set; }
 
