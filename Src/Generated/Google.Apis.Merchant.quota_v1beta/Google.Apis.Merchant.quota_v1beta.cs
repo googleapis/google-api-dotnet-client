@@ -598,7 +598,7 @@ namespace Google.Apis.Merchant.quota_v1beta.Data
 
         /// <summary>
         /// Output only. The current quota usage, meaning the number of calls already made on a given day to the methods
-        /// in the group. The daily quota limits reset at at 12:00 PM midday UTC.
+        /// in the group. The daily quota limits reset at 12:00 PM midday UTC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaUsage")]
         public virtual System.Nullable<long> QuotaUsage { get; set; }
