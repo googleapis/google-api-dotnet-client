@@ -9515,10 +9515,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// [[[size_system:]size_type:]size_value]. For example, in "US:MENS:M", "US" represents size system; "MENS"
         /// represents size type; "M" represents size value. In "GIRLS:27", size system is empty; "GIRLS" represents
         /// size type; "27" represents size value. In "32 inches", both size system and size type are empty, while size
-        /// value is "32 inches". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded
-        /// string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        /// Corresponding properties: Google Merchant Center property
-        /// [size](https://support.google.com/merchants/answer/6324492),
+        /// value is "32 inches". A maximum of 20 values are allowed per Product by default. This limit can be increased
+        /// using dynamic override configurations. Each value must be a UTF-8 encoded string with a length limit of 128
+        /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant
+        /// Center property [size](https://support.google.com/merchants/answer/6324492),
         /// [size_type](https://support.google.com/merchants/answer/6324497), and
         /// [size_system](https://support.google.com/merchants/answer/6324502). Schema.org property
         /// [Product.size](https://schema.org/size).
