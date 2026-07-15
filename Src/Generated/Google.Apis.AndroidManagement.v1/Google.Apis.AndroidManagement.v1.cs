@@ -6414,7 +6414,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configurationVariables")]
         public virtual System.Collections.Generic.IDictionary<string, string> ConfigurationVariables { get; set; }
 
-        /// <summary>The ID of the managed configurations template.</summary>
+        /// <summary>
+        /// The ID of the managed configurations template. This value must be a numeric string containing exactly one or
+        /// more digits (for example, "123456").
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
         public virtual string TemplateId { get; set; }
 
