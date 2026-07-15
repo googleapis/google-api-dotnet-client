@@ -7609,7 +7609,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the result of the rollup of the user's total calories.</summary>
+    /// <summary>
+    /// Represents the result of the rollup of the user's total calories. Note: Queries for the `total-calories` data
+    /// type must include a time interval filter (such as `total_calories.interval.start_time` or
+    /// `total_calories.interval.civil_start_time`). The maximum range is 14 days. Example filter query:
+    /// `total_calories.interval.start_time &amp;gt;= "2026-04-20T00:00:00Z" AND total_calories.interval.start_time
+    /// &amp;lt; "2026-04-21T00:00:00Z"`
+    /// </summary>
     public class TotalCaloriesRollupValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Sum of the total calories in kilocalories.</summary>
