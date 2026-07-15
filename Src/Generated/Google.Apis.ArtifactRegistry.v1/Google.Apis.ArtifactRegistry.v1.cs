@@ -8358,6 +8358,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration for the no-cache fetching mode, which acts as a non-caching proxy.</summary>
+    public class NoCacheFetching : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>NpmPackage represents an npm artifact.</summary>
     public class NpmPackage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9033,6 +9040,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>Specific settings for a Maven remote repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mavenRepository")]
         public virtual MavenRepository MavenRepository { get; set; }
+
+        /// <summary>The remote repository will act as a non-caching proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noCache")]
+        public virtual NoCacheFetching NoCache { get; set; }
 
         /// <summary>Specific settings for an Npm remote repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("npmRepository")]
