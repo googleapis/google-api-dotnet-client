@@ -9203,6 +9203,42 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. The view to apply to the returned DataStore. Defaults to
+                        /// DataStoreView.DATA_STORE_VIEW_BASIC if unspecified. DataStoreView.DATA_STORE_VIEW_FULL
+                        /// additionally populates DataStore.icon_uri for a connector-backed data store. Resolving the
+                        /// connector icon requires extra lookups, so request it only when the caller renders the icon.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The view to apply to the returned DataStore. Defaults to
+                        /// DataStoreView.DATA_STORE_VIEW_BASIC if unspecified. DataStoreView.DATA_STORE_VIEW_FULL
+                        /// additionally populates DataStore.icon_uri for a connector-backed data store. Resolving the
+                        /// connector icon requires extra lookups, so request it only when the caller renders the icon.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>
+                            /// The default / unset value. The API defaults to DataStoreView.DATA_STORE_VIEW_BASIC.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_UNSPECIFIED")]
+                            DATASTOREVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Does not populate DataStore.icon_uri. This is the default view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_BASIC")]
+                            DATASTOREVIEWBASIC = 1,
+
+                            /// <summary>
+                            /// Additionally populates DataStore.icon_uri for connector-backed data stores. Resolving
+                            /// connector icons requires extra lookups, so request this view only when the icons are
+                            /// rendered.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_FULL")]
+                            DATASTOREVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -9223,6 +9259,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -9442,6 +9486,44 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// Optional. The view to apply to the returned DataStores. Defaults to
+                        /// DataStoreView.DATA_STORE_VIEW_BASIC if unspecified. DataStoreView.DATA_STORE_VIEW_FULL
+                        /// additionally populates DataStore.icon_uri for connector-backed data stores. Resolving
+                        /// connector icons requires extra lookups, so request it only when the caller renders the
+                        /// icons.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The view to apply to the returned DataStores. Defaults to
+                        /// DataStoreView.DATA_STORE_VIEW_BASIC if unspecified. DataStoreView.DATA_STORE_VIEW_FULL
+                        /// additionally populates DataStore.icon_uri for connector-backed data stores. Resolving
+                        /// connector icons requires extra lookups, so request it only when the caller renders the
+                        /// icons.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>
+                            /// The default / unset value. The API defaults to DataStoreView.DATA_STORE_VIEW_BASIC.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_UNSPECIFIED")]
+                            DATASTOREVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Does not populate DataStore.icon_uri. This is the default view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_BASIC")]
+                            DATASTOREVIEWBASIC = 1,
+
+                            /// <summary>
+                            /// Additionally populates DataStore.icon_uri for connector-backed data stores. Resolving
+                            /// connector icons requires extra lookups, so request this view only when the icons are
+                            /// rendered.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_FULL")]
+                            DATASTOREVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -9482,6 +9564,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -9873,9 +9963,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
 
                     /// <summary>
-                    /// Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleon resource of
+                    /// Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleton resource of
                     /// DataStore. It's empty when DataStore is created. The first call to this method will set up
-                    /// DocumentProcessingConfig.
+                    /// DocumentProcessingConfig. The `update_mask` query parameter is not supported; if it is set the
+                    /// request returns an error. To update mutable fields, omit `update_mask` and send the full
+                    /// DocumentProcessingConfig as the request body. The entire resource is overwritten, so include all
+                    /// values you want to retain. For example, to update the layout parser, set
+                    /// DocumentProcessingConfig.default_parsing_config (or
+                    /// DocumentProcessingConfig.parsing_config_overrides) and omit `update_mask`. Some fields, such as
+                    /// DocumentProcessingConfig.chunking_config, are immutable and return an error if changed.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -9888,9 +9984,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
 
                     /// <summary>
-                    /// Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleon resource of
+                    /// Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleton resource of
                     /// DataStore. It's empty when DataStore is created. The first call to this method will set up
-                    /// DocumentProcessingConfig.
+                    /// DocumentProcessingConfig. The `update_mask` query parameter is not supported; if it is set the
+                    /// request returns an error. To update mutable fields, omit `update_mask` and send the full
+                    /// DocumentProcessingConfig as the request body. The entire resource is overwritten, so include all
+                    /// values you want to retain. For example, to update the layout parser, set
+                    /// DocumentProcessingConfig.default_parsing_config (or
+                    /// DocumentProcessingConfig.parsing_config_overrides) and omit `update_mask`. Some fields, such as
+                    /// DocumentProcessingConfig.chunking_config, are immutable and return an error if changed.
                     /// </summary>
                     public class UpdateDocumentProcessingConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig>
                     {
@@ -9910,9 +10012,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Indicates which fields in the provided DocumentProcessingConfig to update. The following are
-                        /// the only supported fields: * DocumentProcessingConfig.ocr_config If not set, all supported
-                        /// fields are updated.
+                        /// Not supported. If `update_mask` is set, the request returns an `UnsupportedFieldError`. To
+                        /// update mutable fields, omit `update_mask`; the full DocumentProcessingConfig in the request
+                        /// body then overwrites the existing resource. See the method description for details.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -23053,6 +23155,42 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. The view to apply to the returned DataStore. Defaults to
+                    /// DataStoreView.DATA_STORE_VIEW_BASIC if unspecified. DataStoreView.DATA_STORE_VIEW_FULL
+                    /// additionally populates DataStore.icon_uri for a connector-backed data store. Resolving the
+                    /// connector icon requires extra lookups, so request it only when the caller renders the icon.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. The view to apply to the returned DataStore. Defaults to
+                    /// DataStoreView.DATA_STORE_VIEW_BASIC if unspecified. DataStoreView.DATA_STORE_VIEW_FULL
+                    /// additionally populates DataStore.icon_uri for a connector-backed data store. Resolving the
+                    /// connector icon requires extra lookups, so request it only when the caller renders the icon.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>
+                        /// The default / unset value. The API defaults to DataStoreView.DATA_STORE_VIEW_BASIC.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_UNSPECIFIED")]
+                        DATASTOREVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Does not populate DataStore.icon_uri. This is the default view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_BASIC")]
+                        DATASTOREVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Additionally populates DataStore.icon_uri for connector-backed data stores. Resolving
+                        /// connector icons requires extra lookups, so request this view only when the icons are
+                        /// rendered.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_FULL")]
+                        DATASTOREVIEWFULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -23073,6 +23211,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -23292,6 +23438,42 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. The view to apply to the returned DataStores. Defaults to
+                    /// DataStoreView.DATA_STORE_VIEW_BASIC if unspecified. DataStoreView.DATA_STORE_VIEW_FULL
+                    /// additionally populates DataStore.icon_uri for connector-backed data stores. Resolving connector
+                    /// icons requires extra lookups, so request it only when the caller renders the icons.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. The view to apply to the returned DataStores. Defaults to
+                    /// DataStoreView.DATA_STORE_VIEW_BASIC if unspecified. DataStoreView.DATA_STORE_VIEW_FULL
+                    /// additionally populates DataStore.icon_uri for connector-backed data stores. Resolving connector
+                    /// icons requires extra lookups, so request it only when the caller renders the icons.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>
+                        /// The default / unset value. The API defaults to DataStoreView.DATA_STORE_VIEW_BASIC.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_UNSPECIFIED")]
+                        DATASTOREVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Does not populate DataStore.icon_uri. This is the default view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_BASIC")]
+                        DATASTOREVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Additionally populates DataStore.icon_uri for connector-backed data stores. Resolving
+                        /// connector icons requires extra lookups, so request this view only when the icons are
+                        /// rendered.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("DATA_STORE_VIEW_FULL")]
+                        DATASTOREVIEWFULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -23332,6 +23514,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -23659,9 +23849,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
 
                 /// <summary>
-                /// Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleon resource of DataStore.
+                /// Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleton resource of DataStore.
                 /// It's empty when DataStore is created. The first call to this method will set up
-                /// DocumentProcessingConfig.
+                /// DocumentProcessingConfig. The `update_mask` query parameter is not supported; if it is set the
+                /// request returns an error. To update mutable fields, omit `update_mask` and send the full
+                /// DocumentProcessingConfig as the request body. The entire resource is overwritten, so include all
+                /// values you want to retain. For example, to update the layout parser, set
+                /// DocumentProcessingConfig.default_parsing_config (or
+                /// DocumentProcessingConfig.parsing_config_overrides) and omit `update_mask`. Some fields, such as
+                /// DocumentProcessingConfig.chunking_config, are immutable and return an error if changed.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -23674,9 +23870,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
 
                 /// <summary>
-                /// Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleon resource of DataStore.
+                /// Updates the DocumentProcessingConfig. DocumentProcessingConfig is a singleton resource of DataStore.
                 /// It's empty when DataStore is created. The first call to this method will set up
-                /// DocumentProcessingConfig.
+                /// DocumentProcessingConfig. The `update_mask` query parameter is not supported; if it is set the
+                /// request returns an error. To update mutable fields, omit `update_mask` and send the full
+                /// DocumentProcessingConfig as the request body. The entire resource is overwritten, so include all
+                /// values you want to retain. For example, to update the layout parser, set
+                /// DocumentProcessingConfig.default_parsing_config (or
+                /// DocumentProcessingConfig.parsing_config_overrides) and omit `update_mask`. Some fields, such as
+                /// DocumentProcessingConfig.chunking_config, are immutable and return an error if changed.
                 /// </summary>
                 public class UpdateDocumentProcessingConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig>
                 {
@@ -23696,9 +23898,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Indicates which fields in the provided DocumentProcessingConfig to update. The following are the
-                    /// only supported fields: * DocumentProcessingConfig.ocr_config If not set, all supported fields
-                    /// are updated.
+                    /// Not supported. If `update_mask` is set, the request returns an `UnsupportedFieldError`. To
+                    /// update mutable fields, omit `update_mask`; the full DocumentProcessingConfig in the request body
+                    /// then overwrites the existing resource. See the method description for details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -34988,6 +35190,50 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
 
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
         public virtual System.Nullable<long> LicenseCount { get; set; }
@@ -45035,6 +45281,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
 
         /// <summary>
+        /// Output only. Provides the icon URI of the data store's connector source, if this is a connector-backed data
+        /// store. Empty for data stores without an associated connector source. In DataStoreService.ListDataStores and
+        /// DataStoreService.GetDataStore, this is only populated when DataStoreView.DATA_STORE_VIEW_FULL is requested
+        /// via ListDataStoresRequest.view or GetDataStoreRequest.view respectively.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
+        public virtual string IconUri { get; set; }
+
+        /// <summary>
         /// Immutable. The fully qualified resource name of the associated IdentityMappingStore. This field can only be
         /// set for acl_enabled DataStores with `THIRD_PARTY` or `GSUITE` IdP. Format:
         /// `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`.
@@ -50063,6 +50318,50 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
@@ -55702,6 +56001,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rankSignals")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRankSignals RankSignals { get; set; }
 
+        /// <summary>
+        /// Optional. A set of signals used by the relevance filter meant for use to fine-tune the relevance filter
+        /// thresholds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalSignals")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRetrievalSignals RetrievalSignals { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -55766,6 +56072,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Float value representing the ranking signal (e.g. 1.25 for BM25).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<float> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a set of signals used by the relevance filter.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResultRetrievalSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indicates how the result was retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalSources")]
+        public virtual System.Collections.Generic.IList<string> RetrievalSources { get; set; }
+
+        /// <summary>Optional. Relevance score used by the filter when semantic_relevance_threshold is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticRelevanceScore")]
+        public virtual System.Nullable<float> SemanticRelevanceScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58688,10 +59009,19 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistantSettings")]
         public virtual GoogleCloudDiscoveryengineV1alphaWidgetConfigAssistantSettings AssistantSettings { get; set; }
 
+        /// <summary>Output only. The batch authorization statuses for the widget's connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchAuthStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigBatchAuthStatus> BatchAuthStatuses { get; set; }
+
         /// <summary>
         /// Output only. Collection components that lists all collections and child data stores associated with the
         /// widget config, those data sources can be used for filtering in widget service APIs, users can return results
-        /// that from selected data sources.
+        /// that from selected data sources. For SaaS / Business engines, when `LookupWidgetConfig` is called with `view
+        /// = WITH_AVAILABLE_CONNECTORS`, this list is additionally augmented with synthetic placeholder entries for
+        /// connectors the caller may attach but has not yet attached (see `CollectionComponent` for the placeholder
+        /// contract). The frontend can therefore render a unified list of already-attached and available-to-attach
+        /// sources by iterating this single field. For Enterprise engines and for the default `view`, only
+        /// already-attached connectors are returned (today's behavior).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionComponents")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent> CollectionComponents { get; set; }
@@ -58986,8 +59316,39 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the batch authorization status for a batch_authorization_group.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigBatchAuthStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The batch authorization group the placeholder belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchAuthorizationGroup")]
+        public virtual string BatchAuthorizationGroup { get; set; }
+
+        /// <summary>Output only. The current authorization state for this connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorAuthState")]
+        public virtual GoogleCloudDiscoveryengineV1alphaWidgetConfigConnectorAuthState ConnectorAuthState { get; set; }
+
+        /// <summary>
+        /// Output only. It is the batch authorization group placeholder full resource name. This is not a real data
+        /// connector (not existed in DataConnector table in spanner). It's a resource name existing only in the
+        /// connector_authorization in the user table. E.g.
+        /// projects/{project}/locations/{location}/collections/oauth_placeholder_google_workspace/dataStores/dataConnector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
+        public virtual string Placeholder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
-    /// Read-only collection component that contains data store collections fields that may be used for filtering
+    /// Read-only collection component that contains data store collections fields that may be used for filtering. For
+    /// SaaS / Business engines, when `LookupWidgetConfig` is called with `view = WITH_AVAILABLE_CONNECTORS`, instances
+    /// of this message are also used to represent synthetic placeholder entries for connectors the caller may attach
+    /// but has not yet attached. Placeholder entries have `connector_auth_state.auth_state == AUTH_STATE_UNSPECIFIED`
+    /// (or `NO_AUTH`), an empty `connector_auth_state.authorization_uri` (the widget calls
+    /// `WidgetBuildAuthorizationUrl` on the user's "Connect" click), and synthetic placeholder values in `name` / `id`
+    /// (see field comments). Fields that only make sense for materialized connectors (`data_store_components`,
+    /// `tenant`, `action_connector`) are left unset for placeholder entries.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -59017,7 +59378,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Output only. the identifier of the collection, used for widget service. For now it refers to collection_id,
-        /// in the future we will migrate the field to encrypted collection name UUID.
+        /// in the future we will migrate the field to encrypted collection name UUID. For synthetic placeholder entries
+        /// (see message-level comment) this is a synthetic placeholder id, not a real collection_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -59025,7 +59387,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The name of the collection. It should be collection resource name. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}`. For APIs under WidgetService, such as
-        /// WidgetService.LookupWidgetConfig, the project number and location part is erased in this field.
+        /// WidgetService.LookupWidgetConfig, the project number and location part is erased in this field. For
+        /// synthetic placeholder entries (see message-level comment) this carries a synthetic placeholder collection id
+        /// that does not correspond to a real collection. Callers must not attempt to resolve / GET this resource until
+        /// the user authorizes the connector.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -59041,7 +59406,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authState")]
         public virtual string AuthState { get; set; }
 
-        /// <summary>Output only. The authorization uri for the data connector.</summary>
+        /// <summary>
+        /// Output only. The authorization uri for the data connector. For synthetic placeholder `CollectionComponent`
+        /// entries (returned by `LookupWidgetConfig` with `view = WITH_AVAILABLE_CONNECTORS` on SaaS / Business
+        /// engines), this field is left empty. The widget should call `WidgetService.WidgetBuildAuthorizationUrl` on
+        /// the user's "Connect" click to obtain a freshly-built authorization URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationUri")]
         public virtual string AuthorizationUri { get; set; }
 
@@ -63606,6 +63976,50 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]

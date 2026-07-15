@@ -39,6 +39,16 @@
     "BRANCH_VIEW_BASIC",
     "BRANCH_VIEW_FULL"
   ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+GetRequest.ViewEnum": [
+    "DATA_STORE_VIEW_UNSPECIFIED",
+    "DATA_STORE_VIEW_BASIC",
+    "DATA_STORE_VIEW_FULL"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+ListRequest.ViewEnum": [
+    "DATA_STORE_VIEW_UNSPECIFIED",
+    "DATA_STORE_VIEW_BASIC",
+    "DATA_STORE_VIEW_FULL"
+  ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+EnginesResource+AssistantsResource+ListAvailableAgentViewsRequest.AgentOriginEnum": [
     "AGENT_ORIGIN_UNSPECIFIED",
     "GOOGLE",
@@ -78,6 +88,16 @@
     "BRANCH_VIEW_UNSPECIFIED",
     "BRANCH_VIEW_BASIC",
     "BRANCH_VIEW_FULL"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+GetRequest.ViewEnum": [
+    "DATA_STORE_VIEW_UNSPECIFIED",
+    "DATA_STORE_VIEW_BASIC",
+    "DATA_STORE_VIEW_FULL"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+ListRequest.ViewEnum": [
+    "DATA_STORE_VIEW_UNSPECIFIED",
+    "DATA_STORE_VIEW_BASIC",
+    "DATA_STORE_VIEW_FULL"
   ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+GetConfigurablePricingUsageStatsRequest.MetricTypesEnum": [
     "BILLING_METRIC_TYPE_UNSPECIFIED",
