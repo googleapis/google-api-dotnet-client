@@ -32187,6 +32187,50 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
 
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
         public virtual System.Nullable<long> LicenseCount { get; set; }
@@ -37961,10 +38005,19 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assistantSettings")]
         public virtual GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings AssistantSettings { get; set; }
 
+        /// <summary>Output only. The batch authorization statuses for the widget's connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchAuthStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatus> BatchAuthStatuses { get; set; }
+
         /// <summary>
         /// Output only. Collection components that lists all collections and child data stores associated with the
         /// widget config, those data sources can be used for filtering in widget service APIs, users can return results
-        /// that from selected data sources.
+        /// that from selected data sources. For SaaS / Business engines, when `LookupWidgetConfig` is called with `view
+        /// = WITH_AVAILABLE_CONNECTORS`, this list is additionally augmented with synthetic placeholder entries for
+        /// connectors the caller may attach but has not yet attached (see `CollectionComponent` for the placeholder
+        /// contract). The frontend can therefore render a unified list of already-attached and available-to-attach
+        /// sources by iterating this single field. For Enterprise engines and for the default `view`, only
+        /// already-attached connectors are returned (today's behavior).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionComponents")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent> CollectionComponents { get; set; }
@@ -38259,8 +38312,39 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the batch authorization status for a batch_authorization_group.</summary>
+    public class GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The batch authorization group the placeholder belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchAuthorizationGroup")]
+        public virtual string BatchAuthorizationGroup { get; set; }
+
+        /// <summary>Output only. The current authorization state for this connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorAuthState")]
+        public virtual GoogleCloudDiscoveryengineV1WidgetConfigConnectorAuthState ConnectorAuthState { get; set; }
+
+        /// <summary>
+        /// Output only. It is the batch authorization group placeholder full resource name. This is not a real data
+        /// connector (not existed in DataConnector table in spanner). It's a resource name existing only in the
+        /// connector_authorization in the user table. E.g.
+        /// projects/{project}/locations/{location}/collections/oauth_placeholder_google_workspace/dataStores/dataConnector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
+        public virtual string Placeholder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
-    /// Read-only collection component that contains data store collections fields that may be used for filtering
+    /// Read-only collection component that contains data store collections fields that may be used for filtering. For
+    /// SaaS / Business engines, when `LookupWidgetConfig` is called with `view = WITH_AVAILABLE_CONNECTORS`, instances
+    /// of this message are also used to represent synthetic placeholder entries for connectors the caller may attach
+    /// but has not yet attached. Placeholder entries have `connector_auth_state.auth_state == AUTH_STATE_UNSPECIFIED`
+    /// (or `NO_AUTH`), an empty `connector_auth_state.authorization_uri` (the widget calls
+    /// `WidgetBuildAuthorizationUrl` on the user's "Connect" click), and synthetic placeholder values in `name` / `id`
+    /// (see field comments). Fields that only make sense for materialized connectors (`data_store_components`,
+    /// `tenant`, `action_connector`) are left unset for placeholder entries.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -38290,7 +38374,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Output only. the identifier of the collection, used for widget service. For now it refers to collection_id,
-        /// in the future we will migrate the field to encrypted collection name UUID.
+        /// in the future we will migrate the field to encrypted collection name UUID. For synthetic placeholder entries
+        /// (see message-level comment) this is a synthetic placeholder id, not a real collection_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -38298,7 +38383,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// The name of the collection. It should be collection resource name. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}`. For APIs under WidgetService, such as
-        /// WidgetService.LookupWidgetConfig, the project number and location part is erased in this field.
+        /// WidgetService.LookupWidgetConfig, the project number and location part is erased in this field. For
+        /// synthetic placeholder entries (see message-level comment) this carries a synthetic placeholder collection id
+        /// that does not correspond to a real collection. Callers must not attempt to resolve / GET this resource until
+        /// the user authorizes the connector.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -38314,7 +38402,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authState")]
         public virtual string AuthState { get; set; }
 
-        /// <summary>Output only. The authorization uri for the data connector.</summary>
+        /// <summary>
+        /// Output only. The authorization uri for the data connector. For synthetic placeholder `CollectionComponent`
+        /// entries (returned by `LookupWidgetConfig` with `view = WITH_AVAILABLE_CONNECTORS` on SaaS / Business
+        /// engines), this field is left empty. The widget should call `WidgetService.WidgetBuildAuthorizationUrl` on
+        /// the user's "Connect" click to obtain a freshly-built authorization URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationUri")]
         public virtual string AuthorizationUri { get; set; }
 
@@ -42861,6 +42954,15 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
 
         /// <summary>
+        /// Output only. Provides the icon URI of the data store's connector source, if this is a connector-backed data
+        /// store. Empty for data stores without an associated connector source. In DataStoreService.ListDataStores and
+        /// DataStoreService.GetDataStore, this is only populated when DataStoreView.DATA_STORE_VIEW_FULL is requested
+        /// via ListDataStoresRequest.view or GetDataStoreRequest.view respectively.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
+        public virtual string IconUri { get; set; }
+
+        /// <summary>
         /// Immutable. The fully qualified resource name of the associated IdentityMappingStore. This field can only be
         /// set for acl_enabled DataStores with `THIRD_PARTY` or `GSUITE` IdP. Format:
         /// `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`.
@@ -46398,6 +46500,50 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
@@ -55178,6 +55324,50 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
