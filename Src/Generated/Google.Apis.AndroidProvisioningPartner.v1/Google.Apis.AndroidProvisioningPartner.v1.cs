@@ -748,8 +748,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Required. The maximum number of devices to show in a page of results. Must be between 1 and 100
-                /// inclusive.
+                /// Optional. The maximum number of devices to show in a page of results. If unset or 0, defaults to
+                /// 1000. If a value greater than 1000 is specified, it will be coerced to 1000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> PageSize { get; set; }
