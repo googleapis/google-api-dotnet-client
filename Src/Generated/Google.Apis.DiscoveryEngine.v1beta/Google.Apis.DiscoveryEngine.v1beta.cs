@@ -26818,6 +26818,50 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
 
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
         public virtual System.Nullable<long> LicenseCount { get; set; }
@@ -33291,6 +33335,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig HealthcareFhirConfig { get; set; }
 
         /// <summary>
+        /// Output only. Provides the icon URI of the data store's connector source, if this is a connector-backed data
+        /// store. Empty for data stores without an associated connector source. In DataStoreService.ListDataStores and
+        /// DataStoreService.GetDataStore, this is only populated when DataStoreView.DATA_STORE_VIEW_FULL is requested
+        /// via ListDataStoresRequest.view or GetDataStoreRequest.view respectively.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
+        public virtual string IconUri { get; set; }
+
+        /// <summary>
         /// Immutable. The fully qualified resource name of the associated IdentityMappingStore. This field can only be
         /// set for acl_enabled DataStores with `THIRD_PARTY` or `GSUITE` IdP. Format:
         /// `projects/{project}/locations/{location}/identityMappingStores/{identity_mapping_store}`.
@@ -36828,6 +36881,50 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
@@ -50102,6 +50199,50 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Output only. Whether the license config is for Gemini bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiBundle")]
         public virtual System.Nullable<bool> GeminiBundle { get; set; }
+
+        private string _lastUserUpdateTimeRaw;
+
+        private object _lastUserUpdateTime;
+
+        /// <summary>
+        /// Optional. Timestamp of the most recent user-initiated update (seat count change or subscription term
+        /// change). Unlike `update_time`, this field is only stamped when a customer explicitly updates the license
+        /// (e.g. via the UI), and is not touched by system-driven writes (subscription pipeline, BALC propagation,
+        /// etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUserUpdateTime")]
+        public virtual string LastUserUpdateTimeRaw
+        {
+            get => _lastUserUpdateTimeRaw;
+            set
+            {
+                _lastUserUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUserUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUserUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUserUpdateTime
+        {
+            get => _lastUserUpdateTime;
+            set
+            {
+                _lastUserUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUserUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastUserUpdateTimeRaw);
+            set => LastUserUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Required. Number of licenses purchased.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseCount")]
