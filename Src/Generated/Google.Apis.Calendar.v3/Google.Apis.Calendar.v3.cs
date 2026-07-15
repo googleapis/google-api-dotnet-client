@@ -1194,15 +1194,22 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> ShowHidden { get; set; }
 
             /// <summary>
+            /// Whether to show only entries for calendars from the organization. This parameter is only applicable to
+            /// Google Workspace users. Optional. The default is False.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("showOwnOrganizationOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowOwnOrganizationOnly { get; set; }
+
+            /// <summary>
             /// Token obtained from the nextSyncToken field returned on the last page of results from the previous list
             /// request. It makes the result of this list request contain only entries that have changed since then. If
             /// only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All
             /// entries deleted and hidden since the previous list request will always be in the result set and it is
             /// not allowed to set showDeleted neither showHidden to False. To ensure client state consistency
-            /// minAccessRole query parameter cannot be specified together with nextSyncToken. If the syncToken expires,
-            /// the server will respond with a 410 GONE response code and the client should clear its storage and
-            /// perform a full synchronization without any syncToken. Learn more about incremental synchronization.
-            /// Optional. The default is to return all entries.
+            /// minAccessRole and showOwnOrganizationOnly query parameters cannot be specified together with
+            /// nextSyncToken. If the syncToken expires, the server will respond with a 410 GONE response code and the
+            /// client should clear its storage and perform a full synchronization without any syncToken. Learn more
+            /// about incremental synchronization. Optional. The default is to return all entries.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SyncToken { get; set; }
@@ -1255,6 +1262,14 @@ namespace Google.Apis.Calendar.v3
                 RequestParameters.Add("showHidden", new Google.Apis.Discovery.Parameter
                 {
                     Name = "showHidden",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showOwnOrganizationOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showOwnOrganizationOnly",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1499,15 +1514,22 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> ShowHidden { get; set; }
 
             /// <summary>
+            /// Whether to show only entries for calendars from the organization. This parameter is only applicable to
+            /// Google Workspace users. Optional. The default is False.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("showOwnOrganizationOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowOwnOrganizationOnly { get; set; }
+
+            /// <summary>
             /// Token obtained from the nextSyncToken field returned on the last page of results from the previous list
             /// request. It makes the result of this list request contain only entries that have changed since then. If
             /// only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All
             /// entries deleted and hidden since the previous list request will always be in the result set and it is
             /// not allowed to set showDeleted neither showHidden to False. To ensure client state consistency
-            /// minAccessRole query parameter cannot be specified together with nextSyncToken. If the syncToken expires,
-            /// the server will respond with a 410 GONE response code and the client should clear its storage and
-            /// perform a full synchronization without any syncToken. Learn more about incremental synchronization.
-            /// Optional. The default is to return all entries.
+            /// minAccessRole and showOwnOrganizationOnly query parameters cannot be specified together with
+            /// nextSyncToken. If the syncToken expires, the server will respond with a 410 GONE response code and the
+            /// client should clear its storage and perform a full synchronization without any syncToken. Learn more
+            /// about incremental synchronization. Optional. The default is to return all entries.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SyncToken { get; set; }
@@ -1566,6 +1588,14 @@ namespace Google.Apis.Calendar.v3
                 RequestParameters.Add("showHidden", new Google.Apis.Discovery.Parameter
                 {
                     Name = "showHidden",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showOwnOrganizationOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showOwnOrganizationOnly",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4787,12 +4817,14 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>
         /// The role assigned to the scope. Possible values are:   - "none" - Provides no access.  - "freeBusyReader" -
         /// Provides read access to free/busy information.  - "reader" - Provides read access to the calendar. Private
-        /// events will appear to users with reader access, but event details will be hidden.  - "writer" - Provides
-        /// read and write access to the calendar. Private events will appear to users with writer access, and event
-        /// details will be visible. Provides read access to the calendar's ACLs.  - "owner" - Provides manager access
-        /// to the calendar. This role has all of the permissions of the writer role with the additional ability to
-        /// modify access levels of other users. Important: the owner role is different from the calendar's data owner.
-        /// A calendar has a single data owner, but can have multiple users with owner role.
+        /// events will appear to users with reader access, but event details will be hidden.  -
+        /// "writerWithoutPrivateAccess" - Provides read and write access to the calendar. Private events will appear to
+        /// users with writerWithoutPrivateAccess access, but event details will be hidden.  - "writer" - Provides read
+        /// and write access to the calendar. Private events will appear to users with writer access, and event details
+        /// will be visible. Provides read access to the calendar's ACLs.  - "owner" - Provides manager access to the
+        /// calendar. This role has all of the permissions of the writer role with the additional ability to modify
+        /// access levels of other users. Important: the owner role is different from the calendar's data owner. A
+        /// calendar has a single data owner, but can have multiple users with owner role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -4914,11 +4946,13 @@ namespace Google.Apis.Calendar.v3.Data
         /// The effective access role that the authenticated user has on the calendar. Read-only. Possible values are:
         /// - "freeBusyReader" - Provides read access to free/busy information.  - "reader" - Provides read access to
         /// the calendar. Private events will appear to users with reader access, but event details will be hidden.  -
-        /// "writer" - Provides read and write access to the calendar. Private events will appear to users with writer
-        /// access, and event details will be visible.  - "owner" - Provides manager access to the calendar. This role
-        /// has all of the permissions of the writer role with the additional ability to see and modify access levels of
-        /// other users. Important: the owner role is different from the calendar's data owner. A calendar has a single
-        /// data owner, but can have multiple users with owner role.
+        /// "writerWithoutPrivateAccess" - Provides read and write access to the calendar. Private events will appear to
+        /// users with writerWithoutPrivateAccess access, but event details will be hidden.  - "writer" - Provides read
+        /// and write access to the calendar. Private events will appear to users with writer access, and event details
+        /// will be visible.  - "owner" - Provides manager access to the calendar. This role has all of the permissions
+        /// of the writer role with the additional ability to see and modify access levels of other users. Important:
+        /// the owner role is different from the calendar's data owner. A calendar has a single data owner, but can have
+        /// multiple users with owner role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessRole")]
         public virtual string AccessRole { get; set; }
@@ -5783,7 +5817,10 @@ namespace Google.Apis.Calendar.v3.Data
         /// events on the calendar. This is the default value.  - "public" - The event is public and event details are
         /// visible to all readers of the calendar.  - "private" - The event is private and only event attendees may
         /// view event details.  - "confidential" - The event is private. This value is provided for compatibility
-        /// reasons.
+        /// reasons.   Note on recurring events: Changing the visibility of a single instance of a recurring event can
+        /// affect all instances of the series. If the new setting is more restrictive (e.g. from public to private), it
+        /// is applied to all instances. If the new setting is less restrictive (e.g. from private to public), the
+        /// change is ignored. To make a recurring event less restrictive, you must update the parent recurring event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
@@ -6283,11 +6320,13 @@ namespace Google.Apis.Calendar.v3.Data
         /// The user's access role for this calendar. Read-only. Possible values are:   - "none" - The user has no
         /// access.  - "freeBusyReader" - The user has read access to free/busy information.  - "reader" - The user has
         /// read access to the calendar. Private events will appear to users with reader access, but event details will
-        /// be hidden.  - "writer" - The user has read and write access to the calendar. Private events will appear to
-        /// users with writer access, and event details will be visible.  - "owner" - The user has manager access to the
-        /// calendar. This role has all of the permissions of the writer role with the additional ability to see and
-        /// modify access levels of other users. Important: the owner role is different from the calendar's data owner.
-        /// A calendar has a single data owner, but can have multiple users with owner role.
+        /// be hidden.  - "writerWithoutPrivateAccess" - The user has read and write access to the calendar. Private
+        /// events will appear to users with writerWithoutPrivateAccess access, but event details will be hidden.  -
+        /// "writer" - The user has read and write access to the calendar. Private events will appear to users with
+        /// writer access, and event details will be visible.  - "owner" - The user has manager access to the calendar.
+        /// This role has all of the permissions of the writer role with the additional ability to see and modify access
+        /// levels of other users. Important: the owner role is different from the calendar's data owner. A calendar has
+        /// a single data owner, but can have multiple users with owner role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessRole")]
         public virtual string AccessRole { get; set; }
