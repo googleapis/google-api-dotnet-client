@@ -1325,20 +1325,26 @@ namespace Google.Apis.FirebaseAppDistribution.v1
 
                     /// <summary>
                     /// Optional. The expression to filter releases listed in the response. To learn more about
-                    /// filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: -
-                    /// `releaseNotes.text` supports `=` (can contain a wildcard character (`*`) at the beginning or end
-                    /// of the string) - `createTime` supports `&amp;lt;`, `&amp;lt;=`, `&amp;gt;` and `&amp;gt;=`, and
-                    /// expects an RFC-3339 formatted string Examples: - `createTime &amp;lt;=
-                    /// "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime &amp;gt;=
-                    /// "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
+                    /// filtering, refer to the [AIP-160 standard](http://aip.dev/160). Supported fields: - Time fields
+                    /// supporting `&amp;lt;`, `&amp;lt;=`, `&amp;gt;` and `&amp;gt;=`; expecting an RFC-3339 formatted
+                    /// string: - `create_time` (or `createTime`) - `update_time` (or `updateTime`) - `expire_time` (or
+                    /// `expireTime`) - Text fields supporting `=`. The compared text can contain a wildcard character
+                    /// (`*`) at the beginning and/or end of the string which also enables case-insensitive matching: -
+                    /// `release_notes.text` (or `releaseNotes.text`) - `display_version` (or `displayVersion`) -
+                    /// `build_version` (or `buildVersion`). Examples: - `createTime &amp;lt;=
+                    /// "2021-09-08T00:00:00+04:00"` - `expire_time &amp;gt; "2021-09-08T00:00:00+04:00"` -
+                    /// `releaseNotes.text="fixes" AND createTime &amp;gt;= "2021-09-08T00:00:00.0Z"` -
+                    /// `releaseNotes.text="*v1.0.0-rc*"` - `(display_version = "v1.0.0-rc2" AND `build_version = "123")
+                    /// OR release_notes = "*v1.0.0-rc2 (123)*"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. The fields used to order releases. Supported fields: - `createTime` To specify
-                    /// descending order for a field, append a "desc" suffix, for example, `createTime desc`. If this
-                    /// parameter is not set, releases are ordered by `createTime` in descending order.
+                    /// Optional. The fields used to order releases. Supported fields: - `create_time` (or `createTime`)
+                    /// - `update_time` (or `updateTime`) - `expire_time` (or `expireTime`) To specify descending order
+                    /// for a field, append a "desc" suffix, for example, `createTime desc`. If this parameter is not
+                    /// set, releases are ordered by `createTime` in descending order.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -3130,6 +3136,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("releases")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1Release> Releases { get; set; }
 
+        /// <summary>The total number of releases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3155,6 +3165,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
     /// <summary>A release of a Firebase app.</summary>
     public class GoogleFirebaseAppdistroV1Release : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Registration state of the Android package (BinaryType.APK).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidPackageRegistrationState")]
+        public virtual string AndroidPackageRegistrationState { get; set; }
+
         /// <summary>
         /// Output only. A signed link (which expires in one hour) to directly download the app binary (IPA/APK/AAB)
         /// file.
@@ -3260,7 +3274,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Notes of the release.</summary>
+        /// <summary>Notes about the release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseNotes")]
         public virtual GoogleFirebaseAppdistroV1ReleaseNotes ReleaseNotes { get; set; }
 
