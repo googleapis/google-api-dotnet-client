@@ -4386,6 +4386,14 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
+        /// <summary>
+        /// Output only. The resource name of the tenant project from which this active regional tenant project was
+        /// migrated. This field is only set for active regional migrated mapping tenant projects. Format:
+        /// `services//{collection_id}/{RESOURCE_ID}/locations/{LOCATION}/tenantProjects/{TENANT_ID}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTenantProject")]
+        public virtual string SourceTenantProject { get; set; }
+
         /// <summary>Status of tenant resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
