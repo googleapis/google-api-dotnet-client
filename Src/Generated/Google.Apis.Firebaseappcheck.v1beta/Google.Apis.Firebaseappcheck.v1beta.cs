@@ -781,7 +781,6 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 RecaptchaConfig = new RecaptchaConfigResource(service);
                 RecaptchaEnterpriseConfig = new RecaptchaEnterpriseConfigResource(service);
                 RecaptchaV3Config = new RecaptchaV3ConfigResource(service);
-                SafetyNetConfig = new SafetyNetConfigResource(service);
             }
 
             /// <summary>Gets the AppAttestConfig resource.</summary>
@@ -2572,7 +2571,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
                 /// <summary>
                 /// Updates the RecaptchaV3Config for the specified app. While this configuration is incomplete or
-                /// invalid, the app will be unable to exchange reCAPTCHA V3 tokens for App Check tokens. For security
+                /// invalid, the app will be unable to exchange reCAPTCHA v3 tokens for App Check tokens. For security
                 /// reasons, the `site_secret` field is never populated in the response.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -2589,7 +2588,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
                 /// <summary>
                 /// Updates the RecaptchaV3Config for the specified app. While this configuration is incomplete or
-                /// invalid, the app will be unable to exchange reCAPTCHA V3 tokens for App Check tokens. For security
+                /// invalid, the app will be unable to exchange reCAPTCHA v3 tokens for App Check tokens. For security
                 /// reasons, the `site_secret` field is never populated in the response.
                 /// </summary>
                 public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaRecaptchaV3Config>
@@ -2644,241 +2643,6 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/apps/[^/]+/recaptchaV3Config$",
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-            }
-
-            /// <summary>Gets the SafetyNetConfig resource.</summary>
-            public virtual SafetyNetConfigResource SafetyNetConfig { get; }
-
-            /// <summary>The "safetyNetConfig" collection of methods.</summary>
-            public class SafetyNetConfigResource
-            {
-                private const string Resource = "safetyNetConfig";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public SafetyNetConfigResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>Atomically gets the SafetyNetConfigs for the specified list of apps.</summary>
-                /// <param name="parent">
-                /// Required. The parent project name shared by all SafetyNetConfigs being retrieved, in the format
-                /// ```
-                /// projects/{project_number}
-                /// ```
-                /// The parent collection in the `name` field of any resource being
-                /// retrieved must match this field, or the entire batch fails.
-                /// </param>
-                public virtual BatchGetRequest BatchGet(string parent)
-                {
-                    return new BatchGetRequest(this.service, parent);
-                }
-
-                /// <summary>Atomically gets the SafetyNetConfigs for the specified list of apps.</summary>
-                public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse>
-                {
-                    /// <summary>Constructs a new BatchGet request.</summary>
-                    public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent project name shared by all SafetyNetConfigs being retrieved, in the format
-                    /// ```
-                    /// projects/{project_number}
-                    /// ```
-                    /// The parent collection in the `name` field of any resource
-                    /// being retrieved must match this field, or the entire batch fails.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Required. The relative resource names of the SafetyNetConfigs to retrieve, in the format
-                    /// ```
-                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig
-                    /// ```
-                    /// A maximum of 100 objects can be
-                    /// retrieved in a batch.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "batchGet";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+parent}/apps/-/safetyNetConfig:batchGet";
-
-                    /// <summary>Initializes BatchGet parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                        RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "names",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Gets the SafetyNetConfig for the specified app.</summary>
-                /// <param name="name">
-                /// Required. The relative resource name of the SafetyNetConfig, in the format:
-                /// ```
-                /// projects/{project_number}/apps/{app_id}/safetyNetConfig
-                /// ```
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets the SafetyNetConfig for the specified app.</summary>
-                public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The relative resource name of the SafetyNetConfig, in the format:
-                    /// ```
-                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig
-                    /// ```
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/apps/[^/]+/safetyNetConfig$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Updates the SafetyNetConfig for the specified app. While this configuration is incomplete or
-                /// invalid, the app will be unable to exchange SafetyNet tokens for App Check tokens.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. The relative resource name of the SafetyNet configuration object, in the format:
-                /// ```
-                /// projects/{project_number}/apps/{app_id}/safetyNetConfig
-                /// ```
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig body, string name)
-                {
-                    return new PatchRequest(this.service, body, name);
-                }
-
-                /// <summary>
-                /// Updates the SafetyNetConfig for the specified app. While this configuration is incomplete or
-                /// invalid, the app will be unable to exchange SafetyNet tokens for App Check tokens.
-                /// </summary>
-                public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The relative resource name of the SafetyNet configuration object, in the format:
-                    /// ```
-                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig
-                    /// ```
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Required. A comma-separated list of names of fields in the SafetyNetConfig to update. Example:
-                    /// `token_ttl`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/apps/[^/]+/safetyNetConfig$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -3632,83 +3396,6 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             }
 
             /// <summary>
-            /// Validates a [SafetyNet
-            /// token](https://developer.android.com/training/safetynet/attestation#request-attestation-step). If valid,
-            /// returns an AppCheckToken.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="app">
-            /// Required. The relative resource name of the Android app, in the format:
-            /// ```
-            /// projects/{project_number}/apps/{app_id}
-            /// ```
-            /// If necessary, the `project_number` element can be replaced
-            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
-            /// 2510](https://google.aip.dev/cloud/2510) standard.
-            /// </param>
-            public virtual ExchangeSafetyNetTokenRequest ExchangeSafetyNetToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest body, string app)
-            {
-                return new ExchangeSafetyNetTokenRequest(this.service, body, app);
-            }
-
-            /// <summary>
-            /// Validates a [SafetyNet
-            /// token](https://developer.android.com/training/safetynet/attestation#request-attestation-step). If valid,
-            /// returns an AppCheckToken.
-            /// </summary>
-            public class ExchangeSafetyNetTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppCheckToken>
-            {
-                /// <summary>Constructs a new ExchangeSafetyNetToken request.</summary>
-                public ExchangeSafetyNetTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest body, string app) : base(service)
-                {
-                    App = app;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The relative resource name of the Android app, in the format:
-                /// ```
-                /// projects/{project_number}/apps/{app_id}
-                /// ```
-                /// If necessary, the `project_number` element can be
-                /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
-                /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string App { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "exchangeSafetyNetToken";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta/{+app}:exchangeSafetyNetToken";
-
-                /// <summary>Initializes ExchangeSafetyNetToken parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "app",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
             /// Generates a challenge that protects the integrity of an immediately following call to
             /// ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A challenge should not be reused for
             /// multiple calls.
@@ -3994,8 +3681,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id}
                 /// ```
                 /// Note that
-                /// the `service_id` element must be a supported service ID. Currently, the following service IDs are
-                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                /// the `service_id` element must be a supported service ID. Consult the ResourcePolicy.name field for a
+                /// list of supported service IDs.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaResourcePolicy body, string parent)
                 {
@@ -4020,8 +3707,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     /// projects/{project_number}/services/{service_id}
                     /// ```
                     /// Note
-                    /// that the `service_id` element must be a supported service ID. Currently, the following service
-                    /// IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                    /// that the `service_id` element must be a supported service ID. Consult the ResourcePolicy.name
+                    /// field for a list of supported service IDs.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4137,8 +3824,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
                 /// ```
                 /// Note that
-                /// the `service_id` element must be a supported service ID. Currently, the following service IDs are
-                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                /// the `service_id` element must be a supported service ID. Consult the ResourcePolicy.name field for a
+                /// list of supported service IDs.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -4161,8 +3848,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
                     /// ```
                     /// Note
-                    /// that the `service_id` element must be a supported service ID. Currently, the following service
-                    /// IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                    /// that the `service_id` element must be a supported service ID. Consult the ResourcePolicy.name
+                    /// field for a list of supported service IDs.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4199,8 +3886,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id}
                 /// ```
                 /// Note that the
-                /// `service_id` element must be a supported service ID. Currently, the following service IDs are
-                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                /// `service_id` element must be a supported service ID. Consult the ResourcePolicy.name field for a
+                /// list of supported service IDs.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4224,8 +3911,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     /// projects/{project_number}/services/{service_id}
                     /// ```
                     /// Note that
-                    /// the `service_id` element must be a supported service ID. Currently, the following service IDs
-                    /// are supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                    /// the `service_id` element must be a supported service ID. Consult the ResourcePolicy.name field
+                    /// for a list of supported service IDs.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4468,11 +4155,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// projects/{project_number}/services/{service_id}
             /// ```
             /// Note that the `service_id` element must be a
-            /// supported service ID. Currently, the following service IDs are supported: *
-            /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-            /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
-            /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) *
-            /// `oauth2.googleapis.com` (Google Identity for iOS)
+            /// supported service ID. Consult the Service.name field for a list of supported service IDs.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -4495,11 +4178,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id}
                 /// ```
                 /// Note that the `service_id` element must be a
-                /// supported service ID. Currently, the following service IDs are supported: *
-                /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-                /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
-                /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) *
-                /// `oauth2.googleapis.com` (Google Identity for iOS)
+                /// supported service ID. Consult the Service.name field for a list of supported service IDs.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4632,11 +4311,14 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// projects/{project_number}/services/{service_id}
             /// ```
             /// Note that the `service_id` element must be a
-            /// supported service ID. Currently, the following service IDs are supported: *
-            /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-            /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
-            /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) *
-            /// `oauth2.googleapis.com` (Google Identity for iOS)
+            /// supported service ID. Currently, the following service IDs are supported. Firebase and Google Cloud
+            /// services: * `identitytoolkit.googleapis.com` (Firebase Authentication) *
+            /// `firebasedataconnect.googleapis.com` (Firebase SQL Connect) * `firestore.googleapis.com` (Cloud
+            /// Firestore) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
+            /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebaseml.googleapis.com` (Firebase AI
+            /// Logic) Google Maps Platform services: * `maps-backend.googleapis.com` (Maps JavaScript API) *
+            /// `places.googleapis.com` (Places API (New)) Other supported Google services: * `oauth2.googleapis.com`
+            /// (Google Identity for iOS)
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaService body, string name)
             {
@@ -4660,10 +4342,13 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id}
                 /// ```
                 /// Note that the `service_id` element must be a
-                /// supported service ID. Currently, the following service IDs are supported: *
-                /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-                /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
-                /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) *
+                /// supported service ID. Currently, the following service IDs are supported. Firebase and Google Cloud
+                /// services: * `identitytoolkit.googleapis.com` (Firebase Authentication) *
+                /// `firebasedataconnect.googleapis.com` (Firebase SQL Connect) * `firestore.googleapis.com` (Cloud
+                /// Firestore) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
+                /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebaseml.googleapis.com`
+                /// (Firebase AI Logic) Google Maps Platform services: * `maps-backend.googleapis.com` (Maps JavaScript
+                /// API) * `places.googleapis.com` (Places API (New)) Other supported Google services: *
                 /// `oauth2.googleapis.com` (Google Identity for iOS)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4976,17 +4661,6 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for the BatchGetSafetyNetConfigs method.</summary>
-    public class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>SafetyNetConfigs retrieved.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
-        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaSafetyNetConfig> Configs { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for the BatchUpdateResourcePolicies method.</summary>
     public class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5083,7 +4757,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
 
         /// <summary>
         /// Required. Input only. Immutable. The secret token itself. Must be provided during creation, and must be a
-        /// UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken
+        /// UUID4, case insensitive. This field is immutable once set, and cannot be provided during a UpdateDebugToken
         /// request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security
         /// reasons, this field will never be populated in any response.
         /// </summary>
@@ -5275,10 +4949,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// specified, its length must be at least 16 bytes. If this field is omitted or is empty and `limited_use` is
         /// set to `true`, a randomly generated `jti` claim with length between 16 and 500 bytes (inclusive) will be
         /// used in the returned App Check token. Leaving this field empty is only recommended if your custom
-        /// attestation provider itself is not vulnerable to replay attacks. When `limited_use` is set to `false`,
-        /// neither the presence nor the contents of the `jti` claim in the returned App Check token is specified. To
-        /// ensure that the returned App Check token is eligible for limited use functionality, set `limited_use` to
-        /// `true`.
+        /// attestation provider itself is not vulnerable to replay attacks. When `limited_use` is set to `false`, the
+        /// presence and the contents of the `jti` claim in the returned App Check token are unspecified. To ensure that
+        /// the returned App Check token is eligible for limited-use functionality, set `limited_use` to `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jti")]
         public virtual string Jti { get; set; }
@@ -5415,21 +5088,6 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recaptchaV3Token")]
         public virtual string RecaptchaV3Token { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for the ExchangeSafetyNetToken method.</summary>
-    public class GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The [SafetyNet attestation
-        /// response](https://developer.android.com/training/safetynet/attestation#request-attestation-step) issued to
-        /// your app.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("safetyNetToken")]
-        public virtual string SafetyNetToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5919,8 +5577,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     public class GoogleFirebaseAppcheckV1betaResourcePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The App Check enforcement mode for this resource. This will override the EnforcementMode setting
-        /// on the parent service.
+        /// Required. The baseline protection EnforcementMode for this resource. This will override the service-level
+        /// baseline protection EnforcementMode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementMode")]
         public virtual string EnforcementMode { get; set; }
@@ -5997,39 +5655,10 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         }
     }
 
-    /// <summary>
-    /// An app's SafetyNet configuration object. This configuration controls certain properties of the `AppCheckToken`
-    /// returned by ExchangeSafetyNetToken, such as its ttl. Note that your registered SHA-256 certificate fingerprints
-    /// are used to validate tokens issued by SafetyNet; please register them via the Firebase Console or
-    /// programmatically via the [Firebase Management
-    /// Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.androidApps.sha/create).
-    /// </summary>
-    public class GoogleFirebaseAppcheckV1betaSafetyNetConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The relative resource name of the SafetyNet configuration object, in the format:
-        /// ```
-        /// projects/{project_number}/apps/{app_id}/safetyNetConfig
-        /// ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Specifies the duration for which App Check tokens exchanged from SafetyNet tokens will be valid. If unset, a
-        /// default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
-        public virtual object TokenTtl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The enforcement configuration for a Firebase service supported by App Check.</summary>
     public class GoogleFirebaseAppcheckV1betaService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The App Check enforcement mode for this service.</summary>
+        /// <summary>Required. The baseline protection EnforcementMode for this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementMode")]
         public virtual string EnforcementMode { get; set; }
 
@@ -6047,22 +5676,26 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// projects/{project_number}/services/{service_id}
         /// ```
         /// Note that the `service_id` element must be a supported
-        /// service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
-        /// Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-        /// `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.com` (Firebase Authentication
-        /// with Identity Platform) * `oauth2.googleapis.com` (Google Identity for iOS)
+        /// service ID. Currently, the following service IDs are supported. Firebase and Google Cloud services: *
+        /// `identitytoolkit.googleapis.com` (Firebase Authentication) * `firebasedataconnect.googleapis.com` (Firebase
+        /// SQL Connect) * `firestore.googleapis.com` (Cloud Firestore) * `firebasedatabase.googleapis.com` (Firebase
+        /// Realtime Database) * `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
+        /// `firebaseml.googleapis.com` (Firebase AI Logic) Google Maps Platform services: *
+        /// `maps-backend.googleapis.com` (Maps JavaScript API) * `places.googleapis.com` (Places API (New)) Other
+        /// supported Google services: * `oauth2.googleapis.com` (Google Identity for iOS)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The replay protection enforcement mode for this service. Note that this field cannot be set to a
-        /// level higher than the overall App Check enforcement mode. For example, if the overall App Check enforcement
-        /// mode is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In order to enforce replay protection,
-        /// you must first enforce App Check. An HTTP 400 error will be returned in this case. By default, this field is
-        /// set to `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is considered opting into replay protection.
-        /// Once opted in, requests to your protected services may experience higher latency. To opt out of replay
-        /// protection after opting in, set this field to `OFF`.
+        /// Optional. The replay protection EnforcementMode for this service. Note that this field cannot be set to a
+        /// level higher than that of baseline protection. For example, if the enforcement mode for baseline protection
+        /// is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In order to enforce replay protection, you
+        /// must first enforce App Check's baseline protection. An HTTP 400 error will be returned in this case. By
+        /// default, this field is set to `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is considered opting
+        /// into replay protection. Opting in can impact your requests by adding some latency and sometimes cost
+        /// (depending on your attestation provider). To opt out of replay protection after opting in, set this field to
+        /// `OFF`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replayProtection")]
         public virtual string ReplayProtection { get; set; }
@@ -6118,8 +5751,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
         /// ```
         /// Note that the
-        /// `service_id` element must be a supported service ID. Currently, the following service IDs are supported: *
-        /// `oauth2.googleapis.com` (Google Identity for iOS)
+        /// `service_id` element must be a supported service ID. Consult the ResourcePolicy.name field for a list of
+        /// supported service IDs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicy")]
         public virtual GoogleFirebaseAppcheckV1betaResourcePolicy ResourcePolicy { get; set; }
@@ -6148,12 +5781,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// projects/{project_number}/services/{service_id}
         /// ```
         /// Note that the `service_id` element
-        /// must be a supported service ID. Currently, the following service IDs are supported: *
-        /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase
-        /// Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.com`
-        /// (Firebase Authentication with Identity Platform) * `oauth2.googleapis.com` (Google Identity for iOS) For
-        /// Firebase Authentication to work with App Check, you must first upgrade to [Firebase Authentication with
-        /// Identity Platform](https://firebase.google.com/docs/auth#identity-platform).
+        /// must be a supported service ID. Consult the Service.name field for a list of supported service IDs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual GoogleFirebaseAppcheckV1betaService Service { get; set; }
