@@ -1439,7 +1439,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1beta.Data
 
     /// <summary>
     /// Defines an identifier for a segment of inventory that can be targeted by curators or media planners in the deals
-    /// or auction packages UI. Curation of inventory is done by curators on external platforms.
+    /// or auction packages UI. Curation of inventory is done by curators on external platforms. -- Next ID: 9 --
     /// </summary>
     public class DataSegment : Google.Apis.Requests.IDirectResponseSchema
     {
