@@ -18575,6 +18575,21 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual AdvertiserDataAccessConfig DataAccessConfig { get; set; }
 
         /// <summary>
+        /// Optional. The default business name for the advertiser. This is the value used by YouTube and Demand Gen ads
+        /// under this advertiser if a business name is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultBusinessName")]
+        public virtual string DefaultBusinessName { get; set; }
+
+        /// <summary>
+        /// Optional. The asset ID of the default logo image for the advertiser. This is the asset ID that will be used
+        /// by YouTube and Demand ads under this advertiser if a logo asset is not provided. You must use
+        /// advertisers.adAssets.upload to upload this asset using the API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLogoAssetId")]
+        public virtual System.Nullable<long> DefaultLogoAssetId { get; set; }
+
+        /// <summary>
         /// Required. The display name of the advertiser. Must be UTF-8 encoded with a maximum size of 240 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -26143,8 +26158,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>
         /// Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: *
         /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` *
-        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL` *Warning*: Starting **July 13, 2026**, this
-        /// field will no longer support `THIRD_PARTY_VENDOR_NIELSEN`.
+        /// `THIRD_PARTY_VENDOR_MACROMILL`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandLiftVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandLiftVendorConfigs { get; set; }
