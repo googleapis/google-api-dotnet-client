@@ -85,6 +85,7 @@ namespace Google.Apis.Dfareporting.v5
             Regions = new RegionsResource(this);
             RemarketingListShares = new RemarketingListSharesResource(this);
             RemarketingLists = new RemarketingListsResource(this);
+            ReportData = new ReportDataResource(this);
             Reports = new ReportsResource(this);
             Sites = new SitesResource(this);
             Sizes = new SizesResource(this);
@@ -300,6 +301,9 @@ namespace Google.Apis.Dfareporting.v5
 
         /// <summary>Gets the RemarketingLists resource.</summary>
         public virtual RemarketingListsResource RemarketingLists { get; }
+
+        /// <summary>Gets the ReportData resource.</summary>
+        public virtual ReportDataResource ReportData { get; }
 
         /// <summary>Gets the Reports resource.</summary>
         public virtual ReportsResource Reports { get; }
@@ -15896,6 +15900,74 @@ namespace Google.Apis.Dfareporting.v5
         }
     }
 
+    /// <summary>The "reportData" collection of methods.</summary>
+    public class ReportDataResource
+    {
+        private const string Resource = "reportData";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ReportDataResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Executes an ad-hoc query and returns structured JSON payload data.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="profileId">Required. The Campaign Manager 360 user profile ID.</param>
+        public virtual QueryRequest Query(Google.Apis.Dfareporting.v5.Data.ReportDataQueryRequest body, long profileId)
+        {
+            return new QueryRequest(this.service, body, profileId);
+        }
+
+        /// <summary>Executes an ad-hoc query and returns structured JSON payload data.</summary>
+        public class QueryRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v5.Data.ReportDataResponse>
+        {
+            /// <summary>Constructs a new Query request.</summary>
+            public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v5.Data.ReportDataQueryRequest body, long profileId) : base(service)
+            {
+                ProfileId = profileId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The Campaign Manager 360 user profile ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long ProfileId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Dfareporting.v5.Data.ReportDataQueryRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "query";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "userprofiles/{profileId}/reportdata/query";
+
+            /// <summary>Initializes Query parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "profileId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "reports" collection of methods.</summary>
     public class ReportsResource
     {
@@ -18927,7 +18999,9 @@ namespace Google.Apis.Dfareporting.v5
                 [Google.Apis.Util.StringValueAttribute("INVALID_TV_DATA_PROVIDER")]
                 INVALIDTVDATAPROVIDER = 0,
 
-                /// <summary></summary>
+                /// <summary>
+                /// Allows populating multiple tvCampaignId filters and tvCampaignEndDate filter on the report.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("INTAGE_JP")]
                 INTAGEJP = 9,
 
@@ -19082,7 +19156,9 @@ namespace Google.Apis.Dfareporting.v5
                 [Google.Apis.Util.StringValueAttribute("INVALID_TV_DATA_PROVIDER")]
                 INVALIDTVDATAPROVIDER = 0,
 
-                /// <summary></summary>
+                /// <summary>
+                /// Allows populating multiple tvCampaignId filters and tvCampaignEndDate filter on the report.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("INTAGE_JP")]
                 INTAGEJP = 9,
 
@@ -21889,6 +21965,21 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrideInheritedSuffix")]
         public virtual System.Nullable<bool> OverrideInheritedSuffix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A column header in the report.</summary>
+    public class ColumnHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The column name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The column type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28406,6 +28497,89 @@ namespace Google.Apis.Dfareporting.v5.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request body containing ad-hoc query parameters.</summary>
+    public class ReportDataQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The requested date range covering the report duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
+        public virtual DateRange DateRange { get; set; }
+
+        /// <summary>
+        /// Optional. The list of dimension values on which report lines are filtered. Utilizes the existing legacy
+        /// filter message `DimensionValue`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilters")]
+        public virtual System.Collections.Generic.IList<DimensionValue> DimensionFilters { get; set; }
+
+        /// <summary>Optional. The list of dimension names to group by.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionNames")]
+        public virtual System.Collections.Generic.IList<string> DimensionNames { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum number of result rows to return per page. The default value is 100. The maximum allowed
+        /// value is 1000. Values above 1000 will be coerced (clamped) down to 1000. Negative values will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
+        public virtual System.Nullable<int> MaxResults { get; set; }
+
+        /// <summary>Required. The list of metric names to include.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
+        public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
+
+        /// <summary>Optional. Continuation token for paginating results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>Optional. Sort options across either requested dimensions or metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortBys")]
+        public virtual System.Collections.Generic.IList<SortBy> SortBys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a response to report data request.</summary>
+    public class ReportDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Ordered descriptors of the requested column fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnHeaders")]
+        public virtual System.Collections.Generic.IList<ColumnHeader> ColumnHeaders { get; set; }
+
+        /// <summary>Output only. Token to retrieve the next page of rows, or empty if end of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. The resulting set of matching data rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<ReportDataRow> Rows { get; set; }
+
+        /// <summary>
+        /// Output only. Singular aggregate total row for the entire query matching the criteria. Column headers apply
+        /// in the exact same order as data rows. In the total_row: - All dimension columns contain an empty string
+        /// (""), as aggregation does not apply. - Non-summable metric columns (e.g. Reach metrics) contain an empty
+        /// string (""), as grand total aggregation cannot be mathematically/logically computed for them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRow")]
+        public virtual ReportDataRow TotalRow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A row of report data.</summary>
+    public class ReportDataRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A single sequential list of all cell values matching column_headers indices exactly. - Metric
+        /// cells that are suppressed due to Minimum Reporting Standard (MRS) privacy protection constraints return "-".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the list of reports.</summary>
     public class ReportList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28922,6 +29096,21 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// <summary>Whether the user can skip creatives served to this placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
         public virtual System.Nullable<bool> Skippable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the sort configuration for a specific field in the report.</summary>
+    public class SortBy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The dimension or metric field name to sort on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The sort order of this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
+        public virtual string SortOrder { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
