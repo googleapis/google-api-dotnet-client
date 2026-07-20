@@ -23438,6 +23438,21 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual AdvertiserDataAccessConfig DataAccessConfig { get; set; }
 
         /// <summary>
+        /// Optional. The default business name for the advertiser. This is the value used by YouTube and Demand Gen ads
+        /// under this advertiser if a business name is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultBusinessName")]
+        public virtual string DefaultBusinessName { get; set; }
+
+        /// <summary>
+        /// Optional. The asset ID of the default logo image for the advertiser. This is the asset ID that will be used
+        /// by YouTube and Demand ads under this advertiser if a logo asset is not provided. You must use
+        /// advertisers.adAssets.upload to upload this asset using the API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLogoAssetId")]
+        public virtual System.Nullable<long> DefaultLogoAssetId { get; set; }
+
+        /// <summary>
         /// Required. The display name of the advertiser. Must be UTF-8 encoded with a maximum size of 240 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -27453,9 +27468,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class DemandGenCarouselAd : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The business name shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no
-        /// longer be required if a default value is set at the advertiser level. If left unset, the default value will
-        /// be applied.
+        /// Optional. The business name shown on the ad. This setting is required unless a default value is set at the
+        /// advertiser level. If left unset, the default value will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
@@ -27485,9 +27499,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string Headline { get; set; }
 
         /// <summary>
-        /// Required. The logo image used by this ad. *Warning*: Starting **July 13, 2026**, this setting will no longer
-        /// be required if a default value is set at the advertiser level. If left unset, the default value will be
-        /// applied.
+        /// Optional. The logo image used by this ad. This setting is required unless a default value is set at the
+        /// advertiser level. If left unset, the default value will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
@@ -27508,9 +27521,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class DemandGenImageAd : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The business name shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no
-        /// longer be required if a default value is set at the advertiser level. If left unset, the default value will
-        /// be applied.
+        /// Optional. The business name shown on the ad. This setting is required unless a default value is set at the
+        /// advertiser level. If left unset, the default value will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
@@ -27546,9 +27558,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
         /// <summary>
-        /// The list of logo images shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no longer
-        /// be required if a default value is set at the advertiser level. If left unset, the default value will be
-        /// applied.
+        /// The list of logo images shown on the ad. This setting is required unless a default value is set at the
+        /// advertiser level. If left unset, the default value will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logoImages")]
         public virtual System.Collections.Generic.IList<ImageAsset> LogoImages { get; set; }
@@ -27581,9 +27592,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class DemandGenProductAd : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The business name shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no
-        /// longer be required if a default value is set at the advertiser level. If left unset, the default value will
-        /// be applied.
+        /// Optional. The business name shown on the ad. This setting is required unless a default value is set at the
+        /// advertiser level. If left unset, the default value will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
@@ -27624,9 +27634,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string Headline { get; set; }
 
         /// <summary>
-        /// Required. The logo image used by this ad. *Warning*: Starting **July 13, 2026**, this setting will no longer
-        /// be required if a default value is set at the advertiser level. If left unset, the default value will be
-        /// applied.
+        /// Optional. The logo image used by this ad. This setting is required unless a default value is set at the
+        /// advertiser level. If left unset, the default value will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
@@ -27672,9 +27681,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class DemandGenVideoAd : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The business name shown on the ad. *Warning*: Starting **July 13, 2026**, this setting will no
-        /// longer be required if a default value is set at the advertiser level. If left unset, the default value will
-        /// be applied.
+        /// Optional. The business name shown on the ad. This setting is required unless a default value is set at the
+        /// advertiser level. If left unset, the default value will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
@@ -27727,9 +27735,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
         /// <summary>
-        /// Required. The logo image used by this ad. *Warning*: Starting **July 13, 2026**, this setting will no longer
-        /// be required if a default value is set at the advertiser level. If left unset, the default value will be
-        /// applied.
+        /// Optional. The logo image used by this ad. This setting is required unless a default value is set at the
+        /// advertiser level. If left unset, the default value will be applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
@@ -31884,9 +31891,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("genders")]
         public virtual System.Collections.Generic.IList<string> Genders { get; set; }
 
-        /// <summary>Output only. Targetable network for the ad product.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("network")]
-        public virtual string Network { get; set; }
+        /// <summary>Output only. Targetable networks for the ad product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<string> Networks { get; set; }
 
         /// <summary>Output only. Targetable surface combinations for the ad product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surfaceTargetingCombinations")]
@@ -33131,8 +33138,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>
         /// Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: *
         /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` *
-        /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL` *Warning*: Starting **July 13, 2026**, this
-        /// field will no longer support `THIRD_PARTY_VENDOR_NIELSEN`.
+        /// `THIRD_PARTY_VENDOR_MACROMILL`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brandLiftVendorConfigs")]
         public virtual System.Collections.Generic.IList<ThirdPartyVendorConfig> BrandLiftVendorConfigs { get; set; }
