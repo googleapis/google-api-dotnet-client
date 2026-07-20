@@ -5038,6 +5038,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executionReason")]
         public virtual string ExecutionReason { get; set; }
 
+        /// <summary>Output only. A reason for the instance condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceReason")]
+        public virtual string InstanceReason { get; set; }
+
         private string _lastTransitionTimeRaw;
 
         private object _lastTransitionTime;
@@ -7977,6 +7981,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. Specifies service-level scaling settings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
         public virtual GoogleCloudRunV2ServiceScaling Scaling { get; set; }
+
+        /// <summary>Optional. Enables SSH access to the Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshEnabled")]
+        public virtual System.Nullable<bool> SshEnabled { get; set; }
 
         /// <summary>Required. The template used to create revisions for this Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
