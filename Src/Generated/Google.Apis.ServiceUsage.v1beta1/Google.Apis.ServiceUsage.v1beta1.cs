@@ -2504,8 +2504,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     public class Analysis : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Analysis result of updating a policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
-        public virtual AnalysisResult AnalysisValue { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisResult")]
+        public virtual AnalysisResult AnalysisResult { get; set; }
 
         /// <summary>Output only. The type of analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisType")]
@@ -3213,15 +3213,49 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// </summary>
     public class ConsumerPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Annotations is an unstructured key-value map stored with a policy that may be set by external
-        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
-        /// modifying objects. [AIP-128](https://google.aip.dev/128#annotations)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+        private string _createTimeRaw;
 
-        /// <summary>Enable rules define usable services and service groups.</summary>
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. The time the policy was created. For singleton policies, this is the first touch of the policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Enable rules define usable services and groups. There can currently be at most one `EnableRule`. This
+        /// restriction will be lifted in later releases.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRules")]
         public virtual System.Collections.Generic.IList<EnableRule> EnableRules { get; set; }
 
@@ -3230,7 +3264,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the policy. We only allow consumer policy name as `default` for now:
+        /// Output only. The resource name of the policy. Only the `default` policy is supported:
         /// `projects/12345/consumerPolicies/default`, `folders/12345/consumerPolicies/default`,
         /// `organizations/12345/consumerPolicies/default`.
         /// </summary>
@@ -3241,7 +3275,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>The last-modified time.</summary>
+        /// <summary>Output only. The time the policy was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -3798,24 +3832,14 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The consumer policy rule that defines usable services and service groups.</summary>
+    /// <summary>The consumer policy rule that defines enabled services and groups.</summary>
     public class EnableRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Client and resource project enable type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableType")]
         public virtual string EnableType { get; set; }
 
-        /// <summary>
-        /// DEPRECATED: Please use field `values`. Service group should have prefix `groups/`. The names of the service
-        /// groups that are enabled (Not Implemented). Example: `groups/googleServices`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
-        public virtual System.Collections.Generic.IList<string> Groups { get; set; }
-
-        /// <summary>
-        /// DEPRECATED: Please use field `values`. Service should have prefix `services/`. The names of the services
-        /// that are enabled. Example: `storage.googleapis.com`.
-        /// </summary>
+        /// <summary>The names of the services that are enabled. Example: `services/storage.googleapis.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
@@ -4438,6 +4462,75 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A message to group the analysis information.</summary>
+    public class GoogleApiServiceusageV2alphaAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Analysis result of updating a policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisResult")]
+        public virtual GoogleApiServiceusageV2alphaAnalysisResult AnalysisResult { get; set; }
+
+        /// <summary>Output only. The type of analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisType")]
+        public virtual string AnalysisType { get; set; }
+
+        /// <summary>
+        /// Output only. The user friendly display name of the analysis type. E.g. service dependency analysis, service
+        /// resource usage analysis, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The names of the service that has analysis result of warnings or blockers. Example:
+        /// `services/storage.googleapis.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An analysis result including blockers and warnings.</summary>
+    public class GoogleApiServiceusageV2alphaAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Blocking information that would prevent the policy changes at runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockers")]
+        public virtual System.Collections.Generic.IList<GoogleApiServiceusageV2alphaImpact> Blockers { get; set; }
+
+        /// <summary>
+        /// Warning information indicating that the policy changes might be unsafe, but will not block the changes at
+        /// runtime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleApiServiceusageV2alphaImpact> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the `AnalyzeConsumerPolicy` method.</summary>
+    public class GoogleApiServiceusageV2alphaAnalyzeConsumerPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response of analyzing a consumer policy update.</summary>
+    public class GoogleApiServiceusageV2alphaAnalyzeConsumerPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of analyses returned from performing the intended policy update analysis. The analysis is grouped
+        /// by service name and different analysis types. The empty analysis list means that the consumer policy can be
+        /// updated without any warnings or blockers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
+        public virtual System.Collections.Generic.IList<GoogleApiServiceusageV2alphaAnalysis> Analysis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Consumer Policy is a set of rules that define what services or service groups can be used for a cloud resource
     /// hierarchy.
@@ -4556,6 +4649,32 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// <summary>The names of the services that are enabled. Example: `services/storage.googleapis.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message to group impacts of updating a policy.</summary>
+    public class GoogleApiServiceusageV2alphaImpact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. User friendly impact detail in a free form message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>Output only. The type of impact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impactType")]
+        public virtual string ImpactType { get; set; }
+
+        /// <summary>
+        /// The parent resource that the analysis is based on and the service name that the analysis is for. Example:
+        /// `projects/100/services/compute.googleapis.com`, folders/101/services/compute.googleapis.com` and
+        /// `organizations/102/services/compute.googleapis.com`. Usually, the parent resource here is same as the parent
+        /// resource of the analyzed policy. However, for some analysis types, the parent can be different. For example,
+        /// for resource existence analysis, if the parent resource of the analyzed policy is a folder or an
+        /// organization, the parent resource here can still be the project that contains the resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5101,15 +5220,12 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ImpactType { get; set; }
 
         /// <summary>
-        /// The parent resource that the analysis is based on and the service name that the analysis is for. Example:
-        /// `projects/100/services/compute.googleapis.com`, folders/101/services/compute.googleapis.com` and
-        /// `organizations/102/services/compute.googleapis.com`. Usually, the parent resource here is same as the parent
-        /// resource of the analyzed policy. However, for some analysis types, the parent can be different. For example,
-        /// for resource existence analysis, if the parent resource of the analyzed policy is a folder or an
-        /// organization, the parent resource here can still be the project that contains the resources.
+        /// Output only. This field will be populated only for the `DEPENDENCY_MISSING_DEPENDENCIES` impact type.
+        /// Example: `services/compute.googleapis.com`. Impact.detail will be in format : `missing service dependency:
+        /// {missing_dependency}.`
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("missingDependency")]
+        public virtual string MissingDependency { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
