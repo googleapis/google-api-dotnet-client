@@ -65,6 +65,17 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud App Lifecycle Management data and see the email
+            /// address for your Google Account
+            /// </summary>
+            public static string SaasservicemgmtReadWrite = "https://www.googleapis.com/auth/saasservicemgmt.read-write";
+
+            /// <summary>
+            /// See your Google Cloud App Lifecycle Management data and the email address of your Google Account
+            /// </summary>
+            public static string SaasservicemgmtReadonly = "https://www.googleapis.com/auth/saasservicemgmt.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the App Lifecycle Manager API.</summary>
@@ -75,6 +86,17 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud App Lifecycle Management data and see the email
+            /// address for your Google Account
+            /// </summary>
+            public const string SaasservicemgmtReadWrite = "https://www.googleapis.com/auth/saasservicemgmt.read-write";
+
+            /// <summary>
+            /// See your Google Cloud App Lifecycle Management data and the email address of your Google Account
+            /// </summary>
+            public const string SaasservicemgmtReadonly = "https://www.googleapis.com/auth/saasservicemgmt.readonly";
         }
 
         /// <summary>Gets the Projects resource.</summary>
