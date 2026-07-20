@@ -7683,6 +7683,16 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialResultMode")]
         public virtual string PartialResultMode { get; set; }
 
+        /// <summary>
+        /// Optional. The resource name of the Secret Manager secret holding the password for the user to log into the
+        /// database. The secret should be created using the regional endpoint (for API) or from the Regional Secrets
+        /// page (for UI), and stored in the same region as the Cloud SQL instance. The expected resource name format is
+        /// `projects/{project}/locations/{location}/secrets/{secret}/versions/{secret_version}`. Used together with the
+        /// `user` field. The secret resource name will not be stored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
         /// <summary>Optional. The maximum number of rows returned per SQL statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLimit")]
         public virtual System.Nullable<long> RowLimit { get; set; }
