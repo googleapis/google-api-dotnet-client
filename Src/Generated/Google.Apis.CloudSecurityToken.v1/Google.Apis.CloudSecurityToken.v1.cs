@@ -1113,6 +1113,10 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
     /// </summary>
     public class GoogleIdentityStsV1Jwk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Algorithm intended for use with the key. Currently "RS256".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alg")]
+        public virtual string Alg { get; set; }
+
         /// <summary>Exponent value for kty="RSA".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("e")]
         public virtual string E { get; set; }
