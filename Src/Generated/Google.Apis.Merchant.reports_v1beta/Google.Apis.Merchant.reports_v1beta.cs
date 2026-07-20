@@ -920,8 +920,8 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         public virtual System.Nullable<long> Clicks { get; set; }
 
         /// <summary>
-        /// Date in the merchant timezone to which metrics apply. Segment. Condition on `date` is required in the
-        /// `WHERE` clause.
+        /// Date in the Merchant Center account timezone to which metrics apply. Segment. Condition on `date` is
+        /// required in the `WHERE` clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
@@ -932,7 +932,9 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
         public virtual System.Nullable<long> Impressions { get; set; }
 
-        /// <summary>First day of the week (Monday) of the metrics date in the merchant timezone. Segment.</summary>
+        /// <summary>
+        /// First day of the week (Monday) of the metrics date in the Merchant Center account timezone. Segment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("week")]
         public virtual Date Week { get; set; }
 
@@ -1359,8 +1361,8 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         public virtual string CustomerCountryCode { get; set; }
 
         /// <summary>
-        /// Date in the merchant timezone to which metrics apply. Segment. Condition on `date` is required in the
-        /// `WHERE` clause.
+        /// Date in the Merchant Center account timezone to which metrics apply. Segment. Condition on `date` is
+        /// required in the `WHERE` clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
@@ -1428,7 +1430,9 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>First day of the week (Monday) of the metrics date in the merchant timezone. Segment.</summary>
+        /// <summary>
+        /// First day of the week (Monday) of the metrics date in the Merchant Center account timezone. Segment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("week")]
         public virtual Date Week { get; set; }
 
