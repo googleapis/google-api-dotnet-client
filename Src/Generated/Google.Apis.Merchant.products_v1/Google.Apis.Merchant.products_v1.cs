@@ -2342,6 +2342,12 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyLabel")]
         public virtual string ReturnPolicyLabel { get; set; }
 
+        /// <summary>
+        /// Optional. [Return rules](https://support.google.com/merchants/answer/17081382) for the product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returns")]
+        public virtual System.Collections.Generic.IList<Returns> Returns { get; set; }
+
         /// <summary>Advertised sale price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salePrice")]
         public virtual Price SalePrice { get; set; }
@@ -3209,6 +3215,60 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>Required. The type of the relationship between this product and the related product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipType")]
         public virtual string RelationshipType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The returns of the product.</summary>
+    public class Returns : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the countries
+        /// to which an item can be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countries")]
+        public virtual System.Collections.Generic.IList<string> Countries { get; set; }
+
+        /// <summary>The condition the item must be in to be accepted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemConditions")]
+        public virtual System.Collections.Generic.IList<string> ItemConditions { get; set; }
+
+        /// <summary>The physical methods by which the item can be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methods")]
+        public virtual System.Collections.Generic.IList<string> Methods { get; set; }
+
+        /// <summary>The financial outcomes available for a return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcomes")]
+        public virtual System.Collections.Generic.IList<string> Outcomes { get; set; }
+
+        /// <summary>The URL of the return policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyUrl")]
+        public virtual string PolicyUrl { get; set; }
+
+        /// <summary>A flat restocking fee penalty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restockingFee")]
+        public virtual Price RestockingFee { get; set; }
+
+        /// <summary>A percentage restocking fee penalty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restockingPercentageFee")]
+        public virtual System.Nullable<double> RestockingPercentageFee { get; set; }
+
+        /// <summary>The fixed cost out-of-pocket for a customer to return an item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingFee")]
+        public virtual Price ShippingFee { get; set; }
+
+        /// <summary>The type of return shipping fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingFeeType")]
+        public virtual string ShippingFeeType { get; set; }
+
+        /// <summary>The duration of the return window in days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowDays")]
+        public virtual System.Nullable<long> WindowDays { get; set; }
+
+        /// <summary>Special return window behavior.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowType")]
+        public virtual string WindowType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
