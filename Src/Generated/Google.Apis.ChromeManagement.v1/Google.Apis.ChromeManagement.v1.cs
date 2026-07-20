@@ -2120,14 +2120,20 @@ namespace Google.Apis.ChromeManagement.v1
                     }
                 }
 
-                /// <summary>Returns a high-level summary of URL visits for a given customer.</summary>
+                /// <summary>
+                /// Returns a high-level summary of URL visits for a given customer. Requires a Chrome Enterprise
+                /// Premium subscription. If the customer does not have this subscription, query results will be empty.
+                /// </summary>
                 /// <param name="customer">Required. The customer ID in the format "customers/{customer_id}".</param>
                 public virtual QueryUrlVisitsRequest QueryUrlVisits(string customer)
                 {
                     return new QueryUrlVisitsRequest(this.service, customer);
                 }
 
-                /// <summary>Returns a high-level summary of URL visits for a given customer.</summary>
+                /// <summary>
+                /// Returns a high-level summary of URL visits for a given customer. Requires a Chrome Enterprise
+                /// Premium subscription. If the customer does not have this subscription, query results will be empty.
+                /// </summary>
                 public class QueryUrlVisitsRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1QueryUrlVisitsResponse>
                 {
                     /// <summary>Constructs a new QueryUrlVisits request.</summary>
@@ -2184,14 +2190,22 @@ namespace Google.Apis.ChromeManagement.v1
                     }
                 }
 
-                /// <summary>Returns summaries of URL visits for a given metric and breakdown dimension.</summary>
+                /// <summary>
+                /// Returns summaries of URL visits for a given metric and breakdown dimension. Requires a Chrome
+                /// Enterprise Premium subscription. If the customer does not have this subscription, query results will
+                /// be empty.
+                /// </summary>
                 /// <param name="customer">Required. The customer ID in the format "customers/{customer_id}".</param>
                 public virtual QueryUrlVisitsBreakdownsRequest QueryUrlVisitsBreakdowns(string customer)
                 {
                     return new QueryUrlVisitsBreakdownsRequest(this.service, customer);
                 }
 
-                /// <summary>Returns summaries of URL visits for a given metric and breakdown dimension.</summary>
+                /// <summary>
+                /// Returns summaries of URL visits for a given metric and breakdown dimension. Requires a Chrome
+                /// Enterprise Premium subscription. If the customer does not have this subscription, query results will
+                /// be empty.
+                /// </summary>
                 public class QueryUrlVisitsBreakdownsRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1QueryUrlVisitsBreakdownsResponse>
                 {
                     /// <summary>Constructs a new QueryUrlVisitsBreakdowns request.</summary>
