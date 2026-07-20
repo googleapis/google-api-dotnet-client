@@ -2010,6 +2010,33 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Agent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AgentAnomaly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<double> ConfidenceScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("detectorReferences")]
+        public virtual System.Collections.Generic.IList<DetectorReference> DetectorReferences { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("invocationReferences")]
+        public virtual System.Collections.Generic.IList<InvocationReference> InvocationReferences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class AgentDataAccessEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
@@ -2056,6 +2083,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
         public virtual string PrincipalSubject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AgentSession : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3205,6 +3241,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class DetectorReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("detectorId")]
+        public virtual string DetectorId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendation")]
+        public virtual string Recommendation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class DiscoveredWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
@@ -3565,8 +3622,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
         public virtual AffectedResources AffectedResources { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual Agent Agent { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("agentAnomaly")]
+        public virtual AgentAnomaly AgentAnomaly { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("agentDataAccessEvents")]
         public virtual System.Collections.Generic.IList<AgentDataAccessEvent> AgentDataAccessEvents { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSessions")]
+        public virtual System.Collections.Generic.IList<AgentSession> AgentSessions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("aiModel")]
         public virtual AiModel AiModel { get; set; }
@@ -5237,6 +5303,33 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudSecuritycenterV2Agent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudSecuritycenterV2AgentAnomaly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<double> ConfidenceScore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("detectorReferences")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2DetectorReference> DetectorReferences { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("invocationReferences")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2InvocationReference> InvocationReferences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudSecuritycenterV2AgentDataAccessEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
@@ -5283,6 +5376,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
         public virtual string PrincipalSubject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudSecuritycenterV2AgentSession : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6399,6 +6501,27 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudSecuritycenterV2DetectorReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("detectorId")]
+        public virtual string DetectorId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendation")]
+        public virtual string Recommendation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudSecuritycenterV2DiscoveredWorkload : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
@@ -6857,8 +6980,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedResources")]
         public virtual GoogleCloudSecuritycenterV2AffectedResources AffectedResources { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual GoogleCloudSecuritycenterV2Agent Agent { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("agentAnomaly")]
+        public virtual GoogleCloudSecuritycenterV2AgentAnomaly AgentAnomaly { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("agentDataAccessEvents")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2AgentDataAccessEvent> AgentDataAccessEvents { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSessions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2AgentSession> AgentSessions { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("aiModel")]
         public virtual GoogleCloudSecuritycenterV2AiModel AiModel { get; set; }
@@ -7296,6 +7428,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudSecuritycenterV2InvocationReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("invocationId")]
+        public virtual string InvocationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9340,6 +9481,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class InvocationReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("invocationId")]
+        public virtual string InvocationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
