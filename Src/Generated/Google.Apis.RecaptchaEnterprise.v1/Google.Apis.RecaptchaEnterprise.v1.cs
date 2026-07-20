@@ -1102,6 +1102,55 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 }
             }
 
+            /// <summary>Get the policy for a key.</summary>
+            /// <param name="name">
+            /// Required. The name of the policy to get, in the format `projects/{project}/keys/{key}/policy`.
+            /// </param>
+            public virtual GetPolicyRequest GetPolicy(string name)
+            {
+                return new GetPolicyRequest(this.service, name);
+            }
+
+            /// <summary>Get the policy for a key.</summary>
+            public class GetPolicyRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Policy>
+            {
+                /// <summary>Constructs a new GetPolicy request.</summary>
+                public GetPolicyRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the policy to get, in the format `projects/{project}/keys/{key}/policy`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getPolicy";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/keys/[^/]+/policy$",
+                    });
+                }
+            }
+
             /// <summary>Returns the list of all keys that belong to a project.</summary>
             /// <param name="parent">
             /// Required. The name of the project that contains the keys that is listed, in the format
@@ -1522,6 +1571,80 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                     });
                 }
             }
+
+            /// <summary>Updates the policy for a key.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. Resource name for this policy. Format: "projects/{project}/keys/{key}/policy" for a policy
+            /// under a key.
+            /// </param>
+            public virtual UpdatePolicyRequest UpdatePolicy(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Policy body, string name)
+            {
+                return new UpdatePolicyRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the policy for a key.</summary>
+            public class UpdatePolicyRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Policy>
+            {
+                /// <summary>Constructs a new UpdatePolicy request.</summary>
+                public UpdatePolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Policy body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. Resource name for this policy. Format: "projects/{project}/keys/{key}/policy" for a
+                /// policy under a key.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The mask to control which fields of the policy get updated. If the mask is not present,
+                /// all fields are updated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1Policy Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updatePolicy";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdatePolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/keys/[^/]+/policy$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Relatedaccountgroupmemberships resource.</summary>
@@ -1807,7 +1930,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1
 }
 namespace Google.Apis.RecaptchaEnterprise.v1.Data
 {
-    /// <summary>Account defender risk assessment.</summary>
+    /// <summary>Account defense risk assessment.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Account takeover risk assessment for this request.</summary>
@@ -1822,7 +1945,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Risk explainability reasons for account defender.</summary>
+    /// <summary>Risk explainability reasons for Account defense.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A risk reason associated with this request.</summary>
@@ -1860,7 +1983,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Trust explainability reasons for account defender.</summary>
+    /// <summary>Trust explainability reasons for Account defense.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A trust reason associated with this request.</summary>
@@ -2029,7 +2152,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1Assessment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Assessment returned by account defender when an account identifier is provided.
+        /// Output only. Assessment returned by Account defense when an account identifier is provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountDefenderAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment AccountDefenderAssessment { get; set; }
@@ -2075,11 +2198,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Assessment returned when a site key, a token, and a phone number as `user_id` are provided.
-        /// Account defender and SMS toll fraud protection need to be enabled.
+        /// Output only. Assessment returned when a site key, a token, and a phone number as `user_id` are provided. SMS
+        /// defense needs to be enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneFraudAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment PhoneFraudAssessment { get; set; }
+
+        /// <summary>Output only. Provides information about the policy evaluation for this assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyEvaluation")]
+        public virtual GoogleCloudRecaptchaenterpriseV1PolicyEvaluation PolicyEvaluation { get; set; }
 
         /// <summary>
         /// Optional. The private password leak verification field contains the parameters that are used to to check for
@@ -2176,6 +2303,110 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A rule to configure the behavior of reCAPTCHA for conditionally presenting a challenge.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ChallengeRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Present a challenge to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
+        public virtual GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome Challenge { get; set; }
+
+        /// <summary>
+        /// Optional. A CEL condition that must be met for this rule to apply. The following fields can be referenced in
+        /// the condition: * `score` * `user_ip_address` * `user_asn` * `user_agent` * `verified_bots.name` *
+        /// `verified_bots.bot_type` Examples: * `score &amp;lt; 0.5` * `user_ip_address == "123.45.67.89"` *
+        /// `user_agent.contains("Chrome")` * `score &amp;lt; 0.5 &amp;amp;&amp;amp; user_ip_address == "123.45.67.89"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>Do not present a challenge to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noChallenge")]
+        public virtual GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome NoChallenge { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An outcome that indicates that a challenge of a specified difficulty should be presented to the user.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcome : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The difficulty of the challenge to present to the user. If unspecified, `BALANCE` is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("difficulty")]
+        public virtual string Difficulty { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the evaluation of a `ChallengeRule`.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of challenge rules that applies to one or more actions.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Action name provided at token generation. The action name is not case-sensitive and can only
+        /// contain alphanumeric characters, slashes, and underscores. If "*" is provided, the rule group applies to all
+        /// actions. If multiple actions are provided, the rule group is applied to all of them. This field is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>
+        /// Required. A list of rules that configure when and how reCAPTCHA presents a challenge. reCAPTCHA evaluates
+        /// these rules in order and applies the first one that matches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challengeRules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1ChallengeRule> ChallengeRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An outcome that indicates that no challenge should be presented to the user.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ChallengeRuleNoChallengeOutcome : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for clients to protect with reCAPTCHA.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ClientSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set to true, it means allowed_domains are not enforced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAllDomains")]
+        public virtual System.Nullable<bool> AllowAllDomains { get; set; }
+
+        /// <summary>
+        /// Optional. Domains or subdomains of websites allowed to use the policy. All subdomains of an allowed domain
+        /// are automatically allowed. A valid domain requires a host and must not include any path, port, query or
+        /// fragment. Examples: 'example.com' or 'subdomain.example.com' Each policy supports a maximum of 250 domains.
+        /// To use a policy on more domains, set `allow_all_domains` to true. When this is set, you are responsible for
+        /// validating the hostname by checking the `token_properties.hostname` field in each assessment response
+        /// against your list of allowed domains.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedDomains")]
+        public virtual System.Collections.Generic.IList<string> AllowedDomains { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for all API endpoints to protect with reCAPTCHA. If this field is not set, reCAPTCHA
+        /// will not automatically request tokens on any API endpoints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedEndpointGroup")]
+        public virtual GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup ProtectedEndpointGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about a verification endpoint that can be used for 2FA.</summary>
     public class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2244,7 +2475,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     {
         /// <summary>
         /// Optional. The expected action for this type of event. This should be the same action provided at token
-        /// generation time on client-side platforms already integrated with recaptcha enterprise.
+        /// generation time on client-side platforms already integrated with recaptcha enterprise. Required for
+        /// Universal keys.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedAction")]
         public virtual string ExpectedAction { get; set; }
@@ -2785,6 +3017,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testingOptions")]
         public virtual GoogleCloudRecaptchaenterpriseV1TestingOptions TestingOptions { get; set; }
 
+        /// <summary>Settings for keys that are configured through their Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("universalSettings")]
+        public virtual GoogleCloudRecaptchaenterpriseV1UniversalKeySettings UniversalSettings { get; set; }
+
         /// <summary>Optional. Settings for Web Application Firewall (WAF).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wafSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1WafSettings WafSettings { get; set; }
@@ -3030,6 +3266,48 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A complete configuration set containing multiple grouped rules defining the behavior of reCAPTCHA for fraud
+    /// detection and prevention.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Rules to configure the behavior of reCAPTCHA for showing a challenge. Rule groups are evaluated in
+        /// order. Evaluation stops when the first matching rule group is found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challengeRuleGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup> ChallengeRuleGroups { get; set; }
+
+        /// <summary>Required. Configuration for clients protected by this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSettings")]
+        public virtual GoogleCloudRecaptchaenterpriseV1ClientSettings ClientSettings { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name for this policy. Format: "projects/{project}/keys/{key}/policy" for a policy under
+        /// a key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the policy evaluation.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1PolicyEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Populated if one or more Challenge rules were matched. Its presence in the assessment indicates
+        /// that at least one challenge rule was matched and determined whether a challenge was presented to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challengeRuleEvaluation")]
+        public virtual GoogleCloudRecaptchaenterpriseV1ChallengeRuleEvaluation ChallengeRuleEvaluation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Private password leak verification info.</summary>
     public class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3060,6 +3338,48 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reencryptedUserCredentialsHash")]
         public virtual string ReencryptedUserCredentialsHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for an API endpoint to protect with reCAPTCHA.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Action name to be used for token generation for this endpoint. The action name is not
+        /// case-sensitive and can only contain alphanumeric characters, slashes, and underscores.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>
+        /// Required. URI path of the API endpoint to protect. Must start with '/'. Supports glob characters '*' to
+        /// match a single path segment and '**' to match multiple path segments. Standalone root catch-alls ('/*' and
+        /// '/**') are invalid because it would hurt performance to trigger reCAPTCHA on every single request to your
+        /// backend. Matching is evaluated against the URL path only (domain, scheme, and query parameters are ignored).
+        /// Examples: - `/login` matches `/login`, `https://example.com/login`, and `/login?query=1`, but not
+        /// `/login/step1`. - `/products/*` matches `/products/123`, but not `/products/123/456`. - `/content/**`
+        /// matches `/content/articles/2024/01/01`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for API endpoints to protect with reCAPTCHA.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ProtectedEndpointGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of API endpoints to automatically protect with reCAPTCHA. If any of these endpoints is
+        /// invoked from a page where a key bound to this policy is installed, a reCAPTCHA token is automatically
+        /// generated and attached to the request. If multiple protected endpoints match a given API endpoint, the first
+        /// one in the list is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedEndpoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint> ProtectedEndpoints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3167,7 +3487,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Risk analysis result for an event.</summary>
     public class GoogleCloudRecaptchaenterpriseV1RiskAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys.</summary>
+        /// <summary>
+        /// Output only. Challenge information for Universal, `POLICY_BASED_CHALLENGE` and `INVISIBLE` keys.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
         public virtual string Challenge { get; set; }
 
@@ -3177,6 +3499,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedVerdictReasons")]
         public virtual System.Collections.Generic.IList<string> ExtendedVerdictReasons { get; set; }
+
+        /// <summary>
+        /// Output only. Type of the last challenge presented to the user for Universal, `POLICY_BASED_CHALLENGE` and
+        /// `INVISIBLE` keys. The field is only set when a challenge was presented to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastChallengeType")]
+        public virtual string LastChallengeType { get; set; }
 
         /// <summary>Output only. Reasons contributing to the risk analysis verdict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
@@ -3562,7 +3891,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1TransactionDataUser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Unique account identifier for this user. If using account defender, this should match the
+        /// Optional. Unique account identifier for this user. If using Account defense, this should match the
         /// hashed_account_id field. Otherwise, a unique and persistent identifier for this account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
@@ -3656,6 +3985,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for keys that are configured through their Policy.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1UniversalKeySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
