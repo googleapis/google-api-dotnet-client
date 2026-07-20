@@ -1585,7 +1585,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
-            /// <summary>The maximum number of changes to return per page.</summary>
+            /// <summary>
+            /// The maximum number of changes to return. The service may return fewer than this value. If unspecified,
+            /// at most 100 changes will be returned. The maximum value is 1000; values above 1000 will be coerced to
+            /// 1000.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1820,7 +1824,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("includeTeamDriveItems", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeTeamDriveItems { get; set; }
 
-            /// <summary>The maximum number of changes to return per page.</summary>
+            /// <summary>
+            /// The maximum number of changes to return. The service may return fewer than this value. If unspecified,
+            /// at most 100 changes will be returned. The maximum value is 1000; values above 1000 will be coerced to
+            /// 1000.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2307,7 +2315,10 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
-            /// <summary>The maximum number of comments to return per page.</summary>
+            /// <summary>
+            /// The maximum number of comments to return. The service may return fewer than this value. If unspecified,
+            /// at most 20 comments will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2762,7 +2773,11 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>Maximum number of shared drives to return per page.</summary>
+            /// <summary>
+            /// The maximum number of shared drives to return. The service may return fewer than this value. If
+            /// unspecified, at most 10 shared drives will be returned. The maximum value is 100; values above 100 will
+            /// be coerced to 100.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -4390,9 +4405,9 @@ namespace Google.Apis.Drive.v3
             public virtual string OrderBy { get; set; }
 
             /// <summary>
-            /// The maximum number of files to return per page. Pages may be partial or empty even before reaching the
-            /// end of the file list. If unspecified, at most 100 files are returned for shared drives, and the entire
-            /// list of files for non-shared drives. The maximum value is 100; values above 100 are changed to 100.
+            /// The maximum number of files to return. The service may return fewer than this value. If unspecified, at
+            /// most 100 files will be returned for shared drives, and the entire list of files for non-shared drives.
+            /// The maximum value is 1000; values above 1000 will be coerced to 1000.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -5764,9 +5779,9 @@ namespace Google.Apis.Drive.v3
             public virtual string IncludePermissionsForView { get; set; }
 
             /// <summary>
-            /// The maximum number of permissions to return per page. When not set for files in a shared drive, at most
-            /// 100 results will be returned. When not set for files that are not in a shared drive, the entire list
-            /// will be returned.
+            /// The maximum number of permissions to return. The service may return fewer than this value. If
+            /// unspecified, at most 100 permissions will be returned for shared drives, and the entire list of
+            /// permissions for non-shared drives. The maximum value is 100; values above 100 will be coerced to 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -6324,7 +6339,10 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
-            /// <summary>The maximum number of replies to return per page.</summary>
+            /// <summary>
+            /// The maximum number of replies to return. The service may return fewer than this value. If unspecified,
+            /// at most 20 replies will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -6764,7 +6782,11 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>The maximum number of revisions to return per page.</summary>
+            /// <summary>
+            /// The maximum number of revisions to return. The service may return fewer than this value. If unspecified,
+            /// at most 200 revisions will be returned. The maximum value is 1000; values above 1000 will be coerced to
+            /// 1000.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -7743,6 +7765,10 @@ namespace Google.Apis.Drive.v3.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DueTimeRaw);
             set => DueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. The behavior of the approval when the file content changes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileContentChangeBehavior")]
+        public virtual string FileContentChangeBehavior { get; set; }
 
         /// <summary>The user that requested the approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
@@ -10658,6 +10684,10 @@ namespace Google.Apis.Drive.v3.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DueTimeRaw);
             set => DueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The behavior of the approval when the file content changes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileContentChangeBehavior")]
+        public virtual string FileContentChangeBehavior { get; set; }
 
         /// <summary>Optional. Whether to lock the file when starting the approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lockFile")]
