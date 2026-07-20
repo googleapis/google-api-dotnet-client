@@ -1225,6 +1225,49 @@ namespace Google.Apis.HomeGraphService.v1.Data
             set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        private string _providerVersionTimeRaw;
+
+        private object _providerVersionTime;
+
+        /// <summary>
+        /// Optional in write requests (e.g. ReportStateAndNotification). If set, represents the provider version
+        /// timestamp of the existing trait in the database. The server will perform optimistic locking validation if
+        /// this field is present and the experiment is enabled. It will not be persisted to the database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerVersionTime")]
+        public virtual string ProviderVersionTimeRaw
+        {
+            get => _providerVersionTimeRaw;
+            set
+            {
+                _providerVersionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _providerVersionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ProviderVersionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ProviderVersionTimeDateTimeOffset instead.")]
+        public virtual object ProviderVersionTime
+        {
+            get => _providerVersionTime;
+            set
+            {
+                _providerVersionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _providerVersionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ProviderVersionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ProviderVersionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProviderVersionTimeRaw);
+            set => ProviderVersionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The Provider Home API trait payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trait")]
         public virtual System.Collections.Generic.IDictionary<string, object> Trait { get; set; }
