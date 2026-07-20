@@ -2873,7 +2873,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsAddress")]
         public virtual string DnsAddress { get; set; }
 
-        /// <summary>Optional. Human readable form of a domain such as “google.com”.</summary>
+        /// <summary>Optional. Human readable form of a domain such as `example.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
