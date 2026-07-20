@@ -13189,27 +13189,27 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Result of a risk analysis operation request.</summary>
     public class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Categorical stats result</summary>
+        /// <summary>Output only. Categorical stats result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsResult")]
         public virtual GooglePrivacyDlpV2CategoricalStatsResult CategoricalStatsResult { get; set; }
 
-        /// <summary>Delta-presence result</summary>
+        /// <summary>Output only. Delta-presence result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deltaPresenceEstimationResult")]
         public virtual GooglePrivacyDlpV2DeltaPresenceEstimationResult DeltaPresenceEstimationResult { get; set; }
 
-        /// <summary>K-anonymity result</summary>
+        /// <summary>Output only. K-anonymity result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityResult")]
         public virtual GooglePrivacyDlpV2KAnonymityResult KAnonymityResult { get; set; }
 
-        /// <summary>K-map result</summary>
+        /// <summary>Output only. K-map result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationResult")]
         public virtual GooglePrivacyDlpV2KMapEstimationResult KMapEstimationResult { get; set; }
 
-        /// <summary>L-divesity result</summary>
+        /// <summary>Output only. L-divesity result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lDiversityResult")]
         public virtual GooglePrivacyDlpV2LDiversityResult LDiversityResult { get; set; }
 
-        /// <summary>Numerical stats result</summary>
+        /// <summary>Output only. Numerical stats result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalStatsResult")]
         public virtual GooglePrivacyDlpV2NumericalStatsResult NumericalStatsResult { get; set; }
 
@@ -16411,8 +16411,8 @@ namespace Google.Apis.DLP.v2.Data
         }
 
         /// <summary>
-        /// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created,
-        /// for example `projects/dlp-test-project/locations/global/discoveryConfigs/53234423`.
+        /// Output only. Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig
+        /// is created, for example `projects/dlp-test-project/locations/global/discoveryConfigs/53234423`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -16858,7 +16858,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Combines all of the information about a DLP job.</summary>
     public class GooglePrivacyDlpV2DlpJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Events that should occur after the job has completed.</summary>
+        /// <summary>Output only. Events that should occur after the job has completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionDetails")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ActionDetails> ActionDetails { get; set; }
 
@@ -18418,6 +18418,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual GooglePrivacyDlpV2InfoTypes InfoTypes { get; set; }
 
+        /// <summary>
+        /// Optional. The minimum total number of findings of all matching info types required for this condition to
+        /// evaluate to true. Defaults to 1 if unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCount")]
+        public virtual System.Nullable<long> MinCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18725,7 +18732,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedOptions")]
         public virtual GooglePrivacyDlpV2RequestedOptions RequestedOptions { get; set; }
 
-        /// <summary>A summary of the outcome of this inspection job.</summary>
+        /// <summary>Output only. A summary of the outcome of this inspection job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual GooglePrivacyDlpV2Result Result { get; set; }
 
@@ -19041,8 +19048,8 @@ namespace Google.Apis.DLP.v2.Data
         }
 
         /// <summary>
-        /// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for
-        /// example `projects/dlp-test-project/jobTriggers/53234423`.
+        /// Output only. Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is
+        /// created, for example `projects/dlp-test-project/jobTriggers/53234423`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -21148,7 +21155,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobConfig")]
         public virtual GooglePrivacyDlpV2InspectJobConfig JobConfig { get; set; }
 
-        /// <summary>If run with an InspectTemplate, a snapshot of its state at the time of this run.</summary>
+        /// <summary>
+        /// Output only. If run with an InspectTemplate, a snapshot of its state at the time of this run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotInspectTemplate")]
         public virtual GooglePrivacyDlpV2InspectTemplate SnapshotInspectTemplate { get; set; }
 
