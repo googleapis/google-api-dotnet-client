@@ -3051,6 +3051,15 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual System.Collections.Generic.IList<NfsExportOptions> NfsExportOptions { get; set; }
 
         /// <summary>
+        /// Optional. Input only. Specifies options for restoring from a backup source. Use this field to configure a
+        /// partial restore, allowing recovery of specific files or directories instead of the entire backup. This field
+        /// is only valid if the source oneof is set to `source_backup` or `source_backupdr_backup`. If this field is
+        /// not provided, restoring from a backup will perform a full restore.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreConfig")]
+        public virtual RestoreConfig RestoreConfig { get; set; }
+
+        /// <summary>
         /// The resource name of the backup, in the format
         /// `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored
         /// from.
@@ -4646,6 +4655,21 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Optional configuration for restore backup operations.</summary>
+    public class RestoreConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Example: If you want to restore `/mnt/share/dir1/file.txt`, the path pattern must be
+        /// `/dir1/file.txt`. If you want to restore `/mnt/share/dir1/`, the path pattern must be `/dir1`. Currently
+        /// only single path is supported, Glob patterns are not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathPatterns")]
+        public virtual System.Collections.Generic.IList<string> PathPatterns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
