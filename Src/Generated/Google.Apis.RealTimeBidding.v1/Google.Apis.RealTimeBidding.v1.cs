@@ -4399,8 +4399,9 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     public class PretargetingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Targeting modes included by this config. A bid request must allow all the specified targeting modes. An
-        /// unset value allows all bid requests to be sent, regardless of which targeting modes they allow.
+        /// Deprecated: The value of this field no longer has any effect. Targeting modes included by this config. A bid
+        /// request must allow all the specified targeting modes. An unset value allows all bid requests to be sent,
+        /// regardless of which targeting modes they allow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedUserTargetingModes")]
         public virtual System.Collections.Generic.IList<string> AllowedUserTargetingModes { get; set; }
