@@ -8,6 +8,33 @@
     "1",
     "2"
   ],
+  "Google.Apis.AndroidPublisher.v3.AppstoreappsreviewResource+UploadapkMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.AppstoreappsreviewResource+UploadapkMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.AppstoreappsreviewResource+UploadappstoreapppolicydeclarationfileMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.AppstoreappsreviewResource+UploadappstoreapppolicydeclarationfileMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.AppstoreappsreviewResource+UploadimageMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.AppstoreappsreviewResource+UploadimageMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.AndroidPublisher.v3.EditsResource+ApksResource+UploadMediaUpload.AltEnum": [
     "json",
     "media",
