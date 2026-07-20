@@ -5181,6 +5181,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Set if argument_kind == FIXED_TABLE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableType")]
+        public virtual StandardSqlTableType TableType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8836,7 +8840,9 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. The reservation that job would use. User can specify a reservation to execute the job. If
         /// reservation is not set, reservation is determined based on the rules defined by the reservation assignments.
-        /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+        /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`. Forces the
+        /// query to use on-demand billing when set to `none`, which requires the project or organization to have
+        /// `reservation_override_mode` set to `ALLOW_ANY_OVERRIDE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservation")]
         public virtual string Reservation { get; set; }
@@ -9770,6 +9776,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalExecutionDurationMs")]
         public virtual System.Nullable<long> FinalExecutionDurationMs { get; set; }
 
+        /// <summary>Output only. Regions where the global query accesses data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalQueryRemoteRegions")]
+        public virtual System.Collections.Generic.IList<string> GlobalQueryRemoteRegions { get; set; }
+
         /// <summary>Output only. Statistics for a load job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("load")]
         public virtual JobStatistics3 Load { get; set; }
@@ -9777,6 +9787,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. Number of child jobs executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numChildJobs")]
         public virtual System.Nullable<long> NumChildJobs { get; set; }
+
+        /// <summary>Output only. The global query that created this job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentGlobalQueryJob")]
+        public virtual JobReference ParentGlobalQueryJob { get; set; }
 
         /// <summary>Output only. If this is a child job, specifies the job ID of the parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentJobId")]
@@ -10010,6 +10024,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
+
+        /// <summary>
+        /// Output only. Storage and caching statistics per cloud provider for queries over object storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectStorageStats")]
+        public virtual System.Collections.Generic.IList<ObjectStorageStats> ObjectStorageStats { get; set; }
 
         /// <summary>Output only. Performance insights.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceInsights")]
@@ -10305,6 +10325,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. Number of rows copied to the destination table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copiedRows")]
         public virtual System.Nullable<long> CopiedRows { get; set; }
+
+        /// <summary>
+        /// Output only. Destination region for a cross-region copy job. Not set for in-region copy jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteDestinationRegion")]
+        public virtual string RemoteDestinationRegion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10933,6 +10959,25 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Confusion matrix at different thresholds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confusionMatrixList")]
         public virtual System.Collections.Generic.IList<ConfusionMatrix> ConfusionMatrixList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Storage and caching statistics for object storage.</summary>
+    public class ObjectStorageStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total bytes read from the GCP Lakehouse-internal cache, avoiding an object storage read.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheBytesRead")]
+        public virtual System.Nullable<long> CacheBytesRead { get; set; }
+
+        /// <summary>The cloud provider for this block of statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
+        /// <summary>Total bytes read directly from the cloud provider's storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectStorageBytesRead")]
+        public virtual System.Nullable<long> ObjectStorageBytesRead { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11568,6 +11613,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. The reservation that jobs.query request would use. User can specify a reservation to execute the
         /// job.query. The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
+        /// Forces the query to use on-demand billing when set to `none`. This requires the project or organization to
+        /// have `reservation_override_mode` set to `ALLOW_ANY_OVERRIDE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservation")]
         public virtual string Reservation { get; set; }
