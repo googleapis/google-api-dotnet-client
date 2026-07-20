@@ -25955,12 +25955,6 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1LookupContextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The text representing contextual information for which metadata context is being requested.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual string Context { get; set; }
-
-        /// <summary>
         /// Optional. Allows to configure the context.Supported options: format - The format of the context (one of
         /// yaml, xml, json, default is yaml). context_budget - If provided, the output will be intelligently truncated
         /// on a best-effort basis to contain approximately the desired amount of characters. There is no guarantee to
