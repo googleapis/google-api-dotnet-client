@@ -2149,6 +2149,13 @@ namespace Google.Apis.DatabaseCenter.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signalFilters")]
         public virtual System.Collections.Generic.IList<SignalFilter> SignalFilters { get; set; }
 
+        /// <summary>
+        /// Optional. Filters based on signal and product. The filter list will be ORed across pairs and ANDed within a
+        /// signal and products pair.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalProductsFilters")]
+        public virtual System.Collections.Generic.IList<SignalProductsFilters> SignalProductsFilters { get; set; }
+
         /// <summary>Optional. Groups of signal types that are requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalTypeGroups")]
         public virtual System.Collections.Generic.IList<SignalTypeGroup> SignalTypeGroups { get; set; }
