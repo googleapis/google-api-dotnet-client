@@ -8869,6 +8869,13 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
 
+        /// <summary>
+        /// Optional. List of supported Google Cloud networking proxies in the Project and Location. resource_uris is
+        /// mutually exclusive with resource_uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUris")]
+        public virtual System.Collections.Generic.IList<string> ResourceUris { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8933,7 +8940,7 @@ namespace Google.Apis.NetworkServices.v1.Data
     {
         /// <summary>
         /// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service. It is
-        /// required when the `service` field points to a backend service or a wasm plugin.
+        /// required when the `service` field points to a backend service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
@@ -9018,9 +9025,9 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. All backend services and forwarding rules referenced by this extension must share the same load
-        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. Can be omitted for
-        /// AuthzExtensions that do not reference a backend service. For more information, refer to [Backend services
-        /// overview](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// balancing scheme. The supported values are `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. You can omit this
+        /// field for `AuthzExtensions` resources that don't reference a backend service. For more information, see
+        /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; }
@@ -9043,11 +9050,17 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The reference to the service that runs the extension. To configure a callout extension, `service`
-        /// must be a fully-qualified reference to a [backend
+        /// Required. The reference to the service that runs the extension. To configure a callout extension: For global
+        /// AuthzExtension, `service` must be a fully-qualified reference to a [backend
         /// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-        /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
-        /// or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`. For
+        /// regional AuthzExtension, `service` must be a fully-qualified reference to one of the following: * a [backend
+        /// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`.
+        /// * a fully qualified domain name that can be resolved by the Google Cloud DNS. * `iap.googleapis.com` and it
+        /// can only be referenced by an AuthzPolicy with the policyProfile set to REQUEST_AUTHZ. *
+        /// `modelarmor..rep.googleapis.com` and it can only be referenced by an AuthzPolicy with the policyProfile set
+        /// to CONTENT_AUTHZ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -9272,12 +9285,12 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string AuthorizationPolicy { get; set; }
 
         /// <summary>
-        /// Optional. A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the
-        /// authentication for traffic from the proxy to the actual endpoints. More specifically, it is applied to the
-        /// outgoing traffic from the proxy to the endpoint. This is typically used for sidecar model where the proxy
-        /// identifies itself as endpoint to the control plane, with the connection between sidecar and endpoint
-        /// requiring authentication. If this field is not set, authentication is disabled(open). Applicable only when
-        /// EndpointPolicyType is SIDECAR_PROXY.
+        /// Optional. Deprecated: This field is not used and is a no-op. A URL referring to a ClientTlsPolicy resource.
+        /// ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
+        /// More specifically, it is applied to the outgoing traffic from the proxy to the endpoint. This is typically
+        /// used for sidecar model where the proxy identifies itself as endpoint to the control plane, with the
+        /// connection between sidecar and endpoint requiring authentication. If this field is not set, authentication
+        /// is disabled(open). Applicable only when EndpointPolicyType is SIDECAR_PROXY.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientTlsPolicy")]
         public virtual string ClientTlsPolicy { get; set; }
