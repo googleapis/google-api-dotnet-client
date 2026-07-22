@@ -702,6 +702,51 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta
                 }
             }
 
+            /// <summary>Get the decrypted password of an alert.</summary>
+            /// <param name="name">Required. Name of the alert to get. Format: projects/{project}/alerts/{alert}</param>
+            public virtual GetPasswordRequest GetPassword(string name)
+            {
+                return new GetPasswordRequest(this.service, name);
+            }
+
+            /// <summary>Get the decrypted password of an alert.</summary>
+            public class GetPasswordRequest : ThreatIntelligenceServiceBaseServiceRequest<Google.Apis.ThreatIntelligenceService.v1beta.Data.Alert>
+            {
+                /// <summary>Constructs a new GetPassword request.</summary>
+                public GetPasswordRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Name of the alert to get. Format: projects/{project}/alerts/{alert}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getPassword";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}:GetPassword";
+
+                /// <summary>Initializes GetPassword parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/alerts/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Get a list of alerts that meet the filter criteria.</summary>
             /// <param name="parent">Required. Parent of the alerts. Format: projects/{project}</param>
             public virtual ListRequest List(string parent)
