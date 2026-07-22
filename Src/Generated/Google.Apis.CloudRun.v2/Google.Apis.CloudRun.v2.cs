@@ -7447,7 +7447,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between
-        /// `0.1` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and
+        /// `0.1` and `0.90` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and
         /// concurrency scaling cannot both be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
