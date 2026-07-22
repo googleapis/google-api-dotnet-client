@@ -765,7 +765,7 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual Bucket Bucket { get; set; }
 
-        /// <summary>Immutable. Location of the default bucket.</summary>
+        /// <summary>Required. Immutable. Location of the default bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
