@@ -2964,8 +2964,10 @@ namespace Google.Apis.OracleDatabase.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. An expression for filtering the results of the request. Only the gcp_oracle_zone_id
-                    /// field is supported in this format: `gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
+                    /// Optional. An expression for filtering the results of the request. The `gcp_oracle_zone_id`,
+                    /// `shape_family`, and `database_edition` fields are supported in the following format:
+                    /// `gcp_oracle_zone_id="{gcp_oracle_zone_id}" AND shape_family="{shape_family}" AND
+                    /// database_edition="{database_edition}"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -4578,9 +4580,9 @@ namespace Google.Apis.OracleDatabase.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. An expression for filtering the results of the request. Only shapeFamily and
-                        /// gcp_oracle_zone_id are supported in this format: `shape_family="{shapeFamily}" AND
-                        /// gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
+                        /// Optional. An expression for filtering the results of the request. Only the `shape_family`
+                        /// and `gcp_oracle_zone_id` fields are supported in the following format:
+                        /// `shape_family="{shape_family}" AND gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -4681,8 +4683,9 @@ namespace Google.Apis.OracleDatabase.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. An expression for filtering the results of the request. Only the shape,
-                    /// gcp_oracle_zone and gi_version fields are supported in this format: `shape="{shape}"`.
+                    /// Optional. An expression for filtering the results of the request. Only the `shape` and
+                    /// `gcp_oracle_zone_id` fields are supported in the following format: `shape="{shape}" AND
+                    /// gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -9144,7 +9147,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageSizeTb")]
         public virtual System.Nullable<double> DataStorageSizeTb { get; set; }
 
-        /// <summary>Output only. The database server type of the Exadata Infrastructure.</summary>
+        /// <summary>Optional. The database server type of the Exadata Infrastructure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseServerType")]
         public virtual string DatabaseServerType { get; set; }
 
@@ -9310,7 +9313,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageCount")]
         public virtual System.Nullable<int> StorageCount { get; set; }
 
-        /// <summary>Output only. The storage server type of the Exadata Infrastructure.</summary>
+        /// <summary>Optional. The storage server type of the Exadata Infrastructure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageServerType")]
         public virtual string StorageServerType { get; set; }
 
@@ -10354,7 +10357,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataCollectionOptions")]
         public virtual DataCollectionOptionsDbSystem DataCollectionOptions { get; set; }
 
-        /// <summary>Optional. The data storage size in GB that is currently available to DbSystems.</summary>
+        /// <summary>
+        /// Optional. The data storage size in GB that is currently available to DbSystems. The value is same as
+        /// initial_data_storage_size_gb. This can be modified from OCI console.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageSizeGb")]
         public virtual System.Nullable<int> DataStorageSizeGb { get; set; }
 
@@ -10394,11 +10400,16 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; }
 
-        /// <summary>Optional. The memory size in GB.</summary>
+        /// <summary>
+        /// Optional. The memory size in GB. This value can not be set and is automatically calculated based on the
+        /// number of ECPUs allocated to the DbSystem.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
         public virtual System.Nullable<int> MemorySizeGb { get; set; }
 
-        /// <summary>Optional. The number of nodes in the DbSystem.</summary>
+        /// <summary>
+        /// Optional. The number of nodes to launch for a virtual machine DbSystem. By default this will be set to 1.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
@@ -10410,7 +10421,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateIp")]
         public virtual string PrivateIp { get; set; }
 
-        /// <summary>Optional. The reco/redo storage size in GB.</summary>
+        /// <summary>
+        /// Optional. The reco/redo storage size in GB. The value for recovery storage size is based on the available
+        /// data storage size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recoStorageSizeGb")]
         public virtual System.Nullable<int> RecoStorageSizeGb { get; set; }
 
@@ -10436,6 +10450,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// </summary>
     public class DbSystemShape : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Available core count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableCoreCount")]
+        public virtual System.Nullable<int> AvailableCoreCount { get; set; }
+
         /// <summary>Optional. Number of cores per node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableCoreCountPerNode")]
         public virtual System.Nullable<int> AvailableCoreCountPerNode { get; set; }
@@ -10447,6 +10465,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. Memory per database server node in gigabytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableMemoryPerNodeGb")]
         public virtual System.Nullable<int> AvailableMemoryPerNodeGb { get; set; }
+
+        /// <summary>Optional. Core count increment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreCountIncrement")]
+        public virtual System.Nullable<int> CoreCountIncrement { get; set; }
 
         /// <summary>Optional. Maximum number of database servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
@@ -10475,6 +10497,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. Minimum number of storage servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minStorageCount")]
         public virtual System.Nullable<int> MinStorageCount { get; set; }
+
+        /// <summary>Optional. Minimum core count per node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumCoreCount")]
+        public virtual System.Nullable<int> MinimumCoreCount { get; set; }
 
         /// <summary>
         /// Identifier. The name of the Database System Shape resource with the format:
@@ -10829,6 +10855,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
+
+        /// <summary>
+        /// Output only. The identity connector details which will allow OCI to securely access the resources in the
+        /// customer project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConnector")]
+        public virtual IdentityConnector IdentityConnector { get; set; }
 
         /// <summary>Optional. The labels or tags associated with the ExadbVmCluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
