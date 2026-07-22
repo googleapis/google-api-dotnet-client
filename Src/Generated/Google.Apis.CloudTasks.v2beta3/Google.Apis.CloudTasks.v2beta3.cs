@@ -292,7 +292,77 @@ namespace Google.Apis.CloudTasks.v2beta3
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Operations = new OperationsResource(service);
                 Queues = new QueuesResource(service);
+            }
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta3.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta3/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Queues resource.</summary>
@@ -328,6 +398,138 @@ namespace Google.Apis.CloudTasks.v2beta3
                     public TasksResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a batch of tasks and adds them to a queue. This call is not atomic. All tasks must be
+                    /// for the same queue. A maximum of 100 tasks can be created in a single batch.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The queue name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
+                    /// </param>
+                    public virtual BatchCreateRequest BatchCreate(Google.Apis.CloudTasks.v2beta3.Data.BatchCreateTasksRequest body, string parent)
+                    {
+                        return new BatchCreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a batch of tasks and adds them to a queue. This call is not atomic. All tasks must be
+                    /// for the same queue. A maximum of 100 tasks can be created in a single batch.
+                    /// </summary>
+                    public class BatchCreateRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta3.Data.Operation>
+                    {
+                        /// <summary>Constructs a new BatchCreate request.</summary>
+                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta3.Data.BatchCreateTasksRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The queue name. For example:
+                        /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudTasks.v2beta3.Data.BatchCreateTasksRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchCreate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta3/{+parent}/tasks:batchCreate";
+
+                        /// <summary>Initializes BatchCreate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a batch of tasks. This is a non-atomic operation: if deletion fails for some tasks, it
+                    /// can still succeed for others. The metadata field of google.longrunning.Operation contains
+                    /// details of failed deletions. A maximum of 1000 tasks can be deleted in a batch.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The queue name. For example: Format:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+                    /// </param>
+                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.CloudTasks.v2beta3.Data.BatchDeleteTasksRequest body, string parent)
+                    {
+                        return new BatchDeleteRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Deletes a batch of tasks. This is a non-atomic operation: if deletion fails for some tasks, it
+                    /// can still succeed for others. The metadata field of google.longrunning.Operation contains
+                    /// details of failed deletions. A maximum of 1000 tasks can be deleted in a batch.
+                    /// </summary>
+                    public class BatchDeleteRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta3.Data.Operation>
+                    {
+                        /// <summary>Constructs a new BatchDelete request.</summary>
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta3.Data.BatchDeleteTasksRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The queue name. For example: Format:
+                        /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudTasks.v2beta3.Data.BatchDeleteTasksRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta3/{+parent}/tasks:batchDelete";
+
+                        /// <summary>Initializes BatchDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                            });
+                        }
                     }
 
                     /// <summary>
@@ -2327,6 +2529,50 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for [BatchCreateTasks].</summary>
+    public class BatchCreateTasksRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This field will be used to identify the long running operation, avoiding duplication when user
+        /// retries. If not provided, then a UUID will be generated at server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. The list of requests to create tasks. The queue specified in parent field of each
+        /// CreateTaskRequest will be the same. This validation happens on the client side as well as in the handler.
+        /// BatchCreateTasksRequest.parent will also be the same value as the individual CreateTaskRequest.parent . The
+        /// maximum number of requests is 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<CreateTaskRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for deleting a batch of tasks using BatchDeleteTasks.</summary>
+    public class BatchDeleteTasksRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the tasks to delete. A maximum of 1000 tasks can be deleted in a batch. For example:
+        /// Format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>
+        /// Optional. This field will be used to identify the long running operation, avoiding duplication when user
+        /// retries. If not provided, then a UUID will be generated at server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2452,6 +2698,13 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// <summary>Request message for CreateTask.</summary>
     public class CreateTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Required. The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue
+        /// must already exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
         /// <summary>
         /// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC;
         /// not all information is retrieved by default because some data, such as payloads, might be desirable to
@@ -2897,6 +3150,49 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3604,6 +3900,13 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// <summary>Output only. The number of attempts which have received a response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseCount")]
         public virtual System.Nullable<int> ResponseCount { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the task-level retry config. If present, this overrides the queue-level retry config for
+        /// this task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
+        public virtual RetryConfig RetryConfig { get; set; }
 
         private string _scheduleTimeRaw;
 
