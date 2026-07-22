@@ -5216,6 +5216,21 @@
                               "location": "query",
                               "type": "string"
                             },
+                            "modelInfoView": {
+                              "description": "Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin \"Feature Management\" page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile` header instead (see `ModelInfoView`).",
+                              "enum": [
+                                "MODEL_INFO_VIEW_UNSPECIFIED",
+                                "END_USER_WEB",
+                                "ADMIN"
+                              ],
+                              "enumDescriptions": [
+                                "Not specified.",
+                                "The end-user web model selector view.",
+                                "The Cloud Console admin \"Feature Control\" view that displays model toggles. Returns admin-surfaced models with `ResolvedModel.admin_view` populated."
+                              ],
+                              "location": "query",
+                              "type": "string"
+                            },
                             "name": {
                               "description": "Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`",
                               "location": "path",
@@ -7533,7 +7548,7 @@
                               ]
                             },
                             "get": {
-                              "description": "Get an existing Experiment.",
+                              "description": "Get an existing AlphaEvolveExperiment.",
                               "flatPath": "v1alpha/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/sessions/{sessionsId}/alphaEvolveExperiments/{alphaEvolveExperimentsId}",
                               "httpMethod": "GET",
                               "id": "discoveryengine.projects.locations.collections.engines.sessions.alphaEvolveExperiments.get",
@@ -7985,6 +8000,21 @@
                             },
                             "languageCode": {
                               "description": "Optional. BCP-47 language tag (e.g. \"en\", \"fr-CA\"). Used to localize human-readable strings in the response, such as the model selector `display_name` / `description` on `WidgetConfig.UiSettings.ModelConfigInfo`. Empty / unset falls back to the default language (English).",
+                              "location": "query",
+                              "type": "string"
+                            },
+                            "modelInfoView": {
+                              "description": "Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin \"Feature Management\" page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile` header instead (see `ModelInfoView`).",
+                              "enum": [
+                                "MODEL_INFO_VIEW_UNSPECIFIED",
+                                "END_USER_WEB",
+                                "ADMIN"
+                              ],
+                              "enumDescriptions": [
+                                "Not specified.",
+                                "The end-user web model selector view.",
+                                "The Cloud Console admin \"Feature Control\" view that displays model toggles. Returns admin-surfaced models with `ResolvedModel.admin_view` populated."
+                              ],
                               "location": "query",
                               "type": "string"
                             },
@@ -11239,6 +11269,21 @@
                           "location": "query",
                           "type": "string"
                         },
+                        "modelInfoView": {
+                          "description": "Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin \"Feature Management\" page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile` header instead (see `ModelInfoView`).",
+                          "enum": [
+                            "MODEL_INFO_VIEW_UNSPECIFIED",
+                            "END_USER_WEB",
+                            "ADMIN"
+                          ],
+                          "enumDescriptions": [
+                            "Not specified.",
+                            "The end-user web model selector view.",
+                            "The Cloud Console admin \"Feature Control\" view that displays model toggles. Returns admin-surfaced models with `ResolvedModel.admin_view` populated."
+                          ],
+                          "location": "query",
+                          "type": "string"
+                        },
                         "name": {
                           "description": "Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`",
                           "location": "path",
@@ -13352,7 +13397,7 @@
       }
     }
   },
-  "revision": "20260712",
+  "revision": "20260718",
   "rootUrl": "https://discoveryengine.googleapis.com/",
   "schemas": {
     "GoogleApiDistribution": {
@@ -15181,6 +15226,10 @@
           ],
           "type": "string"
         },
+        "tag": {
+          "description": "Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple connectors under the same (project, location, collection, data_source); tag-based lookup returns the one with the greatest create_time. Optional at Create time. Agent Designer resolves connectors via (data_source, tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the tag-write launch continue to work without a backfill.",
+          "type": "string"
+        },
         "updateTime": {
           "description": "Output only. Timestamp the DataConnector was last updated.",
           "format": "google-datetime",
@@ -16166,7 +16215,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` * `deep-research`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
           "type": "object"
         },
         "industryVertical": {
@@ -24362,6 +24411,10 @@
           ],
           "type": "string"
         },
+        "tag": {
+          "description": "Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple connectors under the same (project, location, collection, data_source); tag-based lookup returns the one with the greatest create_time. Optional at Create time. Agent Designer resolves connectors via (data_source, tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the tag-write launch continue to work without a backfill.",
+          "type": "string"
+        },
         "updateTime": {
           "description": "Output only. Timestamp the DataConnector was last updated.",
           "format": "google-datetime",
@@ -25735,7 +25788,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` * `deep-research`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
           "type": "object"
         },
         "industryVertical": {
@@ -35028,7 +35081,7 @@
             ],
             "type": "string"
           },
-          "description": "Output only. Feature config for the engine to opt in or opt out of features. Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` * `deep-research`",
+          "description": "Output only. Feature config for the engine to opt in or opt out of features. Supported keys: * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
           "readOnly": true,
           "type": "object"
         },
@@ -36685,7 +36738,7 @@
             ],
             "type": "string"
           },
-          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` * `deep-research`",
+          "description": "Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all features, if it's present, all other feature state settings are ignored. * `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence`",
           "type": "object"
         },
         "industryVertical": {

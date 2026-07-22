@@ -49,6 +49,11 @@
     "DATA_STORE_VIEW_BASIC",
     "DATA_STORE_VIEW_FULL"
   ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
+    "MODEL_INFO_VIEW_UNSPECIFIED",
+    "END_USER_WEB",
+    "ADMIN"
+  ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+EnginesResource+AssistantsResource+ListAvailableAgentViewsRequest.AgentOriginEnum": [
     "AGENT_ORIGIN_UNSPECIFIED",
     "GOOGLE",
@@ -61,6 +66,11 @@
     "GENERATING",
     "EVALUATING",
     "COMPLETED"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+EnginesResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
+    "MODEL_INFO_VIEW_UNSPECIFIED",
+    "END_USER_WEB",
+    "ADMIN"
   ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CompleteExternalIdentitiesRequest.EntityTypeFilterEnum": [
     "ENTITY_TYPE_FILTER_UNSPECIFIED",
@@ -98,6 +108,11 @@
     "DATA_STORE_VIEW_UNSPECIFIED",
     "DATA_STORE_VIEW_BASIC",
     "DATA_STORE_VIEW_FULL"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
+    "MODEL_INFO_VIEW_UNSPECIFIED",
+    "END_USER_WEB",
+    "ADMIN"
   ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+GetConfigurablePricingUsageStatsRequest.MetricTypesEnum": [
     "BILLING_METRIC_TYPE_UNSPECIFIED",
