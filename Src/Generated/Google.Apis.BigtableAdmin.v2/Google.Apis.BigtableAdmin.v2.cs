@@ -3005,6 +3005,12 @@ namespace Google.Apis.BigtableAdmin.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. If true, ignore optional safety checks when creating the materialized view.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
+
+                    /// <summary>
                     /// Required. The ID to use for the materialized view, which will become the final component of the
                     /// materialized view's resource name.
                     /// </summary>
@@ -3037,6 +3043,14 @@ namespace Google.Apis.BigtableAdmin.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("ignoreWarnings", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ignoreWarnings",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("materializedViewId", new Google.Apis.Discovery.Parameter
                         {
@@ -8390,6 +8404,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Request message for BigtableInstanceAdmin.CreateMaterializedView.</summary>
     public class CreateMaterializedViewRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, ignore optional safety checks when creating the materialized view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreWarnings")]
+        public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
+
         /// <summary>Required. The materialized view to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("materializedView")]
         public virtual MaterializedView MaterializedView { get; set; }
