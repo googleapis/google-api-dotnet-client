@@ -27464,6 +27464,54 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2beta1ProbeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _initTimeRaw;
+
+        private object _initTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("initTime")]
+        public virtual string InitTimeRaw
+        {
+            get => _initTimeRaw;
+            set
+            {
+                _initTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _initTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InitTimeDateTimeOffset instead.")]
+        public virtual object InitTime
+        {
+            get => _initTime;
+            set
+            {
+                _initTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _initTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="InitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InitTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InitTimeRaw);
+            set => InitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("optionsLatency")]
+        public virtual object OptionsLatency { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("probeStatus")]
+        public virtual string ProbeStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2beta1QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
@@ -28160,6 +28208,45 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2beta1SipHostname : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionState")]
+        public virtual string ConnectionState { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledSipPing")]
+        public virtual System.Nullable<bool> EnabledSipPing { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
+        public virtual GoogleCloudDialogflowV2beta1SipHostnameHostnameErrorDetails ErrorDetails { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peerHostname")]
+        public virtual string PeerHostname { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peerSocketAddress")]
+        public virtual string PeerSocketAddress { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("pingInterval")]
+        public virtual object PingInterval { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("probeDetails")]
+        public virtual GoogleCloudDialogflowV2beta1ProbeDetails ProbeDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1SipHostnameHostnameErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateState")]
+        public virtual string CertificateState { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2beta1SipTrunk : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
@@ -28171,8 +28258,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expectedHostname")]
         public virtual System.Collections.Generic.IList<string> ExpectedHostname { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("googleRootCertFile")]
+        public virtual string GoogleRootCertFile { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("peerHostnames")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SipHostname> PeerHostnames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
