@@ -21382,6 +21382,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
         public virtual System.Nullable<bool> Skippable { get; set; }
 
+        /// <summary>Optional. Whether the creative contains synthetic content or was created using AI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
+        public virtual string SyntheticContentAttestationStatus { get; set; }
+
         /// <summary>
         /// Optional. The original third-party tag used for the creative. Required and only valid for third-party tag
         /// creatives. Third-party tag creatives are creatives with following hosting_source: *
