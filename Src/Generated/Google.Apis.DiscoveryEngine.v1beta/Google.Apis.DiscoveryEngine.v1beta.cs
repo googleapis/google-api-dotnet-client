@@ -23955,6 +23955,16 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
         public virtual string SyncMode { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple
+        /// connectors under the same (project, location, collection, data_source); tag-based lookup returns the one
+        /// with the greatest create_time. Optional at Create time. Agent Designer resolves connectors via (data_source,
+        /// tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the
+        /// tag-write launch continue to work without a backfill.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -25803,7 +25813,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `deep-research`
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -32991,6 +33001,16 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
         public virtual string SyncMode { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple
+        /// connectors under the same (project, location, collection, data_source); tag-based lookup returns the one
+        /// with the greatest create_time. Optional at Create time. Agent Designer resolves connectors via (data_source,
+        /// tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the
+        /// tag-write launch continue to work without a backfill.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -35090,7 +35110,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `deep-research`
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -48276,7 +48296,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `deep-research`
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
