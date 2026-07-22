@@ -604,11 +604,17 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/create-subscription). For a subscription
         /// on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can
-        /// create a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and
-        /// getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator
-        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by
-        /// specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a
-        /// Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// create a subscription as: - A Chat app subscribing to space events where the app is a member by specifying
+        /// an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn
+        /// more, see [Authorize as a Chat app with administrator
+        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer
+        /// Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google
+        /// Workspace organization by specifying an authorization scope that begins with `chat.app.all` and obtaining
+        /// one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace
+        /// organization
+        /// ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user
+        /// by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize
+        /// as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.WorkspaceEvents.v1.Data.Subscription body)
@@ -620,11 +626,17 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/create-subscription). For a subscription
         /// on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can
-        /// create a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and
-        /// getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator
-        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by
-        /// specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a
-        /// Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// create a subscription as: - A Chat app subscribing to space events where the app is a member by specifying
+        /// an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn
+        /// more, see [Authorize as a Chat app with administrator
+        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer
+        /// Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google
+        /// Workspace organization by specifying an authorization scope that begins with `chat.app.all` and obtaining
+        /// one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace
+        /// organization
+        /// ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user
+        /// by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize
+        /// as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         public class CreateRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Operation>
         {
@@ -859,8 +871,14 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// event_types:"google.workspace.chat.message.v1.created" ) AND
             /// target_resource="//chat.googleapis.com/spaces/{space}"
             /// ```
-            /// The server rejects invalid queries with an
-            /// `INVALID_ARGUMENT` error.
+            /// The following query is available in
+            /// [Developer Preview](https://developers.google.com/workspace/preview):
+            /// ```
+            /// event_types:"google.workspace.chat.message.v1.created" AND
+            /// target_resource="//admin.googleapis.com/customers/my_customer"
+            /// ```
+            /// The server rejects invalid queries
+            /// with an `INVALID_ARGUMENT` error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -926,11 +944,17 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription).
         /// For a subscription on a [Chat target
         /// resource](https://developers.google.com/workspace/events/guides/events-chat), you can update a subscription
-        /// as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time
-        /// administrator approval. To learn more, see [Authorize as a Chat app with administrator
-        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by
-        /// specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a
-        /// Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// as: - A Chat app subscribing to space events where the app is a member by specifying an authorization scope
+        /// that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a
+        /// Chat app with administrator
+        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer
+        /// Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google
+        /// Workspace organization by specifying an authorization scope that begins with `chat.app.all` and getting
+        /// one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace
+        /// organization
+        /// ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user
+        /// by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize
+        /// as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -946,11 +970,17 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription).
         /// For a subscription on a [Chat target
         /// resource](https://developers.google.com/workspace/events/guides/events-chat), you can update a subscription
-        /// as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time
-        /// administrator approval. To learn more, see [Authorize as a Chat app with administrator
-        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by
-        /// specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a
-        /// Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// as: - A Chat app subscribing to space events where the app is a member by specifying an authorization scope
+        /// that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a
+        /// Chat app with administrator
+        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer
+        /// Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google
+        /// Workspace organization by specifying an authorization scope that begins with `chat.app.all` and getting
+        /// one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace
+        /// organization
+        /// ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user
+        /// by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize
+        /// as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         public class PatchRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Operation>
         {
@@ -1035,11 +1065,17 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// method, see [Reactivate a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription). For a
         /// subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
-        /// you can reactivate a subscription as: - A Chat app by specifying an authorization scope that begins with
-        /// `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with
-        /// administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A
-        /// user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see
-        /// [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// you can reactivate a subscription as: - A Chat app subscribing to space events where the app is a member by
+        /// specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval.
+        /// To learn more, see [Authorize as a Chat app with administrator
+        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer
+        /// Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google
+        /// Workspace organization by specifying an authorization scope that begins with `chat.app.all` and getting
+        /// one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace
+        /// organization
+        /// ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user
+        /// by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize
+        /// as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -1057,11 +1093,17 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// method, see [Reactivate a Google Workspace
         /// subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription). For a
         /// subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
-        /// you can reactivate a subscription as: - A Chat app by specifying an authorization scope that begins with
-        /// `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with
-        /// administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A
-        /// user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see
-        /// [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+        /// you can reactivate a subscription as: - A Chat app subscribing to space events where the app is a member by
+        /// specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval.
+        /// To learn more, see [Authorize as a Chat app with administrator
+        /// approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - [Developer
+        /// Preview](https://developers.google.com/workspace/preview): A Chat app subscribing to all events in a Google
+        /// Workspace organization by specifying an authorization scope that begins with `chat.app.all` and getting
+        /// one-time administrator approval. To learn more, see [Subscribe to all Google Chat events in a Workspace
+        /// organization
+        /// ](https://developers.google.com/workspace/events/guides/create-subscription#customer-subscription). - A user
+        /// by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize
+        /// as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         public class ReactivateRequest : WorkspaceEventsBaseServiceRequest<Google.Apis.WorkspaceEvents.v1.Data.Operation>
         {
