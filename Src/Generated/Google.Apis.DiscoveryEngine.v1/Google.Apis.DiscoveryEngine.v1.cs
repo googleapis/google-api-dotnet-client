@@ -7142,6 +7142,43 @@ namespace Google.Apis.DiscoveryEngine.v1
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
 
+                            /// <summary>
+                            /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
+                            /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
+                            /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                            /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
+                            /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile`
+                            /// header instead (see `ModelInfoView`).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("modelInfoView", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ModelInfoViewEnum> ModelInfoView { get; set; }
+
+                            /// <summary>
+                            /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
+                            /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
+                            /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                            /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
+                            /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile`
+                            /// header instead (see `ModelInfoView`).
+                            /// </summary>
+                            public enum ModelInfoViewEnum
+                            {
+                                /// <summary>Not specified.</summary>
+                                [Google.Apis.Util.StringValueAttribute("MODEL_INFO_VIEW_UNSPECIFIED")]
+                                MODELINFOVIEWUNSPECIFIED = 0,
+
+                                /// <summary>The end-user web model selector view.</summary>
+                                [Google.Apis.Util.StringValueAttribute("END_USER_WEB")]
+                                ENDUSERWEB = 1,
+
+                                /// <summary>
+                                /// The Cloud Console admin "Feature Control" view that displays model toggles. Returns
+                                /// admin-surfaced models with `ResolvedModel.admin_view` populated.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("ADMIN")]
+                                ADMIN = 2,
+                            }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
@@ -7182,6 +7219,14 @@ namespace Google.Apis.DiscoveryEngine.v1
                                 RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "languageCode",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("modelInfoView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "modelInfoView",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -11805,6 +11850,43 @@ namespace Google.Apis.DiscoveryEngine.v1
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
 
+                            /// <summary>
+                            /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
+                            /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
+                            /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                            /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
+                            /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile`
+                            /// header instead (see `ModelInfoView`).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("modelInfoView", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ModelInfoViewEnum> ModelInfoView { get; set; }
+
+                            /// <summary>
+                            /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
+                            /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
+                            /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                            /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
+                            /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile`
+                            /// header instead (see `ModelInfoView`).
+                            /// </summary>
+                            public enum ModelInfoViewEnum
+                            {
+                                /// <summary>Not specified.</summary>
+                                [Google.Apis.Util.StringValueAttribute("MODEL_INFO_VIEW_UNSPECIFIED")]
+                                MODELINFOVIEWUNSPECIFIED = 0,
+
+                                /// <summary>The end-user web model selector view.</summary>
+                                [Google.Apis.Util.StringValueAttribute("END_USER_WEB")]
+                                ENDUSERWEB = 1,
+
+                                /// <summary>
+                                /// The Cloud Console admin "Feature Control" view that displays model toggles. Returns
+                                /// admin-surfaced models with `ResolvedModel.admin_view` populated.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("ADMIN")]
+                                ADMIN = 2,
+                            }
+
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
 
@@ -11845,6 +11927,14 @@ namespace Google.Apis.DiscoveryEngine.v1
                                 RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "languageCode",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("modelInfoView", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "modelInfoView",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -18076,6 +18166,43 @@ namespace Google.Apis.DiscoveryEngine.v1
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
 
+                        /// <summary>
+                        /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
+                        /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
+                        /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                        /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
+                        /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile` header
+                        /// instead (see `ModelInfoView`).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("modelInfoView", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ModelInfoViewEnum> ModelInfoView { get; set; }
+
+                        /// <summary>
+                        /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
+                        /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
+                        /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                        /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
+                        /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile` header
+                        /// instead (see `ModelInfoView`).
+                        /// </summary>
+                        public enum ModelInfoViewEnum
+                        {
+                            /// <summary>Not specified.</summary>
+                            [Google.Apis.Util.StringValueAttribute("MODEL_INFO_VIEW_UNSPECIFIED")]
+                            MODELINFOVIEWUNSPECIFIED = 0,
+
+                            /// <summary>The end-user web model selector view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("END_USER_WEB")]
+                            ENDUSERWEB = 1,
+
+                            /// <summary>
+                            /// The Cloud Console admin "Feature Control" view that displays model toggles. Returns
+                            /// admin-surfaced models with `ResolvedModel.admin_view` populated.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("ADMIN")]
+                            ADMIN = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -18116,6 +18243,14 @@ namespace Google.Apis.DiscoveryEngine.v1
                             RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("modelInfoView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "modelInfoView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -28371,6 +28506,16 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
         public virtual string SyncMode { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple
+        /// connectors under the same (project, location, collection, data_source); tag-based lookup returns the one
+        /// with the greatest create_time. Optional at Create time. Agent Designer resolves connectors via (data_source,
+        /// tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the
+        /// tag-write launch continue to work without a backfill.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -30575,7 +30720,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `deep-research`
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -38733,7 +38878,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `deep-research`
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -42610,6 +42755,16 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
         public virtual string SyncMode { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. User-facing, version-independent label for this connector. May be shared by multiple
+        /// connectors under the same (project, location, collection, data_source); tag-based lookup returns the one
+        /// with the greatest create_time. Optional at Create time. Agent Designer resolves connectors via (data_source,
+        /// tag) when set, falling back to the legacy resource-name lookup when unset, so connectors created before the
+        /// tag-write launch continue to work without a backfill.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -44709,7 +44864,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `deep-research`
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -54009,7 +54164,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `deep-research`
+        /// `cross-product-intelligence`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
