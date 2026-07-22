@@ -834,7 +834,8 @@ namespace Google.Apis.Merchant.datasources_v1beta.Data
     public class DataSourceReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The name of the primary data source. Format: `accounts/{account}/dataSources/{datasource}`
+        /// Optional. Deprecated: Use `self` instead to reference the primary data source. The name of the primary data
+        /// source. Format: `accounts/{account}/dataSources/{datasource}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryDataSourceName")]
         public virtual string PrimaryDataSourceName { get; set; }
