@@ -3790,6 +3790,15 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string ReservationGroup { get; set; }
 
         /// <summary>
+        /// Output only. The reservation group path of the reservation from root to leaf. The order of elements matters:
+        /// the first element is the top level group and the last element is the direct parent reservation group. For
+        /// example, if a reservation is under group-1 -&amp;gt; group-2 -&amp;gt; group-3, then the reservation group
+        /// path is ["group-1", "group-2", "group-3"].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationGroupPath")]
+        public virtual System.Collections.Generic.IList<string> ReservationGroupPath { get; set; }
+
+        /// <summary>
         /// Optional. The scaling mode for the reservation. If the field is present but max_slots is not present,
         /// requests will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
         /// </summary>
