@@ -402,6 +402,8 @@ namespace Google.Apis.Assuredworkloads.v1
             {
                 this.service = service;
                 DbFindingSummaries = new DbFindingSummariesResource(service);
+                DbFrameworkComplianceReports = new DbFrameworkComplianceReportsResource(service);
+                DbFrameworkComplianceSummaries = new DbFrameworkComplianceSummariesResource(service);
             }
 
             /// <summary>Gets the DbFindingSummaries resource.</summary>
@@ -515,6 +517,522 @@ namespace Google.Apis.Assuredworkloads.v1
                     }
                 }
             }
+
+            /// <summary>Gets the DbFrameworkComplianceReports resource.</summary>
+            public virtual DbFrameworkComplianceReportsResource DbFrameworkComplianceReports { get; }
+
+            /// <summary>The "dbFrameworkComplianceReports" collection of methods.</summary>
+            public class DbFrameworkComplianceReportsResource
+            {
+                private const string Resource = "dbFrameworkComplianceReports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbFrameworkComplianceReportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    DbControlComplianceSummaries = new DbControlComplianceSummariesResource(service);
+                }
+
+                /// <summary>Gets the DbControlComplianceSummaries resource.</summary>
+                public virtual DbControlComplianceSummariesResource DbControlComplianceSummaries { get; }
+
+                /// <summary>The "dbControlComplianceSummaries" collection of methods.</summary>
+                public class DbControlComplianceSummariesResource
+                {
+                    private const string Resource = "dbControlComplianceSummaries";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DbControlComplianceSummariesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent scope for the framework overview page. Format:
+                    /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent scope for the framework overview page. Format:
+                        /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The filtering results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The requested page size. The server might return fewer items than requested. If
+                        /// unspecified, the default page size is 50. The maximum value is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A token that identifies the page of results that the server should return.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/dbControlComplianceSummaries";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <param name="name">
+                /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// </param>
+                public virtual AggregateRequest Aggregate(string name)
+                {
+                    return new AggregateRequest(this.service, name);
+                }
+
+                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                public class AggregateRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse>
+                {
+                    /// <summary>Constructs a new Aggregate request.</summary>
+                    public AggregateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                    /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    private object _intervalEndTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="IntervalEndTimeDateTimeOffset"/>, formatted for inclusion in
+                    /// the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalEndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="IntervalEndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalEndTimeDateTimeOffset instead.")]
+                    public virtual object IntervalEndTime
+                    {
+                        get => _intervalEndTime;
+                        set
+                        {
+                            IntervalEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _intervalEndTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? IntervalEndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalEndTimeRaw);
+                        set
+                        {
+                            IntervalEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _intervalEndTime = value;
+                        }
+                    }
+
+                    private object _intervalStartTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="IntervalStartTimeDateTimeOffset"/>, formatted for inclusion
+                    /// in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalStartTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="IntervalStartTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalStartTimeDateTimeOffset instead.")]
+                    public virtual object IntervalStartTime
+                    {
+                        get => _intervalStartTime;
+                        set
+                        {
+                            IntervalStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _intervalStartTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? IntervalStartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalStartTimeRaw);
+                        set
+                        {
+                            IntervalStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _intervalStartTime = value;
+                        }
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "aggregate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:aggregate";
+
+                    /// <summary>Initializes Aggregate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                /// <param name="name">Required. The name of the framework compliance report to retrieve.</param>
+                public virtual FetchRequest Fetch(string name)
+                {
+                    return new FetchRequest(this.service, name);
+                }
+
+                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                public class FetchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse>
+                {
+                    /// <summary>Constructs a new Fetch request.</summary>
+                    public FetchRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the framework compliance report to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    private object _endTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                    public virtual object EndTime
+                    {
+                        get => _endTime;
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:fetch";
+
+                    /// <summary>Initializes Fetch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbFrameworkComplianceSummaries resource.</summary>
+            public virtual DbFrameworkComplianceSummariesResource DbFrameworkComplianceSummaries { get; }
+
+            /// <summary>The "dbFrameworkComplianceSummaries" collection of methods.</summary>
+            public class DbFrameworkComplianceSummariesResource
+            {
+                private const string Resource = "dbFrameworkComplianceSummaries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbFrameworkComplianceSummariesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <param name="parent">
+                /// Required. The parent scope for the framework compliance summary. Format:
+                /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent scope for the framework compliance summary. Format:
+                    /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The requested page size. The server might return fewer items than requested. If
+                    /// unspecified, the default page size is 50. The maximum value is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token that identifies the page of results that the server should return. Pass the
+                    /// next_page_token value from a previous result.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Includes basic compliance metadata, but omits trend data.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Includes all information, including finding_count and controls_passing_trend. Trend data is
+                        /// provided for the last 30 days.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWFULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbFrameworkComplianceSummaries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
     }
 
@@ -549,6 +1067,8 @@ namespace Google.Apis.Assuredworkloads.v1
             {
                 this.service = service;
                 DbFindingSummaries = new DbFindingSummariesResource(service);
+                DbFrameworkComplianceReports = new DbFrameworkComplianceReportsResource(service);
+                DbFrameworkComplianceSummaries = new DbFrameworkComplianceSummariesResource(service);
                 Operations = new OperationsResource(service);
                 Workloads = new WorkloadsResource(service);
             }
@@ -656,6 +1176,522 @@ namespace Google.Apis.Assuredworkloads.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbFrameworkComplianceReports resource.</summary>
+            public virtual DbFrameworkComplianceReportsResource DbFrameworkComplianceReports { get; }
+
+            /// <summary>The "dbFrameworkComplianceReports" collection of methods.</summary>
+            public class DbFrameworkComplianceReportsResource
+            {
+                private const string Resource = "dbFrameworkComplianceReports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbFrameworkComplianceReportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    DbControlComplianceSummaries = new DbControlComplianceSummariesResource(service);
+                }
+
+                /// <summary>Gets the DbControlComplianceSummaries resource.</summary>
+                public virtual DbControlComplianceSummariesResource DbControlComplianceSummaries { get; }
+
+                /// <summary>The "dbControlComplianceSummaries" collection of methods.</summary>
+                public class DbControlComplianceSummariesResource
+                {
+                    private const string Resource = "dbControlComplianceSummaries";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DbControlComplianceSummariesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent scope for the framework overview page. Format:
+                    /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent scope for the framework overview page. Format:
+                        /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The filtering results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The requested page size. The server might return fewer items than requested. If
+                        /// unspecified, the default page size is 50. The maximum value is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A token that identifies the page of results that the server should return.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/dbControlComplianceSummaries";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <param name="name">
+                /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// </param>
+                public virtual AggregateRequest Aggregate(string name)
+                {
+                    return new AggregateRequest(this.service, name);
+                }
+
+                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                public class AggregateRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse>
+                {
+                    /// <summary>Constructs a new Aggregate request.</summary>
+                    public AggregateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                    /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    private object _intervalEndTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="IntervalEndTimeDateTimeOffset"/>, formatted for inclusion in
+                    /// the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalEndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="IntervalEndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalEndTimeDateTimeOffset instead.")]
+                    public virtual object IntervalEndTime
+                    {
+                        get => _intervalEndTime;
+                        set
+                        {
+                            IntervalEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _intervalEndTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? IntervalEndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalEndTimeRaw);
+                        set
+                        {
+                            IntervalEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _intervalEndTime = value;
+                        }
+                    }
+
+                    private object _intervalStartTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="IntervalStartTimeDateTimeOffset"/>, formatted for inclusion
+                    /// in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalStartTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="IntervalStartTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalStartTimeDateTimeOffset instead.")]
+                    public virtual object IntervalStartTime
+                    {
+                        get => _intervalStartTime;
+                        set
+                        {
+                            IntervalStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _intervalStartTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? IntervalStartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalStartTimeRaw);
+                        set
+                        {
+                            IntervalStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _intervalStartTime = value;
+                        }
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "aggregate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:aggregate";
+
+                    /// <summary>Initializes Aggregate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                /// <param name="name">Required. The name of the framework compliance report to retrieve.</param>
+                public virtual FetchRequest Fetch(string name)
+                {
+                    return new FetchRequest(this.service, name);
+                }
+
+                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                public class FetchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse>
+                {
+                    /// <summary>Constructs a new Fetch request.</summary>
+                    public FetchRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the framework compliance report to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    private object _endTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                    public virtual object EndTime
+                    {
+                        get => _endTime;
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:fetch";
+
+                    /// <summary>Initializes Fetch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbFrameworkComplianceSummaries resource.</summary>
+            public virtual DbFrameworkComplianceSummariesResource DbFrameworkComplianceSummaries { get; }
+
+            /// <summary>The "dbFrameworkComplianceSummaries" collection of methods.</summary>
+            public class DbFrameworkComplianceSummariesResource
+            {
+                private const string Resource = "dbFrameworkComplianceSummaries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbFrameworkComplianceSummariesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <param name="parent">
+                /// Required. The parent scope for the framework compliance summary. Format:
+                /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent scope for the framework compliance summary. Format:
+                    /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The requested page size. The server might return fewer items than requested. If
+                    /// unspecified, the default page size is 50. The maximum value is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token that identifies the page of results that the server should return. Pass the
+                    /// next_page_token value from a previous result.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Includes basic compliance metadata, but omits trend data.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Includes all information, including finding_count and controls_passing_trend. Trend data is
+                        /// provided for the last 30 days.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWFULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbFrameworkComplianceSummaries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2189,6 +3225,8 @@ namespace Google.Apis.Assuredworkloads.v1
             {
                 this.service = service;
                 DbFindingSummaries = new DbFindingSummariesResource(service);
+                DbFrameworkComplianceReports = new DbFrameworkComplianceReportsResource(service);
+                DbFrameworkComplianceSummaries = new DbFrameworkComplianceSummariesResource(service);
             }
 
             /// <summary>Gets the DbFindingSummaries resource.</summary>
@@ -2302,6 +3340,522 @@ namespace Google.Apis.Assuredworkloads.v1
                     }
                 }
             }
+
+            /// <summary>Gets the DbFrameworkComplianceReports resource.</summary>
+            public virtual DbFrameworkComplianceReportsResource DbFrameworkComplianceReports { get; }
+
+            /// <summary>The "dbFrameworkComplianceReports" collection of methods.</summary>
+            public class DbFrameworkComplianceReportsResource
+            {
+                private const string Resource = "dbFrameworkComplianceReports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbFrameworkComplianceReportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    DbControlComplianceSummaries = new DbControlComplianceSummariesResource(service);
+                }
+
+                /// <summary>Gets the DbControlComplianceSummaries resource.</summary>
+                public virtual DbControlComplianceSummariesResource DbControlComplianceSummaries { get; }
+
+                /// <summary>The "dbControlComplianceSummaries" collection of methods.</summary>
+                public class DbControlComplianceSummariesResource
+                {
+                    private const string Resource = "dbControlComplianceSummaries";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DbControlComplianceSummariesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent scope for the framework overview page. Format:
+                    /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent scope for the framework overview page. Format:
+                        /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The filtering results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The requested page size. The server might return fewer items than requested. If
+                        /// unspecified, the default page size is 50. The maximum value is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A token that identifies the page of results that the server should return.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/dbControlComplianceSummaries";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <param name="name">
+                /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// </param>
+                public virtual AggregateRequest Aggregate(string name)
+                {
+                    return new AggregateRequest(this.service, name);
+                }
+
+                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                public class AggregateRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse>
+                {
+                    /// <summary>Constructs a new Aggregate request.</summary>
+                    public AggregateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                    /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    private object _intervalEndTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="IntervalEndTimeDateTimeOffset"/>, formatted for inclusion in
+                    /// the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalEndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="IntervalEndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalEndTimeDateTimeOffset instead.")]
+                    public virtual object IntervalEndTime
+                    {
+                        get => _intervalEndTime;
+                        set
+                        {
+                            IntervalEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _intervalEndTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? IntervalEndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalEndTimeRaw);
+                        set
+                        {
+                            IntervalEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _intervalEndTime = value;
+                        }
+                    }
+
+                    private object _intervalStartTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="IntervalStartTimeDateTimeOffset"/>, formatted for inclusion
+                    /// in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string IntervalStartTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="IntervalStartTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IntervalStartTimeDateTimeOffset instead.")]
+                    public virtual object IntervalStartTime
+                    {
+                        get => _intervalStartTime;
+                        set
+                        {
+                            IntervalStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _intervalStartTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? IntervalStartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IntervalStartTimeRaw);
+                        set
+                        {
+                            IntervalStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _intervalStartTime = value;
+                        }
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "aggregate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:aggregate";
+
+                    /// <summary>Initializes Aggregate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("interval.startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                /// <param name="name">Required. The name of the framework compliance report to retrieve.</param>
+                public virtual FetchRequest Fetch(string name)
+                {
+                    return new FetchRequest(this.service, name);
+                }
+
+                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                public class FetchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse>
+                {
+                    /// <summary>Constructs a new Fetch request.</summary>
+                    public FetchRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the framework compliance report to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    private object _endTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the
+                    /// HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EndTimeRaw { get; private set; }
+
+                    /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                    public virtual object EndTime
+                    {
+                        get => _endTime;
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                        set
+                        {
+                            EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _endTime = value;
+                        }
+                    }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:fetch";
+
+                    /// <summary>Initializes Fetch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dbFrameworkComplianceReports/[^/]+$",
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbFrameworkComplianceSummaries resource.</summary>
+            public virtual DbFrameworkComplianceSummariesResource DbFrameworkComplianceSummaries { get; }
+
+            /// <summary>The "dbFrameworkComplianceSummaries" collection of methods.</summary>
+            public class DbFrameworkComplianceSummariesResource
+            {
+                private const string Resource = "dbFrameworkComplianceSummaries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbFrameworkComplianceSummariesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <param name="parent">
+                /// Required. The parent scope for the framework compliance summary. Format:
+                /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent scope for the framework compliance summary. Format:
+                    /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The requested page size. The server might return fewer items than requested. If
+                    /// unspecified, the default page size is 50. The maximum value is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token that identifies the page of results that the server should return. Pass the
+                    /// next_page_token value from a previous result.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Includes basic compliance metadata, but omits trend data.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Includes all information, including finding_count and controls_passing_trend. Trend data is
+                        /// provided for the last 30 days.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL")]
+                        FRAMEWORKCOMPLIANCESUMMARYVIEWFULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbFrameworkComplianceSummaries";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
     }
 }
@@ -2334,6 +3888,65 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Response for violation acknowledgement</summary>
     public class GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for AggregateDbFrameworkComplianceReport.</summary>
+    public class GoogleCloudAssuredworkloadsV1AggregateDbFrameworkComplianceReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of aggregated compliance reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregatedComplianceReports")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1AggregatedComplianceReport> AggregatedComplianceReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The aggregated compliance report.</summary>
+    public class GoogleCloudAssuredworkloadsV1AggregatedComplianceReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The control assessment details of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlAssessmentDetails")]
+        public virtual GoogleCloudAssuredworkloadsV1ControlAssessmentDetails ControlAssessmentDetails { get; set; }
+
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
+        /// <summary>The report time of the aggregated compliance report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2600,6 +4213,153 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Common Expression Language (CEL) expression that's used to create a rule.</summary>
+    public class GoogleCloudAssuredworkloadsV1CELExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The logical expression in CEL. The maximum length of the condition is 1000 characters. For more
+        /// information, see [CEL
+        /// expression](https://cloud.google.com/security-command-center/docs/compliance-manager-write-cel-expressions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; }
+
+        /// <summary>
+        /// The resource instance types on which this expression is defined. The format is `/`. For example:
+        /// `compute.googleapis.com/Instance`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypesValues")]
+        public virtual GoogleCloudAssuredworkloadsV1StringList ResourceTypesValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The cloud control assessment details for non-manual cloud controls.</summary>
+    public class GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The evaluation status of the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationState")]
+        public virtual string EvaluationState { get; set; }
+
+        /// <summary>The number of findings for the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingsCount")]
+        public virtual System.Nullable<int> FindingsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The cloud control report.</summary>
+    public class GoogleCloudAssuredworkloadsV1CloudControlReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of categories for the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
+
+        /// <summary>The name of the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControl")]
+        public virtual string CloudControl { get; set; }
+
+        /// <summary>The details of a cloud control assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlAssessmentDetails")]
+        public virtual GoogleCloudAssuredworkloadsV1CloudControlAssessmentDetails CloudControlAssessmentDetails { get; set; }
+
+        /// <summary>The name of the cloud control deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlDeployment")]
+        public virtual string CloudControlDeployment { get; set; }
+
+        /// <summary>The type of the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlType")]
+        public virtual string CloudControlType { get; set; }
+
+        /// <summary>The description of the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The display name of the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The enforcement mode of the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementMode")]
+        public virtual string EnforcementMode { get; set; }
+
+        /// <summary>The category of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingCategory")]
+        public virtual string FindingCategory { get; set; }
+
+        /// <summary>The severity of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingSeverity")]
+        public virtual string FindingSeverity { get; set; }
+
+        /// <summary>The major revision IDs of the frameworks that the cloud control belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkMajorRevisionIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> FrameworkMajorRevisionIds { get; set; }
+
+        /// <summary>The major revision ID of the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("majorRevisionId")]
+        public virtual System.Nullable<long> MajorRevisionId { get; set; }
+
+        /// <summary>The details of a manual cloud control assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualCloudControlAssessmentDetails")]
+        public virtual GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails ManualCloudControlAssessmentDetails { get; set; }
+
+        /// <summary>The minor revision ID of the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorRevisionId")]
+        public virtual System.Nullable<long> MinorRevisionId { get; set; }
+
+        /// <summary>The list of rules that correspond to the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1Rule> Rules { get; set; }
+
+        /// <summary>The list of similar controls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarControls")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1SimilarControls> SimilarControls { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details for a control assessment.</summary>
+    public class GoogleCloudAssuredworkloadsV1ControlAssessmentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of controls that were assessed and are passing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assessedPassingControlIds")]
+        public virtual System.Collections.Generic.IList<string> AssessedPassingControlIds { get; set; }
+
+        /// <summary>The number of controls that were assessed and are passing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assessedPassingControls")]
+        public virtual System.Nullable<int> AssessedPassingControls { get; set; }
+
+        /// <summary>The list of controls that are failing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failingControlIds")]
+        public virtual System.Collections.Generic.IList<string> FailingControlIds { get; set; }
+
+        /// <summary>The number of controls that are failing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failingControls")]
+        public virtual System.Nullable<int> FailingControls { get; set; }
+
+        /// <summary>The list of controls that aren't assessed because they require manual review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notAssessedControlIds")]
+        public virtual System.Collections.Generic.IList<string> NotAssessedControlIds { get; set; }
+
+        /// <summary>The number of controls that aren't assessed because they require manual review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notAssessedControls")]
+        public virtual System.Nullable<int> NotAssessedControls { get; set; }
+
+        /// <summary>The list of controls that are passing or not assessed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passingControlIds")]
+        public virtual System.Collections.Generic.IList<string> PassingControlIds { get; set; }
+
+        /// <summary>The number of controls that are passing or not assessed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passingControls")]
+        public virtual System.Nullable<int> PassingControls { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
     public class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2653,6 +4413,60 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Optional. The parent of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details for control compliance.</summary>
+    public class GoogleCloudAssuredworkloadsV1DbControlComplianceSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of cloud control reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlReports")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1CloudControlReport> CloudControlReports { get; set; }
+
+        /// <summary>The list of compliance frameworks that the control belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceFrameworks")]
+        public virtual System.Collections.Generic.IList<string> ComplianceFrameworks { get; set; }
+
+        /// <summary>The name of the control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("control")]
+        public virtual string Control { get; set; }
+
+        /// <summary>The responsibility type for the control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlResponsibilityType")]
+        public virtual string ControlResponsibilityType { get; set; }
+
+        /// <summary>The description of the control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The display name of the control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Whether the control is a fake control. Fake controls are created and mapped to cloud controls that don't
+        /// belong to a control group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFakeControl")]
+        public virtual System.Nullable<bool> IsFakeControl { get; set; }
+
+        /// <summary>Identifier. The name of the control compliance summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The overall evaluation status of the control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overallEvaluationState")]
+        public virtual string OverallEvaluationState { get; set; }
+
+        /// <summary>The list of similar controls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("similarControls")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1SimilarControls> SimilarControls { get; set; }
+
+        /// <summary>The total number of findings for the control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFindingsCount")]
+        public virtual System.Nullable<int> TotalFindingsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2726,6 +4540,61 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The details for a framework compliance summary.</summary>
+    public class GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The control assessment details of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlAssessmentDetails")]
+        public virtual GoogleCloudAssuredworkloadsV1ControlAssessmentDetails ControlAssessmentDetails { get; set; }
+
+        /// <summary>Output only. The trend of controls that are passing for the given duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlsPassingTrend")]
+        public virtual GoogleCloudAssuredworkloadsV1Trend ControlsPassingTrend { get; set; }
+
+        /// <summary>Output only. The count of the findings generated against the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingCount")]
+        public virtual System.Nullable<long> FindingCount { get; set; }
+
+        /// <summary>The name of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("framework")]
+        public virtual string Framework { get; set; }
+
+        /// <summary>The list of framework categories supported by the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkCategories")]
+        public virtual System.Collections.Generic.IList<string> FrameworkCategories { get; set; }
+
+        /// <summary>Optional. The display name for the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkDisplayName")]
+        public virtual string FrameworkDisplayName { get; set; }
+
+        /// <summary>The type of framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkType")]
+        public virtual string FrameworkType { get; set; }
+
+        /// <summary>The major revision ID of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("majorRevisionId")]
+        public virtual System.Nullable<long> MajorRevisionId { get; set; }
+
+        /// <summary>The minor revision ID of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorRevisionId")]
+        public virtual System.Nullable<long> MinorRevisionId { get; set; }
+
+        /// <summary>Identifier. The name of the framework compliance summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The list of cloud providers supported by the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedCloudProviders")]
+        public virtual System.Collections.Generic.IList<string> SupportedCloudProviders { get; set; }
+
+        /// <summary>The target resource details for the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1TargetResourceDetails> TargetResourceDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for EnableComplianceUpdates endpoint.</summary>
     public class GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2740,12 +4609,130 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for FetchDbFrameworkComplianceReport.</summary>
+    public class GoogleCloudAssuredworkloadsV1FetchDbFrameworkComplianceReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The control assessment details of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlAssessmentDetails")]
+        public virtual GoogleCloudAssuredworkloadsV1ControlAssessmentDetails ControlAssessmentDetails { get; set; }
+
+        /// <summary>The name of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("framework")]
+        public virtual string Framework { get; set; }
+
+        /// <summary>The list of framework categories supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkCategories")]
+        public virtual System.Collections.Generic.IList<string> FrameworkCategories { get; set; }
+
+        /// <summary>The description of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkDescription")]
+        public virtual string FrameworkDescription { get; set; }
+
+        /// <summary>Optional. The display name for the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkDisplayName")]
+        public virtual string FrameworkDisplayName { get; set; }
+
+        /// <summary>The type of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkType")]
+        public virtual string FrameworkType { get; set; }
+
+        /// <summary>The latest major revision ID of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("majorRevisionId")]
+        public virtual System.Nullable<long> MajorRevisionId { get; set; }
+
+        /// <summary>The latest minor revision ID of the latest major revision of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorRevisionId")]
+        public virtual System.Nullable<long> MinorRevisionId { get; set; }
+
+        /// <summary>The name of the framework compliance report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The list of cloud providers that are supported by the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedCloudProviders")]
+        public virtual System.Collections.Generic.IList<string> SupportedCloudProviders { get; set; }
+
+        /// <summary>The target resource details of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1TargetResourceDetails> TargetResourceDetails { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The last updated time of the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for ListDBControlComplianceSummaries.</summary>
+    public class GoogleCloudAssuredworkloadsV1ListDbControlComplianceSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of control compliance details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbControlComplianceSummaries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1DbControlComplianceSummary> DbControlComplianceSummaries { get; set; }
+
+        /// <summary>Output only. The token to retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for ListDbFindingSummaries.</summary>
     public class GoogleCloudAssuredworkloadsV1ListDbFindingSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of finding summary by category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbFindingSummaries")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1DbFindingSummary> DbFindingSummaries { get; set; }
+
+        /// <summary>Output only. The token to retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for ListDbFrameworkComplianceSummariesResponse.</summary>
+    public class GoogleCloudAssuredworkloadsV1ListDbFrameworkComplianceSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of framework compliance summaries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbFrameworkComplianceSummaries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1DbFrameworkComplianceSummary> DbFrameworkComplianceSummaries { get; set; }
 
         /// <summary>Output only. The token to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -2799,6 +4786,17 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>List of Workloads under a given parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1Workload> Workloads { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details for a manual cloud control assessment.</summary>
+    public class GoogleCloudAssuredworkloadsV1ManualCloudControlAssessmentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The guide for assessing a cloud control manually.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualCloudControlGuide")]
+        public virtual System.Collections.Generic.IList<string> ManualCloudControlGuide { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3100,6 +5098,176 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>The total number of events successfully moved to the original table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("movedEventsCount")]
         public virtual System.Nullable<int> MovedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A rule in the cloud control.</summary>
+    public class GoogleCloudAssuredworkloadsV1Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The rule's logic expression in Common Expression Language (CEL).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celExpression")]
+        public virtual GoogleCloudAssuredworkloadsV1CELExpression CelExpression { get; set; }
+
+        /// <summary>Optional. The rule description. The maximum length is 2000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The functionality that's enabled by the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleActionTypes")]
+        public virtual System.Collections.Generic.IList<string> RuleActionTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The similar controls.</summary>
+    public class GoogleCloudAssuredworkloadsV1SimilarControls : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlId")]
+        public virtual string ControlId { get; set; }
+
+        /// <summary>The name of the framework.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("framework")]
+        public virtual string Framework { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of strings for the parameter value.</summary>
+    public class GoogleCloudAssuredworkloadsV1StringList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The strings in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details for a target resource.</summary>
+    public class GoogleCloudAssuredworkloadsV1TargetResourceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The create time of the target resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The framework deployment name for the target resource. For example,
+        /// `organizations/{organization_id}/locations/{location}/frameworkDeployments/{framework_deployment_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameworkDeployment")]
+        public virtual string FrameworkDeployment { get; set; }
+
+        /// <summary>The major revision ID of the framework for the target resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("majorRevisionId")]
+        public virtual System.Nullable<long> MajorRevisionId { get; set; }
+
+        /// <summary>The minor revision ID of the framework for the target resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorRevisionId")]
+        public virtual System.Nullable<long> MinorRevisionId { get; set; }
+
+        /// <summary>
+        /// The target resource. For example, `organizations/1234567890`, `projects/1234567890`, or
+        /// `folders/1234567890`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        /// <summary>
+        /// The display name of the target resource. For example, `google.com`, `staging-project`, or
+        /// `development-folder`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceDisplayName")]
+        public virtual string TargetResourceDisplayName { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The update time of the target resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The trend of a compliance metric.</summary>
+    public class GoogleCloudAssuredworkloadsV1Trend : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The duration for the trend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Output only. The trend value as a percentage. The value can be positive or negative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valuePercent")]
+        public virtual System.Nullable<double> ValuePercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
