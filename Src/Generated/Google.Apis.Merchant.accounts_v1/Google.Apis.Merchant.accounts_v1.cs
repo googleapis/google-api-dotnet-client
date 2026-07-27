@@ -5933,6 +5933,13 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providerDisplayName")]
         public virtual string ProviderDisplayName { get; set; }
 
+        /// <summary>
+        /// Service type for UCP Checkout Management. The provider is managing the UCP Checkout capability integration
+        /// for the merchant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ucpCheckoutManagement")]
+        public virtual UcpCheckoutManagement UcpCheckoutManagement { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8897,6 +8904,13 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitDays")]
         public virtual System.Nullable<int> MinTransitDays { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`UcpCheckoutManagement` payload.</summary>
+    public class UcpCheckoutManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
