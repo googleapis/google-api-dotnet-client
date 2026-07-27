@@ -7,5 +7,10 @@
   "Google.Apis.AgentRegistry.v1alpha.AgentRegistryBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.AgentRegistry.v1alpha.ProjectsResource+LocationsResource+SkillsResource+SearchRequest.SearchTypeEnum": [
+    "SEARCH_TYPE_UNSPECIFIED",
+    "KEYWORD",
+    "SEMANTIC"
   ]
 }

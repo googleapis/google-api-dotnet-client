@@ -329,7 +329,9 @@ namespace Google.Apis.AgentRegistry.v1alpha
                 Endpoints = new EndpointsResource(service);
                 McpServers = new McpServersResource(service);
                 Operations = new OperationsResource(service);
+                Publishers = new PublishersResource(service);
                 Services = new ServicesResource(service);
+                Skills = new SkillsResource(service);
             }
 
             /// <summary>Gets the Agents resource.</summary>
@@ -1777,6 +1779,148 @@ namespace Google.Apis.AgentRegistry.v1alpha
                 }
             }
 
+            /// <summary>Gets the Publishers resource.</summary>
+            public virtual PublishersResource Publishers { get; }
+
+            /// <summary>The "publishers" collection of methods.</summary>
+            public class PublishersResource
+            {
+                private const string Resource = "publishers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PublishersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Fetches details of a specific Publisher.</summary>
+                /// <param name="name">
+                /// Required. Target publisher resource name. Format:
+                /// `projects/{project}/locations/{location}/publishers/{publisher}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Fetches details of a specific Publisher.</summary>
+                public class GetRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.Publisher>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Target publisher resource name. Format:
+                    /// `projects/{project}/locations/{location}/publishers/{publisher}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/publishers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all Publishers in a location.</summary>
+                /// <param name="parent">
+                /// Required. Parent location to query. Format: `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all Publishers in a location.</summary>
+                public class ListRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.ListPublishersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent location to query. Format: `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Page limit size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page offset token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/publishers";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Services resource.</summary>
             public virtual ServicesResource Services { get; }
 
@@ -2205,6 +2349,954 @@ namespace Google.Apis.AgentRegistry.v1alpha
                 }
             }
 
+            /// <summary>Gets the Skills resource.</summary>
+            public virtual SkillsResource Skills { get; }
+
+            /// <summary>The "skills" collection of methods.</summary>
+            public class SkillsResource
+            {
+                private const string Resource = "skills";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SkillsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Revisions = new RevisionsResource(service);
+                }
+
+                /// <summary>Gets the Revisions resource.</summary>
+                public virtual RevisionsResource Revisions { get; }
+
+                /// <summary>The "revisions" collection of methods.</summary>
+                public class RevisionsResource
+                {
+                    private const string Resource = "revisions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RevisionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new immutable revision and triggers validation pipelines.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. Parent logical container name.</param>
+                    public virtual CreateRequest Create(Google.Apis.AgentRegistry.v1alpha.Data.SkillRevision body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new immutable revision and triggers validation pipelines.</summary>
+                    public class CreateRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentRegistry.v1alpha.Data.SkillRevision body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Parent logical container name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Signed UUID request idempotency token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Optional. Custom, user-defined unique revision identifier. Format: 4-63 characters, matching
+                        /// regex `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("skillRevisionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string SkillRevisionId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AgentRegistry.v1alpha.Data.SkillRevision Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/revisions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/skills/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("skillRevisionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "skillRevisionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a specific revision (restricted to admins to purge accidentally committed secrets).
+                    /// </summary>
+                    /// <param name="name">Required. Target revision name to remove.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a specific revision (restricted to admins to purge accidentally committed secrets).
+                    /// </summary>
+                    public class DeleteRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Target revision name to remove.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Signed UUID request idempotency token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/skills/[^/]+/revisions/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single immutable Revision.</summary>
+                    /// <param name="name">Required. Target revision name.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single immutable Revision.</summary>
+                    public class GetRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.SkillRevision>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Target revision name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/skills/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+
+                        /// <summary>Gets the media downloader.</summary>
+                        public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+                        /// <summary>
+                        /// <para>Synchronously download the media into the given stream.</para>
+                        /// <para>
+                        /// Warning: This method hides download errors; use
+                        /// <see cref="DownloadWithStatus(System.IO.Stream)"/> instead.
+                        /// </para>
+                        /// </summary>
+                        /// <remarks>
+                        /// This method uses the <see cref="MediaDownloader"/> property to perform the download.
+                        /// Progress event handlers and other configuration may be performed using that property prior
+                        /// to calling this method.
+                        /// </remarks>
+                        public virtual void Download(System.IO.Stream stream)
+                        {
+                            var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                            mediaDownloader.Range = null;
+                            mediaDownloader.Download(this.GenerateRequestUri(), stream);
+                        }
+
+                        /// <summary>Synchronously download the media into the given stream.</summary>
+                        /// <remarks>
+                        /// This method uses the <see cref="MediaDownloader"/> property to perform the download.
+                        /// Progress event handlers and other configuration may be performed using that property prior
+                        /// to calling this method.
+                        /// </remarks>
+                        /// <returns>
+                        /// The final status of the download; including whether the download succeeded or failed.
+                        /// </returns>
+                        public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+                        {
+                            var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                            mediaDownloader.Range = null;
+                            return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+                        }
+
+                        /// <summary>Asynchronously download the media into the given stream.</summary>
+                        /// <remarks>
+                        /// This method uses the <see cref="MediaDownloader"/> property to perform the download.
+                        /// Progress event handlers and other configuration may be performed using that property prior
+                        /// to calling this method.
+                        /// </remarks>
+                        public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+                        {
+                            var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                            mediaDownloader.Range = null;
+                            return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+                        }
+
+                        /// <summary>Asynchronously download the media into the given stream.</summary>
+                        /// <remarks>
+                        /// This method uses the <see cref="MediaDownloader"/> property to perform the download.
+                        /// Progress event handlers and other configuration may be performed using that property prior
+                        /// to calling this method.
+                        /// </remarks>
+                        public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                            System.Threading.CancellationToken cancellationToken)
+                        {
+                            var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                            mediaDownloader.Range = null;
+                            return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+                        }
+
+                        /// <summary>Synchronously download a range of the media into the given stream.</summary>
+                        /// <remarks>
+                        /// This method uses the <see cref="MediaDownloader"/> property to perform the download.
+                        /// Progress event handlers and other configuration may be performed using that property prior
+                        /// to calling this method.
+                        /// </remarks>
+                        public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+                        {
+                            var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                            mediaDownloader.Range = range;
+                            return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+                        }
+
+                        /// <summary>Asynchronously download a range of the media into the given stream.</summary>
+                        /// <remarks>
+                        /// This method uses the <see cref="MediaDownloader"/> property to perform the download.
+                        /// Progress event handlers and other configuration may be performed using that property prior
+                        /// to calling this method.
+                        /// </remarks>
+                        public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+                            System.Net.Http.Headers.RangeHeaderValue range,
+                            System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+                        {
+                            var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                            mediaDownloader.Range = range;
+                            return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+                        }
+                    }
+
+                    /// <summary>Lists all revisions belonging to a parent Skill.</summary>
+                    /// <param name="parent">Required. Parent logical container name to query.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all revisions belonging to a parent Skill.</summary>
+                    public class ListRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.ListSkillRevisionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Parent logical container name to query.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Page limit size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. Page offset token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/revisions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/skills/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// ========================================================================= # Skills Collection APIs
+                /// Creates a Skill resource container, optionally publishing the initial SkillRevision inline in a
+                /// single, atomic CRUD roundtrip.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The project and location location to bootstrap.</param>
+                public virtual CreateRequest Create(Google.Apis.AgentRegistry.v1alpha.Data.Skill body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// ========================================================================= # Skills Collection APIs
+                /// Creates a Skill resource container, optionally publishing the initial SkillRevision inline in a
+                /// single, atomic CRUD roundtrip.
+                /// </summary>
+                public class CreateRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentRegistry.v1alpha.Data.Skill body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The project and location location to bootstrap.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Signed UUID request idempotency token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Custom, user-defined unique container identifier. Must be unique within the parent
+                    /// project and location. This value should be 4-63 characters, and valid characters are `/a-z-/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("skillId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SkillId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AgentRegistry.v1alpha.Data.Skill Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/skills";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("skillId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "skillId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a Skill container along with all its revisions.</summary>
+                /// <param name="name">Required. Target Skill container name to remove.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a Skill container along with all its revisions.</summary>
+                public class DeleteRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Target Skill container name to remove.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, any child SkillRevisions under this Skill will also be deleted.
+                    /// Otherwise, the request will only succeed if the Skill has no child SkillRevisions.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Optional. Signed UUID request idempotency token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/skills/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Fetches the active configuration and metadata of a Skill.</summary>
+                /// <param name="name">Required. Target resource container name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Fetches the active configuration and metadata of a Skill.</summary>
+                public class GetRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.Skill>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Target resource container name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/skills/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists logical Skills available in a project.</summary>
+                /// <param name="parent">Required. Parent value for ListSkillsRequest</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists logical Skills available in a project.</summary>
+                public class ListRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.ListSkillsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListSkillsRequest</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Use this field to specify filter criteria on list results. Filter expressions can be
+                    /// used to restrict results based upon filterable fields, where equality operators can be used. See
+                    /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more
+                    /// details. Allowed operators: `=`, `&amp;lt;`, `&amp;gt;`, `NOT`, `AND`, `OR`, and `()`. | Field |
+                    /// `=` | `&amp;lt;`, `&amp;gt;` | |--------------|-----|----------| | state | Yes | No | |
+                    /// targetState | Yes | No | | createTime | Yes | Yes | | updateTime | Yes | Yes | Examples: *
+                    /// `state=ACTIVE` to restrict results to skills in the `ACTIVE` state.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/skills";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates Skill metadata or overrides active pointers/state using REST standard PATCH.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Resource name of the Skill. Format:
+                /// `projects/{project}/locations/{location}/skills/{skill}` The `{skill}` segment acts as the resource
+                /// ID. If the skill is associated with a Publisher, this segment typically uses a hyphenated namespace
+                /// prefix corresponding to the publisher (e.g., `google-workspace-create-docs`).
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.AgentRegistry.v1alpha.Data.Skill body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates Skill metadata or overrides active pointers/state using REST standard PATCH.
+                /// </summary>
+                public class PatchRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentRegistry.v1alpha.Data.Skill body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Resource name of the Skill. Format:
+                    /// `projects/{project}/locations/{location}/skills/{skill}` The `{skill}` segment acts as the
+                    /// resource ID. If the skill is associated with a Publisher, this segment typically uses a
+                    /// hyphenated namespace prefix corresponding to the publisher (e.g.,
+                    /// `google-workspace-create-docs`).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. Signed UUID request idempotency token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Optional. Standard update target mask mapping relative fields.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AgentRegistry.v1alpha.Data.Skill Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/skills/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Custom deep-search method to filter by frontmatter or query SKILL.md text blobs.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for SearchSkillsRequest. Format: `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual SearchRequest Search(string parent)
+                {
+                    return new SearchRequest(this.service, parent);
+                }
+
+                /// <summary>Custom deep-search method to filter by frontmatter or query SKILL.md text blobs.</summary>
+                public class SearchRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.SearchSkillsResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for SearchSkillsRequest. Format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Use this field to specify additional filter criteria on search results. Filter
+                    /// expressions can be used to restrict results based upon filterable fields, where equality
+                    /// operators can be used. See
+                    /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more
+                    /// details. Allowed operators: `=`, `&amp;lt;`, `&amp;gt;`, `NOT`, `AND`, `OR`, and `()`. | Field |
+                    /// `=` | `&amp;lt;`, `&amp;gt;` | |--------------|-----|----------| | state | Yes | No | |
+                    /// targetState | Yes | No | | createTime | Yes | Yes | | updateTime | Yes | Yes | Examples: *
+                    /// `state=ACTIVE` to restrict results to skills in the `ACTIVE` state.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of search results to return per page. The page size is capped at
+                    /// `100`, even if a larger value is specified. A negative value will result in an
+                    /// `INVALID_ARGUMENT` error. If unspecified or set to `0`, a default value of `20` will be used.
+                    /// The server may return fewer results than requested.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If present, retrieve the next batch of results from the preceding call to this method.
+                    /// `page_token` must be the value of `next_page_token` from the previous response. The values of
+                    /// all other method parameters, must be identical to those in the previous call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. Search criteria used to select the Skills to return. If no search criteria is
+                    /// specified then all accessible Skills will be returned. Search expressions can be used to
+                    /// restrict results based upon searchable fields, where the operators can be used along with the
+                    /// suffix wildcard symbol `*`. See
+                    /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more
+                    /// details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field |
+                    /// `=` | `:` | `*` | Keyword Search |
+                    /// |---------------------------|-----|-----|-----|----------------| | skillId | Yes | Yes | Yes |
+                    /// Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | |
+                    /// description | No | Yes | No | Included | | frontmatter.name | No | Yes | No | Included | |
+                    /// frontmatter.description | No | Yes | No | Included | | frontmatter.compatibility | No | Yes | No
+                    /// | Included | | frontmatter.license | No | Yes | No | Included | Examples: *
+                    /// `skillId="urn:skill:projects-1234:locations:global:private-important-skill"` to find the skill
+                    /// with the specified skill ID. * `name:important` to find skills whose name contains `important`
+                    /// as a word. * `displayName:works*` to find skills whose display name contains words that start
+                    /// with `works`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("searchString", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SearchString { get; set; }
+
+                    /// <summary>Optional. The type of search.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("searchType", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<SearchTypeEnum> SearchType { get; set; }
+
+                    /// <summary>Optional. The type of search.</summary>
+                    public enum SearchTypeEnum
+                    {
+                        /// <summary>Invalid search type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SEARCH_TYPE_UNSPECIFIED")]
+                        SEARCHTYPEUNSPECIFIED = 0,
+
+                        /// <summary>Search for a keyword across all searchable fields.</summary>
+                        [Google.Apis.Util.StringValueAttribute("KEYWORD")]
+                        KEYWORD = 1,
+
+                        /// <summary>Search based on the meaning and intent of a natural language query.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SEMANTIC")]
+                        SEMANTIC = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/skills:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "searchString",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("searchType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "searchType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -2602,6 +3694,19 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Direct write-only raw archive payload upload.</summary>
+    public class ArchiveUploadSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Input only. Write-only raw ZIP/TAR archive payload bytes containing the skill package.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveContent")]
+        public virtual string ArchiveContent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The AuthProvider of the Binding.</summary>
     public class AuthProviderBinding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2914,6 +4019,50 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Structured metadata attributes extracted from the package's local SKILL.md frontmatter.</summary>
+    public class Frontmatter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Environmental dependencies or local sidecars.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
+        public virtual string Compatibility { get; set; }
+
+        /// <summary>Required. Functional description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. License.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual string License { get; set; }
+
+        /// <summary>Optional. Extensible flattened map mapping custom tags, authors, and version parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Required. The name of the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifications for Cloud Storage objects.</summary>
+    public class GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Cloud Storage object generation ID. If not specified, the latest generation is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Required. Cloud Storage object URI. Format: `gs://{bucket_name}/{object_name}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the connection details for an Agent or MCP Server.</summary>
     public class Interface : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3033,6 +4182,21 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response listing Publishers.</summary>
+    public class ListPublishersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page offset continuation token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The returned list of Publishers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishers")]
+        public virtual System.Collections.Generic.IList<Publisher> Publishers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for response to listing Services</summary>
     public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3046,6 +4210,40 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<Service> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response listing Revisions.</summary>
+    public class ListSkillRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page offset continuation token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned version snapshot list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skillRevisions")]
+        public virtual System.Collections.Generic.IList<SkillRevision> SkillRevisions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response structure listing logical Skills.</summary>
+    public class ListSkillsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page continuation continuation token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned container list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skills")]
+        public virtual System.Collections.Generic.IList<Skill> Skills { get; set; }
+
+        /// <summary>Unreachable locations or failures.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3385,6 +4583,47 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a verified Publisher of Skills. Prepopulated publishers include `publishers/cloud.google.com` and
+    /// `publishers/workspace.google.com`.
+    /// </summary>
+    public class Publisher : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Human readable display name of the publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. URI pointing to official publisher documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUri")]
+        public virtual string DocumentationUri { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the publisher. Format:
+        /// `projects/{project}/locations/{location}/publishers/{publisher}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The curation tier of the publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisherTier")]
+        public virtual string PublisherTier { get; set; }
+
+        /// <summary>Optional. URI pointing to the support portal or email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportUri")]
+        public virtual string SupportUri { get; set; }
+
+        /// <summary>
+        /// Required. The verified prefix (e.g. "snowflake-", "google-") associated with this publisher. The system uses
+        /// this prefix to enforce name-squatting rules during Skill registration. Must be globally unique across all
+        /// publishers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedPrefix")]
+        public virtual string VerifiedPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for searching Agents</summary>
     public class SearchAgentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3501,6 +4740,21 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response listing searched Skills.</summary>
+    public class SearchSkillsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Query page offset continuation token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Matched Skills list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skills")]
+        public virtual System.Collections.Generic.IList<Skill> Skills { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3632,6 +4886,244 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an Executable Agent Skill or a Composite Tool Suite (Bundle). Sibling resource with Agent and
+    /// McpServer under agentregistry.googleapis.com.
+    /// </summary>
+    public class Skill : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The full resource name of the revision currently served by default (floating track). Format:
+        /// `projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRevision")]
+        public virtual string DefaultRevision { get; set; }
+
+        /// <summary>
+        /// Optional. Brief summary describing the capabilities of the skill. Maximum length is 2048 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. Human-readable display name of the skill. Maximum length is 128 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Lightweight frontmatter metadata attributes copied from the default revision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frontmatter")]
+        public virtual Frontmatter Frontmatter { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Optional nested initial revision payload to support standard one-shot creation. The
+        /// server processes this field on input during creation but must never return it in responses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialRevision")]
+        public virtual SkillRevision InitialRevision { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the Skill. Format: `projects/{project}/locations/{location}/skills/{skill}` The
+        /// `{skill}` segment acts as the resource ID. If the skill is associated with a Publisher, this segment
+        /// typically uses a hyphenated namespace prefix corresponding to the publisher (e.g.,
+        /// `google-workspace-create-docs`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The publisher resource associated with this skill. Format:
+        /// `projects/{project}/locations/{location}/publishers/{publisher}` The publisher dictates the allowed
+        /// namespace prefixes for the skill's name and logical `skill_id` (e.g., Publisher `google` authorizes the
+        /// `google-*` prefix).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual string Publisher { get; set; }
+
+        /// <summary>
+        /// Output only. A stable, globally unique logical identifier for the skill. It is securely constructed by the
+        /// backend by combining the associated `publisher`'s verified namespace and the skill's resource ID to enforce
+        /// strict ownership. For example, the prefix `google-` is reserved exclusively for first-party Google
+        /// publishers to prevent namespace squatting. Example: `urn:skill:google-workspace:create-docs`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skillId")]
+        public virtual string SkillId { get; set; }
+
+        /// <summary>Output only. The system-managed state of the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. User-managed target state of the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetState")]
+        public virtual string TargetState { get; set; }
+
+        /// <summary>Required. Structural deployment type (SIMPLE leaf vs COMPOSITE bundle).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Universally unique identifier (UUID4) for the logical container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an immutable, versioned snapshot of a Skill package.</summary>
+    public class SkillRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Immutable. Direct write-only raw archive upload source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveUploadSource")]
+        public virtual ArchiveUploadSource ArchiveUploadSource { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Revision creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Extracted YAML frontmatter configuration snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frontmatter")]
+        public virtual Frontmatter Frontmatter { get; set; }
+
+        /// <summary>Optional. Immutable. Cloud Storage object generation URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsSource GcsSource { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the SkillRevision. Format:
+        /// `projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Cryptographic SHA-256 integrity and deduplication digest of the payload zip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256Hash")]
+        public virtual string Sha256Hash { get; set; }
+
+        /// <summary>
+        /// Output only. Size of the compiled zip payload in bytes (assists client download progress).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        /// <summary>Output only. The system-managed lifecycle state of this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Universally unique identifier (UUID4) for the skill revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
