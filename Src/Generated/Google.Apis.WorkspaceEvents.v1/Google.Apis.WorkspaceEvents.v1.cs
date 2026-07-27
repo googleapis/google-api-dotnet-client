@@ -64,6 +64,30 @@ namespace Google.Apis.WorkspaceEvents.v1
         public class Scope
         {
             /// <summary>
+            /// On their own behalf, apps in Google Chat can see all members in Google Chat spaces and conversations
+            /// throughout your Workspace organization, even when the Chat app isn't a member
+            /// </summary>
+            public static string ChatAppAllMembershipsReadonly = "https://www.googleapis.com/auth/chat.app.all.memberships.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see all messages and reactions throughout your Workspace
+            /// organization, even when the Chat app isn't a member of a space or conversation
+            /// </summary>
+            public static string ChatAppAllMessagesReadonly = "https://www.googleapis.com/auth/chat.app.all.messages.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see metadata about all spaces and conversations in Google
+            /// Chat throughout your Workspace organization, even when the Chat app isn't a member
+            /// </summary>
+            public static string ChatAppAllSpacesReadonly = "https://www.googleapis.com/auth/chat.app.all.spaces.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see the last read time for all users in all spaces and
+            /// conversations throughout your Workspace organization, even when the Chat app isn't a member.
+            /// </summary>
+            public static string ChatAppAllUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.app.all.users.readstate.readonly";
+
+            /// <summary>
             /// On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and
             /// spaces
             /// </summary>
@@ -166,6 +190,30 @@ namespace Google.Apis.WorkspaceEvents.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Workspace Events API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see all members in Google Chat spaces and conversations
+            /// throughout your Workspace organization, even when the Chat app isn't a member
+            /// </summary>
+            public const string ChatAppAllMembershipsReadonly = "https://www.googleapis.com/auth/chat.app.all.memberships.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see all messages and reactions throughout your Workspace
+            /// organization, even when the Chat app isn't a member of a space or conversation
+            /// </summary>
+            public const string ChatAppAllMessagesReadonly = "https://www.googleapis.com/auth/chat.app.all.messages.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see metadata about all spaces and conversations in Google
+            /// Chat throughout your Workspace organization, even when the Chat app isn't a member
+            /// </summary>
+            public const string ChatAppAllSpacesReadonly = "https://www.googleapis.com/auth/chat.app.all.spaces.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see the last read time for all users in all spaces and
+            /// conversations throughout your Workspace organization, even when the Chat app isn't a member.
+            /// </summary>
+            public const string ChatAppAllUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.app.all.users.readstate.readonly";
+
             /// <summary>
             /// On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and
             /// spaces
