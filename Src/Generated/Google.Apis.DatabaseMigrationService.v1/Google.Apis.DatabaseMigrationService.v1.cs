@@ -7044,7 +7044,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error
+        /// The reason for the error. This is a constant value that identifies the proximate cause of the error. Error
         /// reasons are unique within a particular domain of errors. This should be at most 63 characters and match a
         /// regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
         /// </summary>
@@ -7147,7 +7147,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual LocalizedMessage LocalizedMessage { get; set; }
 
         /// <summary>
-        /// The reason of the field-level error. This is a constant value that identifies the proximate cause of the
+        /// The reason for the field-level error. This is a constant value that identifies the proximate cause of the
         /// field-level error. It should uniquely identify the type of the FieldViolation within the scope of the
         /// google.rpc.ErrorInfo.domain. This should be at most 63 characters and match a regular expression of
         /// `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
@@ -7911,7 +7911,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ruleScope")]
         public virtual string RuleScope { get; set; }
 
-        /// <summary>Optional. Rule to specify the primary key for a table</summary>
+        /// <summary>Optional. Deprecated: This rule is no longer supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setTablePrimaryKey")]
         public virtual SetTablePrimaryKey SetTablePrimaryKey { get; set; }
 
@@ -9704,9 +9704,9 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     }
 
     /// <summary>
-    /// Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to
-    /// configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be
-    /// one of: Table.
+    /// Deprecated: Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name
+    /// to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can
+    /// be one of: Table.
     /// </summary>
     public class SetTablePrimaryKey : Google.Apis.Requests.IDirectResponseSchema
     {
