@@ -3389,6 +3389,10 @@ namespace Google.Apis.Datastream.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Profile for connecting to a Workday source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workdayProfile")]
+        public virtual WorkdayProfile WorkdayProfile { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3765,7 +3769,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error
+        /// The reason for the error. This is a constant value that identifies the proximate cause of the error. Error
         /// reasons are unique within a particular domain of errors. This should be at most 63 characters and match a
         /// regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
         /// </summary>
@@ -3838,7 +3842,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual LocalizedMessage LocalizedMessage { get; set; }
 
         /// <summary>
-        /// The reason of the field-level error. This is a constant value that identifies the proximate cause of the
+        /// The reason for the field-level error. This is a constant value that identifies the proximate cause of the
         /// field-level error. It should uniquely identify the type of the FieldViolation within the scope of the
         /// google.rpc.ErrorInfo.domain. This should be at most 63 characters and match a regular expression of
         /// `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
@@ -4805,6 +4809,21 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Required. Client secret for OAuth Client Credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual Secret ClientSecret { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OAuth Refresh Token Credentials.</summary>
+    public class OauthRefreshTokenCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the OAuth Client Credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClientCredentials")]
+        public virtual OauthClientCredentials OauthClientCredentials { get; set; }
+
+        /// <summary>Required. Specifies the OAuth Refresh Token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual Secret RefreshToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6312,6 +6331,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sqlServerSourceConfig")]
         public virtual SqlServerSourceConfig SqlServerSourceConfig { get; set; }
 
+        /// <summary>Optional. Workday data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workdaySourceConfig")]
+        public virtual WorkdaySourceConfig WorkdaySourceConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7400,6 +7423,53 @@ namespace Google.Apis.Datastream.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpc")]
         public virtual string Vpc { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Profile for connecting to a Workday source.</summary>
+    public class WorkdayProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Host for the Workday connection. Must be a valid hostname (e.g.,
+        /// `wd3-impl-services1.workday.com`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Required. Credentials for authenticating with the Workday API. OAuth Refresh Token credentials for
+        /// authenticating with the Workday API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthRefreshTokenCredentials")]
+        public virtual OauthRefreshTokenCredentials OauthRefreshTokenCredentials { get; set; }
+
+        /// <summary>Required. Tenant for the Workday connection (e.g., `google12`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
+        public virtual string Tenant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for syncing data from a Workday source.</summary>
+    public class WorkdaySourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The objects to exclude from the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual SourceCatalog ExcludeObjects { get; set; }
+
+        /// <summary>Optional. The objects to retrieve from the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual SourceCatalog IncludeObjects { get; set; }
+
+        /// <summary>
+        /// Required. Incremental sync polling interval for all objects. If not set, a default value of `5 minutes` is
+        /// used. The duration must be from `5 minutes` to `24 hours`, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingInterval")]
+        public virtual object PollingInterval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
