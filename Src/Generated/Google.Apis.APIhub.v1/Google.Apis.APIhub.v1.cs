@@ -323,6 +323,7 @@ namespace Google.Apis.APIhub.v1
                 Operations = new OperationsResource(service);
                 Plugins = new PluginsResource(service);
                 RuntimeProjectAttachments = new RuntimeProjectAttachmentsResource(service);
+                Servers = new ServersResource(service);
             }
 
             /// <summary>Gets the Addons resource.</summary>
@@ -7496,6 +7497,87 @@ namespace Google.Apis.APIhub.v1
                 }
             }
 
+            /// <summary>Gets the Servers resource.</summary>
+            public virtual ServersResource Servers { get; }
+
+            /// <summary>The "servers" collection of methods.</summary>
+            public class ServersResource
+            {
+                private const string Resource = "servers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ServersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Configures and deploys a given server config for given target. Currently this API supports only
+                /// deploying MCP server in Apigee X. For mcp server deployment in apigee X, if there is already a mcp
+                /// proxy deployed, then this method will try to overwrite it by creating new revision i.e. all existing
+                /// tools will be removed and new set of tools will be deployed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Format: `projects/{project}/locations/{location}`</param>
+                public virtual ConfigureAndDeployServerRequest ConfigureAndDeployServer(Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ConfigureAndDeployServerRequest body, string parent)
+                {
+                    return new ConfigureAndDeployServerRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Configures and deploys a given server config for given target. Currently this API supports only
+                /// deploying MCP server in Apigee X. For mcp server deployment in apigee X, if there is already a mcp
+                /// proxy deployed, then this method will try to overwrite it by creating new revision i.e. all existing
+                /// tools will be removed and new set of tools will be deployed.
+                /// </summary>
+                public class ConfigureAndDeployServerRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new ConfigureAndDeployServer request.</summary>
+                    public ConfigureAndDeployServerRequest(Google.Apis.Services.IClientService service, Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ConfigureAndDeployServerRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `projects/{project}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ConfigureAndDeployServerRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "configureAndDeployServer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/servers:configureAndDeployServer";
+
+                    /// <summary>Initializes ConfigureAndDeployServer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Collect API data from a source and push it to Hub's collect layer.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="location">
@@ -8980,6 +9062,42 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The target configuration for Apigee X. Note: If this API is called while an earlier deployment is still in
+    /// progress, the earlier deployment will be aborted and a new deployment will be triggered.
+    /// </summary>
+    public class GoogleCloudApihubV1ApigeeXTargetDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The revision number of the Apigee proxy that was deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployedRevision")]
+        public virtual string DeployedRevision { get; set; }
+
+        /// <summary>Required. The specific Apigee environment where the server will be deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>Optional. Metadata for the proxy configuration in Apigee X.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudApihubV1MetaData Metadata { get; set; }
+
+        /// <summary>
+        /// Required. This name identifies the proxy resource in Apigee. It typically follows a standard alphanumeric
+        /// format (e.g., "mcp-discovery-server").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxy")]
+        public virtual string Proxy { get; set; }
+
+        /// <summary>
+        /// Required. The runtime project that hosts the Apigee X organization. This must be one of the runtime projects
+        /// attached to the API Hub host project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The details of the Application Integration endpoint to be triggered for curation.</summary>
     public class GoogleCloudApihubV1ApplicationIntegrationEndpointDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9401,6 +9519,17 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Required. Type of the parameter: string, int, bool etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ApiHub.ConfigureAndDeployServer.</summary>
+    public class GoogleCloudApihubV1ConfigureAndDeployServerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>MCP (Model Context Protocol) server configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpServerConfig")]
+        public virtual GoogleCloudApihubV1McpServerConfig McpServerConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11002,6 +11131,34 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Identifies a single API Hub operation by spec resource name + HTTP path + HTTP method.</summary>
+    public class GoogleCloudApihubV1HttpOperationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. HTTP method of the operation within the referenced spec. (GET / PUT / POST / DELETE / OPTIONS /
+        /// HEAD / PATCH / TRACE).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>
+        /// Required. HTTP path of the operation within the referenced spec. Match is exact (no template substitution):
+        /// the path here must appear verbatim on an APIOperationRevision belonging to the spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Required. Spec resource name:
+        /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual string Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An HTTP-based API Operation, sometimes called a "REST" Operation.</summary>
     public class GoogleCloudApihubV1HttpOperationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11622,6 +11779,21 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MCP-specific server configuration.</summary>
+    public class GoogleCloudApihubV1McpServerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The target Apigee X configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apigeeXTargetDetails")]
+        public virtual GoogleCloudApihubV1ApigeeXTargetDetails ApigeeXTargetDetails { get; set; }
+
+        /// <summary>Required. The tools to expose on the MCP server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1McpToolConfig> Tools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details describing an MCP Tool.</summary>
     public class GoogleCloudApihubV1McpTool : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11648,6 +11820,57 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Optional. Optional title for the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A tool exposed by the MCP server. Each tool wraps exactly one API Hub operation under a caller-supplied
+    /// identifier.
+    /// </summary>
+    public class GoogleCloudApihubV1McpToolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Description of what the tool does and how it is used. Description serves as key reference for the
+        /// agent to know about the tool capabilities.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The API Hub operation this tool exposes. Each tool wraps exactly one operation; callers that want
+        /// to expose multiple operations should declare multiple tools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual GoogleCloudApihubV1OperationConfig Operation { get; set; }
+
+        /// <summary>
+        /// Required. Caller-supplied identifier for the tool; each tool must have a unique identifier. This will be by
+        /// used by agents to invoke the tool. Tool ID must be unique across all tools in the given MCP server
+        /// configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolId")]
+        public virtual string ToolId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the server configuration in Apigee X.</summary>
+    public class GoogleCloudApihubV1MetaData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Description for the server. For apigee target, this will be used as revision description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Display name for the server. For apigee target, this will be used as revision display name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11724,6 +11947,24 @@ namespace Google.Apis.APIhub.v1.Data
         /// <summary>Output only. The version in the spec. This maps to `info.version` in OpenAPI spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>API hub Operation config.</summary>
+    public class GoogleCloudApihubV1OperationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP operation config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpOperation")]
+        public virtual GoogleCloudApihubV1HttpOperationConfig HttpOperation { get; set; }
+
+        /// <summary>
+        /// Full API Hub operation resource name:
+        /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
