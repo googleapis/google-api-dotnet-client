@@ -2071,6 +2071,10 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
+        /// <summary>Whether the activity was performed by an agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAgenticAction")]
+        public virtual System.Nullable<bool> IsAgenticAction { get; set; }
+
         /// <summary>The type of API resource. For an activity report, the value is `audit#activity`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -2090,9 +2094,17 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDetails")]
         public virtual System.Collections.Generic.IList<ResourceDetails> ResourceDetails { get; set; }
 
+        /// <summary>Device details of the user doing the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDeviceInfo")]
+        public virtual ActivityUserDeviceInfo UserDeviceInfo { get; set; }
+
         /// <summary>User doing the action.</summary>
         public class ActorData
         {
+            /// <summary>Details of the AI agent that was the actor for the activity.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("agentAttributionInfo")]
+            public virtual AgentAttributionInfo AgentAttributionInfo { get; set; }
+
             /// <summary>Details of the application that was the actor for the activity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("applicationInfo")]
             public virtual ApplicationInfoData ApplicationInfo { get; set; }
@@ -2386,6 +2398,59 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         /// <summary>ISO 3166-2 region code (states and provinces) for countries of the user doing the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subdivisionCode")]
         public virtual string SubdivisionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Device details of the user doing the action.</summary>
+    public class ActivityUserDeviceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Device ID of the user's device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>Output only. Device OS version of the user's device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceOsVersion")]
+        public virtual string DeviceOsVersion { get; set; }
+
+        /// <summary>Output only. The type of the user's device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the AI agent that was the actor for the activity.</summary>
+    public class AgentAttributionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The user visible name of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentName")]
+        public virtual string AgentName { get; set; }
+
+        /// <summary>The owner of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentOwner")]
+        public virtual AgentAttributionInfoAgentOwner AgentOwner { get; set; }
+
+        /// <summary>Type of the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentType")]
+        public virtual string AgentType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the owner of the AI agent.</summary>
+    public class AgentAttributionInfoAgentOwner : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email of the agent owner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
