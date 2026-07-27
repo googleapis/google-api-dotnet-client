@@ -330,7 +330,11 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Atomically updates the ResourceRecordSet collection.</summary>
+        /// <summary>
+        /// Atomically updates the ResourceRecordSet collection. Note: While `dns.changes.create` is the baseline
+        /// permission required to invoke this method, additional permissions are checked depending on the specific
+        /// additions or deletions contained in the payload.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
@@ -341,7 +345,11 @@ namespace Google.Apis.Dns.v1beta2
             return new CreateRequest(this.service, body, project, managedZone);
         }
 
-        /// <summary>Atomically updates the ResourceRecordSet collection.</summary>
+        /// <summary>
+        /// Atomically updates the ResourceRecordSet collection. Note: While `dns.changes.create` is the baseline
+        /// permission required to invoke this method, additional permissions are checked depending on the specific
+        /// additions or deletions contained in the payload.
+        /// </summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Change>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1098,7 +1106,11 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Creates a new ManagedZone.</summary>
+        /// <summary>
+        /// Creates a new ManagedZone. Note: While `dns.managedZones.create` is the baseline permission required to
+        /// invoke this method, additional permissions are required if the managed zone configuration references other
+        /// resources.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1beta2.Data.ManagedZone body, string project)
@@ -1106,7 +1118,11 @@ namespace Google.Apis.Dns.v1beta2
             return new CreateRequest(this.service, body, project);
         }
 
-        /// <summary>Creates a new ManagedZone.</summary>
+        /// <summary>
+        /// Creates a new ManagedZone. Note: While `dns.managedZones.create` is the baseline permission required to
+        /// invoke this method, additional permissions are required if the managed zone configuration references other
+        /// resources.
+        /// </summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.ManagedZone>
         {
             /// <summary>Constructs a new Create request.</summary>
