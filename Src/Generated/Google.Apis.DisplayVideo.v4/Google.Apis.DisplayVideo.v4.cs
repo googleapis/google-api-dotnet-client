@@ -691,6 +691,100 @@ namespace Google.Apis.DisplayVideo.v4
             }
 
             /// <summary>
+            /// Updates an ad asset. Returns the updated ad asset if successful. Supports updating assets of AdAssetType
+            /// `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `AD_ASSET_TYPE_IMAGE`. Only the `synthetic_content_attestation_status`
+            /// field is mutable.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="advertiserId">Required. The ID of the advertiser this ad asset belongs to.</param>
+            /// <param name="adAssetId">
+            /// Output only. The ID of the ad asset. Referred to as the asset ID when assigned to an ad.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.DisplayVideo.v4.Data.AdAsset body, long advertiserId, long adAssetId)
+            {
+                return new PatchRequest(this.service, body, advertiserId, adAssetId);
+            }
+
+            /// <summary>
+            /// Updates an ad asset. Returns the updated ad asset if successful. Supports updating assets of AdAssetType
+            /// `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `AD_ASSET_TYPE_IMAGE`. Only the `synthetic_content_attestation_status`
+            /// field is mutable.
+            /// </summary>
+            public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdAsset>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DisplayVideo.v4.Data.AdAsset body, long advertiserId, long adAssetId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    AdAssetId = adAssetId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser this ad asset belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>
+                /// Output only. The ID of the ad asset. Referred to as the asset ID when assigned to an ad.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("adAssetId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdAssetId { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to update. Only AdAsset.synthetic_content_attestation_status is
+                /// mutable.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DisplayVideo.v4.Data.AdAsset Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v4/advertisers/{+advertiserId}/adAssets/{+adAssetId}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("adAssetId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adAssetId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
             /// Uploads and creates an ad asset. Returns the ID of the newly-created ad asset if successful. Only
             /// supports the uploading of assets with the AdAssetType `AD_ASSET_TYPE_IMAGE`.
             /// </summary>
@@ -22534,6 +22628,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Whether the asset contains synthetic content or was created using AI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
+        public virtual string SyntheticContentAttestationStatus { get; set; }
+
         /// <summary>Youtube video asset data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoAsset")]
         public virtual YoutubeVideoAsset YoutubeVideoAsset { get; set; }
@@ -26798,6 +26896,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
         public virtual System.Nullable<bool> Skippable { get; set; }
+
+        /// <summary>Optional. Whether the creative contains synthetic content or was created using AI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
+        public virtual string SyntheticContentAttestationStatus { get; set; }
 
         /// <summary>
         /// Optional. The original third-party tag used for the creative. Required and only valid for third-party tag
@@ -31982,6 +32084,14 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Performance metrics for a forecast point.</summary>
     public class PlannedProductForecast : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Number of on-target impressions including co-viewers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onTargetCoviewImpressions")]
+        public virtual System.Nullable<long> OnTargetCoviewImpressions { get; set; }
+
+        /// <summary>Number of unique people reached that match the on-target definition including co-viewers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onTargetCoviewReach")]
+        public virtual System.Nullable<long> OnTargetCoviewReach { get; set; }
+
         /// <summary>Number of on-target impressions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onTargetImpressions")]
         public virtual System.Nullable<long> OnTargetImpressions { get; set; }
@@ -31989,6 +32099,14 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// <summary>Number of unique people reached that match the on-target definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onTargetReach")]
         public virtual System.Nullable<long> OnTargetReach { get; set; }
+
+        /// <summary>Total number of impressions including co-viewers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCoviewImpressions")]
+        public virtual System.Nullable<long> TotalCoviewImpressions { get; set; }
+
+        /// <summary>Total number of unique people reached including co-viewers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCoviewReach")]
+        public virtual System.Nullable<long> TotalCoviewReach { get; set; }
 
         /// <summary>Total number of impressions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalImpressions")]
@@ -33441,6 +33559,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; }
+
+        /// <summary>Optional. Whether the asset contains synthetic content or was created using AI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
+        public virtual string SyntheticContentAttestationStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
