@@ -7,5 +7,20 @@
   "Google.Apis.Assuredworkloads.v1beta1.AssuredworkloadsBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.Assuredworkloads.v1beta1.FoldersResource+LocationsResource+DbFrameworkComplianceSummariesResource+ListRequest.ViewEnum": [
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED",
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC",
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL"
+  ],
+  "Google.Apis.Assuredworkloads.v1beta1.OrganizationsResource+LocationsResource+DbFrameworkComplianceSummariesResource+ListRequest.ViewEnum": [
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED",
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC",
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL"
+  ],
+  "Google.Apis.Assuredworkloads.v1beta1.ProjectsResource+LocationsResource+DbFrameworkComplianceSummariesResource+ListRequest.ViewEnum": [
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED",
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC",
+    "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL"
   ]
 }
