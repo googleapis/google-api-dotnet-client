@@ -2912,7 +2912,7 @@ namespace Google.Apis.DatabaseMigrationService.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error
+        /// The reason for the error. This is a constant value that identifies the proximate cause of the error. Error
         /// reasons are unique within a particular domain of errors. This should be at most 63 characters and match a
         /// regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
         /// </summary>
@@ -2997,7 +2997,7 @@ namespace Google.Apis.DatabaseMigrationService.v1beta1.Data
         public virtual LocalizedMessage LocalizedMessage { get; set; }
 
         /// <summary>
-        /// The reason of the field-level error. This is a constant value that identifies the proximate cause of the
+        /// The reason for the field-level error. This is a constant value that identifies the proximate cause of the
         /// field-level error. It should uniquely identify the type of the FieldViolation within the scope of the
         /// google.rpc.ErrorInfo.domain. This should be at most 63 characters and match a regular expression of
         /// `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
