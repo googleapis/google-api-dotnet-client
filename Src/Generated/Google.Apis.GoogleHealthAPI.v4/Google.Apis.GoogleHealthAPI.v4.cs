@@ -94,6 +94,12 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// <summary>Add exercise GPS location data to Google Health, and edit or delete the data it adds.</summary>
             public static string GooglehealthLocationWriteonly = "https://www.googleapis.com/auth/googlehealth.location.writeonly";
 
+            /// <summary>Add logged symptoms data to Google Health, and edit or delete the data it adds</summary>
+            public static string GooglehealthLoggedSymptomsWriteonly = "https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly";
+
+            /// <summary>Add mindfulness data to Google Health, and edit or delete the data it adds</summary>
+            public static string GooglehealthMindfulnessWriteonly = "https://www.googleapis.com/auth/googlehealth.mindfulness.writeonly";
+
             /// <summary>Add nutrition data to Google Health, and edit or delete the data it adds.</summary>
             public static string GooglehealthNutritionWriteonly = "https://www.googleapis.com/auth/googlehealth.nutrition.writeonly";
 
@@ -102,6 +108,9 @@ namespace Google.Apis.GoogleHealthAPI.v4
 
             /// <summary>Add profile data to Google Health, and edit or delete the data it adds.</summary>
             public static string GooglehealthProfileWriteonly = "https://www.googleapis.com/auth/googlehealth.profile.writeonly";
+
+            /// <summary>Add reproductive health data to Google Health, and edit or delete the data it adds</summary>
+            public static string GooglehealthReproductiveHealthWriteonly = "https://www.googleapis.com/auth/googlehealth.reproductive_health.writeonly";
 
             /// <summary>See your Google Health settings</summary>
             public static string GooglehealthSettingsReadonly = "https://www.googleapis.com/auth/googlehealth.settings.readonly";
@@ -151,6 +160,12 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// <summary>Add exercise GPS location data to Google Health, and edit or delete the data it adds.</summary>
             public const string GooglehealthLocationWriteonly = "https://www.googleapis.com/auth/googlehealth.location.writeonly";
 
+            /// <summary>Add logged symptoms data to Google Health, and edit or delete the data it adds</summary>
+            public const string GooglehealthLoggedSymptomsWriteonly = "https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly";
+
+            /// <summary>Add mindfulness data to Google Health, and edit or delete the data it adds</summary>
+            public const string GooglehealthMindfulnessWriteonly = "https://www.googleapis.com/auth/googlehealth.mindfulness.writeonly";
+
             /// <summary>Add nutrition data to Google Health, and edit or delete the data it adds.</summary>
             public const string GooglehealthNutritionWriteonly = "https://www.googleapis.com/auth/googlehealth.nutrition.writeonly";
 
@@ -159,6 +174,9 @@ namespace Google.Apis.GoogleHealthAPI.v4
 
             /// <summary>Add profile data to Google Health, and edit or delete the data it adds.</summary>
             public const string GooglehealthProfileWriteonly = "https://www.googleapis.com/auth/googlehealth.profile.writeonly";
+
+            /// <summary>Add reproductive health data to Google Health, and edit or delete the data it adds</summary>
+            public const string GooglehealthReproductiveHealthWriteonly = "https://www.googleapis.com/auth/googlehealth.reproductive_health.writeonly";
 
             /// <summary>See your Google Health settings</summary>
             public const string GooglehealthSettingsReadonly = "https://www.googleapis.com/auth/googlehealth.settings.readonly";
