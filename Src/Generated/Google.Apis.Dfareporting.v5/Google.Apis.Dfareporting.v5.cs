@@ -22994,6 +22994,14 @@ namespace Google.Apis.Dfareporting.v5.Data
         public virtual System.Nullable<long> SubaccountId { get; set; }
 
         /// <summary>
+        /// Optional. Whether to add a label to the creative as created or edited using AI when served in regions with
+        /// local AI labeling regulations. [Learn more about labeling requirements in AI
+        /// regulations.](https://support.google.com/campaignmanager/answer/17232030)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
+        public virtual string SyntheticContentAttestationStatus { get; set; }
+
+        /// <summary>
         /// Third-party URL used to record backup image impressions. Applicable to the following creative types: all
         /// RICH_MEDIA.
         /// </summary>
