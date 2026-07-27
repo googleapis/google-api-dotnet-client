@@ -3165,6 +3165,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
     /// <summary>A release of a Firebase app.</summary>
     public class GoogleFirebaseAppdistroV1Release : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Number of testers with accepted invitations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptedInvitationCount")]
+        public virtual System.Nullable<int> AcceptedInvitationCount { get; set; }
+
         /// <summary>Output only. Registration state of the Android package (BinaryType.APK).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidPackageRegistrationState")]
         public virtual string AndroidPackageRegistrationState { get; set; }
@@ -3175,6 +3179,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryDownloadUri")]
         public virtual string BinaryDownloadUri { get; set; }
+
+        /// <summary>Output only. Type of binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryType")]
+        public virtual string BinaryType { get; set; }
 
         /// <summary>
         /// Output only. Build version of the release. For an Android release, the build version is the `versionCode`.
@@ -3264,9 +3272,17 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Number of feedback reports left by testers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedbackCount")]
+        public virtual System.Nullable<int> FeedbackCount { get; set; }
+
         /// <summary>Output only. A link to the Firebase console displaying a single release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseConsoleUri")]
         public virtual string FirebaseConsoleUri { get; set; }
+
+        /// <summary>Output only. Number of testers who have downloaded this release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installationCount")]
+        public virtual System.Nullable<int> InstallationCount { get; set; }
 
         /// <summary>
         /// The name of the release resource. Format: `projects/{project_number}/apps/{app}/releases/{release}`
@@ -3274,9 +3290,20 @@ namespace Google.Apis.FirebaseAppDistribution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. Number of testers who were invited (incl. expired invitations), but did not (yet) accept the
+        /// invitation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openInvitationCount")]
+        public virtual System.Nullable<int> OpenInvitationCount { get; set; }
+
         /// <summary>Notes about the release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseNotes")]
         public virtual GoogleFirebaseAppdistroV1ReleaseNotes ReleaseNotes { get; set; }
+
+        /// <summary>Output only. The overall state of tests run on this release</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testState")]
+        public virtual string TestState { get; set; }
 
         /// <summary>
         /// Output only. A link to the release in the tester web clip or Android app that lets testers (which were
