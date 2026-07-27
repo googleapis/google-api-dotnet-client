@@ -3101,6 +3101,10 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
     /// <summary>Settings for CloudSQL instance configuration.</summary>
     public class CloudSqlInstance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. [Output only] The Cloud SQL instance edition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
         /// <summary>
         /// Required. Name of the CloudSQL instance, in the format:
         /// ```
