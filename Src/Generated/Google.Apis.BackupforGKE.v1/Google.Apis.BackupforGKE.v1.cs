@@ -7020,6 +7020,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ruleName")]
         public virtual string RuleName { get; set; }
 
+        /// <summary>The storage tier of the BackupRule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageTier")]
+        public virtual string StorageTier { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
