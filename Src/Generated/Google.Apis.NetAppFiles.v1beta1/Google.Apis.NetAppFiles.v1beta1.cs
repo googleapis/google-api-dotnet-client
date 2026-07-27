@@ -6717,8 +6717,7 @@ namespace Google.Apis.NetAppFiles.v1beta1.Data
         public virtual string SourceBackupVault { get; set; }
 
         /// <summary>
-        /// Output only. Region in which the backup vault is created. Format:
-        /// `projects/{project_id}/locations/{location}`
+        /// Optional. Region in which the backup vault is created. Format: `projects/{project_id}/locations/{location}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
         public virtual string SourceRegion { get; set; }
