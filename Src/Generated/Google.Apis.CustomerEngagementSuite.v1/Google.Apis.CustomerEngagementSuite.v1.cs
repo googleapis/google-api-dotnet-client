@@ -1384,7 +1384,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
 
                         /// <summary>Sends a message to an agent.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                        /// <param name="tenant">
+                        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                        /// `AgentInterface` in the Agent Card when that field is set.
+                        /// </param>
                         public virtual SendRequest Send(Google.Apis.CustomerEngagementSuite.v1.Data.LfA2aV1SendMessageRequest body, string tenant)
                         {
                             return new SendRequest(this.service, body, tenant);
@@ -1401,7 +1404,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                            /// <summary>
+                            /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                            /// `AgentInterface` in the Agent Card when that field is set.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Tenant { get; private set; }
 
@@ -1627,7 +1633,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                     }
 
                     /// <summary>Gets the extended agent card for the authenticated agent.</summary>
-                    /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                    /// <param name="tenant">
+                    /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                    /// `AgentInterface` in the Agent Card when that field is set.
+                    /// </param>
                     public virtual GetExtendedAgentCardRequest GetExtendedAgentCard(string tenant)
                     {
                         return new GetExtendedAgentCardRequest(this.service, tenant);
@@ -1643,7 +1652,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             InitParameters();
                         }
 
-                        /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                        /// <summary>
+                        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                        /// `AgentInterface` in the Agent Card when that field is set.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Tenant { get; private set; }
 
@@ -2619,7 +2631,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
 
                     /// <summary>Sends a message to an agent.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                    /// <param name="tenant">
+                    /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                    /// `AgentInterface` in the Agent Card when that field is set.
+                    /// </param>
                     public virtual SendRequest Send(Google.Apis.CustomerEngagementSuite.v1.Data.LfA2aV1SendMessageRequest body, string tenant)
                     {
                         return new SendRequest(this.service, body, tenant);
@@ -2636,7 +2651,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             InitParameters();
                         }
 
-                        /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                        /// <summary>
+                        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                        /// `AgentInterface` in the Agent Card when that field is set.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Tenant { get; private set; }
 
@@ -3761,7 +3779,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
 
                         /// <summary>Sends a message to an agent.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                        /// <param name="tenant">
+                        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                        /// `AgentInterface` in the Agent Card when that field is set.
+                        /// </param>
                         public virtual SendRequest Send(Google.Apis.CustomerEngagementSuite.v1.Data.LfA2aV1SendMessageRequest body, string tenant)
                         {
                             return new SendRequest(this.service, body, tenant);
@@ -3778,7 +3799,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                            /// <summary>
+                            /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                            /// `AgentInterface` in the Agent Card when that field is set.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Tenant { get; private set; }
 
@@ -3989,7 +4013,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                     }
 
                     /// <summary>Gets the extended agent card for the authenticated agent.</summary>
-                    /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                    /// <param name="tenant">
+                    /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                    /// `AgentInterface` in the Agent Card when that field is set.
+                    /// </param>
                     public virtual GetExtendedAgentCardRequest GetExtendedAgentCard(string tenant)
                     {
                         return new GetExtendedAgentCardRequest(this.service, tenant);
@@ -4005,7 +4032,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             InitParameters();
                         }
 
-                        /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                        /// <summary>
+                        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                        /// `AgentInterface` in the Agent Card when that field is set.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Tenant { get; private set; }
 
@@ -4485,7 +4515,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                 }
 
                 /// <summary>Gets the extended agent card for the authenticated agent.</summary>
-                /// <param name="tenant">Optional. Tenant ID, provided as a path parameter.</param>
+                /// <param name="tenant">
+                /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                /// `AgentInterface` in the Agent Card when that field is set.
+                /// </param>
                 public virtual GetExtendedAgentCardRequest GetExtendedAgentCard(string tenant)
                 {
                     return new GetExtendedAgentCardRequest(this.service, tenant);
@@ -4501,7 +4534,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                         InitParameters();
                     }
 
-                    /// <summary>Optional. Tenant ID, provided as a path parameter.</summary>
+                    /// <summary>
+                    /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                    /// `AgentInterface` in the Agent Card when that field is set.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Tenant { get; private set; }
 
@@ -7582,6 +7618,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual InstagramCredentials InstagramCredentials { get; set; }
 
         /// <summary>
+        /// Optional. The modality of the deployment. Note: Deployment-level modality override is gated behind an
+        /// allowlist. Contact the CXAS team to enable this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modality")]
+        public virtual string Modality { get; set; }
+
+        /// <summary>
+        /// Optional. Model settings for the deployment. Overrides model settings configured at the app/agent levels.
+        /// Note: Deployment-level model settings override is gated behind an allowlist. Contact the CXAS team to enable
+        /// this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelSettings")]
+        public virtual ModelSettings ModelSettings { get; set; }
+
+        /// <summary>
         /// Identifier. The resource name of the deployment. Format:
         /// `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
         /// </summary>
@@ -9076,7 +9127,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocolVersion")]
         public virtual string ProtocolVersion { get; set; }
 
-        /// <summary>Tenant ID to be used in the request when calling the agent.</summary>
+        /// <summary>
+        /// Optional. An opaque string used for routing requests to a specific agent or tenant when multiple agents are
+        /// served behind a single A2A endpoint. When set, clients MUST include this value in the `tenant` field of all
+        /// request messages sent to this interface. The server is responsible for interpreting the value and routing
+        /// requests accordingly; the protocol does not define its format or semantics.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual string Tenant { get; set; }
 
@@ -9715,7 +9771,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
         public virtual string TaskId { get; set; }
 
-        /// <summary>Optional. Tenant ID.</summary>
+        /// <summary>
+        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the
+        /// Agent Card when that field is set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual string Tenant { get; set; }
 
@@ -11509,6 +11568,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Configuration for how the agent response should be synthesized.</summary>
     public class SynthesizeSpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The Cloud Storage URI to the consent audio for voice cloning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentAudioGcsUri")]
+        public virtual string ConsentAudioGcsUri { get; set; }
+
         /// <summary>Optional. The instruction used to synthesize speech when using a generative model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instruction")]
         public virtual string Instruction { get; set; }
