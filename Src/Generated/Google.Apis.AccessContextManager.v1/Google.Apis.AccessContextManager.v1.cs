@@ -3964,8 +3964,15 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. A list of applications that are subject to this binding's restrictions. If the list is empty, the
-        /// binding restrictions will universally apply to all applications.
+        /// Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual Principal Principal { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: use scoped_access_settings instead. A list of applications that are subject to this
+        /// binding's restrictions. If the list is empty, the binding restrictions will universally apply to all
+        /// applications.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedClientApplications")]
         public virtual System.Collections.Generic.IList<Application> RestrictedClientApplications { get; set; }
@@ -4469,6 +4476,31 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// The comprehensive identity container supporting identities including groups, service accounts and federated
+    /// identities. Only one of them can be set to create an access binding.
+    /// </summary>
+    public class Principal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Service account email used to assign policies to a specific service account. If a service account
+        /// is subject to multiple policies (e.g., if there is a policy for all service accounts in a project and a
+        /// policy for the service account), the closest (i.e. the most specific) dry-run policy will be used for the
+        /// dry-run functionality and the closest policy will be used for the enforcement.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountProjectNumber")]
+        public virtual string ServiceAccountProjectNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Specifies the Private Service Connect endpoint that an API call refers to.</summary>
