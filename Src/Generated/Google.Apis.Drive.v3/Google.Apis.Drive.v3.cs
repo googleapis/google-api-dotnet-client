@@ -9262,7 +9262,11 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("canAcceptOwnership")]
             public virtual System.Nullable<bool> CanAcceptOwnership { get; set; }
 
-            /// <summary>Whether the current user can access this file via Gen AI features.</summary>
+            /// <summary>
+            /// Whether the current user can access this file via Gen AI features. For more information, see [Drive MCP
+            /// file
+            /// eligibility](https://developers.google.com/workspace/drive/api/guides/drive-mcp-server-file-eligibility).
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canAccessViaGenAi")]
             public virtual System.Nullable<bool> CanAccessViaGenAi { get; set; }
 
