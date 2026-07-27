@@ -338,6 +338,156 @@ namespace Google.Apis.CloudRedis.v1
                 public AclPoliciesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Revisions = new RevisionsResource(service);
+                }
+
+                /// <summary>Gets the Revisions resource.</summary>
+                public virtual RevisionsResource Revisions { get; }
+
+                /// <summary>The "revisions" collection of methods.</summary>
+                public class RevisionsResource
+                {
+                    private const string Resource = "revisions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RevisionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets details of a specific ACL policy revision.</summary>
+                    /// <param name="name">
+                    /// Required. Redis ACL policy revision resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}/revisions/{revision_id}`
+                    /// where `location_id` refers to a GCP region.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a specific ACL policy revision.</summary>
+                    public class GetRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.AclPolicyRevision>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Redis ACL policy revision resource name using the form:
+                        /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}/revisions/{revision_id}`
+                        /// where `location_id` refers to a GCP region.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/aclPolicies/[^/]+/revisions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all ACL policy revisions in a given ACL policy.</summary>
+                    /// <param name="parent">
+                    /// Required. The name of the ACL policy to list revisions for. Format:
+                    /// "projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}"
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all ACL policy revisions in a given ACL policy.</summary>
+                    public class ListRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.ListAclPolicyRevisionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the ACL policy to list revisions for. Format:
+                        /// "projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The maximum number of items to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The `next_page_token` value returned from a previous `ListAclPolicyRevisions`
+                        /// request, if any.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/revisions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/aclPolicies/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -3744,6 +3894,47 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>The ACL policy resource.</summary>
     public class AclPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The ACL policy attachment status for each attached cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterAclPolicyAttachments")]
+        public virtual System.Collections.Generic.IList<ClusterAclPolicyAttachment> ClusterAclPolicyAttachments { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp that the ACL policy was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. Etag for the ACL policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -3760,9 +3951,164 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp that the ACL policy was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. Deprecated: Used in drift resolution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; }
+    }
+
+    /// <summary>Details of the applied ACL policy.</summary>
+    public class AclPolicyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A list of status for various revisions of this ACL policy on the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyRevisionStatuses")]
+        public virtual System.Collections.Generic.IList<AclPolicyRevisionStatus> AclPolicyRevisionStatuses { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the applied ACL policy. Format:
+        /// "projects/{project}/locations/{location}/aclPolicies/{acl_policy}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedAclPolicy")]
+        public virtual string AppliedAclPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the applied ACL policy revision. Format:
+        /// "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedAclPolicyRevision")]
+        public virtual string AppliedAclPolicyRevision { get; set; }
+
+        /// <summary>Output only. The revision number of the applied ACL policy revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedAclPolicyRevisionNumber")]
+        public virtual System.Nullable<long> AppliedAclPolicyRevisionNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The ACL policy revision resource.</summary>
+    public class AclPolicyRevision : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A list of clusters that are attached to this ACL policy revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedClusters")]
+        public virtual System.Collections.Generic.IList<string> AttachedClusters { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The name of the ACL policy revision. Format:
+        /// "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The revision number of the ACL policy revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionNumber")]
+        public virtual System.Nullable<long> RevisionNumber { get; set; }
+
+        /// <summary>Output only. The snapshot of the ACL policy at the time of revision creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual AclPolicy Snapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AclPolicyRevisionStatus stores the per-revision status for an attached cluster.</summary>
+    public class AclPolicyRevisionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the ACL policy revision this status refers to. Format:
+        /// "projects/{project}/locations/{location}/aclPolicies/{acl_policy}/revisions/{revision}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyRevision")]
+        public virtual string AclPolicyRevision { get; set; }
+
+        /// <summary>Output only. The revision number of the ACL policy revision this status refers to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyRevisionNumber")]
+        public virtual System.Nullable<long> AclPolicyRevisionNumber { get; set; }
+
+        /// <summary>Output only. Human-readable error message providing more details for FAILED states.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Output only. AclPolicyRevision state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>A single ACL rule which defines the policy for a user.</summary>
@@ -4486,6 +4832,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyInSync")]
         public virtual System.Nullable<bool> AclPolicyInSync { get; set; }
 
+        /// <summary>Output only. Details of the applied ACL policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyInfo")]
+        public virtual AclPolicyInfo AclPolicyInfo { get; set; }
+
         /// <summary>Optional. Immutable. Deprecated, do not use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowFewerZonesDeployment")]
         public virtual System.Nullable<bool> AllowFewerZonesDeployment { get; set; }
@@ -4738,6 +5088,27 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneDistributionConfig")]
         public virtual ZoneDistributionConfig ZoneDistributionConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ClusterAclPolicyAttachment stores the ACL policy status for an attached cluster for the revisions successfully
+    /// applied, under application or failed.
+    /// </summary>
+    public class ClusterAclPolicyAttachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A list of status for various revisions of this ACL policy on the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyRevisionStatuses")]
+        public virtual System.Collections.Generic.IList<AclPolicyRevisionStatus> AclPolicyRevisionStatuses { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the attached Cluster. Format:
+        /// "projects/{project}/locations/{location}/clusters/{cluster}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6551,6 +6922,27 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aclPolicies")]
         public virtual System.Collections.Generic.IList<AclPolicy> AclPolicies { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for `ListAclPolicyRevisions`.</summary>
+    public class ListAclPolicyRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of ACL policy revisions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclPolicyRevisions")]
+        public virtual System.Collections.Generic.IList<AclPolicyRevision> AclPolicyRevisions { get; set; }
 
         /// <summary>
         /// Token to retrieve the next page of results, or empty if there are no more results in the list.
