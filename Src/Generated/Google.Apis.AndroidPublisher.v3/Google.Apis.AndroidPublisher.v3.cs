@@ -37,6 +37,7 @@ namespace Google.Apis.AndroidPublisher.v3
             Applications = new ApplicationsResource(this);
             Apprecovery = new ApprecoveryResource(this);
             Appstoreappsreview = new AppstoreappsreviewResource(this);
+            Appstorecatalog = new AppstorecatalogResource(this);
             Edits = new EditsResource(this);
             Externaltransactions = new ExternaltransactionsResource(this);
             Generatedapks = new GeneratedapksResource(this);
@@ -93,6 +94,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Gets the Appstoreappsreview resource.</summary>
         public virtual AppstoreappsreviewResource Appstoreappsreview { get; }
+
+        /// <summary>Gets the Appstorecatalog resource.</summary>
+        public virtual AppstorecatalogResource Appstorecatalog { get; }
 
         /// <summary>Gets the Edits resource.</summary>
         public virtual EditsResource Edits { get; }
@@ -1895,6 +1899,281 @@ namespace Google.Apis.AndroidPublisher.v3
                 AppStorePackageName = appStorePackageName;
                 PackageName = packageName;
                 Body = body;
+            }
+        }
+    }
+
+    /// <summary>The "appstorecatalog" collection of methods.</summary>
+    public class AppstorecatalogResource
+    {
+        private const string Resource = "appstorecatalog";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AppstorecatalogResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Recentappviews = new RecentappviewsResource(service);
+            Recentupdateevents = new RecentupdateeventsResource(service);
+        }
+
+        /// <summary>Gets the Recentappviews resource.</summary>
+        public virtual RecentappviewsResource Recentappviews { get; }
+
+        /// <summary>The "recentappviews" collection of methods.</summary>
+        public class RecentappviewsResource
+        {
+            private const string Resource = "recentappviews";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RecentappviewsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Returns metadata about a recently updated app.</summary>
+            /// <param name="appStorePackageName">
+            /// Required. The package name of the app store on behalf of which the request is made.
+            /// </param>
+            /// <param name="playAppPackageName">Required. The package name of the requested Play app.</param>
+            public virtual GetRequest Get(string appStorePackageName, string playAppPackageName)
+            {
+                return new GetRequest(this.service, appStorePackageName, playAppPackageName);
+            }
+
+            /// <summary>Returns metadata about a recently updated app.</summary>
+            public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.RecentAppView>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string appStorePackageName, string playAppPackageName) : base(service)
+                {
+                    AppStorePackageName = appStorePackageName;
+                    PlayAppPackageName = playAppPackageName;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The package name of the app store on behalf of which the request is made.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("appStorePackageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AppStorePackageName { get; private set; }
+
+                /// <summary>Required. The package name of the requested Play app.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("playAppPackageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PlayAppPackageName { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentAppViews/{playAppPackageName}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("appStorePackageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appStorePackageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("playAppPackageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "playAppPackageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Recentupdateevents resource.</summary>
+        public virtual RecentupdateeventsResource Recentupdateevents { get; }
+
+        /// <summary>The "recentupdateevents" collection of methods.</summary>
+        public class RecentupdateeventsResource
+        {
+            private const string Resource = "recentupdateevents";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RecentupdateeventsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Lists update events for eligible apps in the given time range.</summary>
+            /// <param name="appStorePackageName">
+            /// Required. The package name of the app store on behalf of which the request is made.
+            /// </param>
+            public virtual ListRequest List(string appStorePackageName)
+            {
+                return new ListRequest(this.service, appStorePackageName);
+            }
+
+            /// <summary>Lists update events for eligible apps in the given time range.</summary>
+            public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListRecentUpdateEventsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string appStorePackageName) : base(service)
+                {
+                    AppStorePackageName = appStorePackageName;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The package name of the app store on behalf of which the request is made.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("appStorePackageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AppStorePackageName { get; private set; }
+
+                private object _endTime;
+
+                /// <summary>
+                /// String representation of <see cref="EndTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string EndTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+                public virtual object EndTime
+                {
+                    get => _endTime;
+                    set
+                    {
+                        EndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _endTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+                    set
+                    {
+                        EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _endTime = value;
+                    }
+                }
+
+                /// <summary>
+                /// Optional. The maximum number of update events to return. The service may return fewer than this
+                /// value. If unspecified, at most 100 update events will be returned. The maximum value is 1000; values
+                /// above 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListRecentUpdateEvents` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListRecentUpdateEvents` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                private object _startTime;
+
+                /// <summary>
+                /// String representation of <see cref="StartTimeDateTimeOffset"/>, formatted for inclusion in the HTTP
+                /// request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string StartTimeRaw { get; private set; }
+
+                /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+                public virtual object StartTime
+                {
+                    get => _startTime;
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _startTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+                    set
+                    {
+                        StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _startTime = value;
+                    }
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/appstorecatalog/{appStorePackageName}/recentUpdateEvents";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("appStorePackageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appStorePackageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
             }
         }
     }
@@ -14947,6 +15226,25 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contact information for the app.</summary>
+    public class AppContactInformation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contact email for this app. Always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
+        public virtual string ContactEmail { get; set; }
+
+        /// <summary>The contact phone for this app. Optionally provided by the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>The contact website url for this app. Optionally provided by the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
+        public virtual string WebsiteUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The app details. The resource for DetailsService.</summary>
     public class AppDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16094,6 +16392,213 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LINT.IfChange A view of a Google Play app within the Catalog Export for app stores.</summary>
+    public class CatalogAppView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Active versions of the app mapped from `android:versionName` manifest attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeVersionNames")]
+        public virtual System.Collections.Generic.IList<string> ActiveVersionNames { get; set; }
+
+        /// <summary>The category of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appCategory")]
+        public virtual string AppCategory { get; set; }
+
+        /// <summary>Developer-provided contact information for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appContactInformation")]
+        public virtual AppContactInformation AppContactInformation { get; set; }
+
+        /// <summary>The subcategory of the app e.g. "GAME_ACTION".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appSubcategory")]
+        public virtual string AppSubcategory { get; set; }
+
+        /// <summary>The token used for delivery of the app with the Google Play Inline Install API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryToken")]
+        public virtual string DeliveryToken { get; set; }
+
+        /// <summary>The developer details of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerDetails")]
+        public virtual DeveloperDetails DeveloperDetails { get; set; }
+
+        /// <summary>
+        /// The app may specify multiple sets of device compatibility requirements, and a device is considered
+        /// compatible with the app if it satisfies at least one of `DeviceCompatibilityRequirements`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCompatibilityRequirements")]
+        public virtual System.Collections.Generic.IList<DeviceCompatibilityRequirements> DeviceCompatibilityRequirements { get; set; }
+
+        /// <summary>
+        /// List of devices excluded from the app's distribution even if they are otherwise compatible with the
+        /// requirements from device_compatibility_requirements. These are OR-ed, i.e. a device is excluded if it
+        /// matches any of the identifiers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedDevicesByIdentifier")]
+        public virtual System.Collections.Generic.IList<DeviceIdentifier> ExcludedDevicesByIdentifier { get; set; }
+
+        /// <summary>
+        /// List of devices excluded from the app's distribution even if they are otherwise compatible with the
+        /// requirements from device_compatibility_requirements. A device is excluded if it matches any of given the
+        /// selectors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedDevicesBySelector")]
+        public virtual System.Collections.Generic.IList<CatalogDeviceSelector> ExcludedDevicesBySelector { get; set; }
+
+        /// <summary>The date when the app was first released.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstReleaseDate")]
+        public virtual Date FirstReleaseDate { get; set; }
+
+        /// <summary>Whether the app has ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasInAppAds")]
+        public virtual System.Nullable<bool> HasInAppAds { get; set; }
+
+        /// <summary>Whether the app has in-app purchases through Google Play.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasInAppPurchases")]
+        public virtual System.Nullable<bool> HasInAppPurchases { get; set; }
+
+        /// <summary>The IARC certificate ID for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iarcCertificateId")]
+        public virtual string IarcCertificateId { get; set; }
+
+        /// <summary>Whether the app is targeted to an adult-only (18+) audience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAdultOnlyAudience")]
+        public virtual System.Nullable<bool> IsAdultOnlyAudience { get; set; }
+
+        private string _lastPublishTimeRaw;
+
+        private object _lastPublishTime;
+
+        /// <summary>The timestamp when the app was last published.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastPublishTime")]
+        public virtual string LastPublishTimeRaw
+        {
+            get => _lastPublishTimeRaw;
+            set
+            {
+                _lastPublishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastPublishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastPublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastPublishTimeDateTimeOffset instead.")]
+        public virtual object LastPublishTime
+        {
+            get => _lastPublishTime;
+            set
+            {
+                _lastPublishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastPublishTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastPublishTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastPublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastPublishTimeRaw);
+            set => LastPublishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The localized store listings of the app which are shown on Google Play.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localizedStoreListings")]
+        public virtual LocalizedStoreListings LocalizedStoreListings { get; set; }
+
+        /// <summary>The package name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required permissions declared by the app which apply for all Android SDK versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<CatalogPermission> Permissions { get; set; }
+
+        /// <summary>
+        /// Required permissions declared by the app which apply for Android SDK versions SDK 23 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionsSdk23")]
+        public virtual System.Collections.Generic.IList<CatalogPermission> PermissionsSdk23 { get; set; }
+
+        /// <summary>The price of the app in the United States. Empty if the app is free.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceInTheUnitedStates")]
+        public virtual Money PriceInTheUnitedStates { get; set; }
+
+        /// <summary>The URL of the app's privacy policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicyUrl")]
+        public virtual string PrivacyPolicyUrl { get; set; }
+
+        /// <summary>
+        /// The sale price of the app in the United States. Only populated for paid apps with an active US sale.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salePriceInTheUnitedStates")]
+        public virtual Money SalePriceInTheUnitedStates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines a device selector for a device. A device is considered matched if it matches any of given the selectors.
+    /// </summary>
+    public class CatalogDeviceSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The device type selector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTypeSelector")]
+        public virtual string DeviceTypeSelector { get; set; }
+
+        /// <summary>Defines a RAM selector for a device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ramSelector")]
+        public virtual RamSelector RamSelector { get; set; }
+
+        /// <summary>
+        /// The SOC selectors. A device matches the device selector if it matches any of the SOC selectors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("socSelectors")]
+        public virtual System.Collections.Generic.IList<SocSelector> SocSelectors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A permission declared by an app.</summary>
+    public class CatalogPermission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The `maxSdkVersion` attribute indicating up to which Android SDK version the permission is requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSdkVersion")]
+        public virtual System.Nullable<int> MaxSdkVersion { get; set; }
+
+        /// <summary>The `name` attribute indicating the permission name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines a range of SDK versions. A device is considered compatible uf its\ SDK version falls within the
+    /// min_sdk_version and max_sdk_version range.
+    /// </summary>
+    public class CatalogSdkVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum SDK version required for the app (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSdkVersion")]
+        public virtual System.Nullable<long> MaxSdkVersion { get; set; }
+
+        /// <summary>The minimum SDK version required for the app (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minSdkVersion")]
+        public virtual System.Nullable<long> MinSdkVersion { get; set; }
+
+        /// <summary>The target SDK version for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSdkVersion")]
+        public virtual System.Nullable<long> TargetSdkVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Coarse Geographic location details for where the consumption happened.</summary>
     public class CoarseLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16142,6 +16647,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>A comment from a user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userComment")]
         public virtual UserComment UserComment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compatible screens as listed in the `compatible-screens` Manifest tag.</summary>
+    public class CompatibleScreen : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Screen density.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("density")]
+        public virtual string Density { get; set; }
+
+        /// <summary>The screen size.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenSize")]
+        public virtual string ScreenSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16691,9 +17211,101 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The developer details of a Google Play app.</summary>
+    public class DeveloperDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The physical address of the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        /// <summary>The contact email of the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
+        public virtual string ContactEmail { get; set; }
+
+        /// <summary>The developer name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerName")]
+        public virtual string DeveloperName { get; set; }
+
+        /// <summary>The phone number of the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>The website of the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("website")]
+        public virtual string Website { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information specific to cancellations initiated by developers.</summary>
     public class DeveloperInitiatedCancellation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines a set of device compatibility requirements for the app. A device must satisfy all of the requirements in
+    /// a set to be considered compatible with the app.
+    /// </summary>
+    public class DeviceCompatibilityRequirements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Compatible screens as listed in the `compatible-screens` Manifest tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibleScreens")]
+        public virtual System.Collections.Generic.IList<CompatibleScreen> CompatibleScreens { get; set; }
+
+        /// <summary>Required version of OpenGL ES.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glEsVersion")]
+        public virtual System.Nullable<int> GlEsVersion { get; set; }
+
+        /// <summary>Specifies if the app requires a screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isScreenRequired")]
+        public virtual System.Nullable<bool> IsScreenRequired { get; set; }
+
+        /// <summary>List of required ABIs (Application Binary Interface), e.g. `armeabi` or `x86`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nativePlatforms")]
+        public virtual System.Collections.Generic.IList<string> NativePlatforms { get; set; }
+
+        /// <summary>List of required libraries as declared in the `uses-library` manifest tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSoftwareLibraries")]
+        public virtual System.Collections.Generic.IList<string> RequiredSoftwareLibraries { get; set; }
+
+        /// <summary>
+        /// The system features that the app requires. A device must have all of the system features to be considered
+        /// compatible with the app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredSystemFeatures")]
+        public virtual System.Collections.Generic.IList<string> RequiredSystemFeatures { get; set; }
+
+        /// <summary>Specifies the minimum smallest width required of the screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiresSmallestWidthDp")]
+        public virtual System.Nullable<long> RequiresSmallestWidthDp { get; set; }
+
+        /// <summary>Defines a range of SDK versions that the app is compatible with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
+        public virtual CatalogSdkVersion SdkVersion { get; set; }
+
+        /// <summary>Supported gl textures as specified by the `supported-gl-texture` Manifest tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedGlTextures")]
+        public virtual System.Collections.Generic.IList<string> SupportedGlTextures { get; set; }
+
+        /// <summary>Compatible screens as listed in the `supports-screens` Manifest tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedScreens")]
+        public virtual System.Collections.Generic.IList<string> SupportedScreens { get; set; }
+
+        /// <summary>Value of `android:use32BitAbi` flag retrieved from the Manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("use32BitAbi")]
+        public virtual string Use32BitAbi { get; set; }
+
+        /// <summary>
+        /// Lists all configurations marked as required by use of the `uses-configuration` manifest tag. Each instance
+        /// of this proto represents a single `uses-configuration` entry. See
+        /// http://developer.android.com/guide/topics/manifest/uses-configuration-element.html
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usesConfigurations")]
+        public virtual System.Collections.Generic.IList<UsesConfiguration> UsesConfigurations { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16756,6 +17368,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Value of Build.DEVICE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildDevice")]
         public virtual string BuildDevice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a device identifier for a device.</summary>
+    public class DeviceIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The brand of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceBrand")]
+        public virtual string DeviceBrand { get; set; }
+
+        /// <summary>The model of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
+        public virtual string DeviceModel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17686,6 +18313,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An image asset.</summary>
+    public class ImageAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL of the image asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
+        public virtual string ImageUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for deleting all images.</summary>
     public class ImagesDeleteAllResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18307,6 +18945,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListRecentUpdateEvents.</summary>
+    public class ListRecentUpdateEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of recent update events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentUpdateEvents")]
+        public virtual System.Collections.Generic.IList<RecentUpdateEvent> RecentUpdateEvents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response listing all releases for a given track that are either ready to be sent for review, in review,
     /// approved, not approved or available.
@@ -18414,6 +19070,70 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>All localized listings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listings")]
         public virtual System.Collections.Generic.IList<Listing> Listings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A localized store listings of the app.</summary>
+    public class LocalizedStoreListing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the app in this localization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appName")]
+        public virtual string AppName { get; set; }
+
+        /// <summary>The feature graphic of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureGraphic")]
+        public virtual ImageAsset FeatureGraphic { get; set; }
+
+        /// <summary>A longer description of the app in this localization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullDescription")]
+        public virtual string FullDescription { get; set; }
+
+        /// <summary>The icon of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual ImageAsset Icon { get; set; }
+
+        /// <summary>The BCP-47 language code for this localization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The phone screenshots of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneScreenshots")]
+        public virtual ScreenshotSet PhoneScreenshots { get; set; }
+
+        /// <summary>A short description of the app in this localization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
+        public virtual string ShortDescription { get; set; }
+
+        /// <summary>The regular tablet screenshots of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabletRegularScreenshots")]
+        public virtual ScreenshotSet TabletRegularScreenshots { get; set; }
+
+        /// <summary>The small tablet screenshots of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabletSmallScreenshots")]
+        public virtual ScreenshotSet TabletSmallScreenshots { get; set; }
+
+        /// <summary>The video of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual VideoAsset Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The localized store listings of an app.</summary>
+    public class LocalizedStoreListings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The default language code of the app. If a localized store listing is not available for a given language,
+        /// assets from the default language are used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
+        public virtual string DefaultLanguageCode { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("localizedStoreListings")]
+        public virtual System.Collections.Generic.IList<LocalizedStoreListing> LocalizedStoreListingsValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20667,6 +21387,82 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a RAM selector for a device.</summary>
+    public class RamSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This will match any device that has less than or equal ram_mb_less_than_or_equal mb of RAM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ramMbLessThanOrEqual")]
+        public virtual System.Nullable<long> RamMbLessThanOrEqual { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a recently updated app.</summary>
+    public class RecentAppView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Recently updated app view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appView")]
+        public virtual CatalogAppView AppView { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A recent update event.</summary>
+    public class RecentUpdateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>The timestamp of the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The package name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playAppPackageName")]
+        public virtual string PlayAppPackageName { get; set; }
+
+        /// <summary>The type of the update event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateType")]
+        public virtual string UpdateType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a transaction that is part of a recurring series of payments. This can be a subscription or a
     /// one-time product with multiple payments (such as preorder).
@@ -21424,6 +22220,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A set of screenshots.</summary>
+    public class ScreenshotSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The image assets of the screenshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenshots")]
+        public virtual System.Collections.Generic.IList<ImageAsset> Screenshots { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an sdk version.</summary>
     public class SdkVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21463,6 +22270,24 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>A vanity code was applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vanityCode")]
         public virtual VanityCode VanityCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines a SOC selector for a device. This will match any device whose SoC (System on Chip) matches all fields in
+    /// the selector.
+    /// </summary>
+    public class SocSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The manufacturer of the SoC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("socMake")]
+        public virtual string SocMake { get; set; }
+
+        /// <summary>The model of the SoC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("socModel")]
+        public virtual string SocModel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23261,6 +24086,35 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents all configurations marked as required by use of the uses-configuration manifest tag.
+    /// </summary>
+    public class UsesConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of keyboard required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredKeyboardType")]
+        public virtual string RequiredKeyboardType { get; set; }
+
+        /// <summary>The navigation device required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredNavigationType")]
+        public virtual string RequiredNavigationType { get; set; }
+
+        /// <summary>The type of touchscreen required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredTouchscreenType")]
+        public virtual string RequiredTouchscreenType { get; set; }
+
+        /// <summary>Whether or not the application requires a five-way navigation control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiresFiveWayNavigation")]
+        public virtual System.Nullable<bool> RequiresFiveWayNavigation { get; set; }
+
+        /// <summary>Whether or not the application requires a hardware keyboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiresHardwareKeyboard")]
+        public virtual System.Nullable<bool> RequiresHardwareKeyboard { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A permission used by this APK.</summary>
     public class UsesPermission : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23328,6 +24182,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Texture-compression-format-level targeting</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textureCompressionFormatTargeting")]
         public virtual TextureCompressionFormatTargeting TextureCompressionFormatTargeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A video asset.</summary>
+    public class VideoAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URL of the video asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
+        public virtual string VideoUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
