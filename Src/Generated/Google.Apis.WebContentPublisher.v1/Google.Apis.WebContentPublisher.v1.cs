@@ -1096,6 +1096,12 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         public virtual string PublicationTosUrl { get; set; }
 
         /// <summary>
+        /// Optional. The publication entity type (for-profit vs non-profit). Defaults to FOR_PROFIT if omitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicationType")]
+        public virtual string PublicationType { get; set; }
+
+        /// <summary>
         /// Required. The ISO 3166-1 alpha-2 region code where the publication is registered (e.g., "US").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
@@ -1150,6 +1156,10 @@ namespace Google.Apis.WebContentPublisher.v1.Data
     /// <summary>Details about the acceptance of the Terms of Service (TOS).</summary>
     public class TosAcceptance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Whether the user opted in to receive product updates and email communications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailOptIn")]
+        public virtual System.Nullable<bool> EmailOptIn { get; set; }
+
         /// <summary>Optional. The name of the person who accepted the TOS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signer")]
         public virtual string Signer { get; set; }
