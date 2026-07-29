@@ -4318,7 +4318,11 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebaseml.googleapis.com` (Firebase AI
             /// Logic) Google Maps Platform services: * `maps-backend.googleapis.com` (Maps JavaScript API) *
             /// `places.googleapis.com` (Places API (New)) Other supported Google services: * `oauth2.googleapis.com`
-            /// (Google Identity for iOS)
+            /// (Google Identity for iOS) Note: While all the supported `service_id`s may appear to be subdomains of
+            /// `googleapis.com`, the `service_id` has no semantic meaning beyond identifying the service to App Check.
+            /// It is not intended to represent the actual domain to which your apps send traffic, nor is it necessarily
+            /// the API that should be enabled to use the service. For information on using these Google services,
+            /// consult their documentation.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaService body, string name)
             {
@@ -4349,7 +4353,11 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebaseml.googleapis.com`
                 /// (Firebase AI Logic) Google Maps Platform services: * `maps-backend.googleapis.com` (Maps JavaScript
                 /// API) * `places.googleapis.com` (Places API (New)) Other supported Google services: *
-                /// `oauth2.googleapis.com` (Google Identity for iOS)
+                /// `oauth2.googleapis.com` (Google Identity for iOS) Note: While all the supported `service_id`s may
+                /// appear to be subdomains of `googleapis.com`, the `service_id` has no semantic meaning beyond
+                /// identifying the service to App Check. It is not intended to represent the actual domain to which
+                /// your apps send traffic, nor is it necessarily the API that should be enabled to use the service. For
+                /// information on using these Google services, consult their documentation.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -5682,7 +5690,11 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// Realtime Database) * `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
         /// `firebaseml.googleapis.com` (Firebase AI Logic) Google Maps Platform services: *
         /// `maps-backend.googleapis.com` (Maps JavaScript API) * `places.googleapis.com` (Places API (New)) Other
-        /// supported Google services: * `oauth2.googleapis.com` (Google Identity for iOS)
+        /// supported Google services: * `oauth2.googleapis.com` (Google Identity for iOS) Note: While all the supported
+        /// `service_id`s may appear to be subdomains of `googleapis.com`, the `service_id` has no semantic meaning
+        /// beyond identifying the service to App Check. It is not intended to represent the actual domain to which your
+        /// apps send traffic, nor is it necessarily the API that should be enabled to use the service. For information
+        /// on using these Google services, consult their documentation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
