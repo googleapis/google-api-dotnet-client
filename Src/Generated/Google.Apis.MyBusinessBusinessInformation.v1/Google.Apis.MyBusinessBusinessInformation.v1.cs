@@ -551,15 +551,16 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             }
 
             /// <summary>
-            /// The primary category stable ID to find available attributes. Must be of the format
-            /// categories/{category_id}.
+            /// Optional. The primary category stable ID to find available attributes. Must be of the format
+            /// `categories/{category_id}` (e.g., `categories/gcid:restaurant`). Required if `parent` is not set and
+            /// `show_all` is false.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("categoryName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CategoryName { get; set; }
 
             /// <summary>
-            /// The BCP 47 code of language to get attribute display names in. If this language is not available, they
-            /// will be provided in English.
+            /// Optional. The BCP 47 code of language to get attribute display names in. If this language is not
+            /// available, they will be provided in English.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
@@ -573,19 +574,23 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Resource name of the location to look up available attributes. If this field is set, category_name,
-            /// region_code, language_code and show_all are not required and must not be set.
+            /// Optional. Resource name of the location to look up available attributes. If this field is set,
+            /// `category_name`, `region_code`, `language_code` and `show_all` are not required and must not be set.
+            /// Format: `locations/{location_id}` (e.g., `locations/1234567890`).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
-            /// <summary>The ISO 3166-1 alpha-2 country code to find available attributes.</summary>
+            /// <summary>
+            /// Optional. The ISO 3166-1 alpha-2 country code to find available attributes. Required if `parent` is not
+            /// set.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RegionCode { get; set; }
 
             /// <summary>
-            /// Metadata for all available attributes are returned when this field is set to true, disregarding parent
-            /// and category_name fields. language_code and region_code are required when show_all is set to true.
+            /// Optional. If set to true, metadata for all available attributes are returned, disregarding `parent` and
+            /// `category_name` fields. `language_code` and `region_code` are required when `show_all` is set to true.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showAll", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowAll { get; set; }
