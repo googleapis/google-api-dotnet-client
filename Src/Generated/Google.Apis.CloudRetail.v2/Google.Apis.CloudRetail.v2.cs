@@ -3951,8 +3951,8 @@ namespace Google.Apis.CloudRetail.v2
                     /// <summary>
                     /// Writes a single user event from the browser. For larger user event payload over 16 KB, the POST
                     /// method should be used instead, otherwise a 400 Bad Request error is returned. This method is
-                    /// used only by the Retail API JavaScript pixel and Google Tag Manager. Users should not call this
-                    /// method directly.
+                    /// used only by the AI Commerce Search API JavaScript pixel and Google Tag Manager. Users should
+                    /// not call this method directly.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -3967,8 +3967,8 @@ namespace Google.Apis.CloudRetail.v2
                     /// <summary>
                     /// Writes a single user event from the browser. For larger user event payload over 16 KB, the POST
                     /// method should be used instead, otherwise a 400 Bad Request error is returned. This method is
-                    /// used only by the Retail API JavaScript pixel and Google Tag Manager. Users should not call this
-                    /// method directly.
+                    /// used only by the AI Commerce Search API JavaScript pixel and Google Tag Manager. Users should
+                    /// not call this method directly.
                     /// </summary>
                     public class CollectRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleApiHttpBody>
                     {
@@ -11895,8 +11895,8 @@ namespace Google.Apis.CloudRetail.v2.Data
     }
 
     /// <summary>
-    /// UserEvent captures all metadata information Retail API needs to know about how end users interact with
-    /// customers' website.
+    /// UserEvent captures all metadata information AI Commerce Search API needs to know about how end users interact
+    /// with customers' website.
     /// </summary>
     public class GoogleCloudRetailV2UserEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11904,14 +11904,14 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// Extra user event features to include in the recommendation model. If you provide custom attributes for
         /// ingested user events, also include them in the user events that you associate with prediction requests.
         /// Custom attribute formatting must be consistent between imported events and events provided with prediction
-        /// requests. This lets the Retail API use those custom attributes when training models and serving predictions,
-        /// which helps improve recommendation quality. This field needs to pass all below criteria, otherwise an
-        /// INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded string with a length limit of 5,000
-        /// characters. * For text attributes, at most 400 values are allowed. Empty values are not allowed. Each value
-        /// must be a UTF-8 encoded string with a length limit of 256 characters. * For number attributes, at most 400
-        /// values are allowed. For product recommendations, an example of extra user information is traffic_channel,
-        /// which is how a user arrives at the site. Users can arrive at the site by coming to the site directly, coming
-        /// through Google search, or in other ways.
+        /// requests. This lets the AI Commerce Search API use those custom attributes when training models and serving
+        /// predictions, which helps improve recommendation quality. This field needs to pass all below criteria,
+        /// otherwise an INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded string with a length
+        /// limit of 5,000 characters. * For text attributes, at most 400 values are allowed. Empty values are not
+        /// allowed. Each value must be a UTF-8 encoded string with a length limit of 256 characters. * For number
+        /// attributes, at most 400 values are allowed. For product recommendations, an example of extra user
+        /// information is traffic_channel, which is how a user arrives at the site. Users can arrive at the site by
+        /// coming to the site directly, coming through Google search, or in other ways.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudRetailV2CustomAttribute> Attributes { get; set; }
@@ -12003,8 +12003,8 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// A list of identifiers for the independent experiment groups this user event belongs to. This is used to
-        /// distinguish between user events associated with different experiment setups (e.g. using Retail API, using
-        /// different recommendation models).
+        /// distinguish between user events associated with different experiment setups (such as by using AI Commerce
+        /// Search API, or using different recommendation models).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentIds")]
         public virtual System.Collections.Generic.IList<string> ExperimentIds { get; set; }
@@ -12393,7 +12393,7 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// <summary>Response for EnrollSolution method.</summary>
     public class GoogleCloudRetailV2alphaEnrollSolutionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Retail API solution that the project has enrolled.</summary>
+        /// <summary>AI Commerce Search API solution that the project has enrolled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledSolution")]
         public virtual string EnrolledSolution { get; set; }
 
