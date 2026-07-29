@@ -627,6 +627,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string ActorIpAddress { get; set; }
 
             /// <summary>
+            /// Optional. Filters on agent info fields in the activity. This filter gets applied in conjunction(AND)
+            /// with other filters. Example: "agentInfoFilter=agentId=\"agent-id\" AND agentName=\"agent-name\" AND
+            /// agentOwnerEmail=\"agent-owner-email\""
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("agentInfoFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AgentInfoFilter { get; set; }
+
+            /// <summary>
             /// Optional. Used to filter on the `oAuthClientId` field present in [`ApplicationInfo`](#applicationinfo)
             /// message. **Usage**
             /// ```
@@ -851,6 +859,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {
                     Name = "actorIpAddress",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("agentInfoFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "agentInfoFilter",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
