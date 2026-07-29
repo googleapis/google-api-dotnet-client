@@ -3421,10 +3421,10 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
 
         /// <summary>
         /// Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry
-        /// settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set
-        /// on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to
-        /// all tasks in the queue which do not have retry settings explicitly set on the task and were created by the
-        /// App Engine SDK. See [App Engine
+        /// settings apply to all tasks in the queue that were created using Cloud Tasks. Optionally, retry settings can
+        /// be set on individual tasks and override the queue-level retry settings for the task. * For tasks created
+        /// using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have
+        /// retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine
         /// documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
