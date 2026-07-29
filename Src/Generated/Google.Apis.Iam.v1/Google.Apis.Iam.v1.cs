@@ -10751,21 +10751,6 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>The service account key disable request.</summary>
     public class DisableServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Usable by internal google services only. An extended_status_message can be used to include
-        /// additional information about the key, such as its private key data being exposed on a public repository like
-        /// GitHub.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extendedStatusMessage")]
-        public virtual string ExtendedStatusMessage { get; set; }
-
-        /// <summary>
-        /// Optional. Describes the reason this key is being disabled. If unspecified, the default value of
-        /// SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyDisableReason")]
-        public virtual string ServiceAccountKeyDisableReason { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
