@@ -490,9 +490,8 @@ namespace Google.Apis.Fcmdata.v1beta1.Data
 
         /// <summary>
         /// The percentage of accepted messages that were delayed due to message throttling, such as [collapsible
-        /// message throttling](https://firebase.google.com/docs/cloud-messaging/concept-options#collapsible_throttling)
-        /// or [maximum message rate
-        /// throttling](https://firebase.google.com/docs/cloud-messaging/concept-options#device_throttling).
+        /// message
+        /// throttling](https://firebase.google.com/docs/cloud-messaging/concept-options#collapsible_throttling).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delayedMessageThrottled")]
         public virtual System.Nullable<float> DelayedMessageThrottled { get; set; }
