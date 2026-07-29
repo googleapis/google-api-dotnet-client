@@ -13397,7 +13397,7 @@
       }
     }
   },
-  "revision": "20260718",
+  "revision": "20260724",
   "rootUrl": "https://discoveryengine.googleapis.com/",
   "schemas": {
     "GoogleApiDistribution": {
@@ -15013,7 +15013,7 @@
           "type": "string"
         },
         "dataSource": {
-          "description": "Required. The identifier for the data source. This is a partial list of supported connectors. Please refer to the [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores) for the full list of connectors. Supported first-party connectors include: * `gcs` * `bigquery` * `gcp_fhir` * `google_mail` * `google_drive` * `google_calendar` * `google_chat` Supported third-party connectors include: Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` * `jira` * `servicenow` * `sharepoint` Preview connectors: * `asana` * `azure_active_directory` * `box` * `canva` * `confluence_server` * `custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `gitlab` * `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `notion` * `okta` * `pagerduty` * `peoplesoft` * `salesforce` * `shopify` * `slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`",
+          "description": "Required. The identifier for the data source. For the full, up-to-date list of supported connectors and their values, see [Connect a third-party data source](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-third-party-data-source#sources-by-launch-stage).",
           "type": "string"
         },
         "destinationConfigs": {
@@ -15104,6 +15104,10 @@
           "format": "google-datetime",
           "readOnly": true,
           "type": "string"
+        },
+        "metadata": {
+          "$ref": "GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata",
+          "description": "Optional. User-facing metadata for the connector. Populated from the connector's generated metadata / registry `ConnectorSource`."
         },
         "name": {
           "description": "Identifier. The full resource name of the Data Connector. Format: `projects/*/locations/*/collections/*/dataConnector`.",
@@ -15240,6 +15244,37 @@
           "description": "Output only. Whether the connector is created with VPC-SC enabled.",
           "readOnly": true,
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata": {
+      "description": "User-facing metadata for the connector, shown on the connector detail page (title, description, short_description, author, authenticated_account, note).",
+      "id": "GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata",
+      "properties": {
+        "authenticatedAccount": {
+          "description": "Optional. The end user's account as authenticated to the connector, so the end user can see which account is connected. May be an email, a username, or any identifier the connector/third party provides.",
+          "type": "string"
+        },
+        "author": {
+          "description": "Optional. The party that authored the connector, e.g. \"Google\" or a third-party provider name. Lets end users see who authored a connector (future: third-party-authored connectors).",
+          "type": "string"
+        },
+        "description": {
+          "description": "Optional. Human-readable description of the connector, shown on the connector detail page. One connector has a single description.",
+          "type": "string"
+        },
+        "note": {
+          "description": "Optional. Free-form, multi-line note about the connector's capabilities or a custom note that can be set for the connector.",
+          "type": "string"
+        },
+        "shortDescription": {
+          "description": "Optional. Short, subtitle-length description of the connector (e.g. shown beneath the connector name in list and detail views).",
+          "type": "string"
+        },
+        "title": {
+          "description": "Optional. Display title of the connector.",
+          "type": "string"
         }
       },
       "type": "object"
@@ -17391,7 +17426,7 @@
       "type": "object"
     },
     "GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse": {
-      "description": "Response message for CompletionService.PurgeCompletionSuggestions method.",
+      "description": "Response message for CompletionService.PurgeCompletionSuggestions method. If the long running operation is successfully done, then this message is returned by the google.longrunning.Operations.response field.",
       "id": "GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse",
       "properties": {
         "errorSamples": {
@@ -18878,6 +18913,11 @@
           "readOnly": true,
           "type": "string"
         },
+        "creationFailureReason": {
+          "description": "Output only. The reason why the agent creation (provisioning) failed. Only set if the state is CREATION_FAILED.",
+          "readOnly": true,
+          "type": "string"
+        },
         "customPlaceholderText": {
           "description": "Optional. The custom placeholder text that appears in the text box before the user enters any text.",
           "type": "string"
@@ -18946,7 +18986,8 @@
             "PRIVATE",
             "ENABLED",
             "SUSPENDED",
-            "CREATING"
+            "CREATING",
+            "CREATION_FAILED"
           ],
           "enumDescriptions": [
             "The state is unspecified.",
@@ -18957,7 +18998,8 @@
             "Agent is available only to its creator..",
             "Agent is available for users who have access.",
             "Agent is temporarily unavailable, though visible to users who have access.",
-            "Agent is being created."
+            "Agent is being created.",
+            "Agent creation (provisioning) failed. Terminal. To retry, the caller must `DeleteAgent` to clear the failed resource and then create again; there is no in-place overwrite of a failed agent. Only set for asynchronously-provisioned agents."
           ],
           "readOnly": true,
           "type": "string"
@@ -23041,7 +23083,8 @@
           "type": "string"
         },
         "filterPiiSuggestionsUsingDlp": {
-          "description": "If true, with best effort, try to detect and remove the suggestions containing certain types of PII information. This detection is performated by [DLP](https://cloud.google.com/security/products/dlp) under the hood.",
+          "deprecated": true,
+          "description": "Deprecated: this field has no effect. As of May 2025, PII suggestion filtering using [DLP](https://cloud.google.com/security/products/dlp) is always on for all data stores and can't be configured per data store.",
           "type": "boolean"
         },
         "matchingOrder": {
@@ -24198,7 +24241,7 @@
           "description": "Optional. Specifies the data protection policy for the connector."
         },
         "dataSource": {
-          "description": "Required. The identifier for the data source. This is a partial list of supported connectors. Please refer to the [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores) for the full list of connectors. Supported first-party connectors include: * `gcs` * `bigquery` * `gcp_fhir` * `google_mail` * `google_drive` * `google_calendar` * `google_chat` Supported third-party connectors include: Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` * `jira` * `servicenow` * `sharepoint` Preview connectors: * `asana` * `azure_active_directory` * `box` * `canva` * `confluence_server` * `custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `gitlab` * `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `notion` * `okta` * `pagerduty` * `peoplesoft` * `salesforce` * `shopify` * `slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`",
+          "description": "Required. The identifier for the data source. For the full, up-to-date list of supported connectors and their values, see [Connect a third-party data source](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-third-party-data-source#sources-by-launch-stage).",
           "type": "string"
         },
         "destinationConfigs": {
@@ -24289,6 +24332,10 @@
           "format": "google-datetime",
           "readOnly": true,
           "type": "string"
+        },
+        "metadata": {
+          "$ref": "GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata",
+          "description": "Optional. User-facing metadata for the connector. Populated from the connector's generated metadata / registry `ConnectorSource`."
         },
         "name": {
           "description": "Identifier. The full resource name of the Data Connector. Format: `projects/*/locations/*/collections/*/dataConnector`.",
@@ -24425,6 +24472,37 @@
           "description": "Output only. Whether the connector is created with VPC-SC enabled.",
           "readOnly": true,
           "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata": {
+      "description": "User-facing metadata for the connector, shown on the connector detail page (title, description, short_description, author, authenticated_account, note).",
+      "id": "GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata",
+      "properties": {
+        "authenticatedAccount": {
+          "description": "Optional. The end user's account as authenticated to the connector, so the end user can see which account is connected. May be an email, a username, or any identifier the connector/third party provides.",
+          "type": "string"
+        },
+        "author": {
+          "description": "Optional. The party that authored the connector, e.g. \"Google\" or a third-party provider name. Lets end users see who authored a connector (future: third-party-authored connectors).",
+          "type": "string"
+        },
+        "description": {
+          "description": "Optional. Human-readable description of the connector, shown on the connector detail page. One connector has a single description.",
+          "type": "string"
+        },
+        "note": {
+          "description": "Optional. Free-form, multi-line note about the connector's capabilities or a custom note that can be set for the connector.",
+          "type": "string"
+        },
+        "shortDescription": {
+          "description": "Optional. Short, subtitle-length description of the connector (e.g. shown beneath the connector name in list and detail views).",
+          "type": "string"
+        },
+        "title": {
+          "description": "Optional. Display title of the connector.",
+          "type": "string"
         }
       },
       "type": "object"
@@ -29406,7 +29484,7 @@
       "type": "object"
     },
     "GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse": {
-      "description": "Response message for CompletionService.PurgeCompletionSuggestions method.",
+      "description": "Response message for CompletionService.PurgeCompletionSuggestions method. If the long running operation is successfully done, then this message is returned by the google.longrunning.Operations.response field.",
       "id": "GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse",
       "properties": {
         "errorSamples": {
@@ -34128,11 +34206,11 @@
       "type": "object"
     },
     "GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation": {
-      "description": "Precise location info with multiple representation options. Currently only latitude and longitude point is supported.",
+      "description": "Precise location info with multiple representation options.",
       "id": "GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation",
       "properties": {
         "address": {
-          "description": "Optional. Location represented by a natural language address. Will later be geocoded and converted to either a point or a polygon.",
+          "description": "Location represented by a natural language address. Will later be geocoded and converted to either a point or a polygon.",
           "type": "string"
         },
         "point": {
@@ -35155,6 +35233,10 @@
         "searchAddonSpec": {
           "$ref": "GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsSearchAddonSpec",
           "description": "Optional. SearchAddonSpec is used to disable add-ons for search. This field is only supported for search requests."
+        },
+        "sourceAdminDisplayNameEnabled": {
+          "description": "Optional. Whether to show the admin-configured display name for data connectors in the widget sources UI (instead of the connector kind). Opt-in; defaults to false.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -39667,11 +39749,11 @@
       "type": "object"
     },
     "GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation": {
-      "description": "Precise location info with multiple representation options. Currently only latitude and longitude point is supported.",
+      "description": "Precise location info with multiple representation options.",
       "id": "GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation",
       "properties": {
         "address": {
-          "description": "Optional. Location represented by a natural language address. Will later be geocoded and converted to either a point or a polygon.",
+          "description": "Location represented by a natural language address. Will later be geocoded and converted to either a point or a polygon.",
           "type": "string"
         },
         "point": {
