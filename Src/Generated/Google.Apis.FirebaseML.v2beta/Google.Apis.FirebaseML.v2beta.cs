@@ -603,6 +603,104 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The transcription of an audio part. For multi-speaker audio, each speaker segment is a separate Part with its
+    /// own AudioTranscription carrying the speaker_label.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1AudioTranscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A label identifying the speaker of this audio segment (e.g. "spk_1", "spk_2"). Present when
+        /// diarization is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerLabel")]
+        public virtual string SpeakerLabel { get; set; }
+
+        /// <summary>Required. The transcription text of this audio segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo> Words { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for speech recognition (transcription).</summary>
+    public class GoogleCloudAiplatformV1beta1AudioTranscriptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of phrases to bias the ASR model towards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptationPhrases")]
+        public virtual System.Collections.Generic.IList<string> AdaptationPhrases { get; set; }
+
+        /// <summary>
+        /// Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing
+        /// specific terms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customVocabulary")]
+        public virtual System.Collections.Generic.IList<string> CustomVocabulary { get; set; }
+
+        /// <summary>Optional. Configures speaker diarization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diarization")]
+        public virtual System.Nullable<bool> Diarization { get; set; }
+
+        /// <summary>Optional. The model will detect the language automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageAuto")]
+        public virtual GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto LanguageAuto { get; set; }
+
+        /// <summary>Optional. Specifies one or more languages in the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
+        public virtual GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints LanguageHints { get; set; }
+
+        /// <summary>Optional. Configures word-level timestamp generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wordTimestamp")]
+        public virtual System.Nullable<bool> WordTimestamp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates the language of the audio should be automatically detected.</summary>
+    public class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides hints to the model about possible languages present in the audio.</summary>
+    public class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. BCP-47 language codes. At least one must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
+        public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a single recognized word.</summary>
+    public class GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. End offset in time of the word relative to the start of the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>Optional. Start offset in time of the word relative to the start of the audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
+
+        /// <summary>Required. Transcript of the word.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Auth configuration to run the extension.</summary>
     public class GoogleCloudAiplatformV1beta1AuthConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -890,6 +988,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Result of executing the ExecutableCode. Generated only when the `CodeExecution` tool is used.</summary>
     public class GoogleCloudAiplatformV1beta1CodeExecutionResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The identifier of the `ExecutableCode` part this result is for. Only populated if the
+        /// corresponding `ExecutableCode` has an id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>Required. Outcome of the code execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
         public virtual string Outcome { get; set; }
@@ -1038,6 +1143,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Required. The code to be executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        /// <summary>
+        /// Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with
+        /// the matching `id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
 
         /// <summary>Required. Programming language of the `code`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
@@ -1638,6 +1750,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioTimestamp")]
         public virtual System.Nullable<bool> AudioTimestamp { get; set; }
 
+        /// <summary>Optional. Config for audio transcription (speech recognition).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioTranscriptionConfig")]
+        public virtual GoogleCloudAiplatformV1beta1AudioTranscriptionConfig AudioTranscriptionConfig { get; set; }
+
         /// <summary>
         /// Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options
         /// to choose from, but it also consumes more resources. This can be useful for generating a variety of
@@ -1913,6 +2029,49 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableWidget")]
         public virtual System.Nullable<bool> EnableWidget { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies the types of Google Maps grounding to enable. Defaults to `places` when unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingTypes")]
+        public virtual GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes GroundingTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the types of Google Maps grounding that can be enabled and their configurations.</summary>
+    public class GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Enables grounding with Google Maps Places. This is the default grounding type when no
+        /// `GroundingTypes` are specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("places")]
+        public virtual GoogleCloudAiplatformV1beta1GoogleMapsPlaces Places { get; set; }
+
+        /// <summary>
+        /// Optional. Enables grounding with Google Maps Routing APIs (ComputeRoutes and SearchAlongRoute).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routing")]
+        public virtual GoogleCloudAiplatformV1beta1GoogleMapsRouting Routing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Grounding with Google Maps Places data (e.g. QueryPlaces). This is the default Google Maps grounding type when
+    /// no other type is specified.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1GoogleMapsPlaces : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding with Google Maps Routing APIs (ComputeRoutes and SearchAlongRoute).</summary>
+    public class GoogleCloudAiplatformV1beta1GoogleMapsRouting : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2490,6 +2649,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1Part : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Audio (input or output) transcription. This is only set when this Part contains audio data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioTranscription")]
+        public virtual GoogleCloudAiplatformV1beta1AudioTranscription AudioTranscription { get; set; }
+
         /// <summary>Optional. The result of executing the ExecutableCode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeExecutionResult")]
         public virtual GoogleCloudAiplatformV1beta1CodeExecutionResult CodeExecutionResult { get; set; }
