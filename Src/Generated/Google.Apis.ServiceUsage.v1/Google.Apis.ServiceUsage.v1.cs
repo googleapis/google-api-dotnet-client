@@ -2380,8 +2380,8 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
         /// <summary>
-        /// The names of the services or service groups that are enabled. Example: `services/storage.googleapis.com`,
-        /// `groups/googleServices`, `groups/allServices`.
+        /// Deprecated: Use the `services` field instead. The names of the services or service groups that are enabled.
+        /// Example: `services/storage.googleapis.com`, `groups/googleServices`, `groups/allServices`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
@@ -4331,12 +4331,30 @@ namespace Google.Apis.ServiceUsage.v1.Data
     public class MetricRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Metrics to update when the selected methods are called, and the associated cost applied to each
+        /// metric, iff the source of the call is an agent. The key of the map is the metric name, and the values are
+        /// the amount increased for the metric against which the quota limits are defined. The value must not be
+        /// negative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agenticMetricCosts")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> AgenticMetricCosts { get; set; }
+
+        /// <summary>
         /// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The
         /// key of the map is the metric name, and the values are the amount increased for the metric against which the
         /// quota limits are defined. The value must not be negative.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricCosts")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> MetricCosts { get; set; }
+
+        /// <summary>
+        /// Optional. Metrics to update when the selected methods are called, and the associated cost applied to each
+        /// metric, iff the source of the call is not an agent. The key of the map is the metric name, and the values
+        /// are the amount increased for the metric against which the quota limits are defined. The value must not be
+        /// negative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonagenticMetricCosts")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> NonagenticMetricCosts { get; set; }
 
         /// <summary>Selects the methods to which this rule applies. Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
@@ -4868,6 +4886,13 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. This is only informational, the logic to allocate the quota to the correct metric (such as in
+        /// `metric_rules`) should identify which quota metrics to allocate to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficSource")]
+        public virtual string TrafficSource { get; set; }
 
         /// <summary>
         /// Specify the unit of the quota limit. It uses the same syntax as MetricDescriptor.unit. The supported unit
