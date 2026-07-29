@@ -1078,6 +1078,13 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// </summary>
     public class ReportStateAndNotificationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Map from agent device ID to the result of reporting state and notifications. This is only populated for UDDM
+        /// updates for now.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceResults")]
+        public virtual System.Collections.Generic.IDictionary<string, Result> DeviceResults { get; set; }
+
         /// <summary>Request ID copied from ReportStateAndNotificationRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -1113,6 +1120,52 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// </summary>
     public class RequestSyncDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of reporting state and notifications for a single device.</summary>
+    public class Result : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _homeTraitCommitTimeRaw;
+
+        private object _homeTraitCommitTime;
+
+        /// <summary>The trait commit timestamp of the state update in Home Graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homeTraitCommitTime")]
+        public virtual string HomeTraitCommitTimeRaw
+        {
+            get => _homeTraitCommitTimeRaw;
+            set
+            {
+                _homeTraitCommitTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _homeTraitCommitTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="HomeTraitCommitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use HomeTraitCommitTimeDateTimeOffset instead.")]
+        public virtual object HomeTraitCommitTime
+        {
+            get => _homeTraitCommitTime;
+            set
+            {
+                _homeTraitCommitTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _homeTraitCommitTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="HomeTraitCommitTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? HomeTraitCommitTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(HomeTraitCommitTimeRaw);
+            set => HomeTraitCommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
