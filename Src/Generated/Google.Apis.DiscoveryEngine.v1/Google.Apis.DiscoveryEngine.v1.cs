@@ -28248,16 +28248,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         }
 
         /// <summary>
-        /// Required. The identifier for the data source. This is a partial list of supported connectors. Please refer
-        /// to the
-        /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
-        /// for the full list of connectors. Supported first-party connectors include: * `gcs` * `bigquery` * `gcp_fhir`
-        /// * `google_mail` * `google_drive` * `google_calendar` * `google_chat` Supported third-party connectors
-        /// include: Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` * `jira` *
-        /// `servicenow` * `sharepoint` Preview connectors: * `asana` * `azure_active_directory` * `box` * `canva` *
-        /// `confluence_server` * `custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `gitlab` *
-        /// `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `notion` * `okta` * `pagerduty` *
-        /// `peoplesoft` * `salesforce` * `shopify` * `slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`
+        /// Required. The identifier for the data source. For the full, up-to-date list of supported connectors and
+        /// their values, see [Connect a third-party data
+        /// source](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-third-party-data-source#sources-by-launch-stage).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
@@ -28430,6 +28423,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         }
 
         /// <summary>
+        /// Optional. User-facing metadata for the connector. Populated from the connector's generated metadata /
+        /// registry `ConnectorSource`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata Metadata { get; set; }
+
+        /// <summary>
         /// Identifier. The full resource name of the Data Connector. Format:
         /// `projects/*/locations/*/collections/*/dataConnector`.
         /// </summary>
@@ -28556,6 +28556,55 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Output only. Whether the connector is created with VPC-SC enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcscEnabled")]
         public virtual System.Nullable<bool> VpcscEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// User-facing metadata for the connector, shown on the connector detail page (title, description,
+    /// short_description, author, authenticated_account, note).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The end user's account as authenticated to the connector, so the end user can see which account is
+        /// connected. May be an email, a username, or any identifier the connector/third party provides.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticatedAccount")]
+        public virtual string AuthenticatedAccount { get; set; }
+
+        /// <summary>
+        /// Optional. The party that authored the connector, e.g. "Google" or a third-party provider name. Lets end
+        /// users see who authored a connector (future: third-party-authored connectors).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        /// <summary>
+        /// Optional. Human-readable description of the connector, shown on the connector detail page. One connector has
+        /// a single description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Free-form, multi-line note about the connector's capabilities or a custom note that can be set for
+        /// the connector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual string Note { get; set; }
+
+        /// <summary>
+        /// Optional. Short, subtitle-length description of the connector (e.g. shown beneath the connector name in list
+        /// and detail views).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
+        public virtual string ShortDescription { get; set; }
+
+        /// <summary>Optional. Display title of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33667,7 +33716,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for CompletionService.PurgeCompletionSuggestions method.</summary>
+    /// <summary>
+    /// Response message for CompletionService.PurgeCompletionSuggestions method. If the long running operation is
+    /// successfully done, then this message is returned by the google.longrunning.Operations.response field.
+    /// </summary>
     public class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A sample of errors encountered while processing the request.</summary>
@@ -37914,15 +37966,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Precise location info with multiple representation options. Currently only latitude and longitude point is
-    /// supported.
-    /// </summary>
+    /// <summary>Precise location info with multiple representation options.</summary>
     public class GoogleCloudDiscoveryengineV1UserInfoPreciseLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Location represented by a natural language address. Will later be geocoded and converted to either
-        /// a point or a polygon.
+        /// Location represented by a natural language address. Will later be geocoded and converted to either a point
+        /// or a polygon.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
@@ -38934,6 +38983,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultDescriptionType")]
         public virtual string ResultDescriptionType { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to show the admin-configured display name for data connectors in the widget sources UI
+        /// (instead of the connector kind). Opt-in; defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceAdminDisplayNameEnabled")]
+        public virtual System.Nullable<bool> SourceAdminDisplayNameEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42497,16 +42553,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy DataProtectionPolicy { get; set; }
 
         /// <summary>
-        /// Required. The identifier for the data source. This is a partial list of supported connectors. Please refer
-        /// to the
-        /// [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores)
-        /// for the full list of connectors. Supported first-party connectors include: * `gcs` * `bigquery` * `gcp_fhir`
-        /// * `google_mail` * `google_drive` * `google_calendar` * `google_chat` Supported third-party connectors
-        /// include: Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` * `jira` *
-        /// `servicenow` * `sharepoint` Preview connectors: * `asana` * `azure_active_directory` * `box` * `canva` *
-        /// `confluence_server` * `custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `gitlab` *
-        /// `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `notion` * `okta` * `pagerduty` *
-        /// `peoplesoft` * `salesforce` * `shopify` * `slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk`
+        /// Required. The identifier for the data source. For the full, up-to-date list of supported connectors and
+        /// their values, see [Connect a third-party data
+        /// source](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/connect-third-party-data-source#sources-by-launch-stage).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
@@ -42679,6 +42728,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         }
 
         /// <summary>
+        /// Optional. User-facing metadata for the connector. Populated from the connector's generated metadata /
+        /// registry `ConnectorSource`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata Metadata { get; set; }
+
+        /// <summary>
         /// Identifier. The full resource name of the Data Connector. Format:
         /// `projects/*/locations/*/collections/*/dataConnector`.
         /// </summary>
@@ -42805,6 +42861,55 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Output only. Whether the connector is created with VPC-SC enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcscEnabled")]
         public virtual System.Nullable<bool> VpcscEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// User-facing metadata for the connector, shown on the connector detail page (title, description,
+    /// short_description, author, authenticated_account, note).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The end user's account as authenticated to the connector, so the end user can see which account is
+        /// connected. May be an email, a username, or any identifier the connector/third party provides.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticatedAccount")]
+        public virtual string AuthenticatedAccount { get; set; }
+
+        /// <summary>
+        /// Optional. The party that authored the connector, e.g. "Google" or a third-party provider name. Lets end
+        /// users see who authored a connector (future: third-party-authored connectors).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        /// <summary>
+        /// Optional. Human-readable description of the connector, shown on the connector detail page. One connector has
+        /// a single description.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Free-form, multi-line note about the connector's capabilities or a custom note that can be set for
+        /// the connector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("note")]
+        public virtual string Note { get; set; }
+
+        /// <summary>
+        /// Optional. Short, subtitle-length description of the connector (e.g. shown beneath the connector name in list
+        /// and detail views).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
+        public virtual string ShortDescription { get; set; }
+
+        /// <summary>Optional. Display title of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47734,7 +47839,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for CompletionService.PurgeCompletionSuggestions method.</summary>
+    /// <summary>
+    /// Response message for CompletionService.PurgeCompletionSuggestions method. If the long running operation is
+    /// successfully done, then this message is returned by the google.longrunning.Operations.response field.
+    /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A sample of errors encountered while processing the request.</summary>
@@ -51367,15 +51475,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Precise location info with multiple representation options. Currently only latitude and longitude point is
-    /// supported.
-    /// </summary>
+    /// <summary>Precise location info with multiple representation options.</summary>
     public class GoogleCloudDiscoveryengineV1alphaUserInfoPreciseLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Location represented by a natural language address. Will later be geocoded and converted to either
-        /// a point or a polygon.
+        /// Location represented by a natural language address. Will later be geocoded and converted to either a point
+        /// or a polygon.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
@@ -58682,15 +58787,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Precise location info with multiple representation options. Currently only latitude and longitude point is
-    /// supported.
-    /// </summary>
+    /// <summary>Precise location info with multiple representation options.</summary>
     public class GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Location represented by a natural language address. Will later be geocoded and converted to either
-        /// a point or a polygon.
+        /// Location represented by a natural language address. Will later be geocoded and converted to either a point
+        /// or a polygon.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
