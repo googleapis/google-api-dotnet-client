@@ -90,6 +90,24 @@ namespace Google.Apis.HangoutsChat.v1
             public static string ChatAdminSpacesReadonly = "https://www.googleapis.com/auth/chat.admin.spaces.readonly";
 
             /// <summary>
+            /// On their own behalf, apps in Google Chat can see all members in Google Chat spaces and conversations
+            /// throughout your Workspace organization, even when the Chat app isn't a member
+            /// </summary>
+            public static string ChatAppAllMembershipsReadonly = "https://www.googleapis.com/auth/chat.app.all.memberships.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see all messages and reactions throughout your Workspace
+            /// organization, even when the Chat app isn't a member of a space or conversation
+            /// </summary>
+            public static string ChatAppAllMessagesReadonly = "https://www.googleapis.com/auth/chat.app.all.messages.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see metadata about all spaces and conversations in Google
+            /// Chat throughout your Workspace organization, even when the Chat app isn't a member
+            /// </summary>
+            public static string ChatAppAllSpacesReadonly = "https://www.googleapis.com/auth/chat.app.all.spaces.readonly";
+
+            /// <summary>
             /// On their own behalf, apps in Google Chat can delete conversations and spaces and remove access to
             /// associated files
             /// </summary>
@@ -237,6 +255,24 @@ namespace Google.Apis.HangoutsChat.v1
             /// organization
             /// </summary>
             public const string ChatAdminSpacesReadonly = "https://www.googleapis.com/auth/chat.admin.spaces.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see all members in Google Chat spaces and conversations
+            /// throughout your Workspace organization, even when the Chat app isn't a member
+            /// </summary>
+            public const string ChatAppAllMembershipsReadonly = "https://www.googleapis.com/auth/chat.app.all.memberships.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see all messages and reactions throughout your Workspace
+            /// organization, even when the Chat app isn't a member of a space or conversation
+            /// </summary>
+            public const string ChatAppAllMessagesReadonly = "https://www.googleapis.com/auth/chat.app.all.messages.readonly";
+
+            /// <summary>
+            /// On their own behalf, apps in Google Chat can see metadata about all spaces and conversations in Google
+            /// Chat throughout your Workspace organization, even when the Chat app isn't a member
+            /// </summary>
+            public const string ChatAppAllSpacesReadonly = "https://www.googleapis.com/auth/chat.app.all.spaces.readonly";
 
             /// <summary>
             /// On their own behalf, apps in Google Chat can delete conversations and spaces and remove access to
