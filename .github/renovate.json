@@ -17,10 +17,10 @@
         "Src/Support/Google.Apis.Auth.AspNetCore.IntegrationTests/**",
         "Src/Support/Google.Apis.Auth.AspNetCore/**"
       ],
-      "matchPackagePrefixes": [
-        "Microsoft.AspNetCore."
-      ],
-      "allowedVersions": "<2.1.0"
+      "allowedVersions": "<2.1.0",
+      "matchPackageNames": [
+        "Microsoft.AspNetCore.**"
+      ]
     },
     {
       "matchPackageNames": [
@@ -33,10 +33,10 @@
       "matchFileNames": [
         "Src/Support/Google.Apis.Auth.AspNetCore3/**"
       ],
-      "matchPackagePrefixes": [
-        "Microsoft.AspNetCore."
-      ],
-      "allowedVersions": "<3.1.0"
+      "allowedVersions": "<3.1.0",
+      "matchPackageNames": [
+        "Microsoft.AspNetCore.**"
+      ]
     },
     {
       "matchFileNames": [
