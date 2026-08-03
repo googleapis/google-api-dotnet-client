@@ -614,6 +614,13 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("chrome_sync")]
                 ChromeSync = 41,
+
+                /// <summary>
+                /// The Workspace Studio application's activity reports return information about various types of
+                /// Workspace Studio activity events.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("workspace_studio")]
+                WorkspaceStudio = 42,
             }
 
             /// <summary>
@@ -648,6 +655,17 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>The unique ID of the customer to retrieve data for.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
+
+            /// <summary>
+            /// Optional. Used to filter on the fields present in [`UserDeviceInfo`](#userdeviceinfo) message like
+            /// `deviceId`, `deviceType`, and `deviceOsVersion`. **Usage**
+            /// ```
+            /// GET...&amp;amp;deviceFilter=deviceId="123" GET...&amp;amp;deviceFilter=deviceType="ANDROID"
+            /// GET...&amp;amp;deviceFilter=deviceOsVersion="14.0"
+            /// ```
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DeviceFilter { get; set; }
 
             /// <summary>
             /// Sets the end of the range of time shown in the report. The date is in the RFC 3339 format, for example
@@ -854,7 +872,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = @"(access_evaluation)|(access_transparency)|(admin)|(admin_data_action)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(contacts)|(context_aware_access)|(data_studio)|(data_migration)|(directory_sync)|(drive)|(gcp)|(gmail)|(gplus)|(graduation)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(ldap)|(login)|(meet)|(meet_hardware)|(mobile)|(profile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)|(takeout)|(voice)|(chrome_sync)",
+                    Pattern = @"(access_evaluation)|(access_transparency)|(admin)|(admin_data_action)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(contacts)|(context_aware_access)|(data_studio)|(data_migration)|(directory_sync)|(drive)|(gcp)|(gmail)|(gplus)|(graduation)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(ldap)|(login)|(meet)|(meet_hardware)|(mobile)|(profile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)|(takeout)|(voice)|(chrome_sync)|(workspace_studio)",
                 });
                 RequestParameters.Add("actorIpAddress", new Google.Apis.Discovery.Parameter
                 {
@@ -887,6 +905,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = @"C.+|my_customer",
+                });
+                RequestParameters.Add("deviceFilter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deviceFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
                 {
