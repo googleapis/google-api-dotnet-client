@@ -2068,6 +2068,45 @@ namespace Google.Apis.DataManager.v1
                 base.InitParameters();
             }
         }
+
+        /// <summary>Removes all audience members from the provided destinations.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual RemoveAllRequest RemoveAll(Google.Apis.DataManager.v1.Data.RemoveAllAudienceMembersRequest body)
+        {
+            return new RemoveAllRequest(this.service, body);
+        }
+
+        /// <summary>Removes all audience members from the provided destinations.</summary>
+        public class RemoveAllRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.RemoveAllAudienceMembersResponse>
+        {
+            /// <summary>Constructs a new RemoveAll request.</summary>
+            public RemoveAllRequest(Google.Apis.Services.IClientService service, Google.Apis.DataManager.v1.Data.RemoveAllAudienceMembersRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DataManager.v1.Data.RemoveAllAudienceMembersRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "removeAll";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/audienceMembers:removeAll";
+
+            /// <summary>Initializes RemoveAll parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
     }
 
     /// <summary>The "events" collection of methods.</summary>
@@ -2248,7 +2287,7 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignName")]
         public virtual string CampaignName { get; set; }
 
-        /// <summary>Optional. Information gathered about the device being used when the ad event happened.</summary>
+        /// <summary>Required. Information gathered about the device being used when the ad event happened.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
         public virtual DeviceInfo DeviceInfo { get; set; }
 
@@ -2302,7 +2341,7 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("platformTypeString")]
         public virtual string PlatformTypeString { get; set; }
 
-        /// <summary>Required. The ISO 3166-2 country plus subdivision.</summary>
+        /// <summary>Optional. The ISO 3166-2 country plus subdivision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
@@ -2437,6 +2476,29 @@ namespace Google.Apis.DataManager.v1.Data
     public class AddressInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The street and number of the user's address. Used only for Google Analytics. This field is hashed
+        /// and possibly encrypted. Normalize the value before hashing: - Remove symbol characters - Convert to
+        /// lowercase - Remove leading and trailing whitespace
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressLine")]
+        public virtual string AddressLine { get; set; }
+
+        /// <summary>
+        /// Optional. The administrative area (state/province) of the user's address. Used only for Google Analytics.
+        /// The value should be normalized as such: - Remove symbol characters - Convert to lowercase - Remove leading
+        /// and trailing whitespace
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; }
+
+        /// <summary>
+        /// Optional. The city of the user's address. Used only for Google Analytics. The value should be normalized as
+        /// such: - Remove symbol characters - Convert to lowercase - Remove leading and trailing whitespace
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("city")]
+        public virtual string City { get; set; }
+
+        /// <summary>
         /// Required. Family (last) name of the user, all lowercase, with no punctuation, no leading or trailing
         /// whitespace, and hashed as SHA-256.
         /// </summary>
@@ -2477,6 +2539,10 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationReferences")]
         public virtual System.Collections.Generic.IList<string> DestinationReferences { get; set; }
 
+        /// <summary>Encrypted Google User IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdData")]
+        public virtual GoogleUserIdData GoogleUserIdData { get; set; }
+
         /// <summary>Data identifying the user's mobile devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileData")]
         public virtual MobileData MobileData { get; set; }
@@ -2487,6 +2553,10 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairData")]
         public virtual PairData PairData { get; set; }
+
+        /// <summary>Partner-provided identifiers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdData")]
+        public virtual PartnerProvidedIdData PartnerProvidedIdData { get; set; }
 
         /// <summary>
         /// Data related to publisher provided identifiers. This feature is only available to data partners.
@@ -2755,12 +2825,13 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string Category { get; set; }
 
         /// <summary>
-        /// Optional. The IP address of the device for the given context. **Note:** Google Ads does not support IP
-        /// address matching for end users in the European Economic Area (EEA), United Kingdom (UK), or Switzerland
-        /// (CH). Add logic to conditionally exclude sharing IP addresses from users from these regions and ensure that
-        /// you provide users with clear and comprehensive information about the data you collect on your sites, apps,
-        /// and other properties and get consent where required by law or any applicable Google policies. See the [About
-        /// offline conversion imports](https://support.google.com/google-ads/answer/2998031) page for more details.
+        /// Optional. The IP address of the device for the given context. Required when used in an AdEvent. **Note:**
+        /// Google Ads does not support IP address matching for end users in the European Economic Area (EEA), United
+        /// Kingdom (UK), or Switzerland (CH). Add logic to conditionally exclude sharing IP addresses from users from
+        /// these regions and ensure that you provide users with clear and comprehensive information about the data you
+        /// collect on your sites, apps, and other properties and get consent where required by law or any applicable
+        /// Google policies. See the [About offline conversion
+        /// imports](https://support.google.com/google-ads/answer/2998031) page for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
@@ -3156,6 +3227,28 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Detailed row-level warning with field paths.</summary>
+    public class FieldWarning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed warning message describing the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The field path that triggered the warning. Uses the same format as
+        /// google.rpc.BadRequest.FieldViolation.field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>The warning reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about the Google Cloud Platform wrapped key.</summary>
     public class GcpWrappedKeyInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3187,6 +3280,19 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Google user id data holding encrypted google user IDs. At least one google user ID is required.
+    /// </summary>
+    public class GoogleUserIdData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of encrypted google user IDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleUserIds")]
+        public virtual System.Collections.Generic.IList<string> GoogleUserIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to upload ad events.</summary>
     public class IngestAdEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3194,7 +3300,7 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adEvents")]
         public virtual System.Collections.Generic.IList<AdEvent> AdEvents { get; set; }
 
-        /// <summary>Optional. Information about encryption keys which are used to encrypt the data.</summary>
+        /// <summary>Required. Information about encryption keys which are used to encrypt the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
         public virtual EncryptionInfo EncryptionInfo { get; set; }
 
@@ -3271,6 +3377,10 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>Response from the IngestAudienceMembersRequest.</summary>
     public class IngestAudienceMembersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Detailed row-level warnings with field paths.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldWarnings")]
+        public virtual System.Collections.Generic.IList<FieldWarning> FieldWarnings { get; set; }
+
         /// <summary>The auto-generated ID of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -3286,6 +3396,10 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compositeDataIngestionStatus")]
         public virtual IngestCompositeDataStatus CompositeDataIngestionStatus { get; set; }
 
+        /// <summary>The status of the google user id data ingestion to the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdDataIngestionStatus")]
+        public virtual IngestGoogleUserIdDataStatus GoogleUserIdDataIngestionStatus { get; set; }
+
         /// <summary>The status of the mobile data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDataIngestionStatus")]
         public virtual IngestMobileDataStatus MobileDataIngestionStatus { get; set; }
@@ -3293,6 +3407,10 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>The status of the pair data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairDataIngestionStatus")]
         public virtual IngestPairDataStatus PairDataIngestionStatus { get; set; }
+
+        /// <summary>The status of the partner provided id data ingestion to the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdDataIngestionStatus")]
+        public virtual IngestPartnerProvidedIdDataStatus PartnerProvidedIdDataIngestionStatus { get; set; }
 
         /// <summary>The status of the ppid data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ppidDataIngestionStatus")]
@@ -3391,6 +3509,10 @@ namespace Google.Apis.DataManager.v1.Data
     /// <summary>Response from the IngestEventsRequest.</summary>
     public class IngestEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Detailed row-level warnings with field paths.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldWarnings")]
+        public virtual System.Collections.Generic.IList<FieldWarning> FieldWarnings { get; set; }
+
         /// <summary>The auto-generated ID of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -3405,6 +3527,29 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>
         /// The total count of events sent in the upload request. Includes all events in the request, regardless of
         /// whether they were successfully ingested or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
+        public virtual System.Nullable<long> RecordCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The status of the google user id data ingestion to the destination containing stats related to the ingestion.
+    /// </summary>
+    public class IngestGoogleUserIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The total count of google user ids sent in the upload request for the destination. Includes all google user
+        /// ids in the request, regardless of whether they were successfully ingested or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdCount")]
+        public virtual System.Nullable<long> GoogleUserIdCount { get; set; }
+
+        /// <summary>
+        /// The total count of audience members sent in the upload request for the destination. Includes all audience
+        /// members in the request, regardless of whether they were successfully ingested or not.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
@@ -3447,6 +3592,30 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairIdCount")]
         public virtual System.Nullable<long> PairIdCount { get; set; }
+
+        /// <summary>
+        /// The total count of audience members sent in the upload request for the destination. Includes all audience
+        /// members in the request, regardless of whether they were successfully ingested or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
+        public virtual System.Nullable<long> RecordCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The status of the partner provided id data ingestion to the destination containing stats related to the
+    /// ingestion.
+    /// </summary>
+    public class IngestPartnerProvidedIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The total count of partner provided ids sent in the upload request for the destination. Includes all partner
+        /// provided ids in the request, regardless of whether they were successfully ingested or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdCount")]
+        public virtual System.Nullable<long> PartnerProvidedIdCount { get; set; }
 
         /// <summary>
         /// The total count of audience members sent in the upload request for the destination. Includes all audience
@@ -3908,8 +4077,9 @@ namespace Google.Apis.DataManager.v1.Data
     public class MobileData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The list of mobile device IDs (advertising ID/IDFA). At most 10 `mobileIds` can be provided in a
-        /// single AudienceMember.
+        /// Required. The list of mobile device IDs (Android advertising ID, iOS IDFA for Customer Match user lists and
+        /// Android advertising ID, iOS IDFA, Xbox or Microsoft ID, Amazon Fire TV ID, Roku ID, Generic Device ID for
+        /// basic user lists). At most 10 `mobileIds` can be provided in a single AudienceMember.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileIds")]
         public virtual System.Collections.Generic.IList<string> MobileIds { get; set; }
@@ -4103,6 +4273,20 @@ namespace Google.Apis.DataManager.v1.Data
     }
 
     /// <summary>
+    /// Partner-provided data holding the partner-provided identifiers. At least one partner-provided identifier is
+    /// required.
+    /// </summary>
+    public class PartnerProvidedIdData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of partner-provided identifiers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIds")]
+        public virtual System.Collections.Generic.IList<string> PartnerProvidedIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Publisher provided identifiers data holding the ppids. At least one ppid is required. This feature is only
     /// available to data partners.
     /// </summary>
@@ -4149,6 +4333,87 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syncStatus")]
         public virtual string SyncStatus { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request to remove all users from an audience in the provided destinations. Returns a
+    /// RemoveAllAudienceMembersResponse.
+    /// </summary>
+    public class RemoveAllAudienceMembersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of destinations to remove the users from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
+
+        private string _removeAsOfTimeRaw;
+
+        private object _removeAsOfTime;
+
+        /// <summary>
+        /// Optional. The remove as of time. If set, only audience members last added before this time will be removed.
+        /// If not set, it defaults to current time. The remove as of time must not be in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeAsOfTime")]
+        public virtual string RemoveAsOfTimeRaw
+        {
+            get => _removeAsOfTimeRaw;
+            set
+            {
+                _removeAsOfTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _removeAsOfTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RemoveAsOfTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RemoveAsOfTimeDateTimeOffset instead.")]
+        public virtual object RemoveAsOfTime
+        {
+            get => _removeAsOfTime;
+            set
+            {
+                _removeAsOfTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _removeAsOfTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RemoveAsOfTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RemoveAsOfTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RemoveAsOfTimeRaw);
+            set => RemoveAsOfTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. For testing purposes. If `true`, the request is validated but not executed. Only errors are
+        /// returned, not results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from the RemoveAllAudienceMembersRequest.</summary>
+    public class RemoveAllAudienceMembersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The auto-generated ID of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the remove all audience members request.</summary>
+    public class RemoveAllAudienceMembersStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4209,6 +4474,10 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compositeDataRemovalStatus")]
         public virtual RemoveCompositeDataStatus CompositeDataRemovalStatus { get; set; }
 
+        /// <summary>The status of the google user id data removal from the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdDataRemovalStatus")]
+        public virtual RemoveGoogleUserIdDataStatus GoogleUserIdDataRemovalStatus { get; set; }
+
         /// <summary>The status of the mobile data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDataRemovalStatus")]
         public virtual RemoveMobileDataStatus MobileDataRemovalStatus { get; set; }
@@ -4216,6 +4485,10 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>The status of the pair data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairDataRemovalStatus")]
         public virtual RemovePairDataStatus PairDataRemovalStatus { get; set; }
+
+        /// <summary>The status of the partner provided id data removal from the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdDataRemovalStatus")]
+        public virtual RemovePartnerProvidedIdDataStatus PartnerProvidedIdDataRemovalStatus { get; set; }
 
         /// <summary>The status of the ppid data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ppidDataRemovalStatus")]
@@ -4242,6 +4515,27 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTypeCounts")]
         public virtual System.Collections.Generic.IList<DataTypeCount> DataTypeCounts { get; set; }
+
+        /// <summary>
+        /// The total count of audience members sent in the removal request. Includes all audience members in the
+        /// request, regardless of whether they were successfully removed or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
+        public virtual System.Nullable<long> RecordCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the google user id data removal from the destination.</summary>
+    public class RemoveGoogleUserIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The total count of google user ids sent in the removal request. Includes all google user ids in the request,
+        /// regardless of whether they were successfully removed or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdCount")]
+        public virtual System.Nullable<long> GoogleUserIdCount { get; set; }
 
         /// <summary>
         /// The total count of audience members sent in the removal request. Includes all audience members in the
@@ -4284,6 +4578,27 @@ namespace Google.Apis.DataManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairIdCount")]
         public virtual System.Nullable<long> PairIdCount { get; set; }
+
+        /// <summary>
+        /// The total count of audience members sent in the removal request. Includes all audience members in the
+        /// request, regardless of whether they were successfully removed or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
+        public virtual System.Nullable<long> RecordCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of the partner provided id data removal from the destination.</summary>
+    public class RemovePartnerProvidedIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The total count of partner provided ids sent in the removal request. Includes all partner provided ids in
+        /// the request, regardless of whether they were successfully removed or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdCount")]
+        public virtual System.Nullable<long> PartnerProvidedIdCount { get; set; }
 
         /// <summary>
         /// The total count of audience members sent in the removal request. Includes all audience members in the
@@ -4385,6 +4700,10 @@ namespace Google.Apis.DataManager.v1.Data
         /// <summary>The status of the ingest events request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventsIngestionStatus")]
         public virtual IngestEventsStatus EventsIngestionStatus { get; set; }
+
+        /// <summary>The status of the remove all audience members request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeAllAudienceMembersStatus")]
+        public virtual RemoveAllAudienceMembersStatus RemoveAllAudienceMembersStatus { get; set; }
 
         /// <summary>The request status of the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestStatus")]
