@@ -4225,6 +4225,10 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>Output only. The list of connectors in this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectors")]
+        public virtual System.Collections.Generic.IList<Connector> Connectors { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -4295,6 +4299,14 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Output only. The list of schemas in this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<Schema> Schemas { get; set; }
+
+        /// <summary>Optional. Input only. The source files for service, schemas, and connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual Source Source { get; set; }
 
         /// <summary>Output only. System-assigned, unique identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
