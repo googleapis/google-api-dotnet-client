@@ -5397,6 +5397,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
 
@@ -6677,6 +6678,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceConfig")]
         public virtual PscInstanceConfig PscInstanceConfig { get; set; }
 
+        /// <summary>Output only. Information about the Private Service Connect (PSC) for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceInfo")]
+        public virtual PscInstanceInfo PscInstanceInfo { get; set; }
+
         /// <summary>
         /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
         /// This is the connection endpoint for an end-user application.
@@ -7532,9 +7537,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
 
+        /// <summary>Optional. Configuration for setting up PSC auto connection for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnectionPolicyState")]
+        public virtual string PscAutoConnectionPolicyState { get; set; }
+
         /// <summary>Optional. Configurations for setting up PSC service automation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnections")]
         public virtual System.Collections.Generic.IList<PscAutoConnectionConfig> PscAutoConnections { get; set; }
+
+        /// <summary>Optional. Configuration for setting up PSC auto DNS for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoDnsState")]
+        public virtual string PscAutoDnsState { get; set; }
 
         /// <summary>
         /// Output only. The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
@@ -7556,6 +7569,35 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentLink")]
         public virtual string ServiceAttachmentLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the Private Service Connect (PSC) for the instance.</summary>
+    public class PscInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Indicates if the PSC auto connection policy is enabled for the instance. For older instances,
+        /// this will be off by default, but for newer instances, this will be auto-enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectivePscAutoConnectionPolicy")]
+        public virtual System.Nullable<bool> EffectivePscAutoConnectionPolicy { get; set; }
+
+        /// <summary>Output only. The effective state of the PSC auto DNS for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectivePscAutoDnsEnabled")]
+        public virtual System.Nullable<bool> EffectivePscAutoDnsEnabled { get; set; }
+
+        /// <summary>Output only. Specifies the auto DNS names for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoDnsNames")]
+        public virtual System.Collections.Generic.IList<string> PscAutoDnsNames { get; set; }
+
+        /// <summary>
+        /// Output only. The PSC service connection policy name. The format is
+        /// "projects//regions//serviceConnectionPolicies/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionPolicy")]
+        public virtual string ServiceConnectionPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7988,33 +8030,26 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for availability of database instance</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Checks for existence of (multi-cluster) routing configuration that allows automatic failover to a different
-        /// zone/region in case of an outage. Applicable to Bigtable resources.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticFailoverRoutingConfigured")]
         public virtual System.Nullable<bool> AutomaticFailoverRoutingConfigured { get; set; }
 
-        /// <summary>
-        /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that
-        /// zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a
-        /// region (it is highly available).
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityType")]
         public virtual string AvailabilityType { get; set; }
 
-        /// <summary>
-        /// Checks for resources that are configured to have redundancy, and ongoing replication across regions
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossRegionReplicaConfigured")]
         public virtual System.Nullable<bool> CrossRegionReplicaConfigured { get; set; }
 
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalReplicaConfigured")]
         public virtual System.Nullable<bool> ExternalReplicaConfigured { get; set; }
 
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotableReplicaConfigured")]
         public virtual System.Nullable<bool> PromotableReplicaConfigured { get; set; }
 
@@ -8022,21 +8057,18 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for automatic backups</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainBackupConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether customer visible automated backups are enabled on the instance.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automatedBackupEnabled")]
         public virtual System.Nullable<bool> AutomatedBackupEnabled { get; set; }
 
-        /// <summary>Backup retention settings.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionSettings")]
         public virtual StorageDatabasecenterPartnerapiV1mainRetentionSettings BackupRetentionSettings { get; set; }
 
-        /// <summary>
-        /// Whether point-in-time recovery is enabled. This is optional field, if the database service does not have
-        /// this feature or metadata is not available in control plane, this can be omitted.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTimeRecoveryEnabled")]
         public virtual System.Nullable<bool> PointInTimeRecoveryEnabled { get; set; }
 
@@ -8044,12 +8076,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// BackupDRConfiguration to capture the backup and disaster recovery details of database resource.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates if the resource is managed by BackupDR.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupdrManaged")]
         public virtual System.Nullable<bool> BackupdrManaged { get; set; }
 
@@ -8057,24 +8087,22 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// BackupDRMetadata contains information about the backup and disaster recovery metadata of a database resource.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainBackupDRMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Backup configuration for this instance.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupConfiguration BackupConfiguration { get; set; }
 
-        /// <summary>Latest backup run information for this instance.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
 
-        /// <summary>BackupDR configuration for this instance.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupdrConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration BackupdrConfiguration { get; set; }
 
-        /// <summary>Required. Full resource name of this instance.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
 
@@ -8082,7 +8110,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _lastRefreshTime;
 
-        /// <summary>Required. Last time backup configuration was refreshed.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
         public virtual string LastRefreshTimeRaw
         {
@@ -8117,7 +8145,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. Database resource id.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
 
@@ -8125,14 +8153,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A backup run.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainBackupRun : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _endTimeRaw;
 
         private object _endTime;
 
-        /// <summary>The time the backup operation completed. REQUIRED</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -8165,10 +8193,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Information about why the backup operation failed. This is only present if the run has the FAILED status.
-        /// OPTIONAL
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual StorageDatabasecenterPartnerapiV1mainOperationError Error { get; set; }
 
@@ -8176,7 +8201,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _startTime;
 
-        /// <summary>The time the backup operation started. REQUIRED</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
@@ -8209,7 +8234,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The status of this run. REQUIRED</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -8217,14 +8242,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains compliance information about a security standard indicating unmet recommendations.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainCompliance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standard")]
         public virtual string Standard { get; set; }
 
-        /// <summary>Version of the standard or benchmark, for example, 1.1</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -8232,13 +8257,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Config based signal data. This is used to send signals to Condor which are based on the DB level configurations.
-    /// These will be used to send signals for self managed databases.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Full Resource name of the source resource.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
 
@@ -8246,7 +8268,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _lastRefreshTime;
 
-        /// <summary>Required. Last time signal was refreshed</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
         public virtual string LastRefreshTimeRaw
         {
@@ -8281,15 +8303,15 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Database resource id.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
 
-        /// <summary>Signal data for boolean signals.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
         public virtual System.Nullable<bool> SignalBoolValue { get; set; }
 
-        /// <summary>Required. Signal type of the signal</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
         public virtual string SignalType { get; set; }
 
@@ -8297,16 +8319,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Any custom metadata associated with the resource. e.g. A spanner instance can have multiple databases with its
-    /// own unique metadata. Information for these individual databases can be captured in custom metadata data
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainCustomMetadataData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Metadata for individual internal resources in an instance. e.g. spanner instance can have multiple databases
-        /// with unique configuration.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalResourceMetadata")]
         public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata> InternalResourceMetadata { get; set; }
 
@@ -8314,26 +8330,18 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
-    /// Condor platform. Next ID: 13
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>BackupDR metadata is used to ingest metadata from BackupDR.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupdrMetadata")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupDRMetadata BackupdrMetadata { get; set; }
 
-        /// <summary>
-        /// Config based signal data is used to ingest signals that are generated based on the configuration of the
-        /// database resource.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBasedSignalData")]
         public virtual StorageDatabasecenterPartnerapiV1mainConfigBasedSignalData ConfigBasedSignalData { get; set; }
 
-        /// <summary>
-        /// Database resource signal data is used to ingest signals from database resource signal feeds.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseResourceSignalData")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData DatabaseResourceSignalData { get; set; }
 
@@ -8341,7 +8349,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _feedTimestamp;
 
-        /// <summary>Required. Timestamp when feed is generated.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedTimestamp")]
         public virtual string FeedTimestampRaw
         {
@@ -8374,38 +8382,31 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => FeedTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. Type feed to be ingested into condor</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedType")]
         public virtual string FeedType { get; set; }
 
-        /// <summary>Observability metric data.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMetricData")]
         public virtual StorageDatabasecenterPartnerapiV1mainObservabilityMetricData ObservabilityMetricData { get; set; }
 
-        /// <summary>Database resource recommendation signal data.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationSignalData")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData RecommendationSignalData { get; set; }
 
-        /// <summary>Database resource health signal data.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceHealthSignalData")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData ResourceHealthSignalData { get; set; }
 
-        /// <summary>
-        /// Primary key associated with the Resource. resource_id is available in individual feed level as well.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
 
-        /// <summary>Database resource metadata.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceMetadata")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata ResourceMetadata { get; set; }
 
-        /// <summary>
-        /// Optional. If true, the feed won't be ingested by DB Center. This indicates that the feed is intentionally
-        /// skipped. For example, BackupDR feeds are only needed for resources integrated with DB Center (e.g.,
-        /// CloudSQL, AlloyDB). Feeds for non-integrated resources (e.g., Compute Engine, Persistent Disk) can be
-        /// skipped.
-        /// </summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipIngestion")]
         public virtual System.Nullable<bool> SkipIngestion { get; set; }
 
@@ -8413,23 +8414,18 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource health signal data.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Any other additional metadata</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
 
-        /// <summary>
-        /// Industry standards associated with this signal; if this signal is an issue, that could be a violation of the
-        /// associated industry standard(s). For example, AUTO_BACKUP_DISABLED signal is associated with CIS GCP 1.1,
-        /// CIS GCP 1.2, CIS GCP 1.3, NIST 800-53 and ISO-27001 compliance standards. If a database resource does not
-        /// have automated backup enable, it will violate these following industry standards.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliance")]
         public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainCompliance> Compliance { get; set; }
 
-        /// <summary>Description associated with signal</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -8437,7 +8433,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _eventTime;
 
-        /// <summary>Required. The last time at which the event described by this signal took place</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual string EventTimeRaw
         {
@@ -8470,62 +8466,47 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// The external-uri of the signal, using which more information about this signal can be obtained. In GCP, this
-        /// will take user to SCC page to get more details about signals.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
-        /// <summary>This is used to identify the location of the resource. Example: "us-central1"</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE, SQL_LOG_ERROR_VERBOSITY etc.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Cloud provider name. Ex: GCP/AWS/Azure/OnPrem/SelfManaged</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
-        /// <summary>
-        /// Closest parent container of this resource. In GCP, 'container' refers to a Cloud Resource Manager project.
-        /// It must be resource name of a Cloud Resource Manager project with the format of "provider//", such as
-        /// "projects/123". For GCP provided resources, number should be project number.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; }
 
-        /// <summary>
-        /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
-        /// format as noted here go/condor-common-datamodel
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>Required. The class of the signal, such as if it's a THREAT or VULNERABILITY.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalClass")]
         public virtual string SignalClass { get; set; }
 
-        /// <summary>
-        /// Required. Unique identifier for the signal. This is an unique id which would be mainatined by partner to
-        /// identify a signal.
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalId")]
         public virtual string SignalId { get; set; }
 
-        /// <summary>The severity of the signal, such as if it's a HIGH or LOW severity.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalSeverity")]
         public virtual string SignalSeverity { get; set; }
 
-        /// <summary>
-        /// Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `LOGGING_MOST_ERRORS`, etc.
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
         public virtual string SignalType { get; set; }
 
-        /// <summary>Required. The state of the signal, such as if it's ACTIVE or RESOLVED.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -8533,34 +8514,22 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>DatabaseResourceId will serve as primary key for any resource ingestion event.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Cloud provider name. Ex: GCP/AWS/Azure/OnPrem/SelfManaged</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
-        /// <summary>Optional. Needs to be used only when the provider is PROVIDER_OTHER.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerDescription")]
         public virtual string ProviderDescription { get; set; }
 
-        /// <summary>
-        /// Required. The type of resource this ID is identifying. Ex go/keep-sorted start
-        /// alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance, bigtableadmin.googleapis.com/Cluster,
-        /// bigtableadmin.googleapis.com/Instance compute.googleapis.com/Instance firestore.googleapis.com/Database,
-        /// memorystore.googleapis.com/Instance, redis.googleapis.com/Instance, redis.googleapis.com/Cluster,
-        /// oracledatabase.googleapis.com/CloudExadataInfrastructure oracledatabase.googleapis.com/CloudVmCluster
-        /// oracledatabase.googleapis.com/AutonomousDatabase spanner.googleapis.com/Instance,
-        /// spanner.googleapis.com/Database, sqladmin.googleapis.com/Instance, go/keep-sorted end REQUIRED Please refer
-        /// go/condor-common-datamodel
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
-        /// <summary>
-        /// Required. A service-local token that distinguishes this resource from other resources within the same
-        /// service.
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }
 
@@ -8568,26 +8537,26 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource instance metadata. Next ID: 35</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Field to ingest additional metadata whichd does not support proto format.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
 
-        /// <summary>Availability configuration for this instance</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration AvailabilityConfiguration { get; set; }
 
-        /// <summary>Backup configuration for this instance</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupConfiguration BackupConfiguration { get; set; }
 
-        /// <summary>Latest backup run information for this instance</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
 
-        /// <summary>Optional. BackupDR Configuration for the resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupdrConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupDRConfiguration BackupdrConfiguration { get; set; }
 
@@ -8595,9 +8564,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _creationTime;
 
-        /// <summary>
-        /// The creation time of the resource, i.e. the time when resource is created and recorded in partner service.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTimeRaw
         {
@@ -8630,116 +8597,95 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Current state of the instance.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; }
 
-        /// <summary>Any custom metadata associated with the resource</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual StorageDatabasecenterPartnerapiV1mainCustomMetadataData CustomMetadata { get; set; }
 
-        /// <summary>
-        /// Optional. Edition represents whether the instance is ENTERPRISE or ENTERPRISE_PLUS. This information is core
-        /// to Cloud SQL only and is used to identify the edition of the instance.
-        /// </summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 
-        /// <summary>Entitlements associated with the resource</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlements")]
         public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainEntitlement> Entitlements { get; set; }
 
-        /// <summary>
-        /// The state that the instance is expected to be in. For example, an instance state can transition to UNHEALTHY
-        /// due to wrong patch update, while the expected state will remain at the HEALTHY.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedState")]
         public virtual string ExpectedState { get; set; }
 
-        /// <summary>GCBDR configuration for the resource.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcbdrConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration GcbdrConfiguration { get; set; }
 
-        /// <summary>Required. Unique identifier for a Database resource</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId Id { get; set; }
 
-        /// <summary>The type of the instance. Specified at creation time.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
 
-        /// <summary>Field to ingest additional metadata which support proto format.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalAdditionalMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> InternalAdditionalMetadata { get; set; }
 
-        /// <summary>Optional. Private and public IP address of the resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual StorageDatabasecenterPartnerapiV1mainIpAddress IpAddress { get; set; }
 
-        /// <summary>Optional. Whether deletion protection is enabled for this resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
         public virtual System.Nullable<bool> IsDeletionProtectionEnabled { get; set; }
 
-        /// <summary>The resource location. REQUIRED</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Machine configuration for this resource.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainMachineConfiguration MachineConfiguration { get; set; }
 
-        /// <summary>Optional. Maintenance info for the resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceInfo")]
         public virtual StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo MaintenanceInfo { get; set; }
 
-        /// <summary>Optional. The modes of the database resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modes")]
         public virtual System.Collections.Generic.IList<string> Modes { get; set; }
 
-        /// <summary>
-        /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
-        /// derived form of another Database resource. Else it would be NULL. REQUIRED if the immediate parent exists
-        /// when first time resource is getting ingested, otherwise optional.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryResourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId PrimaryResourceId { get; set; }
 
-        /// <summary>
-        /// Primary resource location. REQUIRED if the immediate parent exists when first time resource is getting
-        /// ingested, otherwise optional.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryResourceLocation")]
         public virtual string PrimaryResourceLocation { get; set; }
 
-        /// <summary>The product this resource represents.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual StorageDatabasecenterProtoCommonProduct Product { get; set; }
 
-        /// <summary>
-        /// Closest parent Cloud Resource Manager container of this resource. It must be resource name of a Cloud
-        /// Resource Manager project with the format of "/", such as "projects/123". For GCP provided resources, number
-        /// should be project number.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; }
 
-        /// <summary>Optional. List of resource flags for the database resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFlags")]
         public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainResourceFlags> ResourceFlags { get; set; }
 
-        /// <summary>
-        /// Required. Different from DatabaseResourceId.unique_id, a resource name can be reused over time. That is,
-        /// after a resource named "ABC" is deleted, the name "ABC" can be used to to create a new resource within the
-        /// same source. Resource name to follow CAIS resource_name format as noted here go/condor-common-datamodel
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>Optional. Suspension reason for the resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual string SuspensionReason { get; set; }
 
-        /// <summary>Optional. Tags associated with this resources.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagsSet")]
         public virtual StorageDatabasecenterPartnerapiV1mainTags TagsSet { get; set; }
 
@@ -8747,7 +8693,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _updationTime;
 
-        /// <summary>The time at which the resource was updated and recorded at partner service.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updationTime")]
         public virtual string UpdationTimeRaw
         {
@@ -8780,14 +8726,11 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => UpdationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>User-provided labels associated with the resource</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabelSet")]
         public virtual StorageDatabasecenterPartnerapiV1mainUserLabels UserLabelSet { get; set; }
 
-        /// <summary>
-        /// The resource zone. This is only applicable for zonal resources and will be empty for regional and
-        /// multi-regional resources.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
 
@@ -8795,10 +8738,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common model for database resource recommendation signal data.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Any other additional metadata specific to recommendation</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
 
@@ -8806,7 +8749,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _lastRefreshTime;
 
-        /// <summary>Required. last time recommendationw as refreshed</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
         public virtual string LastRefreshTimeRaw
         {
@@ -8841,42 +8784,27 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. Recommendation state</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationState")]
         public virtual string RecommendationState { get; set; }
 
-        /// <summary>
-        /// Required. Name of recommendation. Examples:
-        /// organizations/1234/locations/us-central1/recommenders/google.cloudsql.instance.PerformanceRecommender/recommendations/9876
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommender")]
         public virtual string Recommender { get; set; }
 
-        /// <summary>Required. ID of recommender. Examples: "google.cloudsql.instance.PerformanceRecommender"</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommenderId")]
         public virtual string RecommenderId { get; set; }
 
-        /// <summary>
-        /// Required. Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype
-        /// is a function of content and impact, meaning a new subtype might be added when significant changes to
-        /// `content` or `primary_impact.category` are introduced. See the Recommenders section to see a list of
-        /// subtypes for a given Recommender. Examples: For recommender =
-        /// "google.cloudsql.instance.PerformanceRecommender", recommender_subtype can be
-        /// "MYSQL_HIGH_NUMBER_OF_OPEN_TABLES_BEST_PRACTICE"/"POSTGRES_HIGH_TRANSACTION_ID_UTILIZATION_BEST_PRACTICE"
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommenderSubtype")]
         public virtual string RecommenderSubtype { get; set; }
 
-        /// <summary>
-        /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
-        /// format as noted here go/condor-common-datamodel
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>
-        /// Required. Type of signal, for example, `SIGNAL_TYPE_IDLE`, `SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES`, etc.
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
         public virtual string SignalType { get; set; }
 
@@ -8884,17 +8812,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet
-    /// level configurations. These will be used to send signals for all inventory types. Next ID: 10
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated: Use signal_metadata_list instead.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
 
-        /// <summary>Required. Full Resource name of the source resource.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
 
@@ -8902,7 +8827,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _lastRefreshTime;
 
-        /// <summary>Required. Last time signal was refreshed</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
         public virtual string LastRefreshTimeRaw
         {
@@ -8937,27 +8862,27 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. Resource location.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Database resource id.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
 
-        /// <summary>Deprecated: Use signal_metadata_list instead.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
         public virtual System.Nullable<bool> SignalBoolValue { get; set; }
 
-        /// <summary>This will support array of OneOf signal metadata information for a given signal type.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalMetadataList")]
         public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainSignalMetadata> SignalMetadataList { get; set; }
 
-        /// <summary>Required. Output only. Signal state of the signal</summary>
+        /// <summary>Required. Output only. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalState")]
         public virtual string SignalState { get; set; }
 
-        /// <summary>Required. Signal type of the signal</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
         public virtual string SignalType { get; set; }
 
@@ -8965,14 +8890,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Proto representing the access that a user has to a specific feature/service. NextId: 3.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainEntitlement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The current state of user's accessibility to a feature/benefit.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementState")]
         public virtual string EntitlementState { get; set; }
 
-        /// <summary>An enum that represents the type of this entitlement.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8980,10 +8905,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>GCBDR Configuration for the resource.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainGCBDRConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the resource is managed by GCBDR.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcbdrManaged")]
         public virtual System.Nullable<bool> GcbdrManaged { get; set; }
 
@@ -8991,35 +8916,30 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Metadata for individual internal resources in an instance. e.g. spanner instance can have multiple databases
-    /// with unique configuration settings. Similarly bigtable can have multiple clusters within same bigtable instance.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainInternalResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Backup configuration for this database</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupConfiguration BackupConfiguration { get; set; }
 
-        /// <summary>Information about the last backup attempt for this database</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
 
-        /// <summary>Whether deletion protection is enabled for this internal resource.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDeletionProtectionEnabled")]
         public virtual System.Nullable<bool> IsDeletionProtectionEnabled { get; set; }
 
-        /// <summary>The product this resource represents.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual StorageDatabasecenterProtoCommonProduct Product { get; set; }
 
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
 
-        /// <summary>
-        /// Required. internal resource name for spanner this will be database name
-        /// e.g."spanner.googleapis.com/projects/123/abc/instances/inst1/databases/db1"
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
@@ -9027,20 +8947,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Used to send IP address information for a database resource.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainIpAddress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The private IP address assigned to the resource within a Virtual Private Cloud (VPC). This IP is only
-        /// reachable from within the same VPC network. Stored in standard string format (e.g., "10.0.0.2").
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIp")]
         public virtual string PrivateIp { get; set; }
 
-        /// <summary>
-        /// The public IP address assigned to the resource. This IP is reachable from the internet. Stored in standard
-        /// string format (e.g., "34.72.1.1").
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIp")]
         public virtual string PublicIp { get; set; }
 
@@ -9048,37 +8962,30 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MachineConfiguration describes the configuration of a machine specific to Database Resource.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainMachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Baseline slots for BigQuery Reservations. Baseline slots are in increments of 50.
-        /// </summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baselineSlots")]
         public virtual System.Nullable<long> BaselineSlots { get; set; }
 
-        /// <summary>
-        /// The number of CPUs. Deprecated. Use vcpu_count instead. TODO(b/342344482) add proto validations again after
-        /// bug fix.
-        /// </summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
-        /// <summary>Optional. Max slots for BigQuery Reservations. Max slots are in increments of 50.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxReservationSlots")]
         public virtual System.Nullable<long> MaxReservationSlots { get; set; }
 
-        /// <summary>Memory size in bytes. TODO(b/342344482) add proto validations again after bug fix.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
         public virtual System.Nullable<long> MemorySizeInBytes { get; set; }
 
-        /// <summary>Optional. Number of shards (if applicable).</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<int> ShardCount { get; set; }
 
-        /// <summary>
-        /// Optional. The number of vCPUs. TODO(b/342344482) add proto validations again after bug fix.
-        /// </summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
         public virtual System.Nullable<double> VcpuCount { get; set; }
 
@@ -9086,13 +8993,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainObservabilityMetricData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Type of aggregation performed on the metric.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
         public virtual string AggregationType { get; set; }
 
-        /// <summary>Required. Type of metric like CPU, Memory, etc.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricType")]
         public virtual string MetricType { get; set; }
 
@@ -9100,7 +9008,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _observationTime;
 
-        /// <summary>Required. The time the metric value was observed.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observationTime")]
         public virtual string ObservationTimeRaw
         {
@@ -9135,14 +9043,11 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
             set => ObservationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
-        /// format as noted here go/condor-common-datamodel
-        /// </summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>Required. Value of the metric type.</summary>
+        /// <summary>Required. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual StorageDatabasecenterProtoCommonTypedValue Value { get; set; }
 
@@ -9150,17 +9055,18 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An error that occurred during a backup creation operation.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainOperationError : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies the specific error that occurred. REQUIRED</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
         public virtual string ErrorType { get; set; }
 
-        /// <summary>Additional information about the error encountered. REQUIRED</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
@@ -9168,14 +9074,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message type for storing resource flags.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainResourceFlags : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Key of the resource flag.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>Optional. Value of the resource flag.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -9183,21 +9089,18 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Deny maintenance period for the database resource. It specifies the time range during which the maintenance
-    /// cannot start. This is configured by the customer.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Deny period end date.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual GoogleTypeDate EndDate { get; set; }
 
-        /// <summary>Optional. The start date of the deny maintenance period.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual GoogleTypeDate StartDate { get; set; }
 
-        /// <summary>Optional. Time in UTC when the deny period starts on start_date and ends on end_date.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual GoogleTypeTimeOfDay Time { get; set; }
 
@@ -9205,46 +9108,38 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MaintenanceInfo to capture the maintenance details of database resource.</summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The date when the current maintenance version was released.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersionReleaseDate")]
         public virtual GoogleTypeDate CurrentVersionReleaseDate { get; set; }
 
-        /// <summary>Optional. List of Deny maintenance period for the database resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenanceSchedules")]
         public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainResourceMaintenanceDenySchedule> DenyMaintenanceSchedules { get; set; }
 
-        /// <summary>
-        /// Optional. Whether the instance is in stopped state. This information is temporarily being captured in
-        /// maintenanceInfo, till STOPPED state is supported by DB Center.
-        /// </summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInstanceStopped")]
         public virtual System.Nullable<bool> IsInstanceStopped { get; set; }
 
-        /// <summary>Optional. Maintenance window for the database resource.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule MaintenanceSchedule { get; set; }
 
-        /// <summary>Output only. Current state of maintenance on the database resource.</summary>
+        /// <summary>Output only. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceState")]
         public virtual string MaintenanceState { get; set; }
 
-        /// <summary>
-        /// Optional. Current Maintenance version of the database resource. Example: "MYSQL_8_0_41.R20250531.01_15"
-        /// </summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceVersion")]
         public virtual string MaintenanceVersion { get; set; }
 
-        /// <summary>Optional. List of next available maintenance versions.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextAvailableMaintenanceVersions")]
         public virtual System.Collections.Generic.IList<string> NextAvailableMaintenanceVersions { get; set; }
 
-        /// <summary>
-        /// Optional. Upcoming maintenance for the database resource. This field is populated once SLM generates and
-        /// publishes upcoming maintenance window.
-        /// </summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upcomingMaintenance")]
         public virtual StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance UpcomingMaintenance { get; set; }
 
@@ -9252,26 +9147,18 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Maintenance window for the database resource. It specifies preferred time and day of the week and phase in some
-    /// cases, when the maintenance can start. This is configured by the customer.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainResourceMaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual string Day { get; set; }
 
-        /// <summary>
-        /// Optional. Phase of the maintenance window. This is to capture order of maintenance. For example, for Cloud
-        /// SQL resources, this can be used to capture if the maintenance window is in Week1, Week2, Week5, etc. Non
-        /// production resources are usually part of early phase. For more details, refer to Cloud SQL resources -
-        /// https://cloud.google.com/sql/docs/mysql/maintenance
-        /// </summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase")]
         public virtual string Phase { get; set; }
 
-        /// <summary>Optional. Preferred time to start the maintenance operation on the specified day.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual GoogleTypeTimeOfDay Time { get; set; }
 
@@ -9279,21 +9166,22 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainRetentionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Duration based retention period i.e. 172800 seconds (2 days)</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("durationBasedRetention")]
         public virtual object DurationBasedRetention { get; set; }
 
-        /// <summary>Quantity based retention period i.e. 7 backups</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantityBasedRetention")]
         public virtual System.Nullable<int> QuantityBasedRetention { get; set; }
 
-        /// <summary>The unit that 'retained_backups' represents.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionUnit")]
         public virtual string RetentionUnit { get; set; }
 
-        /// <summary>Duration based retention period i.e. 172800 seconds (2 days)</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
         public virtual object TimeBasedRetention { get; set; }
 
@@ -9301,7 +9189,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _timestampBasedRetentionTime;
 
-        /// <summary>Timestamp based retention period i.e. 2024-05-01T00:00:00Z</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampBasedRetentionTime")]
         public virtual string TimestampBasedRetentionTimeRaw
         {
@@ -9340,17 +9228,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// SignalMetadata contains one of the signal metadata proto messages associated with a SignalType. This proto will
-    /// be mapped to SignalMetadata message in storage.proto. Next ID: 3
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainSignalMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Signal data for backup runs.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
         public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
 
-        /// <summary>Signal data for boolean signals.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signalBoolValue")]
         public virtual System.Nullable<bool> SignalBoolValue { get; set; }
 
@@ -9358,13 +9243,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Message type for storing tags. Tags provide a way to create annotations for resources, and in some cases
-    /// conditionally allow or deny policies based on whether a resource has a specific tag.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainTags : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Tag key/value mappings.</summary>
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
@@ -9372,17 +9254,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Upcoming maintenance for the database resource. This is generated by SLM once the upcoming maintenance schedule
-    /// is published.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainUpcomingMaintenance : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _endTimeRaw;
 
         private object _endTime;
 
-        /// <summary>Optional. The end time of the upcoming maintenance.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -9419,7 +9298,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         private object _startTime;
 
-        /// <summary>Optional. The start time of the upcoming maintenance.</summary>
+        /// <summary>Optional. Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
@@ -9456,12 +9335,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Message type for storing user labels. User labels are used to tag App Engine resources, allowing users to search
-    /// for resources matching a set of labels and to aggregate usage data by labels.
-    /// </summary>
+    /// <summary>Disable validation warnings</summary>
     public class StorageDatabasecenterPartnerapiV1mainUserLabels : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Disable validation warnings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -9532,6 +9409,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
         public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; }
+
+        /// <summary>Output only. Whether the allowed values are case agnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseAgnostic")]
+        public virtual System.Nullable<bool> CaseAgnostic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
