@@ -2400,6 +2400,83 @@ namespace Google.Apis.BigtableAdmin.v2
                         });
                     }
                 }
+
+                /// <summary>
+                /// Updates the memory layer of a cluster. To enable the memory layer, set the memory_config. To disable
+                /// the memory layer, unset the memory_config.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Name of the memory layer. This is always:
+                /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
+                /// </param>
+                public virtual UpdateMemoryLayerRequest UpdateMemoryLayer(Google.Apis.BigtableAdmin.v2.Data.MemoryLayer body, string name)
+                {
+                    return new UpdateMemoryLayerRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the memory layer of a cluster. To enable the memory layer, set the memory_config. To disable
+                /// the memory layer, unset the memory_config.
+                /// </summary>
+                public class UpdateMemoryLayerRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateMemoryLayer request.</summary>
+                    public UpdateMemoryLayerRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.MemoryLayer body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Name of the memory layer. This is always:
+                    /// "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.MemoryLayer Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateMemoryLayer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes UpdateMemoryLayer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+/memoryLayer$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the LogicalViews resource.</summary>
@@ -7450,6 +7527,14 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicalDataBytes")]
         public virtual System.Nullable<long> LogicalDataBytes { get; set; }
+
+        /// <summary>Output only. The logical data bytes of the column family stored on HDD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalDataHddBytes")]
+        public virtual System.Nullable<long> LogicalDataHddBytes { get; set; }
+
+        /// <summary>Output only. The logical data bytes of the column family stored on SSD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalDataSsdBytes")]
+        public virtual System.Nullable<long> LogicalDataSsdBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
