@@ -96,6 +96,10 @@
     "1",
     "2"
   ],
+  "Google.Apis.Gmail.v1.UsersResource+SettingsResource+CseResource+KeypairsResource+CreateRequest.ChainValidationEnum": [
+    "all",
+    "none"
+  ],
   "Google.Apis.Gmail.v1.UsersResource+ThreadsResource+GetRequest.FormatEnum": [
     "full",
     "metadata",

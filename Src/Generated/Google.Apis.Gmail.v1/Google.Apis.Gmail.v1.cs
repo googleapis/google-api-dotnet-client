@@ -4114,6 +4114,38 @@ namespace Google.Apis.Gmail.v1
                         [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string UserId { get; private set; }
 
+                        /// <summary>
+                        /// The type of certificate chain validation to perform at creation. The request will be
+                        /// rejected if the uploaded chain fails to satisfy the requested validation checks. When
+                        /// unspecified, this parameter defaults to `all`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("chainValidation", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ChainValidationEnum> ChainValidation { get; set; }
+
+                        /// <summary>
+                        /// The type of certificate chain validation to perform at creation. The request will be
+                        /// rejected if the uploaded chain fails to satisfy the requested validation checks. When
+                        /// unspecified, this parameter defaults to `all`.
+                        /// </summary>
+                        public enum ChainValidationEnum
+                        {
+                            /// <summary>
+                            /// Enable all certificate chain validation and certificate revocation checks. Recommended
+                            /// for normal use.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("all")]
+                            All = 0,
+
+                            /// <summary>
+                            /// Disable all certificate chain validation and certificate revocation checks. This may be
+                            /// useful when deliberately creating key pairs with invalid, out-of-use certificate chains
+                            /// to be used only for decryption of historical S/MIME messages. Key pairs created with
+                            /// invalid or revoked certificates cannot be used in a CseIdentity object.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("none")]
+                            None = 1,
+                        }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Gmail.v1.Data.CseKeyPair Body { get; set; }
 
@@ -4139,6 +4171,14 @@ namespace Google.Apis.Gmail.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = "me",
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("chainValidation", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "chainValidation",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = "all",
                                 Pattern = null,
                             });
                         }
