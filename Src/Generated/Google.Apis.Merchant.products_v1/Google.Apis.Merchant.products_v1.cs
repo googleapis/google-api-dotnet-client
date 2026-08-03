@@ -1344,6 +1344,25 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The lease term of the property.</summary>
+    public class LeaseTerm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The duration unit of the lease term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationUnit")]
+        public virtual string DurationUnit { get; set; }
+
+        /// <summary>The duration value of the lease term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationValue")]
+        public virtual System.Nullable<long> DurationValue { get; set; }
+
+        /// <summary>The type of lease term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the ListProducts method.</summary>
     public class ListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2076,6 +2095,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
         public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>The lease term of the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leaseTerm")]
+        public virtual LeaseTerm LeaseTerm { get; set; }
 
         /// <summary>
         /// Additional URLs of lifestyle images of the item, used to explicitly identify images that showcase your item
