@@ -4456,8 +4456,8 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string PrimaryContact { get; set; }
 
         /// <summary>
-        /// Optional. Will be deprecated. Email or URL of the primary point of contact of the QueryTemplate. Max Length:
-        /// 1000 bytes.
+        /// Optional. Deprecated: Use `primary_contact` instead. Email or URL of the primary point of contact of the
+        /// QueryTemplate. Max Length: 1000 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proposer")]
         public virtual string Proposer { get; set; }
