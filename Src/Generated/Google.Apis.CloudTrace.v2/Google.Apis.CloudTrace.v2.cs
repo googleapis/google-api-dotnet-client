@@ -323,7 +323,7 @@ namespace Google.Apis.CloudTrace.v2
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The resource name of the span in the following format: *
+                /// Identifier. The resource name of the span in the following format: *
                 /// `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a
                 /// trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not
                 /// be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character
@@ -348,7 +348,7 @@ namespace Google.Apis.CloudTrace.v2
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the span in the following format: *
+                    /// Identifier. The resource name of the span in the following format: *
                     /// `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier
                     /// for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It
                     /// should not be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a
@@ -458,12 +458,14 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// <summary>Text annotation with a set of attributes.</summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of attributes on the annotation. You can have up to 4 attributes per Annotation.</summary>
+        /// <summary>
+        /// Optional. A set of attributes on the annotation. You can have up to 4 attributes per Annotation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
 
         /// <summary>
-        /// A user-supplied message describing the event. The maximum length for the description is 256 bytes.
+        /// Optional. A user-supplied message describing the event. The maximum length for the description is 256 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual TruncatableString Description { get; set; }
@@ -475,15 +477,15 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// <summary>The allowed types for `[VALUE]` in a `[KEY]:[VALUE]` attribute.</summary>
     public class AttributeValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A Boolean value represented by `true` or `false`.</summary>
+        /// <summary>Optional. A Boolean value represented by `true` or `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
         public virtual System.Nullable<bool> BoolValue { get; set; }
 
-        /// <summary>A 64-bit signed integer.</summary>
+        /// <summary>Optional. A 64-bit signed integer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
         public virtual System.Nullable<long> IntValue { get; set; }
 
-        /// <summary>A string up to 256 bytes long.</summary>
+        /// <summary>Optional. A string up to 256 bytes long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual TruncatableString StringValue { get; set; }
 
@@ -495,17 +497,17 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256
-        /// bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example: "/instance_id": {
-        /// "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
+        /// Optional. A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string
+        /// up to 256 bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example:
+        /// "/instance_id": { "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
         /// "example.com/myattribute": { "bool_value": false }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
         public virtual System.Collections.Generic.IDictionary<string, AttributeValue> AttributeMap { get; set; }
 
         /// <summary>
-        /// The number of attributes that were discarded. Attributes can be discarded because their keys are too long or
-        /// because there are too many attributes. If this value is 0 then all attributes are valid.
+        /// Optional. The number of attributes that were discarded. Attributes can be discarded because their keys are
+        /// too long or because there are too many attributes. If this value is 0 then all attributes are valid.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedAttributesCount")]
         public virtual System.Nullable<int> DroppedAttributesCount { get; set; }
@@ -546,19 +548,19 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// </summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of attributes on the link. Up to 32 attributes can be specified per link.</summary>
+        /// <summary>Optional. A set of attributes on the link. Up to 32 attributes can be specified per link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
 
-        /// <summary>The `[SPAN_ID]` for a span within a trace.</summary>
+        /// <summary>Optional. The `[SPAN_ID]` for a span within a trace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; }
 
-        /// <summary>The `[TRACE_ID]` for a trace within a project.</summary>
+        /// <summary>Optional. The `[TRACE_ID]` for a trace within a project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
         public virtual string TraceId { get; set; }
 
-        /// <summary>The relationship of the current span relative to the linked span.</summary>
+        /// <summary>Optional. The relationship of the current span relative to the linked span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -572,13 +574,13 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class Links : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of dropped links after the maximum size was enforced. If this value is 0, then no links were
-        /// dropped.
+        /// Optional. The number of dropped links after the maximum size was enforced. If this value is 0, then no links
+        /// were dropped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedLinksCount")]
         public virtual System.Nullable<int> DroppedLinksCount { get; set; }
 
-        /// <summary>A collection of links.</summary>
+        /// <summary>Optional. A collection of links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual System.Collections.Generic.IList<Link> Link { get; set; }
 
@@ -590,23 +592,24 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class MessageEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of compressed bytes sent or received. If missing, the compressed size is assumed to be the same
-        /// size as the uncompressed size.
+        /// Optional. The number of compressed bytes sent or received. If missing, the compressed size is assumed to be
+        /// the same size as the uncompressed size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compressedSizeBytes")]
         public virtual System.Nullable<long> CompressedSizeBytes { get; set; }
 
         /// <summary>
-        /// An identifier for the MessageEvent's message that can be used to match `SENT` and `RECEIVED` MessageEvents.
+        /// Optional. An identifier for the MessageEvent's message that can be used to match `SENT` and `RECEIVED`
+        /// MessageEvents.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
 
-        /// <summary>Type of MessageEvent. Indicates whether the message was sent or received.</summary>
+        /// <summary>Optional. Type of MessageEvent. Indicates whether the message was sent or received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>The number of uncompressed bytes sent or received.</summary>
+        /// <summary>Optional. The number of uncompressed bytes sent or received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uncompressedSizeBytes")]
         public virtual System.Nullable<long> UncompressedSizeBytes { get; set; }
 
@@ -617,13 +620,15 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// <summary>Binary module.</summary>
     public class Module : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A unique identifier for the module, usually a hash of its contents (up to 128 bytes).</summary>
+        /// <summary>
+        /// Optional. A unique identifier for the module, usually a hash of its contents (up to 128 bytes).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
         public virtual TruncatableString BuildId { get; set; }
 
         /// <summary>
-        /// For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up to 256
-        /// bytes).
+        /// Optional. For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up
+        /// to 256 bytes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("module")]
         public virtual TruncatableString ModuleValue { get; set; }
@@ -640,7 +645,7 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// </summary>
     public class Span : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of attributes on the span. You can have up to 32 attributes per span.</summary>
+        /// <summary>Optional. A set of attributes on the span. You can have up to 32 attributes per span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
 
@@ -700,12 +705,12 @@ namespace Google.Apis.CloudTrace.v2.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Links associated with the span. You can have up to 128 links per Span.</summary>
+        /// <summary>Optional. Links associated with the span. You can have up to 128 links per Span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual Links Links { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the span in the following format: *
+        /// Identifier. The resource name of the span in the following format: *
         /// `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a trace
         /// within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not be zero.
         /// `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of
@@ -715,7 +720,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The `[SPAN_ID]` of this span's parent span. If this is a root span, then this field must be empty.
+        /// Optional. The `[SPAN_ID]` of this span's parent span. If this is a root span, then this field must be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
         public virtual string ParentSpanId { get; set; }
@@ -738,7 +743,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spanKind")]
         public virtual string SpanKind { get; set; }
 
-        /// <summary>Stack trace captured at the start of the span.</summary>
+        /// <summary>Optional. Stack trace captured at the start of the span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
         public virtual StackTrace StackTrace { get; set; }
 
@@ -787,7 +792,9 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; }
 
-        /// <summary>A set of time events. You can have up to 32 annotations and 128 message events per span.</summary>
+        /// <summary>
+        /// Optional. A set of time events. You can have up to 32 annotations and 128 message events per span.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeEvents")]
         public virtual TimeEvents TimeEvents { get; set; }
 
@@ -799,40 +806,40 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class StackFrame : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The column number where the function call appears, if available. This is important in JavaScript because of
-        /// its anonymous functions.
+        /// Optional. The column number where the function call appears, if available. This is important in JavaScript
+        /// because of its anonymous functions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnNumber")]
         public virtual System.Nullable<long> ColumnNumber { get; set; }
 
-        /// <summary>The name of the source file where the function call appears (up to 256 bytes).</summary>
+        /// <summary>Optional. The name of the source file where the function call appears (up to 256 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual TruncatableString FileName { get; set; }
 
         /// <summary>
-        /// The fully-qualified name that uniquely identifies the function or method that is active in this frame (up to
-        /// 1024 bytes).
+        /// Optional. The fully-qualified name that uniquely identifies the function or method that is active in this
+        /// frame (up to 1024 bytes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
         public virtual TruncatableString FunctionName { get; set; }
 
-        /// <summary>The line number in `file_name` where the function call appears.</summary>
+        /// <summary>Optional. The line number in `file_name` where the function call appears.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
         public virtual System.Nullable<long> LineNumber { get; set; }
 
-        /// <summary>The binary module from where the code was loaded.</summary>
+        /// <summary>Optional. The binary module from where the code was loaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadModule")]
         public virtual Module LoadModule { get; set; }
 
         /// <summary>
-        /// An un-mangled function name, if `function_name` is mangled. To get information about name mangling, run
-        /// [this search](https://www.google.com/search?q=cxx+name+mangling). The name can be fully-qualified (up to
-        /// 1024 bytes).
+        /// Optional. An un-mangled function name, if `function_name` is mangled. To get information about name
+        /// mangling, run [this search](https://www.google.com/search?q=cxx+name+mangling). The name can be
+        /// fully-qualified (up to 1024 bytes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFunctionName")]
         public virtual TruncatableString OriginalFunctionName { get; set; }
 
-        /// <summary>The version of the deployed source code (up to 128 bytes).</summary>
+        /// <summary>Optional. The version of the deployed source code (up to 128 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
         public virtual TruncatableString SourceVersion { get; set; }
 
@@ -844,13 +851,13 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class StackFrames : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of stack frames that were dropped because there were too many stack frames. If this value is 0,
-        /// then no stack frames were dropped.
+        /// Optional. The number of stack frames that were dropped because there were too many stack frames. If this
+        /// value is 0, then no stack frames were dropped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedFramesCount")]
         public virtual System.Nullable<int> DroppedFramesCount { get; set; }
 
-        /// <summary>Stack frames in this call stack.</summary>
+        /// <summary>Optional. Stack frames in this call stack.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frame")]
         public virtual System.Collections.Generic.IList<StackFrame> Frame { get; set; }
 
@@ -861,15 +868,15 @@ namespace Google.Apis.CloudTrace.v2.Data
     /// <summary>A call stack appearing in a trace.</summary>
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Stack frames in this stack trace. A maximum of 128 frames are allowed.</summary>
+        /// <summary>Optional. Stack frames in this stack trace. A maximum of 128 frames are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual StackFrames StackFrames { get; set; }
 
         /// <summary>
-        /// The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace. Often
-        /// multiple spans will have identical stack traces. The first occurrence of a stack trace should contain both
-        /// the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request can
-        /// refer to that stack trace by only setting `stackTraceHashId`.
+        /// Optional. The hash ID is used to conserve network bandwidth for duplicate stack traces within a single
+        /// trace. Often multiple spans will have identical stack traces. The first occurrence of a stack trace should
+        /// contain both the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same
+        /// request can refer to that stack trace by only setting `stackTraceHashId`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTraceHashId")]
         public virtual System.Nullable<long> StackTraceHashId { get; set; }
@@ -922,7 +929,7 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         private object _time;
 
-        /// <summary>The timestamp indicating the time the event occurred.</summary>
+        /// <summary>Optional. The timestamp indicating the time the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual string TimeRaw
         {
@@ -966,20 +973,20 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class TimeEvents : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of dropped annotations in all the included time events. If the value is 0, then no annotations
-        /// were dropped.
+        /// Optional. The number of dropped annotations in all the included time events. If the value is 0, then no
+        /// annotations were dropped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedAnnotationsCount")]
         public virtual System.Nullable<int> DroppedAnnotationsCount { get; set; }
 
         /// <summary>
-        /// The number of dropped message events in all the included time events. If the value is 0, then no message
-        /// events were dropped.
+        /// Optional. The number of dropped message events in all the included time events. If the value is 0, then no
+        /// message events were dropped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedMessageEventsCount")]
         public virtual System.Nullable<int> DroppedMessageEventsCount { get; set; }
 
-        /// <summary>A collection of `TimeEvent`s.</summary>
+        /// <summary>Optional. A collection of `TimeEvent`s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeEvent")]
         public virtual System.Collections.Generic.IList<TimeEvent> TimeEvent { get; set; }
 
@@ -991,16 +998,17 @@ namespace Google.Apis.CloudTrace.v2.Data
     public class TruncatableString : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of bytes removed from the original string. If this value is 0, then the string was not shortened.
+        /// Optional. The number of bytes removed from the original string. If this value is 0, then the string was not
+        /// shortened.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truncatedByteCount")]
         public virtual System.Nullable<int> TruncatedByteCount { get; set; }
 
         /// <summary>
-        /// The shortened string. For example, if the original string is 500 bytes long and the limit of the string is
-        /// 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always happens on a
-        /// UTF8 character boundary. If there are multi-byte characters in the string, then the length of the shortened
-        /// string might be less than the size limit.
+        /// Optional. The shortened string. For example, if the original string is 500 bytes long and the limit of the
+        /// string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always
+        /// happens on a UTF8 character boundary. If there are multi-byte characters in the string, then the length of
+        /// the shortened string might be less than the size limit.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
