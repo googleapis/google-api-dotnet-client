@@ -442,8 +442,8 @@ namespace Google.Apis.CloudTrace.v1
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Token identifying the page of results to return. If provided, use the value of the `next_page_token`
-                /// field from a previous request.
+                /// Optional. Token identifying the page of results to return. If provided, use the value of the
+                /// `next_page_token` field from a previous request.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -689,7 +689,7 @@ namespace Google.Apis.CloudTrace.v1.Data
     /// </summary>
     public class Trace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Project ID of the Cloud project where the trace data is stored.</summary>
+        /// <summary>Required. Project ID of the Cloud project where the trace data is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -698,8 +698,8 @@ namespace Google.Apis.CloudTrace.v1.Data
         public virtual System.Collections.Generic.IList<TraceSpan> Spans { get; set; }
 
         /// <summary>
-        /// Globally unique identifier for the trace. This identifier is a 128-bit numeric value formatted as a 32-byte
-        /// hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be zero.
+        /// Required. Globally unique identifier for the trace. This identifier is a 128-bit numeric value formatted as
+        /// a 32-byte hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be zero.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
         public virtual string TraceId { get; set; }
@@ -719,7 +719,7 @@ namespace Google.Apis.CloudTrace.v1.Data
 
         private object _endTime;
 
-        /// <summary>End time of the span in seconds and nanoseconds from the UNIX epoch.</summary>
+        /// <summary>Required. End time of the span in seconds and nanoseconds from the UNIX epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -753,25 +753,26 @@ namespace Google.Apis.CloudTrace.v1.Data
         }
 
         /// <summary>
-        /// Distinguishes between spans generated in a particular context. For example, two spans with the same name may
-        /// be distinguished using `RPC_CLIENT` and `RPC_SERVER` to identify queueing latency associated with the span.
+        /// Optional. Distinguishes between spans generated in a particular context. For example, two spans with the
+        /// same name may be distinguished using `RPC_CLIENT` and `RPC_SERVER` to identify queueing latency associated
+        /// with the span.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Collection of labels associated with the span. Label keys must be less than 128 bytes. Label values must be
-        /// less than 16 KiB. Some keys might have predefined meaning, and you can also create your own. For more
-        /// information, see [Cloud Trace labels](https://cloud.google.com/trace/docs/trace-labels).
+        /// Optional. Collection of labels associated with the span. Label keys must be less than 128 bytes. Label
+        /// values must be less than 16 KiB. Some keys might have predefined meaning, and you can also create your own.
+        /// For more information, see [Cloud Trace labels](https://cloud.google.com/trace/docs/trace-labels).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Name of the span. Must be less than 128 bytes. The span name is sanitized and displayed in the Trace tool in
-        /// the Google Cloud Platform Console. The name may be a method name or some other per-call site name. For the
-        /// same executable and the same call point, a best practice is to use a consistent name, which makes it easier
-        /// to correlate cross-trace spans.
+        /// Required. Name of the span. Must be less than 128 bytes. The span name is sanitized and displayed in the
+        /// Trace tool in the Google Cloud Platform Console. The name may be a method name or some other per-call site
+        /// name. For the same executable and the same call point, a best practice is to use a consistent name, which
+        /// makes it easier to correlate cross-trace spans.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -781,8 +782,8 @@ namespace Google.Apis.CloudTrace.v1.Data
         public virtual System.Nullable<ulong> ParentSpanId { get; set; }
 
         /// <summary>
-        /// Identifier for the span. Must be a 64-bit integer other than 0 and unique within a trace. For example,
-        /// `2205310701640571284`.
+        /// Required. Identifier for the span. Must be a 64-bit integer other than 0 and unique within a trace. For
+        /// example, `2205310701640571284`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual System.Nullable<ulong> SpanId { get; set; }
@@ -791,7 +792,7 @@ namespace Google.Apis.CloudTrace.v1.Data
 
         private object _startTime;
 
-        /// <summary>Start time of the span in seconds and nanoseconds from the UNIX epoch.</summary>
+        /// <summary>Required. Start time of the span in seconds and nanoseconds from the UNIX epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
