@@ -30,5 +30,8 @@
   "aiplatform.v1beta1",
 
   // b/475730149
-  "connectors.v2"
+  "connectors.v2",
+
+  // b/542211130
+  "aiplatform.v1"
 ]
