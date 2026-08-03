@@ -1168,8 +1168,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v2.Data
     }
 
     /// <summary>
-    /// Data Governance tag This is a namespaced name specifying the key and the value. For example:
-    /// `project-id/pii/sensitive`.
+    /// This is a namespaced name specifying the key and the value. For example: `project-id/pii/sensitive`.
     /// </summary>
     public class DataGovernanceTag : Google.Apis.Requests.IDirectResponseSchema
     {
