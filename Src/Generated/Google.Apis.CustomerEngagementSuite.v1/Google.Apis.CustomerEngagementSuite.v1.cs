@@ -7122,6 +7122,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rootSpan")]
         public virtual Span RootSpan { get; set; }
 
+        /// <summary>
+        /// Optional. The intended ground-truth text from the Simulated Caller (Polysynth). Only populated when word
+        /// error rate metrics are enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIntendedText")]
+        public virtual string UserIntendedText { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7495,6 +7502,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rewriterConfig")]
         public virtual DataStoreToolRewriterConfig RewriterConfig { get; set; }
 
+        /// <summary>Optional. The snippets configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippetsConfig")]
+        public virtual DataStoreToolSnippetsConfig SnippetsConfig { get; set; }
+
         /// <summary>Optional. The summarization config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationConfig")]
         public virtual DataStoreToolSummarizationConfig SummarizationConfig { get; set; }
@@ -7517,6 +7528,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Optional. The prompt definition. If not set, default prompt will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
         public virtual string Prompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Snippets configuration.</summary>
+    public class DataStoreToolSnippetsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether snippets are enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSnippets")]
+        public virtual System.Nullable<bool> EnableSnippets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8848,6 +8870,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Optional. The strategy to use when resolving conflicts during import.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conflictResolutionStrategy")]
         public virtual string ConflictResolutionStrategy { get; set; }
+
+        /// <summary>
+        /// Optional. Flag for dry-running the import process. If set to true, the import process will only perform
+        /// validations and will not make any changes to the existing app or create a new one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11230,6 +11259,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entryAgent")]
         public virtual string EntryAgent { get; set; }
 
+        /// <summary>Optional. Whether to exclude diagnostic info from the session output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeDiagnosticInfo")]
+        public virtual System.Nullable<bool> ExcludeDiagnosticInfo { get; set; }
+
         /// <summary>
         /// Optional. The historical context of the session, including user inputs, agent responses, and other messages.
         /// Typically, CES agent would manage session automatically so client doesn't need to explicitly populate this
@@ -11568,7 +11601,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Configuration for how the agent response should be synthesized.</summary>
     public class SynthesizeSpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Cloud Storage URI to the consent audio for voice cloning.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead. The Cloud Storage URI to
+        /// the consent audio for voice cloning.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentAudioGcsUri")]
         public virtual string ConsentAudioGcsUri { get; set; }
 
@@ -11600,10 +11636,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string Voice { get; set; }
 
         /// <summary>
-        /// Optional. The Cloud Storage URI to the audio sample for voice cloning. The audio sample should be a
-        /// mono-channel, 24kHz WAV file. Note: Please make sure the CES service agent
-        /// `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get` permission to the Cloud Storage
-        /// object.
+        /// Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead. The Cloud Storage URI to
+        /// the audio sample for voice cloning. The audio sample should be a mono-channel, 24kHz WAV file. Note: Please
+        /// make sure the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get`
+        /// permission to the Cloud Storage object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceSampleGcsUri")]
         public virtual string VoiceSampleGcsUri { get; set; }
