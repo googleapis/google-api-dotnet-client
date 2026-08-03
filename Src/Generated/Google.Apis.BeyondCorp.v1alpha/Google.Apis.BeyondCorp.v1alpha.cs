@@ -11266,6 +11266,13 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("seatCount")]
         public virtual System.Nullable<long> SeatCount { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. The source from which the subscription was initiated, for example
+        /// "admin-console-browser-overview" or "admin-console-security-insights".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signupSource")]
+        public virtual string SignupSource { get; set; }
+
         /// <summary>Required. SKU of subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sku")]
         public virtual string Sku { get; set; }
@@ -11590,6 +11597,10 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo DeviceInfo { get; set; }
 
+        /// <summary>Optional. The dispatch information configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dispatchInfo")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo DispatchInfo { get; set; }
+
         /// <summary>Optional. Group details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupInfo")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo GroupInfo { get; set; }
@@ -11610,6 +11621,17 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The output type details for the delegated device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
+        public virtual string OutputType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The delegated dispatch information configuration.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The output type details for the delegated dispatch information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
         public virtual string OutputType { get; set; }
 
