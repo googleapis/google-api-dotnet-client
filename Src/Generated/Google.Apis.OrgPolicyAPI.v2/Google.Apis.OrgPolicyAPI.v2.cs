@@ -67,6 +67,17 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Organization Policy data and see the email address
+            /// for your Google Account
+            /// </summary>
+            public static string Organizationpolicy = "https://www.googleapis.com/auth/organizationpolicy";
+
+            /// <summary>
+            /// See your Google Cloud Organization Policy data and the email address of your Google Account
+            /// </summary>
+            public static string OrganizationpolicyReadonly = "https://www.googleapis.com/auth/organizationpolicy.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Organization Policy API.</summary>
@@ -77,6 +88,17 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Organization Policy data and see the email address
+            /// for your Google Account
+            /// </summary>
+            public const string Organizationpolicy = "https://www.googleapis.com/auth/organizationpolicy";
+
+            /// <summary>
+            /// See your Google Cloud Organization Policy data and the email address of your Google Account
+            /// </summary>
+            public const string OrganizationpolicyReadonly = "https://www.googleapis.com/auth/organizationpolicy.readonly";
         }
 
         /// <summary>Gets the Folders resource.</summary>
