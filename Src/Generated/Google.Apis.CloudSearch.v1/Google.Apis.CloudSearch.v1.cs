@@ -2444,6 +2444,13 @@ namespace Google.Apis.CloudSearch.v1
                 public virtual string RequestOptionsClientDisplayLanguageCode { get; set; }
 
                 /// <summary>
+                /// Optional. Specifies the country/region where the query originated, as a lowercase ISO 3166-1 alpha-2
+                /// region code (using 'uk' instead of 'gb' for the United Kingdom).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestOptions.countryCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestOptionsCountryCode { get; set; }
+
+                /// <summary>
                 /// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.debugOptions.enableDebugging", Google.Apis.Util.RequestParameterType.Query)]
@@ -2502,6 +2509,14 @@ namespace Google.Apis.CloudSearch.v1
                     RequestParameters.Add("requestOptions.clientDisplayLanguageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestOptions.clientDisplayLanguageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("requestOptions.countryCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestOptions.countryCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -9360,6 +9375,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientDisplayLanguageCode")]
         public virtual string ClientDisplayLanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the country/region where the query originated, as a lowercase ISO 3166-1 alpha-2 region
+        /// code (using 'uk' instead of 'gb' for the United Kingdom).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
 
         /// <summary>Debug options of the request</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
