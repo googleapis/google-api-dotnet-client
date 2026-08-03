@@ -850,6 +850,33 @@ namespace Google.Apis.ApiKeysService.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. Defines the behavior for checking existing usage when updating a key.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("checkExistingUsage", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<CheckExistingUsageEnum> CheckExistingUsage { get; set; }
+
+                    /// <summary>
+                    /// Optional. Defines the behavior for checking existing usage when updating a key.
+                    /// </summary>
+                    public enum CheckExistingUsageEnum
+                    {
+                        /// <summary>When unset, the default behavior is used, which is SKIP.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CHECK_EXISTING_USAGE_UNSPECIFIED")]
+                        CHECKEXISTINGUSAGEUNSPECIFIED = 0,
+
+                        /// <summary>If set, skip checking existing usage when updating a key.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SKIP")]
+                        SKIP = 1,
+
+                        /// <summary>
+                        /// If set, existing usage is checked when updating the key. If the key has usage in the last 7
+                        /// days, the request returns a FAILED_PRECONDITION error.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CHECK")]
+                        CHECK = 2,
+                    }
+
+                    /// <summary>
                     /// The field mask specifies which fields to be updated as part of this request. All other fields
                     /// are ignored. Mutable fields are: `display_name`, `restrictions`, and `annotations`. If an update
                     /// mask is not provided, the service treats it as an implied mask equivalent to all allowed fields
@@ -885,6 +912,14 @@ namespace Google.Apis.ApiKeysService.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/keys/[^/]+$",
+                        });
+                        RequestParameters.Add("checkExistingUsage", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "checkExistingUsage",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
