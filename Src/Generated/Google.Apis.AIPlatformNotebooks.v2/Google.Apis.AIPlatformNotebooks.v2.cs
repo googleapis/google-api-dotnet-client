@@ -1011,7 +1011,10 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                     /// `gce_setup.reservation_affinity` * `gce_setup.reservation_affinity.consume_reservation_type` *
                     /// `gce_setup.reservation_affinity.key` * `gce_setup.reservation_affinity.values` *
                     /// `gce_setup.tags` * `gce_setup.container_image` * `gce_setup.container_image.repository` *
-                    /// `gce_setup.container_image.tag` * `gce_setup.disable_public_ip` * `disable_proxy_access`
+                    /// `gce_setup.container_image.tag` * `gce_setup.disable_public_ip` * `disable_proxy_access` Note:
+                    /// `gce_setup.disable_public_ip` and `disable_proxy_access` are one-way on update -- they can only
+                    /// be used to *disable* the feature (set the field to `true`). Requests that set either field back
+                    /// to `false` (re-enabling the external IP or proxy access) are rejected with `INVALID_ARGUMENT`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2211,9 +2214,9 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
     public class AccessConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An external IP address associated with this instance. Specify an unused static external IP address available
-        /// to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you
-        /// specify a static external IP address, it must live in the same region as the zone of the instance.
+        /// Optional. An external IP address associated with this instance. Specify an unused static external IP address
+        /// available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool.
+        /// If you specify a static external IP address, it must live in the same region as the zone of the instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
         public virtual string ExternalIp { get; set; }
@@ -2298,9 +2301,7 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
     /// <summary>The definition of a boot disk.</summary>
     public class BootDisk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
-        /// </summary>
+        /// <summary>Optional. Disk encryption method used on the boot and data disks, defaults to GMEK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryption")]
         public virtual string DiskEncryption { get; set; }
 
@@ -2316,9 +2317,9 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string DiskType { get; set; }
 
         /// <summary>
-        /// Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK.
-        /// Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more
-        /// about using your own encryption keys.
+        /// Optional. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format:
+        /// `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about
+        /// using your own encryption keys.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
@@ -2495,9 +2496,7 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
     /// <summary>An instance-attached disk resource.</summary>
     public class DataDisk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
-        /// </summary>
+        /// <summary>Optional. Disk encryption method used on the boot and data disks, defaults to GMEK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryption")]
         public virtual string DiskEncryption { get; set; }
 
@@ -2513,9 +2512,9 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string DiskType { get; set; }
 
         /// <summary>
-        /// Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK.
-        /// Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more
-        /// about using your own encryption keys.
+        /// Optional. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format:
+        /// `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about
+        /// using your own encryption keys.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
