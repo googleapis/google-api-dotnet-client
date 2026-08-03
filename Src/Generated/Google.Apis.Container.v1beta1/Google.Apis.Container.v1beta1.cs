@@ -13437,6 +13437,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; }
 
+        /// <summary>Output only. List of custom versions for the channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customVersions")]
+        public virtual System.Collections.Generic.IList<string> CustomVersions { get; set; }
+
         /// <summary>The default version for newly created clusters on the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVersion")]
         public virtual string DefaultVersion { get; set; }
