@@ -41,7 +41,8 @@
     "takeout",
     "graduation",
     "voice",
-    "chrome_sync"
+    "chrome_sync",
+    "workspace_studio"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",
