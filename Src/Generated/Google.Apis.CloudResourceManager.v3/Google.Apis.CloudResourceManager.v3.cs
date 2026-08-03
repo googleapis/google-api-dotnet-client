@@ -44,6 +44,7 @@ namespace Google.Apis.CloudResourceManager.v3
             TagBindings = new TagBindingsResource(this);
             TagKeys = new TagKeysResource(this);
             TagValues = new TagValuesResource(this);
+            V3 = new V3Resource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudresourcemanager.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://cloudresourcemanager.googleapis.com/batch");
         }
@@ -125,6 +126,9 @@ namespace Google.Apis.CloudResourceManager.v3
 
         /// <summary>Gets the TagValues resource.</summary>
         public virtual TagValuesResource TagValues { get; }
+
+        /// <summary>Gets the V3 resource.</summary>
+        public virtual V3Resource V3 { get; }
     }
 
     /// <summary>A base abstract class for CloudResourceManager requests.</summary>
@@ -4844,6 +4848,68 @@ namespace Google.Apis.CloudResourceManager.v3
             }
         }
     }
+
+    /// <summary>The "v3" collection of methods.</summary>
+    public class V3Resource
+    {
+        private const string Resource = "v3";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public V3Resource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Returns the semantics associated with the specified resource.</summary>
+        public virtual FetchResourceSemanticsRequest FetchResourceSemantics()
+        {
+            return new FetchResourceSemanticsRequest(this.service);
+        }
+
+        /// <summary>Returns the semantics associated with the specified resource.</summary>
+        public class FetchResourceSemanticsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.FetchResourceSemanticsResponse>
+        {
+            /// <summary>Constructs a new FetchResourceSemantics request.</summary>
+            public FetchResourceSemanticsRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The full resource name of the GCP resource to retrieve semantics for. Examples:
+            /// "//compute.googleapis.com/projects/123/zones/us-central1-a/instances/my-instance"
+            /// "//storage.googleapis.com/projects/_/buckets/my_bucket"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("fullResourceName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string FullResourceName { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "fetchResourceSemantics";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3:fetchResourceSemantics";
+
+            /// <summary>Initializes FetchResourceSemantics parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("fullResourceName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "fullResourceName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.CloudResourceManager.v3.Data
 {
@@ -5320,6 +5386,25 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchResourceSemantics.</summary>
+    public class FetchResourceSemanticsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full resource name for which semantics are returned. Examples:
+        /// "//compute.googleapis.com/projects/123/zones/us-central1-a/instances/my-instance"
+        /// "//storage.googleapis.com/projects/_/buckets/my_bucket"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; }
+
+        /// <summary>Map of resource semantics (e.g., `"ENVIRONMENT": "PRODUCTION"`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semantics")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Semantics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
