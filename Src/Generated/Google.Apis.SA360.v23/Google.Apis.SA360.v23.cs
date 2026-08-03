@@ -440,6 +440,7 @@ namespace Google.Apis.SA360.v23
             Recommendations = new RecommendationsResource(service);
             RemarketingActions = new RemarketingActionsResource(service);
             SearchAds360 = new SearchAds360Resource(service);
+            SearchAds360Campaigns = new SearchAds360CampaignsResource(service);
             SharedCriteria = new SharedCriteriaResource(service);
             SharedSets = new SharedSetsResource(service);
             SmartCampaignSettings = new SmartCampaignSettingsResource(service);
@@ -9143,6 +9144,89 @@ namespace Google.Apis.SA360.v23
             }
         }
 
+        /// <summary>Gets the SearchAds360Campaigns resource.</summary>
+        public virtual SearchAds360CampaignsResource SearchAds360Campaigns { get; }
+
+        /// <summary>The "searchAds360Campaigns" collection of methods.</summary>
+        public class SearchAds360CampaignsResource
+        {
+            private const string Resource = "searchAds360Campaigns";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SearchAds360CampaignsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Updates Search Ads 360 campaigns. Operation statuses are returned. List of thrown errors:
+            /// [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [MutateError]()
+            /// [QuotaError]() [RequestError]()
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customerId">
+            /// Required. The ID of the customer whose Search Ads 360 campaigns are being modified.
+            /// </param>
+            public virtual MutateRequest Mutate(Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest body, string customerId)
+            {
+                return new MutateRequest(this.service, body, customerId);
+            }
+
+            /// <summary>
+            /// Updates Search Ads 360 campaigns. Operation statuses are returned. List of thrown errors:
+            /// [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [MutateError]()
+            /// [QuotaError]() [RequestError]()
+            /// </summary>
+            public class MutateRequest : SA360BaseServiceRequest<Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse>
+            {
+                /// <summary>Constructs a new Mutate request.</summary>
+                public MutateRequest(Google.Apis.Services.IClientService service, Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest body, string customerId) : base(service)
+                {
+                    CustomerId = customerId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ID of the customer whose Search Ads 360 campaigns are being modified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string CustomerId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "mutate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v23/customers/{+customerId}/searchAds360Campaigns:mutate";
+
+                /// <summary>Initializes Mutate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the SharedCriteria resource.</summary>
         public virtual SharedCriteriaResource SharedCriteria { get; }
 
@@ -11045,6 +11129,187 @@ namespace Google.Apis.SA360.v23
             public override string RestPath => "v23/customers/{+customerId}:suggestTravelAssets";
 
             /// <summary>Initializes SuggestTravelAssets parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Processes the given call conversions. List of thrown errors: [AuthenticationError]() [AuthorizationError]()
+        /// [HeaderError]() [InternalError]() [PartialFailureError]() [QuotaError]() [RequestError]()
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="customerId">Required. The ID of the customer performing the upload.</param>
+        public virtual UploadCallConversionsRequest UploadCallConversions(Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest body, string customerId)
+        {
+            return new UploadCallConversionsRequest(this.service, body, customerId);
+        }
+
+        /// <summary>
+        /// Processes the given call conversions. List of thrown errors: [AuthenticationError]() [AuthorizationError]()
+        /// [HeaderError]() [InternalError]() [PartialFailureError]() [QuotaError]() [RequestError]()
+        /// </summary>
+        public class UploadCallConversionsRequest : SA360BaseServiceRequest<Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse>
+        {
+            /// <summary>Constructs a new UploadCallConversions request.</summary>
+            public UploadCallConversionsRequest(Google.Apis.Services.IClientService service, Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest body, string customerId) : base(service)
+            {
+                CustomerId = customerId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the customer performing the upload.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CustomerId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "uploadCallConversions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v23/customers/{+customerId}:uploadCallConversions";
+
+            /// <summary>Initializes UploadCallConversions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Processes the given click conversions. List of thrown errors: [AuthenticationError]() [AuthorizationError]()
+        /// [ConversionUploadError]() [HeaderError]() [InternalError]() [PartialFailureError]() [QuotaError]()
+        /// [RequestError]()
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="customerId">Required. The ID of the customer performing the upload.</param>
+        public virtual UploadClickConversionsRequest UploadClickConversions(Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest body, string customerId)
+        {
+            return new UploadClickConversionsRequest(this.service, body, customerId);
+        }
+
+        /// <summary>
+        /// Processes the given click conversions. List of thrown errors: [AuthenticationError]() [AuthorizationError]()
+        /// [ConversionUploadError]() [HeaderError]() [InternalError]() [PartialFailureError]() [QuotaError]()
+        /// [RequestError]()
+        /// </summary>
+        public class UploadClickConversionsRequest : SA360BaseServiceRequest<Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse>
+        {
+            /// <summary>Constructs a new UploadClickConversions request.</summary>
+            public UploadClickConversionsRequest(Google.Apis.Services.IClientService service, Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest body, string customerId) : base(service)
+            {
+                CustomerId = customerId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the customer performing the upload.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CustomerId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "uploadClickConversions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v23/customers/{+customerId}:uploadClickConversions";
+
+            /// <summary>Initializes UploadClickConversions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Processes the given conversion adjustments. List of thrown errors: [AuthenticationError]()
+        /// [AuthorizationError]() [HeaderError]() [InternalError]() [PartialFailureError]() [QuotaError]()
+        /// [RequestError]()
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="customerId">Required. The ID of the customer performing the upload.</param>
+        public virtual UploadConversionAdjustmentsRequest UploadConversionAdjustments(Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest body, string customerId)
+        {
+            return new UploadConversionAdjustmentsRequest(this.service, body, customerId);
+        }
+
+        /// <summary>
+        /// Processes the given conversion adjustments. List of thrown errors: [AuthenticationError]()
+        /// [AuthorizationError]() [HeaderError]() [InternalError]() [PartialFailureError]() [QuotaError]()
+        /// [RequestError]()
+        /// </summary>
+        public class UploadConversionAdjustmentsRequest : SA360BaseServiceRequest<Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse>
+        {
+            /// <summary>Constructs a new UploadConversionAdjustments request.</summary>
+            public UploadConversionAdjustmentsRequest(Google.Apis.Services.IClientService service, Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest body, string customerId) : base(service)
+            {
+                CustomerId = customerId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the customer performing the upload.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CustomerId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SA360.v23.Data.GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "uploadConversionAdjustments";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v23/customers/{+customerId}:uploadConversionAdjustments";
+
+            /// <summary>Initializes UploadConversionAdjustments parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -15177,7 +15442,7 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An expanded text ad.</summary>
+    /// <summary>An expanded text ad. Expanded text ads are deprecated.</summary>
     public class GoogleAdsSearchads360V23CommonExpandedTextAdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The description of the ad.</summary>
@@ -16948,8 +17213,8 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>
         /// The total number of conversions. This includes all conversions regardless of the value of
         /// include_in_conversions_metric. When this column is selected with date, the values in date column means the
-        /// conversion date. Details for the by_conversion_date columns are available at
-        /// https://support.google.com/sa360/answer/9250611.
+        /// conversion date. Details for the `by_conversion_date` columns are available at [About the "All conversions"
+        /// column](https://support.google.com/sa360/answer/9250611).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allConversionsByConversionDate")]
         public virtual System.Nullable<double> AllConversionsByConversionDate { get; set; }
@@ -17023,8 +17288,8 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The value of all conversions. When this column is selected with date, the values in date column means the
-        /// conversion date. Details for the by_conversion_date columns are available at
-        /// https://support.google.com/sa360/answer/9250611.
+        /// conversion date. Details for the `by_conversion_date` columns are available at [About the "All conversions"
+        /// column](https://support.google.com/sa360/answer/9250611).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allConversionsValueByConversionDate")]
         public virtual System.Nullable<double> AllConversionsValueByConversionDate { get; set; }
@@ -17055,16 +17320,16 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The total cost of all clicks divided by the total number of clicks received. This metric is a monetary value
-        /// and returned in the customer's currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// and returned in the customer's currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageCpc")]
         public virtual System.Nullable<double> AverageCpc { get; set; }
 
         /// <summary>
         /// Average cost-per-thousand impressions (CPM). This metric is a monetary value and returned in the customer's
-        /// currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageCpm")]
         public virtual System.Nullable<double> AverageCpm { get; set; }
@@ -17097,16 +17362,16 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The number of client account conversions. This only includes conversion actions which
-        /// include_in_client_account_conversions_metric attribute is set to true. If you use conversion-based bidding,
-        /// your bid strategies will optimize for these conversions.
+        /// `include_in_client_account_conversions_metric` attribute is set to `true`. If you use conversion-based
+        /// bidding, your bid strategies will optimize for these conversions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountConversions")]
         public virtual System.Nullable<double> ClientAccountConversions { get; set; }
 
         /// <summary>
         /// The value of client account conversions. This only includes conversion actions which
-        /// include_in_client_account_conversions_metric attribute is set to true. If you use conversion-based bidding,
-        /// your bid strategies will optimize for these conversions.
+        /// `include_in_client_account_conversions_metric` attribute is set to `true`. If you use conversion-based
+        /// bidding, your bid strategies will optimize for these conversions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountConversionsValue")]
         public virtual System.Nullable<double> ClientAccountConversionsValue { get; set; }
@@ -17121,8 +17386,9 @@ namespace Google.Apis.SA360.v23.Data
         /// Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The hat has a cost of goods
         /// sold value of $3, the shirt has a cost of goods sold value of $5. The cross-sell cost of goods sold for this
         /// order is $5. This metric is only available if you report conversions with cart data. This metric is a
-        /// monetary value and returned in the customer's currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// monetary value and returned in the customer's currency by default. See the `metrics_currency` parameter at
+        /// [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountCrossSellCostOfGoodsSoldMicros")]
         public virtual System.Nullable<long> ClientAccountCrossSellCostOfGoodsSoldMicros { get; set; }
@@ -17137,8 +17403,9 @@ namespace Google.Apis.SA360.v23.Data
         /// cost of the goods sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a
         /// shirt. The shirt is priced $20 and has a cost of goods sold value of $5. The cross-sell gross profit of this
         /// order is $15 = $20 - $5. This metric is only available if you report conversions with cart data. This metric
-        /// is a monetary value and returned in the customer's currency by default. See the metrics_currency parameter
-        /// at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// is a monetary value and returned in the customer's currency by default. See the `metrics_currency` parameter
+        /// at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountCrossSellGrossProfitMicros")]
         public virtual System.Nullable<long> ClientAccountCrossSellGrossProfitMicros { get; set; }
@@ -17153,8 +17420,8 @@ namespace Google.Apis.SA360.v23.Data
         /// Shopping ad for a hat then bought the same hat and a shirt. The hat is priced $10 and the shirt is priced
         /// $20. The cross-sell revenue of this order is $20. This metric is only available if you report conversions
         /// with cart data. This metric is a monetary value and returned in the customer's currency by default. See the
-        /// metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// `metrics_currency` parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountCrossSellRevenueMicros")]
         public virtual System.Nullable<long> ClientAccountCrossSellRevenueMicros { get; set; }
@@ -17181,8 +17448,9 @@ namespace Google.Apis.SA360.v23.Data
         /// of goods sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The
         /// hat has a cost of goods sold value of $3, the shirt has a cost of goods sold value of $5. The lead cost of
         /// goods sold for this order is $3. This metric is only available if you report conversions with cart data.
-        /// This metric is a monetary value and returned in the customer's currency by default. See the metrics_currency
-        /// parameter at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// This metric is a monetary value and returned in the customer's currency by default. See the
+        /// `metrics_currency` parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountLeadCostOfGoodsSoldMicros")]
         public virtual System.Nullable<long> ClientAccountLeadCostOfGoodsSoldMicros { get; set; }
@@ -17197,8 +17465,8 @@ namespace Google.Apis.SA360.v23.Data
         /// Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The hat is priced $10 and
         /// has a cost of goods sold value of $3. The lead gross profit of this order is $7 = $10 - $3. This metric is
         /// only available if you report conversions with cart data. This metric is a monetary value and returned in the
-        /// customer's currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// customer's currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountLeadGrossProfitMicros")]
         public virtual System.Nullable<long> ClientAccountLeadGrossProfitMicros { get; set; }
@@ -17212,8 +17480,9 @@ namespace Google.Apis.SA360.v23.Data
         /// these products is shown under lead revenue. Example: Someone clicked on a Shopping ad for a hat then bought
         /// the same hat and a shirt. The hat is priced $10 and the shirt is priced $20. The lead revenue of this order
         /// is $10. This metric is only available if you report conversions with cart data. This metric is a monetary
-        /// value and returned in the customer's currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// value and returned in the customer's currency by default. See the `metrics_currency` parameter at
+        /// [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountLeadRevenueMicros")]
         public virtual System.Nullable<long> ClientAccountLeadRevenueMicros { get; set; }
@@ -17277,8 +17546,8 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The sum of conversions by conversion date for biddable conversion types. Can be fractional due to
-        /// attribution modeling. When this column is selected with date, the values in date column means the conversion
-        /// date.
+        /// attribution modeling. When this column is selected with date, the values in the date column mean the
+        /// conversion date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionsByConversionDate")]
         public virtual System.Nullable<double> ConversionsByConversionDate { get; set; }
@@ -17292,8 +17561,8 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The value of conversions from interactions divided by the number of ad interactions. This only includes
-        /// conversion actions which include_in_conversions_metric attribute is set to true. If you use conversion-based
-        /// bidding, your bid strategies will optimize for these conversions.
+        /// conversion actions which `include_in_conversions_metric` attribute is set to `true`. If you use
+        /// conversion-based bidding, your bid strategies will optimize for these conversions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionsFromInteractionsValuePerInteraction")]
         public virtual System.Nullable<double> ConversionsFromInteractionsValuePerInteraction { get; set; }
@@ -17320,8 +17589,10 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The sum of your cost-per-click (CPC) and cost-per-thousand impressions (CPM) costs during this period. This
-        /// metric is a monetary value and returned in the customer's currency by default. See the metrics_currency
-        /// parameter at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// metric is a monetary value and returned in the customer's currency by default. See the `metrics_currency`
+        /// parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause) for more
+        /// details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costMicros")]
         public virtual System.Nullable<long> CostMicros { get; set; }
@@ -17348,22 +17619,22 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The cost of ad interactions divided by current model attributed conversions. This only includes conversion
-        /// actions which include_in_conversions_metric attribute is set to true. If you use conversion-based bidding,
-        /// your bid strategies will optimize for these conversions.
+        /// actions which `include_in_conversions_metric` attribute is set to `true`. If you use conversion-based
+        /// bidding, your bid strategies will optimize for these conversions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costPerCurrentModelAttributedConversion")]
         public virtual System.Nullable<double> CostPerCurrentModelAttributedConversion { get; set; }
 
         /// <summary>
         /// Conversions from when a customer clicks on an ad on one device, then converts on a different device or
-        /// browser. Cross-device conversions are already included in all_conversions.
+        /// browser. Cross-device conversions are already included in `all_conversions`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossDeviceConversions")]
         public virtual System.Nullable<double> CrossDeviceConversions { get; set; }
 
         /// <summary>
-        /// The number of cross-device conversions by conversion date. Details for the by_conversion_date columns are
-        /// available at https://support.google.com/sa360/answer/9250611.
+        /// The number of cross-device conversions by conversion date. Details for the `by_conversion_date` columns are
+        /// available at [About the "All conversions" column](https://support.google.com/sa360/answer/9250611)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossDeviceConversionsByConversionDate")]
         public virtual System.Nullable<double> CrossDeviceConversionsByConversionDate { get; set; }
@@ -17373,8 +17644,8 @@ namespace Google.Apis.SA360.v23.Data
         public virtual System.Nullable<double> CrossDeviceConversionsValue { get; set; }
 
         /// <summary>
-        /// The sum of cross-device conversions value by conversion date. Details for the by_conversion_date columns are
-        /// available at https://support.google.com/sa360/answer/9250611.
+        /// The sum of cross-device conversions value by conversion date. Details for the `by_conversion_date` columns
+        /// are available at [About the "All conversions" column](https://support.google.com/sa360/answer/9250611)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossDeviceConversionsValueByConversionDate")]
         public virtual System.Nullable<double> CrossDeviceConversionsValueByConversionDate { get; set; }
@@ -17389,8 +17660,8 @@ namespace Google.Apis.SA360.v23.Data
         /// Shopping ad for a hat then bought the same hat and a shirt. The hat has a cost of goods sold value of $3,
         /// the shirt has a cost of goods sold value of $5. The cross-sell cost of goods sold for this order is $5. This
         /// metric is only available if you report conversions with cart data. This metric is a monetary value and
-        /// returned in the customer's currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// returned in the customer's currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossSellCostOfGoodsSoldMicros")]
         public virtual System.Nullable<long> CrossSellCostOfGoodsSoldMicros { get; set; }
@@ -17405,8 +17676,9 @@ namespace Google.Apis.SA360.v23.Data
         /// sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The shirt is
         /// priced $20 and has a cost of goods sold value of $5. The cross-sell gross profit of this order is $15 = $20
         /// - $5. This metric is only available if you report conversions with cart data. This metric is a monetary
-        /// value and returned in the customer's currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// value and returned in the customer's currency by default. See the `metrics_currency` parameter at
+        /// [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossSellGrossProfitMicros")]
         public virtual System.Nullable<long> CrossSellGrossProfitMicros { get; set; }
@@ -17420,8 +17692,9 @@ namespace Google.Apis.SA360.v23.Data
         /// total value you made from cross-sell attributed to your ads. Example: Someone clicked on a Shopping ad for a
         /// hat then bought the same hat and a shirt. The hat is priced $10 and the shirt is priced $20. The cross-sell
         /// revenue of this order is $20. This metric is only available if you report conversions with cart data. This
-        /// metric is a monetary value and returned in the customer's currency by default. See the metrics_currency
-        /// parameter at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// metric is a monetary value and returned in the customer's currency by default. See the `metrics_currency`
+        /// parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossSellRevenueMicros")]
         public virtual System.Nullable<long> CrossSellRevenueMicros { get; set; }
@@ -17451,7 +17724,8 @@ namespace Google.Apis.SA360.v23.Data
         /// clicks) due to being general invalid clicks. These are clicks Google considers illegitimate that are
         /// detected through routine means of filtration (that is, known invalid data-center traffic, bots and spiders
         /// or other crawlers, irregular patterns, etc). You're not charged for them, and they don't affect your account
-        /// statistics. See the help page at https://support.google.com/campaignmanager/answer/6076504 for details.
+        /// statistics. See [Filtering invalid traffic to ensure
+        /// quality](https://support.google.com/campaignmanager/answer/6076504).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generalInvalidClickRate")]
         public virtual System.Nullable<double> GeneralInvalidClickRate { get; set; }
@@ -17460,7 +17734,7 @@ namespace Google.Apis.SA360.v23.Data
         /// Number of general invalid clicks. These are a subset of your invalid clicks that are detected through
         /// routine means of filtration (such as known invalid data-center traffic, bots and spiders or other crawlers,
         /// irregular patterns, etc.). You're not charged for them, and they don't affect your account statistics. See
-        /// the help page at https://support.google.com/campaignmanager/answer/6076504 for details.
+        /// [Filtering invalid traffic to ensure quality](https://support.google.com/campaignmanager/answer/6076504).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generalInvalidClicks")]
         public virtual System.Nullable<long> GeneralInvalidClicks { get; set; }
@@ -17552,8 +17826,9 @@ namespace Google.Apis.SA360.v23.Data
         /// Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The hat has a cost
         /// of goods sold value of $3, the shirt has a cost of goods sold value of $5. The lead cost of goods sold for
         /// this order is $3. This metric is only available if you report conversions with cart data. This metric is a
-        /// monetary value and returned in the customer's currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// monetary value and returned in the customer's currency by default. See the `metrics_currency` parameter at
+        /// [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leadCostOfGoodsSoldMicros")]
         public virtual System.Nullable<long> LeadCostOfGoodsSoldMicros { get; set; }
@@ -17568,8 +17843,8 @@ namespace Google.Apis.SA360.v23.Data
         /// ad for a hat then bought the same hat and a shirt. The hat is priced $10 and has a cost of goods sold value
         /// of $3. The lead gross profit of this order is $7 = $10 - $3. This metric is only available if you report
         /// conversions with cart data. This metric is a monetary value and returned in the customer's currency by
-        /// default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// default. See the `metrics_currency` parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leadGrossProfitMicros")]
         public virtual System.Nullable<long> LeadGrossProfitMicros { get; set; }
@@ -17583,8 +17858,8 @@ namespace Google.Apis.SA360.v23.Data
         /// shown under lead revenue. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a
         /// shirt. The hat is priced $10 and the shirt is priced $20. The lead revenue of this order is $10. This metric
         /// is only available if you report conversions with cart data. This metric is a monetary value and returned in
-        /// the customer's currency by default. See the metrics_currency parameter at
-        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// the customer's currency by default. See the `metrics_currency` parameter at [PARAMETERS
+        /// clause](https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leadRevenueMicros")]
         public virtual System.Nullable<long> LeadRevenueMicros { get; set; }
@@ -17634,8 +17909,8 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The percentage of the customer's Shopping or Search ad impressions that are shown in the most prominent
-        /// Shopping position. See https://support.google.com/sa360/answer/9566729 for details. Any value below 0.1 is
-        /// reported as 0.0999.
+        /// Shopping position. See [About top and absolute top metrics](https://support.google.com/sa360/answer/9566729)
+        /// for details. Any value below 0.1 is reported as 0.0999.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAbsoluteTopImpressionShare")]
         public virtual System.Nullable<double> SearchAbsoluteTopImpressionShare { get; set; }
@@ -17657,9 +17932,9 @@ namespace Google.Apis.SA360.v23.Data
         public virtual System.Nullable<double> SearchBudgetLostImpressionShare { get; set; }
 
         /// <summary>
-        /// The number estimating how often your ad didn't show adjacent to the top organic search results due to a low
-        /// budget. Note: Search budget lost top impression share is reported in the range of 0 to 0.9. Any value above
-        /// 0.9 is reported as 0.9001.
+        /// The estimated percent of times that your ad didn't show adjacent to the top organic search results due to a
+        /// low budget. Note: Search budget lost top impression share is reported in the range of 0 to 0.9. Any value
+        /// above 0.9 is reported as 0.9001.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchBudgetLostTopImpressionShare")]
         public virtual System.Nullable<double> SearchBudgetLostTopImpressionShare { get; set; }
@@ -17752,8 +18027,8 @@ namespace Google.Apis.SA360.v23.Data
 
         /// <summary>
         /// The value of all conversions divided by the number of all conversions. When this column is selected with
-        /// date, the values in date column means the conversion date. Details for the by_conversion_date columns are
-        /// available at https://support.google.com/sa360/answer/9250611.
+        /// date, the values in date column means the conversion date. Details for the `by_conversion_date` columns are
+        /// available at [About the "All conversions" column](https://support.google.com/sa360/answer/9250611).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valuePerAllConversionsByConversionDate")]
         public virtual System.Nullable<double> ValuePerAllConversionsByConversionDate { get; set; }
@@ -18972,7 +19247,9 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Search Ads 360 expanded text ad.</summary>
+    /// <summary>
+    /// A Search Ads 360 expanded text ad. Expanded text ads are deprecated. Use SearchAds360ResponsiveSearchAd instead.
+    /// </summary>
     public class GoogleAdsSearchads360V23CommonSearchAds360ExpandedTextAdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The tracking id of the ad.</summary>
@@ -19173,6 +19450,10 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>Keyword criterion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
         public virtual GoogleAdsSearchads360V23CommonKeyword Keyword { get; set; }
+
+        /// <summary>Mobile device platform to which metrics apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileDevicePlatform")]
+        public virtual string MobileDevicePlatform { get; set; }
 
         /// <summary>Month as represented by the date of the first day of a month. Formatted as yyyy-MM-dd.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
@@ -19703,6 +19984,38 @@ namespace Google.Apis.SA360.v23.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an attestation about synthetic content from a single source.</summary>
+    public class GoogleAdsSearchads360V23CommonSyntheticContentAttestation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source of the synthetic content attestation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Indicates whether the content is considered synthetic by this source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Container for synthetic content attestations from different sources, such as the advertiser and Google systems.
+    /// </summary>
+    public class GoogleAdsSearchads360V23CommonSyntheticContentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Input provided by the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserAttestation")]
+        public virtual GoogleAdsSearchads360V23CommonSyntheticContentAttestation AdvertiserAttestation { get; set; }
+
+        /// <summary>Output only. Information about synthetic content generated by Google's systems.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemAttestation")]
+        public virtual GoogleAdsSearchads360V23CommonSyntheticContentAttestation SystemAttestation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22754,7 +23067,10 @@ namespace Google.Apis.SA360.v23.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expandedDynamicSearchAd")]
         public virtual GoogleAdsSearchads360V23CommonExpandedDynamicSearchAdInfo ExpandedDynamicSearchAd { get; set; }
 
-        /// <summary>Details pertaining to an expanded text ad.</summary>
+        /// <summary>
+        /// Details pertaining to an expanded text ad. Expanded text ads are deprecated. Use `ResponsiveSearchAd`
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandedTextAd")]
         public virtual GoogleAdsSearchads360V23CommonExpandedTextAdInfo ExpandedTextAd { get; set; }
 
@@ -22830,7 +23146,10 @@ namespace Google.Apis.SA360.v23.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchAds360ExpandedDynamicSearchAd")]
         public virtual GoogleAdsSearchads360V23CommonSearchAds360ExpandedDynamicSearchAdInfo SearchAds360ExpandedDynamicSearchAd { get; set; }
 
-        /// <summary>Immutable. Details pertaining to an expanded text ad.</summary>
+        /// <summary>
+        /// Immutable. Details pertaining to an expanded text ad. Expanded text ads are deprecated. Use
+        /// `SearchAds360ResponsiveSearchAd` instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchAds360ExpandedTextAd")]
         public virtual GoogleAdsSearchads360V23CommonSearchAds360ExpandedTextAdInfo SearchAds360ExpandedTextAd { get; set; }
 
@@ -22857,6 +23176,14 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>Details pertaining to a Smart campaign ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartCampaignAd")]
         public virtual GoogleAdsSearchads360V23CommonSmartCampaignAdInfo SmartCampaignAd { get; set; }
+
+        /// <summary>
+        /// Synthetic content info for the ad. Only ads with specific ad types are eligible for updates using the
+        /// `synthetic_content_info` field. Allowed `AdType` values: * `HTML5_UPLOAD_AD` * `DYNAMIC_HTML5_AD` *
+        /// `IMAGE_AD`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentInfo")]
+        public virtual GoogleAdsSearchads360V23CommonSyntheticContentInfo SyntheticContentInfo { get; set; }
 
         /// <summary>
         /// Output only. If this ad is system managed, then this field will indicate the source. This field is
@@ -24558,7 +24885,13 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An age range view.</summary>
+    /// <summary>
+    /// An age range view. Represents the view of a customer's performance metrics (like impressions and clicks)
+    /// aggregated by age range. All statistics are aggregated at the ad group level. Note: While you can segment
+    /// metrics by age range using `age_range_view` or by gender using `gender_view`, the Search Ads 360 API does not
+    /// support segmenting metrics by both age range and gender simultaneously in a single query. Analyzing performance
+    /// across both dimensions combined is not supported in the Search Ads 360 API.
+    /// </summary>
     public class GoogleAdsSearchads360V23ResourcesAgeRangeView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -24933,6 +25266,13 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>A structured snippet asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredSnippetAsset")]
         public virtual GoogleAdsSearchads360V23CommonStructuredSnippetAsset StructuredSnippetAsset { get; set; }
+
+        /// <summary>
+        /// Synthetic content info for the asset. Only assets with specific asset types are eligible for updates using
+        /// the `synthetic_content_info` field. Allowed `AssetType` values: * `IMAGE` * `MEDIA_BUNDLE` * `YOUTUBE_VIDEO`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentInfo")]
+        public virtual GoogleAdsSearchads360V23CommonSyntheticContentInfo SyntheticContentInfo { get; set; }
 
         /// <summary>Immutable. A text asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAsset")]
@@ -30027,13 +30367,17 @@ namespace Google.Apis.SA360.v23.Data
     /// </summary>
     public class GoogleAdsSearchads360V23ResourcesCustomerLabel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The resource name of the customer to which the label is attached. Read only.</summary>
+        /// <summary>
+        /// Output only. The resource name of the customer to which the label is attached. This field should not be set
+        /// when creating a new `CustomerLabel`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the label assigned to the customer. Note: the Customer ID portion of the
-        /// label resource name is not validated when creating a new CustomerLabel.
+        /// Output only. The resource name of the label assigned to the customer. This field should not be set when
+        /// creating a new `CustomerLabel`. Note: the Customer ID portion of the label resource name is not validated
+        /// when creating a new `CustomerLabel`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
@@ -30609,10 +30953,12 @@ namespace Google.Apis.SA360.v23.Data
     }
 
     /// <summary>
-    /// A view with metrics aggregated by ad group and URL or YouTube video. This view primarily surfaces placement data
-    /// from the Google Display Network. While you can select segments like `segments.ad_network_type`, this view
-    /// generally does not include placement data from other networks, such as the Search Partners network. To
-    /// understand performance on Search Partners, consider other reports and segmentations.
+    /// A view with metrics aggregated by ad group and URL or YouTube video. Provides granular performance data about
+    /// specific URLs, YouTube videos, and apps where your ads showed. This offers a more detailed breakdown compared to
+    /// the group_placement_view. This view primarily surfaces placement data from the Google Display Network. While you
+    /// can select segments like `segments.ad_network_type`, this view generally does not include placement data from
+    /// other networks, such as the Search Partners network. To understand performance on Search Partners, consider
+    /// other reports and segmentations. Data for low-traffic placements may be aggregated.
     /// </summary>
     public class GoogleAdsSearchads360V23ResourcesDetailPlacementView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30932,7 +31278,10 @@ namespace Google.Apis.SA360.v23.Data
     /// </summary>
     public class GoogleAdsSearchads360V23ResourcesExperimentArm : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of asset groups in the experiment arm.</summary>
+        /// <summary>
+        /// List of asset groups in the experiment arm. The max length is one. In the Optimize Assets experiment
+        /// construction, the control arm and treatment arm should both contain the same asset group ID.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetGroups")]
         public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ResourcesExperimentArmAssetGroupInfo> AssetGroups { get; set; }
 
@@ -31067,9 +31416,11 @@ namespace Google.Apis.SA360.v23.Data
     }
 
     /// <summary>
-    /// A gender view. The gender_view resource reflects the effective serving state, rather than what criteria were
-    /// added. An ad group without gender criteria by default shows to all genders, so all genders appear in gender_view
-    /// with stats.
+    /// A gender view resource. Represents the view of a customer's performance metrics aggregated by gender. All
+    /// statistics are aggregated at the ad group level. Note: While you can segment metrics by age range using
+    /// `age_range_view` or by gender using `gender_view`, the Search Ads 360 API does not support segmenting metrics by
+    /// both age range and gender simultaneously in a single query. Analyzing performance across both dimensions
+    /// combined is not supported in the Search Ads 360 API.
     /// </summary>
     public class GoogleAdsSearchads360V23ResourcesGenderView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -31300,7 +31651,11 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A group placement view.</summary>
+    /// <summary>
+    /// A view showing performance data for where your ads actually served on the Display Network and YouTube, including
+    /// both targeted (managed) and automatic placements. Data for low-traffic placements may be aggregated. The scope
+    /// of placements shown is influenced by the ad group's `TargetingSetting` for the `PLACEMENT` dimension.
+    /// </summary>
     public class GoogleAdsSearchads360V23ResourcesGroupPlacementView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Domain name for websites and YouTube channel name for YouTube channels.</summary>
@@ -32974,7 +33329,7 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A managed placement view.</summary>
+    /// <summary>A view providing performance data for placements explicitly targeted in your ad groups.</summary>
     public class GoogleAdsSearchads360V23ResourcesManagedPlacementView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -35908,7 +36263,7 @@ namespace Google.Apis.SA360.v23.Data
         /// Output only. The category to target or exclude. Each subsequent element in the array describes a more
         /// specific sub-category. For example, {"Pets &amp;amp; Animals", "Pets", "Dogs"} represents the "Pets
         /// &amp;amp; Animals/Pets/Dogs" category. List of available topic categories at
-        /// https://developers.google.com/google-ads/api/reference/data/verticals
+        /// https://developers.google.com/google-ads/api/data/topics
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual System.Collections.Generic.IList<string> Path { get; set; }
@@ -38058,6 +38413,93 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A call conversion.</summary>
+    public class GoogleAdsSearchads360V23ServicesCallConversion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The date time at which the call occurred. The timezone must be specified. The format is "yyyy-mm-dd
+        /// hh:mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callStartDateTime")]
+        public virtual string CallStartDateTime { get; set; }
+
+        /// <summary>
+        /// The caller id from which this call was placed. Caller id is expected to be in E.164 format with preceding
+        /// '+' sign, for example, "+16502531234".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerId")]
+        public virtual string CallerId { get; set; }
+
+        /// <summary>The consent setting for the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consent")]
+        public virtual GoogleAdsSearchads360V23CommonConsent Consent { get; set; }
+
+        /// <summary>
+        /// Resource name of the conversion action associated with this conversion. Note: Although this resource name
+        /// consists of a customer id and a conversion action id, validation will ignore the customer id and use the
+        /// conversion action id as the sole identifier of the conversion action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
+        public virtual string ConversionAction { get; set; }
+
+        /// <summary>
+        /// The date time at which the conversion occurred. Must be after the call time. The timezone must be specified.
+        /// The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDateTime")]
+        public virtual string ConversionDateTime { get; set; }
+
+        /// <summary>The value of the conversion for the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionValue")]
+        public virtual System.Nullable<double> ConversionValue { get; set; }
+
+        /// <summary>
+        /// Currency associated with the conversion value. This is the ISO 4217 3-character currency code. For example:
+        /// USD, EUR.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>The custom variables associated with this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesCustomVariable> CustomVariables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifying information for a successfully processed CallConversionUpload.</summary>
+    public class GoogleAdsSearchads360V23ServicesCallConversionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The date time at which the call occurred. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example,
+        /// "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callStartDateTime")]
+        public virtual string CallStartDateTime { get; set; }
+
+        /// <summary>
+        /// The caller id from which this call was placed. Caller id is expected to be in E.164 format with preceding
+        /// '+' sign.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerId")]
+        public virtual string CallerId { get; set; }
+
+        /// <summary>Resource name of the conversion action associated with this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
+        public virtual string ConversionAction { get; set; }
+
+        /// <summary>
+        /// The date time at which the conversion occurred. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example,
+        /// "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDateTime")]
+        public virtual string ConversionDateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single operation (create, remove) on a campaign asset.</summary>
     public class GoogleAdsSearchads360V23ServicesCampaignAssetOperation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -38471,6 +38913,211 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains additional information about cart data.</summary>
+    public class GoogleAdsSearchads360V23ServicesCartData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The country code associated with the feed where the items are uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedCountryCode")]
+        public virtual string FeedCountryCode { get; set; }
+
+        /// <summary>The language code associated with the feed where the items are uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedLanguageCode")]
+        public virtual string FeedLanguageCode { get; set; }
+
+        /// <summary>Data of the items purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesCartDataItem> Items { get; set; }
+
+        /// <summary>
+        /// Sum of all transaction level discounts, such as free shipping and coupon discounts for the whole cart. The
+        /// currency code is the same as that in the `ClickConversion` message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localTransactionCost")]
+        public virtual System.Nullable<double> LocalTransactionCost { get; set; }
+
+        /// <summary>The Merchant Center ID where the items are uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<long> MerchantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains data of the items purchased.</summary>
+    public class GoogleAdsSearchads360V23ServicesCartDataItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The shopping id of the item. Must be equal to the Merchant Center product identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>Number of items sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<int> Quantity { get; set; }
+
+        /// <summary>
+        /// Unit price excluding tax, shipping, and any transaction level discounts. The currency code is the same as
+        /// that in the `ClickConversion` message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
+        public virtual System.Nullable<double> UnitPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A click conversion.</summary>
+    public class GoogleAdsSearchads360V23ServicesClickConversion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The cart data associated with this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cartData")]
+        public virtual GoogleAdsSearchads360V23ServicesCartData CartData { get; set; }
+
+        /// <summary>The consent setting for the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consent")]
+        public virtual GoogleAdsSearchads360V23CommonConsent Consent { get; set; }
+
+        /// <summary>
+        /// Resource name of the conversion action associated with this conversion. Note: Although this resource name
+        /// consists of a customer id and a conversion action id, validation will ignore the customer id and use the
+        /// conversion action id as the sole identifier of the conversion action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
+        public virtual string ConversionAction { get; set; }
+
+        /// <summary>
+        /// The date time at which the conversion occurred. Must be after the click time. The timezone must be
+        /// specified. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDateTime")]
+        public virtual string ConversionDateTime { get; set; }
+
+        /// <summary>The environment this conversion was recorded on, for example, App or Web.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionEnvironment")]
+        public virtual string ConversionEnvironment { get; set; }
+
+        /// <summary>The value of the conversion for the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionValue")]
+        public virtual System.Nullable<double> ConversionValue { get; set; }
+
+        /// <summary>
+        /// Currency associated with the conversion value. This is the ISO 4217 3-character currency code. For example:
+        /// USD, EUR.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>The custom variables associated with this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesCustomVariable> CustomVariables { get; set; }
+
+        /// <summary>Type of the customer associated with the conversion (new or returning).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerType")]
+        public virtual string CustomerType { get; set; }
+
+        /// <summary>
+        /// Additional data about externally attributed conversions. This field is required for conversions with an
+        /// externally attributed conversion action, but should not be set otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAttributionData")]
+        public virtual GoogleAdsSearchads360V23ServicesExternalAttributionData ExternalAttributionData { get; set; }
+
+        /// <summary>The URL parameter for clicks associated with app conversions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gbraid")]
+        public virtual string Gbraid { get; set; }
+
+        /// <summary>The Google click ID (gclid) associated with this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
+        public virtual string Gclid { get; set; }
+
+        /// <summary>
+        /// The order ID associated with the conversion. An order id can only be used for one conversion per conversion
+        /// action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; }
+
+        /// <summary>
+        /// The session attributes for the event, represented as a base64-encoded JSON string. The content should be
+        /// generated by Google-provided library. To set session attributes individually, use
+        /// session_attributes_key_value_pairs instead. This field is only available to allowlisted users. To include
+        /// this field in conversion imports, upgrade to the Data Manager API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAttributesEncoded")]
+        public virtual string SessionAttributesEncoded { get; set; }
+
+        /// <summary>
+        /// The session attributes for the event, represented as key-value pairs. This field is only available to
+        /// allowlisted users. To include this field in conversion imports, upgrade to the Data Manager API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAttributesKeyValuePairs")]
+        public virtual GoogleAdsSearchads360V23ServicesSessionAttributesKeyValuePairs SessionAttributesKeyValuePairs { get; set; }
+
+        /// <summary>
+        /// The user identifiers associated with this conversion. Only hashed_email and hashed_phone_number are
+        /// supported for conversion uploads. The maximum number of user identifiers for each conversion is 5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIdentifiers")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23CommonUserIdentifier> UserIdentifiers { get; set; }
+
+        /// <summary>
+        /// The IP address of the customer when they arrived on the landing page after an ad click but before a
+        /// conversion event. This is the IP address of the customer's device, not the advertiser's server. Google Ads
+        /// does not support IP address matching for end users in the European Economic Area (EEA), United Kingdom (UK),
+        /// or Switzerland (CH). Add logic to conditionally exclude sharing IP addresses from users from these regions
+        /// and ensure that you provide users with clear and comprehensive information about the data you collect on
+        /// your sites, apps, and other properties and get consent where required by law or any applicable Google
+        /// policies. See [About offline conversion imports](//support.google.com/google-ads/answer/2998031) page for
+        /// more details. This field is only available to allowlisted users. To include this field in conversion
+        /// imports, upgrade to the Data Manager API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIpAddress")]
+        public virtual string UserIpAddress { get; set; }
+
+        /// <summary>The URL parameter for clicks associated with web conversions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wbraid")]
+        public virtual string Wbraid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifying information for a successfully processed `ClickConversion`.</summary>
+    public class GoogleAdsSearchads360V23ServicesClickConversionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name of the conversion action associated with this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
+        public virtual string ConversionAction { get; set; }
+
+        /// <summary>
+        /// The date time at which the conversion occurred. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example,
+        /// "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDateTime")]
+        public virtual string ConversionDateTime { get; set; }
+
+        /// <summary>The URL parameter for clicks associated with app conversions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gbraid")]
+        public virtual string Gbraid { get; set; }
+
+        /// <summary>The Google Click ID (gclid) associated with this conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
+        public virtual string Gclid { get; set; }
+
+        /// <summary>
+        /// The user identifiers associated with this conversion. Only hashed_email and hashed_phone_number are
+        /// supported for conversion uploads. The maximum number of user identifiers for each conversion is 5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIdentifiers")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23CommonUserIdentifier> UserIdentifiers { get; set; }
+
+        /// <summary>The URL parameter for clicks associated with web conversions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wbraid")]
+        public virtual string Wbraid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CampaignLifecycleGoalService.ConfigureCampaignLifecycleGoals.</summary>
     public class GoogleAdsSearchads360V23ServicesConfigureCampaignLifecycleGoalsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -38602,6 +39249,100 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>FieldMask that determines which resource fields are modified in an update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A conversion adjustment.</summary>
+    public class GoogleAdsSearchads360V23ServicesConversionAdjustment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The date time at which the adjustment occurred. Must be after the conversion_date_time. The timezone must be
+        /// specified. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustmentDateTime")]
+        public virtual string AdjustmentDateTime { get; set; }
+
+        /// <summary>The adjustment type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustmentType")]
+        public virtual string AdjustmentType { get; set; }
+
+        /// <summary>
+        /// Resource name of the conversion action associated with this conversion adjustment. Note: Although this
+        /// resource name consists of a customer id and a conversion action id, validation will ignore the customer id
+        /// and use the conversion action id as the sole identifier of the conversion action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
+        public virtual string ConversionAction { get; set; }
+
+        /// <summary>
+        /// For adjustments, uniquely identifies a conversion that was reported without an order ID specified. If the
+        /// adjustment_type is ENHANCEMENT, this value is optional but may be set in addition to the order_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gclidDateTimePair")]
+        public virtual GoogleAdsSearchads360V23ServicesGclidDateTimePair GclidDateTimePair { get; set; }
+
+        /// <summary>
+        /// The order ID of the conversion to be adjusted. If the conversion was reported with an order ID specified,
+        /// that order ID must be used as the identifier here. The order ID is required for enhancements.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; }
+
+        /// <summary>
+        /// Information needed to restate the conversion's value. Required for restatements. Should not be supplied for
+        /// retractions. An error will be returned if provided for a retraction. NOTE: If you want to upload a second
+        /// restatement with a different adjusted value, it must have a new, more recent, adjustment occurrence time.
+        /// Otherwise, it will be treated as a duplicate of the previous restatement and ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restatementValue")]
+        public virtual GoogleAdsSearchads360V23ServicesRestatementValue RestatementValue { get; set; }
+
+        /// <summary>
+        /// The user agent to enhance the original conversion. This can be found in your user's HTTP request header when
+        /// they convert on your web page. Example, "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X)". User agent
+        /// can only be specified in enhancements with user identifiers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; }
+
+        /// <summary>
+        /// The user identifiers to enhance the original conversion. ConversionAdjustmentUploadService only accepts user
+        /// identifiers in enhancements. The maximum number of user identifiers for each enhancement is 5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIdentifiers")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23CommonUserIdentifier> UserIdentifiers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information identifying a successfully processed ConversionAdjustment.</summary>
+    public class GoogleAdsSearchads360V23ServicesConversionAdjustmentResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The date time at which the adjustment occurred. The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example,
+        /// "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustmentDateTime")]
+        public virtual string AdjustmentDateTime { get; set; }
+
+        /// <summary>The adjustment type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustmentType")]
+        public virtual string AdjustmentType { get; set; }
+
+        /// <summary>Resource name of the conversion action associated with this conversion adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
+        public virtual string ConversionAction { get; set; }
+
+        /// <summary>The gclid and conversion date time of the conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gclidDateTimePair")]
+        public virtual GoogleAdsSearchads360V23ServicesGclidDateTimePair GclidDateTimePair { get; set; }
+
+        /// <summary>The order ID of the conversion to be adjusted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39035,6 +39776,28 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>FieldMask that determines which resource fields are modified in an update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A custom variable.</summary>
+    public class GoogleAdsSearchads360V23ServicesCustomVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of the custom variable associated with this conversion. Note: Although this resource name
+        /// consists of a customer id and a conversion custom variable id, validation will ignore the customer id and
+        /// use the conversion custom variable id as the sole identifier of the conversion custom variable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCustomVariable")]
+        public virtual string ConversionCustomVariable { get; set; }
+
+        /// <summary>
+        /// The value string of this custom variable. The value of the custom variable should not contain private
+        /// customer data, such as email addresses or phone numbers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39608,6 +40371,21 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains additional information about externally attributed conversions.</summary>
+    public class GoogleAdsSearchads360V23ServicesExternalAttributionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the fraction of the conversion that is attributed to the Google Ads click.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAttributionCredit")]
+        public virtual System.Nullable<double> ExternalAttributionCredit { get; set; }
+
+        /// <summary>Specifies the attribution model name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAttributionModel")]
+        public virtual string ExternalAttributionModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response from getting the acquisition incentive for a user when they visit a specific marketing page.
     /// </summary>
@@ -39758,6 +40536,24 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>Required. The type of time unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
         public virtual string TimeUnit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Uniquely identifies a conversion that was reported without an order ID specified.</summary>
+    public class GoogleAdsSearchads360V23ServicesGclidDateTimePair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The date time at which the original conversion for this adjustment occurred. The timezone must be specified.
+        /// The format is "yyyy-mm-dd hh:mm:ss+|-hh:mm", for example, "2019-01-01 12:32:45-08:00".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDateTime")]
+        public virtual string ConversionDateTime { get; set; }
+
+        /// <summary>Google click ID (gclid) associated with the original conversion for this adjustment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
+        public virtual string Gclid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45344,7 +46140,11 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for CustomerLabelService.MutateCustomerLabels.</summary>
+    /// <summary>
+    /// Request message for CustomerLabelService.MutateCustomerLabels. A single `MutateCustomerLabelsRequest` can only
+    /// modify labels for the single customer account specified in the request. To apply a label to multiple different
+    /// accounts, separate `MutateCustomerLabelsRequest` calls must be made.
+    /// </summary>
     public class GoogleAdsSearchads360V23ServicesMutateCustomerLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The list of operations to perform on customer-label relationships.</summary>
@@ -46914,6 +47714,48 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for SearchAds360CampaignService.MutateSearchAds360Campaigns.</summary>
+    public class GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of operations to perform on individual Search Ads 360 campaigns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesSearchAds360CampaignOperation> Operations { get; set; }
+
+        /// <summary>
+        /// If true, successful operations will be carried out and invalid operations will return errors. If false, all
+        /// operations will be carried out in one transaction if and only if they are all valid. Default is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailure")]
+        public virtual System.Nullable<bool> PartialFailure { get; set; }
+
+        /// <summary>
+        /// The response content type setting. Determines whether the mutable resource or just the resource name should
+        /// be returned post mutation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseContentType")]
+        public virtual string ResponseContentType { get; set; }
+
+        /// <summary>
+        /// If true, the request is validated but not executed. Only errors are returned, not results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for Search Ads 360 campaign mutate.</summary>
+    public class GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All results for the mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesMutateSearchAds360CampaignResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for Service.Mutate.</summary>
     public class GoogleAdsSearchads360V23ServicesMutateSearchAds360Request : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -48085,6 +48927,30 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information needed to restate a conversion's value.</summary>
+    public class GoogleAdsSearchads360V23ServicesRestatementValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The restated conversion value. This is the value of the conversion after restatement. For example, to change
+        /// the value of a conversion from 100 to 70, an adjusted value of 70 should be reported. NOTE: If you want to
+        /// upload a second restatement with a different adjusted value, it must have a new, more recent, adjustment
+        /// occurrence time. Otherwise, it will be treated as a duplicate of the previous restatement and ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustedValue")]
+        public virtual System.Nullable<double> AdjustedValue { get; set; }
+
+        /// <summary>
+        /// The currency of the restated value. If not provided, then the default currency from the conversion action is
+        /// used, and if that is not set then the account currency is used. This is the ISO 4217 3-character currency
+        /// code for example, USD or EUR.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for BatchJobService.RunBatchJob.</summary>
     public class GoogleAdsSearchads360V23ServicesRunBatchJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -49059,6 +49925,32 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains one session attribute of the conversion.</summary>
+    public class GoogleAdsSearchads360V23ServicesSessionAttributeKeyValuePair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the session attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAttributeKey")]
+        public virtual string SessionAttributeKey { get; set; }
+
+        /// <summary>Required. The value of the session attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionAttributeValue")]
+        public virtual string SessionAttributeValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains session attributes of the conversion, represented as key-value pairs.</summary>
+    public class GoogleAdsSearchads360V23ServicesSessionAttributesKeyValuePairs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The session attributes for the conversion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValuePairs")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesSessionAttributeKeyValuePair> KeyValuePairs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single operation (create, remove) on an shared criterion.</summary>
     public class GoogleAdsSearchads360V23ServicesSharedCriterionOperation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -49816,6 +50708,174 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>Result of the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ConversionUploadService.UploadCallConversions.</summary>
+    public class GoogleAdsSearchads360V23ServicesUploadCallConversionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The conversions that are being uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversions")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesCallConversion> Conversions { get; set; }
+
+        /// <summary>
+        /// Required. If `true`, successful operations will be carried out and invalid operations will return errors. If
+        /// `false`, all operations will be carried out in one transaction if and only if they are all valid. This
+        /// should always be set to `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailure")]
+        public virtual System.Nullable<bool> PartialFailure { get; set; }
+
+        /// <summary>
+        /// If true, the request is validated but not executed. Only errors are returned, not results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConversionUploadService.UploadCallConversions.</summary>
+    public class GoogleAdsSearchads360V23ServicesUploadCallConversionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Errors that pertain to conversion failures in the partial failure mode. Returned when all errors occur
+        /// inside the conversions. If any errors occur outside the conversions (for example, auth errors), we return an
+        /// RPC level error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailureError")]
+        public virtual GoogleRpcStatus PartialFailureError { get; set; }
+
+        /// <summary>
+        /// Returned for successfully processed conversions. Proto will be empty for rows that received an error.
+        /// Results are not returned when `validate_only` is `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesCallConversionResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ConversionUploadService.UploadClickConversions.</summary>
+    public class GoogleAdsSearchads360V23ServicesUploadClickConversionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The conversions that are being uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversions")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesClickConversion> Conversions { get; set; }
+
+        /// <summary>
+        /// Optional. Optional input to set job ID. Must be a non-negative number that is less than 2^31 if provided. If
+        /// this field is not provided, the API will generate a job ID in the range [2^31, (2^63)-1]. The API will
+        /// return the value for this request in the `job_id` field of the `UploadClickConversionsResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual System.Nullable<int> JobId { get; set; }
+
+        /// <summary>
+        /// Required. If `true`, successful operations will be carried out and invalid operations will return errors. If
+        /// `false`, all operations will be carried out in one transaction if and only if they are all valid. This
+        /// should always be set to `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailure")]
+        public virtual System.Nullable<bool> PartialFailure { get; set; }
+
+        /// <summary>
+        /// If `true`, the request is validated but not executed. Only errors are returned, not results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConversionUploadService.UploadClickConversions.</summary>
+    public class GoogleAdsSearchads360V23ServicesUploadClickConversionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Job ID for the upload batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual System.Nullable<long> JobId { get; set; }
+
+        /// <summary>
+        /// Errors that pertain to conversion failures in the partial failure mode. Returned when all errors occur
+        /// inside the conversions. If any errors occur outside the conversions (for example, auth errors), we return an
+        /// RPC level error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailureError")]
+        public virtual GoogleRpcStatus PartialFailureError { get; set; }
+
+        /// <summary>
+        /// Returned for successfully processed conversions. Proto will be empty for rows that received an error.
+        /// Results are not returned when `validate_only` is `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesClickConversionResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ConversionAdjustmentUploadService.UploadConversionAdjustments.</summary>
+    public class GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The conversion adjustments that are being uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionAdjustments")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesConversionAdjustment> ConversionAdjustments { get; set; }
+
+        /// <summary>
+        /// Optional. Optional input to set job ID. Must be a non-negative number that is less than 2^31 if provided. If
+        /// this field is not provided, the API will generate a job ID in the range [2^31, (2^63)-1]. The API will
+        /// return the value for this request in the `job_id` field of the `UploadConversionAdjustmentsResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual System.Nullable<int> JobId { get; set; }
+
+        /// <summary>
+        /// Required. If true, successful operations will be carried out and invalid operations will return errors. If
+        /// false, all operations will be carried out in one transaction if and only if they are all valid. This should
+        /// always be set to true. See https://developers.google.com/google-ads/api/docs/best-practices/partial-failures
+        /// for more information about partial failure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailure")]
+        public virtual System.Nullable<bool> PartialFailure { get; set; }
+
+        /// <summary>
+        /// If true, the request is validated but not executed. Only errors are returned, not results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConversionAdjustmentUploadService.UploadConversionAdjustments.</summary>
+    public class GoogleAdsSearchads360V23ServicesUploadConversionAdjustmentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Job ID for the upload batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual System.Nullable<long> JobId { get; set; }
+
+        /// <summary>
+        /// Errors that pertain to conversion adjustment failures in the partial failure mode. Returned when all errors
+        /// occur inside the adjustments. If any errors occur outside the adjustments (for example, auth errors), we
+        /// return an RPC level error. See
+        /// https://developers.google.com/google-ads/api/docs/best-practices/partial-failures for more information about
+        /// partial failure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialFailureError")]
+        public virtual GoogleRpcStatus PartialFailureError { get; set; }
+
+        /// <summary>
+        /// Returned for successfully processed conversion adjustments. Proto will be empty for rows that received an
+        /// error. Results are not returned when validate_only is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V23ServicesConversionAdjustmentResult> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
