@@ -7,5 +7,10 @@
   "Google.Apis.ApiKeysService.v2.ApiKeysServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.ApiKeysService.v2.ProjectsResource+LocationsResource+KeysResource+PatchRequest.CheckExistingUsageEnum": [
+    "CHECK_EXISTING_USAGE_UNSPECIFIED",
+    "SKIP",
+    "CHECK"
   ]
 }
