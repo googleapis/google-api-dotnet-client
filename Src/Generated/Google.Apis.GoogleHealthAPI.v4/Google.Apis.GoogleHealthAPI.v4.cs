@@ -3846,6 +3846,14 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("irregularRhythmNotification")]
         public virtual IrregularRhythmNotification IrregularRhythmNotification { get; set; }
 
+        /// <summary>Optional. Data for points in the `menstrual-period` interval data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("menstrualPeriod")]
+        public virtual MenstrualPeriod MenstrualPeriod { get; set; }
+
+        /// <summary>Optional. Data for points in the `moods` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moods")]
+        public virtual Moods Moods { get; set; }
+
         /// <summary>
         /// Identifier. Data point name, only supported for the subset of identifiable data types. For the majority of
         /// the data types, individual data points do not need to be identified and this field would be empty. Format:
@@ -3862,6 +3870,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Data for points in the `nutrition-log` session data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nutritionLog")]
         public virtual NutritionLog NutritionLog { get; set; }
+
+        /// <summary>Optional. Data for points in the `ovulation-test` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ovulationTest")]
+        public virtual OvulationTest OvulationTest { get; set; }
 
         /// <summary>Optional. Data for points in the `oxygen-saturation` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oxygenSaturation")]
@@ -3892,6 +3904,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Data for points in the `swim-lengths-data` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("swimLengthsData")]
         public virtual SwimLengthsData SwimLengthsData { get; set; }
+
+        /// <summary>Optional. Data for points in the `symptoms` sample data type collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symptoms")]
+        public virtual Symptoms Symptoms { get; set; }
 
         /// <summary>Optional. Data for points in the `time-in-heart-rate-zone` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeInHeartRateZone")]
@@ -4252,7 +4268,12 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. Exercise display name.</summary>
+        /// <summary>
+        /// Required. The localized, human-readable name of the exercise. For all exercise types other than `OTHER`, the
+        /// system ignores client input and overrides this field with a generated name based on `exercise_type` (e.g.,
+        /// "Walking" for `WALKING`). If `exercise_type` is `OTHER`, this field can contain the user's custom, free-form
+        /// display name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -5254,6 +5275,21 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Menstrual period record.</summary>
+    public class MenstrualPeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Observed interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual ObservationTimeInterval Interval { get; set; }
+
+        /// <summary>Optional. Standard free-form notes captured at manual logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual string Notes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Summary metrics for an exercise.</summary>
     public class MetricsSummary : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5347,6 +5383,25 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Vertical oscillation/stride length between [5.0, 11.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avgVerticalRatio")]
         public virtual System.Nullable<double> AvgVerticalRatio { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Moods record.</summary>
+    public class Moods : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The moods logged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moods")]
+        public virtual System.Collections.Generic.IList<string> MoodsValue { get; set; }
+
+        /// <summary>Required. The time at which moods were measured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
+        public virtual ObservationSampleTime SampleTime { get; set; }
+
+        /// <summary>Optional. The valences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valences")]
+        public virtual System.Collections.Generic.IList<string> Valences { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5768,6 +5823,21 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startUtcOffset")]
         public virtual object StartUtcOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ovulation test record.</summary>
+    public class OvulationTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The result of the ovulation test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>Required. The time at which ovulation test was measured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
+        public virtual ObservationSampleTime SampleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6827,7 +6897,9 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual SessionTimeInterval Interval { get; set; }
 
-        /// <summary>Optional. Sleep metadata: processing, main, manually edited, stages status.</summary>
+        /// <summary>
+        /// Optional. Sleep metadata: `processed`, `main_sleep`, `manually_edited`, and `stages_status`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual SleepMetadata Metadata { get; set; }
 
@@ -6896,6 +6968,14 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. Sleep identifier relevant in the context of the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
         public virtual string ExternalId { get; set; }
+
+        /// <summary>
+        /// Output only. `main_sleep`: the longest sleep session with stages within one day. If no sleep session has
+        /// stages, then the longest sleep is the `main_sleep`. If there are multiple days of sleep in the response,
+        /// there is one `main_sleep` per day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainSleep")]
+        public virtual System.Nullable<bool> MainSleep { get; set; }
 
         /// <summary>Output only. Some sleeps autodetected by algorithms can be manually edited by users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manuallyEdited")]
@@ -7508,6 +7588,21 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Total number of swim strokes in the interval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strokeCountSum")]
         public virtual System.Nullable<long> StrokeCountSum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Symptoms logged by the user.</summary>
+    public class Symptoms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Time when the symptoms were logged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
+        public virtual ObservationSampleTime SampleTime { get; set; }
+
+        /// <summary>Required. List of symptoms experienced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("symptoms")]
+        public virtual System.Collections.Generic.IList<string> SymptomsValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
