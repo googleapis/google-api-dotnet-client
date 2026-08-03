@@ -65,6 +65,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Security Command Center data and see the email
+            /// address for your Google Account
+            /// </summary>
+            public static string Securitycenter = "https://www.googleapis.com/auth/securitycenter";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Security Command Center API.</summary>
@@ -75,6 +81,12 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Security Command Center data and see the email
+            /// address for your Google Account
+            /// </summary>
+            public const string Securitycenter = "https://www.googleapis.com/auth/securitycenter";
         }
 
         /// <summary>Gets the Organizations resource.</summary>
