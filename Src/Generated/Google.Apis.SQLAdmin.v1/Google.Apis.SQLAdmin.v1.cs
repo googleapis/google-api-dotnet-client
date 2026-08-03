@@ -4394,6 +4394,10 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Operation { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "cancel";
 
@@ -4420,6 +4424,14 @@ namespace Google.Apis.SQLAdmin.v1
                     Name = "operation",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4453,6 +4465,10 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Operation { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -4479,6 +4495,14 @@ namespace Google.Apis.SQLAdmin.v1
                     Name = "operation",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4516,6 +4540,10 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Instance { get; set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Maximum number of operations per response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -4550,6 +4578,14 @@ namespace Google.Apis.SQLAdmin.v1
                 RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
                 {
                     Name = "instance",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -5909,6 +5945,21 @@ namespace Google.Apis.SQLAdmin.v1
             [Google.Apis.Util.RequestParameterAttribute("revokeExistingRoles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> RevokeExistingRoles { get; set; }
 
+            /// <summary>
+            /// Optional. Specifies whether to revoke existing roles that are not present in the `server_roles` field.
+            /// If `false` or unset, the server roles specified in `server_roles` are added to the user's existing
+            /// server roles.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("revokeExistingServerRoles", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> RevokeExistingServerRoles { get; set; }
+
+            /// <summary>
+            /// Optional. The server roles to grant to the SQL Server login. Existing server roles will not be revoked
+            /// if revoke_existing_roles is false. body.server_roles will be ignored for update request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("serverRoles", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ServerRoles { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1.Data.User Body { get; set; }
 
@@ -5971,6 +6022,22 @@ namespace Google.Apis.SQLAdmin.v1
                 RequestParameters.Add("revokeExistingRoles", new Google.Apis.Discovery.Parameter
                 {
                     Name = "revokeExistingRoles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("revokeExistingServerRoles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "revokeExistingServerRoles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("serverRoles", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serverRoles",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -7174,6 +7241,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentDiskSize")]
         public virtual System.Nullable<long> CurrentDiskSize { get; set; }
+
+        /// <summary>
+        /// Optional. If true, instance metadata is sent to the Database Center. If false, instance metadata is not sent
+        /// to the Database Center.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseCenterIntegrationEnabled")]
+        public virtual System.Nullable<bool> DatabaseCenterIntegrationEnabled { get; set; }
 
         /// <summary>
         /// Output only. Stores the current database version running on the instance including minor version such as
@@ -9291,6 +9365,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
         public virtual string ClientKey { get; set; }
+
+        /// <summary>Output only. Indicates whether the resource is managed by Database Migration Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmsManaged")]
+        public virtual System.Nullable<bool> DmsManaged { get; set; }
 
         /// <summary>The dump file to create the Cloud SQL replica.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dumpFilePath")]
@@ -11699,6 +11777,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>Optional. The server roles for the SQL Server login.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverRoles")]
+        public virtual System.Collections.Generic.IList<string> ServerRoles { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("sqlserverUserDetails")]
         public virtual SqlServerUserDetails SqlserverUserDetails { get; set; }
