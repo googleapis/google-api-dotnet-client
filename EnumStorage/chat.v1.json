@@ -62,6 +62,16 @@
     "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
     "REPLY_MESSAGE_OR_FAIL"
   ],
+  "Google.Apis.HangoutsChat.v1.SpacesResource+MessagesResource+GetRequest.MarkupSyntaxEnum": [
+    "MARKUP_SYNTAX_UNSPECIFIED",
+    "MARKUP_SYNTAX_CHAT",
+    "MARKUP_SYNTAX_MARKDOWN"
+  ],
+  "Google.Apis.HangoutsChat.v1.SpacesResource+MessagesResource+ListRequest.MarkupSyntaxEnum": [
+    "MARKUP_SYNTAX_UNSPECIFIED",
+    "MARKUP_SYNTAX_CHAT",
+    "MARKUP_SYNTAX_MARKDOWN"
+  ],
   "Google.Apis.HangoutsChat.v1.SpacesResource+WebhooksRequest.MessageReplyOptionEnum": [
     "MESSAGE_REPLY_OPTION_UNSPECIFIED",
     "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",
