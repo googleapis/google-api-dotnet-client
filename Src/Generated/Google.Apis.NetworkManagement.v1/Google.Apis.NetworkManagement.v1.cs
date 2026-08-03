@@ -5434,6 +5434,15 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Output only. State of the firewalls allowing health check traffic to the load balancer frontend (Envoy
+        /// proxies). This is the result of the firewall configuration analysis verifying that health check traffic from
+        /// required IP ranges to the the Envoy-based load balancer frontend is allowed by firewall rules with the load
+        /// balancer target.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envoyHealthCheckFirewallsConfigState")]
+        public virtual string EnvoyHealthCheckFirewallsConfigState { get; set; }
+
+        /// <summary>
         /// Name of the load balancer the forwarding rule belongs to. Empty for forwarding rules not related to load
         /// balancers (like PSC forwarding rules).
         /// </summary>
@@ -6415,6 +6424,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routerUri")]
         public virtual string RouterUri { get; set; }
+
+        /// <summary>The number of the NAT rule that was matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleNumber")]
+        public virtual System.Nullable<int> RuleNumber { get; set; }
 
         /// <summary>Type of NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
