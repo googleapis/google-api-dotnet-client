@@ -6788,10 +6788,6 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>Contains settings for Google-provided user authentication.</summary>
     public class GoogleAuthenticationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether dedicated devices are allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedDevicesAllowed")]
-        public virtual string DedicatedDevicesAllowed { get; set; }
-
         /// <summary>Whether Google authentication is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAuthenticationRequired")]
         public virtual string GoogleAuthenticationRequired { get; set; }
