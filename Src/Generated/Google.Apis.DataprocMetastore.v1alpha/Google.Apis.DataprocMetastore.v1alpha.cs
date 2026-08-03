@@ -4531,6 +4531,30 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Backfill status for the migration execution.</summary>
+    public class BackfillStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Summary of the migration results. This is populated after the backfill or dry run is finished.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationSummary")]
+        public virtual MigrationSummary MigrationSummary { get; set; }
+
+        /// <summary>
+        /// Output only. The Cloud Storage path where the backfill or dry run report is written. Format:
+        /// "gs://path-to-report".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportPath")]
+        public virtual string ReportPath { get; set; }
+
+        /// <summary>Output only. The current state of the backfill (or dry run).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The details of a backup resource.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4635,6 +4659,56 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Defines the configuration required to migrate metadata from a Dataproc Metastore service to BigLake Metastore.
+    /// </summary>
+    public class BigLakeMetastoreMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backfillStatus")]
+        public virtual BackfillStatus BackfillStatus { get; set; }
+
+        /// <summary>
+        /// Optional. The policy to handle conflicts when migrating resources, defaults to SKIP if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictPolicy")]
+        public virtual string ConflictPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. If true, performs discovery of requested resources and analysis against the target catalog to come
+        /// up with a plan for each resource (e.g. Create, Update, Skip, etc.). No metadata is actually migrated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual System.Nullable<bool> DryRun { get; set; }
+
+        /// <summary>
+        /// Optional. At least one of hive_config or iceberg_config must be provided, otherwise, a validation error will
+        /// be thrown. If only one is provided, the service only migrates tables of that specific type. If both are
+        /// provided, both Hive and Iceberg tables will be migrated.Configuration for migrating Hive tables to a BigLake
+        /// Hive catalog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hiveConfig")]
+        public virtual HiveConfig HiveConfig { get; set; }
+
+        /// <summary>Optional. Configuration for migrating Iceberg tables to a BigLake Iceberg REST catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icebergConfig")]
+        public virtual IcebergConfig IcebergConfig { get; set; }
+
+        /// <summary>Required. Defines the behavior of the migration execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage path where the backfill / dry run report should be written. If not provided, the
+        /// report will be generated in the service's artifacts bucket. Format: "gs://path/to/folder"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportPath")]
+        public virtual string ReportPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates members, or principals, with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4731,6 +4805,25 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of results for a specific destination catalog.</summary>
+    public class CatalogSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The catalog resource name (format: projects/*/catalogs/*).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>Output only. The type of the catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogType")]
+        public virtual string CatalogType { get; set; }
+
+        /// <summary>Output only. Summary of results for each database in the catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseSummaries")]
+        public virtual System.Collections.Generic.IList<DatabaseSummary> DatabaseSummaries { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5015,6 +5108,32 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Summary of results for a specific database in a catalog.</summary>
+    public class DatabaseSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Output only. The migration plan action for the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planAction")]
+        public virtual string PlanAction { get; set; }
+
+        /// <summary>
+        /// Output only. The migration result status for the database. This is only set if the migration is not a dry
+        /// run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultStatus")]
+        public virtual string ResultStatus { get; set; }
+
+        /// <summary>Output only. Aggregated summary of results for all tables in the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableSummary")]
+        public virtual TableSummary TableSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies how metastore metadata should be integrated with the Dataplex service.</summary>
     public class DataplexConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5284,6 +5403,27 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for migrating Hive metadata.</summary>
+    public class HiveConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target catalog for migrated databases and tables. Format:
+        /// "projects/{project_id_or_number}/catalogs/{catalog_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>
+        /// Required. The list of databases to migrate to the Hive catalog. Use "*" to migrate all databases. Note: If
+        /// Iceberg tables exist in these databases, they will only be migrated if iceberg_config is also specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
+        public virtual System.Collections.Generic.IList<string> Databases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies configuration information specific to running Hive metastore software as the metastore service.
     /// </summary>
@@ -5345,6 +5485,27 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         /// <summary>The semantic version of the Hive Metastore software.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for migrating Iceberg metadata.</summary>
+    public class IcebergConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target catalog for migrated Iceberg metadata. Format:
+        /// "projects/{project_id_or_number}/catalogs/{catalog_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>
+        /// Required. The list of namespaces to migrate to the Iceberg REST catalog. Use "*" to migrate all namespaces.
+        /// Note: If Hive tables exist in these namespaces, they will only be migrated if hive_config is also specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaces")]
+        public virtual System.Collections.Generic.IList<string> Namespaces { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5971,6 +6132,12 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
     public class MigrationExecution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Configuration information specific to migrating from Dataproc Metastore to BigLake Metastore.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biglakeMetastoreMigrationConfig")]
+        public virtual BigLakeMetastoreMigrationConfig BiglakeMetastoreMigrationConfig { get; set; }
+
+        /// <summary>
         /// Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration
         /// instead. Configuration information specific to migrating from self-managed hive metastore on Google Cloud
         /// using Cloud SQL as the backend database to Dataproc Metastore.
@@ -6073,6 +6240,65 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         /// <summary>Output only. Additional information about the current state of the migration execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of the migration results.</summary>
+    public class MigrationSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Summary of results for each catalog involved in the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogSummaries")]
+        public virtual System.Collections.Generic.IList<CatalogSummary> CatalogSummaries { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The UTC time when this report was finalized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Whether the migration was a dry run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual System.Nullable<bool> DryRun { get; set; }
+
+        /// <summary>
+        /// Output only. The Dataproc Metastore service name (format: projects/*/locations/*/services/*) on which the
+        /// migration was executed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7079,6 +7305,42 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual string Space { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregated summary of results for all tables in a database.</summary>
+    public class TableSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Partition migration summary across all Hive tables in the database.The total number of
+        /// partitions discovered at the source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionDiscoveredCount")]
+        public virtual System.Nullable<long> PartitionDiscoveredCount { get; set; }
+
+        /// <summary>Output only. The total number of partitions that failed to migrate at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionFailedCount")]
+        public virtual System.Nullable<long> PartitionFailedCount { get; set; }
+
+        /// <summary>Output only. The total number of partitions successfully migrated at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionSuccessCount")]
+        public virtual System.Nullable<long> PartitionSuccessCount { get; set; }
+
+        /// <summary>
+        /// Output only. Number of tables with a specific migration plan action. The key is the action name (e.g.
+        /// CREATE, UPDATE, SKIP, etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planCounts")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> PlanCounts { get; set; }
+
+        /// <summary>
+        /// Output only. Number of tables with a specific migration result status. The key is the status name (e.g.
+        /// SUCCEEDED, FAILED, SKIPPED, etc.). This is only set if the migration is not a dry run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultCounts")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> ResultCounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
