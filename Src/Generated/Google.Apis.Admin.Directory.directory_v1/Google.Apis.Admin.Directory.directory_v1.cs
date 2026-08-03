@@ -12567,6 +12567,21 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>External identifier used to link and identify this group across external directory systems.</summary>
+    public class ExternalId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier string assigned by the external provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The system or identity provider managing this ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Info about failures</summary>
     public class FailureInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12719,6 +12734,13 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. The list of external IDs for the group, such as an immutable identifier from an external identity
+        /// provider or directory sync client. Each entry contains a namespace and an ID value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIds")]
+        public virtual System.Collections.Generic.IList<ExternalId> ExternalIds { get; set; }
 
         /// <summary>
         /// Read-only. The unique ID of a group. A group `id` can be used as a group request URI's `groupKey`.
