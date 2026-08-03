@@ -730,7 +730,7 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta/{+name}:GetPassword";
+                public override string RestPath => "v1beta/{+name}:getPassword";
 
                 /// <summary>Initializes GetPassword parameter list.</summary>
                 protected override void InitParameters()
