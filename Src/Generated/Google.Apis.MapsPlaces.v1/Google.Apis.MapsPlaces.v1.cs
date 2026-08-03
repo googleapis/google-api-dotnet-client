@@ -1588,6 +1588,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("editorialSummary")]
         public virtual GoogleTypeLocalizedText EditorialSummary { get; set; }
 
+        /// <summary>Entrances for this destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrances")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceEntrance> Entrances { get; set; }
+
         /// <summary>The summary of amenities near the EV charging station.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evChargeAmenitySummary")]
         public virtual GoogleMapsPlacesV1PlaceEvChargeAmenitySummary EvChargeAmenitySummary { get; set; }
@@ -1695,6 +1699,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>A human-readable phone number for the place, in national format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nationalPhoneNumber")]
         public virtual string NationalPhoneNumber { get; set; }
+
+        /// <summary>Navigation points for this destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("navigationPoints")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceNavigationPoint> NavigationPoints { get; set; }
 
         /// <summary>A summary of points of interest near the place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("neighborhoodSummary")]
@@ -2057,6 +2065,24 @@ namespace Google.Apis.MapsPlaces.v1.Data
     }
 
     /// <summary>
+    /// An entrance is a single latitude/longitude coordinate pair that defines the location of an entry and exit point
+    /// for a place.
+    /// </summary>
+    public class GoogleMapsPlacesV1PlaceEntrance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location of the entrance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual GoogleTypeLatLng Location { get; set; }
+
+        /// <summary>A list of tags that describe the entrance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The summary of amenities near the EV charging station. This only applies to places with type
     /// `electric_vehicle_charging_station`. The `overview` field is guaranteed to be provided while the other fields
     /// are optional.
@@ -2141,6 +2167,39 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>A link to write a review for this place on Google Maps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeAReviewUri")]
         public virtual string WriteAReviewUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A navigation point is a location next to a road where navigation can end.</summary>
+    public class GoogleMapsPlacesV1PlaceNavigationPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of this navigation point. For example, "5th Ave" or "Gate B".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual GoogleTypeLocalizedText DisplayName { get; set; }
+
+        /// <summary>
+        /// A point next to the road segment where navigation should end. The point is intentionally slightly offset
+        /// from the road's centerline to clearly mark the side of the road where the place is located.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual GoogleTypeLatLng Location { get; set; }
+
+        /// <summary>A token that can be used to identify this navigation point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("navigationPointToken")]
+        public virtual string NavigationPointToken { get; set; }
+
+        /// <summary>Travel modes that are appropriate for this navigation point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("travelModes")]
+        public virtual System.Collections.Generic.IList<string> TravelModes { get; set; }
+
+        /// <summary>
+        /// Lists `usages` supported by this navigation point. If empty, it does not necessarily mean its usage is
+        /// restricted in any way. All navigation points can be used for general navigation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usages")]
+        public virtual System.Collections.Generic.IList<string> Usages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
