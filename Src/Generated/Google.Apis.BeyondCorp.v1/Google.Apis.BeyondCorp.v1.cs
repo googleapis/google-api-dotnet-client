@@ -6817,6 +6817,10 @@ namespace Google.Apis.BeyondCorp.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo DeviceInfo { get; set; }
 
+        /// <summary>Optional. The dispatch information configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dispatchInfo")]
+        public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo DispatchInfo { get; set; }
+
         /// <summary>Optional. Group details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupInfo")]
         public virtual GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo GroupInfo { get; set; }
@@ -6837,6 +6841,17 @@ namespace Google.Apis.BeyondCorp.v1.Data
     public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The output type details for the delegated device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
+        public virtual string OutputType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The delegated dispatch information configuration.</summary>
+    public class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDispatchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The output type details for the delegated dispatch information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputType")]
         public virtual string OutputType { get; set; }
 
