@@ -1133,7 +1133,7 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("n")]
         public virtual string N { get; set; }
 
-        /// <summary>Public key use. Currently "jwt-svid".</summary>
+        /// <summary>Public key use. Currently "sig".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
         public virtual string Use { get; set; }
 
