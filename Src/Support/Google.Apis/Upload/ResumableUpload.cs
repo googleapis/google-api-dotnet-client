@@ -208,6 +208,8 @@ namespace Google.Apis.Upload
 
         /// <summary>
         /// Event called when the final chunk of the data is uploading.
+        /// This event may be called multiple times if the final chunk upload is retried.
+        /// Any handler attached to this event should be idempotent.
         /// </summary>
         public event Action<HttpRequestMessage> LastRequestExecuting;
 
