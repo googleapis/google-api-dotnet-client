@@ -524,6 +524,77 @@ namespace Google.Apis.WebContentPublisher.v1
                         });
                     }
                 }
+
+                /// <summary>Updates a CTA.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the Cta. Format:
+                /// organizations/{organization}/publications/{publication}/ctas/{cta}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.WebContentPublisher.v1.Data.Cta body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a CTA.</summary>
+                public class PatchRequest : WebContentPublisherBaseServiceRequest<Google.Apis.WebContentPublisher.v1.Data.Cta>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.WebContentPublisher.v1.Data.Cta body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the Cta. Format:
+                    /// organizations/{organization}/publications/{publication}/ctas/{cta}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.WebContentPublisher.v1.Data.Cta Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/publications/[^/]+/ctas/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Creates a publication.</summary>
@@ -1028,6 +1099,10 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         /// <summary>Optional. Whether the user is required to provide their name to sign up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameRequired")]
         public virtual System.Nullable<bool> NameRequired { get; set; }
+
+        /// <summary>Optional. Whether checking the opt-in checkbox is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optInRequired")]
+        public virtual System.Nullable<bool> OptInRequired { get; set; }
 
         /// <summary>Required. The title of the newsletter signup prompt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
