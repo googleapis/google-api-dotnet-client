@@ -2041,10 +2041,12 @@ namespace Google.Apis.GoogleHealthAPI.v4
 
                     /// <summary>
                     /// Optional. The data source family name to reconcile. If empty, data points from all data sources
-                    /// will be reconciled. Format: `users/me/dataSourceFamilies/{data_source_family}` The supported
-                    /// values are: - `users/me/dataSourceFamilies/all-sources` - default value -
-                    /// `users/me/dataSourceFamilies/google-wearables` - tracker devices -
-                    /// `users/me/dataSourceFamilies/google-sources` - Google first party sources
+                    /// will be reconciled. Format: `users/me/dataSourceFamilies/{data_source_family}` -
+                    /// `users/me/dataSourceFamilies/all-sources` - Default value. Includes data from all available data
+                    /// sources. - `users/me/dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit
+                    /// tracker devices (such as Fitbit trackers and Pixel Watch). Excludes manually logged data. -
+                    /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google data, such as data
+                    /// from tracker devices, manually logged data, and Health Connect.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataSourceFamily", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataSourceFamily { get; set; }
@@ -3430,8 +3432,11 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>
         /// Optional. The data source family name to roll up. If empty, data points from all available data sources will
         /// be rolled up. Format: `users/me/dataSourceFamilies/{data_source_family}` The supported values are: -
-        /// `users/me/dataSourceFamilies/all-sources` - default value - `users/me/dataSourceFamilies/google-wearables` -
-        /// tracker devices - `users/me/dataSourceFamilies/google-sources` - Google first party sources
+        /// `users/me/dataSourceFamilies/all-sources` - Default value. Includes data from all available data sources. -
+        /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit tracker devices (such
+        /// as Fitbit trackers and Pixel Watch). Excludes manually logged data. -
+        /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google data, such as data from tracker
+        /// devices, manually logged data, and Health Connect.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFamily")]
         public virtual string DataSourceFamily { get; set; }
@@ -6280,8 +6285,11 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>
         /// Optional. The data source family name to roll up. If empty, data points from all available data sources will
         /// be rolled up. Format: `users/me/dataSourceFamilies/{data_source_family}` The supported values are: -
-        /// `users/me/dataSourceFamilies/all-sources` - default value - `users/me/dataSourceFamilies/google-wearables` -
-        /// tracker devices - `users/me/dataSourceFamilies/google-sources` - Google first party sources
+        /// `users/me/dataSourceFamilies/all-sources` - Default value. Includes data from all available data sources. -
+        /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit tracker devices (such
+        /// as Fitbit trackers and Pixel Watch). Excludes manually logged data. -
+        /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google data, such as data from tracker
+        /// devices, manually logged data, and Health Connect.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFamily")]
         public virtual string DataSourceFamily { get; set; }
@@ -6766,10 +6774,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoStrideEnabled")]
         public virtual System.Nullable<bool> AutoStrideEnabled { get; set; }
 
-        /// <summary>
-        /// Optional. The measurement unit defined in the user's account settings. Updates to this field are currently
-        /// not supported.
-        /// </summary>
+        /// <summary>Optional. The measurement unit defined in the user's account settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceUnit")]
         public virtual string DistanceUnit { get; set; }
 
@@ -6906,6 +6911,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. “Out of bed” segments that can overlap with sleep stages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outOfBedSegments")]
         public virtual System.Collections.Generic.IList<OutOfBedSegment> OutOfBedSegments { get; set; }
+
+        /// <summary>
+        /// Output only. List of short awake segments (under a set threshold) that are part of the sleep session. These
+        /// can overlap with sleep stages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortAwakenings")]
+        public virtual System.Collections.Generic.IList<SleepStage> ShortAwakenings { get; set; }
 
         /// <summary>
         /// Optional. List of non-overlapping contiguous sleep stage segments that cover the sleep period.
