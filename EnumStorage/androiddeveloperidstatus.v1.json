@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AndroidDeveloperIDStatus.v1.AndroidDeveloperIDStatusBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidDeveloperIDStatus.v1.AndroidDeveloperIDStatusBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
