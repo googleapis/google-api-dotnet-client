@@ -1,0 +1,31 @@
+{
+  "Google.Apis.CloudFTP.v1.CloudFTPBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudFTP.v1.CloudFTPBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudFTP.v1.ProjectsResource+LocationsResource+ServersResource+GetRequest.ViewEnum": [
+    "SERVER_VIEW_UNSPECIFIED",
+    "SERVER_VIEW_BASIC",
+    "SERVER_VIEW_FULL"
+  ],
+  "Google.Apis.CloudFTP.v1.ProjectsResource+LocationsResource+ServersResource+ListRequest.ViewEnum": [
+    "SERVER_VIEW_UNSPECIFIED",
+    "SERVER_VIEW_BASIC",
+    "SERVER_VIEW_FULL"
+  ],
+  "Google.Apis.CloudFTP.v1.ProjectsResource+LocationsResource+ServersResource+UsersResource+GetRequest.ViewEnum": [
+    "USER_VIEW_UNSPECIFIED",
+    "USER_VIEW_BASIC",
+    "USER_VIEW_FULL"
+  ],
+  "Google.Apis.CloudFTP.v1.ProjectsResource+LocationsResource+ServersResource+UsersResource+ListRequest.ViewEnum": [
+    "USER_VIEW_UNSPECIFIED",
+    "USER_VIEW_BASIC",
+    "USER_VIEW_FULL"
+  ]
+}
