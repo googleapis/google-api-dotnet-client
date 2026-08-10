@@ -648,11 +648,23 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diarization")]
         public virtual System.Nullable<bool> Diarization { get; set; }
 
-        /// <summary>Optional. The model will detect the language automatically.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use top-level `language_codes` instead. The model will detect the language
+        /// automatically.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageAuto")]
         public virtual GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto LanguageAuto { get; set; }
 
-        /// <summary>Optional. Specifies one or more languages in the audio.</summary>
+        /// <summary>
+        /// Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or
+        /// empty, defaults to automatic language detection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
+        public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; }
+
+        /// <summary>
+        /// Optional. Deprecated: Use top-level `language_codes` instead. Specifies one or more languages in the audio.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints LanguageHints { get; set; }
 
@@ -664,17 +676,26 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Indicates the language of the audio should be automatically detected.</summary>
+    /// <summary>
+    /// Deprecated: Use top-level `language_codes` instead. Indicates the language of the audio should be automatically
+    /// detected.
+    /// </summary>
     public class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageAuto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Provides hints to the model about possible languages present in the audio.</summary>
+    /// <summary>
+    /// Deprecated: Use top-level `language_codes` instead. Provides hints to the model about possible languages present
+    /// in the audio.
+    /// </summary>
     public class GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. BCP-47 language codes. At least one must be specified.</summary>
+        /// <summary>
+        /// Required. Deprecated: Use top-level `language_codes` instead. BCP-47 language codes. At least one must be
+        /// specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCodes")]
         public virtual System.Collections.Generic.IList<string> LanguageCodes { get; set; }
 
@@ -3817,6 +3838,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
+
+        /// <summary>Optional. The video output resolution. Supported values: "360p", "720p", "1080p", "4k".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
+        public virtual string Resolution { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
