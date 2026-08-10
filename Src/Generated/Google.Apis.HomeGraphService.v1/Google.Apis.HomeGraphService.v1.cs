@@ -589,6 +589,34 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This cluster defines the camera event stream used by GHP for their Cloud-to-Cloud eventing flow
+    /// </summary>
+    public class CameraEventStreamTrait : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common camera event data.</summary>
+    public class CommonEventDataStruct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains media urls for the event</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaUrls")]
+        public virtual MediaUrlsStruct MediaUrls { get; set; }
+
+        /// <summary>Camera event session id. Used for identifying a unique event session</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
+
+        /// <summary>Id of the track this object belongs to</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackId")]
+        public virtual string TrackId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Component of a provider device.</summary>
     public class Component : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -713,6 +741,17 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains metadata about the cause of presence state change attributed to a device.</summary>
+    public class DeviceBlameStruct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the device blame type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blameType")]
+        public virtual string BlameType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Device information.</summary>
     public class DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -781,6 +820,82 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EveUtilityTrait : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Output only. Accepted command list for this trait</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptedCommandList")]
+        public virtual System.Collections.Generic.IList<string> AcceptedCommandList { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("accumulatedControlPoint")]
+        public virtual System.Nullable<long> AccumulatedControlPoint { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("airPressure")]
+        public virtual System.Nullable<double> AirPressure { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
+        public virtual System.Nullable<double> Altitude { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("childLock")]
+        public virtual System.Nullable<bool> ChildLock { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("current")]
+        public virtual System.Nullable<double> Current { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("getConfig")]
+        public virtual string GetConfig { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("holdPosition")]
+        public virtual System.Nullable<bool> HoldPosition { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEventTime")]
+        public virtual System.Nullable<long> LastEventTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingControlPoint")]
+        public virtual string LoggingControlPoint { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingData")]
+        public virtual string LoggingData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingMetadata")]
+        public virtual string LoggingMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingTime")]
+        public virtual string LoggingTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("motionSensitivity")]
+        public virtual System.Nullable<int> MotionSensitivity { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("obstructionDetected")]
+        public virtual System.Nullable<bool> ObstructionDetected { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("openCount")]
+        public virtual System.Nullable<long> OpenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rloc16")]
+        public virtual System.Nullable<int> Rloc16 { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("setConfig")]
+        public virtual string SetConfig { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("statusFault")]
+        public virtual System.Nullable<int> StatusFault { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("voltage")]
+        public virtual System.Nullable<double> Voltage { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("watt")]
+        public virtual System.Nullable<double> Watt { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("wattAccumulated")]
+        public virtual System.Nullable<double> WattAccumulated { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("weatherTrend")]
+        public virtual System.Nullable<int> WeatherTrend { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -891,6 +1006,73 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>Required. Unique identifier for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class MediaUrlsStruct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL for a dash manifest for playback</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dashManifestUrl")]
+        public virtual string DashManifestUrl { get; set; }
+
+        /// <summary>URL for a hls master playlist for playback</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hlsMasterPlaylistUrl")]
+        public virtual string HlsMasterPlaylistUrl { get; set; }
+
+        /// <summary>URL for animated preview clip representing the event session</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previewUrl")]
+        public virtual string PreviewUrl { get; set; }
+
+        /// <summary>URL for thumbnail image representing the event session</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a newly detected motion event.</summary>
+    public class MotionEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("commonEventData")]
+        public virtual CommonEventDataStruct CommonEventData { get; set; }
+
+        /// <summary>Zones where events are detected in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<ZoneStruct> Zones { get; set; }
+
+        /// <summary>If set, zones is an empty list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zonesIsEmpty")]
+        public virtual System.Nullable<bool> ZonesIsEmpty { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provides attributes and events related to partner presence signals. See PartnerPresenceSignal trait:
+    /// </summary>
+    public class PartnerPresenceSignalTrait : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a newly detected person event.</summary>
+    public class PersonEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("commonEventData")]
+        public virtual CommonEventDataStruct CommonEventData { get; set; }
+
+        /// <summary>Zones where events are detected in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<ZoneStruct> Zones { get; set; }
+
+        /// <summary>If set, zones is an empty list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zonesIsEmpty")]
+        public virtual System.Nullable<bool> ZonesIsEmpty { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1181,6 +1363,40 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Sent when the structure presence state changes.</summary>
+    public class StructurePresenceStateChangeEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the presence state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presenceState")]
+        public virtual string PresenceState { get; set; }
+
+        /// <summary>Optional. Specifies the presence state change reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual StructurePresenceStateChangeReasonStruct Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the metadata about the cause of the structure presence state change.</summary>
+    public class StructurePresenceStateChangeReasonStruct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Contains metadata about the cause of presence state change attributed to a device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceBlame")]
+        public virtual DeviceBlameStruct DeviceBlame { get; set; }
+
+        /// <summary>
+        /// Optional. Contains metadata about the cause of presence state change attributed to a user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userBlame")]
+        public virtual UserBlameStruct UserBlame { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call.</summary>
     public class SyncRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1233,6 +1449,22 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>Devices associated with the third-party user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IList<Device> Devices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This cluster provides fan control capabilities for thermostats.</summary>
+    public class ThermostatFanControlTrait : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("timerDuration")]
+        public virtual System.Nullable<long> TimerDuration { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timerEnd")]
+        public virtual System.Nullable<long> TimerEnd { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timerSpeed")]
+        public virtual string TimerSpeed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1324,6 +1556,35 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>The Provider Home API trait payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trait")]
         public virtual System.Collections.Generic.IDictionary<string, object> Trait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains metadata about the cause of presence state change attributed to a user.</summary>
+    public class UserBlameStruct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the user blame type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blameType")]
+        public virtual string BlameType { get; set; }
+
+        /// <summary>Required. Specifies the email of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ZoneStruct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Id of the zone</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
+        public virtual System.Nullable<long> ZoneId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
