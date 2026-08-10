@@ -11644,6 +11644,13 @@ namespace Google.Apis.Contactcenterinsights.v1
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_DISCOVERY_ENGINE")]
                             QASCORECARDSOURCEDISCOVERYENGINE = 2,
+
+                            /// <summary>
+                            /// The scorecard is derived from the custom intent taxonomy. Customers can edit question
+                            /// content, but cannot delete the scorecard or add/remove questions.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_INTENT_TAXONOMY")]
+                            QASCORECARDSOURCEINTENTTAXONOMY = 3,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -12065,6 +12072,13 @@ namespace Google.Apis.Contactcenterinsights.v1
                         /// <summary>The scorecard is a scorecard created through discovery engine deployment.</summary>
                         [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_DISCOVERY_ENGINE")]
                         QASCORECARDSOURCEDISCOVERYENGINE = 2,
+
+                        /// <summary>
+                        /// The scorecard is derived from the custom intent taxonomy. Customers can edit question
+                        /// content, but cannot delete the scorecard or add/remove questions.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("QA_SCORECARD_SOURCE_INTENT_TAXONOMY")]
+                        QASCORECARDSOURCEINTENTTAXONOMY = 3,
                     }
 
                     /// <summary>Gets the method name.</summary>
