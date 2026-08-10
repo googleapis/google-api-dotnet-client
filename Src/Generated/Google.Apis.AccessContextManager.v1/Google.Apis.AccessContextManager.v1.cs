@@ -2803,6 +2803,15 @@ namespace Google.Apis.AccessContextManager.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. The literal filter to apply to the results returned. See https://google.aip.dev/160 for
+                /// more details. Accepts values: * principal:group_key * principal:service_account OR
+                /// principal:service_account_project_number. If this field is empty or not one of the above, the
+                /// default value is "principal:group_key".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Optional. Maximum number of items to return. The server may return fewer items. If left blank, the
                 /// server may return any number of items.
                 /// </summary>
@@ -2836,6 +2845,14 @@ namespace Google.Apis.AccessContextManager.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -4784,14 +4801,16 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>
         /// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set
         /// infinite session by flipping the enabled bit to false below. If use_oidc_max_age is true, for OIDC apps, the
-        /// session length will be the minimum of this field and OIDC max_age param.
+        /// session length will be the minimum of this field and OIDC max_age param. If this field is set to zero,
+        /// session_length_enabled must be set to false or left unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionLength")]
         public virtual object SessionLength { get; set; }
 
         /// <summary>
         /// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will
-        /// be disregarded and the session length is basically infinite.
+        /// be disregarded and the session length is basically infinite. If session_length is set to zero, this field
+        /// must be false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionLengthEnabled")]
         public virtual System.Nullable<bool> SessionLengthEnabled { get; set; }
