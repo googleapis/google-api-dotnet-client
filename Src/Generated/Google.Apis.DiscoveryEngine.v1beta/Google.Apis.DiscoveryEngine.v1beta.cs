@@ -20811,6 +20811,71 @@ namespace Google.Apis.DiscoveryEngine.v1beta
             }
 
             /// <summary>
+            /// Provisions the project resource. During the process, related systems will get prepared and initialized.
+            /// Caller must read the [Terms for data use](https://cloud.google.com/retail/data-use-terms), and
+            /// optionally specify in request to provide consent to that service terms.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Full resource name of a Project, such as `projects/{project_id_or_number}`.
+            /// </param>
+            public virtual ProvisionRequest Provision(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaProvisionProjectRequest body, string name)
+            {
+                return new ProvisionRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Provisions the project resource. During the process, related systems will get prepared and initialized.
+            /// Caller must read the [Terms for data use](https://cloud.google.com/retail/data-use-terms), and
+            /// optionally specify in request to provide consent to that service terms.
+            /// </summary>
+            public class ProvisionRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Provision request.</summary>
+                public ProvisionRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaProvisionProjectRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Full resource name of a Project, such as `projects/{project_id_or_number}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaProvisionProjectRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "provision";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}:provision";
+
+                /// <summary>Initializes Provision parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Removes the dedicated crawl rate for a craw_rate_scope. If the dedicated crawl rate was set, this will
             /// disable vertex AI's crawl bot from using the dedicated crawl rate for crawling. If the dedicated crawl
             /// rate was not set, this is a no-op.
@@ -24012,17 +24077,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
     /// <summary>
     /// User-facing metadata for the connector, shown on the connector detail page (title, description,
-    /// short_description, author, authenticated_account, note).
+    /// short_description, author, note).
     /// </summary>
     public class GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The end user's account as authenticated to the connector, so the end user can see which account is
-        /// connected. May be an email, a username, or any identifier the connector/third party provides.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authenticatedAccount")]
-        public virtual string AuthenticatedAccount { get; set; }
-
         /// <summary>
         /// Optional. The party that authored the connector, e.g. "Google" or a third-party provider name. Lets end
         /// users see who authored a connector (future: third-party-authored connectors).
@@ -25860,9 +25918,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence`
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `skills` * `skill-sharing` *
+        /// `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
+        /// * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` *
+        /// `workflow-agents` * `in-app-notifications`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -33110,17 +33169,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
     /// <summary>
     /// User-facing metadata for the connector, shown on the connector detail page (title, description,
-    /// short_description, author, authenticated_account, note).
+    /// short_description, author, note).
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDataConnectorConnectorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The end user's account as authenticated to the connector, so the end user can see which account is
-        /// connected. May be an email, a username, or any identifier the connector/third party provides.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authenticatedAccount")]
-        public virtual string AuthenticatedAccount { get; set; }
-
         /// <summary>
         /// Optional. The party that authored the connector, e.g. "Google" or a third-party provider name. Lets end
         /// users see who authored a connector (future: third-party-authored connectors).
@@ -35209,9 +35261,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence`
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `skills` * `skill-sharing` *
+        /// `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
+        /// * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` *
+        /// `workflow-agents` * `in-app-notifications`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -44563,7 +44616,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteUnassignedUserLicenses")]
         public virtual System.Nullable<bool> DeleteUnassignedUserLicenses { get; set; }
 
-        /// <summary>The inline source for the input content for document embeddings.</summary>
+        /// <summary>The inline source for the input content for license assignment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
         public virtual GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestInlineSource InlineSource { get; set; }
 
@@ -48395,9 +48448,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `disable-skills` * `disable-projects` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence`
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `skills` * `skill-sharing` *
+        /// `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
+        /// * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` *
+        /// `workflow-agents` * `in-app-notifications`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
