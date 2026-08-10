@@ -5208,6 +5208,14 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. Indicates whether to fetch the reserved public IP addresses allocated for private
+                /// connections in this location. If false or not set, fetches the shared external static IP addresses
+                /// instead.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("fetchReservedPublicIps", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> FetchReservedPublicIps { get; set; }
+
                 /// <summary>Optional. Maximum number of IPs to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -5236,6 +5244,14 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("fetchReservedPublicIps", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "fetchReservedPublicIps",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -9195,6 +9211,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfig")]
         public virtual PscInterfaceConfig PscInterfaceConfig { get; set; }
 
+        /// <summary>Reserved Public IP configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservedPublicIpConfig")]
+        public virtual ReservedPublicIpConfig ReservedPublicIpConfig { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -9423,6 +9443,21 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingData")]
         public virtual string ServingData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Reserved Public IP configuration.</summary>
+    public class ReservedPublicIpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The reserved public IPs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressPublicIps")]
+        public virtual System.Collections.Generic.IList<string> EgressPublicIps { get; set; }
+
+        /// <summary>Optional. Number of static public IP addresses to reserve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIpsCount")]
+        public virtual System.Nullable<int> NatIpsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
