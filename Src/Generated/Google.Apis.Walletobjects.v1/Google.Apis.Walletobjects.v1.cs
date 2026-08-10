@@ -3646,6 +3646,45 @@ namespace Google.Apis.Walletobjects.v1
                 base.InitParameters();
             }
         }
+
+        /// <summary>Checks that the JWT or JSON string in the request represents a valid pass to be saved.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ValidateRequest Validate(Google.Apis.Walletobjects.v1.Data.JwtValidateRequest body)
+        {
+            return new ValidateRequest(this.service, body);
+        }
+
+        /// <summary>Checks that the JWT or JSON string in the request represents a valid pass to be saved.</summary>
+        public class ValidateRequest : WalletobjectsBaseServiceRequest<Google.Apis.Walletobjects.v1.Data.JwtValidateResponse>
+        {
+            /// <summary>Constructs a new Validate request.</summary>
+            public ValidateRequest(Google.Apis.Services.IClientService service, Google.Apis.Walletobjects.v1.Data.JwtValidateRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Walletobjects.v1.Data.JwtValidateRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "validate";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "walletobjects/v1/jwt/validate";
+
+            /// <summary>Initializes Validate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
     }
 
     /// <summary>The "loyaltyclass" collection of methods.</summary>
@@ -10086,6 +10125,22 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A JSON representation of a pass.</summary>
+    public class JsonResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A JSON string representing the unencoded JWT payload for a pass of the format described at
+        /// https://developers.google.com/wallet/reference/rest/v1/Jwt. This can be set to either the entire JSON
+        /// representation described at this link or just the contents of the payload field holding the relevant classes
+        /// and objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("json")]
+        public virtual string Json { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class JwtInsertResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10117,6 +10172,34 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jwt")]
         public virtual string Jwt { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to validate the JWT or JSON representation of a pass.</summary>
+    public class JwtValidateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A JSON representation of a pass to be validated. Either this or jwt_resource should be set.
+        /// Requests setting both or neither will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonResource")]
+        public virtual JsonResource JsonResource { get; set; }
+
+        /// <summary>
+        /// Optional. A JWT representation of a pass to be validated. Either this or json_resource should be set.
+        /// Requests setting both or neither will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwtResource")]
+        public virtual JwtResource JwtResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Empty if the resource in the request is valid. Returns exception if invalid.</summary>
+    public class JwtValidateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
