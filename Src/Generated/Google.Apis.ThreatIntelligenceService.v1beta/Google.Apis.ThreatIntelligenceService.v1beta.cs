@@ -2338,6 +2338,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// </summary>
     public class ConfigurationDetail : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Custom Threat Scenario detail config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customThreatScenario")]
+        public virtual CustomThreatScenarioConfig CustomThreatScenario { get; set; }
+
         /// <summary>Customer Profile detail config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerProfile")]
         public virtual CustomerProfileConfig CustomerProfile { get; set; }
@@ -2406,6 +2410,20 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// <summary>The snapshot of the configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
         public virtual Configuration Snapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CustomThreatScenarioConfig represents a user-defined threat scenario configuration.</summary>
+    public class CustomThreatScenarioConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The condition driving the scenario, stored as a stringified JSON. This is used to query/filter
+        /// documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentCondition")]
+        public virtual string DocumentCondition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
