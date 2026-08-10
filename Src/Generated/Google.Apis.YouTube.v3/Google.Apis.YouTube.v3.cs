@@ -11587,6 +11587,75 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Common proto for Live and VOD geo-restrictions</summary>
+    public class AvailabilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Video is available in all regions except the ones specified in the config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalConfig")]
+        public virtual AvailabilityConfigGlobalConfig GlobalConfig { get; set; }
+
+        /// <summary>Video is available in the specified regions only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionsConfig")]
+        public virtual AvailabilityConfigRegionsConfig RegionsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Video is available in all regions except the ones specified in the excluded_region_codes list.
+    /// </summary>
+    public class AvailabilityConfigGlobalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Regions where video is blocked</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedRegionCodes")]
+        public virtual System.Collections.Generic.IList<string> ExcludedRegionCodes { get; set; }
+
+        /// <summary>
+        /// Default time window where video is available for all non-blocked regions Not supported for upcoming / active
+        /// live broadcasts. If start time is unspecified, video is already available If end time is unspecified, video
+        /// is available forever Specified start and end times cannot be more than five years in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual Interval Interval { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Video is available in the specified regions only.</summary>
+    public class AvailabilityConfigRegionsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. List of regions and time windows where video is available. If a region is specified multiple
+        /// times, the union of all intervals is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionIntervals")]
+        public virtual System.Collections.Generic.IList<AvailabilityConfigRegionsConfigRegionInterval> RegionIntervals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Region and time window where video is available for the region.</summary>
+    public class AvailabilityConfigRegionsConfigRegionInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Time window where video is available for the region. Not supported for upcoming / active live broadcasts. If
+        /// start time is unspecified, video is already available If end time is unspecified, video is available forever
+        /// Specified start and end times cannot be more than five years in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual Interval Interval { get; set; }
+
+        /// <summary>Required. Region where video is available</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response for the Videos.stats API. Returns VideoStat information about a batch of videos. VideoStat contains a
     /// subset of the information in Video that is relevant to statistics and content details. BatchGetStats is
@@ -13654,6 +13723,97 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes an invideo branding.</summary>
     public class InvideoBranding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13806,6 +13966,13 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>Detailed settings of a broadcast.</summary>
     public class LiveBroadcastContentDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The broadcast's availability config. Used to set specific region availability or block specific
+        /// regions It is optional - if not set, it is not enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityConfig")]
+        public virtual AvailabilityConfig AvailabilityConfig { get; set; }
+
         /// <summary>This value uniquely identifies the live stream bound to the broadcast.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundStreamId")]
         public virtual string BoundStreamId { get; set; }
