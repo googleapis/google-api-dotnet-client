@@ -1325,7 +1325,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 }
             }
 
-            /// <summary>Creates a CustomDimension.</summary>
+            /// <summary>
+            /// Creates a CustomDimension. Warning: It's not permissible to use this method to collect data on
+            /// individual users. In particular, sending user IDs in custom dimensions violates the [Google Analytics
+            /// Terms of Service](https://www.google.com/analytics/terms/).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Example format: properties/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaCustomDimension body, string parent)
@@ -1333,7 +1337,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 return new CreateRequest(this.service, body, parent);
             }
 
-            /// <summary>Creates a CustomDimension.</summary>
+            /// <summary>
+            /// Creates a CustomDimension. Warning: It's not permissible to use this method to collect data on
+            /// individual users. In particular, sending user IDs in custom dimensions violates the [Google Analytics
+            /// Terms of Service](https://www.google.com/analytics/terms/).
+            /// </summary>
             public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaCustomDimension>
             {
                 /// <summary>Constructs a new Create request.</summary>
