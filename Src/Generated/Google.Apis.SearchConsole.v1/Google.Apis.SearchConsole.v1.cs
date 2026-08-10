@@ -1107,15 +1107,17 @@ namespace Google.Apis.SearchConsole.v1.Data
     }
 
     /// <summary>
-    /// A set of dimension value filters to test against each row. Only rows that pass all filter groups will be
+    /// A set of `dimension` value filters to test against each row. Only rows that pass all filter groups will be
     /// returned. All results within a filter group are either AND'ed or OR'ed together, depending on the group type
     /// selected. All filter groups are AND'ed together.
     /// </summary>
     public class ApiDimensionFilterGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. A list of single-value filters in this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual System.Collections.Generic.IList<ApiDimensionFilter> Filters { get; set; }
 
+        /// <summary>Optional. The logic operator between filters of the same group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
         public virtual string GroupType { get; set; }
 
