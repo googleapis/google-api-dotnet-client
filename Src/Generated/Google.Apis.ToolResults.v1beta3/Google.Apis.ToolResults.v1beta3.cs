@@ -3534,6 +3534,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Anti-tampering termination was detected.</summary>
+    public class AntiTamperingTermination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     ///  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the
     /// serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions
