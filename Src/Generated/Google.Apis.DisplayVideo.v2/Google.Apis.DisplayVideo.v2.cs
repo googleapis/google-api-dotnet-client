@@ -21382,7 +21382,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
         public virtual System.Nullable<bool> Skippable { get; set; }
 
-        /// <summary>Optional. Whether the creative contains synthetic content or was created using AI.</summary>
+        /// <summary>
+        /// Optional. Whether to add a label to the creative as created or edited using AI when served in regions with
+        /// local AI labeling regulations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
         public virtual string SyntheticContentAttestationStatus { get; set; }
 
