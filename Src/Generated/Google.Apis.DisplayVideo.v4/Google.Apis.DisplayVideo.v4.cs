@@ -692,8 +692,8 @@ namespace Google.Apis.DisplayVideo.v4
 
             /// <summary>
             /// Updates an ad asset. Returns the updated ad asset if successful. Supports updating assets of AdAssetType
-            /// `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `AD_ASSET_TYPE_IMAGE`. Only the `synthetic_content_attestation_status`
-            /// field is mutable.
+            /// `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `AD_ASSET_TYPE_IMAGE`. Only the
+            /// AdAsset.synthetic_content_attestation_status field is mutable.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this ad asset belongs to.</param>
@@ -707,8 +707,8 @@ namespace Google.Apis.DisplayVideo.v4
 
             /// <summary>
             /// Updates an ad asset. Returns the updated ad asset if successful. Supports updating assets of AdAssetType
-            /// `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `AD_ASSET_TYPE_IMAGE`. Only the `synthetic_content_attestation_status`
-            /// field is mutable.
+            /// `AD_ASSET_TYPE_YOUTUBE_VIDEO` and `AD_ASSET_TYPE_IMAGE`. Only the
+            /// AdAsset.synthetic_content_attestation_status field is mutable.
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdAsset>
             {
@@ -11255,7 +11255,11 @@ namespace Google.Apis.DisplayVideo.v4
                 this.service = service;
             }
 
-            /// <summary>Generates a reach forecast for a given advertiser and targeting configuration.</summary>
+            /// <summary>
+            /// Generates a reach forecast for a given advertiser and targeting configuration. API support for
+            /// generating reach forecasts and retrieving related metadata is in beta. This method is only available to
+            /// allowlisted users.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
             /// Required. The ID of the advertiser that will run the planned campaign.
@@ -11265,7 +11269,11 @@ namespace Google.Apis.DisplayVideo.v4
                 return new GenerateReachForecastRequest(this.service, body, advertiserId);
             }
 
-            /// <summary>Generates a reach forecast for a given advertiser and targeting configuration.</summary>
+            /// <summary>
+            /// Generates a reach forecast for a given advertiser and targeting configuration. API support for
+            /// generating reach forecasts and retrieving related metadata is in beta. This method is only available to
+            /// allowlisted users.
+            /// </summary>
             public class GenerateReachForecastRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.GenerateReachForecastResponse>
             {
                 /// <summary>Constructs a new GenerateReachForecast request.</summary>
@@ -11310,14 +11318,22 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Retrieves the list of countries where reach forecasting is supported.</summary>
+            /// <summary>
+            /// Retrieves the list of countries where reach forecasting is supported. API support for generating reach
+            /// forecasts and retrieving related metadata is in beta. This method is only available to allowlisted
+            /// users.
+            /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser to list plannable locations for.</param>
             public virtual RetrievePlannableLocationsRequest RetrievePlannableLocations(long advertiserId)
             {
                 return new RetrievePlannableLocationsRequest(this.service, advertiserId);
             }
 
-            /// <summary>Retrieves the list of countries where reach forecasting is supported.</summary>
+            /// <summary>
+            /// Retrieves the list of countries where reach forecasting is supported. API support for generating reach
+            /// forecasts and retrieving related metadata is in beta. This method is only available to allowlisted
+            /// users.
+            /// </summary>
             public class RetrievePlannableLocationsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.RetrievePlannableLocationsResponse>
             {
                 /// <summary>Constructs a new RetrievePlannableLocations request.</summary>
@@ -11355,14 +11371,22 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Retrieves the list of products that can be planned for a location.</summary>
+            /// <summary>
+            /// Retrieves the list of products that can be planned for a location. API support for generating reach
+            /// forecasts and retrieving related metadata is in beta. This method is only available to allowlisted
+            /// users.
+            /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser to list plannable products for.</param>
             public virtual RetrievePlannableProductsRequest RetrievePlannableProducts(long advertiserId)
             {
                 return new RetrievePlannableProductsRequest(this.service, advertiserId);
             }
 
-            /// <summary>Retrieves the list of products that can be planned for a location.</summary>
+            /// <summary>
+            /// Retrieves the list of products that can be planned for a location. API support for generating reach
+            /// forecasts and retrieving related metadata is in beta. This method is only available to allowlisted
+            /// users.
+            /// </summary>
             public class RetrievePlannableProductsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.RetrievePlannableProductsResponse>
             {
                 /// <summary>Constructs a new RetrievePlannableProducts request.</summary>
@@ -11412,7 +11436,11 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Retrieves Google Audiences (User Interests) available for forecasting.</summary>
+            /// <summary>
+            /// Retrieves Google Audiences (User Interests) available for forecasting. API support for generating reach
+            /// forecasts and retrieving related metadata is in beta. This method is only available to allowlisted
+            /// users.
+            /// </summary>
             /// <param name="advertiserId">
             /// Required. The ID of the advertiser to list plannable user interests for.
             /// </param>
@@ -11421,7 +11449,11 @@ namespace Google.Apis.DisplayVideo.v4
                 return new RetrievePlannableUserInterestsRequest(this.service, advertiserId);
             }
 
-            /// <summary>Retrieves Google Audiences (User Interests) available for forecasting.</summary>
+            /// <summary>
+            /// Retrieves Google Audiences (User Interests) available for forecasting. API support for generating reach
+            /// forecasts and retrieving related metadata is in beta. This method is only available to allowlisted
+            /// users.
+            /// </summary>
             public class RetrievePlannableUserInterestsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.RetrievePlannableUserInterestsResponse>
             {
                 /// <summary>Constructs a new RetrievePlannableUserInterests request.</summary>
@@ -11487,7 +11519,11 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Retrieves first and third party user lists available for forecasting.</summary>
+            /// <summary>
+            /// Retrieves first and third party user lists available for forecasting. API support for generating reach
+            /// forecasts and retrieving related metadata is in beta. This method is only available to allowlisted
+            /// users.
+            /// </summary>
             /// <param name="advertiserId">
             /// Required. The ID of the advertiser to retrieve plannable user lists for.
             /// </param>
@@ -11496,7 +11532,11 @@ namespace Google.Apis.DisplayVideo.v4
                 return new RetrievePlannableUserListsRequest(this.service, advertiserId);
             }
 
-            /// <summary>Retrieves first and third party user lists available for forecasting.</summary>
+            /// <summary>
+            /// Retrieves first and third party user lists available for forecasting. API support for generating reach
+            /// forecasts and retrieving related metadata is in beta. This method is only available to allowlisted
+            /// users.
+            /// </summary>
             public class RetrievePlannableUserListsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.RetrievePlannableUserListsResponse>
             {
                 /// <summary>Constructs a new RetrievePlannableUserLists request.</summary>
@@ -22628,7 +22668,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Whether the asset contains synthetic content or was created using AI.</summary>
+        /// <summary>
+        /// Optional. Whether to add a label to the asset as created or edited using AI when served in regions with
+        /// local AI labeling regulations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
         public virtual string SyntheticContentAttestationStatus { get; set; }
 
@@ -26163,8 +26206,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Country code of the member. Must also be set with the following fields: * country_code *
-        /// hashed_first_name * hashed_last_name * zip_codes
+        /// Optional. Country code of the member. Must also be set with the following fields: * hashed_first_name *
+        /// hashed_last_name * zip_codes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
@@ -26897,7 +26940,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skippable")]
         public virtual System.Nullable<bool> Skippable { get; set; }
 
-        /// <summary>Optional. Whether the creative contains synthetic content or was created using AI.</summary>
+        /// <summary>
+        /// Optional. Whether to add a label to the creative as created or edited using AI when served in regions with
+        /// local AI labeling regulations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
         public virtual string SyntheticContentAttestationStatus { get; set; }
 
@@ -33560,7 +33606,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; }
 
-        /// <summary>Optional. Whether the asset contains synthetic content or was created using AI.</summary>
+        /// <summary>
+        /// Optional. Whether to add a label to the asset as created or edited using AI when served in regions with
+        /// local AI labeling regulations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntheticContentAttestationStatus")]
         public virtual string SyntheticContentAttestationStatus { get; set; }
 
