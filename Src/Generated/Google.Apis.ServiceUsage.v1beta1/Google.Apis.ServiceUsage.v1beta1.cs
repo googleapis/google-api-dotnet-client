@@ -3349,6 +3349,13 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> SupportedLocations { get; set; }
 
         /// <summary>
+        /// Indicates the traffic type attribution for this quota limit (e.g. agentic). This is an informational field
+        /// used to categorize and filter the quota limits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficSource")]
+        public virtual string TrafficSource { get; set; }
+
+        /// <summary>
         /// The limit unit. An example unit would be `1/{project}/{region}` Note that `{project}` and `{region}` are not
         /// placeholders in this example; the literal characters `{` and `}` occur in the string.
         /// </summary>
