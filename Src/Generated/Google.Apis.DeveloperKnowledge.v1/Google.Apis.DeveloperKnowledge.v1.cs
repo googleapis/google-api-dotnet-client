@@ -299,7 +299,8 @@ namespace Google.Apis.DeveloperKnowledge.v1
             /// Required. Specifies the names of the documents to retrieve. A maximum of 20 documents can be retrieved
             /// in a batch. The documents are returned in the same order as the `names` in the request. Format:
             /// `documents/{uri_without_scheme}` Example:
-            /// `documents/docs.cloud.google.com/storage/docs/creating-buckets`
+            /// `documents/docs.cloud.google.com/storage/docs/creating-buckets` Each name must not exceed 500
+            /// characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
@@ -379,7 +380,8 @@ namespace Google.Apis.DeveloperKnowledge.v1
         /// <summary>Retrieves a single document with its full Markdown content.</summary>
         /// <param name="name">
         /// Required. Specifies the name of the document to retrieve. Format: `documents/{uri_without_scheme}` Example:
-        /// `documents/docs.cloud.google.com/storage/docs/creating-buckets`
+        /// `documents/docs.cloud.google.com/storage/docs/creating-buckets` The name must not exceed 500 characters;
+        /// values longer than 500 characters will result in an `INVALID_ARGUMENT` error.
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -398,7 +400,8 @@ namespace Google.Apis.DeveloperKnowledge.v1
 
             /// <summary>
             /// Required. Specifies the name of the document to retrieve. Format: `documents/{uri_without_scheme}`
-            /// Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets`
+            /// Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets` The name must not exceed 500
+            /// characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -542,7 +545,8 @@ namespace Google.Apis.DeveloperKnowledge.v1
 
             /// <summary>
             /// Required. Provides the raw query string provided by the user, such as "How to create a Cloud Storage
-            /// bucket?".
+            /// bucket?". The query must not exceed 500 characters; values longer than 500 characters will result in an
+            /// `INVALID_ARGUMENT` error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -753,7 +757,10 @@ namespace Google.Apis.DeveloperKnowledge.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Document represents a piece of content from the Developer Knowledge corpus.</summary>
+    /// <summary>
+    /// A Document represents a page of documentation in the Developer Knowledge corpus, like the page at
+    /// https://docs.cloud.google.com/storage/docs/creating-buckets.
+    /// </summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Contains the full content of the document in Markdown format.</summary>
@@ -894,8 +901,8 @@ namespace Google.Apis.DeveloperKnowledge.v1.Data
     public class SearchDocumentChunksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Provides a token that can be sent as `page_token` to retrieve the next page. If this field is
-        /// omitted, there are no subsequent pages.
+        /// Provides a token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there
+        /// are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
