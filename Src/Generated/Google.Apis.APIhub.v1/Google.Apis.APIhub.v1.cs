@@ -13522,8 +13522,9 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual System.Collections.Generic.IList<string> Definitions { get; set; }
 
         /// <summary>
-        /// Optional. The deployments linked to this API version. Note: A particular API version could be deployed to
-        /// multiple deployments (for dev deployment, UAT deployment, etc) Format is
+        /// Optional. The deployments linked directly to this API version. Only directly-linked deployments are
+        /// returned; deployments linked to this version's specs or operations are not included. Note: A particular API
+        /// version could be deployed to multiple deployments (for dev deployment, UAT deployment, etc) Format is
         /// `projects/{project}/locations/{location}/deployments/{deployment}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployments")]
