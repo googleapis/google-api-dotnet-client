@@ -9618,7 +9618,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Setting</summary>
     public class Setting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Immutable. The type of the Setting. .</summary>
+        /// <summary>Required. Immutable. The type of the Setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
