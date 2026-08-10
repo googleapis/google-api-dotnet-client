@@ -10876,7 +10876,7 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Rollout contains the Rollout metadata and configuration. Next ID: 28</summary>
+    /// <summary>Rollout contains the Rollout metadata and configuration. Next ID: 31</summary>
     public class Rollout : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _completeTimeRaw;
