@@ -6773,6 +6773,12 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchema")]
         public virtual string DefaultSchema { get; set; }
 
+        /// <summary>
+        /// Optional. The pipeline options which defines the pipeline type and path within the Git repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineConfig")]
+        public virtual PipelineConfig PipelineConfig { get; set; }
+
         /// <summary>Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaSuffix")]
         public virtual string SchemaSuffix { get; set; }
@@ -7044,6 +7050,10 @@ namespace Google.Apis.Dataform.v1.Data
         /// <summary>Output only. The version of `@dataform/core` that was used for compilation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataformCoreVersion")]
         public virtual string DataformCoreVersion { get; set; }
+
+        /// <summary>Output only. Metadata about the repository snapshot used by scheduled notebooks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsRepositorySnapshotMetadata")]
+        public virtual GcsRepositorySnapshotMetadata GcsRepositorySnapshotMetadata { get; set; }
 
         /// <summary>
         /// Immutable. Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote
@@ -7693,6 +7703,42 @@ namespace Google.Apis.Dataform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configures the destination for a repository snapshot.</summary>
+    public class GcsRepositorySnapshotDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Google Cloud Storage destination to upload the repository snapshot to. Format:
+        /// `gs://bucket-name/path/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositorySnapshotUri")]
+        public virtual string RepositorySnapshotUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a repository snapshot stored in Google Cloud Storage.</summary>
+    public class GcsRepositorySnapshotMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The crc32c checksum of the repository snapshot, big-endian base64 encoded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crc32cChecksum")]
+        public virtual string Crc32cChecksum { get; set; }
+
+        /// <summary>
+        /// Output only. The generation number of the Cloud Storage object. See
+        /// https://cloud.google.com/storage/docs/metadata#generation-number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Output only. The Google Cloud Storage URI of the repository snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositorySnapshotUri")]
+        public virtual string RepositorySnapshotUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Controls Git remote configuration for a repository.</summary>
     public class GitRemoteSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7811,6 +7857,12 @@ namespace Google.Apis.Dataform.v1.Data
     /// <summary>`InstallNpmPackages` request message.</summary>
     public class InstallNpmPackagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The pipeline options which defines the pipeline type and path within the Git repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineConfig")]
+        public virtual PipelineConfig PipelineConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8311,6 +8363,10 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual string Contents { get; set; }
 
+        /// <summary>Output only. The path to the notebook file in the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
         /// <summary>
         /// Output only. The ID of the Gemini Enterprise Agent Platform job that executed the notebook in contents and
         /// also the ID used for the outputs created in Google Cloud Storage buckets. Only set once the job has started
@@ -8339,6 +8395,13 @@ namespace Google.Apis.Dataform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsOutputBucket")]
         public virtual string GcsOutputBucket { get; set; }
+
+        /// <summary>
+        /// Optional. The Google Cloud Storage destination to upload the snapshot to. For empty URI it defaults to the
+        /// provided gcs_output_bucket. Format: `gs://bucket-name/path/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsRepositorySnapshotDestination")]
+        public virtual GcsRepositorySnapshotDestination GcsRepositorySnapshotDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8518,6 +8581,24 @@ namespace Google.Apis.Dataform.v1.Data
         /// <summary>Arbitrary, user-defined tags on this action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the pipeline type and path within the Git repository.</summary>
+    public class PipelineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The relative path within the Git repository where the pipeline is defined. For example, for a
+        /// Dataform pipeline, it is a path to the folder where `workflow_settings.yaml` or `dataform.json` is located.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Required. The type of the pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineType")]
+        public virtual string PipelineType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9012,8 +9093,8 @@ namespace Google.Apis.Dataform.v1.Data
 
         /// <summary>
         /// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from
-        /// the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified,
-        /// the default is UTC.
+        /// the [time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified,
+        /// the default is `UTC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -9757,8 +9838,8 @@ namespace Google.Apis.Dataform.v1.Data
 
         /// <summary>
         /// Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from
-        /// the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified,
-        /// the default is UTC.
+        /// the [time zone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified,
+        /// the default is `UTC`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
@@ -9836,6 +9917,12 @@ namespace Google.Apis.Dataform.v1.Data
         /// <summary>Output only. The workflow invocation's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The pipeline options which defines the pipeline type and path within the Git repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineConfig")]
+        public virtual PipelineConfig PipelineConfig { get; set; }
 
         /// <summary>
         /// Output only. Metadata indicating whether this resource is user-scoped. `WorkflowInvocation` resource is
