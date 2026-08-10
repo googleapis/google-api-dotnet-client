@@ -1812,7 +1812,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     /// <summary>Modifier to apply to the API requests.</summary>
     public class GoogleIdentityAccesscontextmanagerV1Modifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Adds additional HTTP request headers.</summary>
+        /// <summary>Adds an additional HTTP request header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addRequestHeader")]
         public virtual GoogleIdentityAccesscontextmanagerV1AddRequestHeader AddRequestHeader { get; set; }
 
@@ -1870,7 +1870,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
 
         /// <summary>
         /// URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.com//*" and "*.appspot.com/*
-        /// forms are supported, where should be alphanumerical name.
+        /// forms are supported, where should be an alphanumeric name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
