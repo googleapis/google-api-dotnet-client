@@ -4400,7 +4400,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                         /// Required. User specified id for the report. It will become the last component of the report
                         /// name. The id must be unique within the project, must conform with RFC-1034, is restricted to
                         /// lower-cased letters, and has a maximum length of 63 characters. The id must match the
-                        /// regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?.
+                        /// regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("reportId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ReportId { get; set; }
@@ -4783,7 +4783,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                     /// Required. User specified ID for the report config. It will become the last component of the
                     /// report config name. The ID must be unique within the project, must conform with RFC-1034, is
                     /// restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match
-                    /// the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?.
+                    /// the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("reportConfigId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ReportConfigId { get; set; }
@@ -7745,8 +7745,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string Series { get; set; }
 
         /// <summary>
-        /// Output only. Whether simultaneous multithreading is enabled (see
-        /// https://cloud.google.com/compute/docs/instances/set-threads-per-core).
+        /// Output only. Whether simultaneous multithreading is enabled. See
+        /// https://cloud.google.com/compute/docs/instances/set-threads-per-core.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smtEnabled")]
         public virtual System.Nullable<bool> SmtEnabled { get; set; }
