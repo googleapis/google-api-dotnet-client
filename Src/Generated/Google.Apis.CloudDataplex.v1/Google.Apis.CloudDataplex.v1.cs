@@ -17872,6 +17872,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Request message for ApproveChangeRequest.</summary>
     public class GoogleCloudDataplexV1ApproveChangeRequestRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The comment or reason for approving the ChangeRequest. Maximum length is 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
         /// <summary>Optional. The etag of the ChangeRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -19080,6 +19086,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
+
+        /// <summary>
+        /// Output only. The comment provided by the reviewer when approving or rejecting the ChangeRequest. Maximum
+        /// length is 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewerComment")]
+        public virtual string ReviewerComment { get; set; }
 
         /// <summary>Output only. The current state of the ChangeRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -23925,6 +23938,25 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Payload associated with EntryLinkType related log events.</summary>
+    public class GoogleCloudDataplexV1EntryLinkTypeEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLinkTypeId")]
+        public virtual string EntryLinkTypeId { get; set; }
+
+        /// <summary>The type of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>The log message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
