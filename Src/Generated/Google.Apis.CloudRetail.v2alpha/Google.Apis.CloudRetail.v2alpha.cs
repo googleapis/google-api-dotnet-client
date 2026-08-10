@@ -9125,6 +9125,14 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Conversational prompts to trigger agents like Shopping Agent. There may be multiple prompts for a single
+        /// suggestion. This is an experimental feature for select customers. If you want to receive this prompt
+        /// information, reach out to the Retail support team.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentPrompts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt> AgentPrompts { get; set; }
+
+        /// <summary>
         /// Custom attributes for the suggestion term. * For `user-data`, the attributes are additional custom
         /// attributes ingested through BigQuery. * For `cloud-retail`, the attributes are product attributes generated
         /// by Cloud Retail. It requires UserEvent.product_details is imported properly.
@@ -9151,6 +9159,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalProductCount")]
         public virtual System.Nullable<int> TotalProductCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A conversational prompt to trigger agents like Shopping Agent.</summary>
+    public class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversational prompt string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13598,6 +13617,15 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual GoogleCloudRetailV2alphaSearchRequestConversationalSearchSpec ConversationalSearchSpec { get; set; }
 
         /// <summary>
+        /// Optional. A set of controls that are applied dynamically to the search request. These controls are applied
+        /// in addition to the controls specified in the serving config. These controls are expected to not yet be
+        /// persisted in storage. A control could be applied twice if it is in both the serving config and specified
+        /// here. A maximum of 5 values are allowed. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicControls")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaControl> DynamicControls { get; set; }
+
+        /// <summary>
         /// Deprecated. Refer to https://cloud.google.com/retail/docs/configs#dynamic to enable dynamic facets. Do not
         /// set this field. The specification for dynamically generated facets. Notice that only textual facets can be
         /// dynamically generated.
@@ -13632,6 +13660,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. A list of control IDs to ignore. These controls will not be applied to the search request, even if
+        /// they are specified in the serving config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredControlIds")]
+        public virtual System.Collections.Generic.IList<string> IgnoredControlIds { get; set; }
 
         /// <summary>
         /// The labels applied to a resource must meet the following requirements: * Each resource can have multiple
