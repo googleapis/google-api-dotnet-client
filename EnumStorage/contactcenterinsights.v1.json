@@ -41,11 +41,13 @@
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+QaScorecardsResource+ListRequest.QaScorecardSourcesEnum": [
     "QA_SCORECARD_SOURCE_UNSPECIFIED",
     "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED",
-    "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
+    "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE",
+    "QA_SCORECARD_SOURCE_INTENT_TAXONOMY"
   ],
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+QaScorecardsResource+RevisionsResource+ListRequest.QaScorecardSourcesEnum": [
     "QA_SCORECARD_SOURCE_UNSPECIFIED",
     "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED",
-    "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
+    "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE",
+    "QA_SCORECARD_SOURCE_INTENT_TAXONOMY"
   ]
 }
