@@ -13614,6 +13614,43 @@ namespace Google.Apis.SA360.v23.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Loyalty retention campaign goal settings.</summary>
+    public class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to adjust bids for loyalty members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableBidAdjustmentsForLoyaltyMembers")]
+        public virtual System.Nullable<bool> EnableBidAdjustmentsForLoyaltyMembers { get; set; }
+
+        /// <summary>Whether to show targeted loyalty member benefits in PLA format in eligible countries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showTargetedLoyaltyMemberBenefitsInPla")]
+        public virtual System.Nullable<bool> ShowTargetedLoyaltyMemberBenefitsInPla { get; set; }
+
+        /// <summary>Loyalty retention goal campaign specific value settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueSettingsOverride")]
+        public virtual GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings ValueSettingsOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>New Customer Acquisition campaign goal settings.</summary>
+    public class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// New Customer Acquisition goal optimization mode for this campaign. Defaults to TARGET_ALL. Whether the
+        /// campaign is targeting new customers only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetOption")]
+        public virtual string TargetOption { get; set; }
+
+        /// <summary>New Customer Acquisition goal campaign specific value settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueSettingsOverride")]
+        public virtual GoogleAdsSearchads360V23CommonCustomerLifecycleOptimizationValueSettings ValueSettingsOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Retention campaign goal settings.</summary>
     public class GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignRetentionGoalSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -27811,6 +27848,14 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>Immutable. The resource name of the campaign for this link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
         public virtual string Campaign { get; set; }
+
+        /// <summary>Loyalty retention goal campaign settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignLoyaltyRetentionSettings")]
+        public virtual GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignLoyaltyRetentionGoalSettings CampaignLoyaltyRetentionSettings { get; set; }
+
+        /// <summary>New customer acquisition goal campaign settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignNewCustomerAcquisitionSettings")]
+        public virtual GoogleAdsSearchads360V23CommonCampaignGoalSettingsCampaignNewCustomerAcquisitionGoalSettings CampaignNewCustomerAcquisitionSettings { get; set; }
 
         /// <summary>Retention goal campaign settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignRetentionSettings")]
