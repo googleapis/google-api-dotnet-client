@@ -11132,18 +11132,17 @@ namespace Google.Apis.YouTube.v3.Data
     }
 
     /// <summary>
-    /// An *activity* resource contains information about an action that a particular channel, or user, has taken on
-    /// YouTube.The actions reported in activity feeds include rating a video, sharing a video, marking a video as a
-    /// favorite, commenting on a video, uploading a video, and so forth. Each activity resource identifies the type of
-    /// action, the channel associated with the action, and the resource(s) associated with the action, such as the
-    /// video that was rated or uploaded.
+    /// An `activity` resource contains information about an action that a particular channel, or user, has taken on
+    /// YouTube. The actions reported in activity feeds include sharing a video, uploading a video, and so forth. Each
+    /// `activity` resource identifies the type of action, the channel associated with the action, and the resource(s)
+    /// associated with the action, such as the video that was rated or uploaded.
     /// </summary>
     public class Activity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The contentDetails object contains information about the content associated with the activity. For example,
-        /// if the snippet.type value is videoRated, then the contentDetails object's content identifies the rated
-        /// video.
+        /// The `contentDetails` object contains information about the content associated with the activity. For
+        /// example, if the `snippet.type` value is `videoRated`, then the `contentDetails` object's content identifies
+        /// the rated video.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentDetails")]
         public virtual ActivityContentDetails ContentDetails { get; set; }
@@ -11156,12 +11155,12 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#activity".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: The fixed string `"youtube#activity"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The snippet object contains basic details about the activity, including the activity's type and group ID.
+        /// The `snippet` object contains basic details about the activity, including the activity's type and group ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual ActivitySnippet Snippet { get; set; }
@@ -11173,78 +11172,78 @@ namespace Google.Apis.YouTube.v3.Data
     public class ActivityContentDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The bulletin object contains details about a channel bulletin post. This object is only present if the
-        /// snippet.type is bulletin.
+        /// The `bulletin` object contains details about a channel bulletin post. This object is only present if the
+        /// `snippet.type` is `bulletin`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bulletin")]
         public virtual ActivityContentDetailsBulletin Bulletin { get; set; }
 
         /// <summary>
-        /// The channelItem object contains details about a resource which was added to a channel. This property is only
-        /// present if the snippet.type is channelItem.
+        /// The `channelItem` object contains details about a resource which was added to a channel. This property is
+        /// only present if the `snippet.type` is `channelItem`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelItem")]
         public virtual ActivityContentDetailsChannelItem ChannelItem { get; set; }
 
         /// <summary>
-        /// The comment object contains information about a resource that received a comment. This property is only
-        /// present if the snippet.type is comment.
+        /// The `comment` object contains information about a resource that received a comment. This property is only
+        /// present if the `snippet.type` is `comment`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual ActivityContentDetailsComment Comment { get; set; }
 
         /// <summary>
-        /// The favorite object contains information about a video that was marked as a favorite video. This property is
-        /// only present if the snippet.type is favorite.
+        /// The `favorite` object contains information about a video that was marked as a favorite video. This property
+        /// is only present if the `snippet.type` is `favorite`. Deprecated: This property is no longer returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("favorite")]
         public virtual ActivityContentDetailsFavorite Favorite { get; set; }
 
         /// <summary>
-        /// The like object contains information about a resource that received a positive (like) rating. This property
-        /// is only present if the snippet.type is like.
+        /// The `like` object contains information about a resource that received a positive (like) rating. This
+        /// property is only present if the `snippet.type` is `like`. Deprecated: This property is no longer returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("like")]
         public virtual ActivityContentDetailsLike Like { get; set; }
 
         /// <summary>
-        /// The playlistItem object contains information about a new playlist item. This property is only present if the
-        /// snippet.type is playlistItem.
+        /// The `playlistItem` object contains information about a new playlist item. This property is only present if
+        /// the `snippet.type` is `playlistItem`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playlistItem")]
         public virtual ActivityContentDetailsPlaylistItem PlaylistItem { get; set; }
 
         /// <summary>
-        /// The promotedItem object contains details about a resource which is being promoted. This property is only
-        /// present if the snippet.type is promotedItem.
+        /// The `promotedItem` object contains details about a resource which is being promoted. This property is only
+        /// present if the `snippet.type` is `promotedItem`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotedItem")]
         public virtual ActivityContentDetailsPromotedItem PromotedItem { get; set; }
 
         /// <summary>
-        /// The recommendation object contains information about a recommended resource. This property is only present
-        /// if the snippet.type is recommendation.
+        /// The `recommendation` object contains information about a recommended resource. This property is only present
+        /// if the `snippet.type` is `recommendation`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendation")]
         public virtual ActivityContentDetailsRecommendation Recommendation { get; set; }
 
         /// <summary>
-        /// The social object contains details about a social network post. This property is only present if the
-        /// snippet.type is social.
+        /// The `social` object contains details about a social network post. This property is only present if the
+        /// `snippet.type` is `social`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("social")]
         public virtual ActivityContentDetailsSocial Social { get; set; }
 
         /// <summary>
-        /// The subscription object contains information about a channel that a user subscribed to. This property is
-        /// only present if the snippet.type is subscription.
+        /// The `subscription` object contains information about a channel that a user subscribed to. This property is
+        /// only present if the `snippet.type` is `subscription`. Deprecated: This property is no longer returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual ActivityContentDetailsSubscription Subscription { get; set; }
 
         /// <summary>
-        /// The upload object contains information about the uploaded video. This property is only present if the
-        /// snippet.type is upload.
+        /// The `upload` object contains information about the uploaded video. This property is only present if the
+        /// `snippet.type` is `upload`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upload")]
         public virtual ActivityContentDetailsUpload Upload { get; set; }
@@ -11257,7 +11256,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class ActivityContentDetailsBulletin : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resourceId object contains information that identifies the resource associated with a bulletin post.
+        /// The `resourceId` object contains information that identifies the resource associated with a bulletin post.
         /// @mutable youtube.activities.insert
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
@@ -11271,7 +11270,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class ActivityContentDetailsChannelItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resourceId object contains information that identifies the resource that was added to the channel.
+        /// The `resourceId` object contains information that identifies the resource that was added to the channel.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
@@ -11284,7 +11283,7 @@ namespace Google.Apis.YouTube.v3.Data
     public class ActivityContentDetailsComment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resourceId object contains information that identifies the resource associated with the comment.
+        /// The `resourceId` object contains information that identifies the resource associated with the comment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
@@ -11293,11 +11292,13 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a video that was marked as a favorite video.</summary>
+    /// <summary>
+    /// Information about a video that was marked as a favorite video. Deprecated: This resource is no longer returned.
+    /// </summary>
     public class ActivityContentDetailsFavorite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resourceId object contains information that identifies the resource that was marked as a favorite.
+        /// The `resourceId` object contains information that identifies the resource that was marked as a favorite.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
@@ -11306,10 +11307,13 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a resource that received a positive (like) rating.</summary>
+    /// <summary>
+    /// Information about a resource that received a positive (like) rating. Deprecated: This resource is no longer
+    /// returned.
+    /// </summary>
     public class ActivityContentDetailsLike : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resourceId object contains information that identifies the rated resource.</summary>
+        /// <summary>The `resourceId` object contains information that identifies the rated resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
 
@@ -11329,7 +11333,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string PlaylistItemId { get; set; }
 
         /// <summary>
-        /// The resourceId object contains information about the resource that was added to the playlist.
+        /// The `resourceId` object contains information about the resource that was added to the playlist.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
@@ -11405,12 +11409,12 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
-        /// <summary>The resourceId object contains information that identifies the recommended resource.</summary>
+        /// <summary>The `resourceId` object contains information that identifies the recommended resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
 
         /// <summary>
-        /// The seedResourceId object contains information about the resource that caused the recommendation.
+        /// The `seedResourceId` object contains information about the resource that caused the recommendation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seedResourceId")]
         public virtual ResourceId SeedResourceId { get; set; }
@@ -11435,8 +11439,8 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ReferenceUrl { get; set; }
 
         /// <summary>
-        /// The resourceId object encapsulates information that identifies the resource associated with a social network
-        /// post.
+        /// The `resourceId` object encapsulates information that identifies the resource associated with a social
+        /// network post.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
@@ -11449,11 +11453,13 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a channel that a user subscribed to.</summary>
+    /// <summary>
+    /// Information about a channel that a user subscribed to. Deprecated: This resource is no longer returned.
+    /// </summary>
     public class ActivityContentDetailsSubscription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resourceId object contains information that identifies the resource that the user subscribed to.
+        /// The `resourceId` object contains information that identifies the resource that the user subscribed to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
@@ -11539,9 +11545,9 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>
         /// The group ID associated with the activity. A group ID identifies user events that are associated with the
-        /// same user and resource. For example, if a user rates a video and marks the same video as a favorite, the
-        /// entries for those events would have the same group ID in the user's activity feed. In your user interface,
-        /// you can avoid repetition by grouping events with the same groupId value.
+        /// same user and resource. For example, if a user uploads a video and watches the same video, the entries for
+        /// those events would have the same group ID in the user's activity feed. In your user interface, you can avoid
+        /// repetition by grouping events with the same `groupId` value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; }
