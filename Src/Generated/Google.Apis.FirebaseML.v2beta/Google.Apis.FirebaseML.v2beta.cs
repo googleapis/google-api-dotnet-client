@@ -604,14 +604,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>
-    /// The transcription of an audio part. For multi-speaker audio, each speaker segment is a separate Part with its
-    /// own AudioTranscription carrying the speaker_label.
+    /// The transcription of an audio part. For multi-speaker audio, each speaker segment is a separate `Part` with its
+    /// own `AudioTranscription` carrying the `speaker_label`.
     /// </summary>
     public class GoogleCloudAiplatformV1beta1AudioTranscription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A label identifying the speaker of this audio segment (e.g. "spk_1", "spk_2"). Present when
-        /// diarization is set.
+        /// Optional. A label identifying the speaker of this audio segment (e.g. `spk_1`, `spk_2`). Present when
+        /// `diarization` is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerLabel")]
         public virtual string SpeakerLabel { get; set; }
@@ -621,7 +621,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
+        /// Optional. Detailed word-level transcriptions and timing details. Present when `word_timestamp` is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1AudioTranscriptionWordInfo> Words { get; set; }
@@ -633,7 +633,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Configuration for speech recognition (transcription).</summary>
     public class GoogleCloudAiplatformV1beta1AudioTranscriptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A list of phrases to bias the ASR model towards.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `custom_vocabulary` instead. A list of phrases to bias the speech recognition
+        /// model towards.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adaptationPhrases")]
         public virtual System.Collections.Generic.IList<string> AdaptationPhrases { get; set; }
 
@@ -1771,7 +1774,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioTimestamp")]
         public virtual System.Nullable<bool> AudioTimestamp { get; set; }
 
-        /// <summary>Optional. Config for audio transcription (speech recognition).</summary>
+        /// <summary>Optional. Configuration for audio transcription (speech recognition).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioTranscriptionConfig")]
         public virtual GoogleCloudAiplatformV1beta1AudioTranscriptionConfig AudioTranscriptionConfig { get; set; }
 
@@ -2671,7 +2674,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1Part : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Audio (input or output) transcription. This is only set when this Part contains audio data.
+        /// Optional. Audio (input or output) transcription. This is only set when this `Part` contains audio data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioTranscription")]
         public virtual GoogleCloudAiplatformV1beta1AudioTranscription AudioTranscription { get; set; }
