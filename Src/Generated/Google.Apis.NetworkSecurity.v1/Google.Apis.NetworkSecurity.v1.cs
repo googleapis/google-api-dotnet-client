@@ -1116,6 +1116,12 @@ namespace Google.Apis.NetworkSecurity.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the endpoint, but do not actually create it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint Body { get; set; }
 
@@ -1154,6 +1160,14 @@ namespace Google.Apis.NetworkSecurity.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6552,6 +6566,12 @@ namespace Google.Apis.NetworkSecurity.v1
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the endpoint, but do not actually create it.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint Body { get; set; }
 
@@ -6590,6 +6610,14 @@ namespace Google.Apis.NetworkSecurity.v1
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
