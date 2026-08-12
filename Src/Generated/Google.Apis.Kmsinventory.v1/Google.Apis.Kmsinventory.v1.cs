@@ -1527,7 +1527,7 @@ namespace Google.Apis.Kmsinventory.v1.Data
     {
         /// <summary>
         /// Optional. The resource name of the backend environment where the key material of CryptoKeyVersions is
-        /// associated with. Setting this field overrides the CryptoKeyBackend. This field may be set when
+        /// associated with. Setting this field overrides the crypto_key_backend. This field may be set when
         /// CryptoKeyVersions is set to EXTERNAL_VPC. Format: `projects/*/locations/*/ekmConnections/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmConnectionBackendOverride")]
