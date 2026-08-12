@@ -703,14 +703,16 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta
             }
 
             /// <summary>Get the decrypted password of an alert.</summary>
-            /// <param name="name">Required. Name of the alert to get. Format: projects/{project}/alerts/{alert}</param>
+            /// <param name="name">
+            /// Required. Name of the alert to get password for. Format: projects/{project}/alerts/{alert}
+            /// </param>
             public virtual GetPasswordRequest GetPassword(string name)
             {
                 return new GetPasswordRequest(this.service, name);
             }
 
             /// <summary>Get the decrypted password of an alert.</summary>
-            public class GetPasswordRequest : ThreatIntelligenceServiceBaseServiceRequest<Google.Apis.ThreatIntelligenceService.v1beta.Data.Alert>
+            public class GetPasswordRequest : ThreatIntelligenceServiceBaseServiceRequest<Google.Apis.ThreatIntelligenceService.v1beta.Data.GetPasswordResponse>
             {
                 /// <summary>Constructs a new GetPassword request.</summary>
                 public GetPasswordRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -719,7 +721,9 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. Name of the alert to get. Format: projects/{project}/alerts/{alert}</summary>
+                /// <summary>
+                /// Required. Name of the alert to get password for. Format: projects/{project}/alerts/{alert}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3012,6 +3016,17 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// <summary>Required. The domain of the organization to generate the profile for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GetPassword.</summary>
+    public class GetPasswordResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The decrypted cleartext password for the compromised credential.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
