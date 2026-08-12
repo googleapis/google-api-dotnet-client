@@ -5578,7 +5578,7 @@ namespace Google.Apis.Merchant.accounts_v1
                 [Google.Apis.Util.StringValueAttribute("TERMS_OF_SERVICE_KIND_UNSPECIFIED")]
                 TERMSOFSERVICEKINDUNSPECIFIED = 0,
 
-                /// <summary>Terms of service for the Merchant Center application.</summary>
+                /// <summary>Terms of Service for the Merchant Center application.</summary>
                 [Google.Apis.Util.StringValueAttribute("MERCHANT_CENTER")]
                 MERCHANTCENTER = 1,
             }
@@ -5932,13 +5932,6 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         /// <summary>Output only. The human-readable display name of the provider account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerDisplayName")]
         public virtual string ProviderDisplayName { get; set; }
-
-        /// <summary>
-        /// Service type for UCP Checkout Management. The provider is managing the UCP Checkout capability integration
-        /// for the merchant.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ucpCheckoutManagement")]
-        public virtual UcpCheckoutManagement UcpCheckoutManagement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8167,7 +8160,7 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a
     /// business's store to be shown across Google for free. The following list is the available set of program resource
     /// IDs accessible through the API: * `checkout` * `free-listings` * `product-ratings` * `shopping-ads` *
-    /// `youtube-affiliate` * `youtube-shopping-checkout`
+    /// `ucp-integration` (limited access) * `youtube-affiliate` * `youtube-shopping-checkout`
     /// </summary>
     public class Program : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8904,13 +8897,6 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitDays")]
         public virtual System.Nullable<int> MinTransitDays { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>`UcpCheckoutManagement` payload.</summary>
-    public class UcpCheckoutManagement : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
