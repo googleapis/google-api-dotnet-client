@@ -4673,7 +4673,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// `membership_count.joined_direct_human_user_count DESC` -
             /// `membership_count.joined_direct_human_user_count ASC` - `last_active_time DESC` - `last_active_time ASC`
             /// - `create_time DESC` - `create_time ASC` When `useAdminAccess` is set to `false`: - `create_time DESC` -
-            /// `relevance DESC`
+            /// `relevance DESC` [Developer Preview](https://developers.google.com/workspace/preview).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
