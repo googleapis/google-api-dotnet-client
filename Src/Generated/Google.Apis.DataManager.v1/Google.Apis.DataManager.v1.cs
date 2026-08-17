@@ -2825,13 +2825,7 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string Category { get; set; }
 
         /// <summary>
-        /// Optional. The IP address of the device for the given context. Required when used in an AdEvent. **Note:**
-        /// Google Ads does not support IP address matching for end users in the European Economic Area (EEA), United
-        /// Kingdom (UK), or Switzerland (CH). Add logic to conditionally exclude sharing IP addresses from users from
-        /// these regions and ensure that you provide users with clear and comprehensive information about the data you
-        /// collect on your sites, apps, and other properties and get consent where required by law or any applicable
-        /// Google policies. See the [About offline conversion
-        /// imports](https://support.google.com/google-ads/answer/2998031) page for more details.
+        /// Optional. The IP address of the device for the given context. Required when used in an AdEvent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
