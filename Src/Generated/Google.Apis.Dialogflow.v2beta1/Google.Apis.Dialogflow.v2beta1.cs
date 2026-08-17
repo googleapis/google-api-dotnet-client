@@ -17119,6 +17119,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
         public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("codeBlockFunction")]
+        public virtual string CodeBlockFunction { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalCases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentConditionalCases> ConditionalCases { get; set; }
 
@@ -18897,6 +18900,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("codeBlockFunction")]
+        public virtual string CodeBlockFunction { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalCases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases> ConditionalCases { get; set; }
@@ -21888,6 +21894,18 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityToLastQuery")]
+        public virtual System.Nullable<float> SimilarityToLastQuery { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityToLastQueryThreshold")]
+        public virtual System.Nullable<float> SimilarityToLastQueryThreshold { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingBudgetTokens")]
+        public virtual System.Nullable<int> ThinkingBudgetTokens { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingLevel")]
+        public virtual string ThinkingLevel { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
         public virtual System.Nullable<int> TotalTokenCount { get; set; }
@@ -26844,6 +26862,18 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
         public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityToLastQuery")]
+        public virtual System.Nullable<float> SimilarityToLastQuery { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("similarityToLastQueryThreshold")]
+        public virtual System.Nullable<float> SimilarityToLastQueryThreshold { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingBudgetTokens")]
+        public virtual System.Nullable<int> ThinkingBudgetTokens { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingLevel")]
+        public virtual string ThinkingLevel { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
         public virtual System.Nullable<int> TotalTokenCount { get; set; }
