@@ -4809,6 +4809,25 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Aggregated report at the catalog level.</summary>
+    public class CatalogReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the catalog (format: projects/*/catalogs/*).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>The type of catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogType")]
+        public virtual string CatalogType { get; set; }
+
+        /// <summary>A map of database names to their respective reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseReports")]
+        public virtual System.Collections.Generic.IDictionary<string, DatabaseReport> DatabaseReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Summary of results for a specific destination catalog.</summary>
     public class CatalogSummary : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5108,6 +5127,29 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Aggregated report at the database level.</summary>
+    public class DatabaseReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The discovered intent for the database (what we found and what we planned).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionPlan")]
+        public virtual ExecutionPlan ExecutionPlan { get; set; }
+
+        /// <summary>The actual outcome of the database migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionResult")]
+        public virtual ExecutionResult ExecutionResult { get; set; }
+
+        /// <summary>A map of table names to their respective reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableReports")]
+        public virtual System.Collections.Generic.IDictionary<string, TableReport> TableReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Summary of results for a specific database in a catalog.</summary>
     public class DatabaseSummary : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5191,6 +5233,44 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the migration plan for a specific resource (e.g. Database, Table).</summary>
+    public class ExecutionPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action that will be taken for a resource during migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>A map of field names to their respective value diff.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffs")]
+        public virtual System.Collections.Generic.IDictionary<string, ValueDiff> Diffs { get; set; }
+
+        /// <summary>A human-readable string explaining why the action was chosen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the actual migration result for a specific resource (e.g. Database, Table).</summary>
+    public class ExecutionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the error if the state is FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Remediation steps for the error if the state is FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
+        public virtual string Remediation { get; set; }
+
+        /// <summary>Output only. The state of the migration for a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6245,6 +6325,24 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Report containing the results of a migration run. This report is generated at the specified path in the
+    /// BigLakeMetastoreMigrationConfig after the backfill is complete, or when a dry run is executed.
+    /// </summary>
+    public class MigrationReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Detailed results for each catalog involved in the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogReports")]
+        public virtual System.Collections.Generic.IList<CatalogReport> CatalogReports { get; set; }
+
+        /// <summary>Output only. High-level summary of the migration results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual MigrationSummary Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Summary of the migration results.</summary>
     public class MigrationSummary : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6534,6 +6632,25 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Partition migration report for a Hive table.</summary>
+    public class PartitionReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of partitions that failed to migrate at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionFailedCount")]
+        public virtual System.Nullable<long> PartitionFailedCount { get; set; }
+
+        /// <summary>The number of partitions successfully migrated at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionSuccessCount")]
+        public virtual System.Nullable<long> PartitionSuccessCount { get; set; }
+
+        /// <summary>Output only. The state of the partition migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7310,6 +7427,39 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Aggregated report at the table level.</summary>
+    public class TableReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The discovered intent for the table (what we found and what we planned).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionPlan")]
+        public virtual ExecutionPlan ExecutionPlan { get; set; }
+
+        /// <summary>The actual outcome of the table migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionResult")]
+        public virtual ExecutionResult ExecutionResult { get; set; }
+
+        /// <summary>
+        /// The total number of partitions identified at the source during discovery. This is only relevant for Hive
+        /// Partitioned tables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionDiscoveredCount")]
+        public virtual System.Nullable<long> PartitionDiscoveredCount { get; set; }
+
+        /// <summary>
+        /// Report containing the results of partition migration for this table. This is only relevant for Hive
+        /// Partitioned tables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionReport")]
+        public virtual PartitionReport PartitionReport { get; set; }
+
+        /// <summary>The name of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Aggregated summary of results for all tables in a database.</summary>
     public class TableSummary : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7377,6 +7527,21 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         /// <summary>A subset of TestPermissionsRequest.permissions that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A field-level metadata mismatch for a resource between the source and target.</summary>
+    public class ValueDiff : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the field at the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceValue")]
+        public virtual string SourceValue { get; set; }
+
+        /// <summary>The value of the field at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetValue")]
+        public virtual string TargetValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
