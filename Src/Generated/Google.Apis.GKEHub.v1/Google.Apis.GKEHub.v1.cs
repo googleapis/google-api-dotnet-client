@@ -6604,6 +6604,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindingactuation")]
         public virtual RBACRoleBindingActuationFeatureState Rbacrolebindingactuation { get; set; }
 
+        /// <summary>Service Mesh-specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicemesh")]
+        public virtual ServiceMeshFeatureState Servicemesh { get; set; }
+
         /// <summary>Output only. The "running state" of the Feature in this Fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual FeatureState State { get; set; }
@@ -11745,6 +11749,31 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Condition being reported.</summary>
+    public class ServiceMeshFeatureCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Unique identifier of the condition which describes the condition recognizable to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A short summary about the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>Links contains actionable information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
+        public virtual string DocumentationLink { get; set; }
+
+        /// <summary>Severity level of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Service Mesh**: Spec for the fleet for the servicemesh feature</summary>
     public class ServiceMeshFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11755,6 +11784,17 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Optional. Declares your intended modernization strategy for the fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modernizationStrategy")]
         public virtual string ModernizationStrategy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.</summary>
+    public class ServiceMeshFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of conditions reported for this feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<ServiceMeshFeatureCondition> Conditions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
