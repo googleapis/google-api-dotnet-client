@@ -299,6 +299,7 @@ namespace Google.Apis.NetworkServices.v1
                 EdgeCacheOrigins = new EdgeCacheOriginsResource(service);
                 EdgeCacheServices = new EdgeCacheServicesResource(service);
                 EndpointPolicies = new EndpointPoliciesResource(service);
+                ExtensionBindings = new ExtensionBindingsResource(service);
                 Gateways = new GatewaysResource(service);
                 GrpcRoutes = new GrpcRoutesResource(service);
                 HttpRoutes = new HttpRoutesResource(service);
@@ -309,6 +310,7 @@ namespace Google.Apis.NetworkServices.v1
                 MulticastConsumerAssociations = new MulticastConsumerAssociationsResource(service);
                 MulticastGroupConsumerActivations = new MulticastGroupConsumerActivationsResource(service);
                 Operations = new OperationsResource(service);
+                ProducerExtensions = new ProducerExtensionsResource(service);
                 ServiceBindings = new ServiceBindingsResource(service);
                 ServiceLbPolicies = new ServiceLbPoliciesResource(service);
                 TcpRoutes = new TcpRoutesResource(service);
@@ -2547,6 +2549,364 @@ namespace Google.Apis.NetworkServices.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/endpointPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ExtensionBindings resource.</summary>
+            public virtual ExtensionBindingsResource ExtensionBindings { get; }
+
+            /// <summary>The "extensionBindings" collection of methods.</summary>
+            public class ExtensionBindingsResource
+            {
+                private const string Resource = "extensionBindings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ExtensionBindingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new `ExtensionBinding` resource in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the `ExtensionBinding` resource. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.ExtensionBinding body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new `ExtensionBinding` resource in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.ExtensionBinding body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the `ExtensionBinding` resource. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the `ExtensionBinding` resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("extensionBindingId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ExtensionBindingId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.ExtensionBinding Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/extensionBindings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("extensionBindingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "extensionBindingId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the specified `ExtensionBinding` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `ExtensionBinding` resource to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes the specified `ExtensionBinding` resource.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `ExtensionBinding` resource to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The etag of the ExtensionBinding to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/extensionBindings/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of the specified `ExtensionBinding` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `ExtensionBinding` resource to get. Must be in the format
+                /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of the specified `ExtensionBinding` resource.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ExtensionBinding>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `ExtensionBinding` resource to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/extensionBindings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `ExtensionBinding` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the `ExtensionBinding` resources should be listed,
+                /// specified in the format `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists `ExtensionBinding` resources in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListExtensionBindingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the `ExtensionBinding` resources should be listed,
+                    /// specified in the format `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Maximum number of `ExtensionBinding` resources to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The value returned by the last `ListExtensionBindingsResponse` Indicates that this is
+                    /// a continuation of a prior `ListExtensionBindings` call, and that the system should return the
+                    /// next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/extensionBindings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of the specified `ExtensionBinding` resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Name of the `ExtensionBinding` resource in the following format:
+                /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.ExtensionBinding body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of the specified `ExtensionBinding` resource.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.ExtensionBinding body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Name of the `ExtensionBinding` resource in the following format:
+                    /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the `ExtensionBinding`
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.ExtensionBinding Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/extensionBindings/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -6769,6 +7129,288 @@ namespace Google.Apis.NetworkServices.v1
                 }
             }
 
+            /// <summary>Gets the ProducerExtensions resource.</summary>
+            public virtual ProducerExtensionsResource ProducerExtensions { get; }
+
+            /// <summary>The "producerExtensions" collection of methods.</summary>
+            public class ProducerExtensionsResource
+            {
+                private const string Resource = "producerExtensions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProducerExtensionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new `ProducerExtension` resource in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the `ProducerExtension` resource. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1.Data.ProducerExtension body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new `ProducerExtension` resource in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1.Data.ProducerExtension body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the `ProducerExtension` resource. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the `ProducerExtension` resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("producerExtensionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProducerExtensionId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1.Data.ProducerExtension Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/producerExtensions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("producerExtensionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "producerExtensionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the specified `ProducerExtension` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `ProducerExtension` resource to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes the specified `ProducerExtension` resource.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `ProducerExtension` resource to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The etag of the ProducerExtension to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/producerExtensions/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of the specified `ProducerExtension` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `ProducerExtension` resource to get. Must be in the format
+                /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of the specified `ProducerExtension` resource.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ProducerExtension>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `ProducerExtension` resource to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/producerExtensions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `ProducerExtension` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the `ProducerExtension` resources should be listed,
+                /// specified in the format `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists `ProducerExtension` resources in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1.Data.ListProducerExtensionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the `ProducerExtension` resources should be
+                    /// listed, specified in the format `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Maximum number of `ProducerExtension` resources to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The value returned by the last `ListProducerExtensionsResponse` Indicates that this is
+                    /// a continuation of a prior `ListProducerExtensions` call, and that the system should return the
+                    /// next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/producerExtensions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the ServiceBindings resource.</summary>
             public virtual ServiceBindingsResource ServiceBindings { get; }
 
@@ -9035,6 +9677,12 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessTypes")]
         public virtual System.Collections.Generic.IList<string> AccessTypes { get; set; }
 
+        /// <summary>
+        /// Optional. The compute environment where the agent is hosted. Exactly one type of compute must be chosen.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCompute")]
+        public virtual string AgentCompute { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -9071,6 +9719,10 @@ namespace Google.Apis.NetworkServices.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Required. The deployment model for the gateway.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
+        public virtual string DeploymentModel { get; set; }
 
         /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -9997,6 +10649,336 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`ExtensionBinding` is a resource representing the attachment of an extension to a service.</summary>
+    public class ExtensionBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Etag of the resource. If provided, it must match the server's etag. If the provided etag does not
+        /// match the server's etag, the request will fail with a 409 ABORTED error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Determines the behavior of the extension binding when the call to the extension fails or times
+        /// out. Default value is `FALSE`. When set to `TRUE`, failures of the extension are silently ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failOpen")]
+        public virtual System.Nullable<bool> FailOpen { get; set; }
+
+        /// <summary>
+        /// Optional. Set of labels associated with the `ExtensionBinding` resource. The format must comply with [the
+        /// following requirements](https://cloud.google.com/compute/docs/labeling-resources#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. A list of match conditions to match against the incoming request. The extension will be invoked if
+        /// at least one condition matches the request, or if no match conditions are specified. Limited to 5
+        /// conditions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchConditions")]
+        public virtual System.Collections.Generic.IList<ExtensionBindingMatchCondition> MatchConditions { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the `ExtensionBinding` resource in the following format:
+        /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Priority of the extension binding. Lower numbers indicate higher priority. Priority of extension
+        /// bindings are used to determine the order in which extension bindings are applied to a request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
+
+        /// <summary>
+        /// Required. The name of the extension that this binding should attach to target resources. Format: For
+        /// Google-provided extensions, specify the service endpoint (see [Model Armor
+        /// integration](https://docs.cloud.google.com/model-armor/integrations))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerExtension")]
+        public virtual string ProducerExtension { get; set; }
+
+        /// <summary>
+        /// Optional. Additional metadata that should be passed to the attached extension with each request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ProducerMetadata { get; set; }
+
+        /// <summary>
+        /// Required. Specifies a target to which this `ExtensionBinding` should be attached. The target can be either a
+        /// single resource or a scope of resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual ExtensionBindingTarget Target { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>Conditions to match against the incoming request.</summary>
+    public class ExtensionBindingMatchCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Describes properties of a destination of a request. If specified, the extension will only be
+        /// invoked on requests to destinations that match the specified criteria.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("to")]
+        public virtual ExtensionBindingMatchConditionTo To { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Determines how an HTTP header should be matched.</summary>
+    public class ExtensionBindingMatchConditionHeaderMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the name of the header in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Specifies how the header match will be performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual ExtensionBindingMatchConditionStringMatch Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies matching logic for string values.</summary>
+    public class ExtensionBindingMatchConditionStringMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The input string must have the substring specified here. Note: empty contains match is not
+        /// allowed, please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contains")]
+        public virtual string Contains { get; set; }
+
+        /// <summary>
+        /// Optional. The input string must match exactly the string specified here. Examples: * ``abc`` only matches
+        /// the value ``abc``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exact")]
+        public virtual string Exact { get; set; }
+
+        /// <summary>
+        /// Optional. If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For
+        /// example, the matcher ``data`` will match both input string ``Data`` and ``data`` if set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
+        public virtual System.Nullable<bool> IgnoreCase { get; set; }
+
+        /// <summary>
+        /// Optional. The input string must have the prefix specified here. Note: empty prefix is not allowed. Examples:
+        /// * ``abc`` matches the value ``abc.xyz``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; }
+
+        /// <summary>
+        /// Optional. The input string must have the suffix specified here. Note: empty prefix is not allowed, please
+        /// use regex instead. Examples: * ``abc`` matches the value ``xyz.abc``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
+        public virtual string Suffix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of one or more destinations of a request.</summary>
+    public class ExtensionBindingMatchConditionTo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Describes properties of destination of a request. Within a destination, the match follows AND
+        /// semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY
+        /// header matches and ANY method matches. At least one of destination or not_destination must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual ExtensionBindingMatchConditionToDestination Destination { get; set; }
+
+        /// <summary>
+        /// Optional. Describes the negated properties of the request destination. Extension will not be invoked on
+        /// requests that match the criteria specified in this field. At least one of destination or not_destination
+        /// must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notDestination")]
+        public virtual ExtensionBindingMatchConditionToDestination NotDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of a single destination.</summary>
+    public class ExtensionBindingMatchConditionToDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A set of HTTP headers to match against. If not specified, requests with any headers are matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerSet")]
+        public virtual ExtensionBindingMatchConditionToDestinationHeaderSet HeaderSet { get; set; }
+
+        /// <summary>
+        /// Optional. A list of HTTP Hosts to match against. Limited to 10 hosts. If not specified, any host is allowed.
+        /// If specified, a match occurs if any of the hosts matches the host value in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
+        public virtual System.Collections.Generic.IList<ExtensionBindingMatchConditionStringMatch> Hosts { get; set; }
+
+        /// <summary>
+        /// Optional. A list of paths to match against. Limited to 10 paths. If not specified, any path is allowed. Note
+        /// that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name
+        /// of the form /package.service/method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<ExtensionBindingMatchConditionStringMatch> Paths { get; set; }
+
+        /// <summary>
+        /// Optional. A list of non-empty strings whose value is matched against the resource value. If not specified,
+        /// any resource is allowed. If specified, a match occurs if any of the resources matches the resource value in
+        /// the request. Limited to 5 resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<ExtensionBindingMatchConditionStringMatch> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a set of HTTP headers to match against.</summary>
+    public class ExtensionBindingMatchConditionToDestinationHeaderSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of headers to match against in http header. If multiple header matches are provided, they
+        /// will be evaluated as an AND, i.e. all header matches must match for the request to match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<ExtensionBindingMatchConditionHeaderMatch> Headers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a list of targets to which this `ExtensionBinding` should attach.</summary>
+    public class ExtensionBindingTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The reference to the target resource, to which this binding should attach. Exactly one of
+        /// `resources` or `scope` must be set. For Agent Gateway, this would be the full resource name, in the format:
+        /// `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`. For AI App, this would be the full
+        /// resource name, in the format: `projects/{project}/locations/{location}/applications/{application}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the scope of resources to which this binding should attach. Exactly one of `resources`
+        /// or `scope` must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual ExtensionBindingTargetScope Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the scope of resources to which this binding should attach.</summary>
+    public class ExtensionBindingTargetScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Parent resource name specification, in the format: `projects/{project_number}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Required. Type of the resource to which the binding should attach. Limited to 1 resource type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12076,6 +13058,32 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response returned by the `ListExtensionBindings` method.</summary>
+    public class ListExtensionBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of `ExtensionBinding` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionBindings")]
+        public virtual System.Collections.Generic.IList<ExtensionBinding> ExtensionBindings { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request attempts to list all resources across all
+        /// supported locations, while some locations are temporarily unavailable. The resource names are in the format
+        /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response returned by the ListGatewayRouteViews method.</summary>
     public class ListGatewayRouteViewsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12348,6 +13356,32 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// Unordered list. Unreachable resources. Populated when the request sets
         /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
         /// list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the `ListProducerExtensions` method.</summary>
+    public class ListProducerExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of `ProducerExtension` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerExtensions")]
+        public virtual System.Collections.Generic.IList<ProducerExtension> ProducerExtensions { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request attempts to list all resources across all
+        /// supported locations, while some locations are temporarily unavailable. The resource names are in the format:
+        /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -13238,6 +14272,142 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// `ProducerExtension` is a resource representing producer defined configuration for their service extension.
+    /// </summary>
+    public class ProducerExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
+        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Required. The configuration for the service that this `ProducerExtension` offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionSettings")]
+        public virtual ProducerExtensionExtensionSettings ExtensionSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Set of labels associated with the `ProducerExtension` resource. The format must comply with [the
+        /// following requirements]((https://cloud.google.com/compute/docs/labeling-resources#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the `ProducerExtension` resource in the following format:
+        /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The phase in which this `ProducerExtension` should execute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>The configuration for the service that this `ProducerExtension` offers.</summary>
+    public class ProducerExtensionExtensionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The `:authority` header in the request sent to the extension service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authority")]
+        public virtual string Authority { get; set; }
+
+        /// <summary>Optional. Whether the extension should function in observability mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityMode")]
+        public virtual System.Nullable<bool> ObservabilityMode { get; set; }
+
+        /// <summary>Required. URI of the PSC attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>Required. The event types supported by the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedEvents")]
+        public virtual System.Collections.Generic.IList<string> SupportedEvents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     public class RetryFilterPerRouteConfig : Google.Apis.Requests.IDirectResponseSchema
