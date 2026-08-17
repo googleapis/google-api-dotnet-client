@@ -36,6 +36,7 @@ namespace Google.Apis.WebContentPublisher.v1
         {
             Organizations = new OrganizationsResource(this);
             Publications = new PublicationsResource(this);
+            Users = new UsersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://webcontentpublisher.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://webcontentpublisher.googleapis.com/batch");
         }
@@ -87,6 +88,9 @@ namespace Google.Apis.WebContentPublisher.v1
 
         /// <summary>Gets the Publications resource.</summary>
         public virtual PublicationsResource Publications { get; }
+
+        /// <summary>Gets the Users resource.</summary>
+        public virtual UsersResource Users { get; }
     }
 
     /// <summary>A base abstract class for WebContentPublisher requests.</summary>
@@ -971,6 +975,82 @@ namespace Google.Apis.WebContentPublisher.v1
             }
         }
     }
+
+    /// <summary>The "users" collection of methods.</summary>
+    public class UsersResource
+    {
+        private const string Resource = "users";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public UsersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Returns user tokens mapped to their canonical domains for all publications the authenticated user is
+        /// entitled to.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name of the user to generate tokens for. Format: users/{user}
+        /// </param>
+        public virtual GeneratePlatformSiteTokensRequest GeneratePlatformSiteTokens(Google.Apis.WebContentPublisher.v1.Data.GeneratePlatformSiteTokensRequest body, string name)
+        {
+            return new GeneratePlatformSiteTokensRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Returns user tokens mapped to their canonical domains for all publications the authenticated user is
+        /// entitled to.
+        /// </summary>
+        public class GeneratePlatformSiteTokensRequest : WebContentPublisherBaseServiceRequest<Google.Apis.WebContentPublisher.v1.Data.GeneratePlatformSiteTokensResponse>
+        {
+            /// <summary>Constructs a new GeneratePlatformSiteTokens request.</summary>
+            public GeneratePlatformSiteTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.WebContentPublisher.v1.Data.GeneratePlatformSiteTokensRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The resource name of the user to generate tokens for. Format: users/{user}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.WebContentPublisher.v1.Data.GeneratePlatformSiteTokensRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generatePlatformSiteTokens";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:generatePlatformSiteTokens";
+
+            /// <summary>Initializes GeneratePlatformSiteTokens parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^users/[^/]+$",
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.WebContentPublisher.v1.Data
 {
@@ -1046,6 +1126,24 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         /// <summary>Required. The URL of the domain property (e.g., "https://example.com").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `GeneratePlatformSiteTokens`.</summary>
+    public class GeneratePlatformSiteTokensRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `GeneratePlatformSiteTokens`.</summary>
+    public class GeneratePlatformSiteTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of domain-scoped secure token mappings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteTokens")]
+        public virtual System.Collections.Generic.IList<SiteToken> SiteTokens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1208,6 +1306,21 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         /// <summary>Optional. The details of the TOS acceptance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tosAcceptance")]
         public virtual TosAcceptance TosAcceptance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a domain-scoped secure token mapping.</summary>
+    public class SiteToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domain scope this token is valid for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The domain-scoped secure token value (ESUT).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
