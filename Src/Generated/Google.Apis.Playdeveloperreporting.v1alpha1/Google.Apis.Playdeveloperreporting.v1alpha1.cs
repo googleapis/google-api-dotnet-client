@@ -515,7 +515,9 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
         public VitalsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Anonrssandswapmemoryusage = new AnonrssandswapmemoryusageResource(service);
             Anrrate = new AnrrateResource(service);
+            Bitmapmemoryusage = new BitmapmemoryusageResource(service);
             Crashrate = new CrashrateResource(service);
             Errors = new ErrorsResource(service);
             Excessivewakeuprate = new ExcessivewakeuprateResource(service);
@@ -523,6 +525,130 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
             Slowrenderingrate = new SlowrenderingrateResource(service);
             Slowstartrate = new SlowstartrateResource(service);
             Stuckbackgroundwakelockrate = new StuckbackgroundwakelockrateResource(service);
+        }
+
+        /// <summary>Gets the Anonrssandswapmemoryusage resource.</summary>
+        public virtual AnonrssandswapmemoryusageResource Anonrssandswapmemoryusage { get; }
+
+        /// <summary>The "anonrssandswapmemoryusage" collection of methods.</summary>
+        public class AnonrssandswapmemoryusageResource
+        {
+            private const string Resource = "anonrssandswapmemoryusage";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AnonrssandswapmemoryusageResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            /// <param name="name">
+            /// Required. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            public class GetRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1AnonRssAndSwapMemoryUsageMetricSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/anonRssAndSwapMemoryUsageMetricSet$",
+                    });
+                }
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet
+            /// </param>
+            public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryAnonRssAndSwapMemoryUsageMetricSetRequest body, string name)
+            {
+                return new QueryRequest(this.service, body, name);
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            public class QueryRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryAnonRssAndSwapMemoryUsageMetricSetResponse>
+            {
+                /// <summary>Constructs a new Query request.</summary>
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryAnonRssAndSwapMemoryUsageMetricSetRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryAnonRssAndSwapMemoryUsageMetricSetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "query";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}:query";
+
+                /// <summary>Initializes Query parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/anonRssAndSwapMemoryUsageMetricSet$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Anrrate resource.</summary>
@@ -636,6 +762,122 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^apps/[^/]+/anrRateMetricSet$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Bitmapmemoryusage resource.</summary>
+        public virtual BitmapmemoryusageResource Bitmapmemoryusage { get; }
+
+        /// <summary>The "bitmapmemoryusage" collection of methods.</summary>
+        public class BitmapmemoryusageResource
+        {
+            private const string Resource = "bitmapmemoryusage";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BitmapmemoryusageResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Describes the properties of the metric set.</summary>
+            public class GetRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1BitmapMemoryUsageMetricSet>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/bitmapMemoryUsageMetricSet$",
+                    });
+                }
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet</param>
+            public virtual QueryRequest Query(Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryBitmapMemoryUsageMetricSetRequest body, string name)
+            {
+                return new QueryRequest(this.service, body, name);
+            }
+
+            /// <summary>Queries the metrics in the metric set.</summary>
+            public class QueryRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryBitmapMemoryUsageMetricSetResponse>
+            {
+                /// <summary>Constructs a new Query request.</summary>
+                public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryBitmapMemoryUsageMetricSetRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1QueryBitmapMemoryUsageMetricSetRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "query";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+name}:query";
+
+                /// <summary>Initializes Query parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^apps/[^/]+/bitmapMemoryUsageMetricSet$",
                     });
                 }
             }
@@ -2439,6 +2681,51 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     }
 
     /// <summary>
+    /// Singleton resource representing the set of Anon RSS and Swap Memory Usage metrics. This metric set contains anon
+    /// RSS and swap memory usage data combined with usage data. **Supported aggregation periods:** * DAILY: metrics are
+    /// aggregated in calendar date intervals. Due to historical constraints, the only supported timezone is
+    /// `America/Los_Angeles`. **Supported metrics:** * `anonRssAndSwapMemoryUsageP50` (`google.type.Decimal`): 50th
+    /// percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP75` (`google.type.Decimal`): 75th
+    /// percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP90` (`google.type.Decimal`): 90th
+    /// percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP95` (`google.type.Decimal`): 95th
+    /// percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP99` (`google.type.Decimal`): 99th
+    /// percentile of anon RSS and swap memory usage. * `distinctUsers` (`google.type.Decimal`): Count of distinct users
+    /// for which memory metrics were reported during the aggregation period. **Supported dimensions:** * `apiLevel`
+    /// (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64):
+    /// version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the
+    /// user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to
+    /// Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique
+    /// identifier of the user's device brand, e.g., google. * `deviceType` (string): the type (also known as form
+    /// factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device
+    /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
+    /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
+    /// Make of the device's primary system-on-chip, e.g., Samsung. * `deviceSocModel` (string): Model of the device's
+    /// primary system-on-chip, e.g., "Exynos 2100". * `deviceCpuMake` (string): Make of the device's CPU, e.g.,
+    /// Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string):
+    /// Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. *
+    /// `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string): Vulkan
+    /// version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the device, e.g.,
+    /// "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. * `deviceScreenDpi`
+    /// (string): Screen density of the device, e.g., mdpi, hdpi. * `processName` (string): the name of the process that
+    /// was running, e.g., com.example.app. * `appState` (string): the state of the app when memory was collected, e.g.,
+    /// FOREGROUND. **Required permissions**: to access this resource, the calling user needs the _View app information
+    /// (read-only)_ permission for the app.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1alpha1AnonRssAndSwapMemoryUsageMetricSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. * Summary about data freshness in this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
+        public virtual GooglePlayDeveloperReportingV1alpha1FreshnessInfo FreshnessInfo { get; set; }
+
+        /// <summary>Identifier. * The resource name. Format: apps/{app}/anonRssAndSwapMemoryUsageMetricSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Singleton resource representing the set of ANR (Application not responding) metrics. This metric set contains
     /// ANRs data combined with usage data to produce a normalized metric independent of user counts. **Supported
     /// aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals. Due to historical
@@ -2467,8 +2754,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
     /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
     /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
-    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
-    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096
+    /// for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -2530,6 +2817,52 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     }
 
     /// <summary>
+    /// Singleton resource representing the set of Bitmap Memory Usage metrics. This metric set contains bitmap memory
+    /// usage data combined with usage data. **Supported aggregation periods:** * DAILY: metrics are aggregated in
+    /// calendar date intervals. Due to historical constraints, the only supported timezone is `America/Los_Angeles`.
+    /// **Supported metrics:** * `bitmapMemoryUsageP50` (`google.type.Decimal`): 50th percentile of bitmap memory usage.
+    /// * `bitmapMemoryUsageP75` (`google.type.Decimal`): 75th percentile of bitmap memory usage. *
+    /// `bitmapMemoryUsageP90` (`google.type.Decimal`): 90th percentile of bitmap memory usage. * `bitmapMemoryUsageP95`
+    /// (`google.type.Decimal`): 95th percentile of bitmap memory usage. * `bitmapMemoryUsageP99`
+    /// (`google.type.Decimal`): 99th percentile of bitmap memory usage. * `distinctUsers` (`google.type.Decimal`):
+    /// Count of distinct users for which memory metrics were reported during the aggregation period. Care must be taken
+    /// not to aggregate this count further, as it may result in users being counted multiple times. The value is
+    /// rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
+    /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device,
+    /// e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel`
+    /// (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device',
+    /// where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. *
+    /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
+    /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
+    /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung. * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100". * `deviceCpuMake` (string): Make of
+    /// the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
+    /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
+    /// device's GPU, e.g., Mali. * `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. *
+    /// `deviceVulkanVersion` (string): Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string):
+    /// OpenGL ES version of the device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g.,
+    /// NORMAL, LARGE. * `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. * `processName`
+    /// (string): the name of the process that was running, e.g., com.example.app. * `appState` (string): the state of
+    /// the app when memory was collected, e.g., FOREGROUND. **Required permissions**: to access this resource, the
+    /// calling user needs the _View app information (read-only)_ permission for the app.
+    /// </summary>
+    public class GooglePlayDeveloperReportingV1alpha1BitmapMemoryUsageMetricSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Summary about data freshness in this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshnessInfo")]
+        public virtual GooglePlayDeveloperReportingV1alpha1FreshnessInfo FreshnessInfo { get; set; }
+
+        /// <summary>Identifier. The resource name. Format: apps/{app}/bitmapMemoryUsageMetricSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Singleton resource representing the set of crashrate metrics. This metric set contains crashes data combined
     /// with usage data to produce a normalized metric independent of user counts. **Supported aggregation periods:** *
     /// DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the only supported
@@ -2560,8 +2893,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
     /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
     /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
-    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
-    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096
+    /// for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -2683,9 +3016,10 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceType` (string): identifier of
     /// the device's form factor, e.g., PHONE. * `issueId` (string): the id an error was assigned to. The value should
     /// correspond to the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the device, in MB,
-    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
-    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
-    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary
+    /// system-on-chip, e.g., Samsung.
+    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
+    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -2971,8 +3305,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
     /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
     /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
-    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
-    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096
+    /// for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -3099,7 +3433,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode`
     /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
     /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
-    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary
+    /// system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -3182,6 +3517,103 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for QueryAnonRssAndSwapMemoryUsageMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1QueryAnonRssAndSwapMemoryUsageMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. * Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level
+        /// of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung. * `deviceSocModel` (string): Model of the device's primary
+        /// system-on-chip, e.g., "Exynos 2100". * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. *
+        /// `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of
+        /// the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. *
+        /// `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string):
+        /// Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the
+        /// device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. *
+        /// `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. * `processName` (string): the
+        /// name of the process that was running, e.g., com.example.app. * `appState` (string): the state of the app
+        /// when memory was collected, e.g., FOREGROUND.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Optional. * Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. * Metrics to aggregate. **Supported metrics:** * `anonRssAndSwapMemoryUsageP50`
+        /// (`google.type.Decimal`): 50th percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP75`
+        /// (`google.type.Decimal`): 75th percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP90`
+        /// (`google.type.Decimal`): 90th percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP95`
+        /// (`google.type.Decimal`): 95th percentile of anon RSS and swap memory usage. * `anonRssAndSwapMemoryUsageP99`
+        /// (`google.type.Decimal`): 99th percentile of anon RSS and swap memory usage. * `distinctUsers`
+        /// (`google.type.Decimal`): Count of distinct users for which memory metrics were reported during the
+        /// aggregation period. Care must be taken not to aggregate this count further, as it may result in users being
+        /// counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000,
+        /// depending on the magnitude of the value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
+
+        /// <summary>
+        /// Optional. * Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The
+        /// maximum value is 100000; values above 100000 will be coerced to 100000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. * A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. * Specification of the timeline aggregation parameters. **Supported aggregation periods:** *
+        /// DAILY: metrics are aggregated in calendar date intervals. Due to historical constraints, the default and
+        /// only supported timezone is `America/Los_Angeles`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
+        public virtual GooglePlayDeveloperReportingV1alpha1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// Optional. * User view to select. The output data will correspond to the selected view. The only supported
+        /// value is `OS_PUBLIC`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryAnonRssAndSwapMemoryUsageMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1QueryAnonRssAndSwapMemoryUsageMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>* Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>* Returned rows of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1alpha1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for QueryAnrRateMetricSet.</summary>
     public class GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3194,8 +3626,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
         /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
-        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-        /// device's primary system-on-chip, e.g., Samsung.
+        /// (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3293,6 +3725,102 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for QueryBitmapMemoryUsageMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1QueryBitmapMemoryUsageMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of
+        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung. * `deviceSocModel` (string): Model of the device's primary
+        /// system-on-chip, e.g., "Exynos 2100". * `deviceCpuMake` (string): Make of the device's CPU, e.g., Qualcomm. *
+        /// `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". * `deviceGpuMake` (string): Make of
+        /// the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the device's GPU, e.g., Mali. *
+        /// `deviceGpuVersion` (string): Version of the device's GPU, e.g., T750. * `deviceVulkanVersion` (string):
+        /// Vulkan version of the device, e.g., "4198400". * `deviceGlEsVersion` (string): OpenGL ES version of the
+        /// device, e.g., "196610". * `deviceScreenSize` (string): Screen size of the device, e.g., NORMAL, LARGE. *
+        /// `deviceScreenDpi` (string): Screen density of the device, e.g., mdpi, hdpi. * `processName` (string): the
+        /// name of the process that was running, e.g., com.example.app. * `appState` (string): the state of the app
+        /// when memory was collected, e.g., FOREGROUND.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
+
+        /// <summary>
+        /// Optional. Filters to apply to data. The filtering expression follows [AIP-160](https://google.aip.dev/160)
+        /// standard and supports filtering by equality of all breakdown dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Metrics to aggregate. **Supported metrics:** * `bitmapMemoryUsageP50` (`google.type.Decimal`):
+        /// 50th percentile of bitmap memory usage. * `bitmapMemoryUsageP75` (`google.type.Decimal`): 75th percentile of
+        /// bitmap memory usage. * `bitmapMemoryUsageP90` (`google.type.Decimal`): 90th percentile of bitmap memory
+        /// usage. * `bitmapMemoryUsageP95` (`google.type.Decimal`): 95th percentile of bitmap memory usage. *
+        /// `bitmapMemoryUsageP99` (`google.type.Decimal`): 99th percentile of bitmap memory usage. * `distinctUsers`
+        /// (`google.type.Decimal`): Count of distinct users for which memory metrics were reported during the
+        /// aggregation period. Care must be taken not to aggregate this count further, as it may result in users being
+        /// counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000,
+        /// depending on the magnitude of the value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum size of the returned data. If unspecified, at most 1000 rows will be returned. The maximum
+        /// value is 100000; values above 100000 will be coerced to 100000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+        /// paginating, all other parameters provided to the request must match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. Specification of the timeline aggregation parameters. **Supported aggregation periods:** * DAILY:
+        /// metrics are aggregated in calendar date intervals. Due to historical constraints, the default and only
+        /// supported timezone is `America/Los_Angeles`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timelineSpec")]
+        public virtual GooglePlayDeveloperReportingV1alpha1TimelineSpec TimelineSpec { get; set; }
+
+        /// <summary>
+        /// Optional. User view to select. The output data will correspond to the selected view. The only supported
+        /// value is `OS_PUBLIC`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCohort")]
+        public virtual string UserCohort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryBitmapMemoryUsageMetricSet.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1QueryBitmapMemoryUsageMetricSetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token to fetch the next page of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Returned rows of data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1alpha1MetricsRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for QueryCrashRateMetricSet.</summary>
     public class GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3305,8 +3833,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
         /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
-        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-        /// device's primary system-on-chip, e.g., Samsung.
+        /// (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3418,7 +3946,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// e.g., PHONE. * `reportType` (string): the type of error. The value should correspond to one of the possible
         /// values in ErrorType. * `issueId` (string): the id an error was assigned to. The value should correspond to
         /// the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
-        /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the device's primary
+        /// system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3503,8 +4032,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
         /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
-        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-        /// device's primary system-on-chip, e.g., Samsung.
+        /// (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3601,8 +4130,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
         /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
-        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-        /// device's primary system-on-chip, e.g., Samsung.
+        /// (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3810,8 +4339,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
         /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
-        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-        /// device's primary system-on-chip, e.g., Samsung.
+        /// (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3907,8 +4436,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
         /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
         /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
-        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
-        /// device's primary system-on-chip, e.g., Samsung.
+        /// (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -4149,8 +4678,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
     /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
     /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
-    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
-    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096
+    /// for 4-6GB). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -4200,8 +4729,8 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device,
     /// e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address,
     /// represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the
-    /// device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-    /// system-on-chip, e.g., Samsung.
+    /// device, in MB, in buckets (e.g., 1024 for 1-1.5GB, 4096 for 4-6GB). * `deviceSocMake` (string): Make of the
+    /// device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
