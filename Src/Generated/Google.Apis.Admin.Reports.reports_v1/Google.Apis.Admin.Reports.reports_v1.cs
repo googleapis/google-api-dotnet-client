@@ -2828,6 +2828,10 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupIdentity")]
         public virtual GroupIdentity GroupIdentity { get; set; }
 
+        /// <summary>Identity of the shared drive who owns the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveIdentity")]
+        public virtual SharedDriveIdentity SharedDriveIdentity { get; set; }
+
         /// <summary>Identity of the user who owns the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdentity")]
         public virtual UserIdentity UserIdentity { get; set; }
@@ -2879,6 +2883,21 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         /// <summary>Type of the resource - document, email, chat message</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity of the shared drive who owns the resource.</summary>
+    public class SharedDriveIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Shared drive gaia id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Shared drive name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveName")]
+        public virtual string SharedDriveName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
