@@ -13563,7 +13563,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Bounding box encompassing detected text within an image.</summary>
+    /// <summary>
+    /// Bounding box encompassing detected text within an image. Coordinates are in pixels and strictly within the image
+    /// or frame bounds.
+    /// </summary>
     public class GooglePrivacyDlpV2BoundingBox : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Height of the bounding box in pixels.</summary>
