@@ -2804,9 +2804,9 @@ namespace Google.Apis.AccessContextManager.v1
 
                 /// <summary>
                 /// Optional. The literal filter to apply to the results returned. See https://google.aip.dev/160 for
-                /// more details. Accepts values: * principal:group_key * principal:service_account OR
-                /// principal:service_account_project_number. If this field is empty or not one of the above, the
-                /// default value is "principal:group_key".
+                /// more details. Accepts values: * `principal:group_key` * `principal:service_account` OR
+                /// `principal:service_account_project_number`. If this field is empty or not one of the above, the
+                /// default value is `"principal:group_key"`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -3579,6 +3579,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedClientApplication")]
         public virtual Application RestrictedClientApplication { get; set; }
 
+        /// <summary>Optional. The GCP project that is subject to this binding's scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedProject")]
+        public virtual Project RestrictedProject { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3987,7 +3991,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual Principal Principal { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated: use scoped_access_settings instead. A list of applications that are subject to this
+        /// Optional. Deprecated: Use `scoped_access_settings` instead. A list of applications that are subject to this
         /// binding's restrictions. If the list is empty, the binding restrictions will universally apply to all
         /// applications.
         /// </summary>
@@ -4341,7 +4345,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     /// <summary>Modifier to apply to the API requests.</summary>
     public class Modifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Adds additional HTTP request headers.</summary>
+        /// <summary>Adds an additional HTTP request header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addRequestHeader")]
         public virtual AddRequestHeader AddRequestHeader { get; set; }
 
@@ -4496,16 +4500,26 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
-    /// The comprehensive identity container supporting identities including groups, service accounts and federated
+    /// The comprehensive identity container supporting identities including groups, service accounts, and federated
     /// identities. Only one of them can be set to create an access binding.
     /// </summary>
     public class Principal : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Immutable. IAM federated principal name to assign policies to workforce/workload federated identities. Can
+        /// be principal set or single principal, here are some examples: Single principal:
+        /// principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}
+        /// PrincipalSet:
+        /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("federatedPrincipal")]
+        public virtual string FederatedPrincipal { get; set; }
+
+        /// <summary>
         /// Immutable. Service account email used to assign policies to a specific service account. If a service account
         /// is subject to multiple policies (e.g., if there is a policy for all service accounts in a project and a
         /// policy for the service account), the closest (i.e. the most specific) dry-run policy will be used for the
-        /// dry-run functionality and the closest policy will be used for the enforcement.
+        /// dry-run functionality and the closest enforcement policy will be used for the enforcement.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -4530,6 +4544,20 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A GCP project which contains applications and resources that users can access.</summary>
+    public class Project : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The GCP project resource name. Format: "projects/{project_number}" (Only the numeric project name variation
+        /// is supported). Example: "projects/1234567890"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4643,7 +4671,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.com//*" and "*.appspot.com/*
-        /// forms are supported, where should be alphanumerical name.
+        /// forms are supported, where should be an alphanumeric name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
@@ -4799,18 +4827,19 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual object MaxInactivity { get; set; }
 
         /// <summary>
-        /// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set
-        /// infinite session by flipping the enabled bit to false below. If use_oidc_max_age is true, for OIDC apps, the
-        /// session length will be the minimum of this field and OIDC max_age param. If this field is set to zero,
-        /// session_length_enabled must be set to false or left unset.
+        /// Optional. The session length. Setting this field to zero allows for sessions that are active indefinitely.
+        /// Also, setting `session_length_enabled` to false disregards session limits, which means that sessions never
+        /// expire. If use_oidc_max_age is true, for OIDC apps, the session length will be the minimum of this field and
+        /// the OIDC max_age param. If this field is set to zero, `session_length_enabled` must be set to false or left
+        /// unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionLength")]
         public virtual object SessionLength { get; set; }
 
         /// <summary>
         /// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will
-        /// be disregarded and the session length is basically infinite. If session_length is set to zero, this field
-        /// must be false.
+        /// be disregarded and the session length is basically infinite. If `session_length` is set to zero, this field
+        /// must be set to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionLengthEnabled")]
         public virtual System.Nullable<bool> SessionLengthEnabled { get; set; }
