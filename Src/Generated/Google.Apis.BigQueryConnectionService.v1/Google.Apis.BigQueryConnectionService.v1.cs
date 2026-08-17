@@ -1266,14 +1266,18 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         public virtual ConnectorConfigurationNetwork Network { get; set; }
 
         /// <summary>
-        /// Optional. A map of name-value pairs for connector-specific parameters. Extra configuration parameters, that
-        /// are not standardized in configuration sections. To update a single parameter value call
+        /// Optional. A map of name-value pairs for connector-specific parameters. These extra configuration parameters
+        /// aren't standardized in the configuration sections. To update a single parameter value, call
         /// ConnectionService.UpdateConnection with `update_mask` set to `configuration.parameters.parameter_id`. If
-        /// parameter id does not fit `[a-zA-Z0-9_]+` pattern, it should be escaped with backticks - for example
-        /// ``configuration.parameters.`parameter id` ``.
+        /// ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with
+        /// backticks—for example, ``configuration.parameters.`parameter id` ``.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, ConnectorConfigurationParameterValue> Parameters { get; set; }
+
+        /// <summary>Optional. TLS configuration options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tls")]
+        public virtual ConnectorConfigurationTls Tls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1304,12 +1308,11 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
     public class ConnectorConfigurationAuthentication : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A map of name-value pairs for authentication-specific parameters. Extra configuration parameters,
-        /// that are not standardized in authentication. To update a single parameter value call
-        /// ConnectionService.UpdateConnection with `update_mask` set to
-        /// `configuration.authentication.parameters.parameter_id`. If parameter id does not fit `[a-zA-Z0-9_]+`
-        /// pattern, it should be escaped with backticks - for example
-        /// ``configuration.authentication.parameters.`parameter id` ``.
+        /// Optional. A map of name-value pairs for connector-specific parameters. These extra configuration parameters
+        /// aren't standardized in the configuration sections. To update a single parameter value, call
+        /// ConnectionService.UpdateConnection with `update_mask` set to `configuration.parameters.parameter_id`. If
+        /// ``parameter_id`` doesn't fit the `[a-zA-Z0-9_]+` pattern, ``parameter_id`` should be escaped with
+        /// backticks—for example, ``configuration.parameters.`parameter id` ``.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, ConnectorConfigurationParameterValue> Parameters { get; set; }
@@ -1410,6 +1413,43 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
         public virtual string SecretType { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>TLS configuration options.</summary>
+    public class ConnectorConfigurationTls : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The mode of TLS configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Optional. Private PKI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privatePki")]
+        public virtual ConnectorConfigurationTlsPrivatePki PrivatePki { get; set; }
+
+        /// <summary>Optional. Web PKI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webPki")]
+        public virtual ConnectorConfigurationTlsWebPki WebPki { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Private PKI.</summary>
+    public class ConnectorConfigurationTlsPrivatePki : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. a PEM-encoded list of certificates to trust</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustedCertificatesPem")]
+        public virtual string TrustedCertificatesPem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Web PKI.</summary>
+    public class ConnectorConfigurationTlsWebPki : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
