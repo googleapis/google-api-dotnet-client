@@ -9609,6 +9609,19 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual TimeZone TimeZone { get; set; }
 
+        /// <summary>
+        /// Optional. Specifies whether VM backups are stored on local DB server storage or Exascale storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmBackupStorageType")]
+        public virtual string VmBackupStorageType { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether VM file system storage / VM images are stored on local DB server storage or
+        /// Exascale storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmFileSystemStorageType")]
+        public virtual string VmFileSystemStorageType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9623,6 +9636,10 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Required. The total storage to be allocated to Exascale in GBs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalStorageSizeGb")]
         public virtual System.Nullable<int> TotalStorageSizeGb { get; set; }
+
+        /// <summary>Optional. Storage size needed for VM storage on Exascale in GBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalVmStorageSizeGb")]
+        public virtual System.Nullable<int> TotalVmStorageSizeGb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11022,9 +11039,17 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableStorageSizeGb")]
         public virtual System.Nullable<int> AvailableStorageSizeGb { get; set; }
 
+        /// <summary>Output only. Available storage size for VM storage on Exascale in GBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableVmStorageSizeGb")]
+        public virtual System.Nullable<int> AvailableVmStorageSizeGb { get; set; }
+
         /// <summary>Output only. Total storage size needed for Exascale in GBs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalStorageSizeGb")]
         public virtual System.Nullable<int> TotalStorageSizeGb { get; set; }
+
+        /// <summary>Output only. Storage size needed for VM storage on Exascale in GBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalVmStorageSizeGb")]
+        public virtual System.Nullable<int> TotalVmStorageSizeGb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
