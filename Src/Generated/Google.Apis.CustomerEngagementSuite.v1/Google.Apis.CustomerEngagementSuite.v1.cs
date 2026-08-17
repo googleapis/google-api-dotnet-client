@@ -1119,6 +1119,30 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             AGENTTOOL = 4,
                         }
 
+                        /// <summary>
+                        /// Optional. The view specifying which fields in the response should be populated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The view specifying which fields in the response should be populated.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Not specified, defaults to CONVERSATION_VIEW_BASIC.</summary>
+                            [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_UNSPECIFIED")]
+                            CONVERSATIONVIEWUNSPECIFIED = 0,
+
+                            /// <summary>The basic view. Returns everything except resolved instructions.</summary>
+                            [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_BASIC")]
+                            CONVERSATIONVIEWBASIC = 1,
+
+                            /// <summary>The full view. Includes resolved instructions dynamically per turn.</summary>
+                            [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_FULL")]
+                            CONVERSATIONVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -1143,6 +1167,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                             RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "source",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7118,9 +7150,23 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
 
+        /// <summary>
+        /// Output only. The full dynamically resolved developer instruction generated from templates. This field is
+        /// only populated on-demand when requested during history retrieval. It is not persisted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedDeveloperInstruction")]
+        public virtual string ResolvedDeveloperInstruction { get; set; }
+
         /// <summary>Optional. The root span of the action processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootSpan")]
         public virtual Span RootSpan { get; set; }
+
+        /// <summary>
+        /// Optional. Variables or configurations referenced by the template engine during dynamic prompt generation.
+        /// This allows reconstructing the exact prompt sent to the model for this turn.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, object> TemplateAttributes { get; set; }
 
         /// <summary>
         /// Optional. The intended ground-truth text from the Simulated Caller (Polysynth). Only populated when word
