@@ -2079,6 +2079,31 @@ namespace Google.Apis.SecretManager.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Output-only policy member strings of a Google Cloud resource's built-in identity.</summary>
+    public class ResourcePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name
+        /// (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be
+        /// applicable to the new resource. Example:
+        /// `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyNamePrincipal")]
+        public virtual string IamPolicyNamePrincipal { get; set; }
+
+        /// <summary>
+        /// Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique
+        /// identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the
+        /// binding will not be applicable to the new resource Example:
+        /// `principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyUidPrincipal")]
+        public virtual string IamPolicyUidPrincipal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Secret is a logical secret whose value and versions can be accessed. A Secret is made up of zero or more
     /// SecretVersions that represent the secret data.
