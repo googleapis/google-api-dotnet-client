@@ -315,6 +315,7 @@ namespace Google.Apis.CloudRun.v2
                 Jobs = new JobsResource(service);
                 Operations = new OperationsResource(service);
                 Services = new ServicesResource(service);
+                SourceUploads = new SourceUploadsResource(service);
                 WorkerPools = new WorkerPoolsResource(service);
             }
 
@@ -3666,6 +3667,253 @@ namespace Google.Apis.CloudRun.v2
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
                         });
+                    }
+                }
+            }
+
+            /// <summary>Gets the SourceUploads resource.</summary>
+            public virtual SourceUploadsResource SourceUploads { get; }
+
+            /// <summary>The "sourceUploads" collection of methods.</summary>
+            public class SourceUploadsResource
+            {
+                private const string Resource = "sourceUploads";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SourceUploadsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Uploads a source archive to a Google Cloud Storage bucket through Cloud Run. The uploaded source
+                /// object should be used for Cloud Run resource deployments. User is responsible for managing the
+                /// lifecycle of the uploaded object. If uploading through the Cloud Run API to Cloud Storage is not
+                /// desired, you can use the IAM Deny Policy to deny the `run.locations.uploadSource` permission for all
+                /// principals.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project and location in which the source archive should be uploaded to, specified in
+                /// the format `projects/*/locations/*`.
+                /// </param>
+                public virtual UploadRequest Upload(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2UploadSourceRequest body, string parent)
+                {
+                    return new UploadRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Uploads a source archive to a Google Cloud Storage bucket through Cloud Run. The uploaded source
+                /// object should be used for Cloud Run resource deployments. User is responsible for managing the
+                /// lifecycle of the uploaded object. If uploading through the Cloud Run API to Cloud Storage is not
+                /// desired, you can use the IAM Deny Policy to deny the `run.locations.uploadSource` permission for all
+                /// principals.
+                /// </summary>
+                public class UploadRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2UploadSourceResponse>
+                {
+                    /// <summary>Constructs a new Upload request.</summary>
+                    public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2UploadSourceRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location in which the source archive should be uploaded to, specified
+                    /// in the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2UploadSourceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "upload";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}:uploadSource";
+
+                    /// <summary>Initializes Upload parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Uploads a source archive to a Google Cloud Storage bucket through Cloud Run. The uploaded source
+                /// object should be used for Cloud Run resource deployments. User is responsible for managing the
+                /// lifecycle of the uploaded object. If uploading through the Cloud Run API to Cloud Storage is not
+                /// desired, you can use the IAM Deny Policy to deny the `run.locations.uploadSource` permission for all
+                /// principals.
+                /// </summary>
+                /// <remarks>
+                /// Considerations regarding <paramref name="stream"/>:
+                /// <list type="bullet">
+                /// <item>
+                /// <description>
+                /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+                /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its
+                /// current position
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>
+                /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                /// completed
+                /// </description>
+                /// </item>
+                /// <item>
+                /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                /// </item>
+                /// </list>
+                /// </remarks>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project and location in which the source archive should be uploaded to, specified in
+                /// the format `projects/*/locations/*`.
+                /// </param>
+                /// <param name="stream">The stream to upload. See remarks for further information.</param>
+                /// <param name="contentType">The content type of the stream to upload.</param>
+                public virtual UploadMediaUpload Upload(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2UploadSourceRequest body, string parent, System.IO.Stream stream, string contentType)
+                {
+                    return new UploadMediaUpload(service, body, parent, stream, contentType);
+                }
+
+                /// <summary>Upload media upload which supports resumable upload.</summary>
+                public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2UploadSourceRequest, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2UploadSourceResponse>
+                {
+                    /// <summary>V1 error format.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                    /// <summary>V1 error format.</summary>
+                    public enum XgafvEnum
+                    {
+                        /// <summary>v1 error format</summary>
+                        [Google.Apis.Util.StringValueAttribute("1")]
+                        Value1 = 0,
+
+                        /// <summary>v2 error format</summary>
+                        [Google.Apis.Util.StringValueAttribute("2")]
+                        Value2 = 1,
+                    }
+
+                    /// <summary>OAuth access token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AccessToken { get; set; }
+
+                    /// <summary>Data format for response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+                    /// <summary>Data format for response.</summary>
+                    public enum AltEnum
+                    {
+                        /// <summary>Responses with Content-Type of application/json</summary>
+                        [Google.Apis.Util.StringValueAttribute("json")]
+                        Json = 0,
+
+                        /// <summary>Media download with context-dependent Content-Type</summary>
+                        [Google.Apis.Util.StringValueAttribute("media")]
+                        Media = 1,
+
+                        /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                        [Google.Apis.Util.StringValueAttribute("proto")]
+                        Proto = 2,
+                    }
+
+                    /// <summary>JSONP</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Callback { get; set; }
+
+                    /// <summary>Selector specifying which fields to include in a partial response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Fields { get; set; }
+
+                    /// <summary>
+                    /// API key. Your API key identifies your project and provides you with API access, quota, and
+                    /// reports. Required unless you provide an OAuth 2.0 token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Key { get; set; }
+
+                    /// <summary>OAuth 2.0 token for the current user.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OauthToken { get; set; }
+
+                    /// <summary>Returns response with indentations and line breaks.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+                    /// <summary>
+                    /// Available to use for quota purposes for server-side applications. Can be any arbitrary string
+                    /// assigned to a user, but should not exceed 40 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string QuotaUser { get; set; }
+
+                    /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UploadType { get; set; }
+
+                    /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UploadProtocol { get; set; }
+
+                    /// <summary>
+                    /// Required. The project and location in which the source archive should be uploaded to, specified
+                    /// in the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Constructs a new Upload media upload instance.</summary>
+                    /// <remarks>
+                    /// Considerations regarding <paramref name="stream"/>:
+                    /// <list type="bullet">
+                    /// <item>
+                    /// <description>
+                    /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c>
+                    /// before reading commences. If <paramref name="stream"/> is not seekable, then it will be read
+                    /// from its current position
+                    /// </description>
+                    /// </item>
+                    /// <item>
+                    /// <description>
+                    /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                    /// completed
+                    /// </description>
+                    /// </item>
+                    /// <item>
+                    /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                    /// </item>
+                    /// </list>
+                    /// </remarks>
+                    public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2UploadSourceRequest body, string parent, System.IO.Stream stream, string contentType)
+                        : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v2/{+parent}:uploadSource"), "POST", stream, contentType)
+                    {
+                        Parent = parent;
+                        Body = body;
                     }
                 }
             }
@@ -8886,6 +9134,28 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Displays the target URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for the UploadSource method.</summary>
+    public class GoogleCloudRunV2UploadSourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of Cloud Run Service upload source archive will be used for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the UploadSource method.</summary>
+    public class GoogleCloudRunV2UploadSourceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Storage object path the source archive is uploaded to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageSource")]
+        public virtual GoogleCloudRunV2CloudStorageSource CloudStorageSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
