@@ -8196,6 +8196,17 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Properties for a compute instance backup plan.</summary>
     public class ComputeInstanceBackupPlanProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, only the boot disk will be backed up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskOnly")]
+        public virtual System.Nullable<bool> BootDiskOnly { get; set; }
+
+        /// <summary>
+        /// Optional. Labels used to identify disks for exclusion from the backup. If a disk carries any of these
+        /// labels, it will be excluded (OR logic).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskExclusionLabels")]
+        public virtual DiskExclusionLabels DiskExclusionLabels { get; set; }
+
         /// <summary>
         /// Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to
         /// false, the system will create crash-consistent backups. Default value is false.
@@ -8230,6 +8241,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disk")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disk { get; set; }
 
+        /// <summary>Optional. List of disks excluded from the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedDisks")]
+        public virtual System.Collections.Generic.IList<string> ExcludedDisks { get; set; }
+
         /// <summary>
         /// A list of guest accelerator cards' type and count to use for instances created from these properties.
         /// </summary>
@@ -8242,6 +8257,10 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestFlush")]
         public virtual System.Nullable<bool> GuestFlush { get; set; }
+
+        /// <summary>Optional. List of disks included in the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedDisks")]
+        public virtual System.Collections.Generic.IList<string> IncludedDisks { get; set; }
 
         /// <summary>
         /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is
@@ -9064,6 +9083,20 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>The type of the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for selective disk backup exclusion labels.</summary>
+    public class DiskExclusionLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Labels used to identify disks for exclusion from the backup. If a disk carries any of these
+        /// labels, it will be excluded (OR logic).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<LabelKeyValPair> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10147,6 +10180,30 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Optional. Resource manager tags to be bound to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for a label key-value pair.</summary>
+    public class LabelKeyValPair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Key of the label. The key must follow the format: `\\p{Ll}\\p{Lo}{0,62}`. This means the key must start with
+        /// a lowercase letter or a lowercase international character, followed by zero or more lowercase letters,
+        /// lowercase international characters, numbers, underscores, or dashes. The key must be at most 63 characters
+        /// long. International characters are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Value of the label. The value must follow the format: `[\\p{Ll}\\p{Lo}\\p{N}_-]{1,63}`. This means the value
+        /// must be one or more lowercase letters, lowercase international characters, numbers, underscores, or dashes.
+        /// The value must be at most 63 characters long. International characters are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
