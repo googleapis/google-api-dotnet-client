@@ -72,7 +72,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
             /// <summary>
             /// View your Agentspace chat history, including uploaded files and generated reports and visualizations,
-            /// and interact with the Agentspace assistant on your behalf.
+            /// and interact with the Agentspace assistant on your behalf. Also view the artifacts you access through
+            /// NotebookLM Enterprise.
             /// </summary>
             public static string DiscoveryengineAssistReadwrite = "https://www.googleapis.com/auth/discoveryengine.assist.readwrite";
 
@@ -105,7 +106,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
             /// <summary>
             /// View your Agentspace chat history, including uploaded files and generated reports and visualizations,
-            /// and interact with the Agentspace assistant on your behalf.
+            /// and interact with the Agentspace assistant on your behalf. Also view the artifacts you access through
+            /// NotebookLM Enterprise.
             /// </summary>
             public const string DiscoveryengineAssistReadwrite = "https://www.googleapis.com/auth/discoveryengine.assist.readwrite";
 
@@ -34421,7 +34423,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
@@ -40733,6 +40735,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
         public virtual string Verdict { get; set; }
+
+        /// <summary>Output only. The source of the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationSource")]
+        public virtual string ViolationSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47726,7 +47732,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
@@ -55894,7 +55900,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Response message for SearchService.Search method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Controls applied as part of the Control service.</summary>
+        /// <summary>Optional. Controls applied as part of the Control service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedControls")]
         public virtual System.Collections.Generic.IList<string> AppliedControls { get; set; }
 
@@ -60088,9 +60094,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// Output only. Feature config for the engine to opt in or opt out of features. Supported keys: *
         /// `agent-gallery` * `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` *
-        /// `people-search` * `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
-        /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
-        /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
+        /// `people-search` * `people-search-org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` *
+        /// `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access`
+        /// * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `skills` * `skill-sharing` *
         /// `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
@@ -60294,6 +60300,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPreview")]
         public virtual System.Nullable<bool> IsPreview { get; set; }
+
+        /// <summary>
+        /// Output only. Short label shown in the compact selector bar chip (e.g. `3.x Flash`) as opposed to the full
+        /// `display_name` (`Gemini 3.x Flash`). Falls back to `display_name` when the backend registry does not specify
+        /// a distinct short label.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
 
         /// <summary>
         /// Output only. Unique identifier of the model (e.g. `gemini-2.5-flash`, `gemini-3.1-pro-preview`). This is the
@@ -63010,7 +63024,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
