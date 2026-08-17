@@ -13587,6 +13587,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Request for the client or the agent to execute the specified tool.</summary>
     public class GoogleCloudCesV1mainToolCall : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Human-readable name of the agent that issued this call, e.g. "Contract Architect". Empty when
+        /// the root agent issued it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentName")]
+        public virtual string AgentName { get; set; }
+
         /// <summary>Optional. The input parameters and values for the tool in JSON object format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IDictionary<string, object> Args { get; set; }
@@ -13601,6 +13608,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on
+        /// behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call
+        /// that started it instead of rendering every step as a sibling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentToolCallId")]
+        public virtual string ParentToolCallId { get; set; }
 
         /// <summary>
         /// Optional. The name of the tool to execute. Format:
@@ -13620,6 +13635,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>The execution result of a specific tool from the client or the agent.</summary>
     public class GoogleCloudCesV1mainToolResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Human-readable name of the agent that issued this call, e.g. "Contract Architect". Empty when
+        /// the root agent issued it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentName")]
+        public virtual string AgentName { get; set; }
+
         /// <summary>Output only. Display name of the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -13627,6 +13649,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Optional. The matching ID of the tool call the response is for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on
+        /// behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call
+        /// that started it instead of rendering every step as a sibling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentToolCallId")]
+        public virtual string ParentToolCallId { get; set; }
 
         /// <summary>
         /// Required. The tool execution result in JSON object format. Use "output" key to specify tool response and
