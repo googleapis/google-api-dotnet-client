@@ -1841,6 +1841,13 @@ namespace Google.Apis.Looker.v1.Data
     /// </summary>
     public class ExportMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Source BigQuery dataset (formatted as `project_id:dataset_id`) for O2C Elite System Activity (ESA) direct
+        /// dataset migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("esaSourceDatasetId")]
+        public virtual string EsaSourceDatasetId { get; set; }
+
         /// <summary>Encryption key that was used to encrypt the export artifacts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportEncryptionKey")]
         public virtual ExportMetadataEncryptionKey ExportEncryptionKey { get; set; }
