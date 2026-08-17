@@ -480,7 +480,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// `projects.locations.jobs.messages.list` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that
-                /// are running in `us-central1`.
+                /// are running in `us-central1`. # IAM Permissions Requires the `dataflow.messages.list` permission on
+                /// the job.
                 /// </summary>
                 /// <param name="projectId">A project id.</param>
                 /// <param name="jobId">The job to get messages about.</param>
@@ -494,7 +495,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// `projects.locations.jobs.messages.list` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that
-                /// are running in `us-central1`.
+                /// are running in `us-central1`. # IAM Permissions Requires the `dataflow.messages.list` permission on
+                /// the job.
                 /// </summary>
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobMessagesResponse>
                 {
@@ -885,7 +887,7 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>
             /// List the jobs of a project across all regions. **Note:** This method doesn't support filtering the list
-            /// of jobs by name.
+            /// of jobs by name. # IAM Permissions Requires the `dataflow.jobs.list` permission on the project.
             /// </summary>
             /// <param name="projectId">The project which owns the jobs.</param>
             public virtual AggregatedRequest Aggregated(string projectId)
@@ -895,7 +897,7 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>
             /// List the jobs of a project across all regions. **Note:** This method doesn't support filtering the list
-            /// of jobs by name.
+            /// of jobs by name. # IAM Permissions Requires the `dataflow.jobs.list` permission on the project.
             /// </summary>
             public class AggregatedRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
             {
@@ -1081,7 +1083,9 @@ namespace Google.Apis.Dataflow.v1b3
             /// Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a
             /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
             /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter
-            /// confidential information when you supply string values using the API.
+            /// confidential information when you supply string values using the API. # IAM Permissions 1. Requires the
+            /// `dataflow.jobs.create` permission on the project. 2. `resourcemanager.projects.get` (Specifically
+            /// required for regional endpoints to resolve regional resource metadata)
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
@@ -1094,7 +1098,9 @@ namespace Google.Apis.Dataflow.v1b3
             /// Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a
             /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
             /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter
-            /// confidential information when you supply string values using the API.
+            /// confidential information when you supply string values using the API. # IAM Permissions 1. Requires the
+            /// `dataflow.jobs.create` permission on the project. 2. `resourcemanager.projects.get` (Specifically
+            /// required for regional endpoints to resolve regional resource metadata)
             /// </summary>
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
@@ -1216,7 +1222,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using
             /// `projects.locations.jobs.get` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not
-            /// recommended, as you can only get the state of jobs that are running in `us-central1`.
+            /// recommended, as you can only get the state of jobs that are running in `us-central1`. # IAM Permissions
+            /// Requires the `dataflow.jobs.get` permission on the job.
             /// </summary>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
             /// <param name="jobId">The job ID.</param>
@@ -1229,7 +1236,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using
             /// `projects.locations.jobs.get` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not
-            /// recommended, as you can only get the state of jobs that are running in `us-central1`.
+            /// recommended, as you can only get the state of jobs that are running in `us-central1`. # IAM Permissions
+            /// Requires the `dataflow.jobs.get` permission on the job.
             /// </summary>
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
@@ -1345,7 +1353,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// Request the job status. To request the status of a job, we recommend using
             /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics`
-            /// is not recommended, as you can only request the status of jobs that are running in `us-central1`.
+            /// is not recommended, as you can only request the status of jobs that are running in `us-central1`. # IAM
+            /// Permissions Requires the `dataflow.metrics.get` permission on the job.
             /// </summary>
             /// <param name="projectId">A project id.</param>
             /// <param name="jobId">The job to get metrics for.</param>
@@ -1358,7 +1367,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// Request the job status. To request the status of a job, we recommend using
             /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics`
-            /// is not recommended, as you can only request the status of jobs that are running in `us-central1`.
+            /// is not recommended, as you can only request the status of jobs that are running in `us-central1`. # IAM
+            /// Permissions Requires the `dataflow.metrics.get` permission on the job.
             /// </summary>
             public class GetMetricsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobMetrics>
             {
@@ -1471,7 +1481,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because you can
             /// only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list` and
             /// `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't supported by
-            /// `projects.jobs.aggregated`.
+            /// `projects.jobs.aggregated`. # IAM Permissions Requires the `dataflow.jobs.list` permission on the
+            /// project.
             /// </summary>
             /// <param name="projectId">The project which owns the jobs.</param>
             public virtual ListRequest List(string projectId)
@@ -1486,7 +1497,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because you can
             /// only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list` and
             /// `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't supported by
-            /// `projects.jobs.aggregated`.
+            /// `projects.jobs.aggregated`. # IAM Permissions Requires the `dataflow.jobs.list` permission on the
+            /// project.
             /// </summary>
             public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
             {
@@ -1668,7 +1680,10 @@ namespace Google.Apis.Dataflow.v1b3
                 }
             }
 
-            /// <summary>Snapshot the state of a streaming job.</summary>
+            /// <summary>
+            /// Snapshot the state of a streaming job. # IAM Permissions Requires the `dataflow.jobs.snapshot`
+            /// permission on the job.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The project which owns the job to be snapshotted.</param>
             /// <param name="jobId">The job to be snapshotted.</param>
@@ -1677,7 +1692,10 @@ namespace Google.Apis.Dataflow.v1b3
                 return new SnapshotRequest(this.service, body, projectId, jobId);
             }
 
-            /// <summary>Snapshot the state of a streaming job.</summary>
+            /// <summary>
+            /// Snapshot the state of a streaming job. # IAM Permissions Requires the `dataflow.jobs.snapshot`
+            /// permission on the job.
+            /// </summary>
             public class SnapshotRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
             {
                 /// <summary>Constructs a new Snapshot request.</summary>
@@ -1739,7 +1757,9 @@ namespace Google.Apis.Dataflow.v1b3
             /// Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
             /// recommend using `projects.locations.jobs.update` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is
-            /// not recommended, as you can only update the state of jobs that are running in `us-central1`.
+            /// not recommended, as you can only update the state of jobs that are running in `us-central1`. # IAM
+            /// Permissions 1. Requires the `dataflow.jobs.cancel` permission to cancel a job. 2. Requires the
+            /// `dataflow.jobs.updateContents` permission to update runtime parameters.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
@@ -1753,7 +1773,9 @@ namespace Google.Apis.Dataflow.v1b3
             /// Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
             /// recommend using `projects.locations.jobs.update` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is
-            /// not recommended, as you can only update the state of jobs that are running in `us-central1`.
+            /// not recommended, as you can only update the state of jobs that are running in `us-central1`. # IAM
+            /// Permissions 1. Requires the `dataflow.jobs.cancel` permission to cancel a job. 2. Requires the
+            /// `dataflow.jobs.updateContents` permission to update runtime parameters.
             /// </summary>
             public class UpdateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
@@ -1883,7 +1905,12 @@ namespace Google.Apis.Dataflow.v1b3
                     this.service = service;
                 }
 
-                /// <summary>Launch a job with a FlexTemplate.</summary>
+                /// <summary>
+                /// Launch a job with a FlexTemplate. # IAM Permissions Requires the following IAM permission(s) on the
+                /// resource: - `dataflow.jobs.create` - `resourcemanager.projects.get` - `iam.serviceAccounts.actAs` -
+                /// `storage.buckets.get` - `storage.buckets.create` (Required if the default staging bucket must be
+                /// created)
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
                 /// Required. The ID of the Cloud Platform project that the job belongs to.
@@ -1898,7 +1925,12 @@ namespace Google.Apis.Dataflow.v1b3
                     return new LaunchRequest(this.service, body, projectId, location);
                 }
 
-                /// <summary>Launch a job with a FlexTemplate.</summary>
+                /// <summary>
+                /// Launch a job with a FlexTemplate. # IAM Permissions Requires the following IAM permission(s) on the
+                /// resource: - `dataflow.jobs.create` - `resourcemanager.projects.get` - `iam.serviceAccounts.actAs` -
+                /// `storage.buckets.get` - `storage.buckets.create` (Required if the default staging bucket must be
+                /// created)
+                /// </summary>
                 public class LaunchRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LaunchFlexTemplateResponse>
                 {
                     /// <summary>Constructs a new Launch request.</summary>
@@ -2284,7 +2316,8 @@ namespace Google.Apis.Dataflow.v1b3
                     /// `projects.locations.jobs.messages.list` with a [regional endpoint]
                     /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                     /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs
-                    /// that are running in `us-central1`.
+                    /// that are running in `us-central1`. # IAM Permissions Requires the `dataflow.messages.list`
+                    /// permission on the job.
                     /// </summary>
                     /// <param name="projectId">A project id.</param>
                     /// <param name="location">
@@ -2302,7 +2335,8 @@ namespace Google.Apis.Dataflow.v1b3
                     /// `projects.locations.jobs.messages.list` with a [regional endpoint]
                     /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                     /// `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs
-                    /// that are running in `us-central1`.
+                    /// that are running in `us-central1`. # IAM Permissions Requires the `dataflow.messages.list`
+                    /// permission on the job.
                     /// </summary>
                     public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobMessagesResponse>
                     {
@@ -2652,7 +2686,8 @@ namespace Google.Apis.Dataflow.v1b3
 
                     /// <summary>
                     /// Request detailed information about the execution status of a stage of the job. EXPERIMENTAL.
-                    /// This API is subject to change or removal without notice.
+                    /// This API is subject to change or removal without notice. # IAM Permissions Requires the
+                    /// `dataflow.metrics.get` permission on the job.
                     /// </summary>
                     /// <param name="projectId">A project id.</param>
                     /// <param name="location">
@@ -2668,7 +2703,8 @@ namespace Google.Apis.Dataflow.v1b3
 
                     /// <summary>
                     /// Request detailed information about the execution status of a stage of the job. EXPERIMENTAL.
-                    /// This API is subject to change or removal without notice.
+                    /// This API is subject to change or removal without notice. # IAM Permissions Requires the
+                    /// `dataflow.metrics.get` permission on the job.
                     /// </summary>
                     public class GetExecutionDetailsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.StageExecutionDetails>
                     {
@@ -3055,7 +3091,9 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a
                 /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not
-                /// enter confidential information when you supply string values using the API.
+                /// enter confidential information when you supply string values using the API. # IAM Permissions 1.
+                /// Requires the `dataflow.jobs.create` permission on the project. 2. `resourcemanager.projects.get`
+                /// (Specifically required for regional endpoints to resolve regional resource metadata)
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
@@ -3072,7 +3110,9 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a
                 /// [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not
-                /// enter confidential information when you supply string values using the API.
+                /// enter confidential information when you supply string values using the API. # IAM Permissions 1.
+                /// Requires the `dataflow.jobs.create` permission on the project. 2. `resourcemanager.projects.get`
+                /// (Specifically required for regional endpoints to resolve regional resource metadata)
                 /// </summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
@@ -3196,7 +3236,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using
                 /// `projects.locations.jobs.get` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is
-                /// not recommended, as you can only get the state of jobs that are running in `us-central1`.
+                /// not recommended, as you can only get the state of jobs that are running in `us-central1`. # IAM
+                /// Permissions Requires the `dataflow.jobs.get` permission on the job.
                 /// </summary>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
                 /// <param name="location">
@@ -3213,7 +3254,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using
                 /// `projects.locations.jobs.get` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is
-                /// not recommended, as you can only get the state of jobs that are running in `us-central1`.
+                /// not recommended, as you can only get the state of jobs that are running in `us-central1`. # IAM
+                /// Permissions Requires the `dataflow.jobs.get` permission on the job.
                 /// </summary>
                 public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
@@ -3329,7 +3371,8 @@ namespace Google.Apis.Dataflow.v1b3
 
                 /// <summary>
                 /// Request detailed information about the execution status of the job. EXPERIMENTAL. This API is
-                /// subject to change or removal without notice.
+                /// subject to change or removal without notice. # IAM Permissions Requires the `dataflow.metrics.get`
+                /// permission on the job.
                 /// </summary>
                 /// <param name="projectId">A project id.</param>
                 /// <param name="location">
@@ -3344,7 +3387,8 @@ namespace Google.Apis.Dataflow.v1b3
 
                 /// <summary>
                 /// Request detailed information about the execution status of the job. EXPERIMENTAL. This API is
-                /// subject to change or removal without notice.
+                /// subject to change or removal without notice. # IAM Permissions Requires the `dataflow.metrics.get`
+                /// permission on the job.
                 /// </summary>
                 public class GetExecutionDetailsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobExecutionDetails>
                 {
@@ -3447,7 +3491,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are
-                /// running in `us-central1`.
+                /// running in `us-central1`. # IAM Permissions Requires the `dataflow.metrics.get` permission on the
+                /// job.
                 /// </summary>
                 /// <param name="projectId">A project id.</param>
                 /// <param name="location">
@@ -3465,7 +3510,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are
-                /// running in `us-central1`.
+                /// running in `us-central1`. # IAM Permissions Requires the `dataflow.metrics.get` permission on the
+                /// job.
                 /// </summary>
                 public class GetMetricsRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.JobMetrics>
                 {
@@ -3579,7 +3625,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because
                 /// you can only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list`
                 /// and `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't
-                /// supported by `projects.jobs.aggregated`.
+                /// supported by `projects.jobs.aggregated`. # IAM Permissions Requires the `dataflow.jobs.list`
+                /// permission on the project.
                 /// </summary>
                 /// <param name="projectId">The project which owns the jobs.</param>
                 /// <param name="location">
@@ -3598,7 +3645,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because
                 /// you can only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list`
                 /// and `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't
-                /// supported by `projects.jobs.aggregated`.
+                /// supported by `projects.jobs.aggregated`. # IAM Permissions Requires the `dataflow.jobs.list`
+                /// permission on the project.
                 /// </summary>
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
                 {
@@ -3786,7 +3834,10 @@ namespace Google.Apis.Dataflow.v1b3
                     }
                 }
 
-                /// <summary>Snapshot the state of a streaming job.</summary>
+                /// <summary>
+                /// Snapshot the state of a streaming job. # IAM Permissions Requires the `dataflow.jobs.snapshot`
+                /// permission on the job.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The project which owns the job to be snapshotted.</param>
                 /// <param name="location">The location that contains this job.</param>
@@ -3796,7 +3847,10 @@ namespace Google.Apis.Dataflow.v1b3
                     return new SnapshotRequest(this.service, body, projectId, location, jobId);
                 }
 
-                /// <summary>Snapshot the state of a streaming job.</summary>
+                /// <summary>
+                /// Snapshot the state of a streaming job. # IAM Permissions Requires the `dataflow.jobs.snapshot`
+                /// permission on the job.
+                /// </summary>
                 public class SnapshotRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Snapshot>
                 {
                     /// <summary>Constructs a new Snapshot request.</summary>
@@ -3871,7 +3925,9 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
                 /// recommend using `projects.locations.jobs.update` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update`
-                /// is not recommended, as you can only update the state of jobs that are running in `us-central1`.
+                /// is not recommended, as you can only update the state of jobs that are running in `us-central1`. #
+                /// IAM Permissions 1. Requires the `dataflow.jobs.cancel` permission to cancel a job. 2. Requires the
+                /// `dataflow.jobs.updateContents` permission to update runtime parameters.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The ID of the Cloud Platform project that the job belongs to.</param>
@@ -3889,7 +3945,9 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we
                 /// recommend using `projects.locations.jobs.update` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update`
-                /// is not recommended, as you can only update the state of jobs that are running in `us-central1`.
+                /// is not recommended, as you can only update the state of jobs that are running in `us-central1`. #
+                /// IAM Permissions 1. Requires the `dataflow.jobs.cancel` permission to cancel a job. 2. Requires the
+                /// `dataflow.jobs.updateContents` permission to update runtime parameters.
                 /// </summary>
                 public class UpdateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
@@ -4241,6 +4299,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// `projects.locations.templates.create` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`.
+                /// # IAM Permissions Requires the following IAM permission(s) on the project: - `dataflow.jobs.create`
+                /// - `resourcemanager.projects.get`
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
@@ -4261,6 +4321,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// `projects.locations.templates.create` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
                 /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`.
+                /// # IAM Permissions Requires the following IAM permission(s) on the project: - `dataflow.jobs.create`
+                /// - `resourcemanager.projects.get`
                 /// </summary>
                 public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
                 {
@@ -4326,7 +4388,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Get the template associated with a template. To get the template, we recommend using
                 /// `projects.locations.templates.get` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get`
-                /// is not recommended, because only templates that are running in `us-central1` are retrieved.
+                /// is not recommended, because only templates that are running in `us-central1` are retrieved. # IAM
+                /// Permissions Requires the `resourcemanager.projects.get` permission on the project.
                 /// </summary>
                 /// <param name="projectId">
                 /// Required. The ID of the Cloud Platform project that the job belongs to.
@@ -4344,7 +4407,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Get the template associated with a template. To get the template, we recommend using
                 /// `projects.locations.templates.get` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get`
-                /// is not recommended, because only templates that are running in `us-central1` are retrieved.
+                /// is not recommended, because only templates that are running in `us-central1` are retrieved. # IAM
+                /// Permissions Requires the `resourcemanager.projects.get` permission on the project.
                 /// </summary>
                 public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetTemplateResponse>
                 {
@@ -4440,7 +4504,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Launches a template. To launch a template, we recommend using `projects.locations.templates.launch`
                 /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
                 /// Using `projects.templates.launch` is not recommended, because jobs launched from the template will
-                /// always start in `us-central1`.
+                /// always start in `us-central1`. # IAM Permissions Requires the following IAM permission(s) on the
+                /// project: - `dataflow.jobs.create` - `resourcemanager.projects.get`
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
@@ -4459,7 +4524,8 @@ namespace Google.Apis.Dataflow.v1b3
                 /// Launches a template. To launch a template, we recommend using `projects.locations.templates.launch`
                 /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
                 /// Using `projects.templates.launch` is not recommended, because jobs launched from the template will
-                /// always start in `us-central1`.
+                /// always start in `us-central1`. # IAM Permissions Requires the following IAM permission(s) on the
+                /// project: - `dataflow.jobs.create` - `resourcemanager.projects.get`
                 /// </summary>
                 public class LaunchRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LaunchTemplateResponse>
                 {
@@ -4834,7 +4900,9 @@ namespace Google.Apis.Dataflow.v1b3
             /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
             /// string values using the API. To create a job, we recommend using `projects.locations.templates.create`
             /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
-            /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`.
+            /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`. #
+            /// IAM Permissions Requires the following IAM permission(s) on the project: - `dataflow.jobs.create` -
+            /// `resourcemanager.projects.get`
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
@@ -4847,7 +4915,9 @@ namespace Google.Apis.Dataflow.v1b3
             /// Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply
             /// string values using the API. To create a job, we recommend using `projects.locations.templates.create`
             /// with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
-            /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`.
+            /// `projects.templates.create` is not recommended, because your job will always start in `us-central1`. #
+            /// IAM Permissions Requires the following IAM permission(s) on the project: - `dataflow.jobs.create` -
+            /// `resourcemanager.projects.get`
             /// </summary>
             public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Job>
             {
@@ -4897,7 +4967,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// Get the template associated with a template. To get the template, we recommend using
             /// `projects.locations.templates.get` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get` is
-            /// not recommended, because only templates that are running in `us-central1` are retrieved.
+            /// not recommended, because only templates that are running in `us-central1` are retrieved. # IAM
+            /// Permissions Requires the `resourcemanager.projects.get` permission on the project.
             /// </summary>
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
             public virtual GetRequest Get(string projectId)
@@ -4909,7 +4980,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// Get the template associated with a template. To get the template, we recommend using
             /// `projects.locations.templates.get` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get` is
-            /// not recommended, because only templates that are running in `us-central1` are retrieved.
+            /// not recommended, because only templates that are running in `us-central1` are retrieved. # IAM
+            /// Permissions Requires the `resourcemanager.projects.get` permission on the project.
             /// </summary>
             public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.GetTemplateResponse>
             {
@@ -5002,7 +5074,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// Launches a template. To launch a template, we recommend using `projects.locations.templates.launch` with
             /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
             /// `projects.templates.launch` is not recommended, because jobs launched from the template will always
-            /// start in `us-central1`.
+            /// start in `us-central1`. # IAM Permissions Requires the following IAM permission(s) on the project: -
+            /// `dataflow.jobs.create` - `resourcemanager.projects.get`
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. The ID of the Cloud Platform project that the job belongs to.</param>
@@ -5015,7 +5088,8 @@ namespace Google.Apis.Dataflow.v1b3
             /// Launches a template. To launch a template, we recommend using `projects.locations.templates.launch` with
             /// a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using
             /// `projects.templates.launch` is not recommended, because jobs launched from the template will always
-            /// start in `us-central1`.
+            /// start in `us-central1`. # IAM Permissions Requires the following IAM permission(s) on the project: -
+            /// `dataflow.jobs.create` - `resourcemanager.projects.get`
             /// </summary>
             public class LaunchRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.LaunchTemplateResponse>
             {
@@ -5409,6 +5483,86 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>A short and friendly name for the worker pool this event refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A schedule for autoscaling.</summary>
+    public class AutoscalingSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A crontab specification of when this schedule should trigger applying overrides. The overrides
+        /// will be applied from the trigger time until the specified duration elapses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crontab")]
+        public virtual string Crontab { get; set; }
+
+        /// <summary>
+        /// Optional. The duration for which the parameter overrides for this schedule will be applied when triggered by
+        /// the crontab.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Optional. The name of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The parameters to use for autoscaling when this schedule is active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual Parameters Parameters { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the priority of the schedule. If two schedules overlap, the one with the higher priority
+        /// will be used. The higher the value, the higher the priority of the schedule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<long> Priority { get; set; }
+
+        /// <summary>
+        /// Optional. The time zone for the schedule. The value of this field must be a time zone name from the [tz
+        /// database](http://en.wikipedia.org/wiki/Tz_database). The default value is UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. When the customer last updated the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8636,6 +8790,29 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The parameters to use for autoscaling when this schedule is active.</summary>
+    public class Parameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The target CPU utilization for this schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationTarget")]
+        public virtual System.Nullable<double> CpuUtilizationTarget { get; set; }
+
+        /// <summary>Optional. The target latency for this schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyTarget")]
+        public virtual string LatencyTarget { get; set; }
+
+        /// <summary>Optional. The maximum number of workers for this schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxWorkerCount")]
+        public virtual System.Nullable<int> MaxWorkerCount { get; set; }
+
+        /// <summary>Optional. The minimum number of workers for this schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minWorkerCount")]
+        public virtual System.Nullable<int> MinWorkerCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An instruction that does a partial group-by-key. One input and one output.</summary>
     public class PartialGroupByKeyInstruction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9294,6 +9471,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNumWorkers")]
         public virtual System.Nullable<int> MinNumWorkers { get; set; }
+
+        /// <summary>Optional. The schedule for autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedules")]
+        public virtual System.Collections.Generic.IList<AutoscalingSchedule> Schedules { get; set; }
 
         /// <summary>
         /// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to
