@@ -3618,6 +3618,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxSeverity")]
         public virtual string MaxSeverity { get; set; }
 
+        /// <summary>Per scanner verdict.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perScannerVerdict")]
+        public virtual PerScannerVerdict PerScannerVerdict { get; set; }
+
         /// <summary>Name of the skill that produced this analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skillName")]
         public virtual string SkillName { get; set; }
@@ -8113,6 +8117,51 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Result of Malicious Content LLM scan.</summary>
+    public class MaliciousContentLLMResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tracks max severity found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSeverity")]
+        public virtual string MaxSeverity { get; set; }
+
+        /// <summary>Status of the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanStatus")]
+        public virtual string ScanStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of Malicious Content Static scan.</summary>
+    public class MaliciousContentStaticResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Tracks max severity found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSeverity")]
+        public virtual string MaxSeverity { get; set; }
+
+        /// <summary>Status of the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanStatus")]
+        public virtual string ScanStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of Malware scan.</summary>
+    public class MalwareScanResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status of the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanStatus")]
+        public virtual string ScanStatus { get; set; }
+
+        /// <summary>Verdict of the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A type of analysis that can be done for a resource.</summary>
     public class Note : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8773,6 +8822,29 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The unique URL of the image or the container for which this summary applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Per scanner verdict details.</summary>
+    public class PerScannerVerdict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Malicious Content LLM scan result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maliciousContentLlmResult")]
+        public virtual MaliciousContentLLMResult MaliciousContentLlmResult { get; set; }
+
+        /// <summary>Malicious Content Static scan result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maliciousContentStaticResult")]
+        public virtual MaliciousContentStaticResult MaliciousContentStaticResult { get; set; }
+
+        /// <summary>Malware scan result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("malwareScan")]
+        public virtual MalwareScanResult MalwareScan { get; set; }
+
+        /// <summary>Workspace Policy scan result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspacePolicy")]
+        public virtual WorkspacePolicyResult WorkspacePolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10012,6 +10084,21 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Required. The name of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of Workspace Policy scan.</summary>
+    public class WorkspacePolicyResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status of the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanStatus")]
+        public virtual string ScanStatus { get; set; }
+
+        /// <summary>Verdict of the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
