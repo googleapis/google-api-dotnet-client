@@ -664,8 +664,8 @@ namespace Google.Apis.CloudFTP.v1
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Required. Id of the requesting object If auto-generating Id server-side, remove this field
-                        /// and server_id from the method_signature of Create RPC
+                        /// Required. A unique user ID for the SFTP user. The user ID must start with a lowercase letter
+                        /// and can include lowercase letters, numbers, or hyphens.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string UserId { get; set; }
@@ -1092,8 +1092,9 @@ namespace Google.Apis.CloudFTP.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// server_id from the method_signature of Create RPC
+                    /// Required. A unique ID for the server. Must start with a lowercase letter, and end with a
+                    /// lowercase letter or number. Can contain lowercase letters, numbers, and hyphens. Maximum length
+                    /// is 30 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serverId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServerId { get; set; }
