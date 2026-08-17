@@ -22,6 +22,11 @@
     "EVAL",
     "AGENT_TOOL"
   ],
+  "Google.Apis.CustomerEngagementSuite.v1.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+GetRequest.ViewEnum": [
+    "CONVERSATION_VIEW_UNSPECIFIED",
+    "CONVERSATION_VIEW_BASIC",
+    "CONVERSATION_VIEW_FULL"
+  ],
   "Google.Apis.CustomerEngagementSuite.v1.ProjectsResource+LocationsResource+AppsResource+ConversationsResource+ListRequest.SourceEnum": [
     "SOURCE_UNSPECIFIED",
     "LIVE",
