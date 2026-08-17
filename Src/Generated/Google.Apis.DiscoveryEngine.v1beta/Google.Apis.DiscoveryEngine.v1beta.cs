@@ -72,7 +72,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
             /// <summary>
             /// View your Agentspace chat history, including uploaded files and generated reports and visualizations,
-            /// and interact with the Agentspace assistant on your behalf.
+            /// and interact with the Agentspace assistant on your behalf. Also view the artifacts you access through
+            /// NotebookLM Enterprise.
             /// </summary>
             public static string DiscoveryengineAssistReadwrite = "https://www.googleapis.com/auth/discoveryengine.assist.readwrite";
 
@@ -105,7 +106,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
             /// <summary>
             /// View your Agentspace chat history, including uploaded files and generated reports and visualizations,
-            /// and interact with the Agentspace assistant on your behalf.
+            /// and interact with the Agentspace assistant on your behalf. Also view the artifacts you access through
+            /// NotebookLM Enterprise.
             /// </summary>
             public const string DiscoveryengineAssistReadwrite = "https://www.googleapis.com/auth/discoveryengine.assist.readwrite";
 
@@ -25914,7 +25916,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
@@ -30782,6 +30784,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
         public virtual string Verdict { get; set; }
 
+        /// <summary>Output only. The source of the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationSource")]
+        public virtual string ViolationSource { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -35257,7 +35263,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
@@ -43681,6 +43687,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
         public virtual string Verdict { get; set; }
 
+        /// <summary>Output only. The source of the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationSource")]
+        public virtual string ViolationSource { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -48444,7 +48454,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
-        /// `people-search-org-chart` * `bi-directional-audio` * `feedback` * `session-sharing` *
+        /// `people-search-org-chart` * `bi-directional-audio` * `speech-to-text` * `feedback` * `session-sharing` *
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
@@ -54280,7 +54290,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Response message for SearchService.Search method.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Controls applied as part of the Control service.</summary>
+        /// <summary>Optional. Controls applied as part of the Control service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedControls")]
         public virtual System.Collections.Generic.IList<string> AppliedControls { get; set; }
 
@@ -54706,6 +54716,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rankSignals")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals RankSignals { get; set; }
 
+        /// <summary>
+        /// Optional. A set of signals used by the relevance filter meant for use to fine-tune the relevance filter
+        /// thresholds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalSignals")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals RetrievalSignals { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -54770,6 +54787,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Optional. Float value representing the ranking signal (e.g. 1.25 for BM25).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<float> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a set of signals used by the relevance filter.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indicates how the result was retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalSources")]
+        public virtual System.Collections.Generic.IList<string> RetrievalSources { get; set; }
+
+        /// <summary>Optional. Relevance score used by the filter when semantic_relevance_threshold is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("semanticRelevanceScore")]
+        public virtual System.Nullable<float> SemanticRelevanceScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
