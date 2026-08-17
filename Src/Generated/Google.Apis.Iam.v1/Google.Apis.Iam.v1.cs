@@ -11748,7 +11748,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual System.Collections.Generic.IList<string> AllowedAudiences { get; set; }
 
         /// <summary>
-        /// Required. The OIDC issuer URL. Must be an HTTPS endpoint. Per OpenID Connect Discovery 1.0 spec, the OIDC
+        /// Required. The OIDC `issuer_uri`. Must be an HTTPS endpoint. Per OpenID Connect Discovery 1.0 spec, the OIDC
         /// issuer URL is used to locate the provider's public keys (via `jwks_uri`) for verifying tokens like the OIDC
         /// ID token. These public key types must be 'EC' or 'RSA'.
         /// </summary>
