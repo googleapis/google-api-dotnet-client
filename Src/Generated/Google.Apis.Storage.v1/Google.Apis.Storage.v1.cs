@@ -46,6 +46,7 @@ namespace Google.Apis.Storage.v1
             Objects = new ObjectsResource(this);
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
+            RapidCaches = new RapidCachesResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://storage.googleapis.com/storage/v1/");
             BatchUri = GetEffectiveUri(null, "https://storage.googleapis.com/batch/storage/v1");
         }
@@ -141,6 +142,9 @@ namespace Google.Apis.Storage.v1
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
+
+        /// <summary>Gets the RapidCaches resource.</summary>
+        public virtual RapidCachesResource RapidCaches { get; }
     }
 
     /// <summary>A base abstract class for Storage requests.</summary>
@@ -4391,6 +4395,103 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
                 {
                     Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates a managed folder using patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">The name of the bucket containing the managed folder.</param>
+        /// <param name="managedFolder">The name of the managed folder.</param>
+        public virtual UpdateRequest Update(Google.Apis.Storage.v1.Data.ManagedFolder body, string bucket, string managedFolder)
+        {
+            return new UpdateRequest(this.service, body, bucket, managedFolder);
+        }
+
+        /// <summary>Updates a managed folder using patch semantics.</summary>
+        public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ManagedFolder>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.ManagedFolder body, string bucket, string managedFolder) : base(service)
+            {
+                Bucket = bucket;
+                ManagedFolder = managedFolder;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The name of the bucket containing the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The name of the managed folder.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("managedFolder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ManagedFolder { get; private set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the metageneration of the managed folder matches the
+            /// specified value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the metageneration of the managed folder doesn't match the
+            /// specified value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.ManagedFolder Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/managedFolders/{managedFolder}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("managedFolder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "managedFolder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -9602,6 +9703,330 @@ namespace Google.Apis.Storage.v1
             }
         }
     }
+
+    /// <summary>The "rapidCaches" collection of methods.</summary>
+    public class RapidCachesResource
+    {
+        private const string Resource = "rapidCaches";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RapidCachesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Disables a Rapid Cache instance.</summary>
+        /// <param name="bucket">Name of the parent bucket.</param>
+        /// <param name="rapidCacheId">The ID of the requested Rapid Cache instance.</param>
+        public virtual DisableRequest Disable(string bucket, string rapidCacheId)
+        {
+            return new DisableRequest(this.service, bucket, rapidCacheId);
+        }
+
+        /// <summary>Disables a Rapid Cache instance.</summary>
+        public class DisableRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Disable request.</summary>
+            public DisableRequest(Google.Apis.Services.IClientService service, string bucket, string rapidCacheId) : base(service)
+            {
+                Bucket = bucket;
+                RapidCacheId = rapidCacheId;
+                InitParameters();
+            }
+
+            /// <summary>Name of the parent bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of the requested Rapid Cache instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rapidCacheId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RapidCacheId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "disable";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/rapidCaches/{rapidCacheId}/disable";
+
+            /// <summary>Initializes Disable parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rapidCacheId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rapidCacheId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns the metadata of a Rapid Cache instance.</summary>
+        /// <param name="bucket">Name of the parent bucket.</param>
+        /// <param name="rapidCacheId">The ID of the requested Rapid Cache instance.</param>
+        public virtual GetRequest Get(string bucket, string rapidCacheId)
+        {
+            return new GetRequest(this.service, bucket, rapidCacheId);
+        }
+
+        /// <summary>Returns the metadata of a Rapid Cache instance.</summary>
+        public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.RapidCache>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string rapidCacheId) : base(service)
+            {
+                Bucket = bucket;
+                RapidCacheId = rapidCacheId;
+                InitParameters();
+            }
+
+            /// <summary>Name of the parent bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of the requested Rapid Cache instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rapidCacheId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RapidCacheId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/rapidCaches/{rapidCacheId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rapidCacheId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rapidCacheId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Creates a Rapid Cache instance.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
+        public virtual InsertRequest Insert(Google.Apis.Storage.v1.Data.RapidCache body, string bucket)
+        {
+            return new InsertRequest(this.service, body, bucket);
+        }
+
+        /// <summary>Creates a Rapid Cache instance.</summary>
+        public class InsertRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.RapidCache body, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the parent bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.RapidCache Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/rapidCaches";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns a list of Rapid Cache instances of the bucket.</summary>
+        /// <param name="bucket">Name of the parent bucket.</param>
+        public virtual ListRequest List(string bucket)
+        {
+            return new ListRequest(this.service, bucket);
+        }
+
+        /// <summary>Returns a list of Rapid Cache instances of the bucket.</summary>
+        public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.RapidCaches>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                InitParameters();
+            }
+
+            /// <summary>Name of the parent bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Maximum number of items to return in a single page of responses.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A previously-returned page token representing part of the larger set of results to view.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/rapidCaches";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates the configuration of a Rapid Cache instance.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the parent bucket.</param>
+        /// <param name="rapidCacheId">The ID of the requested Rapid Cache instance.</param>
+        public virtual UpdateRequest Update(Google.Apis.Storage.v1.Data.RapidCache body, string bucket, string rapidCacheId)
+        {
+            return new UpdateRequest(this.service, body, bucket, rapidCacheId);
+        }
+
+        /// <summary>Updates the configuration of a Rapid Cache instance.</summary>
+        public class UpdateRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.RapidCache body, string bucket, string rapidCacheId) : base(service)
+            {
+                Bucket = bucket;
+                RapidCacheId = rapidCacheId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the parent bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of the requested Rapid Cache instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rapidCacheId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RapidCacheId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.RapidCache Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/rapidCaches/{rapidCacheId}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rapidCacheId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rapidCacheId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.Storage.v1.Data
 {
@@ -11584,6 +12009,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The rapid cache configuration for the managed folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rapidCacheConfig")]
+        public virtual RapidCacheConfig RapidCacheConfig { get; set; }
+
         /// <summary>The link to this managed folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
@@ -12412,6 +12841,158 @@ namespace Google.Apis.Storage.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; }
         }
+    }
+
+    /// <summary>A Rapid Cache instance.</summary>
+    public class RapidCache : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The cache-level entry admission policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("admissionPolicy")]
+        public virtual string AdmissionPolicy { get; set; }
+
+        /// <summary>The name of the bucket containing this cache instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// The type of Rapid Cache this represents. Valid values include: "rapid-cache" and "rapid-cache-ultra".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheType")]
+        public virtual string CacheType { get; set; }
+
+        /// <summary>The creation time of the cache instance in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The ID of the resource, including the project number, bucket name and rapid cache ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Specifies whether objects are ingested into the cache upon write.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestOnWrite")]
+        public virtual System.Nullable<bool> IngestOnWrite { get; set; }
+
+        /// <summary>The kind of item this is. For Rapid Cache, this is always storage#rapidCache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>True if the cache instance has an active Update long-running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingUpdate")]
+        public virtual System.Nullable<bool> PendingUpdate { get; set; }
+
+        /// <summary>The ID of the Rapid cache instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rapidCacheId")]
+        public virtual string RapidCacheId { get; set; }
+
+        /// <summary>The link to this cache instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>The current state of the cache instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The TTL of all cache entries in whole seconds. e.g., "7200s".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The modification time of the cache instance metadata in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? UpdateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The zone in which the cache instance is running. For example, us-central1-a.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration options for the rapid cache of a managed folder.</summary>
+    public class RapidCacheConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A map of rapid cache IDs to the corresponding `RapidCachePolicy` configurations for a managed folder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IDictionary<string, RapidCachePolicy> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The rapid cache policy configuration for a managed folder.</summary>
+    public class RapidCachePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ingest-on-write policy for objects in the managed folder. When set to `enabled`, objects are
+        /// automatically ingested into the cache when they are written to the managed folder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestOnWrite")]
+        public virtual string IngestOnWrite { get; set; }
+
+        /// <summary>The unique identifier of the rapid cache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rapidCacheId")]
+        public virtual string RapidCacheId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Rapid Caches.</summary>
+    public class RapidCaches : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<RapidCache> Items { get; set; }
+
+        /// <summary>The kind of item this is. For lists of Rapid Caches, this is always storage#rapidCaches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The continuation token, used to page through large result sets. Provide this value in a subsequent request
+        /// to return the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>A Relocate Bucket request.</summary>
