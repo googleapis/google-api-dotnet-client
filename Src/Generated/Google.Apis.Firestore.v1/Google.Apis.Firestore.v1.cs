@@ -300,6 +300,7 @@ namespace Google.Apis.Firestore.v1
             {
                 this.service = service;
                 BackupSchedules = new BackupSchedulesResource(service);
+                ChangeStreams = new ChangeStreamsResource(service);
                 CollectionGroups = new CollectionGroupsResource(service);
                 Documents = new DocumentsResource(service);
                 Operations = new OperationsResource(service);
@@ -606,6 +607,268 @@ namespace Google.Apis.Firestore.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ChangeStreams resource.</summary>
+            public virtual ChangeStreamsResource ChangeStreams { get; }
+
+            /// <summary>The "changeStreams" collection of methods.</summary>
+            public class ChangeStreamsResource
+            {
+                private const string Resource = "changeStreams";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ChangeStreamsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new change stream for the database.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent database to create the change stream for. Format is
+                /// `projects/{project}/databases/{database}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ChangeStream body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new change stream for the database.</summary>
+                public class CreateRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ChangeStream>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ChangeStream body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent database to create the change stream for. Format is
+                    /// `projects/{project}/databases/{database}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the change stream, which will become the final component of the
+                    /// change stream's resource name. This value should be 4-63 characters. Valid characters are
+                    /// lowercase letters, numbers, and hyphens. The first character must be a letter, and the last
+                    /// character must be a letter or a number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("changeStreamId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ChangeStreamId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ChangeStream Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/changeStreams";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                        RequestParameters.Add("changeStreamId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "changeStreamId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a change stream.</summary>
+                /// <param name="name">
+                /// Required. The name of the change stream to delete. Format is
+                /// `projects/{project}/databases/{database}/changeStreams/{change_stream}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a change stream.</summary>
+                public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the change stream to delete. Format is
+                    /// `projects/{project}/databases/{database}/changeStreams/{change_stream}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The etag of the change stream to delete. If this is not the current etag of the change
+                    /// stream, the deletion will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/changeStreams/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets information about a change stream.</summary>
+                /// <param name="name">
+                /// Required. The name of the change stream to retrieve. Format is
+                /// `projects/{project}/databases/{database}/changeStreams/{change_stream}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets information about a change stream.</summary>
+                public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ChangeStream>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the change stream to retrieve. Format is
+                    /// `projects/{project}/databases/{database}/changeStreams/{change_stream}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/changeStreams/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all change streams in a database.</summary>
+                /// <param name="parent">
+                /// Required. The parent database to list change streams from. Format is
+                /// `projects/{project}/databases/{database}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all change streams in a database.</summary>
+                public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListChangeStreamsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent database to list change streams from. Format is
+                    /// `projects/{project}/databases/{database}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/changeStreams";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
                         });
                     }
                 }
@@ -1514,6 +1777,10 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Firestore.v1.Data.Document Body { get; set; }
 
@@ -1560,6 +1827,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
                         {
                             Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1635,6 +1910,10 @@ namespace Google.Apis.Firestore.v1
                         }
                     }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -1667,6 +1946,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("currentDocument.updateTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "currentDocument.updateTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1796,6 +2083,10 @@ namespace Google.Apis.Firestore.v1
                         }
                     }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>Reads the document in a transaction.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Transaction { get; set; }
@@ -1832,6 +2123,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "readTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1965,6 +2264,10 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Recursive { get; set; }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>
                     /// If the list should show missing documents. A document is missing if it does not exist, but there
                     /// are sub-documents nested underneath it. When true, such missing documents will be returned with
@@ -2050,6 +2353,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("recursive", new Google.Apis.Discovery.Parameter
                         {
                             Name = "recursive",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2254,6 +2565,10 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Recursive { get; set; }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>
                     /// If the list should show missing documents. A document is missing if it does not exist, but there
                     /// are sub-documents nested underneath it. When true, such missing documents will be returned with
@@ -2339,6 +2654,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("recursive", new Google.Apis.Discovery.Parameter
                         {
                             Name = "recursive",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2568,6 +2891,10 @@ namespace Google.Apis.Firestore.v1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
+                    /// <summary>Optional. The request tags for the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
+
                     /// <summary>
                     /// The list of field paths in the mask. See Document.fields for a field path syntax reference.
                     /// </summary>
@@ -2620,6 +2947,14 @@ namespace Google.Apis.Firestore.v1
                         RequestParameters.Add("mask.fieldPaths", new Google.Apis.Discovery.Parameter
                         {
                             Name = "mask.fieldPaths",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestOptions.requestTags", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestOptions.requestTags",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4825,6 +5160,10 @@ namespace Google.Apis.Firestore.v1.Data
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>Reads documents in a transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -4905,6 +5244,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>
         /// The writes to apply. Method does not apply writes atomically and does not guarantee ordering. Each write
         /// succeeds or fails independently. You cannot write to the same document more than once per request.
@@ -4941,6 +5284,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The options for the transaction. Defaults to a read-write transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual TransactionOptions Options { get; set; }
+
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5027,6 +5374,10 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The request for Firestore.Commit.</summary>
     public class CommitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>If set, applies all writes in this transaction, and commits it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -5524,6 +5875,10 @@ namespace Google.Apis.Firestore.v1.Data
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>A pipelined operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredPipeline")]
         public virtual StructuredPipeline StructuredPipeline { get; set; }
@@ -5539,7 +5894,7 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response for Firestore.Execute.</summary>
+    /// <summary>The response for Firestore.ExecutePipeline.</summary>
     public class ExecutePipelineResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _executionTimeRaw;
@@ -6342,6 +6697,150 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A Change Stream is a resource that allows users to receive change notifications from a Firestore database.
+    /// </summary>
+    public class GoogleFirestoreAdminV1ChangeStream : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, the change stream is scoped to a collection group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionGroupScope")]
+        public virtual GoogleFirestoreAdminV1CollectionGroupScope CollectionGroupScope { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the Change Stream was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>If set, the change stream is scoped to the entire database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseScope")]
+        public virtual GoogleFirestoreAdminV1DatabaseScope DatabaseScope { get; set; }
+
+        /// <summary>Optional. An etag used to determine which version of the configuration is being edited.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The external resource name of the change stream. Format
+        /// `projects/{project}/databases/{database}/changeStreams/{change_stream}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The retention period of the change stream. This is the amount of time a change event is available
+        /// on the change stream. Must be from 1 to 7 days, inclusive. The retention_period must be in day granularity,
+        /// i.e. it must be a multiple of 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionPeriod")]
+        public virtual object RetentionPeriod { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The time the Change Stream started recording events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the Change Stream was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>Metadata for the long-running operation from the CloneDatabase request.</summary>
     public class GoogleFirestoreAdminV1CloneDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6502,6 +7001,20 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The change stream is scoped to a collection group. Only events associated with the given collection group are
+    /// visible to the Change Stream. Only a single change stream can be enabled per collection group.
+    /// </summary>
+    public class GoogleFirestoreAdminV1CollectionGroupScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The collection group name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionGroupId")]
+        public virtual string CollectionGroupId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6701,8 +7214,8 @@ namespace Google.Apis.Firestore.v1.Data
 
         /// <summary>
         /// Optional. The Firestore API data access mode to use for this database. If not set on write: - the default
-        /// value is DATA_ACCESS_MODE_DISABLED for Enterprise Edition. - the default value is DATA_ACCESS_MODE_ENABLED
-        /// for Standard Edition.
+        /// value is DATA_ACCESS_MODE_DISABLED for Enterprise edition. - the default value is DATA_ACCESS_MODE_ENABLED
+        /// for Standard edition.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firestoreDataAccessMode")]
         public virtual string FirestoreDataAccessMode { get; set; }
@@ -6736,8 +7249,8 @@ namespace Google.Apis.Firestore.v1.Data
 
         /// <summary>
         /// Optional. The MongoDB compatible API data access mode to use for this database. If not set on write, the
-        /// default value is DATA_ACCESS_MODE_ENABLED for Enterprise Edition. The value is always
-        /// DATA_ACCESS_MODE_DISABLED for Standard Edition.
+        /// default value is DATA_ACCESS_MODE_ENABLED for Enterprise edition. The value is always
+        /// DATA_ACCESS_MODE_DISABLED for Standard edition.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mongodbCompatibleDataAccessMode")]
         public virtual string MongodbCompatibleDataAccessMode { get; set; }
@@ -6829,6 +7342,16 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionRetentionPeriod")]
         public virtual object VersionRetentionPeriod { get; set; }
+    }
+
+    /// <summary>
+    /// The change stream is scoped to the entire database. All events in the database are visible to the Change Stream.
+    /// One Database scope Change Stream is allowed per database.
+    /// </summary>
+    public class GoogleFirestoreAdminV1DatabaseScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Metadata related to the delete database operation.</summary>
@@ -7408,7 +7931,12 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cloud Firestore indexes enable simple and complex queries against documents in a database.</summary>
+    /// <summary>
+    /// Cloud Firestore indexes enable simple and complex queries against documents in a database. In Standard edition
+    /// databases, single-field indexes are managed using the google.firestore.admin.v1.Field resource, and composite
+    /// indexes are managed using the google.firestore.admin.v1.Index resource. In Enterprise edition databases, both
+    /// single-field and composite indexes are managed using the google.firestore.admin.v1.Index resource.
+    /// </summary>
     public class GoogleFirestoreAdminV1Index : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The API scope supported by this index.</summary>
@@ -7420,12 +7948,11 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string Density { get; set; }
 
         /// <summary>
-        /// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100
-        /// fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not
-        /// specified as the last field, it will be added automatically with the same direction as that of the last
-        /// field defined. If the final field in a composite index is not directional, the `__name__` will be ordered
-        /// ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry
-        /// with a field path equal to the field path of the associated field.
+        /// The fields supported by this index. At most 100 fields may be specified. In Standard edition databases only:
+        /// - At least 2 fields must be specified. - The last field entry is always for the field path `__name__`. If,
+        /// on creation, `__name__` was not specified as the last field, it will be added automatically with the same
+        /// direction as that of the last field defined. If the final field in the index is not directional, the
+        /// `__name__` will be ordered ASCENDING (unless explicitly specified).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1IndexField> Fields { get; set; }
@@ -7441,9 +7968,10 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual System.Nullable<bool> Multikey { get; set; }
 
         /// <summary>
-        /// Output only. A server defined name for this index. The form of this name for composite indexes will be:
-        /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}`
-        /// For single field indexes, this field will be empty.
+        /// A server-defined name for this index. Output only. When used in the google.firestore.admin.v1.Index
+        /// resource, the value is of the form:
+        /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` When
+        /// used in the google.firestore.admin.v1.Field resource, the value is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7693,6 +8221,17 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to FirestoreAdmin.ListChangeStreams.</summary>
+    public class GoogleFirestoreAdminV1ListChangeStreamsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of change streams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeStreams")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1ChangeStream> ChangeStreams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8179,6 +8718,84 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Metadata related to the update database operation.</summary>
     public class GoogleFirestoreAdminV1UpdateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8463,6 +9080,10 @@ namespace Google.Apis.Firestore.v1.Data
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8528,6 +9149,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The ID of a target to remove from this stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeTarget")]
         public virtual System.Nullable<int> RemoveTarget { get; set; }
+
+        /// <summary>Optional. The request options for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8699,6 +9324,10 @@ namespace Google.Apis.Firestore.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The request options for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>
         /// A structured query. Query must specify collection with all descendants and be ordered by name ascending.
@@ -8917,9 +9546,24 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for a server request.</summary>
+    public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The request tags for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTags")]
+        public virtual System.Collections.Generic.IList<string> RequestTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Firestore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>Required. The transaction to roll back.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; }
@@ -8985,6 +9629,10 @@ namespace Google.Apis.Firestore.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The request options for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>An aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredAggregationQuery")]
@@ -9125,6 +9773,10 @@ namespace Google.Apis.Firestore.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReadTimeRaw);
             set => ReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The request options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>A structured query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structuredQuery")]
@@ -9628,8 +10280,9 @@ namespace Google.Apis.Firestore.v1.Data
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An array value. Cannot directly contain another array value, though can contain a map which contains another
-        /// array.
+        /// An array value. In Standard edition databases, an array value cannot directly contain another array value,
+        /// though it can contain a map which contains another array. In Enterprise edition databases, an array value
+        /// can contain another array value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayValue")]
         public virtual ArrayValue ArrayValue { get; set; }
@@ -9639,7 +10292,9 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual System.Nullable<bool> BooleanValue { get; set; }
 
         /// <summary>
-        /// A bytes value. Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes are considered by queries.
+        /// A bytes value. In Standard edition databases: * The value must not exceed 1 MiB - 89 bytes. * Only the first
+        /// 1,500 bytes are considered by queries. In Enterprise edition databases, there is no limit on the size of the
+        /// value. However, it is still subject to document and index entry size limits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesValue")]
         public virtual string BytesValue { get; set; }
@@ -9694,8 +10349,10 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ReferenceValue { get; set; }
 
         /// <summary>
-        /// A string value. The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes. Only the first 1,500
-        /// bytes of the UTF-8 representation are considered by queries.
+        /// A string value. In Standard edition databases: * The string, represented as UTF-8, must not exceed 1 MiB -
+        /// 89 bytes. * Only the first 1,500 bytes of the UTF-8 representation are considered by queries. In Enterprise
+        /// edition databases, there is no limit on the size of the value. However, it is still subject to document and
+        /// index entry size limits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
@@ -9811,6 +10468,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>Labels associated with this write request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. The request options for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>
         /// The ID of the write stream to resume. This may only be set in the first message. When left empty, a new
