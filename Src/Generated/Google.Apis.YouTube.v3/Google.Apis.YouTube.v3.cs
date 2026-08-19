@@ -14225,6 +14225,10 @@ namespace Google.Apis.YouTube.v3.Data
             set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
+        /// <summary>The YouTube video category associated with the video broadcast.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryId")]
+        public virtual string CategoryId { get; set; }
+
         /// <summary>
         /// The ID that YouTube uses to uniquely identify the channel that is publishing the broadcast.
         /// </summary>
