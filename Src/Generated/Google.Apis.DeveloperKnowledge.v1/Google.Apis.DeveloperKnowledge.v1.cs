@@ -883,6 +883,13 @@ namespace Google.Apis.DeveloperKnowledge.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>
+        /// Output only. Represents the relevance score of the chunk to the search query. Higher score indicates higher
+        /// chunk relevance. The score is in range [0.0, 1.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
+        public virtual System.Nullable<double> RelevanceScore { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
