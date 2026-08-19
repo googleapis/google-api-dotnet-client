@@ -6128,6 +6128,13 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ClientVersion { get; set; }
 
         /// <summary>
+        /// Optional. If true, the system will start the execution within the next 12 hours depending on available
+        /// capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delayExecution")]
+        public virtual System.Nullable<bool> DelayExecution { get; set; }
+
+        /// <summary>
         /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are
         /// shared with Google's billing system, so they can be used to filter, or break down billing charges by team,
         /// component, environment, state, etc. For more information, visit
@@ -7242,6 +7249,13 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2ContainerOverride> ContainerOverrides { get; set; }
 
         /// <summary>
+        /// Optional. If true, the system will start the execution within the next 12 hours depending on available
+        /// capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delayExecution")]
+        public virtual System.Nullable<bool> DelayExecution { get; set; }
+
+        /// <summary>
         /// Optional. The desired number of tasks the execution should run. Will replace existing task_count value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
@@ -8073,6 +8087,13 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>User-provided description of the Service. This field currently has a 512-character limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Indicates whether the Service has durable execution enabled. This field is immutable
+        /// once the Service is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durableExecution")]
+        public virtual System.Nullable<bool> DurableExecution { get; set; }
 
         /// <summary>
         /// Optional. A system-generated fingerprint for this version of the resource. May be used to detect
@@ -10714,6 +10735,14 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Required. Where should the files be placed on the worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
         public virtual string DestPath { get; set; }
+
+        /// <summary>
+        /// Optional. True if remote tags should be fetched too (default false). Note: when depth is 1 (default), git
+        /// fetch only retrieves tags pointing to commits within the shallow boundary. Set depth to -1 to fetch all
+        /// historical tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fetchTags")]
+        public virtual System.Nullable<bool> FetchTags { get; set; }
 
         /// <summary>Optional. True if submodules should be fetched too (default false).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurseSubmodules")]
