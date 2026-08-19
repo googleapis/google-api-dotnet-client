@@ -671,6 +671,16 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints LanguageHints { get; set; }
 
+        /// <summary>
+        /// Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to
+        /// `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words,
+        /// repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points,
+        /// numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible
+        /// with mode `SMART`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>Optional. Configures word-level timestamp generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordTimestamp")]
         public virtual System.Nullable<bool> WordTimestamp { get; set; }
@@ -2713,6 +2723,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineData")]
         public virtual GoogleCloudAiplatformV1beta1Blob InlineData { get; set; }
+
+        /// <summary>
+        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts
+        /// (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaProcessing")]
+        public virtual string MediaProcessing { get; set; }
 
         /// <summary>per part media resolution. Media resolution for the input media.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaResolution")]
