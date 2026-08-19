@@ -5867,6 +5867,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
         public virtual StorageBucketInfo StorageBucket { get; set; }
 
+        /// <summary>Display information of a step that is redacted due to missing permissions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewerPermissionMissingInfo")]
+        public virtual ViewerPermissionMissingInfo ViewerPermissionMissingInfo { get; set; }
+
         /// <summary>Display information of a VPC connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcConnector")]
         public virtual VpcConnectorInfo VpcConnector { get; set; }
@@ -5953,6 +5957,19 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// For display only. Metadata associated with a step that was redacted due to missing permissions.
+    /// </summary>
+    public class ViewerPermissionMissingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Types of the resources that the user does not have permission to view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
