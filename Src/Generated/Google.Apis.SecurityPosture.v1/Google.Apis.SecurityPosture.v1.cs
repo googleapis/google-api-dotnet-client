@@ -35,7 +35,6 @@ namespace Google.Apis.SecurityPosture.v1
         public SecurityPostureService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Organizations = new OrganizationsResource(this);
-            Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://securityposture.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://securityposture.googleapis.com/batch");
         }
@@ -80,9 +79,6 @@ namespace Google.Apis.SecurityPosture.v1
 
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
-
-        /// <summary>Gets the Projects resource.</summary>
-        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for SecurityPosture requests.</summary>
@@ -1975,40 +1971,6 @@ namespace Google.Apis.SecurityPosture.v1
                     }
                 }
             }
-        }
-    }
-
-    /// <summary>The "projects" collection of methods.</summary>
-    public class ProjectsResource
-    {
-        private const string Resource = "projects";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public ProjectsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            Locations = new LocationsResource(service);
-        }
-
-        /// <summary>Gets the Locations resource.</summary>
-        public virtual LocationsResource Locations { get; }
-
-        /// <summary>The "locations" collection of methods.</summary>
-        public class LocationsResource
-        {
-            private const string Resource = "locations";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public LocationsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
 
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
@@ -2050,7 +2012,7 @@ namespace Google.Apis.SecurityPosture.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        Pattern = @"^organizations/[^/]+/locations/[^/]+$",
                     });
                 }
             }
@@ -2140,7 +2102,7 @@ namespace Google.Apis.SecurityPosture.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
+                        Pattern = @"^organizations/[^/]+$",
                     });
                     RequestParameters.Add("extraLocationTypes", new Google.Apis.Discovery.Parameter
                     {
