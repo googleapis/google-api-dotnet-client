@@ -91,9 +91,6 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// <summary>See exercise GPS location data in Google Health</summary>
             public static string GooglehealthLocationReadonly = "https://www.googleapis.com/auth/googlehealth.location.readonly";
 
-            /// <summary>Add exercise GPS location data to Google Health, and edit or delete the data it adds.</summary>
-            public static string GooglehealthLocationWriteonly = "https://www.googleapis.com/auth/googlehealth.location.writeonly";
-
             /// <summary>Add logged symptoms data to Google Health, and edit or delete the data it adds</summary>
             public static string GooglehealthLoggedSymptomsWriteonly = "https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly";
 
@@ -156,9 +153,6 @@ namespace Google.Apis.GoogleHealthAPI.v4
 
             /// <summary>See exercise GPS location data in Google Health</summary>
             public const string GooglehealthLocationReadonly = "https://www.googleapis.com/auth/googlehealth.location.readonly";
-
-            /// <summary>Add exercise GPS location data to Google Health, and edit or delete the data it adds.</summary>
-            public const string GooglehealthLocationWriteonly = "https://www.googleapis.com/auth/googlehealth.location.writeonly";
 
             /// <summary>Add logged symptoms data to Google Health, and edit or delete the data it adds</summary>
             public const string GooglehealthLoggedSymptomsWriteonly = "https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly";
