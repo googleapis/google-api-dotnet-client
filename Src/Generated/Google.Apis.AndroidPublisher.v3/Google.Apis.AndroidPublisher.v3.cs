@@ -36,6 +36,7 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             Applications = new ApplicationsResource(this);
             Apprecovery = new ApprecoveryResource(this);
+            Appsigning = new AppsigningResource(this);
             Appstoreappsreview = new AppstoreappsreviewResource(this);
             Appstorecatalog = new AppstorecatalogResource(this);
             Edits = new EditsResource(this);
@@ -91,6 +92,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
         /// <summary>Gets the Apprecovery resource.</summary>
         public virtual ApprecoveryResource Apprecovery { get; }
+
+        /// <summary>Gets the Appsigning resource.</summary>
+        public virtual AppsigningResource Appsigning { get; }
 
         /// <summary>Gets the Appstoreappsreview resource.</summary>
         public virtual AppstoreappsreviewResource Appstoreappsreview { get; }
@@ -1054,6 +1058,153 @@ namespace Google.Apis.AndroidPublisher.v3
                     Name = "versionCode",
                     IsRequired = false,
                     ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "appsigning" collection of methods.</summary>
+    public class AppsigningResource
+    {
+        private const string Resource = "appsigning";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AppsigningResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Enrolls an app in Play App Signing using a self-hosted Google Cloud KMS key. Warning: Do not use this method
+        /// for standard Play App Signing enrollment. * Standard enrollment with Google-generated or Google-managed keys
+        /// cannot be done via API. * This advanced API is strictly for enterprise organizations with mandatory
+        /// compliance, regulatory, or policy requirements to retain key custody in an external Google Cloud KMS
+        /// instance. * Prerequisites: Requires an active, properly configured Google Cloud KMS key with appropriate IAM
+        /// permissions granted to Google Play before calling this method. See Help Center:
+        /// https://support.google.com/googleplay/android-developer/answer/9842756
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. Either package name or app ID of the app enrolling in Play Signing.</param>
+        public virtual EnrollAppRequest EnrollApp(Google.Apis.AndroidPublisher.v3.Data.EnrollAppRequest body, string name)
+        {
+            return new EnrollAppRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Enrolls an app in Play App Signing using a self-hosted Google Cloud KMS key. Warning: Do not use this method
+        /// for standard Play App Signing enrollment. * Standard enrollment with Google-generated or Google-managed keys
+        /// cannot be done via API. * This advanced API is strictly for enterprise organizations with mandatory
+        /// compliance, regulatory, or policy requirements to retain key custody in an external Google Cloud KMS
+        /// instance. * Prerequisites: Requires an active, properly configured Google Cloud KMS key with appropriate IAM
+        /// permissions granted to Google Play before calling this method. See Help Center:
+        /// https://support.google.com/googleplay/android-developer/answer/9842756
+        /// </summary>
+        public class EnrollAppRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.EnrollAppResponse>
+        {
+            /// <summary>Constructs a new EnrollApp request.</summary>
+            public EnrollAppRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.EnrollAppRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Either package name or app ID of the app enrolling in Play Signing.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.EnrollAppRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "enrollApp";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{name}/appSigning:enrollApp";
+
+            /// <summary>Initializes EnrollApp parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Rotates an app's signing key to a new self-hosted Google Cloud KMS key. Warning: This method only applies to
+        /// apps enrolled with self-hosted Cloud KMS keys. For apps using standard Google-managed Play App Signing, key
+        /// rotation requests must be initiated through the Google Play Console UI. See Help Center:
+        /// https://support.google.com/googleplay/android-developer/answer/9842756
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. Either package name or app ID of the app rotating the signing key.</param>
+        public virtual RotateAppSigningKeyRequest RotateAppSigningKey(Google.Apis.AndroidPublisher.v3.Data.RotateAppSigningKeyRequest body, string name)
+        {
+            return new RotateAppSigningKeyRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Rotates an app's signing key to a new self-hosted Google Cloud KMS key. Warning: This method only applies to
+        /// apps enrolled with self-hosted Cloud KMS keys. For apps using standard Google-managed Play App Signing, key
+        /// rotation requests must be initiated through the Google Play Console UI. See Help Center:
+        /// https://support.google.com/googleplay/android-developer/answer/9842756
+        /// </summary>
+        public class RotateAppSigningKeyRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.RotateAppSigningKeyResponse>
+        {
+            /// <summary>Constructs a new RotateAppSigningKey request.</summary>
+            public RotateAppSigningKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.RotateAppSigningKeyRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Either package name or app ID of the app rotating the signing key.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.RotateAppSigningKeyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "rotateAppSigningKey";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{name}/appSigning:rotateAppSigningKey";
+
+            /// <summary>Initializes RotateAppSigningKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -16599,6 +16750,65 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Hash digests of a certificate.</summary>
+    public class CertificateHashes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hex-encoded MD5 hash of the certificate. example: `43:51:43:A1:B5:FC:8B:B7:0A:3A:A9:B1:0F:66:73:A8`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateHashMd5")]
+        public virtual string CertificateHashMd5 { get; set; }
+
+        /// <summary>
+        /// Hex-encoded SHA1 hash of the certificate. example:
+        /// `86:61:97:1A:D5:EF:E5:74:1E:A7:5B:84:7C:68:37:65:CD:94:16:DE`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateHashSha1")]
+        public virtual string CertificateHashSha1 { get; set; }
+
+        /// <summary>
+        /// Hex-encoded SHA256 hash of the certificate. example:
+        /// `94:49:C7:F3:A9:3C:F0:C5:5A:67:5D:DF:1C:83:73:2D:87:D5:62:55:E7:0B:15:0D:9E:6F:3C:F8:63:BB:7F:C1`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateHashSha256")]
+        public virtual string CertificateHashSha256 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Reference to a private key hosted in developer-managed Google Cloud KMS.</summary>
+    public class CloudKmsKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Resource identifier of the private key hosted in Google Cloud KMS. The Google Play service account
+        /// must be granted Decrypt and Sign permissions on this resource. Format:
+        /// projects//locations//keyRings//cryptoKeys//cryptoKeyVersions/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersionResource")]
+        public virtual string CryptoKeyVersionResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud KMS key and the certificate associated with the key.</summary>
+    public class CloudKmsKeyAndCert : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Cloud KMS key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKmsKey")]
+        public virtual CloudKmsKey CloudKmsKey { get; set; }
+
+        /// <summary>
+        /// Required. Certificate associated with the key. The bytes must contain the certificate in PEM format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
+        public virtual string PemCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Coarse Geographic location details for where the consumption happened.</summary>
     public class CoarseLocation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17577,6 +17787,67 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Device tiers belonging to the set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceTiers")]
         public virtual System.Collections.Generic.IList<DeviceTier> DeviceTiers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to enroll an app into Play App Signing using a self-hosted Cloud KMS key.</summary>
+    public class EnrollAppRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enrolls an existing app into Play signing using an external Cloud KMS key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollExistingApp")]
+        public virtual EnrollExistingApp EnrollExistingApp { get; set; }
+
+        /// <summary>
+        /// Changes the signing key of a new app to an external Cloud KMS key. The app must not have published to Open
+        /// testing or Production tracks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollNewApp")]
+        public virtual EnrollNewApp EnrollNewApp { get; set; }
+
+        /// <summary>The certificate associated with the upload key, in PEM format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemUploadCertificate")]
+        public virtual string PemUploadCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to enroll an app into Play signing.</summary>
+    public class EnrollAppResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The signing certificate hashes for the app. Always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingCertificate")]
+        public virtual CertificateHashes SigningCertificate { get; set; }
+
+        /// <summary>
+        /// The upload certificate hashes for the app. Set iff pem_upload_certificate was set in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadCertificate")]
+        public virtual CertificateHashes UploadCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Enroll an existing app into Play signing.</summary>
+    public class EnrollExistingApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Self-hosted key. Once enrolled, this key will be used to sign your app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKmsKey")]
+        public virtual CloudKmsKey CloudKmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Enroll a new app into Play signing.</summary>
+    public class EnrollNewApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Self-hosted key. Once enrolled, this key will be used to sign your app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKmsKeyAndCert")]
+        public virtual CloudKmsKeyAndCert CloudKmsKeyAndCert { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22159,6 +22430,52 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Response for the purchases.subscriptionsv2.revoke API.</summary>
     public class RevokeSubscriptionPurchaseResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to rotate an app's signing key.</summary>
+    public class RotateAppSigningKeyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Reason for rotating the app key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyRotationReason")]
+        public virtual string KeyRotationReason { get; set; }
+
+        /// <summary>Required. Self-hosted Cloud KMS key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotatedCloudKmsKey")]
+        public virtual RotatedCloudKmsKey RotatedCloudKmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to rotate an app's signing key.</summary>
+    public class RotateAppSigningKeyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The rotated key certificate hashes for the app. Always set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotatedKeyCertificate")]
+        public virtual CertificateHashes RotatedKeyCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and its associated proof of rotation.
+    /// </summary>
+    public class RotatedCloudKmsKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Cloud KMS key and the certificate associated with the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudKmsKeyAndCert")]
+        public virtual CloudKmsKeyAndCert CloudKmsKeyAndCert { get; set; }
+
+        /// <summary>
+        /// Required. Proof-of-rotation. See [creating signing certificate
+        /// lineages](https://developer.android.com/studio/command-line/apksigner#rotate_signing_keys_2).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingCertificateLineage")]
+        public virtual string SigningCertificateLineage { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
