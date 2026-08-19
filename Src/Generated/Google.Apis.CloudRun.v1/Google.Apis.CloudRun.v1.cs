@@ -8292,6 +8292,13 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ExecutionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. If true, the system will start the execution within the next 12 hours depending on available
+        /// capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delayExecution")]
+        public virtual System.Nullable<bool> DelayExecution { get; set; }
+
+        /// <summary>
         /// Optional. Specifies the maximum desired number of tasks the execution should run at given time. When the job
         /// is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual
         /// number of tasks running in steady state will be less than this number when there are fewer tasks waiting to
@@ -9584,6 +9591,14 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Required. Where should the files be placed on the worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
         public virtual string DestPath { get; set; }
+
+        /// <summary>
+        /// Optional. True if remote tags should be fetched too (default false). Note: when depth is 1 (default), git
+        /// fetch only retrieves tags pointing to commits within the shallow boundary. Set depth to -1 to fetch all
+        /// historical tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fetchTags")]
+        public virtual System.Nullable<bool> FetchTags { get; set; }
 
         /// <summary>Optional. True if submodules should be fetched too (default false).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurseSubmodules")]
@@ -11246,7 +11261,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted
         /// annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`:
         /// Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/base-images`: Service,
-        /// Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, *
+        /// Revision . * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, *
         /// `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/build-base-image`:
         /// Service. * `run.googleapis.com/build-enable-automatic-updates`: Service. *
         /// `run.googleapis.com/build-environment-variables`: Service. * `run.googleapis.com/build-function-target`:
@@ -11433,6 +11448,13 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Per container override specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerOverrides")]
         public virtual System.Collections.Generic.IList<ContainerOverride> ContainerOverrides { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the system will start the execution within the next 12 hours depending on available
+        /// capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delayExecution")]
+        public virtual System.Nullable<bool> DelayExecution { get; set; }
 
         /// <summary>
         /// The desired number of tasks the execution should run. Will replace existing task_count value.
