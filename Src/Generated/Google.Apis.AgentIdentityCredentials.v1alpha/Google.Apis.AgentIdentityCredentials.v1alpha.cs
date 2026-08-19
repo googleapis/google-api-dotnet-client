@@ -333,7 +333,7 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha
                     /// <summary>Finalizes the credentials after a successful consent flow.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="authProvider">
-                    /// Required. The resource name of the AuthProvider. Format:
+                    /// Required. The resource name of the auth provider. Format:
                     /// `projects/{project}/locations/{location}/authProviders/{auth_provider}`
                     /// </param>
                     public virtual FinalizeRequest Finalize(Google.Apis.AgentIdentityCredentials.v1alpha.Data.GoogleCloudAgentidentitycredentialsV1alphaFinalizeCredentialsRequest body, string authProvider)
@@ -353,7 +353,7 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the AuthProvider. Format:
+                        /// Required. The resource name of the auth provider. Format:
                         /// `projects/{project}/locations/{location}/authProviders/{auth_provider}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("authProvider", Google.Apis.Util.RequestParameterType.Path)]
@@ -390,15 +390,15 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha
                     }
 
                     /// <summary>
-                    /// Retrieves authorization credentials for an authprovider, or indicates what action needs to be
+                    /// Retrieves authorization credentials for an auth provider, or indicates what action needs to be
                     /// taken to obtain credentials. If the `token` field in the response is populated, credential
-                    /// retrieval was successful. If one of the fields in the `status` oneof is populated, further
+                    /// retrieval was successful. If one of the fields in the `result` oneof is populated, further
                     /// action is required to obtain credentials, such as redirecting the user for consent. View
                     /// comments on `RetrieveCredentialsResponse` for more information.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="authProvider">
-                    /// Required. The parent resource name of the AuthProvider. Format:
+                    /// Required. The resource name of the auth provider. Format:
                     /// `projects/{project}/locations/{location}/authProviders/{auth_provider}`
                     /// </param>
                     public virtual RetrieveRequest Retrieve(Google.Apis.AgentIdentityCredentials.v1alpha.Data.GoogleCloudAgentidentitycredentialsV1alphaRetrieveCredentialsRequest body, string authProvider)
@@ -407,9 +407,9 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha
                     }
 
                     /// <summary>
-                    /// Retrieves authorization credentials for an authprovider, or indicates what action needs to be
+                    /// Retrieves authorization credentials for an auth provider, or indicates what action needs to be
                     /// taken to obtain credentials. If the `token` field in the response is populated, credential
-                    /// retrieval was successful. If one of the fields in the `status` oneof is populated, further
+                    /// retrieval was successful. If one of the fields in the `result` oneof is populated, further
                     /// action is required to obtain credentials, such as redirecting the user for consent. View
                     /// comments on `RetrieveCredentialsResponse` for more information.
                     /// </summary>
@@ -424,7 +424,7 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha
                         }
 
                         /// <summary>
-                        /// Required. The parent resource name of the AuthProvider. Format:
+                        /// Required. The resource name of the auth provider. Format:
                         /// `projects/{project}/locations/{location}/authProviders/{auth_provider}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("authProvider", Google.Apis.Util.RequestParameterType.Path)]
@@ -466,18 +466,20 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha
 }
 namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
 {
-    /// <summary>Indicates the user has rejected the permission delegation or cancelled the request.</summary>
+    /// <summary>Indicates the user has rejected the permission delegation or canceled the request.</summary>
     public class GoogleCloudAgentidentitycredentialsV1alphaConsentRejected : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for FinalizeCredentials.</summary>
+    /// <summary>Request message for `FinalizeCredentials`.</summary>
     public class GoogleCloudAgentidentitycredentialsV1alphaFinalizeCredentialsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The same consent_nonce value that was provided during redirect in the UriConsentRequired metadata.
+        /// Required. The same `consent_nonce` value that was provided during retrieval in the
+        /// [UriConsentRequired](https://cloud.google.com/iam/docs/reference/agentidentitycredentials/rest/v1/projects.locations.authProviders.credentials/retrieve#UriConsentRequired)
+        /// metadata.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentNonce")]
         public virtual string ConsentNonce { get; set; }
@@ -494,7 +496,7 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for FinalizeCredentials. Intentionally empty</summary>
+    /// <summary>Response message for `FinalizeCredentials`. Intentionally empty.</summary>
     public class GoogleCloudAgentidentitycredentialsV1alphaFinalizeCredentialsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -502,7 +504,7 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
     }
 
     /// <summary>
-    /// Indicates that the credential retrieval is pending. The caller should retry the RetrieveCredentials request
+    /// Indicates that the credential retrieval is pending. The caller should retry the `RetrieveCredentials` request
     /// after some time.
     /// </summary>
     public class GoogleCloudAgentidentitycredentialsV1alphaPending : Google.Apis.Requests.IDirectResponseSchema
@@ -511,12 +513,12 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for RetrieveCredentials.</summary>
+    /// <summary>Request message for `RetrieveCredentials`.</summary>
     public class GoogleCloudAgentidentitycredentialsV1alphaRetrieveCredentialsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The URI to redirect the user to after consent is completed. This field is required for
-        /// authproviders using the 3-legged OAuth flow. For other authprovider types, this field is unused but not
+        /// Optional. The URI to redirect the user to after consent is completed. This field is required for auth
+        /// providers using the 3-legged OAuth flow. For other auth provider types, this field is unused but not
         /// rejected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continueUri")]
@@ -524,8 +526,8 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
 
         /// <summary>
         /// Optional. Input only. Set this field only if the previous token was expired or invalid. This value must be
-        /// the full, previously returned token string. Will trigger a refresh of the access token with a stored refresh
-        /// token, if possible, or a new consent flow.
+        /// the full, previously returned token string. Setting this field triggers a refresh of the access token with a
+        /// stored refresh token, if possible, or a new consent flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forceRefreshToken")]
         public virtual string ForceRefreshToken { get; set; }
@@ -542,7 +544,7 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for RetrieveCredentials. Contains the access tokens and related artifacts.</summary>
+    /// <summary>Response message for `RetrieveCredentials`. Contains the access tokens and related artifacts.</summary>
     public class GoogleCloudAgentidentitycredentialsV1alphaRetrieveCredentialsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Message indicating consent was rejected.</summary>
@@ -557,7 +559,7 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("success")]
         public virtual GoogleCloudAgentidentitycredentialsV1alphaSuccess Success { get; set; }
 
-        /// <summary>Message indicating uri based consent is required.</summary>
+        /// <summary>Message indicating URI-based consent is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriConsentRequired")]
         public virtual GoogleCloudAgentidentitycredentialsV1alphaUriConsentRequired UriConsentRequired { get; set; }
 
@@ -623,10 +625,11 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
         /// <summary>
-        /// The retrieved access token or credential for the end user. On MCPTool call, for an invalid token OAuth spec
-        /// says this should return 401 or 403, but MCPServers may implement this differently. If you get any flavor of
-        /// `PERMISSION_DENIED`, retry your original request to RetrieveCredentials with force_refresh_token set to the
-        /// expired/invalid token string, which will fetch a new token or initiate a new consent flow.
+        /// The retrieved access token or credential for the end user. On an MCP tool call, for an invalid token the
+        /// OAuth spec states that this should return `401` or `403`, but MCP servers may implement this differently. If
+        /// you get any flavor of `PERMISSION_DENIED`, retry your original request to `RetrieveCredentials` with
+        /// force_refresh_token set to the expired/invalid token string, which will fetch a new token or initiate a new
+        /// consent flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
@@ -637,7 +640,8 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
 
     /// <summary>
     /// Indicates that the user must visit the provided URI to consent to delegate permission to the agent to act on
-    /// their behalf. The caller can either poll the `RetrieveCredentials` method, or await the /ValidateUserId callback
+    /// their behalf. The caller can either poll the `RetrieveCredentials` method, or await the /ValidateUserId
+    /// callback.
     /// </summary>
     public class GoogleCloudAgentidentitycredentialsV1alphaUriConsentRequired : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -649,9 +653,9 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
 
         /// <summary>
         /// Output only. A one-time, randomly generated value that validates the entire consent flow is handled by a
-        /// single user, avoiding CSRF attacks. It must be submitted with the FinalizeCredentials request to complete
-        /// the OAuth exchange. This will always be present. Implemented per
-        /// https://www.rfc-editor.org/rfc/rfc6819#section-5.3.5
+        /// single user, avoiding CSRF attacks. It must be submitted with the `FinalizeCredentials` request to complete
+        /// the OAuth exchange. This will always be present. Implemented per [RFC 6819 Section
+        /// 5.3.5](https://www.rfc-editor.org/rfc/rfc6819#section-5.3.5).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentNonce")]
         public virtual string ConsentNonce { get; set; }
