@@ -362,7 +362,7 @@ namespace Google.Apis.CloudRedis.v1
                     /// <param name="name">
                     /// Required. Redis ACL policy revision resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}/revisions/{revision_id}`
-                    /// where `location_id` refers to a GCP region.
+                    /// where `location_id` refers to a Google Cloud region.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -382,7 +382,7 @@ namespace Google.Apis.CloudRedis.v1
                         /// <summary>
                         /// Required. Redis ACL policy revision resource name using the form:
                         /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}/revisions/{revision_id}`
-                        /// where `location_id` refers to a GCP region.
+                        /// where `location_id` refers to a Google Cloud region.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -592,7 +592,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// <param name="name">
                 /// Required. Redis ACL policy resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
-                /// refers to a GCP region.
+                /// refers to a Google Cloud region.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -615,7 +615,7 @@ namespace Google.Apis.CloudRedis.v1
                     /// <summary>
                     /// Required. Redis ACL policy resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
-                    /// refers to a GCP region.
+                    /// refers to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -675,7 +675,7 @@ namespace Google.Apis.CloudRedis.v1
                 /// <param name="name">
                 /// Required. Redis ACL policy resource name using the form:
                 /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
-                /// refers to a GCP region.
+                /// refers to a Google Cloud region.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -695,7 +695,7 @@ namespace Google.Apis.CloudRedis.v1
                     /// <summary>
                     /// Required. Redis ACL policy resource name using the form:
                     /// `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id`
-                    /// refers to a GCP region.
+                    /// refers to a Google Cloud region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
