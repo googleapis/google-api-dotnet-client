@@ -2964,6 +2964,45 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Describes the details of the migrated subscription.</summary>
     public class SubscriptionMigrationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _legacyCreationTimeRaw;
+
+        private object _legacyCreationTime;
+
+        /// <summary>Output only. The creation time of the migrated subscription in the legacy system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyCreationTime")]
+        public virtual string LegacyCreationTimeRaw
+        {
+            get => _legacyCreationTimeRaw;
+            set
+            {
+                _legacyCreationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _legacyCreationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LegacyCreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LegacyCreationTimeDateTimeOffset instead.")]
+        public virtual object LegacyCreationTime
+        {
+            get => _legacyCreationTime;
+            set
+            {
+                _legacyCreationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _legacyCreationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LegacyCreationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LegacyCreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LegacyCreationTimeRaw);
+            set => LegacyCreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. The migrated subscription id in the legacy system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migratedSubscriptionId")]
         public virtual string MigratedSubscriptionId { get; set; }
