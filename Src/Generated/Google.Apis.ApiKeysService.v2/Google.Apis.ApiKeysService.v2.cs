@@ -63,6 +63,15 @@ namespace Google.Apis.ApiKeysService.v2
         public class Scope
         {
             /// <summary>
+            /// See, edit, configure, and delete your Google Cloud API Keys data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public static string Apikeys = "https://www.googleapis.com/auth/apikeys";
+
+            /// <summary>See your Google Cloud API Keys data and the email address of your Google Account</summary>
+            public static string ApikeysReadonly = "https://www.googleapis.com/auth/apikeys.readonly";
+
+            /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
             /// </summary>
@@ -77,6 +86,15 @@ namespace Google.Apis.ApiKeysService.v2
         /// <summary>Available OAuth 2.0 scope constants for use with the API Keys API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud API Keys data and see the email address for your
+            /// Google Account
+            /// </summary>
+            public const string Apikeys = "https://www.googleapis.com/auth/apikeys";
+
+            /// <summary>See your Google Cloud API Keys data and the email address of your Google Account</summary>
+            public const string ApikeysReadonly = "https://www.googleapis.com/auth/apikeys.readonly";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
