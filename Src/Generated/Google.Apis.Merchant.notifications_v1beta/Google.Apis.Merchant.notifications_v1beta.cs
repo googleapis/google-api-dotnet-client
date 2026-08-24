@@ -486,15 +486,15 @@ namespace Google.Apis.Merchant.notifications_v1beta
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of notification subscriptions to return in a page. The default value for
-                /// `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`.
+                /// Optional. The maximum number of notification subscriptions to return in a page. The default value
+                /// for `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// Token (if provided) to retrieve the subsequent page. All other parameters must match the original
-                /// call that provided the page token.
+                /// Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the
+                /// original call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
