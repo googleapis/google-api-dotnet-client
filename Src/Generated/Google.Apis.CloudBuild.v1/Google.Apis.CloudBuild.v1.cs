@@ -664,9 +664,9 @@ namespace Google.Apis.CloudBuild.v1
             }
 
             /// <summary>
-            /// Cancels a build in progress. Note: This method only applies to global (non-regional) builds when using
-            /// the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional builds, use the
-            /// regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
+            /// Cancels a build in progress. Note: This method only cancels builds in the "global" region when using the
+            /// legacy resource path projects/{project_id}/builds/{id}:cancel. For all regions, use the regional
+            /// resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project.</param>
@@ -677,9 +677,9 @@ namespace Google.Apis.CloudBuild.v1
             }
 
             /// <summary>
-            /// Cancels a build in progress. Note: This method only applies to global (non-regional) builds when using
-            /// the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional builds, use the
-            /// regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
+            /// Cancels a build in progress. Note: This method only cancels builds in the "global" region when using the
+            /// legacy resource path projects/{project_id}/builds/{id}:cancel. For all regions, use the regional
+            /// resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
             /// </summary>
             public class CancelRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
             {
@@ -741,8 +741,8 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>
             /// Starts a build with the specified configuration. This method returns a long-running `Operation`, which
             /// includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS`
-            /// or `FAILURE`). Note: This method only creates global (non-regional) builds when using the legacy
-            /// resource path `projects/{project_id}/builds`. To create regional builds, use the regional resource path:
+            /// or `FAILURE`). Note: This method only creates builds in the "global" region when using the legacy
+            /// resource path projects/{project_id}/builds. For all regions, use the regional resource path:
             /// `projects/{project_id}/locations/{location}/builds`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -755,8 +755,8 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>
             /// Starts a build with the specified configuration. This method returns a long-running `Operation`, which
             /// includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS`
-            /// or `FAILURE`). Note: This method only creates global (non-regional) builds when using the legacy
-            /// resource path `projects/{project_id}/builds`. To create regional builds, use the regional resource path:
+            /// or `FAILURE`). Note: This method only creates builds in the "global" region when using the legacy
+            /// resource path projects/{project_id}/builds. For all regions, use the regional resource path:
             /// `projects/{project_id}/locations/{location}/builds`.
             /// </summary>
             public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
@@ -820,10 +820,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Returns information about a previously requested build. The `Build` that is returned includes its status
-            /// (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only applies to
-            /// global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}`. To
-            /// fetch regional builds, use the regional resource path:
-            /// `projects/{project_id}/locations/{location}/builds/{id}`.
+            /// (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only gets builds
+            /// in the "global" region when using the legacy resource path projects/{project_id}/builds/{id}. For all
+            /// regions, use the regional resource path: `projects/{project_id}/locations/{location}/builds/{id}`.
             /// </summary>
             /// <param name="projectId">Required. ID of the project.</param>
             /// <param name="id">Required. ID of the build.</param>
@@ -834,10 +833,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Returns information about a previously requested build. The `Build` that is returned includes its status
-            /// (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only applies to
-            /// global (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}`. To
-            /// fetch regional builds, use the regional resource path:
-            /// `projects/{project_id}/locations/{location}/builds/{id}`.
+            /// (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only gets builds
+            /// in the "global" region when using the legacy resource path projects/{project_id}/builds/{id}. For all
+            /// regions, use the regional resource path: `projects/{project_id}/locations/{location}/builds/{id}`.
             /// </summary>
             public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
             {
@@ -906,9 +904,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Lists previously requested builds. Previously requested builds may still be in-progress, or may have
-            /// finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds when
-            /// using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the regional
-            /// resource path: `projects/{project_id}/locations/{location}/builds`.
+            /// finished successfully or unsuccessfully. Note: This method only lists builds in the "global" region when
+            /// using the legacy resource path projects/{project_id}/builds. For all regions, use the regional resource
+            /// path: `projects/{project_id}/locations/{location}/builds`.
             /// </summary>
             /// <param name="projectId">Required. ID of the project.</param>
             public virtual ListRequest List(string projectId)
@@ -918,9 +916,9 @@ namespace Google.Apis.CloudBuild.v1
 
             /// <summary>
             /// Lists previously requested builds. Previously requested builds may still be in-progress, or may have
-            /// finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds when
-            /// using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the regional
-            /// resource path: `projects/{project_id}/locations/{location}/builds`.
+            /// finished successfully or unsuccessfully. Note: This method only lists builds in the "global" region when
+            /// using the legacy resource path projects/{project_id}/builds. For all regions, use the regional resource
+            /// path: `projects/{project_id}/locations/{location}/builds`.
             /// </summary>
             public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildsResponse>
             {
@@ -1015,21 +1013,20 @@ namespace Google.Apis.CloudBuild.v1
             }
 
             /// <summary>
-            /// Creates a new build based on the specified build. Note: This method only applies to global
-            /// (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`. To
-            /// retry regional builds, use the regional resource path:
-            /// `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build using
-            /// the original build request, which may or may not result in an identical build. For triggered builds: *
-            /// Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a
-            /// build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original
-            /// build built from the tip of a branch, the retried build will build from the tip of that branch, which
-            /// may not be the same revision as the original build. * If the original build specified a commit sha or
-            /// revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: *
-            /// If the original build pulled source from Cloud Storage without specifying the generation of the object,
-            /// the new build will use the current object, which may be different from the original build source. * If
-            /// the original build pulled source from Cloud Storage and specified the generation of the object, the new
-            /// build will attempt to use the same object, which may or may not be available depending on the bucket's
-            /// lifecycle management settings.
+            /// Creates a new build based on the specified build. Note: This method only creates builds in the "global"
+            /// region when using the legacy resource path projects/{project_id}/builds/{id}:retry. For all regions, use
+            /// the regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method
+            /// creates a new build using the original build request, which may or may not result in an identical build.
+            /// For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered
+            /// build will result in a build that uses the same revision. For non-triggered builds that specify
+            /// `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from
+            /// the tip of that branch, which may not be the same revision as the original build. * If the original
+            /// build specified a commit sha or revision ID, the retried build will use the identical source. For builds
+            /// that specify `StorageSource`: * If the original build pulled source from Cloud Storage without
+            /// specifying the generation of the object, the new build will use the current object, which may be
+            /// different from the original build source. * If the original build pulled source from Cloud Storage and
+            /// specified the generation of the object, the new build will attempt to use the same object, which may or
+            /// may not be available depending on the bucket's lifecycle management settings.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project.</param>
@@ -1040,21 +1037,20 @@ namespace Google.Apis.CloudBuild.v1
             }
 
             /// <summary>
-            /// Creates a new build based on the specified build. Note: This method only applies to global
-            /// (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`. To
-            /// retry regional builds, use the regional resource path:
-            /// `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build using
-            /// the original build request, which may or may not result in an identical build. For triggered builds: *
-            /// Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a
-            /// build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original
-            /// build built from the tip of a branch, the retried build will build from the tip of that branch, which
-            /// may not be the same revision as the original build. * If the original build specified a commit sha or
-            /// revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: *
-            /// If the original build pulled source from Cloud Storage without specifying the generation of the object,
-            /// the new build will use the current object, which may be different from the original build source. * If
-            /// the original build pulled source from Cloud Storage and specified the generation of the object, the new
-            /// build will attempt to use the same object, which may or may not be available depending on the bucket's
-            /// lifecycle management settings.
+            /// Creates a new build based on the specified build. Note: This method only creates builds in the "global"
+            /// region when using the legacy resource path projects/{project_id}/builds/{id}:retry. For all regions, use
+            /// the regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method
+            /// creates a new build using the original build request, which may or may not result in an identical build.
+            /// For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered
+            /// build will result in a build that uses the same revision. For non-triggered builds that specify
+            /// `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from
+            /// the tip of that branch, which may not be the same revision as the original build. * If the original
+            /// build specified a commit sha or revision ID, the retried build will use the identical source. For builds
+            /// that specify `StorageSource`: * If the original build pulled source from Cloud Storage without
+            /// specifying the generation of the object, the new build will use the current object, which may be
+            /// different from the original build source. * If the original build pulled source from Cloud Storage and
+            /// specified the generation of the object, the new build will attempt to use the same object, which may or
+            /// may not be available depending on the bucket's lifecycle management settings.
             /// </summary>
             public class RetryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
@@ -1520,7 +1516,6 @@ namespace Google.Apis.CloudBuild.v1
                 this.service = service;
                 BitbucketServerConfigs = new BitbucketServerConfigsResource(service);
                 Builds = new BuildsResource(service);
-                GitLabConfigs = new GitLabConfigsResource(service);
                 GithubEnterpriseConfigs = new GithubEnterpriseConfigsResource(service);
                 Operations = new OperationsResource(service);
                 Triggers = new TriggersResource(service);
@@ -2175,10 +2170,9 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Cancels a build in progress. Note: This method only applies to global (non-regional) builds when
-                /// using the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional
-                /// builds, use the regional resource path:
-                /// `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
+                /// Cancels a build in progress. Note: This method only cancels builds in the "global" region when using
+                /// the legacy resource path projects/{project_id}/builds/{id}:cancel. For all regions, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2190,10 +2184,9 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Cancels a build in progress. Note: This method only applies to global (non-regional) builds when
-                /// using the legacy resource path `projects/{project_id}/builds/{id}:cancel`. To cancel regional
-                /// builds, use the regional resource path:
-                /// `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
+                /// Cancels a build in progress. Note: This method only cancels builds in the "global" region when using
+                /// the legacy resource path projects/{project_id}/builds/{id}:cancel. For all regions, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/builds/{id}:cancel`.
                 /// </summary>
                 public class CancelRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
                 {
@@ -2245,9 +2238,9 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>
                 /// Starts a build with the specified configuration. This method returns a long-running `Operation`,
                 /// which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as
-                /// `SUCCESS` or `FAILURE`). Note: This method only creates global (non-regional) builds when using the
-                /// legacy resource path `projects/{project_id}/builds`. To create regional builds, use the regional
-                /// resource path: `projects/{project_id}/locations/{location}/builds`.
+                /// `SUCCESS` or `FAILURE`). Note: This method only creates builds in the "global" region when using the
+                /// legacy resource path projects/{project_id}/builds. For all regions, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/builds`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2262,9 +2255,9 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>
                 /// Starts a build with the specified configuration. This method returns a long-running `Operation`,
                 /// which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as
-                /// `SUCCESS` or `FAILURE`). Note: This method only creates global (non-regional) builds when using the
-                /// legacy resource path `projects/{project_id}/builds`. To create regional builds, use the regional
-                /// resource path: `projects/{project_id}/locations/{location}/builds`.
+                /// `SUCCESS` or `FAILURE`). Note: This method only creates builds in the "global" region when using the
+                /// legacy resource path projects/{project_id}/builds. For all regions, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/builds`.
                 /// </summary>
                 public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
@@ -2328,8 +2321,8 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>
                 /// Returns information about a previously requested build. The `Build` that is returned includes its
                 /// status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only
-                /// applies to global (non-regional) builds when using the legacy resource path
-                /// `projects/{project_id}/builds/{id}`. To fetch regional builds, use the regional resource path:
+                /// gets builds in the "global" region when using the legacy resource path
+                /// projects/{project_id}/builds/{id}. For all regions, use the regional resource path:
                 /// `projects/{project_id}/locations/{location}/builds/{id}`.
                 /// </summary>
                 /// <param name="name">
@@ -2344,8 +2337,8 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>
                 /// Returns information about a previously requested build. The `Build` that is returned includes its
                 /// status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. Note: This method only
-                /// applies to global (non-regional) builds when using the legacy resource path
-                /// `projects/{project_id}/builds/{id}`. To fetch regional builds, use the regional resource path:
+                /// gets builds in the "global" region when using the legacy resource path
+                /// projects/{project_id}/builds/{id}. For all regions, use the regional resource path:
                 /// `projects/{project_id}/locations/{location}/builds/{id}`.
                 /// </summary>
                 public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Build>
@@ -2414,9 +2407,9 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Lists previously requested builds. Previously requested builds may still be in-progress, or may have
-                /// finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds
-                /// when using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the
-                /// regional resource path: `projects/{project_id}/locations/{location}/builds`.
+                /// finished successfully or unsuccessfully. Note: This method only lists builds in the "global" region
+                /// when using the legacy resource path projects/{project_id}/builds. For all regions, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/builds`.
                 /// </summary>
                 /// <param name="parent">
                 /// The parent of the collection of `Builds`. Format: `projects/{project}/locations/{location}`
@@ -2428,9 +2421,9 @@ namespace Google.Apis.CloudBuild.v1
 
                 /// <summary>
                 /// Lists previously requested builds. Previously requested builds may still be in-progress, or may have
-                /// finished successfully or unsuccessfully. Note: This method only lists global (non-regional) builds
-                /// when using the legacy resource path `projects/{project_id}/builds`. To list regional builds, use the
-                /// regional resource path: `projects/{project_id}/locations/{location}/builds`.
+                /// finished successfully or unsuccessfully. Note: This method only lists builds in the "global" region
+                /// when using the legacy resource path projects/{project_id}/builds. For all regions, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/builds`.
                 /// </summary>
                 public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildsResponse>
                 {
@@ -2525,9 +2518,9 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Creates a new build based on the specified build. Note: This method only applies to global
-                /// (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`.
-                /// To retry regional builds, use the regional resource path:
+                /// Creates a new build based on the specified build. Note: This method only creates builds in the
+                /// "global" region when using the legacy resource path projects/{project_id}/builds/{id}:retry. For all
+                /// regions, use the regional resource path:
                 /// `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build
                 /// using the original build request, which may or may not result in an identical build. For triggered
                 /// builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build
@@ -2551,9 +2544,9 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Creates a new build based on the specified build. Note: This method only applies to global
-                /// (non-regional) builds when using the legacy resource path `projects/{project_id}/builds/{id}:retry`.
-                /// To retry regional builds, use the regional resource path:
+                /// Creates a new build based on the specified build. Note: This method only creates builds in the
+                /// "global" region when using the legacy resource path projects/{project_id}/builds/{id}:retry. For all
+                /// regions, use the regional resource path:
                 /// `projects/{project_id}/locations/{location}/builds/{id}:retry`. This method creates a new build
                 /// using the original build request, which may or may not result in an identical build. For triggered
                 /// builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build
@@ -2610,608 +2603,6 @@ namespace Google.Apis.CloudBuild.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/builds/[^/]+$",
-                        });
-                    }
-                }
-            }
-
-            /// <summary>Gets the GitLabConfigs resource.</summary>
-            public virtual GitLabConfigsResource GitLabConfigs { get; }
-
-            /// <summary>The "gitLabConfigs" collection of methods.</summary>
-            public class GitLabConfigsResource
-            {
-                private const string Resource = "gitLabConfigs";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public GitLabConfigsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    ConnectedRepositories = new ConnectedRepositoriesResource(service);
-                    Repos = new ReposResource(service);
-                }
-
-                /// <summary>Gets the ConnectedRepositories resource.</summary>
-                public virtual ConnectedRepositoriesResource ConnectedRepositories { get; }
-
-                /// <summary>The "connectedRepositories" collection of methods.</summary>
-                public class ConnectedRepositoriesResource
-                {
-                    private const string Resource = "connectedRepositories";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ConnectedRepositoriesResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>
-                    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Batch connecting GitLab repositories
-                    /// to Cloud Build. This API is experimental.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// The name of the `GitLabConfig` that adds connected repositories. Format:
-                    /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
-                    /// </param>
-                    public virtual BatchCreateRequest BatchCreate(Google.Apis.CloudBuild.v1.Data.BatchCreateGitLabConnectedRepositoriesRequest body, string parent)
-                    {
-                        return new BatchCreateRequest(this.service, body, parent);
-                    }
-
-                    /// <summary>
-                    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Batch connecting GitLab repositories
-                    /// to Cloud Build. This API is experimental.
-                    /// </summary>
-                    public class BatchCreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new BatchCreate request.</summary>
-                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.BatchCreateGitLabConnectedRepositoriesRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// The name of the `GitLabConfig` that adds connected repositories. Format:
-                        /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudBuild.v1.Data.BatchCreateGitLabConnectedRepositoriesRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "batchCreate";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/connectedRepositories:batchCreate";
-
-                        /// <summary>Initializes BatchCreate parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/gitLabConfigs/[^/]+$",
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Gets the Repos resource.</summary>
-                public virtual ReposResource Repos { get; }
-
-                /// <summary>The "repos" collection of methods.</summary>
-                public class ReposResource
-                {
-                    private const string Resource = "repos";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ReposResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>
-                    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. List all repositories for a given
-                    /// `GitLabConfig`. This API is experimental
-                    /// </summary>
-                    /// <param name="parent">Required. Name of the parent resource.</param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(this.service, parent);
-                    }
-
-                    /// <summary>
-                    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. List all repositories for a given
-                    /// `GitLabConfig`. This API is experimental
-                    /// </summary>
-                    public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListGitLabRepositoriesResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>Required. Name of the parent resource.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// The maximum number of repositories to return. The service may return fewer than this value.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// A page token, received from a previous ListGitLabRepositoriesRequest` call. Provide this to
-                        /// retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListGitLabRepositoriesRequest` must match the call that provided the page token.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/repos";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/gitLabConfigs/[^/]+$",
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Creates a new `GitLabConfig`. This API
-                /// is experimental
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Name of the parent resource.</param>
-                public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitLabConfig body, string parent)
-                {
-                    return new CreateRequest(this.service, body, parent);
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Creates a new `GitLabConfig`. This API
-                /// is experimental
-                /// </summary>
-                public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.GitLabConfig body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the parent resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The ID to use for the GitLabConfig, which will become the final component of the
-                    /// GitLabConfig’s resource name. gitlab_config_id must meet the following requirements: + They must
-                    /// contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must
-                    /// begin and end with an alphanumeric character
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("gitlabConfigId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string GitlabConfigId { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudBuild.v1.Data.GitLabConfig Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}/gitLabConfigs";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("gitlabConfigId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "gitlabConfigId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Delete a `GitLabConfig`. This API is
-                /// experimental
-                /// </summary>
-                /// <param name="name">Required. The config resource name.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(this.service, name);
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Delete a `GitLabConfig`. This API is
-                /// experimental
-                /// </summary>
-                public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The config resource name.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/gitLabConfigs/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Retrieves a `GitLabConfig`. This API is
-                /// experimental
-                /// </summary>
-                /// <param name="name">Required. The config resource name.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Retrieves a `GitLabConfig`. This API is
-                /// experimental
-                /// </summary>
-                public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.GitLabConfig>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The config resource name.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/gitLabConfigs/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. List all `GitLabConfigs` for a given
-                /// project. This API is experimental
-                /// </summary>
-                /// <param name="parent">Required. Name of the parent resource</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(this.service, parent);
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. List all `GitLabConfigs` for a given
-                /// project. This API is experimental
-                /// </summary>
-                public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListGitLabConfigsResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the parent resource</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// The maximum number of configs to return. The service may return fewer than this value. If
-                    /// unspecified, at most 50 configs will be returned. The maximum value is 1000;, values above 1000
-                    /// will be coerced to 1000.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>
-                    /// A page token, received from a previous ‘ListGitlabConfigsRequest’ call. Provide this to retrieve
-                    /// the subsequent page. When paginating, all other parameters provided to
-                    /// ‘ListGitlabConfigsRequest’ must match the call that provided the page token.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}/gitLabConfigs";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Updates an existing `GitLabConfig`. This
-                /// API is experimental
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">Identifier. The resource name for the config.</param>
-                public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitLabConfig body, string name)
-                {
-                    return new PatchRequest(this.service, body, name);
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Updates an existing `GitLabConfig`. This
-                /// API is experimental
-                /// </summary>
-                public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.GitLabConfig body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Identifier. The resource name for the config.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Update mask for the resource. If this is set, the server will only update the fields specified
-                    /// in the field mask. Otherwise, a full update of the mutable resource fields will be performed.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudBuild.v1.Data.GitLabConfig Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/gitLabConfigs/[^/]+$",
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Remove a GitLab repository from a given
-                /// GitLabConfig's connected repositories. This API is experimental.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="config">
-                /// Required. The name of the `GitLabConfig` to remove a connected repository. Format:
-                /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
-                /// </param>
-                public virtual RemoveGitLabConnectedRepositoryRequest RemoveGitLabConnectedRepository(Google.Apis.CloudBuild.v1.Data.RemoveGitLabConnectedRepositoryRequest body, string config)
-                {
-                    return new RemoveGitLabConnectedRepositoryRequest(this.service, body, config);
-                }
-
-                /// <summary>
-                /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Remove a GitLab repository from a given
-                /// GitLabConfig's connected repositories. This API is experimental.
-                /// </summary>
-                public class RemoveGitLabConnectedRepositoryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
-                {
-                    /// <summary>Constructs a new RemoveGitLabConnectedRepository request.</summary>
-                    public RemoveGitLabConnectedRepositoryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.RemoveGitLabConnectedRepositoryRequest body, string config) : base(service)
-                    {
-                        Config = config;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the `GitLabConfig` to remove a connected repository. Format:
-                    /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("config", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Config { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudBuild.v1.Data.RemoveGitLabConnectedRepositoryRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "removeGitLabConnectedRepository";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+config}:removeGitLabConnectedRepository";
-
-                    /// <summary>Initializes RemoveGitLabConnectedRepository parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("config", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "config",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/gitLabConfigs/[^/]+$",
                         });
                     }
                 }
@@ -5797,125 +5188,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC request object accepted by
-    /// BatchCreateGitLabConnectedRepositories RPC method.
-    /// </summary>
-    public class BatchCreateGitLabConnectedRepositoriesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Requests to connect GitLab repositories.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<CreateGitLabConnectedRepositoryRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Response of BatchCreateGitLabConnectedRepositories
-    /// RPC method.
-    /// </summary>
-    public class BatchCreateGitLabConnectedRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The GitLab connected repository requests' responses.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConnectedRepositories")]
-        public virtual System.Collections.Generic.IList<GitLabConnectedRepository> GitlabConnectedRepositories { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for
-    /// `BatchCreateGitLabConnectedRepositories` operation.
-    /// </summary>
-    public class BatchCreateGitLabConnectedRepositoriesResponseMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _completeTimeRaw;
-
-        private object _completeTime;
-
-        /// <summary>Time the operation was completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual string CompleteTimeRaw
-        {
-            get => _completeTimeRaw;
-            set
-            {
-                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
-        public virtual object CompleteTime
-        {
-            get => _completeTime;
-            set
-            {
-                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// The name of the `GitLabConfig` that added connected repositories. Format:
-        /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual string Config { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>BitbucketServerConfig represents the configuration for a Bitbucket Server.</summary>
     public class BitbucketServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6831,13 +6103,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("github")]
         public virtual GitHubEventsConfig Github { get; set; }
 
-        /// <summary>
-        /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEnterpriseEventsConfig describes the
-        /// configuration of a trigger that creates a build whenever a GitLab Enterprise event is received.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabEnterpriseEventsConfig")]
-        public virtual GitLabEventsConfig GitlabEnterpriseEventsConfig { get; set; }
-
         /// <summary>Output only. Unique identifier of the trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7222,117 +6487,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `CreateGitLabConfig` operation.
-    /// </summary>
-    public class CreateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _completeTimeRaw;
-
-        private object _completeTime;
-
-        /// <summary>Time the operation was completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual string CompleteTimeRaw
-        {
-            get => _completeTimeRaw;
-            set
-            {
-                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
-        public virtual object CompleteTime
-        {
-            get => _completeTime;
-            set
-            {
-                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// The resource name of the GitLabConfig to be created. Format:
-        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
-        public virtual string GitlabConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Request to connect a repository from a connected
-    /// GitLab host.
-    /// </summary>
-    public class CreateGitLabConnectedRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The GitLab repository to connect.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConnectedRepository")]
-        public virtual GitLabConnectedRepository GitlabConnectedRepository { get; set; }
-
-        /// <summary>
-        /// Required. The name of the `GitLabConfig` that adds connected repository. Format:
-        /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata for the `CreateWorkerPool` operation.</summary>
     public class CreateWorkerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7614,96 +6768,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `DeleteGitLabConfig` operation.
-    /// </summary>
-    public class DeleteGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _completeTimeRaw;
-
-        private object _completeTime;
-
-        /// <summary>Time the operation was completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual string CompleteTimeRaw
-        {
-            get => _completeTimeRaw;
-            set
-            {
-                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
-        public virtual object CompleteTime
-        {
-            get => _completeTime;
-            set
-            {
-                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// The resource name of the GitLabConfig to be created. Format:
-        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
-        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8185,239 +7249,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabConfig represents the configuration for a
-    /// GitLab integration.
-    /// </summary>
-    public class GitLabConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Connected GitLab.com or GitLabEnterprise repositories for this config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepositories")]
-        public virtual System.Collections.Generic.IList<GitLabRepositoryId> ConnectedRepositories { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. Time when the config was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Optional. GitLabEnterprise config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseConfig")]
-        public virtual GitLabEnterpriseConfig EnterpriseConfig { get; set; }
-
-        /// <summary>Identifier. The resource name for the config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Required. Secret Manager secrets needed by the config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
-        public virtual GitLabSecrets Secrets { get; set; }
-
-        /// <summary>Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; }
-
-        /// <summary>
-        /// Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webhookKey")]
-        public virtual string WebhookKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabConnectedRepository represents a GitLab
-    /// connected repository request response.
-    /// </summary>
-    public class GitLabConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The name of the `GitLabConfig` that added connected repository. Format:
-        /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
-
-        /// <summary>The GitLab repositories to connect.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
-        public virtual GitLabRepositoryId Repo { get; set; }
-
-        /// <summary>Output only. The status of the repo connection request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual Status Status { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEnterpriseConfig represents the configuration
-    /// for a GitLabEnterprise integration.
-    /// </summary>
-    public class GitLabEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Immutable. The URI of the GitlabEnterprise host.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
-        public virtual string HostUri { get; set; }
-
-        /// <summary>
-        /// The Service Directory configuration to be used when reaching out to the GitLab Enterprise instance.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
-        public virtual ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
-
-        /// <summary>The SSL certificate to use in requests to GitLab Enterprise instances.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sslCa")]
-        public virtual string SslCa { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabEventsConfig describes the configuration of a
-    /// trigger that creates a build whenever a GitLab event is received.
-    /// </summary>
-    public class GitLabEventsConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The GitLabConfig specified in the gitlab_config_resource field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
-        public virtual GitLabConfig GitlabConfig { get; set; }
-
-        /// <summary>The GitLab config resource that this trigger config maps to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfigResource")]
-        public virtual string GitlabConfigResource { get; set; }
-
-        /// <summary>Namespace of the GitLab project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectNamespace")]
-        public virtual string ProjectNamespace { get; set; }
-
-        /// <summary>Filter to match changes in pull requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pullRequest")]
-        public virtual PullRequestFilter PullRequest { get; set; }
-
-        /// <summary>Filter to match changes in refs like branches, tags.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("push")]
-        public virtual PushFilter Push { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Proto Representing a GitLabRepository
-    /// </summary>
-    public class GitLabRepository : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Link to the browse repo page on the GitLab instance</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("browseUri")]
-        public virtual string BrowseUri { get; set; }
-
-        /// <summary>Description of the repository</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Display name of the repository</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>The resource name of the repository</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Identifier for a repository</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("repositoryId")]
-        public virtual GitLabRepositoryId RepositoryId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>GitLabRepositoryId identifies a specific repository hosted on GitLab.com or GitLabEnterprise</summary>
-    public class GitLabRepositoryId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Identifier for the repository. example: "namespace/project-slug", namespace is usually the
-        /// username or group ID
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// Output only. The ID of the webhook that was created for receiving events from this repo. We only create and
-        /// manage a single webhook for each repo.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webhookId")]
-        public virtual System.Nullable<int> WebhookId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. GitLabSecrets represents the secrets in Secret
-    /// Manager for a GitLab integration.
-    /// </summary>
-    public class GitLabSecrets : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The resource name for the api access token’s secret version</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiAccessTokenVersion")]
-        public virtual string ApiAccessTokenVersion { get; set; }
-
-        /// <summary>
-        /// Required. Immutable. API Key that will be attached to webhook requests from GitLab to Cloud Build.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyVersion")]
-        public virtual string ApiKeyVersion { get; set; }
-
-        /// <summary>Required. The resource name for the read access token’s secret version</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readAccessTokenVersion")]
-        public virtual string ReadAccessTokenVersion { get; set; }
-
-        /// <summary>
-        /// Required. Immutable. The resource name for the webhook secret’s secret version. Once this field has been
-        /// set, it cannot be changed. If you need to change it, please create another GitLabConfig.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretVersion")]
-        public virtual string WebhookSecretVersion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>GitRepoSource describes a repo and ref of a code repository.</summary>
     public class GitRepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8505,6 +7336,14 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Required. Where should the files be placed on the worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
         public virtual string DestPath { get; set; }
+
+        /// <summary>
+        /// Optional. True if remote tags should be fetched too (default false). Note: when depth is 1 (default), git
+        /// fetch only retrieves tags pointing to commits within the shallow boundary. Set depth to -1 to fetch all
+        /// historical tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fetchTags")]
+        public virtual System.Nullable<bool> FetchTags { get; set; }
 
         /// <summary>Optional. True if submodules should be fetched too (default false).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurseSubmodules")]
@@ -8735,48 +7574,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>
         /// Token to receive the next page of results. This will be absent if the end of the response list has been
         /// reached.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC response object returned by ListGitLabConfigs
-    /// RPC method.
-    /// </summary>
-    public class ListGitLabConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of GitLabConfigs</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfigs")]
-        public virtual System.Collections.Generic.IList<GitLabConfig> GitlabConfigs { get; set; }
-
-        /// <summary>
-        /// A token that can be sent as `page_token` to retrieve the next page If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC response object returned by the
-    /// ListGitLabRepositories RPC method.
-    /// </summary>
-    public class ListGitLabRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of GitLab repositories</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabRepositories")]
-        public virtual System.Collections.Generic.IList<GitLabRepository> GitlabRepositories { get; set; }
-
-        /// <summary>
-        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -9370,20 +8167,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. RPC request object accepted by
-    /// RemoveGitLabConnectedRepository RPC method.
-    /// </summary>
-    public class RemoveGitLabConnectedRepositoryRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The connected repository to remove.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
-        public virtual GitLabRepositoryId ConnectedRepository { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9621,23 +8404,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Secrets in Secret Manager and associated secret environment variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretManager")]
         public virtual System.Collections.Generic.IList<SecretManagerSecret> SecretManager { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. ServiceDirectoryConfig represents Service Directory
-    /// configuration for a SCM host connection.
-    /// </summary>
-    public class ServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The Service Directory service name. Format:
-        /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10086,96 +8852,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
         public virtual string GithubEnterpriseConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: CloudBuild GitLab V1 integration is deprecated. Metadata for `UpdateGitLabConfig` operation.
-    /// </summary>
-    public class UpdateGitLabConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _completeTimeRaw;
-
-        private object _completeTime;
-
-        /// <summary>Time the operation was completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual string CompleteTimeRaw
-        {
-            get => _completeTimeRaw;
-            set
-            {
-                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
-        public virtual object CompleteTime
-        {
-            get => _completeTime;
-            set
-            {
-                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// The resource name of the GitLabConfig to be created. Format:
-        /// `projects/{project}/locations/{location}/gitlabConfigs/{id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gitlabConfig")]
-        public virtual string GitlabConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
