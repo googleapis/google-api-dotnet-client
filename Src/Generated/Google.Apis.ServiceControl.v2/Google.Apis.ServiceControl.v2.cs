@@ -655,6 +655,31 @@ namespace Google.Apis.ServiceControl.v2.Data
     }
 
     /// <summary>
+    /// A composite unique identifier for a PAM Grant which is {Org/Folder/Project identifier, grant Unique Identifier}
+    /// tuple.
+    /// </summary>
+    public class AuditPamBindingId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. GCP Project/Folder/Organization identifier to which the PAM entitlement/grant is bound to.
+        /// Container will be in the following form: projects/$project_num or folders/$folder_num or organizations/$org
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual string Container { get; set; }
+
+        /// <summary>
+        /// Output only. Represents the unique identifier for the PAM grant. Full_resource_name_pattern for PAM Grant
+        /// is: //privilegedaccessmanager.googleapis.com/
+        /// (projects|folders|organizations)/$0/locations/$1/entitlements/$2/ grants/$3 where $3 is the grant_uuid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grantUuid")]
+        public virtual string GrantUuid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// This message defines request authentication attributes. Terminology is based on the JSON Web Token (JWT)
     /// standard, but the terms also correlate to concepts in other standards.
     /// </summary>
@@ -811,6 +836,14 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
         public virtual string PermissionType { get; set; }
+
+        /// <summary>
+        /// Output only. Metadata about the Privileged Access Manager (PAM) backed authorization decisions. This field
+        /// is populated if the access is granted via an IAM policy with a binding which is managed by Privileged Access
+        /// Manager.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegedAccessManagerMetadata")]
+        public virtual PrivilegedAccessManagerMetadata PrivilegedAccessManagerMetadata { get; set; }
 
         /// <summary>
         /// The resource being accessed, as a REST-style or cloud resource string. For example:
@@ -995,6 +1028,45 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// <summary>Indicates the orgpolicy violations for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyViolationInfo")]
         public virtual OrgPolicyViolationInfo OrgPolicyViolationInfo { get; set; }
+
+        /// <summary>Indicates the regional access boundary policy violations for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rabPolicyViolationInfo")]
+        public virtual RabPolicyViolationInfo RabPolicyViolationInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the Privileged Access Manager (PAM) backed authorization decisions.</summary>
+    public class PrivilegedAccessManagerMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If PAM is managing the elevated access, AuditPamBindingId is written to an Identity and Access
+        /// Management (IAM) policy, which specifies access controls for resources. If the access is granted via an IAM
+        /// policy with a binding which is managed by Privileged Access Manager, PrivilegedAccessManagerMetadata will
+        /// contain the AuditPamBindingId.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pamBindingIds")]
+        public virtual System.Collections.Generic.IList<AuditPamBindingId> PamBindingIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents Regional Access Boundary (RAB) Policy Violation information.</summary>
+    public class RabPolicyViolationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Error message detailing what triggered the violation. The error message content originates from
+        /// the authz library e.g., google3/cloud/security/iam/cap/deny_explanation/internal/make_error_msg.cc. This
+        /// will be the same (canonical) error message provided by the http error code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Optional. The list of target locations of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLocations")]
+        public virtual System.Collections.Generic.IList<string> ResourceLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
