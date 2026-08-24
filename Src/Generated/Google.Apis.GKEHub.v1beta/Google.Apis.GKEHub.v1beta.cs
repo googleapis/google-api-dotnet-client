@@ -10363,6 +10363,21 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for per-stage soak duration overrides.</summary>
+    public class PerStageSoakDurationOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A mapping of stage numbers to their respective desired soak durations. Key is the stage number,
+        /// value is the desired soak duration. Stages omitted from the map will receive the standard soak duration
+        /// configured on the sequence for that stage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageOverrides")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StageOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
@@ -11128,6 +11143,17 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>Optional. If set to true, the rollout will ignore the disruption budgets of the clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreClusterDisruptionBudgets")]
+        public virtual System.Nullable<bool> IgnoreClusterDisruptionBudgets { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the rollout will ignore any maintenance policies (Maintenance Windows and
+        /// Maintenance Exclusions) set on the clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreMaintenancePolicies")]
+        public virtual System.Nullable<bool> IgnoreMaintenancePolicies { get; set; }
+
         /// <summary>Output only. The intent of the rollout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
         public virtual string Intent { get; set; }
@@ -11157,6 +11183,14 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutSequence")]
         public virtual string RolloutSequence { get; set; }
+
+        /// <summary>
+        /// Optional. Overrides the soak durations for specific stages of the rollout. Key is the stage number, value is
+        /// the desired soak duration. Stages omitted from the map will receive the standard soak duration configured on
+        /// the sequence for that stage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageSoakDurationOverrides")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StageSoakDurationOverrides { get; set; }
 
         /// <summary>Output only. The stages of the Rollout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
@@ -12094,6 +12128,32 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>Optional. If set to true, the rollout will ignore the disruption budgets of the clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreClusterDisruptionBudgets")]
+        public virtual System.Nullable<bool> IgnoreClusterDisruptionBudgets { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the rollout will ignore any maintenance policies (Maintenance Windows and
+        /// Maintenance Exclusions) set on the clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreMaintenancePolicies")]
+        public virtual System.Nullable<bool> IgnoreMaintenancePolicies { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the rollout will only upgrade clusters that match the minor version of the
+        /// `version` field, but are on an earlier patch version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patchOnly")]
+        public virtual System.Nullable<bool> PatchOnly { get; set; }
+
+        /// <summary>Optional. Overrides the soak duration for all stages of the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soakDurationOverrideAllStages")]
+        public virtual object SoakDurationOverrideAllStages { get; set; }
+
+        /// <summary>Optional. Overrides the soak durations for specific stages of the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soakDurationOverridePerStage")]
+        public virtual PerStageSoakDurationOverrides SoakDurationOverridePerStage { get; set; }
 
         /// <summary>Required. The type of upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeType")]
