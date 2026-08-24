@@ -34,6 +34,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <param name="initializer">The service initializer.</param>
         public CloudIdentityService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            AllowlistedDomains = new AllowlistedDomainsResource(this);
             Customers = new CustomersResource(this);
             Devices = new DevicesResource(this);
             Groups = new GroupsResource(this);
@@ -67,6 +68,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Identity API.</summary>
         public class Scope
         {
+            /// <summary>See and edit allowlisted domains in your Cloud Identity Organization</summary>
+            public static string CloudIdentityAllowlisteddomains = "https://www.googleapis.com/auth/cloud-identity.allowlisteddomains";
+
+            /// <summary>See allowlisted domains in your Cloud Identity Organization</summary>
+            public static string CloudIdentityAllowlisteddomainsReadonly = "https://www.googleapis.com/auth/cloud-identity.allowlisteddomains.readonly";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices</summary>
             public static string CloudIdentityDevices = "https://www.googleapis.com/auth/cloud-identity.devices";
 
@@ -121,6 +128,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Identity API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>See and edit allowlisted domains in your Cloud Identity Organization</summary>
+            public const string CloudIdentityAllowlisteddomains = "https://www.googleapis.com/auth/cloud-identity.allowlisteddomains";
+
+            /// <summary>See allowlisted domains in your Cloud Identity Organization</summary>
+            public const string CloudIdentityAllowlisteddomainsReadonly = "https://www.googleapis.com/auth/cloud-identity.allowlisteddomains.readonly";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/cloud-identity.devices</summary>
             public const string CloudIdentityDevices = "https://www.googleapis.com/auth/cloud-identity.devices";
 
@@ -171,6 +184,9 @@ namespace Google.Apis.CloudIdentity.v1beta1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the AllowlistedDomains resource.</summary>
+        public virtual AllowlistedDomainsResource AllowlistedDomains { get; }
 
         /// <summary>Gets the Customers resource.</summary>
         public virtual CustomersResource Customers { get; }
@@ -375,6 +391,231 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "allowlistedDomains" collection of methods.</summary>
+    public class AllowlistedDomainsResource
+    {
+        private const string Resource = "allowlistedDomains";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AllowlistedDomainsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Adds a domain to the allowlist.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.AllowlistedDomain body)
+        {
+            return new CreateRequest(this.service, body);
+        }
+
+        /// <summary>Adds a domain to the allowlist.</summary>
+        public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIdentity.v1beta1.Data.AllowlistedDomain body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudIdentity.v1beta1.Data.AllowlistedDomain Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/allowlistedDomains";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Removes a domain from the allowlist.</summary>
+        /// <param name="name">
+        /// Required. Specifies the [resource name](https://google.aip.dev/122) of the domain to delete.
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>Removes a domain from the allowlist.</summary>
+        public class DeleteRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Specifies the [resource name](https://google.aip.dev/122) of the domain to delete.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^allowlistedDomains/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Retrieves a specific domain from the allowlist.</summary>
+        /// <param name="name">
+        /// Required. Specifies the [resource name](https://google.aip.dev/122) of the domain to retrieve.
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves a specific domain from the allowlist.</summary>
+        public class GetRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.AllowlistedDomain>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Specifies the [resource name](https://google.aip.dev/122) of the domain to retrieve.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^allowlistedDomains/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists the domains in the allowlist.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>Lists the domains in the allowlist.</summary>
+        public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.ListAllowlistedDomainsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. Provides an optional filter for list results. Currently, only exact matches on the domain are
+            /// supported, such as "domain = 'google.com'", with no composite conditions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies the requested page size. If unspecified, the service returns at most 5000 domains.
+            /// The maximum value is 5000; values above 5000 coerce to 5000. The limits can change over time.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional. Identifies a token from a previous page of results, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/allowlistedDomains";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
     }
 
@@ -5613,6 +5854,24 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This resource object defines a domain that has been designated as allowlisted.</summary>
+    public class AllowlistedDomain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. Name of the domain that is in the allowlist. e.g. "google.com"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. Resource name of the domain in the allowlist e.g.
+        /// "allowlistedDomains/0184mhaj1smlusv"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource representing the Android specific attributes of a Device.</summary>
     public class AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8553,6 +8812,26 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Returns true if the email address is invitable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInvitableUser")]
         public virtual System.Nullable<bool> IsInvitableUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AllowlistedDomainsService.ListAllowlistedDomains.</summary>
+    public class ListAllowlistedDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Contains the list of domains in the allowlist. There is no defined ordering of domains within a result.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistedDomains")]
+        public virtual System.Collections.Generic.IList<AllowlistedDomain> AllowlistedDomains { get; set; }
+
+        /// <summary>
+        /// Contains the next page token if the result is not exhaustive. If there are no more results, this token is
+        /// empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
