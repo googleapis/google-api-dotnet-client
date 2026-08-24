@@ -6686,7 +6686,9 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>The values removed from the parent consumer policy.</summary>
+        /// <summary>
+        /// Deprecated: This field is no longer populated. Use GetConsumerPolicy to verify the remaining enabled values.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removedValues")]
         public virtual System.Collections.Generic.IList<string> RemovedValues { get; set; }
 
