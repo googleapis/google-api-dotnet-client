@@ -2465,7 +2465,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// Required. The error message. If no `context.reportLocation` is provided, the message must contain a header
         /// (typically consisting of the exception type name and an error message) and an exception stack trace in one
         /// of the supported programming languages and formats. Supported languages are Java, Python, JavaScript, Ruby,
-        /// C#, PHP, and Go. Supported stack trace formats are: * **Java**: Must be the return value of
+        /// C#, PHP, Go, and Rust. Supported stack trace formats are: * **Java**: Must be the return value of
         /// [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).
         /// * **Python**: Must be the return value of
         /// [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc). *
@@ -2476,7 +2476,9 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx). *
         /// **PHP**: Must be prefixed with `"PHP (Notice|Parse error|Fatal error|Warning): "` and contain the result of
         /// [`(string)$exception`](https://php.net/manual/en/exception.tostring.php). * **Go**: Must be the return value
-        /// of [`debug.Stack()`](https://pkg.go.dev/runtime/debug#Stack).
+        /// of [`debug.Stack()`](https://pkg.go.dev/runtime/debug#Stack). * **Rust**: Must contain standard
+        /// [`std::backtrace`](https://doc.rust-lang.org/std/backtrace/index.html) frames. Requires `RUST_BACKTRACE=1`
+        /// and debug symbols enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
