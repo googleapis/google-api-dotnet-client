@@ -65,6 +65,12 @@ namespace Google.Apis.AIPlatformNotebooks.v2
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Agent Platform Workbench Instances data and see the
+            /// email address for your Google Account
+            /// </summary>
+            public static string Notebooks = "https://www.googleapis.com/auth/notebooks";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Notebooks API.</summary>
@@ -75,6 +81,12 @@ namespace Google.Apis.AIPlatformNotebooks.v2
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud Agent Platform Workbench Instances data and see the
+            /// email address for your Google Account
+            /// </summary>
+            public const string Notebooks = "https://www.googleapis.com/auth/notebooks";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -3794,6 +3806,14 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("family")]
         public virtual string Family { get; set; }
+
+        /// <summary>
+        /// Output only. A human-readable description of the image running on the instance (for example, "Debian 11,
+        /// Python 3.10"), derived at read time from the image release configuration (the source of truth). Set to
+        /// "Custom" for unrecognized boot-disk images.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageDescription")]
+        public virtual string ImageDescription { get; set; }
 
         /// <summary>Optional. Use VM image name to find the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
