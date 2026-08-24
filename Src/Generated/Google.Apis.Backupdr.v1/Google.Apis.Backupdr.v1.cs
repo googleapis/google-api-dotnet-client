@@ -9139,6 +9139,10 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeature")]
         public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeature { get; set; }
 
+        /// <summary>Provides options for creating a disk from a source Compute Instance backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceBackupSource")]
+        public virtual RestoreDiskFromInstanceOptions InstanceBackupSource { get; set; }
+
         /// <summary>
         /// Optional. Labels to apply to this disk. These can be modified later using setLabels method. Label values can
         /// be empty.
@@ -11229,6 +11233,24 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Details of the target resource created/modified as part of restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
         public virtual TargetResource TargetResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for creating a disk from a source Compute Instance backup.</summary>
+    public class RestoreDiskFromInstanceOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies that the boot disk should be restored from the instance backup. This field should only be set to
+        /// `true` if selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
+        public virtual System.Nullable<bool> BootDisk { get; set; }
+
+        /// <summary>The device name of the disk to restore from the VM backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDeviceName")]
+        public virtual string SourceDeviceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
