@@ -5707,6 +5707,14 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
         public virtual string DestPath { get; set; }
 
+        /// <summary>
+        /// Optional. True if remote tags should be fetched too (default false). Note: when depth is 1 (default), git
+        /// fetch only retrieves tags pointing to commits within the shallow boundary. Set depth to -1 to fetch all
+        /// historical tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fetchTags")]
+        public virtual System.Nullable<bool> FetchTags { get; set; }
+
         /// <summary>Optional. True if submodules should be fetched too (default false).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurseSubmodules")]
         public virtual System.Nullable<bool> RecurseSubmodules { get; set; }
