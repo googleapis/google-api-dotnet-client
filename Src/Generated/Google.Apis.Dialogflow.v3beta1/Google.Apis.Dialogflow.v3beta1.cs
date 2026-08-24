@@ -20870,6 +20870,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("retryable")]
+        public virtual System.Nullable<bool> Retryable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -23425,6 +23428,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("retryable")]
+        public virtual System.Nullable<bool> Retryable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
