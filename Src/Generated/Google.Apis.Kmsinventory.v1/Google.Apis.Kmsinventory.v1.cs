@@ -1483,9 +1483,10 @@ namespace Google.Apis.Kmsinventory.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Immutable. Field indicating that the key may be wrapped by a trusted key. This field can be set for all key
-        /// purposes except ENCRYPT_DECRYPT, and is only valid for keys with protection level HSM_SINGLE_TENANT. This
-        /// field can only be set at creation or import time via CreateCryptoKeyVersion, or ImportCryptoKeyVersion.
+        /// Optional. Immutable. Field indicating that the key may be wrapped by a trusted key. This field can be set
+        /// for all key purposes except ENCRYPT_DECRYPT, and is only valid for keys with protection level
+        /// HSM_SINGLE_TENANT. This field can only be set at creation or import time via CreateCryptoKeyVersion, or
+        /// ImportCryptoKeyVersion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustedWrappingEnabled")]
         public virtual System.Nullable<bool> TrustedWrappingEnabled { get; set; }
