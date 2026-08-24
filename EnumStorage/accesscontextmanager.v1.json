@@ -17,5 +17,20 @@
     "LEVEL_FORMAT_UNSPECIFIED",
     "AS_DEFINED",
     "CEL"
+  ],
+  "Google.Apis.AccessContextManager.v1.AccessPoliciesResource+ServicePerimetersResource+GetRequest.DeletedPrincipalSyntaxEnum": [
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED",
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED",
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED"
+  ],
+  "Google.Apis.AccessContextManager.v1.AccessPoliciesResource+ServicePerimetersResource+ListRequest.DeletedPrincipalSyntaxEnum": [
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED",
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED",
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED"
+  ],
+  "Google.Apis.AccessContextManager.v1.AccessPoliciesResource+ServicePerimetersResource+PatchRequest.DeletedPrincipalSyntaxEnum": [
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED",
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED",
+    "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED"
   ]
 }

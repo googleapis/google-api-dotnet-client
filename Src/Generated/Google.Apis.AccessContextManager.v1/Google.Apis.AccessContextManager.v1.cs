@@ -1480,6 +1480,37 @@ namespace Google.Apis.AccessContextManager.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. If true, the response will contain the deleted principal syntax for identities that
+                /// support it.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("deletedPrincipalSyntax", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<DeletedPrincipalSyntaxEnum> DeletedPrincipalSyntax { get; set; }
+
+                /// <summary>
+                /// Optional. If true, the response will contain the deleted principal syntax for identities that
+                /// support it.
+                /// </summary>
+                public enum DeletedPrincipalSyntaxEnum
+                {
+                    /// <summary>Deleted principal syntax support was not specified.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Deleted principal syntax is disabled and no identities in the request or response will contain
+                    /// deleted principal syntax.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTDISABLED = 1,
+
+                    /// <summary>
+                    /// The request and response can contain identities with deleted IAM principal syntax.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTENABLED = 2,
+                }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
@@ -1500,6 +1531,14 @@ namespace Google.Apis.AccessContextManager.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accessPolicies/[^/]+/servicePerimeters/[^/]+$",
+                    });
+                    RequestParameters.Add("deletedPrincipalSyntax", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deletedPrincipalSyntax",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1530,6 +1569,37 @@ namespace Google.Apis.AccessContextManager.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. If true, the response will contain the deleted principal syntax for identities that
+                /// support it.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("deletedPrincipalSyntax", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<DeletedPrincipalSyntaxEnum> DeletedPrincipalSyntax { get; set; }
+
+                /// <summary>
+                /// Optional. If true, the response will contain the deleted principal syntax for identities that
+                /// support it.
+                /// </summary>
+                public enum DeletedPrincipalSyntaxEnum
+                {
+                    /// <summary>Deleted principal syntax support was not specified.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Deleted principal syntax is disabled and no identities in the request or response will contain
+                    /// deleted principal syntax.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTDISABLED = 1,
+
+                    /// <summary>
+                    /// The request and response can contain identities with deleted IAM principal syntax.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTENABLED = 2,
+                }
 
                 /// <summary>Number of Service Perimeters to include in the list. Default 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1562,6 +1632,14 @@ namespace Google.Apis.AccessContextManager.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accessPolicies/[^/]+$",
+                    });
+                    RequestParameters.Add("deletedPrincipalSyntax", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deletedPrincipalSyntax",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -1623,6 +1701,37 @@ namespace Google.Apis.AccessContextManager.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. If true, the response will contain the deleted principal syntax for identities that
+                /// support it and the request can contain identities with deleted principal syntax.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("deletedPrincipalSyntax", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<DeletedPrincipalSyntaxEnum> DeletedPrincipalSyntax { get; set; }
+
+                /// <summary>
+                /// Optional. If true, the response will contain the deleted principal syntax for identities that
+                /// support it and the request can contain identities with deleted principal syntax.
+                /// </summary>
+                public enum DeletedPrincipalSyntaxEnum
+                {
+                    /// <summary>Deleted principal syntax support was not specified.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Deleted principal syntax is disabled and no identities in the request or response will contain
+                    /// deleted principal syntax.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTDISABLED = 1,
+
+                    /// <summary>
+                    /// The request and response can contain identities with deleted IAM principal syntax.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED")]
+                    DELETEDPRINCIPALSYNTAXSUPPORTENABLED = 2,
+                }
+
                 /// <summary>Required. Mask to control which fields get updated. Must be non-empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -1653,6 +1762,14 @@ namespace Google.Apis.AccessContextManager.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accessPolicies/[^/]+/servicePerimeters/[^/]+$",
+                    });
+                    RequestParameters.Add("deletedPrincipalSyntax", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deletedPrincipalSyntax",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -3579,7 +3696,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedClientApplication")]
         public virtual Application RestrictedClientApplication { get; set; }
 
-        /// <summary>Optional. The GCP project that is subject to this binding's scope.</summary>
+        /// <summary>Optional. The Google Cloud project that is subject to this binding's scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedProject")]
         public virtual Project RestrictedProject { get; set; }
 
@@ -4506,11 +4623,16 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class Principal : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. IAM federated principal name to assign policies to workforce/workload federated identities. Can
-        /// be principal set or single principal, here are some examples: Single principal:
-        /// principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}
-        /// PrincipalSet:
-        /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*
+        /// Immutable. The IAM principal identifier of the federated workforce or workload to assign the policy to.
+        /// Examples include the following: * Single principal:
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`
+        /// * All workloads in a workload identity pool:
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`
+        /// * All Workforce Pools in a Google Cloud organization:
+        /// `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool`
+        /// Bindings created for all Workforce Pools in a Google Cloud organization support only
+        /// `scoped_access_settings` with the `restricted_project` client scope and active `session_settings`. No other
+        /// configurations are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("federatedPrincipal")]
         public virtual string FederatedPrincipal { get; set; }
@@ -4549,12 +4671,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A GCP project which contains applications and resources that users can access.</summary>
+    /// <summary>A Google Cloud project which contains applications and resources that users can access.</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The GCP project resource name. Format: "projects/{project_number}" (Only the numeric project name variation
-        /// is supported). Example: "projects/1234567890"
+        /// The Google Cloud project resource name. Format: `projects/{project_number}`. Only the project number is
+        /// supported. Example: `projects/1234567890`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4828,10 +4950,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// Optional. The session length. Setting this field to zero allows for sessions that are active indefinitely.
-        /// Also, setting `session_length_enabled` to false disregards session limits, which means that sessions never
-        /// expire. If use_oidc_max_age is true, for OIDC apps, the session length will be the minimum of this field and
-        /// the OIDC max_age param. If this field is set to zero, `session_length_enabled` must be set to false or left
-        /// unset.
+        /// Also, setting `session_length_enabled` to `false` disregards session limits, which means that sessions never
+        /// expire. If `use_oidc_max_age` is `true`, for OIDC apps, the session length will be the minimum of this field
+        /// and the OIDC `max_age` param. If this field is set to zero, `session_length_enabled` must be set to `false`
+        /// or left unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionLength")]
         public virtual object SessionLength { get; set; }
