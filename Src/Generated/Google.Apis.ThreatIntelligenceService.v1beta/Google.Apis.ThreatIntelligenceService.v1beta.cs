@@ -2422,12 +2422,20 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>CustomThreatScenarioConfig represents a user-defined threat scenario configuration.</summary>
     public class CustomThreatScenarioConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The compiled Lucene query string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compiledLuceneQuery")]
+        public virtual string CompiledLuceneQuery { get; set; }
+
         /// <summary>
         /// Required. The condition driving the scenario, stored as a stringified JSON. This is used to query/filter
         /// documents.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentCondition")]
         public virtual string DocumentCondition { get; set; }
+
+        /// <summary>Optional. Legacy metadata associated with this scenario/monitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyMonitorMetadata")]
+        public virtual LegacyMetadata LegacyMonitorMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3118,6 +3126,110 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Legacy metadata associated with this scenario/monitor.</summary>
+    public class LegacyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether aggregation is enabled for alerts from this monitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationEnabled")]
+        public virtual System.Nullable<bool> AggregationEnabled { get; set; }
+
+        /// <summary>Optional. Similarity threshold for aggregation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationSimilarity")]
+        public virtual System.Nullable<double> AggregationSimilarity { get; set; }
+
+        /// <summary>Optional. Version of the condition schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionVersion")]
+        public virtual System.Nullable<int> ConditionVersion { get; set; }
+
+        /// <summary>Optional. User ID who created the monitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
+        public virtual string CreatorUserId { get; set; }
+
+        /// <summary>Optional. Description of the legacy monitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Code indicating why the monitor is disabled (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledCode")]
+        public virtual string DisabledCode { get; set; }
+
+        /// <summary>Optional. Reason why the monitor is disabled (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledReason")]
+        public virtual string DisabledReason { get; set; }
+
+        /// <summary>Optional. Name of the legacy monitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Whether email notifications are enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailNotificationEnabled")]
+        public virtual System.Nullable<bool> EmailNotificationEnabled { get; set; }
+
+        /// <summary>Optional. Whether email notifications are intermediate/immediate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailNotificationImmediate")]
+        public virtual System.Nullable<bool> EmailNotificationImmediate { get; set; }
+
+        /// <summary>Optional. Unique identifier of the legacy monitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacyMonitorId")]
+        public virtual string LegacyMonitorId { get; set; }
+
+        private string _staleTimeRaw;
+
+        private object _staleTime;
+
+        /// <summary>Optional. Time the legacy monitor was considered stale.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staleTime")]
+        public virtual string StaleTimeRaw
+        {
+            get => _staleTimeRaw;
+            set
+            {
+                _staleTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _staleTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StaleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StaleTimeDateTimeOffset instead.")]
+        public virtual object StaleTime
+        {
+            get => _staleTime;
+            set
+            {
+                _staleTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _staleTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StaleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StaleTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StaleTimeRaw);
+            set => StaleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. ID of the template this monitor was created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateId")]
+        public virtual string TemplateId { get; set; }
+
+        /// <summary>Optional. ID of the tenant owning the monitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
+
+        /// <summary>Optional. User ID who last updated the monitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updaterUserId")]
+        public virtual string UpdaterUserId { get; set; }
+
+        /// <summary>Optional. Version of the monitor configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
