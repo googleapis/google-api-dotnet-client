@@ -8447,7 +8447,7 @@ namespace Google.Apis.APIhub.v1.Data
     public class GoogleCloudApihubV1Api : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The api functional requirements associated with the API resource. Carinality is 1 for this
+        /// Optional. The api functional requirements associated with the API resource. Cardinality is 1 for this
         /// attribute. This maps to the following system defined attribute:
         /// `projects/{project}/locations/{location}/attributes/system-api-functional-requirements` attribute. The value
         /// of the attribute should be a proper URI, and in case of Cloud Storage URI, it should point to a Cloud
@@ -8457,8 +8457,8 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual GoogleCloudApihubV1AttributeValues ApiFunctionalRequirements { get; set; }
 
         /// <summary>
-        /// Optional. The api requirement doc associated with the API resource. Carinality is 1 for this attribute. This
-        /// maps to the following system defined attribute:
+        /// Optional. The api requirement doc associated with the API resource. Cardinality is 1 for this attribute.
+        /// This maps to the following system defined attribute:
         /// `projects/{project}/locations/{location}/attributes/system-api-requirements` attribute. The value of the
         /// attribute should be a proper URI, and in case of Cloud Storage URI, it should point to a Cloud Storage
         /// object, not a directory.
@@ -8476,7 +8476,7 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual GoogleCloudApihubV1AttributeValues ApiStyle { get; set; }
 
         /// <summary>
-        /// Optional. The api technical requirements associated with the API resource. Carinality is 1 for this
+        /// Optional. The api technical requirements associated with the API resource. Cardinality is 1 for this
         /// attribute. This maps to the following system defined attribute:
         /// `projects/{project}/locations/{location}/attributes/system-api-technical-requirements` attribute. The value
         /// of the attribute should be a proper URI, and in case of Cloud Storage URI, it should point to a Cloud
