@@ -4478,6 +4478,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     /// </summary>
     public class AlloydbClhErrorsAlloyDbInternalDebugInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The original error message or details before sanitization, used internally for debugging and logging.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalError")]
         public virtual string OriginalError { get; set; }
 
