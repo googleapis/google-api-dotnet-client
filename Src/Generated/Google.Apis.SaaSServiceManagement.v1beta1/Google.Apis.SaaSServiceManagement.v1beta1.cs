@@ -7558,15 +7558,15 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
     public class AppParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Grouping used to construct the name of the AppHub Application. Multiple UnitKinds can specify the same group
-        /// to use the same Application across their respective units. Corresponds to the app_boundary_id in the ADC
-        /// composite ApplicationTemplate. Defaults to UnitKind.name
+        /// Optional. Grouping used to construct the name of the AppHub Application. Multiple UnitKinds can specify the
+        /// same group to use the same Application across their respective units. Corresponds to the app_boundary_id in
+        /// the ADC composite ApplicationTemplate. Defaults to UnitKind.name
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
 
         /// <summary>
-        /// Corresponds to the scope in the ADC composite ApplicationTemplate. Defaults to TYPE_REGIONAL.
+        /// Optional. Corresponds to the scope in the ADC composite ApplicationTemplate. Defaults to TYPE_REGIONAL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual Scope Scope { get; set; }
@@ -7613,8 +7613,8 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual CompositeRef CompositeRef { get; set; }
 
         /// <summary>
-        /// Revision of the component. If the component does not have a revision, this field will be explicitly set to
-        /// the revision of the composite ApplicationTemplate.
+        /// Optional. Revision of the component. If the component does not have a revision, this field will be
+        /// explicitly set to the revision of the composite ApplicationTemplate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
@@ -7631,8 +7631,8 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ApplicationTemplate { get; set; }
 
         /// <summary>
-        /// Revision of the ApplicationTemplate to use. Changes to revision will trigger manual resynchronization. If
-        /// empty, ApplicationTemplate will be ignored.
+        /// Optional. Revision of the ApplicationTemplate to use. Changes to revision will trigger manual
+        /// resynchronization. If empty, ApplicationTemplate will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
@@ -8118,6 +8118,17 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ValueType { get; set; }
     }
 
+    /// <summary>Wrapper for a list of flags.</summary>
+    public class FlagNameList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Flags to be rolled out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flags")]
+        public virtual System.Collections.Generic.IList<string> Flags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A collection of FlagRevisions.</summary>
     public class FlagRelease : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8190,6 +8201,10 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Immutable. Specifies the release consisting of a list of flags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagNamesRelease")]
+        public virtual FlagNameList FlagNamesRelease { get; set; }
 
         /// <summary>
         /// Optional. Immutable. DEPRECATED: Use flag_revisions_release instead. FlagRevisions to be rolled out. Only
@@ -10943,7 +10958,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>AppParams contains the parameters for creating an AppHub Application.</summary>
+        /// <summary>Optional. AppParams contains the parameters for creating an AppHub Application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appParams")]
         public virtual AppParams AppParams { get; set; }
 
