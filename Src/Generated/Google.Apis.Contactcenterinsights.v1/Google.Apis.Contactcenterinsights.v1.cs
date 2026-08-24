@@ -18577,9 +18577,19 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>A Cloud Storage source of conversation data.</summary>
     public class GoogleCloudContactcenterinsightsV1GcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Storage URI that points to a file that contains the conversation audio.</summary>
+        /// <summary>
+        /// Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points to a file that contains the
+        /// conversation audio.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
         public virtual string AudioUri { get; set; }
+
+        /// <summary>
+        /// Immutable. Cloud Storage URIs that point to files that contain the conversation audio. Supports both single
+        /// audio files and multi-leg session recordings (e.g., call transfers, rolling recording buffers).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioUris")]
+        public virtual System.Collections.Generic.IList<string> AudioUris { get; set; }
 
         /// <summary>
         /// Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
@@ -23077,6 +23087,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signedGcsAudioUri")]
         public virtual string SignedGcsAudioUri { get; set; }
 
+        /// <summary>
+        /// Output only. The signed URIs for the audio from the Cloud Storage conversation source when multiple audio
+        /// files exist (e.g. multi-leg conversations).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedGcsAudioUris")]
+        public virtual System.Collections.Generic.IList<string> SignedGcsAudioUris { get; set; }
+
         /// <summary>The signed URI for the audio corresponding to each turn in the conversation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedTurnLevelAudios")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio> SignedTurnLevelAudios { get; set; }
@@ -27017,9 +27034,19 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>A Cloud Storage source of conversation data.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1GcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Storage URI that points to a file that contains the conversation audio.</summary>
+        /// <summary>
+        /// Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points to a file that contains the
+        /// conversation audio.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
         public virtual string AudioUri { get; set; }
+
+        /// <summary>
+        /// Immutable. Cloud Storage URIs that point to files that contain the conversation audio. Supports both single
+        /// audio files and multi-leg session recordings (e.g., call transfers, rolling recording buffers).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioUris")]
+        public virtual System.Collections.Generic.IList<string> AudioUris { get; set; }
 
         /// <summary>
         /// Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
@@ -33361,9 +33388,19 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>A Cloud Storage source of conversation data.</summary>
     public class GoogleCloudContactcenterinsightsV1mainGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Storage URI that points to a file that contains the conversation audio.</summary>
+        /// <summary>
+        /// Immutable. Deprecated: Use `audio_uris` instead. Cloud Storage URI that points to a file that contains the
+        /// conversation audio.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioUri")]
         public virtual string AudioUri { get; set; }
+
+        /// <summary>
+        /// Immutable. Cloud Storage URIs that point to files that contain the conversation audio. Supports both single
+        /// audio files and multi-leg session recordings (e.g., call transfers, rolling recording buffers).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioUris")]
+        public virtual System.Collections.Generic.IList<string> AudioUris { get; set; }
 
         /// <summary>
         /// Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
