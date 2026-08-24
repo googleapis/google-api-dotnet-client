@@ -39,9 +39,9 @@ namespace Google.Apis.Games.v1
             Achievements = new AchievementsResource(this);
             Applications = new ApplicationsResource(this);
             Events = new EventsResource(this);
+            GameStats = new GameStatsResource(this);
             Leaderboards = new LeaderboardsResource(this);
             Metagame = new MetagameResource(this);
-            PlayerGameEvents = new PlayerGameEventsResource(this);
             Players = new PlayersResource(this);
             Recall = new RecallResource(this);
             Revisions = new RevisionsResource(this);
@@ -111,14 +111,14 @@ namespace Google.Apis.Games.v1
         /// <summary>Gets the Events resource.</summary>
         public virtual EventsResource Events { get; }
 
+        /// <summary>Gets the GameStats resource.</summary>
+        public virtual GameStatsResource GameStats { get; }
+
         /// <summary>Gets the Leaderboards resource.</summary>
         public virtual LeaderboardsResource Leaderboards { get; }
 
         /// <summary>Gets the Metagame resource.</summary>
         public virtual MetagameResource Metagame { get; }
-
-        /// <summary>Gets the PlayerGameEvents resource.</summary>
-        public virtual PlayerGameEventsResource PlayerGameEvents { get; }
 
         /// <summary>Gets the Players resource.</summary>
         public virtual PlayersResource Players { get; }
@@ -1460,6 +1460,80 @@ namespace Google.Apis.Games.v1
         }
     }
 
+    /// <summary>The "gameStats" collection of methods.</summary>
+    public class GameStatsResource
+    {
+        private const string Resource = "gameStats";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public GameStatsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Records a batch of player game events for a specific player. This method allows sending multiple events in a
+        /// single request.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="playerId">Required. The player ID of the player that performed the events.</param>
+        public virtual BatchRecordEventsRequest BatchRecordEvents(Google.Apis.Games.v1.Data.BatchRecordEventsRequest body, string playerId)
+        {
+            return new BatchRecordEventsRequest(this.service, body, playerId);
+        }
+
+        /// <summary>
+        /// Records a batch of player game events for a specific player. This method allows sending multiple events in a
+        /// single request.
+        /// </summary>
+        public class BatchRecordEventsRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.BatchRecordEventsResponse>
+        {
+            /// <summary>Constructs a new BatchRecordEvents request.</summary>
+            public BatchRecordEventsRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.BatchRecordEventsRequest body, string playerId) : base(service)
+            {
+                PlayerId = playerId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The player ID of the player that performed the events.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PlayerId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Games.v1.Data.BatchRecordEventsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchRecordEvents";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "games/v1/players/{playerId}/gameStats:batchRecordEvents";
+
+            /// <summary>Initializes BatchRecordEvents parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "playerId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "leaderboards" collection of methods.</summary>
     public class LeaderboardsResource
     {
@@ -1749,80 +1823,6 @@ namespace Google.Apis.Games.v1
                     Name = "pageToken",
                     IsRequired = false,
                     ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-    }
-
-    /// <summary>The "playerGameEvents" collection of methods.</summary>
-    public class PlayerGameEventsResource
-    {
-        private const string Resource = "playerGameEvents";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public PlayerGameEventsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>
-        /// Records a batch of player game events for a specific player. This method allows sending multiple events in a
-        /// single request.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="playerId">Required. The player ID of the player that performed the events.</param>
-        public virtual BatchRecordEventsRequest BatchRecordEvents(Google.Apis.Games.v1.Data.BatchRecordEventsRequest body, string playerId)
-        {
-            return new BatchRecordEventsRequest(this.service, body, playerId);
-        }
-
-        /// <summary>
-        /// Records a batch of player game events for a specific player. This method allows sending multiple events in a
-        /// single request.
-        /// </summary>
-        public class BatchRecordEventsRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.BatchRecordEventsResponse>
-        {
-            /// <summary>Constructs a new BatchRecordEvents request.</summary>
-            public BatchRecordEventsRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.BatchRecordEventsRequest body, string playerId) : base(service)
-            {
-                PlayerId = playerId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The player ID of the player that performed the events.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string PlayerId { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Games.v1.Data.BatchRecordEventsRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "batchRecordEvents";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "games/v1/players/{playerId}/gameEvents:batchRecordEvents";
-
-            /// <summary>Initializes BatchRecordEvents parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "playerId",
-                    IsRequired = true,
-                    ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
