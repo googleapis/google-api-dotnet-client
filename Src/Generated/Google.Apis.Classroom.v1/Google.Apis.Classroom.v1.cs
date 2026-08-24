@@ -4977,7 +4977,7 @@ namespace Google.Apis.Classroom.v1
                 /// does not support empty values is included in the update mask and not set in the `CourseWork` object,
                 /// an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: *
                 /// `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` *
-                /// `submission_modification_mode` * `topic_id` * `grading_period_id`
+                /// `submission_modification_mode` * `topic_id` * `grading_period_id` * `learning_goals`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -6362,7 +6362,7 @@ namespace Google.Apis.Classroom.v1
                 /// can be cleared by specifying it in the update mask and not in the course work material object. If a
                 /// field that does not support empty values is included in the update mask and not set in the course
                 /// work material object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified
-                /// by teachers: * `title` * `description` * `state` * `scheduled_time` * `topic_id`
+                /// by teachers: * `title` * `description` * `state` * `scheduled_time` * `topic_id` * `learning_goals`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
