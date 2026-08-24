@@ -8,6 +8,12 @@
     "1",
     "2"
   ],
+  "Google.Apis.Dataform.v1beta1.ProjectsResource+LocationsResource+RepositoriesResource+WorkspacesResource+FetchBranchesRequest.FilterEnum": [
+    "BRANCH_FILTER_UNSPECIFIED",
+    "LOCAL_ONLY",
+    "REMOTE_ONLY",
+    "ALL"
+  ],
   "Google.Apis.Dataform.v1beta1.ProjectsResource+LocationsResource+RepositoriesResource+WorkspacesResource+QueryDirectoryContentsRequest.ViewEnum": [
     "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED",
     "DIRECTORY_CONTENTS_VIEW_BASIC",

@@ -2758,6 +2758,65 @@ namespace Google.Apis.Dataform.v1beta1
                         this.service = service;
                     }
 
+                    /// <summary>Checkout a branch in a Workspace.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The workspace resource name. Format:
+                    /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                    /// </param>
+                    public virtual CheckoutRequest Checkout(Google.Apis.Dataform.v1beta1.Data.CheckoutWorkspaceBranchRequest body, string name)
+                    {
+                        return new CheckoutRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Checkout a branch in a Workspace.</summary>
+                    public class CheckoutRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Checkout request.</summary>
+                        public CheckoutRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.CheckoutWorkspaceBranchRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The workspace resource name. Format:
+                        /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataform.v1beta1.Data.CheckoutWorkspaceBranchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "checkout";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:checkout";
+
+                        /// <summary>Initializes Checkout parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/workspaces/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Applies a Git commit for uncommitted files in a Workspace.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The workspace's name.</param>
@@ -2916,6 +2975,232 @@ namespace Google.Apis.Dataform.v1beta1
                         public override string RestPath => "v1beta1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/workspaces/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a branch in a Workspace.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The workspace resource name. Format:
+                    /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                    /// </param>
+                    public virtual DeleteBranchRequest DeleteBranch(Google.Apis.Dataform.v1beta1.Data.DeleteBranchRequest body, string name)
+                    {
+                        return new DeleteBranchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Deletes a branch in a Workspace.</summary>
+                    public class DeleteBranchRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.DeleteBranchResponse>
+                    {
+                        /// <summary>Constructs a new DeleteBranch request.</summary>
+                        public DeleteBranchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.DeleteBranchRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The workspace resource name. Format:
+                        /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataform.v1beta1.Data.DeleteBranchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deleteBranch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:deleteBranch";
+
+                        /// <summary>Initializes DeleteBranch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/workspaces/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Fetches branches in a Workspace.</summary>
+                    /// <param name="name">
+                    /// Required. The workspace resource name. Format:
+                    /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                    /// </param>
+                    public virtual FetchBranchesRequest FetchBranches(string name)
+                    {
+                        return new FetchBranchesRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetches branches in a Workspace.</summary>
+                    public class FetchBranchesRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.FetchWorkspaceBranchesResponse>
+                    {
+                        /// <summary>Constructs a new FetchBranches request.</summary>
+                        public FetchBranchesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The workspace resource name. Format:
+                        /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Filter for the returned list.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<FilterEnum> Filter { get; set; }
+
+                        /// <summary>Optional. Filter for the returned list.</summary>
+                        public enum FilterEnum
+                        {
+                            /// <summary>Default value. This value is unused.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BRANCH_FILTER_UNSPECIFIED")]
+                            BRANCHFILTERUNSPECIFIED = 0,
+
+                            /// <summary>Returns local branches.</summary>
+                            [Google.Apis.Util.StringValueAttribute("LOCAL_ONLY")]
+                            LOCALONLY = 1,
+
+                            /// <summary>Returns remote branches.</summary>
+                            [Google.Apis.Util.StringValueAttribute("REMOTE_ONLY")]
+                            REMOTEONLY = 2,
+
+                            /// <summary>Returns all branches.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ALL")]
+                            ALL = 3,
+                        }
+
+                        /// <summary>
+                        /// Optional. Maximum number of branches to return. The server may return fewer items than
+                        /// requested. If unspecified, the server will pick an appropriate default. The maximum value is
+                        /// 1000; values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Page token received from a previous `FetchWorkspaceBranches` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `FetchWorkspaceBranches`, with the exception of `page_size`, must match the call that
+                        /// provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchBranches";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:fetchBranches";
+
+                        /// <summary>Initializes FetchBranches parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/workspaces/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Fetches the current branch of a Workspace.</summary>
+                    /// <param name="name">
+                    /// Required. The workspace resource name. Format:
+                    /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                    /// </param>
+                    public virtual FetchCurrentBranchRequest FetchCurrentBranch(string name)
+                    {
+                        return new FetchCurrentBranchRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetches the current branch of a Workspace.</summary>
+                    public class FetchCurrentBranchRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.FetchCurrentWorkspaceBranchResponse>
+                    {
+                        /// <summary>Constructs a new FetchCurrentBranch request.</summary>
+                        public FetchCurrentBranchRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The workspace resource name. Format:
+                        /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchCurrentBranch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:fetchCurrentBranch";
+
+                        /// <summary>Initializes FetchCurrentBranch parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -4169,6 +4454,65 @@ namespace Google.Apis.Dataform.v1beta1
                             RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/workspaces/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Syncs the refs of a Workspace.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The workspace resource name. Format:
+                    /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                    /// </param>
+                    public virtual SyncWorkspaceRefsRequest SyncWorkspaceRefs(Google.Apis.Dataform.v1beta1.Data.SyncWorkspaceRefsRequest body, string name)
+                    {
+                        return new SyncWorkspaceRefsRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Syncs the refs of a Workspace.</summary>
+                    public class SyncWorkspaceRefsRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.SyncWorkspaceRefsResponse>
+                    {
+                        /// <summary>Constructs a new SyncWorkspaceRefs request.</summary>
+                        public SyncWorkspaceRefsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.SyncWorkspaceRefsRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The workspace resource name. Format:
+                        /// projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataform.v1beta1.Data.SyncWorkspaceRefsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "syncWorkspaceRefs";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:syncWorkspaceRefs";
+
+                        /// <summary>Initializes SyncWorkspaceRefs parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -6799,6 +7143,21 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains metadata about a branch.</summary>
+    public class BranchMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The branch name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
+        public virtual string BranchName { get; set; }
+
+        /// <summary>The last commit on the branch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastCommit")]
+        public virtual CommitLogEntry LastCommit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6816,6 +7175,35 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>`CancelWorkflowInvocation` response message.</summary>
     public class CancelWorkflowInvocationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`CheckoutWorkspaceBranch` request message.</summary>
+    public class CheckoutWorkspaceBranchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the branch in the Git repository to which the workspace should be checked out.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true and the branch does not exist, it will be created. Otherwise, an error will be
+        /// thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createIfNotExists")]
+        public virtual System.Nullable<bool> CreateIfNotExists { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the branch in the Git repository from which the new branch should be created. If left
+        /// unset, the workspace's current branch name will be used. Accepts only branch names from
+        /// FetchWorkspaceBranches response, and can only be set if `create_if_not_exists` is true. Oherwise, an error
+        /// will be thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBranch")]
+        public virtual string SourceBranch { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7365,6 +7753,31 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`DeleteBranch` request message.</summary>
+    public class DeleteBranchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the branch in the Git repository to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, any non-pushed commits on the branch will be deleted. Upstream branch name will be
+        /// the same as the branch to delete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`DeleteBranch` response message.</summary>
+    public class DeleteBranchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the delete file operation.</summary>
     public class DeleteFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7524,6 +7937,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for `FetchCurrentWorkspaceBranch` method.</summary>
+    public class FetchCurrentWorkspaceBranchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the current branch for the workspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
+        public virtual string BranchName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`FetchFileDiff` response message.</summary>
     public class FetchFileDiffResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7581,6 +8005,24 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>A list of commit logs, ordered by 'git log' default order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commits")]
         public virtual System.Collections.Generic.IList<CommitLogEntry> Commits { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `FetchWorkspaceBranches` method.</summary>
+    public class FetchWorkspaceBranchesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The branches in the workspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branches")]
+        public virtual System.Collections.Generic.IList<BranchMetadata> Branches { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
@@ -9666,6 +10108,34 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`SyncWorkspaceRefs` request message.</summary>
+    public class SyncWorkspaceRefsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Can be used to deepen the commit history of shallow clones. Git documentation:
+        /// https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---deependepth
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deepen")]
+        public virtual System.Nullable<int> Deepen { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the branch in the Git remote to which the refs should be fetched for. If left unset,
+        /// all remote branches will be fetched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteBranchName")]
+        public virtual string RemoteBranchName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`SyncWorkspaceRefs` response message.</summary>
+    public class SyncWorkspaceRefsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a table update trigger configuration.</summary>
     public class TableUpdateTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10355,11 +10825,27 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual DataEncryptionState DataEncryptionState { get; set; }
 
         /// <summary>
+        /// Optional. Input only. Immutable. The maximum depth of the Git repository to checkout for this workspace. If
+        /// defined and greater than 0, the Git repository will be created as a shallow clone with the given depth,
+        /// otherwise a full clone will be performed. This field is available only for GitHub, Gitlab and 1p
+        /// repositories with enabled branch management.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("depth")]
+        public virtual System.Nullable<int> Depth { get; set; }
+
+        /// <summary>
         /// Optional. If set to true, workspaces will not be moved if its linked Repository is moved. Instead, it will
         /// be deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableMoves")]
         public virtual System.Nullable<bool> DisableMoves { get; set; }
+
+        /// <summary>
+        /// Immutable. Controls the enablement of branch checkout for the workspace. When set to True, the workspace
+        /// will be allowed to checkout branches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableBranchManagement")]
+        public virtual System.Nullable<bool> EnableBranchManagement { get; set; }
 
         /// <summary>
         /// Output only. All the metadata information that is used internally to serve the resource. For example:
@@ -10373,11 +10859,25 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. Input only. Immutable. The name of the default upstream branch for all pull/push operations in the
+        /// remote repository for this workspace. If empty, the HEAD branch from repository will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalBranch")]
+        public virtual string OriginalBranch { get; set; }
+
+        /// <summary>
         /// Output only. Metadata indicating whether this resource is user-scoped. For `Workspace` resources, the
         /// `user_scoped` field is always `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateResourceMetadata")]
         public virtual PrivateResourceMetadata PrivateResourceMetadata { get; set; }
+
+        /// <summary>
+        /// Output only. If set to true, the workspace was created as a shallow clone. Will be set to true if the depth
+        /// field is set to a value greater than 0, otherwise it will be set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shallow")]
+        public virtual System.Nullable<bool> Shallow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
