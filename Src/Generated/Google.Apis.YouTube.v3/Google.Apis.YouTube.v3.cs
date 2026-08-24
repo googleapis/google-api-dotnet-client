@@ -16762,6 +16762,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
         public virtual Thumbnail Default__ { get; set; }
 
+        /// <summary>The full high definition (1080p) quality image for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhd")]
+        public virtual Thumbnail Fhd { get; set; }
+
         /// <summary>The high quality image for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("high")]
         public virtual Thumbnail High { get; set; }
@@ -16774,9 +16778,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual Thumbnail Medium { get; set; }
 
+        /// <summary>The quad high definition (1440p / 2K) quality image for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qhd")]
+        public virtual Thumbnail Qhd { get; set; }
+
         /// <summary>The standard quality image for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standard")]
         public virtual Thumbnail Standard { get; set; }
+
+        /// <summary>The ultra-high resolution (4K) quality image for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uhd")]
+        public virtual Thumbnail Uhd { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
