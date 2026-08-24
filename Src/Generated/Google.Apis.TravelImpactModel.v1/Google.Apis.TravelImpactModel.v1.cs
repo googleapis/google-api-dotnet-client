@@ -793,11 +793,18 @@ namespace Google.Apis.TravelImpactModel.v1.Data
 
     /// <summary>
     /// Information about the provenance of the data used to calculate emissions estimates, including contributing
-    /// factors and their data sources.
+    /// factors and their data sources. In `provenance_entries`, `provenance_entry_type` acts as the "key" identifying
+    /// the contributing factor, and there is always only one entry per entry type. The remaining fields in each entry
+    /// describe that specific entry type and may or may not be populated depending on the contributing factor and
+    /// available data.
     /// </summary>
     public class EmissionsProvenance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. All contributing factors used to calculate emissions.</summary>
+        /// <summary>
+        /// Output only. All contributing factors used to calculate emissions. Each entry type (`provenance_entry_type`)
+        /// acts as a "key" identifying the factor, with always only one entry per entry type. The remaining fields
+        /// describe that specific factor and may or may not be populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenanceEntries")]
         public virtual System.Collections.Generic.IList<EmissionsProvenanceEntry> ProvenanceEntries { get; set; }
 
@@ -805,7 +812,11 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about a single contributing factor in emissions calculations.</summary>
+    /// <summary>
+    /// Details about a single contributing factor in emissions calculations. Each entry represents a single factor
+    /// where `provenance_entry_type` acts as the key identifying the factor, and the other fields describe it and may
+    /// or may not be populated.
+    /// </summary>
     public class EmissionsProvenanceEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -851,7 +862,10 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loadFactorsT100Strategy")]
         public virtual string LoadFactorsT100Strategy { get; set; }
 
-        /// <summary>Output only. The type of the provenance entry.</summary>
+        /// <summary>
+        /// Output only. The type of the provenance entry. Acts as the "key" identifying the contributing factor; the
+        /// remaining fields in this message describe it and may or may not be populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenanceEntryType")]
         public virtual string ProvenanceEntryType { get; set; }
 
