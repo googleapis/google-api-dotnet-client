@@ -2204,11 +2204,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ownerEmails")]
         public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; }
 
-        /// <summary>
-        /// Input only. If set to true, welcome email will not be sent to the customer. It is recommended to skip the
-        /// welcome email if devices will be claimed with additional DEVICE_PROTECTION service, as the customer will
-        /// receive separate emails at device claim time. This field is ignored if this is not a Zero-touch customer.
-        /// </summary>
+        /// <summary>Input only. Deprecated: This field is no longer supported and is ignored by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipWelcomeEmail")]
         public virtual System.Nullable<bool> SkipWelcomeEmail { get; set; }
 
