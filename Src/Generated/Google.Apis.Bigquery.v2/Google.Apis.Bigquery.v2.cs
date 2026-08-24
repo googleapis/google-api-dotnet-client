@@ -7922,8 +7922,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual GenAiErrorStats ErrorStats { get; set; }
 
         /// <summary>
-        /// Function level stats for GenAi Functions. See
-        /// https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
+        /// Function level stats for GenAI Functions. For more information, see [Generative AI
+        /// overview](https://docs.cloud.google.com/bigquery/docs/generative-ai-overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionStats")]
         public virtual System.Collections.Generic.IList<GenAiFunctionStats> FunctionStats { get; set; }
