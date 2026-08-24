@@ -392,18 +392,26 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
-        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project or folder.</summary>
+        /// <summary>
+        /// Returns the effective Cloud KMS Autokey configuration for a given project or folder. Note on permissions: -
+        /// If called on a project (`projects/{project}`), requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If
+        /// called on a folder (`folders/{folder}`), requires `cloudkms.folders.showEffectiveAutokeyConfig`.
+        /// </summary>
         /// <param name="parent">
         /// Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for.
-        /// This may be helpful for interrogating the effect of nested folder configurations on a given resource
-        /// project. Format: * projects/{project} * folders/{folder}
+        /// This may be helpful for evaluating the effect of nested folder configurations on a given resource project.
+        /// Format: * projects/{project} * folders/{folder}
         /// </param>
         public virtual ShowEffectiveAutokeyConfigRequest ShowEffectiveAutokeyConfig(string parent)
         {
             return new ShowEffectiveAutokeyConfigRequest(this.service, parent);
         }
 
-        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project or folder.</summary>
+        /// <summary>
+        /// Returns the effective Cloud KMS Autokey configuration for a given project or folder. Note on permissions: -
+        /// If called on a project (`projects/{project}`), requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If
+        /// called on a folder (`folders/{folder}`), requires `cloudkms.folders.showEffectiveAutokeyConfig`.
+        /// </summary>
         public class ShowEffectiveAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ShowEffectiveAutokeyConfigResponse>
         {
             /// <summary>Constructs a new ShowEffectiveAutokeyConfig request.</summary>
@@ -415,8 +423,8 @@ namespace Google.Apis.CloudKMS.v1
 
             /// <summary>
             /// Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration
-            /// for. This may be helpful for interrogating the effect of nested folder configurations on a given
-            /// resource project. Format: * projects/{project} * folders/{folder}
+            /// for. This may be helpful for evaluating the effect of nested folder configurations on a given resource
+            /// project. Format: * projects/{project} * folders/{folder}
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -6387,18 +6395,26 @@ namespace Google.Apis.CloudKMS.v1
             }
         }
 
-        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project or folder.</summary>
+        /// <summary>
+        /// Returns the effective Cloud KMS Autokey configuration for a given project or folder. Note on permissions: -
+        /// If called on a project (`projects/{project}`), requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If
+        /// called on a folder (`folders/{folder}`), requires `cloudkms.folders.showEffectiveAutokeyConfig`.
+        /// </summary>
         /// <param name="parent">
         /// Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for.
-        /// This may be helpful for interrogating the effect of nested folder configurations on a given resource
-        /// project. Format: * projects/{project} * folders/{folder}
+        /// This may be helpful for evaluating the effect of nested folder configurations on a given resource project.
+        /// Format: * projects/{project} * folders/{folder}
         /// </param>
         public virtual ShowEffectiveAutokeyConfigRequest ShowEffectiveAutokeyConfig(string parent)
         {
             return new ShowEffectiveAutokeyConfigRequest(this.service, parent);
         }
 
-        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project or folder.</summary>
+        /// <summary>
+        /// Returns the effective Cloud KMS Autokey configuration for a given project or folder. Note on permissions: -
+        /// If called on a project (`projects/{project}`), requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If
+        /// called on a folder (`folders/{folder}`), requires `cloudkms.folders.showEffectiveAutokeyConfig`.
+        /// </summary>
         public class ShowEffectiveAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ShowEffectiveAutokeyConfigResponse>
         {
             /// <summary>Constructs a new ShowEffectiveAutokeyConfig request.</summary>
@@ -6410,8 +6426,8 @@ namespace Google.Apis.CloudKMS.v1
 
             /// <summary>
             /// Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration
-            /// for. This may be helpful for interrogating the effect of nested folder configurations on a given
-            /// resource project. Format: * projects/{project} * folders/{folder}
+            /// for. This may be helpful for evaluating the effect of nested folder configurations on a given resource
+            /// project. Format: * projects/{project} * folders/{folder}
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -6964,7 +6980,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cloud KMS Autokey configuration for a folder.</summary>
+    /// <summary>Cloud KMS Autokey configuration for a project or folder.</summary>
     public class AutokeyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8281,7 +8297,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>
         /// Optional. The resource name of the backend environment where the key material of CryptoKeyVersions is
-        /// associated with. Setting this field overrides the CryptoKeyBackend. This field may be set when
+        /// associated with. Setting this field overrides the crypto_key_backend. This field may be set when
         /// CryptoKeyVersions is set to EXTERNAL_VPC. Format: `projects/*/locations/*/ekmConnections/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ekmConnectionBackendOverride")]
@@ -10072,7 +10088,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ShowEffectiveAutokeyConfig.</summary>
+    /// <summary>Response message for ShowEffectiveAutokeyConfig</summary>
     public class ShowEffectiveAutokeyConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the key project configured in the ancestry of the project or folder.</summary>
