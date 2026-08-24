@@ -47227,6 +47227,10 @@ namespace Google.Apis.SA360.v23.Data
         [Newtonsoft.Json.JsonPropertyAttribute("campaignDraftOperation")]
         public virtual GoogleAdsSearchads360V23ServicesCampaignDraftOperation CampaignDraftOperation { get; set; }
 
+        /// <summary>A campaign goal config mutate operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignGoalConfigOperation")]
+        public virtual GoogleAdsSearchads360V23ServicesCampaignGoalConfigOperation CampaignGoalConfigOperation { get; set; }
+
         /// <summary>A campaign group mutate operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignGroupOperation")]
         public virtual GoogleAdsSearchads360V23ServicesCampaignGroupOperation CampaignGroupOperation { get; set; }
@@ -47485,6 +47489,10 @@ namespace Google.Apis.SA360.v23.Data
         /// <summary>The result for the campaign draft mutate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignDraftResult")]
         public virtual GoogleAdsSearchads360V23ServicesMutateCampaignDraftResult CampaignDraftResult { get; set; }
+
+        /// <summary>The result for the campaign goal config mutate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignGoalConfigResult")]
+        public virtual GoogleAdsSearchads360V23ServicesMutateCampaignGoalConfigResult CampaignGoalConfigResult { get; set; }
 
         /// <summary>The result for the campaign group mutate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignGroupResult")]
