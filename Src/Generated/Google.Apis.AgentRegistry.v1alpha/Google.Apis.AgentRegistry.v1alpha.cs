@@ -2771,7 +2771,7 @@ namespace Google.Apis.AgentRegistry.v1alpha
 
                     /// <summary>
                     /// Required. Custom, user-defined unique container identifier. Must be unique within the parent
-                    /// project and location. This value should be 4-63 characters, and valid characters are `/a-z-/`.
+                    /// project and location. This value should be 4-64 characters, and valid characters are `/a-z-/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("skillId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SkillId { get; set; }
@@ -2908,6 +2908,7 @@ namespace Google.Apis.AgentRegistry.v1alpha
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
+                        MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
                         InitParameters();
                     }
 
@@ -2936,6 +2937,99 @@ namespace Google.Apis.AgentRegistry.v1alpha
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/skills/[^/]+$",
                         });
+                    }
+
+                    /// <summary>Gets the media downloader.</summary>
+                    public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+                    /// <summary>
+                    /// <para>Synchronously download the media into the given stream.</para>
+                    /// <para>
+                    /// Warning: This method hides download errors; use
+                    /// <see cref="DownloadWithStatus(System.IO.Stream)"/> instead.
+                    /// </para>
+                    /// </summary>
+                    /// <remarks>
+                    /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress
+                    /// event handlers and other configuration may be performed using that property prior to calling
+                    /// this method.
+                    /// </remarks>
+                    public virtual void Download(System.IO.Stream stream)
+                    {
+                        var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                        mediaDownloader.Range = null;
+                        mediaDownloader.Download(this.GenerateRequestUri(), stream);
+                    }
+
+                    /// <summary>Synchronously download the media into the given stream.</summary>
+                    /// <remarks>
+                    /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress
+                    /// event handlers and other configuration may be performed using that property prior to calling
+                    /// this method.
+                    /// </remarks>
+                    /// <returns>
+                    /// The final status of the download; including whether the download succeeded or failed.
+                    /// </returns>
+                    public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+                    {
+                        var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                        mediaDownloader.Range = null;
+                        return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+                    }
+
+                    /// <summary>Asynchronously download the media into the given stream.</summary>
+                    /// <remarks>
+                    /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress
+                    /// event handlers and other configuration may be performed using that property prior to calling
+                    /// this method.
+                    /// </remarks>
+                    public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+                    {
+                        var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                        mediaDownloader.Range = null;
+                        return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+                    }
+
+                    /// <summary>Asynchronously download the media into the given stream.</summary>
+                    /// <remarks>
+                    /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress
+                    /// event handlers and other configuration may be performed using that property prior to calling
+                    /// this method.
+                    /// </remarks>
+                    public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                        System.Threading.CancellationToken cancellationToken)
+                    {
+                        var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                        mediaDownloader.Range = null;
+                        return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+                    }
+
+                    /// <summary>Synchronously download a range of the media into the given stream.</summary>
+                    /// <remarks>
+                    /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress
+                    /// event handlers and other configuration may be performed using that property prior to calling
+                    /// this method.
+                    /// </remarks>
+                    public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+                    {
+                        var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                        mediaDownloader.Range = range;
+                        return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+                    }
+
+                    /// <summary>Asynchronously download a range of the media into the given stream.</summary>
+                    /// <remarks>
+                    /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress
+                    /// event handlers and other configuration may be performed using that property prior to calling
+                    /// this method.
+                    /// </remarks>
+                    public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+                        System.Net.Http.Headers.RangeHeaderValue range,
+                        System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+                    {
+                        var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                        mediaDownloader.Range = range;
+                        return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
                     }
                 }
 
