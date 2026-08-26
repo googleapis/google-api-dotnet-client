@@ -1510,47 +1510,46 @@ namespace Google.Apis.HomeGraphService.v1.Data
             set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        private string _providerVersionTimeRaw;
+        private string _providerUpdateTimeRaw;
 
-        private object _providerVersionTime;
+        private object _providerUpdateTime;
 
         /// <summary>
-        /// Optional in write requests (e.g. ReportStateAndNotification). If set, represents the provider version
-        /// timestamp of the existing trait in the database. The server will perform optimistic locking validation if
-        /// this field is present and the experiment is enabled. It will not be persisted to the database.
+        /// The custom timestamp supplied by the provider during a ReportStateAndNotification update (if provided). This
+        /// field is returned as part of the `QueryResponse`.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("providerVersionTime")]
-        public virtual string ProviderVersionTimeRaw
+        [Newtonsoft.Json.JsonPropertyAttribute("providerUpdateTime")]
+        public virtual string ProviderUpdateTimeRaw
         {
-            get => _providerVersionTimeRaw;
+            get => _providerUpdateTimeRaw;
             set
             {
-                _providerVersionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _providerVersionTimeRaw = value;
+                _providerUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _providerUpdateTimeRaw = value;
             }
         }
 
-        /// <summary><seealso cref="object"/> representation of <see cref="ProviderVersionTimeRaw"/>.</summary>
+        /// <summary><seealso cref="object"/> representation of <see cref="ProviderUpdateTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ProviderVersionTimeDateTimeOffset instead.")]
-        public virtual object ProviderVersionTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ProviderUpdateTimeDateTimeOffset instead.")]
+        public virtual object ProviderUpdateTime
         {
-            get => _providerVersionTime;
+            get => _providerUpdateTime;
             set
             {
-                _providerVersionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _providerVersionTime = value;
+                _providerUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _providerUpdateTime = value;
             }
         }
 
         /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ProviderVersionTimeRaw"/>.
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ProviderUpdateTimeRaw"/>.
         /// </summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ProviderVersionTimeDateTimeOffset
+        public virtual System.DateTimeOffset? ProviderUpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProviderVersionTimeRaw);
-            set => ProviderVersionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProviderUpdateTimeRaw);
+            set => ProviderUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The Provider Home API trait payload.</summary>
