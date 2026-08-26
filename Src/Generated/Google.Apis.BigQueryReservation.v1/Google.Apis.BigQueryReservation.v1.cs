@@ -2833,6 +2833,13 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string Assignee { get; set; }
 
         /// <summary>
+        /// Optional. Common Expression Language (CEL) condition that defines the matching criteria for this assignment.
+        /// The condition must resolve to a boolean value. Supported variables will be added later.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; }
+
+        /// <summary>
         /// Optional. Deprecated: "Gemini in BigQuery" is now available by default for all BigQuery editions and should
         /// not be explicitly set. Controls if "Gemini in BigQuery"
         /// (https://cloud.google.com/gemini/docs/bigquery/overview) features should be enabled for this reservation
@@ -2852,6 +2859,15 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the priority precedence for this assignment. Used to resolve ambiguity when multiple
+        /// assignments match a single job. Higher numerical values represent higher priority (e.g., 20 is higher than
+        /// 10). If unspecified, it defaults to 0. Multiple assignments can share the same precedence, but it is
+        /// recommended to use unique precedence values for assignments within the same assignee scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precedence")]
+        public virtual System.Nullable<long> Precedence { get; set; }
 
         /// <summary>
         /// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will
@@ -3879,6 +3895,43 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     /// <summary>A reservation group is a container for reservations.</summary>
     public class ReservationGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
+        /// <summary>Output only. Creation time of the reservation group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Identifier. The resource name of the reservation group, e.g.,
         /// `projects/*/locations/*/reservationGroups/team1-prod`. The reservation_group_id must only contain lower case
@@ -3895,6 +3948,47 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentGroup")]
         public virtual string ParentGroup { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. Last update time of the reservation group via a user operation. This timestamp is updated only
+        /// when an update operation explicitly targets this reservation group directly. It is not updated when parent
+        /// or child groups are created, updated, or deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
