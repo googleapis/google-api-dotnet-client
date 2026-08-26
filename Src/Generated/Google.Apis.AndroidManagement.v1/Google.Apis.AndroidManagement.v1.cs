@@ -9295,8 +9295,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class WipeAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether the factory-reset protection data is preserved on the device. This setting doesn’t apply to work
-        /// profiles.
+        /// Whether the factory-reset protection data is preserved on the device. This setting applies to fully managed
+        /// devices and work profiles on company-owned devices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveFrp")]
         public virtual System.Nullable<bool> PreserveFrp { get; set; }
