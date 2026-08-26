@@ -4024,7 +4024,15 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A support event subscription.</summary>
+    /// <summary>
+    /// A support event subscription. You can also manage support event subscriptions using other tools: * [`gcloud
+    /// support support-event-subscriptions`](/sdk/gcloud/reference/support/support-event-subscriptions) (or [`gcloud
+    /// beta`](/sdk/gcloud/reference/beta/support/support-event-subscriptions) for beta) * [Terraform
+    /// `google_cloud_support_support_event_subscription`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_support_support_event_subscription)
+    /// (or [google-beta
+    /// provider](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/cloud_support_support_event_subscription)
+    /// for beta)
+    /// </summary>
     public class SupportEventSubscription : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
