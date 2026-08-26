@@ -1348,14 +1348,6 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emailOptIn")]
         public virtual System.Nullable<bool> EmailOptIn { get; set; }
 
-        /// <summary>Optional. The name of the person who accepted the TOS.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signer")]
-        public virtual string Signer { get; set; }
-
-        /// <summary>Optional. The job title or role of the signer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signerTitle")]
-        public virtual string SignerTitle { get; set; }
-
         /// <summary>Required. Whether the user has accepted the Terms of Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAccepted")]
         public virtual System.Nullable<bool> UserAccepted { get; set; }
