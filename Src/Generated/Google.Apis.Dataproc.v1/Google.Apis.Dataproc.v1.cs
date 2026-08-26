@@ -13861,7 +13861,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The status of a cluster and its instances.</summary>
     public class ClusterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Output only. Details of cluster's state.</summary>
+        /// <summary>Optional. Details of cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; }
 
@@ -16091,9 +16091,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Dataproc job status.</summary>
     public class JobStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Output only. Job state details, such as an error description if the state is ERROR.
-        /// </summary>
+        /// <summary>Optional. Job state details, such as an error description if the state is ERROR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; }
 
@@ -16780,7 +16778,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the metric
         /// course (for the SPARK metric source (any Spark metric
         /// (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the
-        /// following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples:
+        /// following format:METRIC_SOURCE:INSTANCE :GROUP:METRIC Use camelcase as appropriate.Examples:
         /// yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs
         /// sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used
         /// Notes: Only the specified overridden metrics are collected for the metric source. For example, if one or
