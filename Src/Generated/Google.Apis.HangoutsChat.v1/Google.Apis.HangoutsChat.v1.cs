@@ -199,6 +199,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Create new conversations and spaces in Google Chat</summary>
             public static string ChatSpacesCreate = "https://www.googleapis.com/auth/chat.spaces.create";
 
+            /// <summary>See, add, and remove pins in your Google Chat spaces</summary>
+            public static string ChatSpacesPins = "https://www.googleapis.com/auth/chat.spaces.pins";
+
+            /// <summary>See pins in your Google Chat spaces</summary>
+            public static string ChatSpacesPinsReadonly = "https://www.googleapis.com/auth/chat.spaces.pins.readonly";
+
             /// <summary>View chat and spaces in Google Chat</summary>
             public static string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
 
@@ -365,6 +371,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>Create new conversations and spaces in Google Chat</summary>
             public const string ChatSpacesCreate = "https://www.googleapis.com/auth/chat.spaces.create";
+
+            /// <summary>See, add, and remove pins in your Google Chat spaces</summary>
+            public const string ChatSpacesPins = "https://www.googleapis.com/auth/chat.spaces.pins";
+
+            /// <summary>See pins in your Google Chat spaces</summary>
+            public const string ChatSpacesPinsReadonly = "https://www.googleapis.com/auth/chat.spaces.pins.readonly";
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public const string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
@@ -1302,6 +1314,7 @@ namespace Google.Apis.HangoutsChat.v1
         {
             this.service = service;
             Members = new MembersResource(service);
+            MessagePins = new MessagePinsResource(service);
             Messages = new MessagesResource(service);
             SpaceEvents = new SpaceEventsResource(service);
         }
@@ -1993,6 +2006,259 @@ namespace Google.Apis.HangoutsChat.v1
                     RequestParameters.Add("useAdminAccess", new Google.Apis.Discovery.Parameter
                     {
                         Name = "useAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the MessagePins resource.</summary>
+        public virtual MessagePinsResource MessagePins { get; }
+
+        /// <summary>The "messagePins" collection of methods.</summary>
+        public class MessagePinsResource
+        {
+            private const string Resource = "messagePins";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MessagePinsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a message pin. Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
+            /// of the following [authorization
+            /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.spaces.pins` - `https://www.googleapis.com/auth/chat.spaces`
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent space in which to create the message pin. Format: spaces/{space}
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.MessagePin body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a message pin. Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
+            /// of the following [authorization
+            /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.spaces.pins` - `https://www.googleapis.com/auth/chat.spaces`
+            /// </summary>
+            public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.MessagePin>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.MessagePin body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent space in which to create the message pin. Format: spaces/{space}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.MessagePin Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/messagePins";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a message pin. Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
+            /// of the following [authorization
+            /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.spaces.pins` - `https://www.googleapis.com/auth/chat.spaces`
+            /// </summary>
+            /// <param name="name">
+            /// Required. The resource name of the message pin to remove. Format:
+            /// spaces/{space}/messagePins/{message_pin}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Deletes a message pin. Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
+            /// of the following [authorization
+            /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.spaces.pins` - `https://www.googleapis.com/auth/chat.spaces`
+            /// </summary>
+            public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the message pin to remove. Format:
+                /// spaces/{space}/messagePins/{message_pin}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/messagePins/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists message pins in a space. Users can pin important messages in spaces for easy access. For more
+            /// information, see [Pin or unpin a conversation in Google
+            /// Chat](https://support.google.com/chat/answer/15622437). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
+            /// of the following [authorization
+            /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.spaces.pins.readonly` -
+            /// `https://www.googleapis.com/auth/chat.spaces.pins` -
+            /// `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces`
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The parent space which owns the collection of pinned items Format: `spaces/{space}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists message pins in a space. Users can pin important messages in spaces for easy access. For more
+            /// information, see [Pin or unpin a conversation in Google
+            /// Chat](https://support.google.com/chat/answer/15622437). Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one
+            /// of the following [authorization
+            /// scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.spaces.pins.readonly` -
+            /// `https://www.googleapis.com/auth/chat.spaces.pins` -
+            /// `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces`
+            /// </summary>
+            public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMessagePinsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent space which owns the collection of pinned items Format: `spaces/{space}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of message pins returned. The service might return fewer messages than
+                /// this value. The maximum value is 100. If you use a value more than 100, it's automatically changed
+                /// to 100. If unspecified, at most 100 message pins will be returned. Negative values return an
+                /// `INVALID_ARGUMENT` error.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token received from a previous list message pins call. Provide this parameter to
+                /// retrieve the subsequent page. When paginating, all other parameters provided should match the call
+                /// that provided the page token. Passing different values to the other parameters might lead to
+                /// unexpected results.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/messagePins";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4680,8 +4946,9 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// The maximum number of spaces to return. The service may return fewer than this value. If unspecified, at
-            /// most 100 spaces are returned. The maximum value is 1000. If you use a value more than 1000, it's
-            /// automatically changed to 1000.
+            /// most 100 spaces are returned. The maximum value is 1000 when `useAdminAccess` is set to `true`.
+            /// Otherwise, the maximum value is 100. If you use a value more than the maximum value, it's automatically
+            /// changed to the maximum value.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -4737,6 +5004,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// space_type = "SPACE" (external_user_allowed = "true" AND space_type = "SPACE") // Returns an empty
             /// response. (external_user_allowed = "true" AND display_name:"Hello" AND space_type = "SPACE")
             /// ```
+            /// The
+            /// maximum query length is 1,000 characters. Invalid queries are rejected by the server with an
+            /// `INVALID_ARGUMENT` error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -10000,6 +10270,24 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing message pins.</summary>
+    public class ListMessagePinsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pinned messages from the specified space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messagePins")]
+        public virtual System.Collections.Generic.IList<MessagePin> MessagePins { get; set; }
+
+        /// <summary>
+        /// You can send a token as `pageToken` to retrieve the next page of results. If empty, there are no subsequent
+        /// pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing messages.</summary>
     public class ListMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10884,6 +11172,32 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A pin on a Chat message. For more information see [Pin a
+    /// message](https://support.google.com/chat?p=chat-board-hc).
+    /// </summary>
+    public class MessagePin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The resource name of the message that is pinned. Format:
+        /// `spaces/{space}/messages/{message}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the message pin. Format: `spaces/{space}/messagePins/{message_pin}` The
+        /// resource ID component matches the resource ID component of the message. For example, a message with
+        /// `spaces/AAA/messages/bbb.ccc` corresponds to the message pin with the resource name
+        /// `spaces/AAA/messagePins/bbb.ccc`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Event payload for an updated message. Event type: `google.workspace.chat.message.v1.updated`</summary>
     public class MessageUpdatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11444,6 +11758,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// A token that can be used to retrieve the next page. If this field is empty, there are no subsequent pages.
+        /// Only populated when `useAdminAccess` is set to `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -11461,7 +11776,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The total number of spaces that match the query, across all pages. If the result is over 10,000 spaces, this
-        /// value is an estimate.
+        /// value is an estimate. Only populated when `useAdminAccess` is set to `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
