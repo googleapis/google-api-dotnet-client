@@ -5586,8 +5586,11 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
-            /// Specifies which groups of Object Contexts from the source object(s) should be dropped from the
-            /// destination object.
+            /// Specifies which object context groups to drop from the source object(s) during a compose operation. The
+            /// accepted value is 'custom'. Destination contexts behave as follows: - When request body contexts are
+            /// provided, they override all source contexts. - When no request body contexts are provided, source
+            /// contexts are preserved unless 'dropContextGroups' contains 'custom', in which case all contexts are
+            /// dropped.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dropContextGroups", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> DropContextGroups { get; set; }
@@ -8133,8 +8136,11 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
-            /// Specifies which groups of Object Contexts from the source object should be dropped from the destination
-            /// object.
+            /// Specifies which object context groups to drop from the source object during a copy operation. The
+            /// accepted value is 'custom'. Destination contexts behave as follows: - When request body contexts are
+            /// provided, they override all source contexts. - When no request body contexts are provided, source
+            /// contexts are preserved unless 'dropContextGroups' contains 'custom', in which case all contexts are
+            /// dropped.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dropContextGroups", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> DropContextGroups { get; set; }
