@@ -4621,7 +4621,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
     {
         /// <summary>
         /// Output only. The URI of the Cloud Run service that the revision belongs to. The format is:
-        /// projects/{project}/locations/{location}/services/{service}
+        /// projects/{project}/locations/{location}/services/{service}. Mutually exclusive with worker_pool_uri.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
         public virtual string ServiceUri { get; set; }
@@ -4633,6 +4633,13 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>
+        /// Output only. The URI of the worker pool that the revision belongs to. The format is:
+        /// projects/{project}/locations/{location}/workerPools/{workerPool}. Mutually exclusive with service_uri.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPoolUri")]
+        public virtual string WorkerPoolUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4651,7 +4658,8 @@ namespace Google.Apis.NetworkManagement.v1.Data
 
         /// <summary>
         /// URI of Cloud Run service this revision belongs to. Format:
-        /// `projects/{project_id}/locations/{location}/services/{service_id}`
+        /// `projects/{project_id}/locations/{location}/services/{service_id}` Mutually exclusive with
+        /// `worker_pool_uri`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
         public virtual string ServiceUri { get; set; }
@@ -4661,6 +4669,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>
+        /// URI of Cloud Run worker pool this revision belongs to. Format:
+        /// `projects/{project_id}/locations/{location}/workerPools/{worker_pool_id}`. Mutually exclusive with
+        /// `service_uri`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPoolUri")]
+        public virtual string WorkerPoolUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
