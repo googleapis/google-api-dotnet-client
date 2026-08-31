@@ -2785,15 +2785,14 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
     public class SpecialHourPeriod : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Valid values are `00:00-24:00`, where `24:00` represents midnight at the end of the specified day
-        /// field. It must be specified if `closed` is `false`. Note: In Proto3 JSON mapping, default zero values
-        /// (`00:00`) are omitted, producing `{}` for `close_time`.
+        /// Optional. Valid values are 00:00-24:00, where 24:00 represents midnight at the end of the specified day
+        /// field. Must be specified if `closed` is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("closeTime")]
         public virtual TimeOfDay CloseTime { get; set; }
 
         /// <summary>
-        /// Optional. If `true`, `end_date`, `open_time`, and `close_time` are ignored, and the date specified in
+        /// Optional. If true, `end_date`, `open_time`, and `close_time` are ignored, and the date specified in
         /// `start_date` is treated as the location being closed for the entire day.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("closed")]
@@ -2807,9 +2806,8 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         public virtual Date EndDate { get; set; }
 
         /// <summary>
-        /// Optional. Valid values are `00:00-24:00`, where `24:00` represents midnight at the end of the specified day
-        /// field. It must be specified if `closed` is `false`. Note: In Proto3 JSON mapping, default zero values
-        /// (`00:00`) are omitted, producing `{}` for `open_time`.
+        /// Optional. Valid values are 00:00-24:00 where 24:00 represents midnight at the end of the specified day
+        /// field. Must be specified if `closed` is false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openTime")]
         public virtual TimeOfDay OpenTime { get; set; }
@@ -2900,9 +2898,8 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         public virtual string CloseDay { get; set; }
 
         /// <summary>
-        /// Required. Valid values are `00:00-24:00`, where `24:00` represents midnight at the end of the specified day
-        /// field. Note: In Proto3 JSON mapping, default zero values (`00:00`) are omitted, producing `{}` for
-        /// `close_time`.
+        /// Required. Valid values are 00:00-24:00, where 24:00 represents midnight at the end of the specified day
+        /// field. Note: In Proto3 JSON mapping, default zero values (00:00) are omitted, producing `{}` for close_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("closeTime")]
         public virtual TimeOfDay CloseTime { get; set; }
@@ -2912,9 +2909,8 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         public virtual string OpenDay { get; set; }
 
         /// <summary>
-        /// Required. Valid values are `00:00-24:00`, where `24:00` represents midnight at the end of the specified day
-        /// field. Note: In Proto3 JSON mapping, default zero values (`00:00`) are omitted, producing `{}` for
-        /// `open_time`.
+        /// Required. Valid values are 00:00-24:00, where 24:00 represents midnight at the end of the specified day
+        /// field. Note: In Proto3 JSON mapping, default zero values (00:00) are omitted, producing `{}` for open_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openTime")]
         public virtual TimeOfDay OpenTime { get; set; }
