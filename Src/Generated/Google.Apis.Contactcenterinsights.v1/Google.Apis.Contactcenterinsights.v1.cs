@@ -16669,6 +16669,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => MessageTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The structured parts that make up this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart> Parts { get; set; }
+
         /// <summary>The participant of this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentParticipant")]
         public virtual GoogleCloudContactcenterinsightsV1ConversationParticipant SegmentParticipant { get; set; }
@@ -16701,6 +16705,271 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartReplyAllowlistCovered")]
         public virtual System.Nullable<bool> SmartReplyAllowlistCovered { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A structured component/part of a transcript segment.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Citation or reference to grounding material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citation")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart Citation { get; set; }
+
+        /// <summary>Optional. Generic custom structured payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPayload")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart CustomPayload { get; set; }
+
+        /// <summary>Optional. Image media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart Image { get; set; }
+
+        /// <summary>Optional. Web link or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart Link { get; set; }
+
+        /// <summary>Optional. Ordered or unordered list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("list")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart List { get; set; }
+
+        /// <summary>Optional. Product collection or carousel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCollection")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart ProductCollection { get; set; }
+
+        /// <summary>Optional. Suggestion chips or interactive buttons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionChips")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart SuggestionChips { get; set; }
+
+        /// <summary>Optional. Tabular data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart Table { get; set; }
+
+        /// <summary>Optional. Plain text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart Text { get; set; }
+
+        /// <summary>Optional. Model thought or internal reasoning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thought")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart Thought { get; set; }
+
+        /// <summary>Optional. Video media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggestion chip.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional action or destination URI triggered by the chip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionUri")]
+        public virtual string ActionUri { get; set; }
+
+        /// <summary>Optional. The chip label or text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A citation part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Snippet of the cited text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>Optional. The cited source title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTitle")]
+        public virtual string SourceTitle { get; set; }
+
+        /// <summary>Optional. The cited source URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
+        public virtual string SourceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A custom payload part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Arbitrary structured payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Optional. Type identifier for the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadType")]
+        public virtual string PayloadType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A link part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Anchor or display text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>Optional. Target URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An item in a list.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Nested sub-items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subItems")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem> SubItems { get; set; }
+
+        /// <summary>Optional. The text of the list item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem> Items { get; set; }
+
+        /// <summary>Optional. The type of list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listType")]
+        public virtual string ListType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A media part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Alternative text description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeText")]
+        public virtual string AlternativeText { get; set; }
+
+        /// <summary>Optional. URI or URL to the media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A product in a product collection.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Product description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Product display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Product ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Product image URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUris")]
+        public virtual System.Collections.Generic.IList<string> ImageUris { get; set; }
+
+        /// <summary>Optional. Product price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual GoogleTypeMoney Price { get; set; }
+
+        /// <summary>Optional. Product URL or deep link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A product collection part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct> Products { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggestion chips part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of suggestion chips.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chips")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip> Chips { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A table part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Table column headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
+
+        /// <summary>Optional. Table rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow> Rows { get; set; }
+
+        /// <summary>Optional. Optional title for the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A row in a table.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The cell values in the row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<string> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A text part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A thought part.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The thought or reasoning text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25436,6 +25705,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => MessageTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The structured parts that make up this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPart> Parts { get; set; }
+
         /// <summary>The participant of this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentParticipant")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant SegmentParticipant { get; set; }
@@ -25468,6 +25741,271 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartReplyAllowlistCovered")]
         public virtual System.Nullable<bool> SmartReplyAllowlistCovered { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A structured component/part of a transcript segment.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Citation or reference to grounding material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citation")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart Citation { get; set; }
+
+        /// <summary>Optional. Generic custom structured payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPayload")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart CustomPayload { get; set; }
+
+        /// <summary>Optional. Image media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart Image { get; set; }
+
+        /// <summary>Optional. Web link or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart Link { get; set; }
+
+        /// <summary>Optional. Ordered or unordered list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("list")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListPart List { get; set; }
+
+        /// <summary>Optional. Product collection or carousel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCollection")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart ProductCollection { get; set; }
+
+        /// <summary>Optional. Suggestion chips or interactive buttons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionChips")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart SuggestionChips { get; set; }
+
+        /// <summary>Optional. Tabular data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart Table { get; set; }
+
+        /// <summary>Optional. Plain text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart Text { get; set; }
+
+        /// <summary>Optional. Model thought or internal reasoning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thought")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart Thought { get; set; }
+
+        /// <summary>Optional. Video media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggestion chip.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartChip : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional action or destination URI triggered by the chip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionUri")]
+        public virtual string ActionUri { get; set; }
+
+        /// <summary>Optional. The chip label or text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A citation part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Snippet of the cited text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>Optional. The cited source title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTitle")]
+        public virtual string SourceTitle { get; set; }
+
+        /// <summary>Optional. The cited source URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
+        public virtual string SourceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A custom payload part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Arbitrary structured payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Optional. Type identifier for the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadType")]
+        public virtual string PayloadType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A link part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Anchor or display text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>Optional. Target URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An item in a list.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Nested sub-items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subItems")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListItem> SubItems { get; set; }
+
+        /// <summary>Optional. The text of the list item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartListItem> Items { get; set; }
+
+        /// <summary>Optional. The type of list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listType")]
+        public virtual string ListType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A media part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Alternative text description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeText")]
+        public virtual string AlternativeText { get; set; }
+
+        /// <summary>Optional. URI or URL to the media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A product in a product collection.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Product description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Product display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Product ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Product image URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUris")]
+        public virtual System.Collections.Generic.IList<string> ImageUris { get; set; }
+
+        /// <summary>Optional. Product price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual GoogleTypeMoney Price { get; set; }
+
+        /// <summary>Optional. Product URL or deep link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A product collection part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartProduct> Products { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggestion chips part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of suggestion chips.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chips")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartChip> Chips { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A table part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Table column headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
+
+        /// <summary>Optional. Table rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow> Rows { get; set; }
+
+        /// <summary>Optional. Optional title for the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A row in a table.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The cell values in the row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<string> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A text part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A thought part.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The thought or reasoning text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31790,6 +32328,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => MessageTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The structured parts that make up this transcript segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPart> Parts { get; set; }
+
         /// <summary>The participant of this segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentParticipant")]
         public virtual GoogleCloudContactcenterinsightsV1mainConversationParticipant SegmentParticipant { get; set; }
@@ -31822,6 +32364,271 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartReplyAllowlistCovered")]
         public virtual System.Nullable<bool> SmartReplyAllowlistCovered { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A structured component/part of a transcript segment.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Citation or reference to grounding material.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citation")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartCitationPart Citation { get; set; }
+
+        /// <summary>Optional. Generic custom structured payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPayload")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart CustomPayload { get; set; }
+
+        /// <summary>Optional. Image media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartMediaPart Image { get; set; }
+
+        /// <summary>Optional. Web link or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartLinkPart Link { get; set; }
+
+        /// <summary>Optional. Ordered or unordered list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("list")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListPart List { get; set; }
+
+        /// <summary>Optional. Product collection or carousel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCollection")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart ProductCollection { get; set; }
+
+        /// <summary>Optional. Suggestion chips or interactive buttons.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionChips")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart SuggestionChips { get; set; }
+
+        /// <summary>Optional. Tabular data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTablePart Table { get; set; }
+
+        /// <summary>Optional. Plain text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTextPart Text { get; set; }
+
+        /// <summary>Optional. Model thought or internal reasoning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thought")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart Thought { get; set; }
+
+        /// <summary>Optional. Video media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("video")]
+        public virtual GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartMediaPart Video { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggestion chip.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartChip : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional action or destination URI triggered by the chip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionUri")]
+        public virtual string ActionUri { get; set; }
+
+        /// <summary>Optional. The chip label or text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A citation part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartCitationPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Snippet of the cited text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>Optional. The cited source title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTitle")]
+        public virtual string SourceTitle { get; set; }
+
+        /// <summary>Optional. The cited source URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUri")]
+        public virtual string SourceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A custom payload part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Arbitrary structured payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Optional. Type identifier for the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadType")]
+        public virtual string PayloadType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A link part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartLinkPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Anchor or display text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>Optional. Target URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An item in a list.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Nested sub-items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subItems")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListItem> SubItems { get; set; }
+
+        /// <summary>Optional. The text of the list item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartListItem> Items { get; set; }
+
+        /// <summary>Optional. The type of list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listType")]
+        public virtual string ListType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A media part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartMediaPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Alternative text description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeText")]
+        public virtual string AlternativeText { get; set; }
+
+        /// <summary>Optional. URI or URL to the media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A product in a product collection.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Product description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Product display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Product ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Product image URLs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUris")]
+        public virtual System.Collections.Generic.IList<string> ImageUris { get; set; }
+
+        /// <summary>Optional. Product price.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual GoogleTypeMoney Price { get; set; }
+
+        /// <summary>Optional. Product URL or deep link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A product collection part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartProduct> Products { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggestion chips part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of suggestion chips.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chips")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartChip> Chips { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A table part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTablePart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Table column headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
+
+        /// <summary>Optional. Table rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTableRow> Rows { get; set; }
+
+        /// <summary>Optional. Optional title for the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A row in a table.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTableRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The cell values in the row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<string> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A text part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartTextPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A thought part.</summary>
+    public class GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The thought or reasoning text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36911,6 +37718,32 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class GoogleTypeMoney : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
