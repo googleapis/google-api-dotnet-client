@@ -41,6 +41,7 @@ namespace Google.Apis.Compute.beta
             BackendBuckets = new BackendBucketsResource(this);
             BackendServices = new BackendServicesResource(this);
             CrossSiteNetworks = new CrossSiteNetworksResource(this);
+            DhcpOptionsConfigs = new DhcpOptionsConfigsResource(this);
             DiskSettings = new DiskSettingsResource(this);
             DiskTypes = new DiskTypesResource(this);
             Disks = new DisksResource(this);
@@ -51,6 +52,7 @@ namespace Google.Apis.Compute.beta
             FutureReservations = new FutureReservationsResource(this);
             GlobalAddresses = new GlobalAddressesResource(this);
             GlobalForwardingRules = new GlobalForwardingRulesResource(this);
+            GlobalFrontendSettings = new GlobalFrontendSettingsResource(this);
             GlobalNetworkEndpointGroups = new GlobalNetworkEndpointGroupsResource(this);
             GlobalOperations = new GlobalOperationsResource(this);
             GlobalOrganizationOperations = new GlobalOrganizationOperationsResource(this);
@@ -94,12 +96,14 @@ namespace Google.Apis.Compute.beta
             OrganizationRolloutPlans = new OrganizationRolloutPlansResource(this);
             OrganizationRollouts = new OrganizationRolloutsResource(this);
             OrganizationSecurityPolicies = new OrganizationSecurityPoliciesResource(this);
+            OrganizationSnapshotRecycleBinPolicy = new OrganizationSnapshotRecycleBinPolicyResource(this);
             PacketMirrorings = new PacketMirroringsResource(this);
             PreviewFeatures = new PreviewFeaturesResource(this);
             ProjectViews = new ProjectViewsResource(this);
             Projects = new ProjectsResource(this);
             PublicAdvertisedPrefixes = new PublicAdvertisedPrefixesResource(this);
             PublicDelegatedPrefixes = new PublicDelegatedPrefixesResource(this);
+            RecoverableSnapshots = new RecoverableSnapshotsResource(this);
             RegionAutoscalers = new RegionAutoscalersResource(this);
             RegionBackendBuckets = new RegionBackendBucketsResource(this);
             RegionBackendServices = new RegionBackendServicesResource(this);
@@ -150,6 +154,7 @@ namespace Google.Apis.Compute.beta
             SecurityPolicies = new SecurityPoliciesResource(this);
             ServiceAttachments = new ServiceAttachmentsResource(this);
             SnapshotGroups = new SnapshotGroupsResource(this);
+            SnapshotRecycleBinPolicy = new SnapshotRecycleBinPolicyResource(this);
             SnapshotSettings = new SnapshotSettingsResource(this);
             Snapshots = new SnapshotsResource(this);
             SslCertificates = new SslCertificatesResource(this);
@@ -269,6 +274,9 @@ namespace Google.Apis.Compute.beta
         /// <summary>Gets the CrossSiteNetworks resource.</summary>
         public virtual CrossSiteNetworksResource CrossSiteNetworks { get; }
 
+        /// <summary>Gets the DhcpOptionsConfigs resource.</summary>
+        public virtual DhcpOptionsConfigsResource DhcpOptionsConfigs { get; }
+
         /// <summary>Gets the DiskSettings resource.</summary>
         public virtual DiskSettingsResource DiskSettings { get; }
 
@@ -298,6 +306,9 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Gets the GlobalForwardingRules resource.</summary>
         public virtual GlobalForwardingRulesResource GlobalForwardingRules { get; }
+
+        /// <summary>Gets the GlobalFrontendSettings resource.</summary>
+        public virtual GlobalFrontendSettingsResource GlobalFrontendSettings { get; }
 
         /// <summary>Gets the GlobalNetworkEndpointGroups resource.</summary>
         public virtual GlobalNetworkEndpointGroupsResource GlobalNetworkEndpointGroups { get; }
@@ -428,6 +439,9 @@ namespace Google.Apis.Compute.beta
         /// <summary>Gets the OrganizationSecurityPolicies resource.</summary>
         public virtual OrganizationSecurityPoliciesResource OrganizationSecurityPolicies { get; }
 
+        /// <summary>Gets the OrganizationSnapshotRecycleBinPolicy resource.</summary>
+        public virtual OrganizationSnapshotRecycleBinPolicyResource OrganizationSnapshotRecycleBinPolicy { get; }
+
         /// <summary>Gets the PacketMirrorings resource.</summary>
         public virtual PacketMirroringsResource PacketMirrorings { get; }
 
@@ -445,6 +459,9 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Gets the PublicDelegatedPrefixes resource.</summary>
         public virtual PublicDelegatedPrefixesResource PublicDelegatedPrefixes { get; }
+
+        /// <summary>Gets the RecoverableSnapshots resource.</summary>
+        public virtual RecoverableSnapshotsResource RecoverableSnapshots { get; }
 
         /// <summary>Gets the RegionAutoscalers resource.</summary>
         public virtual RegionAutoscalersResource RegionAutoscalers { get; }
@@ -595,6 +612,9 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Gets the SnapshotGroups resource.</summary>
         public virtual SnapshotGroupsResource SnapshotGroups { get; }
+
+        /// <summary>Gets the SnapshotRecycleBinPolicy resource.</summary>
+        public virtual SnapshotRecycleBinPolicyResource SnapshotRecycleBinPolicy { get; }
 
         /// <summary>Gets the SnapshotSettings resource.</summary>
         public virtual SnapshotSettingsResource SnapshotSettings { get; }
@@ -6991,6 +7011,652 @@ namespace Google.Apis.Compute.beta
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "dhcpOptionsConfigs" collection of methods.</summary>
+    public class DhcpOptionsConfigsResource
+    {
+        private const string Resource = "dhcpOptionsConfigs";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public DhcpOptionsConfigsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Deletes the specified DhcpOptionsConfig in the given location</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region of this request.</param>
+        /// <param name="dhcpOptionsConfig">Name of the DhcpOptionsConfig resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string dhcpOptionsConfig)
+        {
+            return new DeleteRequest(this.service, project, region, dhcpOptionsConfig);
+        }
+
+        /// <summary>Deletes the specified DhcpOptionsConfig in the given location</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string dhcpOptionsConfig) : base(service)
+            {
+                Project = project;
+                Region = region;
+                DhcpOptionsConfig = dhcpOptionsConfig;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the DhcpOptionsConfig resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dhcpOptionsConfig", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DhcpOptionsConfig { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/dhcpOptionsConfigs/{dhcpOptionsConfig}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("dhcpOptionsConfig", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dhcpOptionsConfig",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns the specified DhcpOptionsConfig resource in the given location.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region of this request.</param>
+        /// <param name="dhcpOptionsConfig">Name of the DhcpOptionsConfig resource to return.</param>
+        public virtual GetRequest Get(string project, string region, string dhcpOptionsConfig)
+        {
+            return new GetRequest(this.service, project, region, dhcpOptionsConfig);
+        }
+
+        /// <summary>Returns the specified DhcpOptionsConfig resource in the given location.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.DhcpOptionsConfig>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string dhcpOptionsConfig) : base(service)
+            {
+                Project = project;
+                Region = region;
+                DhcpOptionsConfig = dhcpOptionsConfig;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the DhcpOptionsConfig resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dhcpOptionsConfig", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DhcpOptionsConfig { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/dhcpOptionsConfigs/{dhcpOptionsConfig}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("dhcpOptionsConfig", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dhcpOptionsConfig",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Creates a DhcpOptionsConfig in the specified project in the given location using the parameters that are
+        /// included in the request.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region of this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.beta.Data.DhcpOptionsConfig body, string project, string region)
+        {
+            return new InsertRequest(this.service, body, project, region);
+        }
+
+        /// <summary>
+        /// Creates a DhcpOptionsConfig in the specified project in the given location using the parameters that are
+        /// included in the request.
+        /// </summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.DhcpOptionsConfig body, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.DhcpOptionsConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/dhcpOptionsConfigs";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists the DhcpOptionsConfigs for a project in the given location.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region of this request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(this.service, project, region);
+        }
+
+        /// <summary>Lists the DhcpOptionsConfigs for a project in the given location.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.DhcpOptionsConfigList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
+            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
+            /// either returns all resources in the zone or no resources, with an error code.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/dhcpOptionsConfigs";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPartialSuccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Patches the specified DhcpOptionsConfig resource with the data included in the request. This method supports
+        /// PATCH semantics and usesJSON merge patch format and processing rules.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this request.</param>
+        /// <param name="dhcpOptionsConfig">Name of the DhcpOptionsConfig resource to patch.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.DhcpOptionsConfig body, string project, string region, string dhcpOptionsConfig)
+        {
+            return new PatchRequest(this.service, body, project, region, dhcpOptionsConfig);
+        }
+
+        /// <summary>
+        /// Patches the specified DhcpOptionsConfig resource with the data included in the request. This method supports
+        /// PATCH semantics and usesJSON merge patch format and processing rules.
+        /// </summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.DhcpOptionsConfig body, string project, string region, string dhcpOptionsConfig) : base(service)
+            {
+                Project = project;
+                Region = region;
+                DhcpOptionsConfig = dhcpOptionsConfig;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the DhcpOptionsConfig resource to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dhcpOptionsConfig", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DhcpOptionsConfig { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>update_mask indicates fields to be updated as part of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.DhcpOptionsConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/dhcpOptionsConfigs/{dhcpOptionsConfig}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("dhcpOptionsConfig", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dhcpOptionsConfig",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(this.service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string region, string resource) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.TestPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/dhcpOptionsConfigs/{resource}/testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
         }
@@ -15876,6 +16542,140 @@ namespace Google.Apis.Compute.beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+        }
+    }
+
+    /// <summary>The "globalFrontendSettings" collection of methods.</summary>
+    public class GlobalFrontendSettingsResource
+    {
+        private const string Resource = "globalFrontendSettings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public GlobalFrontendSettingsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets the Global Frontend Billing Bundle Settings for a project.</summary>
+        /// <param name="project"><c>null</c></param>
+        public virtual GetRequest Get(string project)
+        {
+            return new GetRequest(this.service, project);
+        }
+
+        /// <summary>Gets the Global Frontend Billing Bundle Settings for a project.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.GlobalFrontendSettings>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/globalFrontendSettings";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates the Global Frontend Billing Bundle Settings for a project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project"><c>null</c></param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.GlobalFrontendSettings body, string project)
+        {
+            return new PatchRequest(this.service, body, project);
+        }
+
+        /// <summary>Updates the Global Frontend Billing Bundle Settings for a project.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.GlobalFrontendSettingsPatchResponse>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.GlobalFrontendSettings body, string project) : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>e.g., "type"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.GlobalFrontendSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/globalFrontendSettings";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -31115,6 +31915,93 @@ namespace Google.Apis.Compute.beta
             }
         }
 
+        /// <summary>Retrieves details of a specific VM extension state. This is a read-only API.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="instance">Name or id of the instance resource.</param>
+        /// <param name="extensionName">The name of the extension to get the state for.</param>
+        public virtual GetVmExtensionStateRequest GetVmExtensionState(string project, string zone, string instance, string extensionName)
+        {
+            return new GetVmExtensionStateRequest(this.service, project, zone, instance, extensionName);
+        }
+
+        /// <summary>Retrieves details of a specific VM extension state. This is a read-only API.</summary>
+        public class GetVmExtensionStateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.VmExtensionState>
+        {
+            /// <summary>Constructs a new GetVmExtensionState request.</summary>
+            public GetVmExtensionStateRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance, string extensionName) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                ExtensionName = extensionName;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name or id of the instance resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>The name of the extension to get the state for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExtensionName { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVmExtensionState";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/instances/{instance}/vmExtensionStates/{extensionName}";
+
+            /// <summary>Initializes GetVmExtensionState parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("extensionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "extensionName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+        }
+
         /// <summary>
         /// Creates an instance resource in the specified project using the data included in the request.
         /// </summary>
@@ -31597,6 +32484,192 @@ namespace Google.Apis.Compute.beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"-|[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPartialSuccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists all VM extensions states for a specific instance. This is a read-only API.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">Required. Name of the zone for this request.</param>
+        /// <param name="instance">Name of the target instance scoping this request.</param>
+        public virtual ListVmExtensionStatesRequest ListVmExtensionStates(string project, string zone, string instance)
+        {
+            return new ListVmExtensionStatesRequest(this.service, project, zone, instance);
+        }
+
+        /// <summary>Lists all VM extensions states for a specific instance. This is a read-only API.</summary>
+        public class ListVmExtensionStatesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ListVmExtensionStatesResponse>
+        {
+            /// <summary>Constructs a new ListVmExtensionStates request.</summary>
+            public ListVmExtensionStatesRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the target instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
+            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
+            /// either returns all resources in the zone or no resources, with an error code.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listVmExtensionStates";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/instances/{instance}/vmExtensionStates";
+
+            /// <summary>Initializes ListVmExtensionStates parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
@@ -55159,6 +56232,139 @@ namespace Google.Apis.Compute.beta
         }
     }
 
+    /// <summary>The "organizationSnapshotRecycleBinPolicy" collection of methods.</summary>
+    public class OrganizationSnapshotRecycleBinPolicyResource
+    {
+        private const string Resource = "organizationSnapshotRecycleBinPolicy";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationSnapshotRecycleBinPolicyResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Returns the specified SnapshotRecycleBinPolicy.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        public virtual GetRequest Get(string organization)
+        {
+            return new GetRequest(this.service, organization);
+        }
+
+        /// <summary>Returns the specified SnapshotRecycleBinPolicy.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.SnapshotRecycleBinPolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string organization) : base(service)
+            {
+                Organization = organization;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/snapshotRecycleBinPolicy";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+            }
+        }
+
+        /// <summary>Patches the SnapshotRecycleBinPolicy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="organization">Organization ID for this request.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.SnapshotRecycleBinPolicy body, string organization)
+        {
+            return new PatchRequest(this.service, body, organization);
+        }
+
+        /// <summary>Patches the SnapshotRecycleBinPolicy.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.SnapshotRecycleBinPolicy body, string organization) : base(service)
+            {
+                Organization = organization;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.SnapshotRecycleBinPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/snapshotRecycleBinPolicy";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "packetMirrorings" collection of methods.</summary>
     public class PacketMirroringsResource
     {
@@ -59291,6 +60497,629 @@ namespace Google.Apis.Compute.beta
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "recoverableSnapshots" collection of methods.</summary>
+    public class RecoverableSnapshotsResource
+    {
+        private const string Resource = "recoverableSnapshots";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RecoverableSnapshotsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Deletes the specified RecoverableSnapshot. Deleting a recoverable snapshot will delete the underlying PD
+        /// snapshot and is irreversible.
+        /// </summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="recoverableSnapshot">Name of the recoverable Snapshot resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string recoverableSnapshot)
+        {
+            return new DeleteRequest(this.service, project, recoverableSnapshot);
+        }
+
+        /// <summary>
+        /// Deletes the specified RecoverableSnapshot. Deleting a recoverable snapshot will delete the underlying PD
+        /// snapshot and is irreversible.
+        /// </summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string recoverableSnapshot) : base(service)
+            {
+                Project = project;
+                RecoverableSnapshot = recoverableSnapshot;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the recoverable Snapshot resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("recoverableSnapshot", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RecoverableSnapshot { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/recoverableSnapshots/{recoverableSnapshot}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("recoverableSnapshot", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "recoverableSnapshot",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Returns the specified RecoverableSnapshot resource.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="recoverableSnapshot">Name of the Snapshot resource to return.</param>
+        public virtual GetRequest Get(string project, string recoverableSnapshot)
+        {
+            return new GetRequest(this.service, project, recoverableSnapshot);
+        }
+
+        /// <summary>Returns the specified RecoverableSnapshot resource.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.RecoverableSnapshot>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string recoverableSnapshot) : base(service)
+            {
+                Project = project;
+                RecoverableSnapshot = recoverableSnapshot;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the Snapshot resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("recoverableSnapshot", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RecoverableSnapshot { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/recoverableSnapshots/{recoverableSnapshot}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("recoverableSnapshot", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "recoverableSnapshot",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(this.service, project, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource) : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/recoverableSnapshots/{resource}/getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "optionsRequestedPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves a list of all of the RecoverableSnapshots in your project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListRequest List(string project)
+        {
+            return new ListRequest(this.service, project);
+        }
+
+        /// <summary>Retrieves a list of all of the RecoverableSnapshots in your project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.RecoverableSnapshotList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
+            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
+            /// either returns all resources in the zone or no resources, with an error code.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/recoverableSnapshots";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPartialSuccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Recovers the specified RecoverableSnapshot.</summary>
+        /// <param name="project">Project Id of the request</param>
+        /// <param name="recoverableSnapshot">Name of the recoverable resource to recover</param>
+        public virtual RecoverRequest Recover(string project, string recoverableSnapshot)
+        {
+            return new RecoverRequest(this.service, project, recoverableSnapshot);
+        }
+
+        /// <summary>Recovers the specified RecoverableSnapshot.</summary>
+        public class RecoverRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Recover request.</summary>
+            public RecoverRequest(Google.Apis.Services.IClientService service, string project, string recoverableSnapshot) : base(service)
+            {
+                Project = project;
+                RecoverableSnapshot = recoverableSnapshot;
+                InitParameters();
+            }
+
+            /// <summary>Project Id of the request</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the recoverable resource to recover</summary>
+            [Google.Apis.Util.RequestParameterAttribute("recoverableSnapshot", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RecoverableSnapshot { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>
+            /// Optional. Name of the snapshot after the recovery The name will be 1-63 characters long, and comply
+            /// withRFC1035. Specifically, the name will be 1-63 characters long and match the regular expression
+            /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character will be a lowercase letter, and all
+            /// following characters can be a dash, lowercase letter, or digit, except the last character, which cannot
+            /// be a dash.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("snapshotName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SnapshotName { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "recover";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/recoverableSnapshots/{recoverableSnapshot}/recover";
+
+            /// <summary>Initializes Recover parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("recoverableSnapshot", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "recoverableSnapshot",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("snapshotName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "snapshotName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+            }
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(this.service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest body, string project, string resource) : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/recoverableSnapshots/{resource}/setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(this.service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.TestPermissionsRequest body, string project, string resource) : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.TestPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/recoverableSnapshots/{resource}/testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
         }
@@ -90601,6 +92430,113 @@ namespace Google.Apis.Compute.beta
             }
         }
 
+        /// <summary>Get health info on a reservation slot.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request. Zone name should conform to RFC1035.</param>
+        /// <param name="parentName">
+        /// The name of the parent reservation, parent block and parent sub-block. In the format of
+        /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}/reservationSubBlocks/{reservation_sub_block_name}
+        /// </param>
+        /// <param name="reservationSlot">
+        /// The name of the reservation slot. Name should conform to RFC1035 or be a resource ID.
+        /// </param>
+        public virtual GetHealthRequest GetHealth(string project, string zone, string parentName, string reservationSlot)
+        {
+            return new GetHealthRequest(this.service, project, zone, parentName, reservationSlot);
+        }
+
+        /// <summary>Get health info on a reservation slot.</summary>
+        public class GetHealthRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new GetHealth request.</summary>
+            public GetHealthRequest(Google.Apis.Services.IClientService service, string project, string zone, string parentName, string reservationSlot) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                ParentName = parentName;
+                ReservationSlot = reservationSlot;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the zone for this request. Zone name should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// The name of the parent reservation, parent block and parent sub-block. In the format of
+            /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}/reservationSubBlocks/{reservation_sub_block_name}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parentName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ParentName { get; private set; }
+
+            /// <summary>The name of the reservation slot. Name should conform to RFC1035 or be a resource ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("reservationSlot", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ReservationSlot { get; private set; }
+
+            /// <summary>An optional request ID to identify requests.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getHealth";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}/getHealth";
+
+            /// <summary>Initializes GetHealth parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parentName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parentName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"reservations/([a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19})/reservationBlocks/([a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19})/reservationSubBlocks/([a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19})",
+                });
+                RequestParameters.Add("reservationSlot", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reservationSlot",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Allows customers to get SBOM versions of a reservation slot.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -101544,6 +103480,139 @@ namespace Google.Apis.Compute.beta
         }
     }
 
+    /// <summary>The "snapshotRecycleBinPolicy" collection of methods.</summary>
+    public class SnapshotRecycleBinPolicyResource
+    {
+        private const string Resource = "snapshotRecycleBinPolicy";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SnapshotRecycleBinPolicyResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Returns the specified SnapshotRecycleBinPolicy.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual GetRequest Get(string project)
+        {
+            return new GetRequest(this.service, project);
+        }
+
+        /// <summary>Returns the specified SnapshotRecycleBinPolicy.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.SnapshotRecycleBinPolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/snapshotRecycleBinPolicy";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+            }
+        }
+
+        /// <summary>Patches the SnapshotRecycleBinPolicy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.SnapshotRecycleBinPolicy body, string project)
+        {
+            return new PatchRequest(this.service, body, project);
+        }
+
+        /// <summary>Patches the SnapshotRecycleBinPolicy.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.SnapshotRecycleBinPolicy body, string project) : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.SnapshotRecycleBinPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/snapshotRecycleBinPolicy";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "snapshotSettings" collection of methods.</summary>
     public class SnapshotSettingsResource
     {
@@ -102026,6 +104095,71 @@ namespace Google.Apis.Compute.beta
             public override string RestPath => "projects/{project}/global/snapshots/{snapshot}";
 
             /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("snapshot", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "snapshot",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns the effective recycle bin rule for a snapshot by merging org and project level rules. If no rules
+        /// are defined at org and project level, the standard default rule is returned.
+        /// </summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="snapshot">Name of the Snapshot resource to get the effective recycle bin rule for.</param>
+        public virtual GetEffectiveRecycleBinRuleRequest GetEffectiveRecycleBinRule(string project, string snapshot)
+        {
+            return new GetEffectiveRecycleBinRuleRequest(this.service, project, snapshot);
+        }
+
+        /// <summary>
+        /// Returns the effective recycle bin rule for a snapshot by merging org and project level rules. If no rules
+        /// are defined at org and project level, the standard default rule is returned.
+        /// </summary>
+        public class GetEffectiveRecycleBinRuleRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.SnapshotsGetEffectiveRecycleBinRuleResponse>
+        {
+            /// <summary>Constructs a new GetEffectiveRecycleBinRule request.</summary>
+            public GetEffectiveRecycleBinRuleRequest(Google.Apis.Services.IClientService service, string project, string snapshot) : base(service)
+            {
+                Project = project;
+                Snapshot = snapshot;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the Snapshot resource to get the effective recycle bin rule for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Snapshot { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getEffectiveRecycleBinRule";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/snapshots/{snapshot}/getEffectiveRecycleBinRule";
+
+            /// <summary>Initializes GetEffectiveRecycleBinRule parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -126490,6 +128624,249 @@ namespace Google.Apis.Compute.beta.Data
     }
 
     /// <summary>
+    /// A standalone, regional API resource that encapsulates a set of user-defined DHCP configurations.
+    /// </summary>
+    public class DhcpOptionsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mapping of user-defined keys to DhcpOptionsConfig to Network associations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associations")]
+        public virtual System.Collections.Generic.IDictionary<string, DhcpOptionsConfigAssociation> Associations { get; set; }
+
+        /// <summary>
+        /// The file path and name of the boot image/file on the TFTP server that the client VM guest OS should download
+        /// and execute during network boot. Used when the standard DHCP header 'file' field is overloaded. Corresponds
+        /// to DHCPv4 Option 67.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootFileIpv4Name")]
+        public virtual string BootFileIpv4Name { get; set; }
+
+        /// <summary>
+        /// A list of UTF-8 encoded parameter strings to be passed as arguments to the bootloader program or OS kernel
+        /// after downloading the boot file. Corresponds to DHCPv6 Option 60.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootFileIpv6Parameters")]
+        public virtual System.Collections.Generic.IList<string> BootFileIpv6Parameters { get; set; }
+
+        /// <summary>
+        /// The Uniform Resource Locator (URL) specifying the protocol, server address, and file path of the boot file
+        /// that the client VM guest OS should download and execute for network boot (e.g.,
+        /// 'tftp://[2001:db8::1]/bootx64.efi' or 'http://[2001:db8::1]/boot.img'). Corresponds to DHCPv6 Option 59.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootFileIpv6Url")]
+        public virtual string BootFileIpv6Url { get; set; }
+
+        /// <summary>Output only. [Output Only] Creation timestamp inRFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; }
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// An ordered list of domain suffixes (search paths) that the client VM guest OS should append to resolve
+        /// hostnames that are not fully qualified. Applies to both DHCPv4 Option 119 and DHCPv6 Option 24.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsSearchPaths")]
+        public virtual System.Collections.Generic.IList<string> DnsSearchPaths { get; set; }
+
+        /// <summary>
+        /// The domain name that the client VM guest OS should use when resolving hostnames via DNS (e.g.,
+        /// 'example.com'). It defines the default domain suffix for the client. Corresponds to DHCPv4 Option 15.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
+        public virtual string DomainName { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique identifier for the resource type. The server generates this
+        /// identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Type of the resource. Alwayscompute#dhcpOptionsConfig for dhcp options configs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// The duration, in seconds, of the IPv4 address lease offered by the DHCP server to the client VM guest OS.
+        /// Corresponds to DHCPv4 Option 51.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leaseTimeSec")]
+        public virtual System.Nullable<long> LeaseTimeSec { get; set; }
+
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
+        /// long, and comply withRFC1035. Specifically, the name must be 1-63 characters long and match the regular
+        /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// An ordered list of IPv4 addresses of Network Time Protocol (NTP) servers available to the client VM guest OS
+        /// for system clock synchronization, listed in order of preference. Corresponds to DHCPv4 Option 42.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ntpServerIpv4Addresses")]
+        public virtual System.Collections.Generic.IList<string> NtpServerIpv4Addresses { get; set; }
+
+        /// <summary>
+        /// An ordered list of IPv6 addresses of Network Time Protocol (NTP) servers available to the client VM guest OS
+        /// for system clock synchronization. Corresponds to DHCPv6 Option 56.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ntpServerIpv6Addresses")]
+        public virtual System.Collections.Generic.IList<string> NtpServerIpv6Addresses { get; set; }
+
+        /// <summary>Output only. [Output Only] URL of the region where the resource resides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// An ordered list of one or more IPv4 addresses of TFTP servers. Provides server redundancy and failover
+        /// support, and is generally prioritized by clients over the single hostname specified in Option 66.
+        /// Corresponds to DHCPv4 Option 150.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tftpServerIpv4Addresses")]
+        public virtual System.Collections.Generic.IList<string> TftpServerIpv4Addresses { get; set; }
+
+        /// <summary>
+        /// The hostname or IP address of the Trivial File Transfer Protocol (TFTP) server from which the client VM
+        /// guest OS can download boot files. Typically used in network booting (PXE) when the standard DHCP header
+        /// 'sname' field is overloaded. Corresponds to DHCPv4 Option 66.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tftpServerIpv4Name")]
+        public virtual string TftpServerIpv4Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Association represents the relationship between a DHCP options config and a network. Association represents the
+    /// relationship between a DHCP options config and a network.
+    /// </summary>
+    public class DhcpOptionsConfigAssociation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target network this DHCP option is attached to. You can specify this as a full or partial URL.
+        /// For example, the following are all valid URLs:              -
+        /// https://www.googleapis.com/compute/v1/projects/project/global/networks/network          -
+        /// projects/project/global/networks/network
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. [Output Only] The server-defined ID of the associated Network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkId")]
+        public virtual System.Nullable<ulong> NetworkId { get; set; }
+
+        /// <summary>Output only. [Output Only] State of the association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class DhcpOptionsConfigList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Server-defined ETag for optimistic concurrency control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of DhcpOptionsConfig resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<DhcpOptionsConfig> Items { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Type of the resource. Alwayscompute#dhcpOptionsConfigList for a list of dhcp
+        /// options configs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// [Output Only] This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
+    }
+
+    /// <summary>
     /// Represents a Persistent Disk resource.  Google Compute Engine has two Disk resources:  *
     /// [Zonal](/compute/docs/reference/rest/beta/disks) * [Regional](/compute/docs/reference/rest/beta/regionDisks)
     /// Persistent disks are required for running your VM instances. Create both boot and non-boot (data) persistent
@@ -131095,6 +133472,77 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for GetHealth operations.</summary>
+    public class GetHealthOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The health information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthInfo")]
+        public virtual GetHealthOperationMetadataHealthInfo HealthInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Health information.</summary>
+    public class GetHealthOperationMetadataHealthInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The availability SLO status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilitySloStatus")]
+        public virtual string AvailabilitySloStatus { get; set; }
+
+        /// <summary>Output only. The health status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
+        public virtual string HealthStatus { get; set; }
+
+        /// <summary>Output only. The repair category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairCategory")]
+        public virtual string RepairCategory { get; set; }
+
+        /// <summary>Output only. The reason for unhealthy status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unhealthyReason")]
+        public virtual string UnhealthyReason { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when health info was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GetVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSbomInfo")]
@@ -131135,6 +133583,55 @@ namespace Google.Apis.Compute.beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationAddress")]
         public virtual string DestinationAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Global Frontend Bundle settings for a single project.</summary>
+    public class GlobalFrontendSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Customer-settable bundle type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleType")]
+        public virtual string BundleType { get; set; }
+
+        /// <summary>Output only. [Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; }
+
+        /// <summary>Output only. [Output Only] An optional description of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. For optimistic locking</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>
+        /// Output only. OUTPUT_ONLY fields [Output Only] Name of the resource. Must be 1-63 characters long and match
+        /// the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase
+        /// letter, and all following characters must be a dash, lowercase letter, or digit, except the last character,
+        /// which cannot be a dash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+    }
+
+    /// <summary>Response to an UpdateGlobalFrontendSettingsRequest.</summary>
+    public class GlobalFrontendSettingsPatchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual Operation Operation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -131678,8 +134175,8 @@ namespace Google.Apis.Compute.beta.Data
         /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of
         /// the following values:        - VIRTIO_SCSI_MULTIQUEUE    - WINDOWS    - MULTI_IP_SUBNET    - UEFI_COMPATIBLE
         ///    - GVNIC    - SEV_CAPABLE    - SUSPEND_RESUME_COMPATIBLE    - SEV_LIVE_MIGRATABLE_V2    - SEV_SNP_CAPABLE
-        ///   - TDX_CAPABLE    - IDPF    - SNP_SVSM_CAPABLE    - CCA_CAPABLE   For more information, see Enabling guest
-        /// operating system features.
+        ///   - TDX_CAPABLE    - IDPF    - SNP_SVSM_CAPABLE    - CCA_CAPABLE    - SUSPEND_SAFE_FPR   For more
+        /// information, see Enabling guest operating system features.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -140337,6 +142834,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
+        /// <summary>Output only. Server-defined URL for this resource with the resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
+        public virtual string SelfLinkWithId { get; set; }
+
         /// <summary>
         /// Output only. [Output Only] The current state of Interconnect functionality, which can take one of the
         /// following values:        - ACTIVE: The Interconnect is valid, turned up and ready to use.    Attachments may
@@ -142552,6 +145053,18 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; }
 
+        /// <summary>
+        /// Output only. The maximum unmetered bandwidth for dynamic paths allowable per WireGroup for this metro.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDynamicPathBandwidthGbps")]
+        public virtual System.Nullable<long> MaxDynamicPathBandwidthGbps { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum unmetered bandwidth for fixed paths allowable per WireGroup for this metro.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxFixedPathBandwidthGbps")]
+        public virtual System.Nullable<long> MaxFixedPathBandwidthGbps { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -143789,6 +146302,94 @@ namespace Google.Apis.Compute.beta.Data
         }
     }
 
+    public class ListVmExtensionStatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Fingerprint of this resource. A hash of the contents stored in this object. This field is used
+        /// in optimistic locking. This field will be ignored when inserting a VmExtensionPolicy. An up-to-date
+        /// fingerprint must be provided in order to update the VmExtensionPolicy.  To see the latest value of the
+        /// fingerprint, make a get() request to retrieve a VmExtensionPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Output only. A list of VM extension policy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<VmExtensionState> Items { get; set; }
+
+        /// <summary>Output only. Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>Output only. Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>Output only. Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
+    }
+
     public class LocalDisk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the number of such disks.</summary>
@@ -144577,8 +147178,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual ManagedInstanceShutdownDetails ShutdownDetails { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] The eventual status of the instance. The instance group manager will not be
-        /// identified as stable till each managed instance reaches its targetStatus.
+        /// Output only. The eventual status of the instance. The instance group manager will not be identified as
+        /// stable till each managed instance reaches its targetStatus.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetStatus")]
         public virtual string TargetStatus { get; set; }
@@ -150263,6 +152864,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual ErrorData Error { get; set; }
 
+        /// <summary>Output only. Metadata for GetHealth operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("getHealthOperationMetadata")]
+        public virtual GetHealthOperationMetadata GetHealthOperationMetadata { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("getVersionOperationMetadata")]
         public virtual GetVersionOperationMetadata GetVersionOperationMetadata { get; set; }
 
@@ -152971,6 +155576,391 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Rollout status of the future quota limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutStatus")]
         public virtual string RolloutStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a RecoverableSnapshot resource.  A RecoverableSnapshot represents a snapshot in recycle bin.
+    /// </summary>
+    public class RecoverableSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output Only] Creation timestamp inRFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; }
+
+        /// <summary>Optional. An optional description of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Type of the resource. Alwayscompute#recoverableSnapshot for RecoverableSnapshot
+        /// resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. Name of the recoverable snapshot generated on the deletion of the snapshot. The
+        /// name will be 1-63 characters long, and comply withRFC1035. Specifically, the name will be 1-63 characters
+        /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character will be a
+        /// lowercase letter, and all following characters can be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Output Only] The original snapshot resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalResource")]
+        public virtual RecoverableSnapshotOriginalSnapshot OriginalResource { get; set; }
+
+        /// <summary>Output only. [Output Only] Purge timestamp of recoverable snapshot inRFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeTimestamp")]
+        public virtual string PurgeTimestamp { get; set; }
+
+        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource's resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
+        public virtual string SelfLinkWithId { get; set; }
+
+        /// <summary>Output only. [Output Only] Status of the recoverable snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RecoverableSnapshotList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of RecoverableSnapshots resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<RecoverableSnapshot> Items { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Type of resource. Alwayscompute#recoverableSnapshotList for lists of
+        /// recoverablesnapshots.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// [Output Only] This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
+    }
+
+    public class RecoverableSnapshotOriginalSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. [Output Only] The architecture of the snapshot. Valid values are ARM64 or X86_64.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Set to true if snapshots are automatically created by applying resource policy on
+        /// the target disk.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreated")]
+        public virtual System.Nullable<bool> AutoCreated { get; set; }
+
+        /// <summary>
+        /// Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63
+        /// characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who
+        /// needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your
+        /// snapshot resource, this field is visible only if it has a non-empty value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chainName")]
+        public virtual string ChainName { get; set; }
+
+        /// <summary>Output only. [Output Only] Size in bytes of the snapshot at creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationSizeBytes")]
+        public virtual System.Nullable<long> CreationSizeBytes { get; set; }
+
+        /// <summary>Output only. [Output Only] Creation timestamp inRFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; }
+
+        /// <summary>Output only. [Output Only] Deletion timestamp of snapshot inRFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionTimestamp")]
+        public virtual string DeletionTimestamp { get; set; }
+
+        /// <summary>An optional description of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. [Output Only] Size of the source disk, specified in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>Output only. [Output Only] Number of bytes downloaded to restore a snapshot to a disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadBytes")]
+        public virtual System.Nullable<long> DownloadBytes { get; set; }
+
+        /// <summary>
+        /// Output only. Whether this snapshot is created from a confidential compute mode disk. [Output Only]: This
+        /// field is not set by user, but from source disk.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
+        public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] A list of features to enable on the guest operating system. Applicable only for
+        /// bootable images. Read  Enabling guest operating system features to see a list of available options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique identifier for the original snapshot. This identifier is defined by
+        /// the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>
+        /// A fingerprint for the labels being applied to this snapshot, which is essentially a hash of the labels set
+        /// used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
+        /// every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to
+        /// update or change labels, otherwise the request will fail with error412 conditionNotMet.  To see the latest
+        /// fingerprint, make a get() request to retrieve a snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; }
+
+        /// <summary>
+        /// Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be
+        /// empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Integer license codes indicating which licenses are attached to this snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; }
+
+        /// <summary>Output only. [Output Only] A list of public visible licenses that apply to this snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
+        public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
+
+        /// <summary>Number of days the snapshot should be retained before being deleted automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetentionDays")]
+        public virtual System.Nullable<int> MaxRetentionDays { get; set; }
+
+        /// <summary>
+        /// Name of the original snapshot provided by the client. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] URL of the region where the snapshot resides. Only applicable for regional
+        /// snapshots.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource's resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
+        public virtual string SelfLinkWithId { get; set; }
+
+        /// <summary>
+        /// Encrypts the snapshot using acustomer-supplied encryption key.  After you encrypt a snapshot using a
+        /// customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must
+        /// provide the encryption key when you create a disk from the encrypted snapshot in a future request.
+        /// Customer-supplied encryption keys do not protect access to metadata of the snapshot.  If you do not provide
+        /// an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically
+        /// generated key and you do not need to provide a key to use the snapshot later.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotEncryptionKey")]
+        public virtual CustomerEncryptionKey SnapshotEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique ID of the snapshot group that this snapshot belongs to. The usage of
+        /// snapshot group feature is restricted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotGroupId")]
+        public virtual string SnapshotGroupId { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] The snapshot group that this snapshot belongs to. The usage of snapshot group
+        /// feature is restricted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotGroupName")]
+        public virtual string SnapshotGroupName { get; set; }
+
+        /// <summary>Indicates the type of the snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotType")]
+        public virtual string SnapshotType { get; set; }
+
+        /// <summary>The source disk used to create this snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDisk")]
+        public virtual string SourceDisk { get; set; }
+
+        /// <summary>
+        /// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a
+        /// customer-supplied encryption key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceDiskEncryptionKey { get; set; }
+
+        /// <summary>The source disk whose recovery checkpoint will be used to create this snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskForRecoveryCheckpoint")]
+        public virtual string SourceDiskForRecoveryCheckpoint { get; set; }
+
+        /// <summary>Output only. [Output Only] The ID value of the disk used to create this snapshot</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskId")]
+        public virtual string SourceDiskId { get; set; }
+
+        /// <summary>The source instant snapshot used to create this snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstantSnapshot")]
+        public virtual string SourceInstantSnapshot { get; set; }
+
+        /// <summary>Customer provided encryption key when creating Snapshot from Instant Snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstantSnapshotEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceInstantSnapshotEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique ID of the instant snapshot used to create this snapshot. This value
+        /// identifies the exact instant snapshot that was used to create this persistent disk. For example, if you
+        /// created the persistent disk from an instant snapshot that was later deleted and recreated under the same
+        /// name, the source instant snapshot ID would identify the exact instant snapshot that was used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstantSnapshotId")]
+        public virtual string SourceInstantSnapshotId { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] URL of the resource policy which created this scheduled snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotSchedulePolicy")]
+        public virtual string SourceSnapshotSchedulePolicy { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] ID of the resource policy which created this scheduled snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotSchedulePolicyId")]
+        public virtual string SourceSnapshotSchedulePolicyId { get; set; }
+
+        /// <summary>Output only. [Output Only] A size of the storage used by the snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageBytes")]
+        public virtual System.Nullable<long> StorageBytes { get; set; }
+
+        /// <summary>
+        /// Output only. [Deprecated] Instead, check the storageBytes field. After snapshot creation, the
+        /// storageBytesStatus field is alwaysUP_TO_DATE. [Output Only] An indicator whether storageBytes is in a stable
+        /// state or it is being adjusted as a result of shared storage reallocation. This status can either be unset,
+        /// meaning the snapshot is being created, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageBytesStatus")]
+        public virtual string StorageBytesStatus { get; set; }
+
+        /// <summary>Cloud Storage bucket storage location of the snapshot (regional or multi-regional).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageLocations")]
+        public virtual System.Collections.Generic.IList<string> StorageLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -162442,6 +165432,61 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents the singleton resource Snapshot Recycle Bin Policy that configures the retention duration for
+    /// snapshots in the recycle bin.  You can configure the retention duration for snapshots in the recycle bin at the
+    /// project or organization level. If you configure the policy at the organization level, all projects in that
+    /// organization will share the same policy. If you configure the policy at the project level it will be merged with
+    /// org level policy (if any) and the snapshots in that project will use that policy.
+    /// </summary>
+    public class SnapshotRecycleBinPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The rules for the snapshot recycle bin policy. The key is either 'default' or namespacedName of the TagValue
+        /// which can be in the format: `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or
+        /// `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or
+        /// `{project_number}/{tag_key_short_name}/{tag_value_short_name}`. The default rule is applied if snapshots do
+        /// not have any of these tags.  The value is the rule for the key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IDictionary<string, SnapshotRecycleBinPolicyRule> Rules { get; set; }
+
+        /// <summary>
+        /// Output only. The system rules for snapshot recycle bin policy. Defines the default rule that applies if no
+        /// customer-defined rule matches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemRules")]
+        public virtual System.Collections.Generic.IDictionary<string, SnapshotRecycleBinPolicyRule> SystemRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A rule that defines the retention policy for snapshots in the recycle bin.</summary>
+    public class SnapshotRecycleBinPolicyRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The rule config for standard snapshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardSnapshots")]
+        public virtual SnapshotRecycleBinPolicyRuleRuleConfig StandardSnapshots { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The rule config for snapshots in the recycle bin.</summary>
+    public class SnapshotRecycleBinPolicyRuleRuleConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The retention duration for snapshots in the recycle bin after which the snapshots are automatically deleted
+        /// from recycle bin.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDurationDays")]
+        public virtual System.Nullable<long> RetentionDurationDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class SnapshotSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>(Regional snapshots use only)Policy of which location is allowed to access snapshot.</summary>
@@ -162523,6 +165568,16 @@ namespace Google.Apis.Compute.beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SnapshotsGetEffectiveRecycleBinRuleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The retention duration of the snapshot in recycle bin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDurationDays")]
+        public virtual System.Nullable<long> RetentionDurationDays { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -169378,6 +172433,44 @@ namespace Google.Apis.Compute.beta.Data
                 public virtual string Value { get; set; }
             }
         }
+    }
+
+    /// <summary>State of an extension on an instance.</summary>
+    public class VmExtensionState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status message of the extension if the extension fails to enforce.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementMsg")]
+        public virtual string EnforcementMsg { get; set; }
+
+        /// <summary>
+        /// The enforcement state of the extension. If the extension is not enforced yet, then the health status will
+        /// not be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementState")]
+        public virtual string EnforcementState { get; set; }
+
+        /// <summary>The health status message of the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthMsg")]
+        public virtual string HealthMsg { get; set; }
+
+        /// <summary>The health status of the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
+        public virtual string HealthStatus { get; set; }
+
+        /// <summary>The name of the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The id of the policy that is enforced on the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
+        public virtual string PolicyId { get; set; }
+
+        /// <summary>The version of the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
