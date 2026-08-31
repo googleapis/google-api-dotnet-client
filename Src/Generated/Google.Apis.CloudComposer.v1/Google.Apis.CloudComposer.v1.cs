@@ -2756,6 +2756,13 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Optional. Selects the environment mode that determines what settings are customizable and what features are
+        /// available in the environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
         /// Identifier. The resource name of the environment, in the form:
         /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a
         /// lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
