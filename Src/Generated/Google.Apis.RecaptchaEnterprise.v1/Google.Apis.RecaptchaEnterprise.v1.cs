@@ -3673,6 +3673,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidPackageName")]
         public virtual string AndroidPackageName { get; set; }
 
+        /// <summary>
+        /// Output only. Indicates a failure collecting reCAPTCHA signals at token generation. This might be a transient
+        /// condition, or persistent for a user’s environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSignalsFailed")]
+        public virtual System.Nullable<bool> ClientSignalsFailed { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -4126,7 +4133,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This
-        /// should only be specified for `IntegrationType` CHECKBOX, INVISIBLE or POLICY_BASED_CHALLENGE.
+        /// should only be specified for `IntegrationType` CHECKBOX (defaults to BALANCE), INVISIBLE (defaults to
+        /// USABILITY), or POLICY_BASED_CHALLENGE (defaults to USABILITY).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challengeSecurityPreference")]
         public virtual string ChallengeSecurityPreference { get; set; }
