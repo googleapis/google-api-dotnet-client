@@ -4847,149 +4847,6 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Configuration information to start the Change Data Capture (CDC) streams from customer database to backend
-    /// database of Dataproc Metastore.
-    /// </summary>
-    public class CdcConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The bucket to write the intermediate stream event data in. The bucket name must be without any
-        /// prefix like "gs://". See the bucket naming requirements
-        /// (https://cloud.google.com/storage/docs/buckets#naming). This field is optional. If not set, the Artifacts
-        /// Cloud Storage bucket will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; }
-
-        /// <summary>
-        /// Required. Input only. The password for the user that Datastream service should use for the MySQL connection.
-        /// This field is not returned on request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; }
-
-        /// <summary>
-        /// Required. The URL of the subnetwork resource to create the VM instance hosting the reverse proxy in. More
-        /// context in https://cloud.google.com/datastream/docs/private-connectivity#reverse-csql-proxy The subnetwork
-        /// should reside in the network provided in the request that Datastream will peer to and should be in the same
-        /// region as Datastream, in the following format.
-        /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reverseProxySubnet")]
-        public virtual string ReverseProxySubnet { get; set; }
-
-        /// <summary>
-        /// Optional. The root path inside the Cloud Storage bucket. The stream event data will be written to this path.
-        /// The default value is /migration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rootPath")]
-        public virtual string RootPath { get; set; }
-
-        /// <summary>Required. A /29 CIDR IP range for peering with datastream.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subnetIpRange")]
-        public virtual string SubnetIpRange { get; set; }
-
-        /// <summary>Required. The username that the Datastream service should use for the MySQL connection.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; }
-
-        /// <summary>
-        /// Required. Fully qualified name of the Cloud SQL instance's VPC network or the shared VPC network that
-        /// Datastream will peer to, in the following format:
-        /// projects/{project_id}/locations/global/networks/{network_id}. More context in
-        /// https://cloud.google.com/datastream/docs/network-connectivity-options#privateconnectivity
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
-        public virtual string VpcNetwork { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Configuration information to establish customer database connection before the cutover phase of migration
-    /// </summary>
-    public class CloudSQLConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The hive database name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hiveDatabaseName")]
-        public virtual string HiveDatabaseName { get; set; }
-
-        /// <summary>Required. Cloud SQL database connection name (project_id:region:instance_name)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceConnectionName")]
-        public virtual string InstanceConnectionName { get; set; }
-
-        /// <summary>Required. The private IP address of the Cloud SQL instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; }
-
-        /// <summary>
-        /// Required. The relative resource name of the subnetwork to be used for Private Service Connect. Note that
-        /// this cannot be a regular subnet and is used only for NAT.
-        /// (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-subnets) This subnet is used to publish the
-        /// SOCKS5 proxy service. The subnet size must be at least /29 and it should reside in a network through which
-        /// the Cloud SQL instance is accessible. The resource name should be in the format,
-        /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("natSubnet")]
-        public virtual string NatSubnet { get; set; }
-
-        /// <summary>
-        /// Required. Input only. The password for the user that Dataproc Metastore service will be using to connect to
-        /// the database. This field is not returned on request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; }
-
-        /// <summary>Required. The network port of the database.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; }
-
-        /// <summary>
-        /// Required. The relative resource name of the subnetwork to deploy the SOCKS5 proxy service in. The subnetwork
-        /// should reside in a network through which the Cloud SQL instance is accessible. The resource name should be
-        /// in the format, projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("proxySubnet")]
-        public virtual string ProxySubnet { get; set; }
-
-        /// <summary>
-        /// Required. The username that Dataproc Metastore service will use to connect to the database.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration instead.
-    /// Configuration information for migrating from self-managed hive metastore on Google Cloud using Cloud SQL as the
-    /// backend database to Dataproc Metastore.
-    /// </summary>
-    public class CloudSQLMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Configuration information to start the Change Data Capture (CDC) streams from customer database to
-        /// backend database of Dataproc Metastore. Dataproc Metastore switches to using its backend database after the
-        /// cutover phase of migration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cdcConfig")]
-        public virtual CdcConfig CdcConfig { get; set; }
-
-        /// <summary>
-        /// Required. Configuration information to establish customer database connection before the cutover phase of
-        /// migration
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlConnectionConfig")]
-        public virtual CloudSQLConnectionConfig CloudSqlConnectionConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for DataprocMetastore.CompleteMigration.</summary>
     public class CompleteMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6217,14 +6074,6 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("biglakeMetastoreMigrationConfig")]
         public virtual BigLakeMetastoreMigrationConfig BiglakeMetastoreMigrationConfig { get; set; }
 
-        /// <summary>
-        /// Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration
-        /// instead. Configuration information specific to migrating from self-managed hive metastore on Google Cloud
-        /// using Cloud SQL as the backend database to Dataproc Metastore.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlMigrationConfig")]
-        public virtual CloudSQLMigrationConfig CloudSqlMigrationConfig { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
@@ -7340,6 +7189,15 @@ namespace Google.Apis.DataprocMetastore.v1beta.Data
         /// <summary>Required. The configuration details for the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationExecution")]
         public virtual MigrationExecution MigrationExecution { get; set; }
+
+        /// <summary>
+        /// Optional. The ID to use for the migration execution, which will become the final component of the migration
+        /// execution's resource name. If not specified, a UUID will be generated.This value must be between 2 and 63
+        /// characters long inclusive, begin with a letter, end with a letter or number, and valid characters are
+        /// a-z0-9-.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationExecutionId")]
+        public virtual string MigrationExecutionId { get; set; }
 
         /// <summary>
         /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has
