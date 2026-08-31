@@ -4256,6 +4256,30 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Backfill status for the migration execution.</summary>
+    public class BackfillStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Summary of the migration results. This is populated after the backfill or dry run is finished.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationSummary")]
+        public virtual MigrationSummary MigrationSummary { get; set; }
+
+        /// <summary>
+        /// Output only. The Cloud Storage path where the backfill or dry run report is written. Format:
+        /// "gs://path-to-report".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportPath")]
+        public virtual string ReportPath { get; set; }
+
+        /// <summary>Output only. The current state of the backfill (or dry run).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The details of a backup resource.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4360,6 +4384,56 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Defines the configuration required to migrate metadata from a Dataproc Metastore service to BigLake Metastore.
+    /// </summary>
+    public class BigLakeMetastoreMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backfillStatus")]
+        public virtual BackfillStatus BackfillStatus { get; set; }
+
+        /// <summary>
+        /// Optional. The policy to handle conflicts when migrating resources, defaults to SKIP if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictPolicy")]
+        public virtual string ConflictPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. If true, performs discovery of requested resources and analysis against the target catalog to come
+        /// up with a plan for each resource (e.g. Create, Update, Skip, etc.). No metadata is actually migrated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual System.Nullable<bool> DryRun { get; set; }
+
+        /// <summary>
+        /// Optional. At least one of hive_config or iceberg_config must be provided, otherwise, a validation error will
+        /// be thrown. If only one is provided, the service only migrates tables of that specific type. If both are
+        /// provided, both Hive and Iceberg tables will be migrated.Configuration for migrating Hive tables to a BigLake
+        /// Hive catalog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hiveConfig")]
+        public virtual HiveConfig HiveConfig { get; set; }
+
+        /// <summary>Optional. Configuration for migrating Iceberg tables to a BigLake Iceberg REST catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icebergConfig")]
+        public virtual IcebergConfig IcebergConfig { get; set; }
+
+        /// <summary>Required. Defines the behavior of the migration execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage path where the backfill / dry run report should be written. If not provided, the
+        /// report will be generated in the service's artifacts bucket. Format: "gs://path/to/folder"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportPath")]
+        public virtual string ReportPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates members, or principals, with a role.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4446,144 +4520,39 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Configuration information to start the Change Data Capture (CDC) streams from customer database to backend
-    /// database of Dataproc Metastore.
-    /// </summary>
-    public class CdcConfig : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Aggregated report at the catalog level.</summary>
+    public class CatalogReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The bucket to write the intermediate stream event data in. The bucket name must be without any
-        /// prefix like "gs://". See the bucket naming requirements
-        /// (https://cloud.google.com/storage/docs/buckets#naming). This field is optional. If not set, the Artifacts
-        /// Cloud Storage bucket will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; }
+        /// <summary>The name of the catalog (format: projects/*/catalogs/*).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
 
-        /// <summary>
-        /// Required. Input only. The password for the user that Datastream service should use for the MySQL connection.
-        /// This field is not returned on request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; }
+        /// <summary>The type of catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogType")]
+        public virtual string CatalogType { get; set; }
 
-        /// <summary>
-        /// Required. The URL of the subnetwork resource to create the VM instance hosting the reverse proxy in. More
-        /// context in https://cloud.google.com/datastream/docs/private-connectivity#reverse-csql-proxy The subnetwork
-        /// should reside in the network provided in the request that Datastream will peer to and should be in the same
-        /// region as Datastream, in the following format.
-        /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reverseProxySubnet")]
-        public virtual string ReverseProxySubnet { get; set; }
-
-        /// <summary>
-        /// Optional. The root path inside the Cloud Storage bucket. The stream event data will be written to this path.
-        /// The default value is /migration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rootPath")]
-        public virtual string RootPath { get; set; }
-
-        /// <summary>Required. A /29 CIDR IP range for peering with datastream.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subnetIpRange")]
-        public virtual string SubnetIpRange { get; set; }
-
-        /// <summary>Required. The username that the Datastream service should use for the MySQL connection.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; }
-
-        /// <summary>
-        /// Required. Fully qualified name of the Cloud SQL instance's VPC network or the shared VPC network that
-        /// Datastream will peer to, in the following format:
-        /// projects/{project_id}/locations/global/networks/{network_id}. More context in
-        /// https://cloud.google.com/datastream/docs/network-connectivity-options#privateconnectivity
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
-        public virtual string VpcNetwork { get; set; }
+        /// <summary>A map of database names to their respective reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseReports")]
+        public virtual System.Collections.Generic.IDictionary<string, DatabaseReport> DatabaseReports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Configuration information to establish customer database connection before the cutover phase of migration
-    /// </summary>
-    public class CloudSQLConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Summary of results for a specific destination catalog.</summary>
+    public class CatalogSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The hive database name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hiveDatabaseName")]
-        public virtual string HiveDatabaseName { get; set; }
+        /// <summary>Output only. The catalog resource name (format: projects/*/catalogs/*).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
 
-        /// <summary>Required. Cloud SQL database connection name (project_id:region:instance_name)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceConnectionName")]
-        public virtual string InstanceConnectionName { get; set; }
+        /// <summary>Output only. The type of the catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogType")]
+        public virtual string CatalogType { get; set; }
 
-        /// <summary>Required. The private IP address of the Cloud SQL instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; }
-
-        /// <summary>
-        /// Required. The relative resource name of the subnetwork to be used for Private Service Connect. Note that
-        /// this cannot be a regular subnet and is used only for NAT.
-        /// (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-subnets) This subnet is used to publish the
-        /// SOCKS5 proxy service. The subnet size must be at least /29 and it should reside in a network through which
-        /// the Cloud SQL instance is accessible. The resource name should be in the format,
-        /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("natSubnet")]
-        public virtual string NatSubnet { get; set; }
-
-        /// <summary>
-        /// Required. Input only. The password for the user that Dataproc Metastore service will be using to connect to
-        /// the database. This field is not returned on request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; }
-
-        /// <summary>Required. The network port of the database.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual System.Nullable<int> Port { get; set; }
-
-        /// <summary>
-        /// Required. The relative resource name of the subnetwork to deploy the SOCKS5 proxy service in. The subnetwork
-        /// should reside in a network through which the Cloud SQL instance is accessible. The resource name should be
-        /// in the format, projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("proxySubnet")]
-        public virtual string ProxySubnet { get; set; }
-
-        /// <summary>
-        /// Required. The username that Dataproc Metastore service will use to connect to the database.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration instead.
-    /// Configuration information for migrating from self-managed hive metastore on Google Cloud using Cloud SQL as the
-    /// backend database to Dataproc Metastore.
-    /// </summary>
-    public class CloudSQLMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Configuration information to start the Change Data Capture (CDC) streams from customer database to
-        /// backend database of Dataproc Metastore. Dataproc Metastore switches to using its backend database after the
-        /// cutover phase of migration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cdcConfig")]
-        public virtual CdcConfig CdcConfig { get; set; }
-
-        /// <summary>
-        /// Required. Configuration information to establish customer database connection before the cutover phase of
-        /// migration
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlConnectionConfig")]
-        public virtual CloudSQLConnectionConfig CloudSqlConnectionConfig { get; set; }
+        /// <summary>Output only. Summary of results for each database in the catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseSummaries")]
+        public virtual System.Collections.Generic.IList<DatabaseSummary> DatabaseSummaries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4688,6 +4657,55 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Aggregated report at the database level.</summary>
+    public class DatabaseReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>The discovered intent for the database (what we found and what we planned).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionPlan")]
+        public virtual ExecutionPlan ExecutionPlan { get; set; }
+
+        /// <summary>The actual outcome of the database migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionResult")]
+        public virtual ExecutionResult ExecutionResult { get; set; }
+
+        /// <summary>A map of table names to their respective reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableReports")]
+        public virtual System.Collections.Generic.IDictionary<string, TableReport> TableReports { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of results for a specific database in a catalog.</summary>
+    public class DatabaseSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Output only. The migration plan action for the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planAction")]
+        public virtual string PlanAction { get; set; }
+
+        /// <summary>
+        /// Output only. The migration result status for the database. This is only set if the migration is not a dry
+        /// run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultStatus")]
+        public virtual string ResultStatus { get; set; }
+
+        /// <summary>Output only. Aggregated summary of results for all tables in the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableSummary")]
+        public virtual TableSummary TableSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -4723,6 +4741,44 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the migration plan for a specific resource (e.g. Database, Table).</summary>
+    public class ExecutionPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action that will be taken for a resource during migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>A map of field names to their respective value diff.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffs")]
+        public virtual System.Collections.Generic.IDictionary<string, ValueDiff> Diffs { get; set; }
+
+        /// <summary>A human-readable string explaining why the action was chosen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the actual migration result for a specific resource (e.g. Database, Table).</summary>
+    public class ExecutionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the error if the state is FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Remediation steps for the error if the state is FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
+        public virtual string Remediation { get; set; }
+
+        /// <summary>Output only. The state of the migration for a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4935,6 +4991,27 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for migrating Hive metadata.</summary>
+    public class HiveConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target catalog for migrated databases and tables. Format:
+        /// "projects/{project_id_or_number}/catalogs/{catalog_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>
+        /// Required. The list of databases to migrate to the Hive catalog. Use "*" to migrate all databases. Note: If
+        /// Iceberg tables exist in these databases, they will only be migrated if iceberg_config is also specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databases")]
+        public virtual System.Collections.Generic.IList<string> Databases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies configuration information specific to running Hive metastore software as the metastore service.
     /// </summary>
@@ -4996,6 +5073,27 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         /// <summary>The semantic version of the Hive Metastore software.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for migrating Iceberg metadata.</summary>
+    public class IcebergConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target catalog for migrated Iceberg metadata. Format:
+        /// "projects/{project_id_or_number}/catalogs/{catalog_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>
+        /// Required. The list of namespaces to migrate to the Iceberg REST catalog. Use "*" to migrate all namespaces.
+        /// Note: If Hive tables exist in these namespaces, they will only be migrated if hive_config is also specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaces")]
+        public virtual System.Collections.Generic.IList<string> Namespaces { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5605,12 +5703,10 @@ namespace Google.Apis.DataprocMetastore.v1.Data
     public class MigrationExecution : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Deprecated: Migrations to Dataproc Metastore are no longer supported. Use BigLake Metastore migration
-        /// instead. Configuration information specific to migrating from self-managed hive metastore on Google Cloud
-        /// using Cloud SQL as the backend database to Dataproc Metastore.
+        /// Configuration information specific to migrating from Dataproc Metastore to BigLake Metastore.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlMigrationConfig")]
-        public virtual CloudSQLMigrationConfig CloudSqlMigrationConfig { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("biglakeMetastoreMigrationConfig")]
+        public virtual BigLakeMetastoreMigrationConfig BiglakeMetastoreMigrationConfig { get; set; }
 
         private string _createTimeRaw;
 
@@ -5707,6 +5803,83 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         /// <summary>Output only. Additional information about the current state of the migration execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Report containing the results of a migration run. This report is generated at the specified path in the
+    /// BigLakeMetastoreMigrationConfig after the backfill is complete, or when a dry run is executed.
+    /// </summary>
+    public class MigrationReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Detailed results for each catalog involved in the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogReports")]
+        public virtual System.Collections.Generic.IList<CatalogReport> CatalogReports { get; set; }
+
+        /// <summary>Output only. High-level summary of the migration results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual MigrationSummary Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of the migration results.</summary>
+    public class MigrationSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Summary of results for each catalog involved in the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogSummaries")]
+        public virtual System.Collections.Generic.IList<CatalogSummary> CatalogSummaries { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The UTC time when this report was finalized.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Whether the migration was a dry run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual System.Nullable<bool> DryRun { get; set; }
+
+        /// <summary>
+        /// Output only. The Dataproc Metastore service name (format: projects/*/locations/*/services/*) on which the
+        /// migration was executed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5915,6 +6088,25 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Partition migration report for a Hive table.</summary>
+    public class PartitionReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of partitions that failed to migrate at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionFailedCount")]
+        public virtual System.Nullable<long> PartitionFailedCount { get; set; }
+
+        /// <summary>The number of partitions successfully migrated at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionSuccessCount")]
+        public virtual System.Nullable<long> PartitionSuccessCount { get; set; }
+
+        /// <summary>Output only. The state of the partition migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6516,6 +6708,15 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         public virtual MigrationExecution MigrationExecution { get; set; }
 
         /// <summary>
+        /// Optional. The ID to use for the migration execution, which will become the final component of the migration
+        /// execution's resource name. If not specified, a UUID will be generated.This value must be between 2 and 63
+        /// characters long inclusive, begin with a letter, end with a letter or number, and valid characters are
+        /// a-z0-9-.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationExecutionId")]
+        public virtual string MigrationExecutionId { get; set; }
+
+        /// <summary>
         /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has
         /// completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60
         /// minutes after the first request.For example, if an initial request times out, followed by another request
@@ -6601,6 +6802,75 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Aggregated report at the table level.</summary>
+    public class TableReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The discovered intent for the table (what we found and what we planned).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionPlan")]
+        public virtual ExecutionPlan ExecutionPlan { get; set; }
+
+        /// <summary>The actual outcome of the table migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionResult")]
+        public virtual ExecutionResult ExecutionResult { get; set; }
+
+        /// <summary>
+        /// The total number of partitions identified at the source during discovery. This is only relevant for Hive
+        /// Partitioned tables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionDiscoveredCount")]
+        public virtual System.Nullable<long> PartitionDiscoveredCount { get; set; }
+
+        /// <summary>
+        /// Report containing the results of partition migration for this table. This is only relevant for Hive
+        /// Partitioned tables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionReport")]
+        public virtual PartitionReport PartitionReport { get; set; }
+
+        /// <summary>The name of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregated summary of results for all tables in a database.</summary>
+    public class TableSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Partition migration summary across all Hive tables in the database.The total number of
+        /// partitions discovered at the source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionDiscoveredCount")]
+        public virtual System.Nullable<long> PartitionDiscoveredCount { get; set; }
+
+        /// <summary>Output only. The total number of partitions that failed to migrate at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionFailedCount")]
+        public virtual System.Nullable<long> PartitionFailedCount { get; set; }
+
+        /// <summary>Output only. The total number of partitions successfully migrated at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionSuccessCount")]
+        public virtual System.Nullable<long> PartitionSuccessCount { get; set; }
+
+        /// <summary>
+        /// Output only. Number of tables with a specific migration plan action. The key is the action name (e.g.
+        /// CREATE, UPDATE, SKIP, etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planCounts")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> PlanCounts { get; set; }
+
+        /// <summary>
+        /// Output only. Number of tables with a specific migration result status. The key is the status name (e.g.
+        /// SUCCEEDED, FAILED, SKIPPED, etc.). This is only set if the migration is not a dry run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultCounts")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> ResultCounts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Telemetry Configuration for the Dataproc Metastore service.</summary>
     public class TelemetryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6632,6 +6902,21 @@ namespace Google.Apis.DataprocMetastore.v1.Data
         /// <summary>A subset of TestPermissionsRequest.permissions that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A field-level metadata mismatch for a resource between the source and target.</summary>
+    public class ValueDiff : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the field at the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceValue")]
+        public virtual string SourceValue { get; set; }
+
+        /// <summary>The value of the field at the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetValue")]
+        public virtual string TargetValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
