@@ -1039,7 +1039,11 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists the approvals on a file. For more information, see [Manage
-        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). By default, this method
+        /// returns a minimal response that may not include the items array. To retrieve approval details, you must
+        /// explicitly specify the fields you want using the `fields` query parameter. To return the exact fields you
+        /// need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         /// <param name="fileId">Required. The ID of the file that the approval is on.</param>
         public virtual ListRequest List(string fileId)
@@ -1049,7 +1053,11 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Lists the approvals on a file. For more information, see [Manage
-        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals).
+        /// approvals](https://developers.google.com/workspace/drive/api/guides/approvals). By default, this method
+        /// returns a minimal response that may not include the items array. To retrieve approval details, you must
+        /// explicitly specify the fields you want using the `fields` query parameter. To return the exact fields you
+        /// need, see [Return specific
+        /// fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.ApprovalList>
         {
