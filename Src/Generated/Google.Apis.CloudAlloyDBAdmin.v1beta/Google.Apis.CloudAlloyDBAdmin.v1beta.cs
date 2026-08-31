@@ -4463,23 +4463,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta
 }
 namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 {
-    /// <summary>
-    /// AlloyDbInternalDebugInfo contains internal debugging information for AlloyDB errors. It is explicitly kept out
-    /// of the allowlist (errors.yaml) to ensure it is sanitized (stripped) by OnePlatform for all external requests.
-    /// Used only to carry internal error details to across UPC/FlowLib boundary for ObservabilityInfo.
-    /// </summary>
-    public class AlloydbClhErrorsAlloyDbInternalDebugInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The original error message or details before sanitization, used internally for debugging and logging.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalError")]
-        public virtual string OriginalError { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>AuthorizedNetwork contains metadata for an authorized network.</summary>
     public class AuthorizedNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
