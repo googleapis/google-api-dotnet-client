@@ -11216,8 +11216,9 @@ namespace Google.Apis.Container.v1.Data
         public virtual ContainerdConfig ContainerdConfig { get; set; }
 
         /// <summary>
-        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
-        /// unspecified, the default disk size is 100GB.
+        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 15 GB for node
+        /// pools running GKE versions 1.36.3-gke.1480000 or later. Or, for earlier versions, the smallest allowed disk
+        /// size is 12 GB. If unspecified, the default disk size is 100GB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
@@ -12917,6 +12918,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The default version for newly created clusters on the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVersion")]
         public virtual string DefaultVersion { get; set; }
+
+        /// <summary>Output only. List of preview versions for the channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previewVersions")]
+        public virtual System.Collections.Generic.IList<string> PreviewVersions { get; set; }
 
         /// <summary>The auto upgrade target version for clusters on the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeTargetVersion")]
