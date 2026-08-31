@@ -3842,7 +3842,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// <summary>The consumer policy rule that defines enabled services and groups.</summary>
     public class EnableRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Client and resource project enable type.</summary>
+        /// <summary>Deprecated: EnableType is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableType")]
         public virtual string EnableType { get; set; }
 
