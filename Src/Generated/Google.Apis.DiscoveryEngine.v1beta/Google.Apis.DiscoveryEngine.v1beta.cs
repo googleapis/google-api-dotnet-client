@@ -31030,6 +31030,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Referenced content and related document metadata.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Generic structured chunk metadata from upstream data source connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChunkMetadata { get; set; }
+
         /// <summary>Chunk of code snippet from the referenced document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeSnippet")]
         public virtual string CodeSnippet { get; set; }
@@ -44193,6 +44197,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Referenced content and related document metadata.</summary>
     public class GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Generic structured chunk metadata from upstream data source connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChunkMetadata { get; set; }
+
         /// <summary>Chunk of code snippet from the referenced document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeSnippet")]
         public virtual string CodeSnippet { get; set; }
@@ -55793,6 +55801,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Request for the AssistantService.StreamAssist method.</summary>
     public class GoogleCloudDiscoveryengineV1betaStreamAssistRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specification of agents that are used to serve the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentsSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec AgentsSpec { get; set; }
+
         /// <summary>Optional. Specification of the generation configuration for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec GenerationSpec { get; set; }
@@ -55820,6 +55832,31 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Optional. Information about the user initiating the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userMetadata")]
         public virtual GoogleCloudDiscoveryengineV1betaAssistUserMetadata UserMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of agents that are used to serve the request.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specification of agents that are used to serve the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec> AgentSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of an agent.</summary>
+    public class GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. ID to identify the agent resource serving the request. This field must conform to
+        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length limit of 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
