@@ -3757,11 +3757,12 @@ namespace Google.Apis.Classroom.v1
                 /// Modifies attachments of student submission. Attachments may only be added to student submissions
                 /// belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be made by the
                 /// Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
-                /// used to create the corresponding course work item. This method returns the following error codes: *
-                /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
-                /// work, if the user is not permitted to modify attachments on the requested student submission, or for
-                /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
-                /// course, course work, or student submission does not exist.
+                /// used to create the corresponding course work item or an add-on attachment on the corresponding
+                /// course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the
+                /// requesting user is not permitted to access the requested course or course work, if the user is not
+                /// permitted to modify attachments on the requested student submission, or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">
@@ -3779,11 +3780,12 @@ namespace Google.Apis.Classroom.v1
                 /// Modifies attachments of student submission. Attachments may only be added to student submissions
                 /// belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be made by the
                 /// Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
-                /// used to create the corresponding course work item. This method returns the following error codes: *
-                /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
-                /// work, if the user is not permitted to modify attachments on the requested student submission, or for
-                /// access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
-                /// course, course work, or student submission does not exist.
+                /// used to create the corresponding course work item or an add-on attachment on the corresponding
+                /// course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the
+                /// requesting user is not permitted to access the requested course or course work, if the user is not
+                /// permitted to modify attachments on the requested student submission, or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.
                 /// </summary>
                 public class ModifyAttachmentsRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
                 {
@@ -3862,11 +3864,13 @@ namespace Google.Apis.Classroom.v1
                 /// Updates one or more fields of a student submission. See google.classroom.v1.StudentSubmission for
                 /// details of which fields may be updated and who may change them. This request must be made by the
                 /// Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
-                /// used to create the corresponding course work item. This method returns the following error codes: *
-                /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course
-                /// work, if the user is not permitted to make the requested modification to the student submission, or
-                /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
-                /// course, course work, or student submission does not exist.
+                /// used to create the corresponding course work item or an add-on attachment with Grade Sync enabled on
+                /// the corresponding course work item. This method returns the following error codes: *
+                /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work
+                /// or an add-on attachment on the corresponding course work with Grade Sync enabled, if the user is not
+                /// permitted to make the requested modification to the student submission, or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">
@@ -3884,11 +3888,13 @@ namespace Google.Apis.Classroom.v1
                 /// Updates one or more fields of a student submission. See google.classroom.v1.StudentSubmission for
                 /// details of which fields may be updated and who may change them. This request must be made by the
                 /// Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849)
-                /// used to create the corresponding course work item. This method returns the following error codes: *
-                /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course
-                /// work, if the user is not permitted to make the requested modification to the student submission, or
-                /// for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested
-                /// course, course work, or student submission does not exist.
+                /// used to create the corresponding course work item or an add-on attachment with Grade Sync enabled on
+                /// the corresponding course work item. This method returns the following error codes: *
+                /// `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work
+                /// or an add-on attachment on the corresponding course work with Grade Sync enabled, if the user is not
+                /// permitted to make the requested modification to the student submission, or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.
                 /// </summary>
                 public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.StudentSubmission>
                 {
@@ -3985,11 +3991,12 @@ namespace Google.Apis.Classroom.v1
                 /// the student that owns the requested student submission may call this method, and only for a student
                 /// submission that has been turned in. This request must be made by the Developer Console project of
                 /// the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
-                /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED`
-                /// if the requesting user is not permitted to access the requested course or course work, unsubmit the
-                /// requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student
-                /// submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
-                /// if the requested course, course work, or student submission does not exist.
+                /// corresponding course work item or an add-on attachment on the corresponding course work item. This
+                /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not
+                /// permitted to access the requested course or course work, unsubmit the requested student submission,
+                /// or for access errors. * `FAILED_PRECONDITION` if the student submission has not been turned in. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">
@@ -4009,11 +4016,12 @@ namespace Google.Apis.Classroom.v1
                 /// the student that owns the requested student submission may call this method, and only for a student
                 /// submission that has been turned in. This request must be made by the Developer Console project of
                 /// the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
-                /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED`
-                /// if the requesting user is not permitted to access the requested course or course work, unsubmit the
-                /// requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student
-                /// submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND`
-                /// if the requested course, course work, or student submission does not exist.
+                /// corresponding course work item or an add-on attachment on the corresponding course work item. This
+                /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not
+                /// permitted to access the requested course or course work, unsubmit the requested student submission,
+                /// or for access errors. * `FAILED_PRECONDITION` if the student submission has not been turned in. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.
                 /// </summary>
                 public class ReclaimRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
@@ -4095,10 +4103,11 @@ namespace Google.Apis.Classroom.v1
                 /// the course that contains the requested student submission may call this method. This request must be
                 /// made by the Developer Console project of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
-                /// not permitted to access the requested course or course work, return the requested student
-                /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
-                /// the requested course, course work, or student submission does not exist.
+                /// item or an add-on attachment on the corresponding course work item. This method returns the
+                /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+                /// requested course or course work, return the requested student submission, or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">
@@ -4119,10 +4128,11 @@ namespace Google.Apis.Classroom.v1
                 /// the course that contains the requested student submission may call this method. This request must be
                 /// made by the Developer Console project of the [OAuth client
                 /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work
-                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
-                /// not permitted to access the requested course or course work, return the requested student
-                /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
-                /// the requested course, course work, or student submission does not exist.
+                /// item or an add-on attachment on the corresponding course work item. This method returns the
+                /// following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+                /// requested course or course work, return the requested student submission, or for access errors. *
+                /// `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work,
+                /// or student submission does not exist.
                 /// </summary>
                 public class ClassroomReturnRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
@@ -4202,11 +4212,11 @@ namespace Google.Apis.Classroom.v1
                 /// files to the teacher and may also update the submission state. This may only be called by the
                 /// student that owns the specified student submission. This request must be made by the Developer
                 /// Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
-                /// create the corresponding course work item. This method returns the following error codes: *
-                /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
-                /// work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the
-                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
-                /// not exist.
+                /// create the corresponding course work item or an add-on attachment on the corresponding course work
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
+                /// not permitted to access the requested course or course work, turn in the requested student
+                /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+                /// the requested course, course work, or student submission does not exist.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="courseId">
@@ -4225,11 +4235,11 @@ namespace Google.Apis.Classroom.v1
                 /// files to the teacher and may also update the submission state. This may only be called by the
                 /// student that owns the specified student submission. This request must be made by the Developer
                 /// Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
-                /// create the corresponding course work item. This method returns the following error codes: *
-                /// `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course
-                /// work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the
-                /// request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does
-                /// not exist.
+                /// create the corresponding course work item or an add-on attachment on the corresponding course work
+                /// item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is
+                /// not permitted to access the requested course or course work, turn in the requested student
+                /// submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if
+                /// the requested course, course work, or student submission does not exist.
                 /// </summary>
                 public class TurnInRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.Empty>
                 {
@@ -4922,11 +4932,13 @@ namespace Google.Apis.Classroom.v1
             /// Updates one or more fields of a course work. See google.classroom.v1.CourseWork for details of which
             /// fields may be updated and who may change them. This request must be made by the Developer Console
             /// project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
-            /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if
-            /// the requesting developer project did not create the corresponding course work, if the user is not
-            /// permitted to make the requested modification to the student submission, or for access errors. *
-            /// `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work has
-            /// already been deleted. * `NOT_FOUND` if the requested course or course work does not exist.
+            /// corresponding course work item or an add-on attachment on the corresponding course work item. This
+            /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did
+            /// not create the corresponding course work or an add-on attachment on the corresponding course work, if
+            /// the user is not permitted to make the requested modification to the student submission, or for access
+            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested
+            /// course work has already been deleted. * `NOT_FOUND` if the requested course or course work does not
+            /// exist.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="courseId">
@@ -4942,11 +4954,13 @@ namespace Google.Apis.Classroom.v1
             /// Updates one or more fields of a course work. See google.classroom.v1.CourseWork for details of which
             /// fields may be updated and who may change them. This request must be made by the Developer Console
             /// project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the
-            /// corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if
-            /// the requesting developer project did not create the corresponding course work, if the user is not
-            /// permitted to make the requested modification to the student submission, or for access errors. *
-            /// `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work has
-            /// already been deleted. * `NOT_FOUND` if the requested course or course work does not exist.
+            /// corresponding course work item or an add-on attachment on the corresponding course work item. This
+            /// method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did
+            /// not create the corresponding course work or an add-on attachment on the corresponding course work, if
+            /// the user is not permitted to make the requested modification to the student submission, or for access
+            /// errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested
+            /// course work has already been deleted. * `NOT_FOUND` if the requested course or course work does not
+            /// exist.
             /// </summary>
             public class PatchRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.CourseWork>
             {
