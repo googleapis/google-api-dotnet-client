@@ -3122,6 +3122,20 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<int> MaxSizeGb { get; set; }
 
         /// <summary>
+        /// Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per
+        /// second that the disk can handle. Values must be between 3000 and 100,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedIops")]
+        public virtual System.Nullable<long> ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per
+        /// second that the disk can handle. Values must be between 1 and 2,400.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionedThroughput")]
+        public virtual System.Nullable<long> ProvisionedThroughput { get; set; }
+
+        /// <summary>
         /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are
         /// `DELETE` and `RETAIN`. Defaults to `DELETE`.
         /// </summary>
