@@ -9076,6 +9076,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2alphaCompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Conversational prompts to trigger agents like Shopping Agent. This is an experimental feature for select
+        /// customers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentPrompts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt> AgentPrompts { get; set; }
+
+        /// <summary>
         /// A map of matched attribute suggestions. This field is only available for `cloud-retail` dataset. Current
         /// supported keys: * `brands` * `categories`
         /// </summary>
@@ -9110,6 +9117,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A conversational prompt to trigger agents like Shopping Agent.</summary>
+    public class GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversational prompt string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
+        public virtual string Prompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource that represents attribute results.</summary>
     public class GoogleCloudRetailV2alphaCompleteQueryResponseAttributeResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9125,12 +9143,12 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Conversational prompts to trigger agents like Shopping Agent. There may be multiple prompts for a single
-        /// suggestion. This is an experimental feature for select customers. If you want to receive this prompt
-        /// information, reach out to the Retail support team.
+        /// Deprecated: Use CompleteQueryResponse.agent_prompts instead. Conversational prompts to trigger agents like
+        /// Shopping Agent. There may be multiple prompts for a single suggestion. This is an experimental feature for
+        /// select customers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentPrompts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt> AgentPrompts { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCompleteQueryResponseAgentPrompt> AgentPrompts { get; set; }
 
         /// <summary>
         /// Custom attributes for the suggestion term. * For `user-data`, the attributes are additional custom
@@ -9159,17 +9177,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalProductCount")]
         public virtual System.Nullable<int> TotalProductCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A conversational prompt to trigger agents like Shopping Agent.</summary>
-    public class GoogleCloudRetailV2alphaCompleteQueryResponseCompletionResultAgentPrompt : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The conversational prompt string.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
-        public virtual string Prompt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
