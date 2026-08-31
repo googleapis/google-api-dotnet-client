@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CurationPartners.v1.CurationPartnersBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CurationPartners.v1.CurationPartnersBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
