@@ -3099,6 +3099,87 @@ namespace Google.Apis.Firebaseappcheck.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Mints a new App Check token for the specified Firebase App. This method is intended to be called from a
+            /// privileged environment where the caller can be authorized via Cloud IAM; for example, using a service
+            /// account. To call this method, the caller must have the
+            /// [`firebaseappcheck.googleapis.com/tokens.mint`](https://firebase.google.com/docs/projects/iam/permissions#app-check)
+            /// permission. Returns a MintAppCheckTokenResponse.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="app">
+            /// Required. The relative resource name of the app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </param>
+            public virtual MintAppCheckTokenRequest MintAppCheckToken(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1MintAppCheckTokenRequest body, string app)
+            {
+                return new MintAppCheckTokenRequest(this.service, body, app);
+            }
+
+            /// <summary>
+            /// Mints a new App Check token for the specified Firebase App. This method is intended to be called from a
+            /// privileged environment where the caller can be authorized via Cloud IAM; for example, using a service
+            /// account. To call this method, the caller must have the
+            /// [`firebaseappcheck.googleapis.com/tokens.mint`](https://firebase.google.com/docs/projects/iam/permissions#app-check)
+            /// permission. Returns a MintAppCheckTokenResponse.
+            /// </summary>
+            public class MintAppCheckTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1MintAppCheckTokenResponse>
+            {
+                /// <summary>Constructs a new MintAppCheckToken request.</summary>
+                public MintAppCheckTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1MintAppCheckTokenRequest body, string app) : base(service)
+                {
+                    App = app;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The relative resource name of the app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
+                /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
+                /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string App { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1MintAppCheckTokenRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "mintAppCheckToken";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+app}:mintAppCheckToken";
+
+                /// <summary>Initializes MintAppCheckToken parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Services resource.</summary>
@@ -4523,6 +4604,24 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for a limited-use App Check token.</summary>
+    public class GoogleFirebaseAppcheckV1LimitedUseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the desired `jti` claim (Section 4.1.7 of RFC 7519) in the returned App Check token.
+        /// Limited-use App Check tokens with the same `jti` will be counted as the same token for the purposes of
+        /// replay protection. The size of this field is limited to 500 bytes. If specified, its length must be at least
+        /// 16 bytes. If this field is omitted or is empty, a randomly generated `jti` claim with length between 16 and
+        /// 500 bytes (inclusive) will be used in the returned App Check token. Leaving this field empty is only
+        /// recommended if your custom attestation provider itself is not vulnerable to replay attacks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jti")]
+        public virtual string Jti { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the ListDebugTokens method.</summary>
     public class GoogleFirebaseAppcheckV1ListDebugTokensResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4578,6 +4677,52 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         /// <summary>The Services retrieved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1Service> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the MintAppCheckToken method.</summary>
+    public class GoogleFirebaseAppcheckV1MintAppCheckTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If specified, the returned App Check token will be a limited-use token minted according to the
+        /// specified configuration options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limitedUseConfig")]
+        public virtual GoogleFirebaseAppcheckV1LimitedUseConfig LimitedUseConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If specified, the returned App Check token will be a session token, valid for the specified
+        /// duration. Must be between 30 minutes and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
+        public virtual object TokenTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the MintAppCheckToken method.</summary>
+    public class GoogleFirebaseAppcheckV1MintAppCheckTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The App Check token, used to access backend services protected by App Check. App Check tokens are signed
+        /// [JWTs](https://tools.ietf.org/html/rfc7519) containing claims that identify the attested app and GCP
+        /// project. This token is used to access Google services protected by App Check. These tokens can also be
+        /// [verified by your own custom backends](https://firebase.google.com/docs/app-check/custom-resource-backend)
+        /// using the Firebase Admin SDK or third-party libraries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>
+        /// The duration from the time this token is minted until its expiration. This field is intended to ease
+        /// client-side token management, since the client may have clock skew, but is still able to accurately measure
+        /// a duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
