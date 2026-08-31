@@ -56,6 +56,7 @@ namespace Google.Apis.Compute.alpha
             GlobalAddresses = new GlobalAddressesResource(this);
             GlobalFolderOperations = new GlobalFolderOperationsResource(this);
             GlobalForwardingRules = new GlobalForwardingRulesResource(this);
+            GlobalFrontendSettings = new GlobalFrontendSettingsResource(this);
             GlobalNetworkEndpointGroups = new GlobalNetworkEndpointGroupsResource(this);
             GlobalOperations = new GlobalOperationsResource(this);
             GlobalOrganizationOperations = new GlobalOrganizationOperationsResource(this);
@@ -330,6 +331,9 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Gets the GlobalForwardingRules resource.</summary>
         public virtual GlobalForwardingRulesResource GlobalForwardingRules { get; }
+
+        /// <summary>Gets the GlobalFrontendSettings resource.</summary>
+        public virtual GlobalFrontendSettingsResource GlobalFrontendSettings { get; }
 
         /// <summary>Gets the GlobalNetworkEndpointGroups resource.</summary>
         public virtual GlobalNetworkEndpointGroupsResource GlobalNetworkEndpointGroups { get; }
@@ -19611,6 +19615,140 @@ namespace Google.Apis.Compute.alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+        }
+    }
+
+    /// <summary>The "globalFrontendSettings" collection of methods.</summary>
+    public class GlobalFrontendSettingsResource
+    {
+        private const string Resource = "globalFrontendSettings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public GlobalFrontendSettingsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets the Global Frontend Billing Bundle Settings for a project.</summary>
+        /// <param name="project"><c>null</c></param>
+        public virtual GetRequest Get(string project)
+        {
+            return new GetRequest(this.service, project);
+        }
+
+        /// <summary>Gets the Global Frontend Billing Bundle Settings for a project.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.GlobalFrontendSettings>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/globalFrontendSettings";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates the Global Frontend Billing Bundle Settings for a project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project"><c>null</c></param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.GlobalFrontendSettings body, string project)
+        {
+            return new PatchRequest(this.service, body, project);
+        }
+
+        /// <summary>Updates the Global Frontend Billing Bundle Settings for a project.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.GlobalFrontendSettingsPatchResponse>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.GlobalFrontendSettings body, string project) : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>e.g., "type"</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.GlobalFrontendSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/globalFrontendSettings";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -68130,7 +68268,7 @@ namespace Google.Apis.Compute.alpha
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
@@ -133810,6 +133948,35 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string PredictiveMethod { get; set; }
 
         /// <summary>
+        /// Defines how CPU utilization is aggregated in a group.  Operates on the results from the `time_aggregation`,
+        /// reducing the per-instance values down to a single aggregate value across the entire instance group if
+        /// samples are available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalAggregation")]
+        public virtual AutoscalingPolicySignalAggregation SignalAggregation { get; set; }
+
+        /// <summary>
+        /// Defines how CPU utilization is aggregated over time.  Operates on all CPU utilization samples produced by
+        /// each instance over the `time_aggregation.time_window_sec`, reducing them to exactly one value per instance
+        /// if samples are available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeAggregation")]
+        public virtual AutoscalingPolicyTimeAggregation TimeAggregation { get; set; }
+
+        /// <summary>
+        /// Defines a target range for CPU utilization. The values of `min_utilization` and `max_utilization` must be in
+        /// the range (0.0, 1.0].  If the average CPU is between `min_utilization` and `max_utilization`, the autoscaler
+        /// maintains the current size unless another configured metric requires scaling out.  If the average CPU is
+        /// above `max_utilization`, the autoscaler scales out until the average utilization reaches the
+        /// `utilization_range.utilization_target`.  If the average CPU is below `min_utilization`, the autoscaler
+        /// considers scaling in until the average utilization reaches the `utilization_range.utilization_target`.
+        /// Scaling in can occur only if all other configured scaling metrics also suggest scaling in.  At most one of
+        /// CpuUtilization.utilization_target or CpuUtilization.utilization_range can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilizationRange")]
+        public virtual UtilizationRange UtilizationRange { get; set; }
+
+        /// <summary>
         /// The target CPU utilization that the autoscaler maintains. Must be a float value in the range (0, 1]. If not
         /// specified, the default is0.6.  If the CPU level is below the target utilization, the autoscaler scales in
         /// the number of instances until it reaches the minimum number of instances you specified or until the average
@@ -134002,6 +134169,61 @@ namespace Google.Apis.Compute.alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines how scaling signal is aggregated in a group. Operates on the results of the `TimeAggregation`, reducing
+    /// the per-instance values down to a single aggregate value across the entire instance group.
+    /// </summary>
+    public class AutoscalingPolicySignalAggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If statistic is PERCENTILE, percentile must be defined. This value is used only when statistic is
+        /// PERCENTILE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
+        public virtual System.Nullable<int> Percentile { get; set; }
+
+        /// <summary>
+        /// Required. The aggregator used to aggregate signal samples across the entire instance group. This field is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statistic")]
+        public virtual string Statistic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines how scaling signal is aggregated over a time window. Operates on all signal samples produced over the
+    /// `time_window_sec`, reducing them to exactly one value.
+    /// </summary>
+    public class AutoscalingPolicyTimeAggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If statistic is PERCENTILE, percentile must be defined. This value is used only when statistic is
+        /// PERCENTILE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentile")]
+        public virtual System.Nullable<int> Percentile { get; set; }
+
+        /// <summary>
+        /// Required. The aggregator used to aggregate signal samples over the `time_window_sec`. This field is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statistic")]
+        public virtual string Statistic { get; set; }
+
+        /// <summary>
+        /// Required. The duration of the time window over which the signal samples are aggregated. This field is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeWindowSec")]
+        public virtual System.Nullable<int> TimeWindowSec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -141822,6 +142044,14 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Represents a Firewall Policy resource.</summary>
     public class FirewallPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If specified, it defines what should happen in case of backend issues for rules with
+        /// apply_security_profile_group action. Allowed values: ALLOW, DENY. If not specified, the default behavior is
+        /// ALLOW.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applySecurityProfileFallbackAction")]
+        public virtual string ApplySecurityProfileFallbackAction { get; set; }
+
         /// <summary>A list of associations that belong to this firewall policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<FirewallPolicyAssociation> Associations { get; set; }
@@ -144647,6 +144877,55 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the Global Frontend Bundle settings for a single project.</summary>
+    public class GlobalFrontendSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Customer-settable bundle type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleType")]
+        public virtual string BundleType { get; set; }
+
+        /// <summary>Output only. [Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; }
+
+        /// <summary>Output only. [Output Only] An optional description of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. For optimistic locking</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>
+        /// Output only. OUTPUT_ONLY fields [Output Only] Name of the resource. Must be 1-63 characters long and match
+        /// the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase
+        /// letter, and all following characters must be a dash, lowercase letter, or digit, except the last character,
+        /// which cannot be a dash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+    }
+
+    /// <summary>Response to an UpdateGlobalFrontendSettingsRequest.</summary>
+    public class GlobalFrontendSettingsPatchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual Operation Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GlobalListVmExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -145360,8 +145639,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of
         /// the following values:        - VIRTIO_SCSI_MULTIQUEUE    - WINDOWS    - MULTI_IP_SUBNET    - UEFI_COMPATIBLE
         ///    - GVNIC    - SEV_CAPABLE    - SUSPEND_RESUME_COMPATIBLE    - SEV_LIVE_MIGRATABLE_V2    - SEV_SNP_CAPABLE
-        ///   - TDX_CAPABLE    - IDPF    - SNP_SVSM_CAPABLE    - CCA_CAPABLE   For more information, see Enabling guest
-        /// operating system features.
+        ///   - TDX_CAPABLE    - IDPF    - SNP_SVSM_CAPABLE    - CCA_CAPABLE    - SUSPEND_SAFE_FPR   For more
+        /// information, see Enabling guest operating system features.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -152140,10 +152419,6 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedActions")]
         public virtual System.Collections.Generic.IList<string> AllowedActions { get; set; }
 
-        /// <summary>Whether the boot disk is allowed to be updated with restart.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disruptionMode")]
-        public virtual string DisruptionMode { get; set; }
-
         /// <summary>
         /// The  instance redistribution policy for regional managed instance groups. Valid values are:         -
         /// PROACTIVE (default): The group attempts to maintain an    even distribution of VM instances across zones in
@@ -152287,10 +152562,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Actions that are allowed to update instances within MIG.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedActions")]
         public virtual System.Collections.Generic.IList<string> AllowedActions { get; set; }
-
-        /// <summary>Whether the boot disk is allowed to be updated with restart.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disruptionMode")]
-        public virtual string DisruptionMode { get; set; }
 
         /// <summary>
         /// The list of URLs of one or more instances for which you want to apply updates. Each URL can be a full URL or
@@ -155249,7 +155520,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        /// <summary>Output only. [Output Only] Server-defined URL for this resource with the resource id.</summary>
+        /// <summary>Output only. Server-defined URL for this resource with the resource id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
         public virtual string SelfLinkWithId { get; set; }
 
@@ -157740,6 +158011,18 @@ namespace Google.Apis.Compute.alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum unmetered bandwidth for dynamic paths allowable per WireGroup for this metro.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDynamicPathBandwidthGbps")]
+        public virtual System.Nullable<long> MaxDynamicPathBandwidthGbps { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum unmetered bandwidth for fixed paths allowable per WireGroup for this metro.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxFixedPathBandwidthGbps")]
+        public virtual System.Nullable<long> MaxFixedPathBandwidthGbps { get; set; }
 
         /// <summary>
         /// Output only. The maximum gbps for a single flow to this metro. This limits the total bandwidth which may be
@@ -160298,8 +160581,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Tag { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] The eventual status of the instance. The instance group manager will not be
-        /// identified as stable till each managed instance reaches its targetStatus.
+        /// Output only. The eventual status of the instance. The instance group manager will not be identified as
+        /// stable till each managed instance reaches its targetStatus.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetStatus")]
         public virtual string TargetStatus { get; set; }
@@ -160809,7 +161092,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>
         /// Required. The type of management service this interface provides. Supported types include NMX-C for
-        /// partition management, gNMI for switch monitoring, and TPU slice management.
+        /// partition management and gNMI for switch monitoring.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -166266,7 +166549,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyRuleOperationMetadata")]
         public virtual FirewallPolicyRuleOperationMetadata FirewallPolicyRuleOperationMetadata { get; set; }
 
-        /// <summary>Output only. [Output Only] Metadata for GetHealth operations.</summary>
+        /// <summary>Output only. Metadata for GetHealth operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("getHealthOperationMetadata")]
         public virtual GetHealthOperationMetadata GetHealthOperationMetadata { get; set; }
 
@@ -169944,7 +170227,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; }
 
-        /// <summary>Output only. [Output Only] Purge timestamp of recoverable snapshot inRFC3339 text format.</summary>
+        /// <summary>Output only. [Output Only] Deletion timestamp of snapshot inRFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTimestamp")]
         public virtual string DeletionTimestamp { get; set; }
 
@@ -170953,10 +171236,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Actions that are allowed to update instances within MIG.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedActions")]
         public virtual System.Collections.Generic.IList<string> AllowedActions { get; set; }
-
-        /// <summary>Whether the boot disk is allowed to be updated with restart.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disruptionMode")]
-        public virtual string DisruptionMode { get; set; }
 
         /// <summary>
         /// The list of URLs of one or more instances for which you want to apply updates. Each URL can be a full URL or
@@ -187252,6 +187531,40 @@ namespace Google.Apis.Compute.alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportNamePrefix")]
         public virtual string ReportNamePrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a range of acceptable utilization values. This message is used to configure range-based scaling
+    /// policies, allowing Autoscaler to maintain utilization within a specified range instead of aiming for a single
+    /// target point.
+    /// </summary>
+    public class UtilizationRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The upper bound of the utilization range. Must be greater or equal to min_utilization. This value
+        /// is required when using range-based scaling.  Scaling out is triggered if the utilization exceeds this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxUtilization")]
+        public virtual System.Nullable<double> MaxUtilization { get; set; }
+
+        /// <summary>
+        /// Required. The lower bound of the utilization range. Must be smaller or equal to max_utilization. This value
+        /// is required when using range-based scaling.  Scaling in is considered only if the utilization drops below
+        /// this value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minUtilization")]
+        public virtual System.Nullable<double> MinUtilization { get; set; }
+
+        /// <summary>
+        /// The target utilization that the autoscaler aims to achieve when scaling is triggered. This value must be
+        /// within the range [min_utilization, max_utilization].  If not specified, this will default to the average of
+        /// max_utilization and min_utilization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
+        public virtual System.Nullable<double> UtilizationTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
