@@ -21023,7 +21023,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An individual response to a policy question about an app.</summary>
+    /// <summary>An individual response (answer) to a policy question about an app.</summary>
     public class PolicyResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. A boolean response.</summary>
