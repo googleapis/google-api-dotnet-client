@@ -3887,6 +3887,15 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpointProject")]
         public virtual string EndpointProject { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. Optional: The desired IP address for the instance. If not specified, an IP will be
+        /// automatically allocated. The IP must be from the subnetwork range configured in the Service Connection
+        /// Policy. This effective ip address is set in the ip_addresses field. use 3 instead of 2 to avoid conflict
+        /// with the reserved_ip_range field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedIpAddress")]
+        public virtual string RequestedIpAddress { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
