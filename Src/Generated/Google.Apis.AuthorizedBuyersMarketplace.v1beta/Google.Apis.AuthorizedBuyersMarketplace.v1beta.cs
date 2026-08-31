@@ -1549,6 +1549,16 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1beta.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Immutable. The ID of the User List wrapped by this Data Segment. Curators with a linked Data
+        /// Partner account can create a data segment that wraps a user list owned by the linked Data Partner account.
+        /// User lists can be uploaded and managed using the [Data Manager
+        /// API](https://developers.google.com/data-manager/api/data-partners/audiences). Linking a user list to a data
+        /// segment lets you define a segment of inventory that is based on an audience you create.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userListId")]
+        public virtual string UserListId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
