@@ -9619,7 +9619,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular
         /// expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform
         /// to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a
-        /// given resource. * Keys and values must both be under 128 bytes.
+        /// given resource. * Keys and values must both be under 128 bytes. Labels and Tags (below) are both used to
+        /// bind metadata to resources, with different use-cases. See
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-overview for an in-depth overview on the difference
+        /// between tags and labels.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
