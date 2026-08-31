@@ -59,30 +59,6 @@ namespace Google.Apis.WebContentPublisher.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Web Content Publisher API.</summary>
-        public class Scope
-        {
-            /// <summary>
-            /// Private Service: https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage
-            /// </summary>
-            public static string SubscribewithgooglePublicationsEntitlementsManage = "https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage";
-
-            /// <summary>See and review your subscription information</summary>
-            public static string SubscribewithgooglePublicationsEntitlementsReadonly = "https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.readonly";
-        }
-
-        /// <summary>Available OAuth 2.0 scope constants for use with the Web Content Publisher API.</summary>
-        public static class ScopeConstants
-        {
-            /// <summary>
-            /// Private Service: https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage
-            /// </summary>
-            public const string SubscribewithgooglePublicationsEntitlementsManage = "https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage";
-
-            /// <summary>See and review your subscription information</summary>
-            public const string SubscribewithgooglePublicationsEntitlementsReadonly = "https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.readonly";
-        }
-
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
 
