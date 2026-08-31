@@ -17506,6 +17506,13 @@ namespace Google.Apis.CloudDataplex.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. Specifies the scope of the context in which the search will be performed. This scope will
+                /// also be used to perform IAM checks, which if passing, will return all resources in the scope.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("contexts", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Contexts { get; set; }
+
+                /// <summary>
                 /// Optional. Specifies the ordering of results. Supported values are: relevance last_modified_timestamp
                 /// last_modified_timestamp asc
                 /// </summary>
@@ -17568,6 +17575,14 @@ namespace Google.Apis.CloudDataplex.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("contexts", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contexts",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
                     {
@@ -20090,6 +20105,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sql")]
         public virtual string Sql { get; set; }
 
+        /// <summary>Output only. The SQL dialect of the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlDialect")]
+        public virtual string SqlDialect { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -20198,6 +20217,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationScopes")]
         public virtual System.Collections.Generic.IList<string> GenerationScopes { get; set; }
+
+        /// <summary>
+        /// Optional. The SQL dialect to use in the generated SQL queries. If not specified, the default dialect is
+        /// Google SQL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlDialect")]
+        public virtual string SqlDialect { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
