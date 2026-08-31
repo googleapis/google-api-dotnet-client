@@ -1,4 +1,9 @@
 {
+  "Google.Apis.SQLAdmin.v1.BlueGreenDeploymentsResource+GetRequest.ViewEnum": [
+    "BLUE_GREEN_DEPLOYMENT_VIEW_UNSPECIFIED",
+    "BASIC",
+    "DETAILED"
+  ],
   "Google.Apis.SQLAdmin.v1.FlagsResource+ListRequest.FlagScopeEnum": [
     "SQL_FLAG_SCOPE_UNSPECIFIED",
     "SQL_FLAG_SCOPE_DATABASE",
