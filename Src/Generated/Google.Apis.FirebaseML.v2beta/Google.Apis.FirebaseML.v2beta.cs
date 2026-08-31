@@ -671,16 +671,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageHints")]
         public virtual GoogleCloudAiplatformV1beta1AudioTranscriptionConfigLanguageHints LanguageHints { get; set; }
 
-        /// <summary>
-        /// Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to
-        /// `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words,
-        /// repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points,
-        /// numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible
-        /// with mode `SMART`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
-        public virtual string Mode { get; set; }
-
         /// <summary>Optional. Configures word-level timestamp generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordTimestamp")]
         public virtual System.Nullable<bool> WordTimestamp { get; set; }
