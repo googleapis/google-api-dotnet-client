@@ -34,6 +34,8 @@ namespace Google.Apis.Dataflow.v1b3
         /// <param name="initializer">The service initializer.</param>
         public DataflowService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Folders = new FoldersResource(this);
+            Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://dataflow.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://dataflow.googleapis.com/batch");
@@ -82,6 +84,12 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>View and manage your Google Compute Engine resources</summary>
             public const string Compute = "https://www.googleapis.com/auth/compute";
         }
+
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders { get; }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -265,6 +273,670 @@ namespace Google.Apis.Dataflow.v1b3
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                ConfigStoreSettings = new ConfigStoreSettingsResource(service);
+            }
+
+            /// <summary>Gets the ConfigStoreSettings resource.</summary>
+            public virtual ConfigStoreSettingsResource ConfigStoreSettings { get; }
+
+            /// <summary>The "configStoreSettings" collection of methods.</summary>
+            public class ConfigStoreSettingsResource
+            {
+                private const string Resource = "configStoreSettings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ConfigStoreSettingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new ConfigStoreSetting.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource where this setting will be created.</param>
+                public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new ConfigStoreSetting.</summary>
+                public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource where this setting will be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID to use for the setting.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("configStoreSettingId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConfigStoreSettingId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+parent}/configStoreSettings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("configStoreSettingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "configStoreSettingId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing ConfigStoreSetting.</summary>
+                /// <param name="name">Required. The name of the ConfigStoreSetting to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing ConfigStoreSetting.</summary>
+                public class DeleteRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the ConfigStoreSetting to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a ConfigStoreSetting.</summary>
+                /// <param name="name">Required. The name of the ConfigStoreSetting to retrieve.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a ConfigStoreSetting.</summary>
+                public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the ConfigStoreSetting to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists ConfigStoreSettings.</summary>
+                /// <param name="parent">Required. The parent resource whose settings are being listed.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists ConfigStoreSettings.</summary>
+                public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListConfigStoreSettingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource whose settings are being listed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The maximum number of settings to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListConfigStoreSettings` call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+parent}/configStoreSettings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Resolves effective value of a ConfigStoreSetting.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the setting to resolve.</param>
+                public virtual ResolveRequest Resolve(Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest body, string name)
+                {
+                    return new ResolveRequest(this.service, body, name);
+                }
+
+                /// <summary>Resolves effective value of a ConfigStoreSetting.</summary>
+                public class ResolveRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingResponse>
+                {
+                    /// <summary>Constructs a new Resolve request.</summary>
+                    public ResolveRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the setting to resolve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resolve";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}:resolve";
+
+                    /// <summary>Initializes Resolve parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                ConfigStoreSettings = new ConfigStoreSettingsResource(service);
+            }
+
+            /// <summary>Gets the ConfigStoreSettings resource.</summary>
+            public virtual ConfigStoreSettingsResource ConfigStoreSettings { get; }
+
+            /// <summary>The "configStoreSettings" collection of methods.</summary>
+            public class ConfigStoreSettingsResource
+            {
+                private const string Resource = "configStoreSettings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ConfigStoreSettingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new ConfigStoreSetting.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource where this setting will be created.</param>
+                public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new ConfigStoreSetting.</summary>
+                public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource where this setting will be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID to use for the setting.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("configStoreSettingId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConfigStoreSettingId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+parent}/configStoreSettings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("configStoreSettingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "configStoreSettingId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing ConfigStoreSetting.</summary>
+                /// <param name="name">Required. The name of the ConfigStoreSetting to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing ConfigStoreSetting.</summary>
+                public class DeleteRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the ConfigStoreSetting to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a ConfigStoreSetting.</summary>
+                /// <param name="name">Required. The name of the ConfigStoreSetting to retrieve.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a ConfigStoreSetting.</summary>
+                public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the ConfigStoreSetting to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists ConfigStoreSettings.</summary>
+                /// <param name="parent">Required. The parent resource whose settings are being listed.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists ConfigStoreSettings.</summary>
+                public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListConfigStoreSettingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource whose settings are being listed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The maximum number of settings to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListConfigStoreSettings` call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+parent}/configStoreSettings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Resolves effective value of a ConfigStoreSetting.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the setting to resolve.</param>
+                public virtual ResolveRequest Resolve(Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest body, string name)
+                {
+                    return new ResolveRequest(this.service, body, name);
+                }
+
+                /// <summary>Resolves effective value of a ConfigStoreSetting.</summary>
+                public class ResolveRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingResponse>
+                {
+                    /// <summary>Constructs a new Resolve request.</summary>
+                    public ResolveRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the setting to resolve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resolve";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}:resolve";
+
+                    /// <summary>Initializes Resolve parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
+            }
         }
     }
 
@@ -1882,10 +2554,308 @@ namespace Google.Apis.Dataflow.v1b3
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                ConfigStoreSettings = new ConfigStoreSettingsResource(service);
                 FlexTemplates = new FlexTemplatesResource(service);
                 Jobs = new JobsResource(service);
                 Snapshots = new SnapshotsResource(service);
                 Templates = new TemplatesResource(service);
+            }
+
+            /// <summary>Gets the ConfigStoreSettings resource.</summary>
+            public virtual ConfigStoreSettingsResource ConfigStoreSettings { get; }
+
+            /// <summary>The "configStoreSettings" collection of methods.</summary>
+            public class ConfigStoreSettingsResource
+            {
+                private const string Resource = "configStoreSettings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ConfigStoreSettingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new ConfigStoreSetting.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource where this setting will be created.</param>
+                public virtual CreateRequest Create(Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new ConfigStoreSetting.</summary>
+                public class CreateRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource where this setting will be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. The ID to use for the setting.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("configStoreSettingId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConfigStoreSettingId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+parent}/configStoreSettings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("configStoreSettingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "configStoreSettingId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an existing ConfigStoreSetting.</summary>
+                /// <param name="name">Required. The name of the ConfigStoreSetting to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an existing ConfigStoreSetting.</summary>
+                public class DeleteRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the ConfigStoreSetting to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a ConfigStoreSetting.</summary>
+                /// <param name="name">Required. The name of the ConfigStoreSetting to retrieve.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a ConfigStoreSetting.</summary>
+                public class GetRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ConfigStoreSetting>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the ConfigStoreSetting to retrieve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists ConfigStoreSettings.</summary>
+                /// <param name="parent">Required. The parent resource whose settings are being listed.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists ConfigStoreSettings.</summary>
+                public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListConfigStoreSettingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource whose settings are being listed.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The maximum number of settings to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListConfigStoreSettings` call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+parent}/configStoreSettings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Resolves effective value of a ConfigStoreSetting.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the setting to resolve.</param>
+                public virtual ResolveRequest Resolve(Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest body, string name)
+                {
+                    return new ResolveRequest(this.service, body, name);
+                }
+
+                /// <summary>Resolves effective value of a ConfigStoreSetting.</summary>
+                public class ResolveRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingResponse>
+                {
+                    /// <summary>Constructs a new Resolve request.</summary>
+                    public ResolveRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the setting to resolve.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataflow.v1b3.Data.ResolveConfigStoreSettingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resolve";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1b3/{+name}:resolve";
+
+                    /// <summary>Initializes Resolve parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/configStoreSettings/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the FlexTemplates resource.</summary>
@@ -5842,6 +6812,36 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A ConfigStoreSetting resource.</summary>
+    public class ConfigStoreSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier. The resource name of the setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The dynamic value of the setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual ConfigStoreSettingValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a dynamically typed value.</summary>
+    public class ConfigStoreSettingValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents a boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Represents a string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Container Spec.</summary>
     public class ContainerSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6497,6 +7497,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("residual")]
         public virtual DerivedSource Residual { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8171,6 +9182,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListConfigStoreSettings.</summary>
+    public class ListConfigStoreSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of ConfigStoreSettings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configStoreSettings")]
+        public virtual System.Collections.Generic.IList<ConfigStoreSetting> ConfigStoreSettings { get; set; }
+
+        /// <summary>A token that can be sent as `page_token` to retrieve the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to a request to list job messages.</summary>
     public class ListJobMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9244,6 +10270,28 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Specifies the level of parallelism in case it is finite.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ResolveConfigStoreSetting.</summary>
+    public class ResolveConfigStoreSettingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ResolveConfigStoreSetting.</summary>
+    public class ResolveConfigStoreSettingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of settings that were considered during resolution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("choices")]
+        public virtual System.Collections.Generic.IList<ConfigStoreSetting> Choices { get; set; }
+
+        /// <summary>The dry-run setting result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setting")]
+        public virtual ConfigStoreSetting Setting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
