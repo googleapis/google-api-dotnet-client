@@ -7508,6 +7508,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxSeverity")]
         public virtual string MaxSeverity { get; set; }
 
+        /// <summary>Optional. The base name of the model that performed the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
         /// <summary>Output only. State of the scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanState")]
         public virtual string ScanState { get; set; }
