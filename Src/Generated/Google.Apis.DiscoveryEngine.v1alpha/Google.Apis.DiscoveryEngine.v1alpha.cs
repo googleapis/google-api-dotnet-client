@@ -1747,6 +1747,63 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>Makes a call to an MCP connector.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. DataConnector resource. The data connector used for making the MCP call.
+                    /// </param>
+                    public virtual InvokeConnectorMcpRequest InvokeConnectorMcp(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaInvokeConnectorMcpRequest body, string name)
+                    {
+                        return new InvokeConnectorMcpRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Makes a call to an MCP connector.</summary>
+                    public class InvokeConnectorMcpRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaInvokeConnectorMcpResponse>
+                    {
+                        /// <summary>Constructs a new InvokeConnectorMcp request.</summary>
+                        public InvokeConnectorMcpRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaInvokeConnectorMcpRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. DataConnector resource. The data connector used for making the MCP call.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaInvokeConnectorMcpRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "invokeConnectorMcp";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:invokeConnectorMcp";
+
+                        /// <summary>Initializes InvokeConnectorMcp parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataConnector$",
+                            });
+                        }
+                    }
+
                     /// <summary>ServeMcpDeleteRequest serves a MCP DELETE request.</summary>
                     /// <param name="projectsId"><c>null</c></param>
                     /// <param name="locationsId"><c>null</c></param>
@@ -9424,6 +9481,89 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>
+                    /// Gets the IAM access control policy for a DataStore. A `NOT_FOUND` error is returned if the
+                    /// resource does not exist. An empty policy is returned if the resource exists but does not have a
+                    /// policy set on it.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the IAM access control policy for a DataStore. A `NOT_FOUND` error is returned if the
+                    /// resource does not exist. An empty policy is returned if the resource exists but does not have a
+                    /// policy set on it.
+                    /// </summary>
+                    public class GetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Gets the SiteSearchEngine.</summary>
                     /// <param name="name">
                     /// Required. Resource name of SiteSearchEngine, such as
@@ -9857,6 +9997,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "dataStore",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the IAM access control policy for a DataStore. A `NOT_FOUND` error is returned if the
+                    /// resource does not exist. **Important:** When setting a policy directly on a DataStore resource,
+                    /// the only recommended roles in the bindings are: `roles/discoveryengine.admin`
+                    /// `roles/discoveryengine.agentspaceAdmin` `roles/discoveryengine.viewer`
+                    /// `roles/discoveryengine.agentspaceViewer` `roles/discoveryengine.user`
+                    /// `roles/discoveryengine.agentspaceUser` Attempting to grant any other role will result in a
+                    /// warning in logging.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the IAM access control policy for a DataStore. A `NOT_FOUND` error is returned if the
+                    /// resource does not exist. **Important:** When setting a policy directly on a DataStore resource,
+                    /// the only recommended roles in the bindings are: `roles/discoveryengine.admin`
+                    /// `roles/discoveryengine.agentspaceAdmin` `roles/discoveryengine.viewer`
+                    /// `roles/discoveryengine.agentspaceViewer` `roles/discoveryengine.user`
+                    /// `roles/discoveryengine.agentspaceUser` Attempting to grant any other role will result in a
+                    /// warning in logging.
+                    /// </summary>
+                    public class SetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -16621,6 +16838,88 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
+                /// <summary>
+                /// Gets the IAM access control policy for a Collection. A `NOT_FOUND` error is returned if the resource
+                /// does not exist. An empty policy is returned if the resource exists but does not have a policy set on
+                /// it.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the IAM access control policy for a Collection. A `NOT_FOUND` error is returned if the resource
+                /// does not exist. An empty policy is returned if the resource exists but does not have a policy set on
+                /// it.
+                /// </summary>
+                public class GetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Gets a list of Collections.</summary>
                 /// <param name="parent">
                 /// Required. The parent data store resource name, in the format of
@@ -16789,6 +17088,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the IAM access control policy for a Collection. A `NOT_FOUND` error is returned if the resource
+                /// does not exist. **Important:** When setting a policy directly on a Collection resource, the only
+                /// recommended roles in the bindings are: `roles/discoveryengine.admin`
+                /// `roles/discoveryengine.agentspaceAdmin` `roles/discoveryengine.viewer`
+                /// `roles/discoveryengine.agentspaceViewer` `roles/discoveryengine.user`
+                /// `roles/discoveryengine.agentspaceUser` Attempting to grant any other role will result in a warning
+                /// in logging.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the IAM access control policy for a Collection. A `NOT_FOUND` error is returned if the resource
+                /// does not exist. **Important:** When setting a policy directly on a Collection resource, the only
+                /// recommended roles in the bindings are: `roles/discoveryengine.admin`
+                /// `roles/discoveryengine.agentspaceAdmin` `roles/discoveryengine.viewer`
+                /// `roles/discoveryengine.agentspaceViewer` `roles/discoveryengine.user`
+                /// `roles/discoveryengine.agentspaceUser` Attempting to grant any other role will result in a warning
+                /// in logging.
+                /// </summary>
+                public class SetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+$",
                         });
                     }
                 }
@@ -23466,6 +23842,88 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
+                /// <summary>
+                /// Gets the IAM access control policy for a DataStore. A `NOT_FOUND` error is returned if the resource
+                /// does not exist. An empty policy is returned if the resource exists but does not have a policy set on
+                /// it.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the IAM access control policy for a DataStore. A `NOT_FOUND` error is returned if the resource
+                /// does not exist. An empty policy is returned if the resource exists but does not have a policy set on
+                /// it.
+                /// </summary>
+                public class GetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Gets the SiteSearchEngine.</summary>
                 /// <param name="name">
                 /// Required. Resource name of SiteSearchEngine, such as
@@ -23897,6 +24355,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dataStore",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the IAM access control policy for a DataStore. A `NOT_FOUND` error is returned if the resource
+                /// does not exist. **Important:** When setting a policy directly on a DataStore resource, the only
+                /// recommended roles in the bindings are: `roles/discoveryengine.admin`
+                /// `roles/discoveryengine.agentspaceAdmin` `roles/discoveryengine.viewer`
+                /// `roles/discoveryengine.agentspaceViewer` `roles/discoveryengine.user`
+                /// `roles/discoveryengine.agentspaceUser` Attempting to grant any other role will result in a warning
+                /// in logging.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the IAM access control policy for a DataStore. A `NOT_FOUND` error is returned if the resource
+                /// does not exist. **Important:** When setting a policy directly on a DataStore resource, the only
+                /// recommended roles in the bindings are: `roles/discoveryengine.admin`
+                /// `roles/discoveryengine.agentspaceAdmin` `roles/discoveryengine.viewer`
+                /// `roles/discoveryengine.agentspaceViewer` `roles/discoveryengine.user`
+                /// `roles/discoveryengine.agentspaceUser` Attempting to grant any other role will result in a warning
+                /// in logging.
+                /// </summary>
+                public class SetIamPolicyRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -41261,6 +41796,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Referenced content and related document metadata.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Generic structured chunk metadata from upstream data source connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChunkMetadata { get; set; }
+
         /// <summary>Chunk of code snippet from the referenced document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeSnippet")]
         public virtual string CodeSnippet { get; set; }
@@ -43148,7 +43687,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// This field is only meaningful for suggestions generated from user events or search history. If a query shows
         /// up less than this threshold, it may indicate that the query is rarely searched and thus will not be
         /// generated as a suggestion. This is field can be helpful for preventing PII queries becoming suggestions, as
-        /// those queries are usually uniquely searched. If not set, the default value is 3 used in the generation
+        /// those queries are usually uniquely searched. If not set, the default value is 8 used in the generation
         /// pipeline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryFrequencyThreshold")]
@@ -50573,6 +51112,63 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Request message for making a call to an MCP connector. It carries the connector name, the method to invoke, and
+    /// optional parameters.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaInvokeConnectorMcpRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The engine resource name (e.g.
+        /// "projects/{project}/locations/{location}/collections/{collection}/engines/{engine}"). Used as the search
+        /// engine id when invoking tool registry tools that issue Discovery Search Service requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
+
+        /// <summary>
+        /// Required. The method to invoke (e.g. "tools/list", "tools/call", "resources/read", "prompts/get", etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>
+        /// Optional. Arbitrary structured parameters for the method. Using google.protobuf.Struct keeps the payload
+        /// schema-flexible, matching JSON-RPC's free-form `params` field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>
+        /// Optional. The tool spec version to resolve the connector's tool surface against. This corresponds to the
+        /// connector's BAP tool spec file name (e.g. "v2", "v5.2"). When unset, the server uses its default (latest)
+        /// tool spec for the connector. Applies to all methods (e.g. "tools/list" and "tools/call").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolSpecVersion")]
+        public virtual string ToolSpecVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message returning the result of an MCP connector invocation. It contains either a successful result
+    /// payload or error details.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaInvokeConnectorMcpResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error details when the call fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleCloudDiscoveryengineV1alphaMcpError Error { get; set; }
+
+        /// <summary>Successful result — arbitrary structured data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual object Result { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Language info for DataStore.</summary>
     public class GoogleCloudDiscoveryengineV1alphaLanguageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -51331,6 +51927,28 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Stores the definition of a Google managed agent.</summary>
     public class GoogleCloudDiscoveryengineV1alphaManagedAgentDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// McpError represents error details when an MCP call fails. This structure follows the JSON-RPC 2.0 error object
+    /// shape.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaMcpError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Numeric error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>Optional structured data with additional error context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual object Data { get; set; }
+
+        /// <summary>Short, human-readable description of the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -57744,6 +58362,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actionSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaStreamAssistRequestActionSpec ActionSpec { get; set; }
 
+        /// <summary>Optional. Specification of agents that are used to serve the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentsSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaStreamAssistRequestAgentsSpec AgentsSpec { get; set; }
+
         /// <summary>Optional. Specification of the generation configuration for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaStreamAssistRequestGenerationSpec GenerationSpec { get; set; }
@@ -57784,6 +58406,31 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionDisabled")]
         public virtual System.Nullable<bool> ActionDisabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of agents that are used to serve the request.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaStreamAssistRequestAgentsSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specification of agents that are used to serve the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaStreamAssistRequestAgentsSpecAgentSpec> AgentSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of an agent.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaStreamAssistRequestAgentsSpecAgentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. ID to identify the agent resource serving the request. This field must conform to
+        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length limit of 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59722,9 +60369,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Output only. Whether this is a first-party (Google-owned) connector, as opposed to a third-party connector.
-        /// Used by the frontend to group 1P vs 3P connectors. Sourced from `ConnectorSource.is_first_party` once that
-        /// field is universally populated (b/534727761); until then derived from `ConnectorSource.connector_type ==
-        /// FIRST_PARTY`.
+        /// Used by the frontend to group 1P vs 3P connectors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFirstParty")]
         public virtual System.Nullable<bool> IsFirstParty { get; set; }
@@ -60317,6 +60962,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
+
+        /// <summary>Output only. Whether this model should be promoted in the GE chat homepage banner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoted")]
+        public virtual System.Nullable<bool> Promoted { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
