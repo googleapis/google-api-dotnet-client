@@ -296,6 +296,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 Instances = new InstancesResource(service);
                 Operations = new OperationsResource(service);
                 SharePools = new SharePoolsResource(service);
+                VolumePools = new VolumePoolsResource(service);
             }
 
             /// <summary>Gets the Backups resource.</summary>
@@ -2594,6 +2595,682 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 }
             }
 
+            /// <summary>Gets the VolumePools resource.</summary>
+            public virtual VolumePoolsResource VolumePools { get; }
+
+            /// <summary>The "volumePools" collection of methods.</summary>
+            public class VolumePoolsResource
+            {
+                private const string Resource = "volumePools";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public VolumePoolsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Volumes = new VolumesResource(service);
+                }
+
+                /// <summary>Gets the Volumes resource.</summary>
+                public virtual VolumesResource Volumes { get; }
+
+                /// <summary>The "volumes" collection of methods.</summary>
+                public class VolumesResource
+                {
+                    private const string Resource = "volumes";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public VolumesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a volume.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent volume pool path, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.Volume body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a volume.</summary>
+                    public class CreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Volume>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Volume body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent volume pool path, in the format
+                        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the volume. The ID must be unique within the specified volume
+                        /// pool.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string VolumeId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.Volume Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/volumes";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+$",
+                            });
+                            RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "volumeId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a volume.</summary>
+                    /// <param name="name">
+                    /// Required. The volume resource name, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a volume.</summary>
+                    public class DeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The volume resource name, in the format
+                        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+/volumes/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the details of a specific volume.</summary>
+                    /// <param name="name">
+                    /// Required. The volume resource name, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets the details of a specific volume.</summary>
+                    public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Volume>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The volume resource name, in the format
+                        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+/volumes/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all volumes for a specified volume pool.</summary>
+                    /// <param name="parent">
+                    /// Required. The volume pool for which to retrieve volume information, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all volumes for a specified volume pool.</summary>
+                    public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ListVolumesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The volume pool for which to retrieve volume information, in the format
+                        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. List filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Sort results. Supported values are "name", "name desc" or "" (unsorted).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>Optional. The maximum number of items to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value to use if there are additional results to retrieve for
+                        /// this list request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/volumes";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a volume pool.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project and location for which to create the volume pool, in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.VolumePool body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a volume pool.</summary>
+                public class CreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.VolumePool body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location for which to create the volume pool, in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the volume pool, which will become the final component of the volume
+                    /// pool's resource name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("volumePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VolumePoolId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1beta1.Data.VolumePool Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/volumePools";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("volumePoolId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "volumePoolId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a volume pool.</summary>
+                /// <param name="name">
+                /// Required. The volume pool resource name, in the format
+                /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a volume pool.</summary>
+                public class DeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The volume pool resource name, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the details of a specific volume pool.</summary>
+                /// <param name="name">
+                /// Required. The volume pool resource name, in the format
+                /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the details of a specific volume pool.</summary>
+                public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.VolumePool>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The volume pool resource name, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists all volume pools in a project for either a specified location or for all locations.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The project and location for which to retrieve volume pool information, in the format
+                /// `projects/{project}/locations/{location}`. To retrieve volume pool information for all locations,
+                /// use "-" as the value of `{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists all volume pools in a project for either a specified location or for all locations.
+                /// </summary>
+                public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ListVolumePoolsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location for which to retrieve volume pool information, in the format
+                    /// `projects/{project}/locations/{location}`. To retrieve volume pool information for all
+                    /// locations, use "-" as the value of `{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. List filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Sort results. Supported values are "name", "name desc" or "" (unsorted).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Optional. The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The next_page_token value to use if there are additional results to retrieve for this
+                    /// list request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/volumePools";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the settings of a specific volume pool.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the volume pool, in the format
+                /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1beta1.Data.VolumePool body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the settings of a specific volume pool.</summary>
+                public class PatchRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.VolumePool body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the volume pool, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Mask of fields to update. At least one path must be supplied in this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1beta1.Data.VolumePool Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -3801,6 +4478,45 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string Tier { get; set; }
     }
 
+    /// <summary>InstanceTemplate representation of a Cloud Filestore volume pool instance template.</summary>
+    public class InstanceTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Backend type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
+        public virtual string BackendType { get; set; }
+
+        /// <summary>Optional. Capacity in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
+        public virtual System.Nullable<int> CapacityGb { get; set; }
+
+        /// <summary>Optional. Instance labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Network configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
+        public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; }
+
+        /// <summary>Optional. Performance configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceConfig")]
+        public virtual PerformanceConfig PerformanceConfig { get; set; }
+
+        /// <summary>Optional. File protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>Optional. Request overrides in JSON format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOverrides")]
+        public virtual string RequestOverrides { get; set; }
+
+        /// <summary>Optional. Tier of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
+        public virtual string Tier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>LdapConfig contains all the parameters for connecting to LDAP servers.</summary>
     public class LdapConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3968,6 +4684,50 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ListVolumePoolsResponse is the result of ListVolumePoolsRequest.</summary>
+    public class ListVolumePoolsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The token you can use to retrieve the next page of results. Not returned if there are no more
+        /// results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>Unordered list. A list of volume pools in the project for the specified location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumePools")]
+        public virtual System.Collections.Generic.IList<VolumePool> VolumePools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ListVolumesResponse is the result of ListVolumesRequest.</summary>
+    public class ListVolumesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The token you can use to retrieve the next page of results. Not returned if there are no more
+        /// results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>Unordered list. A list of volumes in the project for the specified volume pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4152,6 +4912,24 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mount details for a volume.</summary>
+    public class MountPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The IP address of the physical Filestore instance hosting the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>
+        /// Output only. The mount name of the volume. Must be 63 characters or less and consist of uppercase or
+        /// lowercase letters, numbers, and underscores.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountName")]
+        public virtual string MountName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4509,6 +5287,15 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointProject")]
         public virtual string EndpointProject { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Optional: The desired IP address for the instance. If not specified, an IP will be
+        /// automatically allocated. The IP must be from the subnetwork range configured in the Service Connection
+        /// Policy. This effective ip address is set in the ip_addresses field. use 3 instead of 2 to avoid conflict
+        /// with the reserved_ip_range field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedIpAddress")]
+        public virtual string RequestedIpAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4994,6 +5781,199 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Optional. Maintenance window that is applied to resources covered by this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("window")]
         public virtual MaintenanceWindow Window { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Volume representation of a Cloud Filestore volume.</summary>
+    public class Volume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the volume was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. A description of the volume with 2048 characters or less. Requests with longer descriptions will
+        /// be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Resource labels to represent user provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The mount point of the volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPoint")]
+        public virtual MountPoint MountPoint { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the volume, in the format
+        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VolumePool representation of a Cloud Filestore volume pool.</summary>
+    public class VolumePool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the volume pool was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A description of the volume pool with 2048 characters or less.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The page size to use when listing instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceListPageSize")]
+        public virtual System.Nullable<int> InstanceListPageSize { get; set; }
+
+        /// <summary>Optional. Instance name prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceNamePrefix")]
+        public virtual string InstanceNamePrefix { get; set; }
+
+        /// <summary>Optional. Instance template details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
+        public virtual InstanceTemplate InstanceTemplate { get; set; }
+
+        /// <summary>Optional. Resource labels to represent user provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. The maximum number of candidates to fetch when acquiring a volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAcquireCandidates")]
+        public virtual System.Nullable<int> MaxAcquireCandidates { get; set; }
+
+        /// <summary>Optional. Maximum number of instances to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
+        public virtual System.Nullable<int> MaxInstances { get; set; }
+
+        /// <summary>Optional. The maximum number of pending instance creation requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPendingInstanceCreations")]
+        public virtual System.Nullable<int> MaxPendingInstanceCreations { get; set; }
+
+        /// <summary>Optional. The maximum number of pending volume creation requests per instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPendingVolumeCreationsPerInstance")]
+        public virtual System.Nullable<int> MaxPendingVolumeCreationsPerInstance { get; set; }
+
+        /// <summary>Optional. The maximum number of pending volume deletion requests per instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPendingVolumeDeletionsPerInstance")]
+        public virtual System.Nullable<int> MaxPendingVolumeDeletionsPerInstance { get; set; }
+
+        /// <summary>Optional. Maximum number of volumes per instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxVolumesPerInstance")]
+        public virtual System.Nullable<int> MaxVolumesPerInstance { get; set; }
+
+        /// <summary>Optional. Minimum number of available volumes to maintain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAvailableVolumes")]
+        public virtual System.Nullable<int> MinAvailableVolumes { get; set; }
+
+        /// <summary>Optional. Minimum number of instances to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minInstances")]
+        public virtual System.Nullable<int> MinInstances { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the volume pool, in the format
+        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The ratio of Negba instances to maintain in the volume pool, between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negbaInstanceRatio")]
+        public virtual System.Nullable<float> NegbaInstanceRatio { get; set; }
+
+        /// <summary>Optional. The maximum number of operations to poll in a single reconciliation run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationPollLimit")]
+        public virtual System.Nullable<int> OperationPollLimit { get; set; }
+
+        /// <summary>Output only. The volume pool state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Unique ID of the resource, as defined by CCFE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; }
+
+        /// <summary>Optional. The number of volumes to create in a single batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeBatchSize")]
+        public virtual System.Nullable<int> VolumeBatchSize { get; set; }
+
+        /// <summary>Optional. Volume size in MiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeSizeMb")]
+        public virtual System.Nullable<int> VolumeSizeMb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
