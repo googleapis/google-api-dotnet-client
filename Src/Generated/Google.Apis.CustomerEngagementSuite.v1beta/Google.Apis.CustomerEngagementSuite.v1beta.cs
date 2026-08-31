@@ -1183,30 +1183,6 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             AGENTTOOL = 4,
                         }
 
-                        /// <summary>
-                        /// Optional. The view specifying which fields in the response should be populated.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<ViewEnum> View { get; set; }
-
-                        /// <summary>
-                        /// Optional. The view specifying which fields in the response should be populated.
-                        /// </summary>
-                        public enum ViewEnum
-                        {
-                            /// <summary>Not specified, defaults to CONVERSATION_VIEW_BASIC.</summary>
-                            [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_UNSPECIFIED")]
-                            CONVERSATIONVIEWUNSPECIFIED = 0,
-
-                            /// <summary>The basic view. Returns everything except resolved instructions.</summary>
-                            [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_BASIC")]
-                            CONVERSATIONVIEWBASIC = 1,
-
-                            /// <summary>The full view. Includes resolved instructions dynamically per turn.</summary>
-                            [Google.Apis.Util.StringValueAttribute("CONVERSATION_VIEW_FULL")]
-                            CONVERSATIONVIEWFULL = 2,
-                        }
-
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -1231,14 +1207,6 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "source",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1523,6 +1491,71 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             public override string RestPath => "v1beta/{+tenant}/message:send";
 
                             /// <summary>Initializes Send parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "tenant",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/deployments/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Sends a streaming message to an agent, allowing for real-time interaction and status
+                        /// updates. Streaming version of `SendMessage`
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="tenant">
+                        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                        /// `AgentInterface` in the Agent Card when that field is set.
+                        /// </param>
+                        public virtual StreamRequest Stream(Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant)
+                        {
+                            return new StreamRequest(this.service, body, tenant);
+                        }
+
+                        /// <summary>
+                        /// Sends a streaming message to an agent, allowing for real-time interaction and status
+                        /// updates. Streaming version of `SendMessage`
+                        /// </summary>
+                        public class StreamRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1StreamResponse>
+                        {
+                            /// <summary>Constructs a new Stream request.</summary>
+                            public StreamRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant) : base(service)
+                            {
+                                Tenant = tenant;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                            /// `AgentInterface` in the Agent Card when that field is set.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Tenant { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "stream";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+tenant}/message:stream";
+
+                            /// <summary>Initializes Stream parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -4739,6 +4772,71 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Sends a streaming message to an agent, allowing for real-time interaction and status updates.
+                    /// Streaming version of `SendMessage`
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="tenant">
+                    /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                    /// `AgentInterface` in the Agent Card when that field is set.
+                    /// </param>
+                    public virtual StreamRequest Stream(Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant)
+                    {
+                        return new StreamRequest(this.service, body, tenant);
+                    }
+
+                    /// <summary>
+                    /// Sends a streaming message to an agent, allowing for real-time interaction and status updates.
+                    /// Streaming version of `SendMessage`
+                    /// </summary>
+                    public class StreamRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1StreamResponse>
+                    {
+                        /// <summary>Constructs a new Stream request.</summary>
+                        public StreamRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant) : base(service)
+                        {
+                            Tenant = tenant;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                        /// `AgentInterface` in the Agent Card when that field is set.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Tenant { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "stream";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+tenant}/message:stream";
+
+                        /// <summary>Initializes Stream parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "tenant",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the ScheduledEvaluationRuns resource.</summary>
@@ -6262,6 +6360,71 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                             public override string RestPath => "v1beta/{+tenant}/message:send";
 
                             /// <summary>Initializes Send parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("tenant", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "tenant",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/versions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Sends a streaming message to an agent, allowing for real-time interaction and status
+                        /// updates. Streaming version of `SendMessage`
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="tenant">
+                        /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                        /// `AgentInterface` in the Agent Card when that field is set.
+                        /// </param>
+                        public virtual StreamRequest Stream(Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant)
+                        {
+                            return new StreamRequest(this.service, body, tenant);
+                        }
+
+                        /// <summary>
+                        /// Sends a streaming message to an agent, allowing for real-time interaction and status
+                        /// updates. Streaming version of `SendMessage`
+                        /// </summary>
+                        public class StreamRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1StreamResponse>
+                        {
+                            /// <summary>Constructs a new Stream request.</summary>
+                            public StreamRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest body, string tenant) : base(service)
+                            {
+                                Tenant = tenant;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Optional. Opaque routing identifier. Must match the `tenant` value from the selected
+                            /// `AgentInterface` in the Agent Card when that field is set.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("tenant", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Tenant { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CustomerEngagementSuite.v1beta.Data.LfA2aV1SendMessageRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "stream";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+tenant}/message:stream";
+
+                            /// <summary>Initializes Stream parameter list.</summary>
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
@@ -8923,6 +9086,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. App-specific dashboard settings for linking and configuring Contact Center Insights dashboards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dashboardSettings")]
+        public virtual DashboardSettings DashboardSettings { get; set; }
+
         /// <summary>Optional. The data store settings for the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSettings")]
         public virtual DataStoreSettings DataStoreSettings { get; set; }
@@ -10095,23 +10264,9 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
 
-        /// <summary>
-        /// Output only. The full dynamically resolved developer instruction generated from templates. This field is
-        /// only populated on-demand when requested during history retrieval. It is not persisted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resolvedDeveloperInstruction")]
-        public virtual string ResolvedDeveloperInstruction { get; set; }
-
         /// <summary>Optional. The root span of the action processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootSpan")]
         public virtual Span RootSpan { get; set; }
-
-        /// <summary>
-        /// Optional. Variables or configurations referenced by the template engine during dynamic prompt generation.
-        /// This allows reconstructing the exact prompt sent to the model for this turn.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("templateAttributes")]
-        public virtual System.Collections.Generic.IDictionary<string, object> TemplateAttributes { get; set; }
 
         /// <summary>
         /// Optional. The intended ground-truth text from the Simulated Caller (Polysynth). Only populated when word
@@ -10119,6 +10274,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIntendedText")]
         public virtual string UserIntendedText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for dashboards associated with the app, that show up in the Monitoring view.</summary>
+    public class DashboardSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The resource name of the default Contact Center Insights dashboard associated with the app. This
+        /// is the dashboard that will be displayed when users navigate to the Monitoring view for the app. Format:
+        /// `projects/{project}/locations/{location}/dashboards/{dashboard}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultDashboard")]
+        public virtual string DefaultDashboard { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10531,6 +10701,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableSnippets")]
         public virtual System.Nullable<bool> EnableSnippets { get; set; }
 
+        /// <summary>
+        /// Optional. Number of snippets to return per query. If unset, returns all snippets from the service by
+        /// default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSnippets")]
+        public virtual System.Nullable<int> MaxSnippets { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10557,6 +10734,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Operation metadata for EvaluationService.DeleteEvaluationRun.</summary>
     public class DeleteEvaluationRunOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AgentService.DeployChannel.</summary>
+    public class DeployChannelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The created deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual Deployment Deployment { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14392,6 +14580,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importOptions")]
         public virtual ImportAppRequestImportOptions ImportOptions { get; set; }
 
+        /// <summary>Optional. Patch content as a JSON string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonPatchContent")]
+        public virtual string JsonPatchContent { get; set; }
+
+        /// <summary>Optional. A Cloud Storage URI pointing to a JSON file containing the patches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonPatchGcsUri")]
+        public virtual string JsonPatchGcsUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15572,6 +15768,31 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A wrapper object used in streaming operations to encapsulate different types of response data.
+    /// </summary>
+    public class LfA2aV1StreamResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An event indicating a task artifact update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactUpdate")]
+        public virtual LfA2aV1TaskArtifactUpdateEvent ArtifactUpdate { get; set; }
+
+        /// <summary>A Message object containing a message from the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual LfA2aV1Message Message { get; set; }
+
+        /// <summary>An event indicating a task status update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusUpdate")]
+        public virtual LfA2aV1TaskStatusUpdateEvent StatusUpdate { get; set; }
+
+        /// <summary>A Task object containing the current state of the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("task")]
+        public virtual LfA2aV1Task Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>protolint:disable REPEATED_FIELD_NAMES_PLURALIZED A list of strings.</summary>
     public class LfA2aV1StringList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15620,6 +15841,39 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Required. The current status of a `Task`, including `state` and a `message`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual LfA2aV1TaskStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A task delta where an artifact has been generated.</summary>
+    public class LfA2aV1TaskArtifactUpdateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, the content of this artifact should be appended to a previously sent artifact with the same ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("append")]
+        public virtual System.Nullable<bool> Append { get; set; }
+
+        /// <summary>Required. The artifact that was generated or updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifact")]
+        public virtual LfA2aV1Artifact Artifact { get; set; }
+
+        /// <summary>Required. The ID of the context that this task belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>If true, this is the final chunk of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastChunk")]
+        public virtual System.Nullable<bool> LastChunk { get; set; }
+
+        /// <summary>Optional. Metadata associated with the artifact update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>Required. The ID of the task for this artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
+        public virtual string TaskId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15709,6 +15963,29 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
             set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An event sent by the agent to notify the client of a change in a task's status.</summary>
+    public class LfA2aV1TaskStatusUpdateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the context that the task belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>Optional. Metadata associated with the task update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>Required. The new status of the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual LfA2aV1TaskStatus Status { get; set; }
+
+        /// <summary>Required. The ID of the task that has changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
+        public virtual string TaskId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16935,6 +17212,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentCard")]
         public virtual AgentCard AgentCard { get; set; }
 
+        /// <summary>Optional. Authentication configuration for calling the remote agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiAuthentication")]
+        public virtual ApiAuthentication ApiAuthentication { get; set; }
+
         /// <summary>Required. The description of the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -17819,6 +18100,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchSuggestions")]
         public virtual GoogleSearchSuggestions GoogleSearchSuggestions { get; set; }
 
+        /// <summary>Output image from the CES agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual Image Image { get; set; }
+
         /// <summary>Custom payload with structured output from the CES agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
@@ -18313,6 +18598,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Request for the client or the agent to execute the specified tool.</summary>
     public class ToolCall : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Human-readable name of the agent that issued this call, e.g. "Contract Architect". Empty when
+        /// the root agent issued it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentName")]
+        public virtual string AgentName { get; set; }
+
         /// <summary>Optional. The input parameters and values for the tool in JSON object format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IDictionary<string, object> Args { get; set; }
@@ -18327,6 +18619,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on
+        /// behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call
+        /// that started it instead of rendering every step as a sibling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentToolCallId")]
+        public virtual string ParentToolCallId { get; set; }
 
         /// <summary>
         /// Optional. The name of the tool to execute. Format:
@@ -18374,6 +18674,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>The execution result of a specific tool from the client or the agent.</summary>
     public class ToolResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Human-readable name of the agent that issued this call, e.g. "Contract Architect". Empty when
+        /// the root agent issued it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentName")]
+        public virtual string AgentName { get; set; }
+
         /// <summary>Output only. Display name of the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -18381,6 +18688,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Optional. The matching ID of the tool call the response is for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on
+        /// behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call
+        /// that started it instead of rendering every step as a sibling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentToolCallId")]
+        public virtual string ParentToolCallId { get; set; }
 
         /// <summary>
         /// Required. The tool execution result in JSON object format. Use "output" key to specify tool response and
