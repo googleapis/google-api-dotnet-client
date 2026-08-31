@@ -25798,6 +25798,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordInfo")]
         public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiAsrConfig")]
+        public virtual GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig GeminiAsrConfig { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
@@ -25824,6 +25827,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SpeechContext> SpeechContexts { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("useGeminiAsr")]
+        public virtual System.Nullable<bool> UseGeminiAsr { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28339,6 +28345,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordInfo")]
         public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiAsrConfig")]
+        public virtual GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig GeminiAsrConfig { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
@@ -28354,8 +28363,32 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("speechModelVariant")]
         public virtual string SpeechModelVariant { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("useGeminiAsr")]
+        public virtual System.Nullable<bool> UseGeminiAsr { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
         public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1SpeechToTextConfigGeminiAsrConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSpeechSensitivity")]
+        public virtual string EndOfSpeechSensitivity { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixPaddingMs")]
+        public virtual System.Nullable<int> PrefixPaddingMs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("silenceDurationMs")]
+        public virtual System.Nullable<int> SilenceDurationMs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startOfSpeechSensitivity")]
+        public virtual string StartOfSpeechSensitivity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
