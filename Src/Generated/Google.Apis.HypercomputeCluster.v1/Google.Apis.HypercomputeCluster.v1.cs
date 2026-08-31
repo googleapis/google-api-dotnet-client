@@ -1336,6 +1336,10 @@ namespace Google.Apis.HypercomputeCluster.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageResources")]
         public virtual System.Collections.Generic.IDictionary<string, StorageResource> StorageResources { get; set; }
 
+        /// <summary>Output only. The globally unique identifier for this Cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
