@@ -25684,6 +25684,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Referenced content and related document metadata.</summary>
     public class GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Generic structured chunk metadata from upstream data source connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChunkMetadata { get; set; }
+
         /// <summary>Chunk of code snippet from the referenced document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeSnippet")]
         public virtual string CodeSnippet { get; set; }
@@ -36946,6 +36950,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Request for the AssistantService.StreamAssist method.</summary>
     public class GoogleCloudDiscoveryengineV1StreamAssistRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specification of agents that are used to serve the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentsSpec")]
+        public virtual GoogleCloudDiscoveryengineV1StreamAssistRequestAgentsSpec AgentsSpec { get; set; }
+
         /// <summary>Optional. Specification of the generation configuration for the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationSpec")]
         public virtual GoogleCloudDiscoveryengineV1StreamAssistRequestGenerationSpec GenerationSpec { get; set; }
@@ -36973,6 +36981,31 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Optional. Information about the user initiating the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userMetadata")]
         public virtual GoogleCloudDiscoveryengineV1AssistUserMetadata UserMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of agents that are used to serve the request.</summary>
+    public class GoogleCloudDiscoveryengineV1StreamAssistRequestAgentsSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specification of agents that are used to serve the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1StreamAssistRequestAgentsSpecAgentSpec> AgentSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of an agent.</summary>
+    public class GoogleCloudDiscoveryengineV1StreamAssistRequestAgentsSpecAgentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. ID to identify the agent resource serving the request. This field must conform to
+        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length limit of 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38719,9 +38752,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Output only. Whether this is a first-party (Google-owned) connector, as opposed to a third-party connector.
-        /// Used by the frontend to group 1P vs 3P connectors. Sourced from `ConnectorSource.is_first_party` once that
-        /// field is universally populated (b/534727761); until then derived from `ConnectorSource.connector_type ==
-        /// FIRST_PARTY`.
+        /// Used by the frontend to group 1P vs 3P connectors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isFirstParty")]
         public virtual System.Nullable<bool> IsFirstParty { get; set; }
@@ -39297,6 +39328,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
+
+        /// <summary>Output only. Whether this model should be promoted in the GE chat homepage banner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promoted")]
+        public virtual System.Nullable<bool> Promoted { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -40896,6 +40931,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// <summary>Referenced content and related document metadata.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Generic structured chunk metadata from upstream data source connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ChunkMetadata { get; set; }
+
         /// <summary>Chunk of code snippet from the referenced document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeSnippet")]
         public virtual string CodeSnippet { get; set; }
