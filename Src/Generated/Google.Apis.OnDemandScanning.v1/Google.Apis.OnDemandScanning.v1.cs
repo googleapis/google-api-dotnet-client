@@ -2804,6 +2804,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxSeverity")]
         public virtual string MaxSeverity { get; set; }
 
+        /// <summary>The base name of the model that performed the scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
         /// <summary>Status of the scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanStatus")]
         public virtual string ScanStatus { get; set; }
