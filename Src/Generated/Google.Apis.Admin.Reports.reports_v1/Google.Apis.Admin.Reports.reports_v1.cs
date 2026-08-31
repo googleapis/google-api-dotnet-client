@@ -737,8 +737,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
 
             /// <summary>
             /// Optional. When set to `true`, this field allows sensitive user-generated content to be included in the
-            /// returned audit logs. This parameter is supported only for Rules (DLP) and Chat applications; using it
-            /// with any other application will result in a permission error.
+            /// returned audit logs. This parameter is supported only for Rules (DLP), Chat and Workspace Studio
+            /// applications; using it with any other application will result in a permission error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("includeSensitiveData", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeSensitiveData { get; set; }
@@ -2136,7 +2136,11 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDetails")]
         public virtual System.Collections.Generic.IList<ResourceDetails> ResourceDetails { get; set; }
 
-        /// <summary>Device details of the user doing the action.</summary>
+        /// <summary>
+        /// Device details of the user doing the action. This field is only exposed for the `contacts`,
+        /// `gemini_in_workspace_apps`, `keep`, `meet_hardware`, `meet`, `chat`, `chrome`, `directory_sync`, `drive`,
+        /// `groups`, `rules`, `data_studio`, `saml` applications.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDeviceInfo")]
         public virtual ActivityUserDeviceInfo UserDeviceInfo { get; set; }
 
