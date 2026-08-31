@@ -617,7 +617,25 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
-                    /// <summary>Optional. The request tags for the request.</summary>
+                    /// <summary>
+                    /// Optional. The request tags for the request. Request tags are user-provided strings used for
+                    /// usage monitoring, cost management, and observability. Callers can associate custom application
+                    /// context (such as component, microservice, feature name, or operation type) with database
+                    /// requests. These tags are collected and aggregated in usage and monitoring reports, allowing
+                    /// billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show
+                    /// up in monitoring and are visible in administrative operations (such as usage reports). They do
+                    /// not affect data storage, query semantics, or request execution. Cardinality and Best Practices:
+                    /// - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than
+                    /// 100 distinct tags across an entire database). Using a large number of distinct tags may result
+                    /// in tags being omitted from top usage dashboards. - Use structured identifiers (for example:
+                    /// `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs,
+                    /// request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or
+                    /// personally identifiable information (PII) in request tags, as they show up in administrative
+                    /// monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. -
+                    /// Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. -
+                    /// Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags
+                    /// are silently discarded).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
 
@@ -750,7 +768,25 @@ namespace Google.Apis.Firestore.v1beta1
                         }
                     }
 
-                    /// <summary>Optional. The request tags for the request.</summary>
+                    /// <summary>
+                    /// Optional. The request tags for the request. Request tags are user-provided strings used for
+                    /// usage monitoring, cost management, and observability. Callers can associate custom application
+                    /// context (such as component, microservice, feature name, or operation type) with database
+                    /// requests. These tags are collected and aggregated in usage and monitoring reports, allowing
+                    /// billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show
+                    /// up in monitoring and are visible in administrative operations (such as usage reports). They do
+                    /// not affect data storage, query semantics, or request execution. Cardinality and Best Practices:
+                    /// - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than
+                    /// 100 distinct tags across an entire database). Using a large number of distinct tags may result
+                    /// in tags being omitted from top usage dashboards. - Use structured identifiers (for example:
+                    /// `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs,
+                    /// request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or
+                    /// personally identifiable information (PII) in request tags, as they show up in administrative
+                    /// monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. -
+                    /// Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. -
+                    /// Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags
+                    /// are silently discarded).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
 
@@ -923,7 +959,25 @@ namespace Google.Apis.Firestore.v1beta1
                         }
                     }
 
-                    /// <summary>Optional. The request tags for the request.</summary>
+                    /// <summary>
+                    /// Optional. The request tags for the request. Request tags are user-provided strings used for
+                    /// usage monitoring, cost management, and observability. Callers can associate custom application
+                    /// context (such as component, microservice, feature name, or operation type) with database
+                    /// requests. These tags are collected and aggregated in usage and monitoring reports, allowing
+                    /// billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show
+                    /// up in monitoring and are visible in administrative operations (such as usage reports). They do
+                    /// not affect data storage, query semantics, or request execution. Cardinality and Best Practices:
+                    /// - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than
+                    /// 100 distinct tags across an entire database). Using a large number of distinct tags may result
+                    /// in tags being omitted from top usage dashboards. - Use structured identifiers (for example:
+                    /// `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs,
+                    /// request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or
+                    /// personally identifiable information (PII) in request tags, as they show up in administrative
+                    /// monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. -
+                    /// Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. -
+                    /// Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags
+                    /// are silently discarded).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
 
@@ -1104,7 +1158,25 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Recursive { get; set; }
 
-                    /// <summary>Optional. The request tags for the request.</summary>
+                    /// <summary>
+                    /// Optional. The request tags for the request. Request tags are user-provided strings used for
+                    /// usage monitoring, cost management, and observability. Callers can associate custom application
+                    /// context (such as component, microservice, feature name, or operation type) with database
+                    /// requests. These tags are collected and aggregated in usage and monitoring reports, allowing
+                    /// billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show
+                    /// up in monitoring and are visible in administrative operations (such as usage reports). They do
+                    /// not affect data storage, query semantics, or request execution. Cardinality and Best Practices:
+                    /// - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than
+                    /// 100 distinct tags across an entire database). Using a large number of distinct tags may result
+                    /// in tags being omitted from top usage dashboards. - Use structured identifiers (for example:
+                    /// `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs,
+                    /// request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or
+                    /// personally identifiable information (PII) in request tags, as they show up in administrative
+                    /// monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. -
+                    /// Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. -
+                    /// Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags
+                    /// are silently discarded).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
 
@@ -1405,7 +1477,25 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("recursive", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Recursive { get; set; }
 
-                    /// <summary>Optional. The request tags for the request.</summary>
+                    /// <summary>
+                    /// Optional. The request tags for the request. Request tags are user-provided strings used for
+                    /// usage monitoring, cost management, and observability. Callers can associate custom application
+                    /// context (such as component, microservice, feature name, or operation type) with database
+                    /// requests. These tags are collected and aggregated in usage and monitoring reports, allowing
+                    /// billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show
+                    /// up in monitoring and are visible in administrative operations (such as usage reports). They do
+                    /// not affect data storage, query semantics, or request execution. Cardinality and Best Practices:
+                    /// - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than
+                    /// 100 distinct tags across an entire database). Using a large number of distinct tags may result
+                    /// in tags being omitted from top usage dashboards. - Use structured identifiers (for example:
+                    /// `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs,
+                    /// request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or
+                    /// personally identifiable information (PII) in request tags, as they show up in administrative
+                    /// monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. -
+                    /// Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. -
+                    /// Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags
+                    /// are silently discarded).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
 
@@ -1731,7 +1821,25 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("mask.fieldPaths", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
-                    /// <summary>Optional. The request tags for the request.</summary>
+                    /// <summary>
+                    /// Optional. The request tags for the request. Request tags are user-provided strings used for
+                    /// usage monitoring, cost management, and observability. Callers can associate custom application
+                    /// context (such as component, microservice, feature name, or operation type) with database
+                    /// requests. These tags are collected and aggregated in usage and monitoring reports, allowing
+                    /// billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show
+                    /// up in monitoring and are visible in administrative operations (such as usage reports). They do
+                    /// not affect data storage, query semantics, or request execution. Cardinality and Best Practices:
+                    /// - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than
+                    /// 100 distinct tags across an entire database). Using a large number of distinct tags may result
+                    /// in tags being omitted from top usage dashboards. - Use structured identifiers (for example:
+                    /// `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs,
+                    /// request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or
+                    /// personally identifiable information (PII) in request tags, as they show up in administrative
+                    /// monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. -
+                    /// Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. -
+                    /// Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags
+                    /// are silently discarded).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestOptions.requestTags", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> RequestOptionsRequestTags { get; set; }
 
@@ -5262,10 +5370,26 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for a server request.</summary>
+    /// <summary>Options for a request.</summary>
     public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The request tags for the request.</summary>
+        /// <summary>
+        /// Optional. The request tags for the request. Request tags are user-provided strings used for usage
+        /// monitoring, cost management, and observability. Callers can associate custom application context (such as
+        /// component, microservice, feature name, or operation type) with database requests. These tags are collected
+        /// and aggregated in usage and monitoring reports, allowing billable operations and usage metrics to be sliced
+        /// and analyzed by tag. These tags *only* show up in monitoring and are visible in administrative operations
+        /// (such as usage reports). They do not affect data storage, query semantics, or request execution. Cardinality
+        /// and Best Practices: - Request tags are most effective when using a bounded set of distinct values (e.g.,
+        /// fewer than 100 distinct tags across an entire database). Using a large number of distinct tags may result in
+        /// tags being omitted from top usage dashboards. - Use structured identifiers (for example: `app=cart`,
+        /// `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs, request IDs, timestamps,
+        /// user IDs, or document keys. - Do not include sensitive data or personally identifiable information (PII) in
+        /// request tags, as they show up in administrative monitoring. The tags are processed as follows: - Leading and
+        /// trailing whitespace is trimmed. - Empty tags (after trimming) are filtered out. - Truncated to a maximum of
+        /// 510 characters. - Deduplicated within the same request. - Limited to a maximum of 50 tags per request
+        /// (excess tags are silently discarded).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTags")]
         public virtual System.Collections.Generic.IList<string> RequestTags { get; set; }
 
