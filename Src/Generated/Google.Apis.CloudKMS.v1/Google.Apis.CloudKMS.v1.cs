@@ -4640,6 +4640,63 @@ namespace Google.Apis.CloudKMS.v1
                     }
                 }
 
+                /// <summary>
+                /// Permanently deletes the given KeyRing. All child resources of the KeyRing must have been previously
+                /// deleted using their corresponding Delete operations. The specified key ring will be immediately and
+                /// permanently deleted upon calling this method. This action cannot be undone. Note: the key ring and
+                /// its metadata will be remembered by KeyManagementService to prevent re-use of the key ring's resource
+                /// name.
+                /// </summary>
+                /// <param name="name">Required. The name of the KeyRing to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Permanently deletes the given KeyRing. All child resources of the KeyRing must have been previously
+                /// deleted using their corresponding Delete operations. The specified key ring will be immediately and
+                /// permanently deleted upon calling this method. This action cannot be undone. Note: the key ring and
+                /// its metadata will be remembered by KeyManagementService to prevent re-use of the key ring's resource
+                /// name.
+                /// </summary>
+                public class DeleteRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the KeyRing to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Returns metadata for a given KeyRing.</summary>
                 /// <param name="name">Required. The name of the KeyRing to get.</param>
                 public virtual GetRequest Get(string name)
@@ -7744,9 +7801,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Immutable. Field indicating that the key may be wrapped by a trusted key. This field can be set for all key
-        /// purposes except ENCRYPT_DECRYPT, and is only valid for keys with protection level HSM_SINGLE_TENANT. This
-        /// field can only be set at creation or import time via CreateCryptoKeyVersion, or ImportCryptoKeyVersion.
+        /// Optional. Immutable. Field indicating that the key may be wrapped by a trusted key. This field can be set
+        /// for all key purposes except ENCRYPT_DECRYPT, and is only valid for keys with protection level
+        /// HSM_SINGLE_TENANT. This field can only be set at creation or import time via CreateCryptoKeyVersion, or
+        /// ImportCryptoKeyVersion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustedWrappingEnabled")]
         public virtual System.Nullable<bool> TrustedWrappingEnabled { get; set; }
