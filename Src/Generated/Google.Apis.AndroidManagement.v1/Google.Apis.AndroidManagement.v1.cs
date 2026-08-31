@@ -5057,20 +5057,22 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Controls for device radio settings.</summary>
     public class DeviceRadioState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Controls whether airplane mode can be toggled by the user or not.</summary>
+        /// <summary>Optional. Controls whether airplane mode can be toggled by the user or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airplaneModeState")]
         public virtual string AirplaneModeState { get; set; }
 
-        /// <summary>Controls whether cellular 2G setting can be toggled by the user or not.</summary>
+        /// <summary>Optional. Controls whether cellular 2G setting can be toggled by the user or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cellularTwoGState")]
         public virtual string CellularTwoGState { get; set; }
 
-        /// <summary>The minimum required security level of Wi-Fi networks that the device can connect to.</summary>
+        /// <summary>
+        /// Optional. The minimum required security level of Wi-Fi networks that the device can connect to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumWifiSecurityLevel")]
         public virtual string MinimumWifiSecurityLevel { get; set; }
 
         /// <summary>
-        /// Controls the state of the ultra wideband setting and whether the user can toggle it on or off.
+        /// Optional. Controls the state of the ultra wideband setting and whether the user can toggle it on or off.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ultraWidebandState")]
         public virtual string UltraWidebandState { get; set; }
@@ -5079,7 +5081,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userInitiatedAddEsimSettings")]
         public virtual string UserInitiatedAddEsimSettings { get; set; }
 
-        /// <summary>Controls current state of Wi-Fi and if user can change its state.</summary>
+        /// <summary>Optional. Controls current state of Wi-Fi and if user can change its state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiState")]
         public virtual string WifiState { get; set; }
 
@@ -7429,7 +7431,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceOwnerLockScreenInfo")]
         public virtual UserFacingMessage DeviceOwnerLockScreenInfo { get; set; }
 
-        /// <summary>Covers controls for radio state such as Wi-Fi, bluetooth, and more.</summary>
+        /// <summary>Optional. Covers controls for radio state such as Wi-Fi, bluetooth, and more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRadioState")]
         public virtual DeviceRadioState DeviceRadioState { get; set; }
 
