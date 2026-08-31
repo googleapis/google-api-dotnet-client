@@ -1536,6 +1536,75 @@ namespace Google.Apis.CloudComposer.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Hibernates (pauses) a running environment. It requests the environment to switch to the HIBERNATED
+                /// state, keeping its data and minimizing cost, but not running any DAGs. This method is supported for
+                /// Cloud Composer environments in development mode in versions composer-3-airflow-*.*.*-build.* and
+                /// newer.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the environment to hibernate, in the form:
+                /// "projects/{project}/locations/{location}/environments/{environment}"
+                /// </param>
+                public virtual HibernateRequest Hibernate(Google.Apis.CloudComposer.v1beta1.Data.HibernateEnvironmentRequest body, string name)
+                {
+                    return new HibernateRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Hibernates (pauses) a running environment. It requests the environment to switch to the HIBERNATED
+                /// state, keeping its data and minimizing cost, but not running any DAGs. This method is supported for
+                /// Cloud Composer environments in development mode in versions composer-3-airflow-*.*.*-build.* and
+                /// newer.
+                /// </summary>
+                public class HibernateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Hibernate request.</summary>
+                    public HibernateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.HibernateEnvironmentRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the environment to hibernate, in the form:
+                    /// "projects/{project}/locations/{location}/environments/{environment}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.HibernateEnvironmentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "hibernate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:hibernate";
+
+                    /// <summary>Initializes Hibernate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>List environments.</summary>
                 /// <param name="parent">
                 /// List environments in the given project and location, in the form:
@@ -1922,6 +1991,73 @@ namespace Google.Apis.CloudComposer.v1beta1
                     public override string RestPath => "v1beta1/{+name}:restartWebServer";
 
                     /// <summary>Initializes RestartWebServer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Resumes (unpauses) a hibernated environment. It requests the environment to switch to the RUNNING
+                /// state, so that it is ready to use and run DAGs. This method is supported for Cloud Composer
+                /// environments in development mode in versions composer-3-airflow-*.*.*-build.* and newer.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the environment to resume, in the form:
+                /// "projects/{project}/locations/{location}/environments/{environment}"
+                /// </param>
+                public virtual ResumeRequest Resume(Google.Apis.CloudComposer.v1beta1.Data.ResumeEnvironmentRequest body, string name)
+                {
+                    return new ResumeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Resumes (unpauses) a hibernated environment. It requests the environment to switch to the RUNNING
+                /// state, so that it is ready to use and run DAGs. This method is supported for Cloud Composer
+                /// environments in development mode in versions composer-3-airflow-*.*.*-build.* and newer.
+                /// </summary>
+                public class ResumeRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Resume request.</summary>
+                    public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.ResumeEnvironmentRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the environment to resume, in the form:
+                    /// "projects/{project}/locations/{location}/environments/{environment}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.ResumeEnvironmentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resume";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:resume";
+
+                    /// <summary>Initializes Resume parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -2776,6 +2912,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Optional. Selects the environment mode that determines what settings are customizable and what features are
+        /// available in the environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
         /// Identifier. The resource name of the environment, in the form:
         /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a
         /// lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
@@ -3062,6 +3205,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryGceZone")]
         public virtual string SecondaryGceZone { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to hibernate a Composer environment.</summary>
+    public class HibernateEnvironmentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3905,6 +4055,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
     /// <summary>Restart Airflow web server.</summary>
     public class RestartWebServerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to resume a Composer environment.</summary>
+    public class ResumeEnvironmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
