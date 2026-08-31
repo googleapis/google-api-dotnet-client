@@ -82944,6 +82944,113 @@ namespace Google.Apis.Compute.v1
             }
         }
 
+        /// <summary>Get health info on a reservation slot.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request. Zone name should conform to RFC1035.</param>
+        /// <param name="parentName">
+        /// The name of the parent reservation, parent block and parent sub-block. In the format of
+        /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}/reservationSubBlocks/{reservation_sub_block_name}
+        /// </param>
+        /// <param name="reservationSlot">
+        /// The name of the reservation slot. Name should conform to RFC1035 or be a resource ID.
+        /// </param>
+        public virtual GetHealthRequest GetHealth(string project, string zone, string parentName, string reservationSlot)
+        {
+            return new GetHealthRequest(this.service, project, zone, parentName, reservationSlot);
+        }
+
+        /// <summary>Get health info on a reservation slot.</summary>
+        public class GetHealthRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new GetHealth request.</summary>
+            public GetHealthRequest(Google.Apis.Services.IClientService service, string project, string zone, string parentName, string reservationSlot) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                ParentName = parentName;
+                ReservationSlot = reservationSlot;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the zone for this request. Zone name should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// The name of the parent reservation, parent block and parent sub-block. In the format of
+            /// reservations/{reservation_name}/reservationBlocks/{reservation_block_name}/reservationSubBlocks/{reservation_sub_block_name}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parentName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ParentName { get; private set; }
+
+            /// <summary>The name of the reservation slot. Name should conform to RFC1035 or be a resource ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("reservationSlot", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ReservationSlot { get; private set; }
+
+            /// <summary>An optional request ID to identify requests.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getHealth";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/{+parentName}/reservationSlots/{reservationSlot}/getHealth";
+
+            /// <summary>Initializes GetHealth parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parentName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parentName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"reservations/([a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19})/reservationBlocks/([a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19})/reservationSubBlocks/([a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19})",
+                });
+                RequestParameters.Add("reservationSlot", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "reservationSlot",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Allows customers to get SBOM versions of a reservation slot.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -121218,6 +121325,77 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for GetHealth operations.</summary>
+    public class GetHealthOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The health information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthInfo")]
+        public virtual GetHealthOperationMetadataHealthInfo HealthInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Health information.</summary>
+    public class GetHealthOperationMetadataHealthInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The availability SLO status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilitySloStatus")]
+        public virtual string AvailabilitySloStatus { get; set; }
+
+        /// <summary>Output only. The health status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
+        public virtual string HealthStatus { get; set; }
+
+        /// <summary>Output only. The repair category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairCategory")]
+        public virtual string RepairCategory { get; set; }
+
+        /// <summary>Output only. The reason for unhealthy status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unhealthyReason")]
+        public virtual string UnhealthyReason { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when health info was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GetVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSbomInfo")]
@@ -121801,8 +121979,8 @@ namespace Google.Apis.Compute.v1.Data
         /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of
         /// the following values:        - VIRTIO_SCSI_MULTIQUEUE    - WINDOWS    - MULTI_IP_SUBNET    - UEFI_COMPATIBLE
         ///    - GVNIC    - SEV_CAPABLE    - SUSPEND_RESUME_COMPATIBLE    - SEV_LIVE_MIGRATABLE_V2    - SEV_SNP_CAPABLE
-        ///   - TDX_CAPABLE    - IDPF    - SNP_SVSM_CAPABLE    - CCA_CAPABLE   For more information, see Enabling guest
-        /// operating system features.
+        ///   - TDX_CAPABLE    - IDPF    - SNP_SVSM_CAPABLE    - CCA_CAPABLE    - SUSPEND_SAFE_FPR   For more
+        /// information, see Enabling guest operating system features.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -129891,6 +130069,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
+        /// <summary>Output only. Server-defined URL for this resource with the resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
+        public virtual string SelfLinkWithId { get; set; }
+
         /// <summary>
         /// Output only. [Output Only] The current state of Interconnect functionality, which can take one of the
         /// following values:        - ACTIVE: The Interconnect is valid, turned up and ready to use.    Attachments may
@@ -132106,6 +132288,18 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; }
 
+        /// <summary>
+        /// Output only. The maximum unmetered bandwidth for dynamic paths allowable per WireGroup for this metro.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDynamicPathBandwidthGbps")]
+        public virtual System.Nullable<long> MaxDynamicPathBandwidthGbps { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum unmetered bandwidth for fixed paths allowable per WireGroup for this metro.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxFixedPathBandwidthGbps")]
+        public virtual System.Nullable<long> MaxFixedPathBandwidthGbps { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -133939,6 +134133,13 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shutdownDetails")]
         public virtual ManagedInstanceShutdownDetails ShutdownDetails { get; set; }
+
+        /// <summary>
+        /// Output only. The eventual status of the instance. The instance group manager will not be identified as
+        /// stable till each managed instance reaches its targetStatus.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetStatus")]
+        public virtual string TargetStatus { get; set; }
 
         /// <summary>Output only. [Output Only] Intended version of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -138427,6 +138628,10 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual ErrorData Error { get; set; }
+
+        /// <summary>Output only. Metadata for GetHealth operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("getHealthOperationMetadata")]
+        public virtual GetHealthOperationMetadata GetHealthOperationMetadata { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("getVersionOperationMetadata")]
         public virtual GetVersionOperationMetadata GetVersionOperationMetadata { get; set; }
