@@ -11647,7 +11647,8 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ResourceRecord : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
+        /// Name of the resource record relative to its apex domain, e.g. `www` for `www.example.com`. Omitted for apex
+        /// records.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
