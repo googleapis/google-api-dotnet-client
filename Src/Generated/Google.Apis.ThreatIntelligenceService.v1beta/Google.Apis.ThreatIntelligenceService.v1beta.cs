@@ -2357,6 +2357,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detailType")]
         public virtual string DetailType { get; set; }
 
+        /// <summary>Domain Configuration detail config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainConfiguration")]
+        public virtual DomainConfiguration DomainConfiguration { get; set; }
+
         /// <summary>Technology Watchlist detail config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyWatchlist")]
         public virtual TechnologyWatchListConfig TechnologyWatchlist { get; set; }
@@ -2432,6 +2436,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentCondition")]
         public virtual string DocumentCondition { get; set; }
+
+        /// <summary>Optional. The query used to match documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentQuery")]
+        public virtual DocumentQuery DocumentQuery { get; set; }
 
         /// <summary>Optional. Legacy metadata associated with this scenario/monitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyMonitorMetadata")]
@@ -2825,6 +2833,66 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a query to match documents.</summary>
+    public class DocumentQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The data model to query against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataModel")]
+        public virtual string DataModel { get; set; }
+
+        /// <summary>Required. The query string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>Required. The type of query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryType")]
+        public virtual string QueryType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration holding settings for one or more monitored domains.</summary>
+    public class DomainConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of settings for individual domains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainSettings")]
+        public virtual System.Collections.Generic.IList<DomainSetting> DomainSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific configuration for the Domain Monitoring feature.</summary>
+    public class DomainMonitoringFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether the Domain Monitoring feature is disabled for the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature settings and toggles for a single specific domain.</summary>
+    public class DomainSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The domain name to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>Optional. If not present, Domain Monitoring is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainMonitoringConfig")]
+        public virtual DomainMonitoringFeatureConfig DomainMonitoringConfig { get; set; }
+
+        /// <summary>Output only. The verification state of the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

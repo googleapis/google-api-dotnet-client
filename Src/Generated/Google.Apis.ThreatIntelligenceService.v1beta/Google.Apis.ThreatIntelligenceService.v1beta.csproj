@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ThreatIntelligenceService.v1beta Client Library</Title>
-    <Version>1.76.0.4245</Version>
+    <Version>1.76.0.4252</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
