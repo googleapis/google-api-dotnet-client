@@ -8592,8 +8592,7 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization): + Projects scope: `projects/{project_id}/locations/{location_id}`
-                /// + Organizations scope: `organizations/{org_id}/locations/{location_id}`
+                /// request (project): + Projects scope: `projects/{project_id}/locations/{location_id}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateContentPolicyRequest body, string parent)
                 {
@@ -8613,9 +8612,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization): + Projects scope:
-                    /// `projects/{project_id}/locations/{location_id}` + Organizations scope:
-                    /// `organizations/{org_id}/locations/{location_id}`
+                    /// request (project): + Projects scope: `projects/{project_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8754,8 +8751,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists ContentPolicies in a parent.</summary>
                 /// <param name="parent">
-                /// Required. Resource name of the organization or project, for example,
-                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                /// Required. Resource name of the project, for example, `projects/project-id/locations/asia`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -8773,8 +8769,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization or project, for example,
-                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                    /// Required. Resource name of the project, for example, `projects/project-id/locations/asia`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
