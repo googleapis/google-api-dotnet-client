@@ -2788,8 +2788,9 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual ProductAccount OperatingAccount { get; set; }
 
         /// <summary>
-        /// Required. The object within the product account to ingest into. For example, a Google Ads audience ID, a
-        /// Display &amp;amp; Video 360 audience ID or a Google Ads conversion action ID.
+        /// Optional. The object within the product account to ingest into. For example, a Google Ads audience ID, a
+        /// Display &amp;amp; Video 360 audience ID or a Google Ads conversion action ID. This field is optional for
+        /// Google Ad Manager event ingestion and User ingestion. Required for all other use cases.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDestinationId")]
         public virtual string ProductDestinationId { get; set; }
