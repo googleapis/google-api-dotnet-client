@@ -36,6 +36,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         {
             BackupRuns = new BackupRunsResource(this);
             Backups = new BackupsResource(this);
+            BlueGreenDeployments = new BlueGreenDeploymentsResource(this);
             Connect = new ConnectResource(this);
             Databases = new DatabasesResource(this);
             Flags = new FlagsResource(this);
@@ -98,6 +99,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         /// <summary>Gets the Backups resource.</summary>
         public virtual BackupsResource Backups { get; }
+
+        /// <summary>Gets the BlueGreenDeployments resource.</summary>
+        public virtual BlueGreenDeploymentsResource BlueGreenDeployments { get; }
 
         /// <summary>Gets the Connect resource.</summary>
         public virtual ConnectResource Connect { get; }
@@ -984,6 +988,434 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
     }
 
+    /// <summary>The "blueGreenDeployments" collection of methods.</summary>
+    public class BlueGreenDeploymentsResource
+    {
+        private const string Resource = "blueGreenDeployments";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BlueGreenDeploymentsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Creates a blue-green deployment under a given project and location. This deployment provisions a
+        /// synchronized green environment (target instance) from a blue production environment (source instance),
+        /// facilitating updates like major version upgrades on the green instance without impacting the blue instance.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. The parent resource where this blue-green deployment will be created. Format:
+        /// projects/{project}/locations/{location}
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.SQLAdmin.v1beta4.Data.BlueGreenDeployment body, string parent)
+        {
+            return new CreateRequest(this.service, body, parent);
+        }
+
+        /// <summary>
+        /// Creates a blue-green deployment under a given project and location. This deployment provisions a
+        /// synchronized green environment (target instance) from a blue production environment (source instance),
+        /// facilitating updates like major version upgrades on the green instance without impacting the blue instance.
+        /// </summary>
+        public class CreateRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.BlueGreenDeployment body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The parent resource where this blue-green deployment will be created. Format:
+            /// projects/{project}/locations/{location}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// Required. The ID to use for the blue-green deployment, which will become the final component of the
+            /// deployment's resource name.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("blueGreenDeploymentId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string BlueGreenDeploymentId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.BlueGreenDeployment Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+parent}/blueGreenDeployments";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                });
+                RequestParameters.Add("blueGreenDeploymentId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "blueGreenDeploymentId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Deletes a blue-green deployment, including metadata and underlying resources based on the deployment state.
+        /// If issued before switchover, this deletes the green instance. If issued after switchover, this deletes the
+        /// old blue instance (source instance) if the `delete_old_source` field in the request is set to true. All
+        /// blue-green deployment metadata is permanently deleted. Resources deleted as a result of this operation are
+        /// no longer accessible and can't be restored.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the blue-green deployment to delete. Format:
+        /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Deletes a blue-green deployment, including metadata and underlying resources based on the deployment state.
+        /// If issued before switchover, this deletes the green instance. If issued after switchover, this deletes the
+        /// old blue instance (source instance) if the `delete_old_source` field in the request is set to true. All
+        /// blue-green deployment metadata is permanently deleted. Resources deleted as a result of this operation are
+        /// no longer accessible and can't be restored.
+        /// </summary>
+        public class DeleteRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the blue-green deployment to delete. Format:
+            /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Optional. If set to true, and the switchover is complete, this deletes the old source instance along
+            /// with the deployment.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("deleteOldSource", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DeleteOldSource { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+/blueGreenDeployments/[^/]+$",
+                });
+                RequestParameters.Add("deleteOldSource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "deleteOldSource",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves a blue-green deployment resource under a given project and location.</summary>
+        /// <param name="name">
+        /// Required. The name of the blue-green deployment to retrieve. Format:
+        /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves a blue-green deployment resource under a given project and location.</summary>
+        public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.BlueGreenDeployment>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the blue-green deployment to retrieve. Format:
+            /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Optional. Specifies whether to return the basic or detailed view of the resource in the response.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>
+            /// Optional. Specifies whether to return the basic or detailed view of the resource in the response.
+            /// </summary>
+            public enum ViewEnum
+            {
+                /// <summary>
+                /// Blue-green deployment view enumeration. This allows the caller to specify what view they query. If
+                /// unspecified (BLUE_GREEN_DEPLOYMENT_VIEW_UNSPECIFIED), the behavior is the same as BASIC.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BLUE_GREEN_DEPLOYMENT_VIEW_UNSPECIFIED")]
+                BLUEGREENDEPLOYMENTVIEWUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Includes basic metadata about the blue-green deployment. `BASIC` is the default view.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 1,
+
+                /// <summary>
+                /// Includes basic metadata and configuration differences between source and target instances
+                /// (`database_version`, `tier`, `edition`, `availability_type`, `data_disk_size_gb`, and
+                /// `data_disk_type`).
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("DETAILED")]
+                DETAILED = 2,
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+/blueGreenDeployments/[^/]+$",
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists blue-green deployments under a given project.</summary>
+        /// <param name="parent">
+        /// Required. The parent resource whose blue-green deployments are to be listed. Format:
+        /// projects/{project}/locations/{location}
+        /// </param>
+        public virtual ListRequest List(string parent)
+        {
+            return new ListRequest(this.service, parent);
+        }
+
+        /// <summary>Lists blue-green deployments under a given project.</summary>
+        public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.ListBlueGreenDeploymentsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The parent resource whose blue-green deployments are to be listed. Format:
+            /// projects/{project}/locations/{location}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Optional. A filter expression that filters the results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>Optional. A comma-separated list of fields to order the results by.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Optional. The maximum number of deployments to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous `ListBlueGreenDeployments` call. Provide this to
+            /// retrieve the subsequent page.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+parent}/blueGreenDeployments";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Switches over to green instance for a blue-green deployment.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The name of the blue-green deployment to switch over. Format:
+        /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+        /// </param>
+        public virtual SwitchoverRequest Switchover(Google.Apis.SQLAdmin.v1beta4.Data.SwitchoverBlueGreenDeploymentRequest body, string name)
+        {
+            return new SwitchoverRequest(this.service, body, name);
+        }
+
+        /// <summary>Switches over to green instance for a blue-green deployment.</summary>
+        public class SwitchoverRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new Switchover request.</summary>
+            public SwitchoverRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SwitchoverBlueGreenDeploymentRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the blue-green deployment to switch over. Format:
+            /// projects/{project}/locations/{location}/blueGreenDeployments/{blue_green_deployment}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.SwitchoverBlueGreenDeploymentRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "switchover";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/{+name}:switchover";
+
+            /// <summary>Initializes Switchover parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+/blueGreenDeployments/[^/]+$",
+                });
+            }
+        }
+    }
+
     /// <summary>The "connect" collection of methods.</summary>
     public class ConnectResource
     {
@@ -1278,6 +1710,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Database { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -1312,6 +1748,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "database",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -1351,6 +1795,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Database { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -1385,6 +1833,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "database",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -1426,6 +1882,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.Database Body { get; set; }
 
@@ -1461,6 +1921,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -1491,6 +1959,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -1517,6 +1989,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -1564,6 +2044,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Database { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.Database Body { get; set; }
 
@@ -1607,6 +2091,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -1644,6 +2136,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Name of the database to be updated in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Database { get; private set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.Database Body { get; set; }
@@ -1685,6 +2181,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "database",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -1836,6 +2340,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "ListEntraIdCertificates";
 
@@ -1862,6 +2370,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -1905,6 +2421,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "ListServerCertificates";
 
@@ -1931,6 +2451,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -1970,6 +2498,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateEntraIdCertificateRequest Body { get; set; }
 
@@ -2002,6 +2534,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2043,6 +2583,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCertificateRequest Body { get; set; }
 
@@ -2075,6 +2619,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2118,6 +2670,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesAcquireSsrsLeaseRequest Body { get; set; }
 
@@ -2150,6 +2706,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2189,6 +2753,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "addEntraIdCertificate";
 
@@ -2215,6 +2783,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2260,6 +2836,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "addServerCa";
 
@@ -2286,6 +2866,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2331,6 +2919,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "addServerCertificate";
 
@@ -2357,6 +2949,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2402,6 +3002,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesCloneRequest Body { get; set; }
 
@@ -2434,6 +3038,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2510,6 +3122,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("finalBackupTtlDays", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> FinalBackupTtlDays { get; set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
 
@@ -2571,6 +3187,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -2607,6 +3231,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteRequest Body { get; set; }
 
@@ -2639,6 +3267,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2678,6 +3314,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest Body { get; set; }
 
@@ -2713,6 +3353,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -2744,6 +3392,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Required. Database instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.ExecuteSqlPayload Body { get; set; }
@@ -2777,6 +3429,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2816,6 +3476,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesExportRequest Body { get; set; }
 
@@ -2848,6 +3512,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2895,6 +3567,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesFailoverRequest Body { get; set; }
 
@@ -2930,6 +3606,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -2960,6 +3644,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -2986,6 +3674,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3020,6 +3716,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesImportRequest Body { get; set; }
@@ -3056,6 +3756,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -3086,6 +3794,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance Body { get; set; }
 
@@ -3110,6 +3822,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "project",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3146,6 +3866,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>
             /// The maximum number of instances to return. The service may return fewer than this value. If unspecified,
@@ -3184,6 +3908,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -3243,6 +3975,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listServerCas";
 
@@ -3269,6 +4005,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3309,6 +4053,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>
             /// Optional. Set PSC config to the same value as the existing config to reconcile the PSC networking.
@@ -3355,6 +4103,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3467,6 +4223,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesPreCheckMajorVersionUpgradeRequest Body { get; set; }
 
@@ -3499,6 +4259,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3547,6 +4315,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("failover", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Failover { get; set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "promoteReplica";
 
@@ -3584,6 +4356,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -3615,6 +4395,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesReencryptRequest Body { get; set; }
@@ -3648,6 +4432,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3691,6 +4483,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "releaseSsrsLease";
 
@@ -3717,6 +4513,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3753,6 +4557,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>Optional. Reset SSL mode to use.</summary>
             [Google.Apis.Util.RequestParameterAttribute("mode", Google.Apis.Util.RequestParameterType.Query)]
@@ -3806,6 +4614,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("mode", new Google.Apis.Discovery.Parameter
                 {
                     Name = "mode",
@@ -3844,6 +4660,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "restart";
 
@@ -3870,6 +4690,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3909,6 +4737,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesRestoreBackupRequest Body { get; set; }
 
@@ -3941,6 +4773,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3984,6 +4824,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCaRequest Body { get; set; }
 
@@ -4019,6 +4863,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -4049,6 +4901,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "startReplica";
 
@@ -4075,6 +4931,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4108,6 +4972,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "stopReplica";
 
@@ -4134,6 +5002,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4174,6 +5050,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("dbTimeout", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object DbTimeout { get; set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "switchover";
 
@@ -4211,6 +5091,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -4242,6 +5130,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.InstancesTruncateLogRequest Body { get; set; }
@@ -4275,6 +5167,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4314,6 +5214,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.DatabaseInstance Body { get; set; }
 
@@ -4346,6 +5250,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4676,6 +5588,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
 
+                /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getDiskShrinkConfig";
 
@@ -4702,6 +5618,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -4734,6 +5658,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
+
+                /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
 
                 private object _sourceInstanceDeletionTime;
 
@@ -4797,6 +5725,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("sourceInstanceDeletionTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "sourceInstanceDeletionTime",
@@ -4837,6 +5773,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
 
+                /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.SQLAdmin.v1beta4.Data.PerformDiskShrinkContext Body { get; set; }
 
@@ -4872,6 +5812,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
 
@@ -4903,6 +5851,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
+
+                /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Location { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesRescheduleMaintenanceRequestBody Body { get; set; }
@@ -4936,6 +5888,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "location",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -5196,6 +6156,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.SslCertsCreateEphemeralRequest Body { get; set; }
 
@@ -5228,6 +6192,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -5636,6 +6608,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Host { get; set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Name of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -5672,6 +6648,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 RequestParameters.Add("host", new Google.Apis.Discovery.Parameter
                 {
                     Name = "host",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -5725,6 +6709,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Host { get; set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -5770,6 +6758,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -5801,6 +6797,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Database instance ID. This does not include the project ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1beta4.Data.User Body { get; set; }
@@ -5837,6 +6837,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -5867,6 +6875,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -5893,6 +6905,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                     Name = "instance",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -5938,6 +6958,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             /// <summary>Optional. Host of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("host", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Host { get; set; }
+
+            /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
 
             /// <summary>Name of the user in the instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
@@ -6012,6 +7036,14 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 RequestParameters.Add("host", new Google.Apis.Discovery.Parameter
                 {
                     Name = "host",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -6785,6 +7817,144 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A `BlueGreenDeployment` resource represents a Cloud SQL blue-green deployment setup. It orchestrates the
+    /// lifecycle of creating a synchronized "green" environment from a "blue" production environment, performing
+    /// updates, and managing the switchover process to minimize downtime.
+    /// </summary>
+    public class BlueGreenDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the deployment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. A list representing the pairs of source and target instances in the deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentMappings")]
+        public virtual System.Collections.Generic.IList<SourceTargetPairedNode> DeploymentMappings { get; set; }
+
+        /// <summary>Output only. Combined list of tasks for all paired nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentTasks")]
+        public virtual DeploymentTasks DeploymentTasks { get; set; }
+
+        /// <summary>Optional. User-provided description for the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Provides an error message with details on why switchover is not possible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorDetail")]
+        public virtual string ErrorDetail { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The full resource name of the deployment. Format:
+        /// projects/{project}/locations/{location}/blueGreenDeployments/{deployment_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Deprecated: Use deployment_mappings instead. Output only. A list representing the pairs of
+        /// source and target instances in the deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pairedNodes")]
+        public virtual System.Collections.Generic.IList<SourceTargetPairedNode> PairedNodes { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Optional on create, and immutable. The configuration intended for the target
+        /// instance(s) when the deployment was created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedConfig")]
+        public virtual RequestedConfig RequestedConfig { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The instance ID of the source instance (the "blue" instance). The value for this field
+        /// does not include the project ID, for example, `my-instance-id`. This field is immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
+        public virtual string SourceInstance { get; set; }
+
+        /// <summary>Output only. The current state of the blue-green deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Details about the primary target instance (the "Green" instance) that will be promoted during
+        /// switchover.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("switchoverTargetInstance")]
+        public virtual string SwitchoverTargetInstance { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Deprecated: Use requested_config instead. The configuration intended for the target
+        /// instance(s) when the deployment was created. This field is immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetConfig")]
+        public virtual TargetConfig TargetConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Blue-green deployment metadata for a database instance. In a blue-green deployment, we maintain two
+    /// environments, one of which is live. This message contains details about the blue-green deployment.
+    /// </summary>
+    public class BlueGreenDeploymentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The resource ID of the blue-green deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
+        public virtual string DeploymentId { get; set; }
+
+        /// <summary>Output only. The source instance for the Blue-Green deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual SourceRole Source { get; set; }
+
+        /// <summary>Output only. The current state of blue-green-deployment for UI tags</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The target instance for the Blue-Green deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual TargetRole Target { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance clone context.</summary>
     public class CloneContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6948,6 +8118,25 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Datatype of the column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a specific configuration difference between Blue and Green instances.</summary>
+    public class ConfigDiff : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the field that differs, fully-qualified. Example: settings.tier</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>Output only. The value on the source instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceValue")]
+        public virtual string SourceValue { get; set; }
+
+        /// <summary>Output only. The value on the target instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetValue")]
+        public virtual string TargetValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7267,6 +8456,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// Output only. Deployment info for the instance. This is set if the instance is currently part of any
+        /// blue-green setup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentInfo")]
+        public virtual BlueGreenDeploymentInfo DeploymentInfo { get; set; }
 
         /// <summary>Disk encryption configuration specific to an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionConfiguration")]
@@ -7671,9 +8867,123 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a task executed as part of the deployment on a target instance.</summary>
+    public class DeploymentTask : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. Task end time (if completed).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Optional Error details if the task state is FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. Task start time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The current state of the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The type of the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Combined list of tasks for all paired nodes in the deployment.</summary>
+    public class DeploymentTasks : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Tasks performed or being performed on the paired nodes of the deployment at a consolidated
+        /// level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("task")]
+        public virtual System.Collections.Generic.IList<DeploymentTask> Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Disk encryption configuration for an instance.</summary>
     public class DiskEncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, enables Confidential Mode for the instance's Hyperdisk Balanced volumes. Only supported
+        /// for zonal C4A instances currently.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialMode")]
+        public virtual System.Nullable<bool> ConfidentialMode { get; set; }
+
         /// <summary>This is always `sql#diskEncryptionConfiguration`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -8862,6 +10172,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupdrBackup")]
         public virtual string BackupdrBackup { get; set; }
 
+        /// <summary>
+        /// Optional. If true, the restore operation proceeds even if the target instance's maintenance version is older
+        /// than the source instance's maintenance version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreMaintenanceVersion")]
+        public virtual System.Nullable<bool> IgnoreMaintenanceVersion { get; set; }
+
         /// <summary>Parameters required to perform the restore backup operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreBackupContext")]
         public virtual RestoreBackupContext RestoreBackupContext { get; set; }
@@ -9195,6 +10512,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for listing blue-green deployment resources.</summary>
+    public class ListBlueGreenDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of blue-green deployment resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blueGreenDeployments")]
+        public virtual System.Collections.Generic.IList<BlueGreenDeployment> BlueGreenDeployments { get; set; }
+
+        /// <summary>A token to retrieve the next page of results, or empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is
     /// not available, the instance will be located as close as possible within the region. Only one location may be
@@ -9359,6 +10691,31 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Flags to use for the initial dump.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialSyncFlags")]
         public virtual System.Collections.Generic.IList<SyncFlags> InitialSyncFlags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about an instance within the deployment.</summary>
+    public class NodeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The instance connection name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual string Connection { get; set; }
+
+        /// <summary>Output only. The unique DNS name for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dns")]
+        public virtual string Dns { get; set; }
+
+        /// <summary>
+        /// Output only. The full resource name of the instance. Format: projects/{project}/instances/{instance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>Output only. The list of IP addresses for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipMappings")]
+        public virtual System.Collections.Generic.IList<IpMapping> IpMappings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10268,7 +11625,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// Optional. The network attachment of the consumer network that the Private Service Connect enabled Cloud SQL
-        /// instance is authorized to connect via PSC interface. format:
+        /// instance is authorized to connect using the PSC interface. format:
         /// projects/PROJECT/regions/REGION/networkAttachments/ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAttachmentUri")]
@@ -10444,6 +11801,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("psaWriteEndpoint")]
         public virtual string PsaWriteEndpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration specified by the user at creation time for the target (Green) instance.</summary>
+    public class RequestedConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The target database major version for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10790,7 +12158,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
 
-        /// <summary>The local user password validation policy of the instance.</summary>
+        /// <summary>The local user password validation policy of the instance for PostgreSQL and MySQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordValidationPolicy")]
         public virtual PasswordValidationPolicy PasswordValidationPolicy { get; set; }
 
@@ -10869,6 +12237,53 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The source instance for the Blue-Green deployment.</summary>
+    public class SourceRole : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The target instance paired with this source instance in a blue-green deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual InstanceReference TargetId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a pairing of a source instance node and a target instance node.</summary>
+    public class SourceTargetPairedNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Deprecated: Indicates which instance (SOURCE or TARGET) in the pair is currently live. Used for
+        /// internal implementation and deprecated for external use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentlyServingTraffic")]
+        public virtual string CurrentlyServingTraffic { get; set; }
+
+        /// <summary>Output only. Describes the list of differences for this pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffs")]
+        public virtual System.Collections.Generic.IList<ConfigDiff> Diffs { get; set; }
+
+        /// <summary>Output only. Resource name of the source instance in this pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual NodeInfo Source { get; set; }
+
+        /// <summary>Output only. The current state of this specific source-target pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Details of the corresponding target instance in this pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual NodeInfo Target { get; set; }
+
+        /// <summary>Output only. Tasks performed or being performed on the target instance of this pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<DeploymentTask> Tasks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11101,12 +12516,20 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Instance reset replica size request.</summary>
     public class SqlInstancesResetReplicaSizeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     public class SqlInstancesStartExternalSyncRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>
         /// Optional. MigrationType configures the migration to use physical files or logical dump files. If not set,
         /// then the logical dump file configuration is used. Valid values are `LOGICAL` or `PHYSICAL`. Only applicable
@@ -11145,6 +12568,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
     public class SqlInstancesVerifyExternalSyncSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Region of the Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>
         /// Optional. MigrationType configures the migration to use physical files or logical dump files. If not set,
         /// then the logical dump file configuration is used. Valid values are `LOGICAL` or `PHYSICAL`. Only applicable
@@ -11374,11 +12801,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Represents a Sql Server user on the Cloud SQL instance.</summary>
     public class SqlServerUserDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the user has been disabled</summary>
+        /// <summary>Indicates if the user has been disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>The server roles for this user</summary>
+        /// <summary>Indicates the server roles for this user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverRoles")]
         public virtual System.Collections.Generic.IList<string> ServerRoles { get; set; }
 
@@ -11629,6 +13056,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for switching over a `BlueGreenDeployment` resource.</summary>
+    public class SwitchoverBlueGreenDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Initial sync flags for certain Cloud SQL APIs. Currently used for the MySQL external server initial dump.
     /// </summary>
@@ -11646,6 +13080,20 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Deprecated: Use RequestedConfig instead. Configuration specified by the user at creation time for the target
+    /// (Green) instance.
+    /// </summary>
+    public class TargetConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The target database major version for the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Target metric for read pool auto scaling.</summary>
     public class TargetMetric : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11656,6 +13104,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The target value for the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetValue")]
         public virtual System.Nullable<float> TargetValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The target instance for the Blue-Green deployment.</summary>
+    public class TargetRole : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The source instance paired with this target instance in a blue-green deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceId")]
+        public virtual InstanceReference SourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
