@@ -7176,6 +7176,10 @@ namespace Google.Apis.ManagedKafka.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfigs")]
         public virtual System.Collections.Generic.IList<NetworkConfig> NetworkConfigs { get; set; }
 
+        /// <summary>Optional. The configuration for public connectivity to the Kafka cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicClusterConfig")]
+        public virtual PublicClusterConfig PublicClusterConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7276,6 +7280,20 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// <summary>Whether the acl was created as a result of adding the acl entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aclCreated")]
         public virtual System.Nullable<bool> AclCreated { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker
+    /// in the cluster.
+    /// </summary>
+    public class BrokerCapacityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGib")]
+        public virtual System.Nullable<long> DiskSizeGib { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7385,6 +7403,23 @@ namespace Google.Apis.ManagedKafka.v1.Data
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. The bootstrap address of the Kafka cluster. The returned address format is:
+        /// `bootstrap-...managedkafka.s.cloud.goog` or `bootstrap...managedkafka..cloud.goog` (legacy format). ##
+        /// Examples: `bootstrap-nol2mecj8p94jhx2ge2rg54579a.c0aad26f.europe-west1.managedkafka.s.cloud.goog` -
+        /// `bootstrap.my-cluster.us-central1.managedkafka.my-project.cloud.goog` The port number is omitted so clients
+        /// can connect to their target listener (for example, `:9092` for TLS or `:9094` for mTLS).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootstrapAddress")]
+        public virtual string BootstrapAddress { get; set; }
+
+        /// <summary>
+        /// Optional. Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled
+        /// to each broker in the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brokerCapacityConfig")]
+        public virtual BrokerCapacityConfig BrokerCapacityConfig { get; set; }
+
+        /// <summary>
         /// Output only. Only populated when FULL view is requested. Details of each broker in the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brokerDetails")]
@@ -7431,6 +7466,13 @@ namespace Google.Apis.ManagedKafka.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Output only. Only populated when FULL view is requested. The effective capacity configuration of the
+        /// cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveCapacityConfig")]
+        public virtual EffectiveCapacityConfig EffectiveCapacityConfig { get; set; }
+
         /// <summary>Required. Configuration properties for a Kafka cluster deployed to Google Cloud Platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpConfig")]
         public virtual GcpConfig GcpConfig { get; set; }
@@ -7451,6 +7493,10 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Details of the public cluster feature for the Kafka cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicClusterDetails")]
+        public virtual PublicClusterDetails PublicClusterDetails { get; set; }
 
         /// <summary>Optional. Rebalance configuration for the Kafka cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rebalanceConfig")]
@@ -7883,6 +7929,23 @@ namespace Google.Apis.ManagedKafka.v1.Data
         /// <summary>The unique identifier of the schema created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<int> Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes the effective capacity configuration of a Kafka cluster, both cluster-wide and per-broker.
+    /// </summary>
+    public class EffectiveCapacityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of brokers in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brokerCount")]
+        public virtual System.Nullable<long> BrokerCount { get; set; }
+
+        /// <summary>Output only. The disk assigned to each broker in Gibibytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brokerDiskSizeGib")]
+        public virtual System.Nullable<long> BrokerDiskSizeGib { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8356,6 +8419,47 @@ namespace Google.Apis.ManagedKafka.v1.Data
     /// <summary>Response for PauseConnector.</summary>
     public class PauseConnectorResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for a public Kafka cluster</summary>
+    public class PublicClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The list of IPv4 ranges in CIDR notation that are allowed to connect to the public Kafka broker
+        /// endpoints. The Kafka cluster should only be exposed to trusted external ranges. A maximum of 500 IP ranges
+        /// can be specified and no single range can be larger than a `/16`. This field is required if
+        /// PublicClusterConfig is specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedSourceIpRanges")]
+        public virtual System.Collections.Generic.IList<string> AllowedSourceIpRanges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the public cluster feature for the Kafka cluster.</summary>
+    public class PublicClusterDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. DNS discovery records that resolve to all of the external IP addresses associated with the
+        /// public cluster. Used for configuring DNS-based egress firewall rules to a public cluster.
+        /// discovery_dns_record can be added to this list if the cluster is scaled up. Must configure DNS based
+        /// firewalls to resolve ALL DNS records in this list as large clusters have IP addresses sharded across
+        /// records. Each record contains a maximum of 30 IP addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryDnsRecords")]
+        public virtual System.Collections.Generic.IList<string> DiscoveryDnsRecords { get; set; }
+
+        /// <summary>
+        /// Output only. All of the external IP addresses associated with the public cluster used for configuring egress
+        /// firewall rules to a public cluster. external_ip_address can be added to this list if the cluster is scaled
+        /// up.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIpAddresses")]
+        public virtual System.Collections.Generic.IList<string> ExternalIpAddresses { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
