@@ -9444,6 +9444,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
         public virtual string FileId { get; set; }
 
+        /// <summary>Optional. The type of the file to upload. Defaulting to ATTACHMENT if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
+        public virtual string FileType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9487,6 +9491,14 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageId")]
         public virtual string PackageId { get; set; }
+
+        /// <summary>
+        /// Optional. Client specified annotations to attach to the version upon creation. This field is only applied if
+        /// the Version is created during this upload. If the Version already exists and this field is set, the request
+        /// will fail.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionAnnotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> VersionAnnotations { get; set; }
 
         /// <summary>
         /// The ID of the version of the generic artifact. If the version does not exist, a new version will be created.
@@ -9848,7 +9860,11 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// </summary>
     public class VulnerabilityScanningConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Config for whether this repository has vulnerability scanning disabled.</summary>
+        /// <summary>
+        /// Optional. Config for whether this repository has vulnerability scanning disabled. When unset
+        /// (ENABLEMENT_CONFIG_UNSPECIFIED), this is treated as INHERITED for Docker repositories and DISABLED for
+        /// non-Docker repositories.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablementConfig")]
         public virtual string EnablementConfig { get; set; }
 
