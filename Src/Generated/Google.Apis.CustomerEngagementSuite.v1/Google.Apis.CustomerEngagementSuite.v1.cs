@@ -4363,6 +4363,80 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                         }
                     }
 
+                    /// <summary>Updates the specified app version.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The unique identifier of the app version. Format:
+                    /// `projects/{project}/locations/{location}/apps/{app}/versions/{version}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CustomerEngagementSuite.v1.Data.AppVersion body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the specified app version.</summary>
+                    public class PatchRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1.Data.AppVersion>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1.Data.AppVersion body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The unique identifier of the app version. Format:
+                        /// `projects/{project}/locations/{location}/apps/{app}/versions/{version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The list of fields to update. If empty, fields `display_name` and `description`
+                        /// will be updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1.Data.AppVersion Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/versions/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Restores the specified app version. This will create a new app version from the current draft
                     /// app and overwrite the current draft with the specified app version.
@@ -5723,6 +5797,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. The remote [A2A](https://github.com/a2aproject/A2A) agent to be used for the agent execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteA2aAgent")]
+        public virtual AgentRemoteA2aAgent RemoteA2aAgent { get; set; }
+
+        /// <summary>
         /// Optional. The remote
         /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents) agent to be
         /// used for the agent execution. If this field is set, all other agent level properties will be ignored. Note:
@@ -5883,6 +5963,33 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// </summary>
     public class AgentLlmAgent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration and status for Agent Registry deployment.</summary>
+    public class AgentRegistryDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Output only. The resource name of the deployed Agent Registry service. Format:
+        /// `projects/{project}/locations/{location}/services/{service}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentRegistryServiceName")]
+        public virtual string AgentRegistryServiceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The agent which will transfer execution to a remote [A2A](https://github.com/a2aproject/A2A) agent.
+    /// </summary>
+    public class AgentRemoteA2aAgent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The A2A connection configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("a2aConfig")]
+        public virtual RemoteA2aConfig A2aConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6461,6 +6568,43 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Output only. The snapshot of the app when the version is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
         public virtual AppSnapshot Snapshot { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when the app version was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>Configuration for how the input and output audio should be processed and delivered.</summary>
@@ -6970,6 +7114,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("citedChunks")]
         public virtual System.Collections.Generic.IList<CitationsCitedChunk> CitedChunks { get; set; }
 
+        /// <summary>Optional. List of inline citations in the agent response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineCitations")]
+        public virtual System.Collections.Generic.IList<CitationsInlineCitation> InlineCitations { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6992,6 +7140,28 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>URI used for citation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An inline citation in the response text.</summary>
+    public class CitationsInlineCitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The indices of the cited chunks that back this text segment. Indices refer to the elements in
+        /// `cited_chunks`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedChunkIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> CitedChunkIndices { get; set; }
+
+        /// <summary>The ending index (in bytes) of the text segment in the agent response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>The starting index (in bytes) of the text segment in the agent response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7803,6 +7973,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// </summary>
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Configuration for deploying this deployment to Agent Registry. If present, this deployment will be
+        /// published to Agent Registry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentRegistryDeployment")]
+        public virtual AgentRegistryDeployment AgentRegistryDeployment { get; set; }
+
         /// <summary>
         /// Optional. The resource name of the app version to deploy. Format:
         /// `projects/{project}/locations/{location}/apps/{app}/versions/{version}` Use
@@ -9033,6 +9210,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Represents an image input or output in the conversation.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The alternative text for the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
         /// <summary>Required. Raw bytes of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
@@ -11180,6 +11361,52 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
         public virtual string InspectTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Shared configuration for connecting to a remote [A2A](https://github.com/a2aproject/A2A) agent.
+    /// </summary>
+    public class RemoteA2aConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The full agent card defined inline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCard")]
+        public virtual AgentCard AgentCard { get; set; }
+
+        /// <summary>
+        /// Optional. Reference to the agent in the Agent Registry. Format:
+        /// `projects/{project}/locations/{location}/agents/{agent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentRegistry")]
+        public virtual string AgentRegistry { get; set; }
+
+        /// <summary>
+        /// Optional. Authentication configuration for calling the remote agent. Optional if the registry reference
+        /// already handles authentication.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiAuthentication")]
+        public virtual ApiAuthentication ApiAuthentication { get; set; }
+
+        /// <summary>
+        /// Optional. If not empty, interactions with the remote A2A agent will use this context ID. This context_id
+        /// field can refer to a session variable like `$context.variables.order_agent_session_id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextId")]
+        public virtual string ContextId { get; set; }
+
+        /// <summary>Optional. Mapping of input variable names of remote agent to GECX variable names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputVariableMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> InputVariableMapping { get; set; }
+
+        /// <summary>Optional. Mapping of output variable names of remote agent to GECX variable names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputVariableMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> OutputVariableMapping { get; set; }
+
+        /// <summary>Optional. Whether streaming is enabled for the remote agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingEnabled")]
+        public virtual System.Nullable<bool> StreamingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
