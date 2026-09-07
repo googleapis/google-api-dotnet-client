@@ -5965,6 +5965,25 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DnsAutomationInfo contains information about the DNS automation for the instance.</summary>
+    public class DnsAutomationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The fully qualified domain name of the instance for DNS automation. Example:
+        /// "...alloydb.goog.". Note: The AUDIT directive is intentionally omitted because this field contains sensitive
+        /// network topology information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyQualifiedDomainName")]
+        public virtual string FullyQualifiedDomainName { get; set; }
+
+        /// <summary>Output only. The state of the DNS automation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -7515,9 +7534,29 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerProject")]
         public virtual string ConsumerProject { get; set; }
 
+        /// <summary>Output only. List of DNS automation info for the PSC auto connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsAutomationInfos")]
+        public virtual System.Collections.Generic.IList<DnsAutomationInfo> DnsAutomationInfos { get; set; }
+
         /// <summary>Output only. The IP address of the PSC service automation endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
+
+        /// <summary>
+        /// Output only. The PSC service connection policy name. The format is
+        /// "projects//regions//serviceConnectionPolicies/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionPolicy")]
+        public virtual string ServiceConnectionPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. The creation state or result of the connection policy. Possible values include: - `ACTIVE`: The
+        /// policy was created successfully. - `PERMISSION_DENIED`: Sufficient permissions were not provided. Note that
+        /// this field is an unstructured output and customers should not rely on the specific string value or error
+        /// message directly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionPolicyCreationState")]
+        public virtual string ServiceConnectionPolicyCreationState { get; set; }
 
         /// <summary>
         /// Output only. The status of the PSC service automation connection. Possible values: "STATE_UNSPECIFIED" - An
