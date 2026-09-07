@@ -1752,8 +1752,8 @@ namespace Google.Apis.Merchant.products_v1.Data
 
         /// <summary>
         /// Product Certifications, for example for energy efficiency labeling of products recorded in the [EU
-        /// EPREL](https://eprel.ec.europa.eu/screen/home) database. See the [Help
-        /// Center](https://support.google.com/merchants/answer/13528839) article for more information.
+        /// EPREL](https://eprel.ec.europa.eu/screen/home) database. For more information, see
+        /// [Certification](https://support.google.com/merchants/answer/13528839).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certifications")]
         public virtual System.Collections.Generic.IList<ProductCertification> Certifications { get; set; }
@@ -2609,6 +2609,22 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>The certification code. Maximum length is 2000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificationCode")]
         public virtual string CertificationCode { get; set; }
+
+        /// <summary>
+        /// Optional. URL to the certification document (eg. `https://www.example.com/document`), for example, the
+        /// product data sheet or fiche required by UK's DESNZ or EU's EPREL. Maximum length is 2000 characters. For
+        /// more information, see [Certification](https://support.google.com/merchants/answer/13528839).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificationDocumentLink")]
+        public virtual string CertificationDocumentLink { get; set; }
+
+        /// <summary>
+        /// Optional. URL to the certification label (eg. `https://www.example.com/label`), for example, the energy
+        /// efficiency label required by UK's DESNZ or EU's EPREL. Maximum length is 2000 characters. For more
+        /// information, see [Certification](https://support.google.com/merchants/answer/13528839).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificationLabelLink")]
+        public virtual string CertificationLabelLink { get; set; }
 
         /// <summary>The name of the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificationName")]
