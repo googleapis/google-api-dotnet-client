@@ -1423,6 +1423,59 @@ namespace Google.Apis.CloudWorkstations.v1
                             }
                         }
 
+                        /// <summary>Suspends a workstation to reduce costs.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Required. Name of the workstation to suspend.</param>
+                        public virtual SuspendRequest Suspend(Google.Apis.CloudWorkstations.v1.Data.SuspendWorkstationRequest body, string name)
+                        {
+                            return new SuspendRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Suspends a workstation to reduce costs.</summary>
+                        public class SuspendRequest : CloudWorkstationsBaseServiceRequest<Google.Apis.CloudWorkstations.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Suspend request.</summary>
+                            public SuspendRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudWorkstations.v1.Data.SuspendWorkstationRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Name of the workstation to suspend.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudWorkstations.v1.Data.SuspendWorkstationRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "suspend";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:suspend";
+
+                            /// <summary>Initializes Suspend parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workstationClusters/[^/]+/workstationConfigs/[^/]+/workstations/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>
                         /// Returns permissions that a caller has on the specified resource. If the resource does not
                         /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
@@ -4197,6 +4250,23 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
+    /// <summary>Request message for SuspendWorkstation.</summary>
+    public class SuspendWorkstationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set, the request will be rejected if the latest version of the workstation on the server does
+        /// not have this ETag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. If set, validate the request and preview the result, but do not actually apply it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4856,9 +4926,17 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual Host Host { get; set; }
 
         /// <summary>
-        /// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user
-        /// traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should
-        /// never time out due to idleness. Provide
+        /// Optional. The action to take when the workstation has been idle for the duration specified in idle_timeout.
+        /// Defaults to STOP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleAction")]
+        public virtual string IdleAction { get; set; }
+
+        /// <summary>
+        /// Optional. Number of seconds to wait before automatically stopping or suspending a workstation after it last
+        /// received user traffic. See idle_action to configure whether to stop or suspend idle workstations. A value of
+        /// `"0s"` indicates that Cloud Workstations VMs created with this configuration should never time out due to
+        /// idleness. Provide
         /// [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration)
         /// terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
         /// </summary>
@@ -4918,12 +4996,14 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// Optional. Number of seconds to wait before automatically stopping a workstation. We recommend that
         /// workstations be stopped daily so that security updates can be applied upon restart. The idle_timeout and
         /// running_timeout fields are independent of each other. Note that the running_timeout field stops workstations
-        /// after the specified time, regardless of whether or not the workstations are idle. Provide duration
-        /// terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to `"43200s"` (12 hours). A value
-        /// of `"0s"` indicates that workstations using this configuration should never time out. If encryption_key is
-        /// set, it must be greater than `"0s"` and less than `"86400s"` (24 hours). Warning: A value of `"0s"`
-        /// indicates that Cloud Workstations VMs created with this configuration have no maximum running time. This is
-        /// strongly discouraged because you incur costs and will not pick up security updates.
+        /// after the specified time, regardless of whether or not the workstations are idle. Note: This timeout applies
+        /// to workstations in the following states: * STATE_RUNNING * STATE_SUSPENDED Suspending a workstation does not
+        /// reset this timeout. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours).
+        /// Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration
+        /// should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24
+        /// hours). Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration
+        /// have no maximum running time. This is strongly discouraged because you incur costs and will not pick up
+        /// security updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningTimeout")]
         public virtual object RunningTimeout { get; set; }
