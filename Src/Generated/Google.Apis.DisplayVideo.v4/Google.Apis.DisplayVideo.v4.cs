@@ -22748,7 +22748,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single ad associated with an ad group.</summary>
+    /// <summary>LINT: LEGACY_NAMES A single ad associated with an ad group.</summary>
     public class AdGroupAd : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique ID of the ad. Assigned by the system.</summary>
@@ -27991,7 +27991,11 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// </summary>
     public class DigitalContentLabelAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The display name of the digital content label rating tier to be EXCLUDED.</summary>
+        /// <summary>
+        /// Required. The display name of the digital content label rating tier to be EXCLUDED. **Starting on *October
+        /// 1, 2026*, this field will only accept the value `CONTENT_RATING_TIER_UNRATED`. All other values will be
+        /// deprecated and no longer be accepted.**
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedContentRatingTier")]
         public virtual string ExcludedContentRatingTier { get; set; }
 
@@ -32882,7 +32886,11 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// </summary>
     public class SensitiveCategoryAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. An enum for the DV360 Sensitive category content classified to be EXCLUDED.</summary>
+        /// <summary>
+        /// Required. An enum for the DV360 Sensitive category content classified to be EXCLUDED. **Starting on *October
+        /// 1, 2026*, this field will only accept `SENSITIVE_CATEGORY_EMBEDDED_VIDEO` or
+        /// `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`. All other values will be deprecated and no longer be accepted.**
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedSensitiveCategory")]
         public virtual string ExcludedSensitiveCategory { get; set; }
 
