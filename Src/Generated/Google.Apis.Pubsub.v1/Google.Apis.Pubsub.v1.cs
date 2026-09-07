@@ -4192,6 +4192,21 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration specific to compiled Protocol Buffer schemas.</summary>
+    public class CompiledProtoSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The compiled FileDescriptorSet binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compiledBytes")]
+        public virtual string CompiledBytes { get; set; }
+
+        /// <summary>Required. The name of the root message type in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootMessage")]
+        public virtual string RootMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration for compressing/decompressing message data using a user-specified compression algorithm.
     /// </summary>
@@ -5087,6 +5102,13 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>A schema resource.</summary>
     public class Schema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Configuration for a schema provided as a pre-compiled Protocol Buffer FileDescriptorSet. The
+        /// `type` field above must be set to PROTOCOL_BUFFER.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compiledProtoSchema")]
+        public virtual CompiledProtoSchema CompiledProtoSchema { get; set; }
+
         /// <summary>
         /// The definition of the schema. This should contain a string representing the full definition of the schema
         /// that is a valid schema definition of the type specified in `type`.
