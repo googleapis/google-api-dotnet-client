@@ -1951,6 +1951,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topP")]
         public virtual System.Nullable<float> TopP { get; set; }
 
+        /// <summary>Optional. Config for translation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("translationConfig")]
+        public virtual GoogleCloudAiplatformV1beta1TranslationConfig TranslationConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3635,6 +3639,27 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableZeroDataRetention")]
         public virtual System.Nullable<bool> EnableZeroDataRetention { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for translation features.</summary>
+    public class GoogleCloudAiplatformV1beta1TranslationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If `true`, the model will generate audio when the target language is spoken, essentially it will
+        /// parrot the input. If `false`, we will not produce audio for the target language.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("echoTargetLanguage")]
+        public virtual System.Nullable<bool> EchoTargetLanguage { get; set; }
+
+        /// <summary>
+        /// Required. The target language for translation. Supported values are BCP-47 language codes (e.g. "en", "es",
+        /// "fr").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
+        public virtual string TargetLanguageCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
