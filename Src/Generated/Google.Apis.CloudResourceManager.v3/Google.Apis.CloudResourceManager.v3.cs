@@ -5113,6 +5113,26 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by CreateBoundary. Currently
+    /// empty.
+    /// </summary>
+    public class CreateBoundaryMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by CreateCapabilityConfig.
+    /// Currently empty.
+    /// </summary>
+    public class CreateCapabilityConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata pertaining to the Folder creation process.</summary>
     public class CreateFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5202,6 +5222,26 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
     /// <summary>Runtime operation information for creating a TagValue.</summary>
     public class CreateTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by DeleteBoundary. Currently
+    /// empty.
+    /// </summary>
+    public class DeleteBoundaryMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by DeleteCapabilityConfig.
+    /// Currently empty.
+    /// </summary>
+    public class DeleteCapabilityConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6321,6 +6361,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// Output only. If `true`, this project is a Management Project. A Management Project manages dedicated project
+        /// groups for specific purposes (e.g., agent management or app management).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isManagementProject")]
+        public virtual System.Nullable<bool> IsManagementProject { get; set; }
+
+        /// <summary>
         /// Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and
         /// must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be
         /// between 0 and 63 characters long and must conform to the regular expression
@@ -7047,6 +7094,36 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
     /// <summary>The request sent to the UndeleteProject method.</summary>
     public class UndeleteProjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by UpdateBoundaryConfig.
+    /// Currently empty.
+    /// </summary>
+    public class UpdateBoundaryConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by UpdateBoundary. Currently
+    /// empty.
+    /// </summary>
+    public class UpdateBoundaryMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by UpdateCapabilityConfig.
+    /// Currently empty.
+    /// </summary>
+    public class UpdateCapabilityConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
