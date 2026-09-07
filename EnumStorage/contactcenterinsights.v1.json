@@ -11,32 +11,38 @@
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+AuthorizedViewSetsResource+AuthorizedViewsResource+ConversationsResource+GetRequest.ViewEnum": [
     "CONVERSATION_VIEW_UNSPECIFIED",
     "FULL",
-    "BASIC"
+    "BASIC",
+    "FULL_WITH_STRUCTURED_TRANSCRIPT"
   ],
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+AuthorizedViewSetsResource+AuthorizedViewsResource+ConversationsResource+ListRequest.ViewEnum": [
     "CONVERSATION_VIEW_UNSPECIFIED",
     "FULL",
-    "BASIC"
+    "BASIC",
+    "FULL_WITH_STRUCTURED_TRANSCRIPT"
   ],
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+ConversationsResource+GetRequest.ViewEnum": [
     "CONVERSATION_VIEW_UNSPECIFIED",
     "BASIC",
-    "FULL"
+    "FULL",
+    "FULL_WITH_STRUCTURED_TRANSCRIPT"
   ],
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+ConversationsResource+ListRequest.ViewEnum": [
     "CONVERSATION_VIEW_UNSPECIFIED",
     "BASIC",
-    "FULL"
+    "FULL",
+    "FULL_WITH_STRUCTURED_TRANSCRIPT"
   ],
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+DatasetsResource+ConversationsResource+GetRequest.ViewEnum": [
     "CONVERSATION_VIEW_UNSPECIFIED",
     "FULL",
-    "BASIC"
+    "BASIC",
+    "FULL_WITH_STRUCTURED_TRANSCRIPT"
   ],
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+DatasetsResource+ConversationsResource+ListRequest.ViewEnum": [
     "CONVERSATION_VIEW_UNSPECIFIED",
     "FULL",
-    "BASIC"
+    "BASIC",
+    "FULL_WITH_STRUCTURED_TRANSCRIPT"
   ],
   "Google.Apis.Contactcenterinsights.v1.ProjectsResource+LocationsResource+QaScorecardsResource+ListRequest.QaScorecardSourcesEnum": [
     "QA_SCORECARD_SOURCE_UNSPECIFIED",

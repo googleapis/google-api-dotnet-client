@@ -2571,6 +2571,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                                 /// <summary>Populates all fields in the conversation except the transcript.</summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                                 BASIC = 2,
+
+                                /// <summary>
+                                /// Populates all fields in the conversation, including the structured transcript parts.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("FULL_WITH_STRUCTURED_TRANSCRIPT")]
+                                FULLWITHSTRUCTUREDTRANSCRIPT = 3,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -2682,6 +2688,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                                 /// <summary>Populates all fields in the conversation except the transcript.</summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                                 BASIC = 2,
+
+                                /// <summary>
+                                /// Populates all fields in the conversation, including the structured transcript parts.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("FULL_WITH_STRUCTURED_TRANSCRIPT")]
+                                FULLWITHSTRUCTUREDTRANSCRIPT = 3,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -6395,6 +6407,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                         /// <summary>Populates all fields in the conversation except the transcript.</summary>
                         [Google.Apis.Util.StringValueAttribute("BASIC")]
                         BASIC = 1,
+
+                        /// <summary>
+                        /// Populates all fields in the conversation, including the structured transcript parts.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL_WITH_STRUCTURED_TRANSCRIPT")]
+                        FULLWITHSTRUCTUREDTRANSCRIPT = 3,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -6558,6 +6576,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                         /// <summary>Populates all fields in the conversation except the transcript.</summary>
                         [Google.Apis.Util.StringValueAttribute("BASIC")]
                         BASIC = 1,
+
+                        /// <summary>
+                        /// Populates all fields in the conversation, including the structured transcript parts.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL_WITH_STRUCTURED_TRANSCRIPT")]
+                        FULLWITHSTRUCTUREDTRANSCRIPT = 3,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -8140,6 +8164,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                             /// <summary>Populates all fields in the conversation except the transcript.</summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 2,
+
+                            /// <summary>
+                            /// Populates all fields in the conversation, including the structured transcript parts.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL_WITH_STRUCTURED_TRANSCRIPT")]
+                            FULLWITHSTRUCTUREDTRANSCRIPT = 3,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -8307,6 +8337,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                             /// <summary>Populates all fields in the conversation except the transcript.</summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
                             BASIC = 2,
+
+                            /// <summary>
+                            /// Populates all fields in the conversation, including the structured transcript parts.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL_WITH_STRUCTURED_TRANSCRIPT")]
+                            FULLWITHSTRUCTUREDTRANSCRIPT = 3,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -13417,6 +13453,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     /// <summary>Represents an image input or output in the conversation.</summary>
     public class GoogleCloudCesV1mainImage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The alternative text for the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
         /// <summary>Required. Raw bytes of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
