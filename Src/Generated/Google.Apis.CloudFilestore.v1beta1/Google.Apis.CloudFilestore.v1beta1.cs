@@ -3573,6 +3573,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstanceTier")]
         public virtual string SourceInstanceTier { get; set; }
 
+        /// <summary>
+        /// Optional. The resource name of the Filestore volume that the backup is created from. Should be in the
+        /// format: projects/{project_id}/locations/{location_id}/volumePools/{volume_pool_id}/volumes/{volume_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVolume")]
+        public virtual string SourceVolume { get; set; }
+
         /// <summary>Output only. The backup state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -4476,45 +4483,6 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
-    }
-
-    /// <summary>InstanceTemplate representation of a Cloud Filestore volume pool instance template.</summary>
-    public class InstanceTemplate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Backend type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
-        public virtual string BackendType { get; set; }
-
-        /// <summary>Optional. Capacity in GB.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
-        public virtual System.Nullable<int> CapacityGb { get; set; }
-
-        /// <summary>Optional. Instance labels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>Optional. Network configurations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networks")]
-        public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; }
-
-        /// <summary>Optional. Performance configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("performanceConfig")]
-        public virtual PerformanceConfig PerformanceConfig { get; set; }
-
-        /// <summary>Optional. File protocol.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
-        public virtual string Protocol { get; set; }
-
-        /// <summary>Optional. Request overrides in JSON format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestOverrides")]
-        public virtual string RequestOverrides { get; set; }
-
-        /// <summary>Optional. Tier of the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tier")]
-        public virtual string Tier { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>LdapConfig contains all the parameters for connecting to LDAP servers.</summary>
@@ -5542,10 +5510,18 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string Backup { get; set; }
 
         /// <summary>
-        /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        /// Optional. File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater
+        /// than 0. Exactly one of capacity_gb or capacity_mb must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("capacityGb")]
         public virtual System.Nullable<long> CapacityGb { get; set; }
+
+        /// <summary>
+        /// Optional. File share capacity in Megabytes (MB). Must be greater than 0. Exactly one of capacity_gb or
+        /// capacity_mb must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityMb")]
+        public virtual System.Nullable<long> CapacityMb { get; set; }
 
         private string _createTimeRaw;
 
@@ -5855,6 +5831,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>VolumePool representation of a Cloud Filestore volume pool.</summary>
     public class VolumePool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The number of IOPs provisioned per active volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeVolumeIops")]
+        public virtual System.Nullable<int> ActiveVolumeIops { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -5892,57 +5872,17 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The default quota per volume in MiB. Default: 1024 MiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultVolumeQuotaMib")]
+        public virtual System.Nullable<int> DefaultVolumeQuotaMib { get; set; }
+
         /// <summary>Optional. A description of the volume pool with 2048 characters or less.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. The page size to use when listing instances.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceListPageSize")]
-        public virtual System.Nullable<int> InstanceListPageSize { get; set; }
-
-        /// <summary>Optional. Instance name prefix.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceNamePrefix")]
-        public virtual string InstanceNamePrefix { get; set; }
-
-        /// <summary>Optional. Instance template details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
-        public virtual InstanceTemplate InstanceTemplate { get; set; }
-
         /// <summary>Optional. Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>Optional. The maximum number of candidates to fetch when acquiring a volume.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxAcquireCandidates")]
-        public virtual System.Nullable<int> MaxAcquireCandidates { get; set; }
-
-        /// <summary>Optional. Maximum number of instances to create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
-        public virtual System.Nullable<int> MaxInstances { get; set; }
-
-        /// <summary>Optional. The maximum number of pending instance creation requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxPendingInstanceCreations")]
-        public virtual System.Nullable<int> MaxPendingInstanceCreations { get; set; }
-
-        /// <summary>Optional. The maximum number of pending volume creation requests per instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxPendingVolumeCreationsPerInstance")]
-        public virtual System.Nullable<int> MaxPendingVolumeCreationsPerInstance { get; set; }
-
-        /// <summary>Optional. The maximum number of pending volume deletion requests per instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxPendingVolumeDeletionsPerInstance")]
-        public virtual System.Nullable<int> MaxPendingVolumeDeletionsPerInstance { get; set; }
-
-        /// <summary>Optional. Maximum number of volumes per instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxVolumesPerInstance")]
-        public virtual System.Nullable<int> MaxVolumesPerInstance { get; set; }
-
-        /// <summary>Optional. Minimum number of available volumes to maintain.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minAvailableVolumes")]
-        public virtual System.Nullable<int> MinAvailableVolumes { get; set; }
-
-        /// <summary>Optional. Minimum number of instances to create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minInstances")]
-        public virtual System.Nullable<int> MinInstances { get; set; }
 
         /// <summary>
         /// Identifier. The resource name of the volume pool, in the format
@@ -5951,29 +5891,16 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. The ratio of Negba instances to maintain in the volume pool, between 0 and 1.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("negbaInstanceRatio")]
-        public virtual System.Nullable<float> NegbaInstanceRatio { get; set; }
+        /// <summary>
+        /// Required. The VPC network to which the VolumePool should be attached. Only Private Service Connect (PSC) is
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
 
-        /// <summary>Optional. The maximum number of operations to poll in a single reconciliation run.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operationPollLimit")]
-        public virtual System.Nullable<int> OperationPollLimit { get; set; }
-
-        /// <summary>Output only. The volume pool state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. Unique ID of the resource, as defined by CCFE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
-        public virtual string UniqueId { get; set; }
-
-        /// <summary>Optional. The number of volumes to create in a single batch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("volumeBatchSize")]
-        public virtual System.Nullable<int> VolumeBatchSize { get; set; }
-
-        /// <summary>Optional. Volume size in MiB.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("volumeSizeMb")]
-        public virtual System.Nullable<int> VolumeSizeMb { get; set; }
+        /// <summary>Output only. System-assigned unique identifier for the volume pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
