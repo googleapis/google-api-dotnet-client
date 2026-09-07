@@ -1094,7 +1094,7 @@ namespace Google.Apis.WebContentPublisher.v1.Data
     public class DomainProperty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Whether the domain ownership has been verified (e.g., via Google Search Console).
+        /// Output only. Whether the domain ownership has been verified (e.g., via Google Search Console).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownershipVerified")]
         public virtual System.Nullable<bool> OwnershipVerified { get; set; }
