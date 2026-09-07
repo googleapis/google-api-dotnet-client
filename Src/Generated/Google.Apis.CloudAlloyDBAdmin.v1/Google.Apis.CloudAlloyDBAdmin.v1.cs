@@ -5360,6 +5360,25 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DnsAutomationInfo contains information about the DNS automation for the instance.</summary>
+    public class DnsAutomationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The fully qualified domain name of the instance for DNS automation. Example:
+        /// "...alloydb.goog.". Note: The AUDIT directive is intentionally omitted because this field contains sensitive
+        /// network topology information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyQualifiedDomainName")]
+        public virtual string FullyQualifiedDomainName { get; set; }
+
+        /// <summary>Output only. The state of the DNS automation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -5880,6 +5899,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Optional. The configuration for Private Service Connect (PSC) for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceConfig")]
         public virtual PscInstanceConfig PscInstanceConfig { get; set; }
+
+        /// <summary>Output only. Information about the Private Service Connect (PSC) for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceInfo")]
+        public virtual PscInstanceInfo PscInstanceInfo { get; set; }
 
         /// <summary>
         /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
@@ -6611,9 +6634,29 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerProject")]
         public virtual string ConsumerProject { get; set; }
 
+        /// <summary>Output only. List of DNS automation info for the PSC auto connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsAutomationInfos")]
+        public virtual System.Collections.Generic.IList<DnsAutomationInfo> DnsAutomationInfos { get; set; }
+
         /// <summary>Output only. The IP address of the PSC service automation endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
+
+        /// <summary>
+        /// Output only. The PSC service connection policy name. The format is
+        /// "projects//regions//serviceConnectionPolicies/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionPolicy")]
+        public virtual string ServiceConnectionPolicy { get; set; }
+
+        /// <summary>
+        /// Output only. The creation state or result of the connection policy. Possible values include: - `ACTIVE`: The
+        /// policy was created successfully. - `PERMISSION_DENIED`: Sufficient permissions were not provided. Note that
+        /// this field is an unstructured output and customers should not rely on the specific string value or error
+        /// message directly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionPolicyCreationState")]
+        public virtual string ServiceConnectionPolicyCreationState { get; set; }
 
         /// <summary>
         /// Output only. The status of the PSC service automation connection. Possible values: "STATE_UNSPECIFIED" - An
@@ -6660,9 +6703,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
 
+        /// <summary>Optional. Configuration for setting up PSC auto connection for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnectionPolicyState")]
+        public virtual string PscAutoConnectionPolicyState { get; set; }
+
         /// <summary>Optional. Configurations for setting up PSC service automation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscAutoConnections")]
         public virtual System.Collections.Generic.IList<PscAutoConnectionConfig> PscAutoConnections { get; set; }
+
+        /// <summary>Optional. Configuration for setting up PSC auto DNS for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoDnsState")]
+        public virtual string PscAutoDnsState { get; set; }
 
         /// <summary>
         /// Output only. The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
@@ -6684,6 +6735,35 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentLink")]
         public virtual string ServiceAttachmentLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the Private Service Connect (PSC) for the instance.</summary>
+    public class PscInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Indicates if the PSC auto connection policy is enabled for the instance. For older instances,
+        /// this will be off by default, but for newer instances, this will be auto-enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectivePscAutoConnectionPolicy")]
+        public virtual System.Nullable<bool> EffectivePscAutoConnectionPolicy { get; set; }
+
+        /// <summary>Output only. The effective state of the PSC auto DNS for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectivePscAutoDnsEnabled")]
+        public virtual System.Nullable<bool> EffectivePscAutoDnsEnabled { get; set; }
+
+        /// <summary>Output only. Specifies the auto DNS names for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutoDnsNames")]
+        public virtual System.Collections.Generic.IList<string> PscAutoDnsNames { get; set; }
+
+        /// <summary>
+        /// Output only. The PSC service connection policy name. The format is
+        /// "projects//regions//serviceConnectionPolicies/"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionPolicy")]
+        public virtual string ServiceConnectionPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
