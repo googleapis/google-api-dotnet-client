@@ -34962,10 +34962,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `skills` * `skill-sharing` *
-        /// `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
-        /// * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` *
-        /// `workflow-agents` * `in-app-notifications`
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
+        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -41484,6 +41484,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Optional. Configuration for the generation of the assistant response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaAssistantGenerationConfig GenerationConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether Knowledge Catalog is enabled for this specific assistant. When enabled, it
+        /// powers discovery context using organizational data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeCatalogEnabled")]
+        public virtual System.Nullable<bool> KnowledgeCatalogEnabled { get; set; }
 
         /// <summary>
         /// Immutable. Resource name of the assistant. Format:
@@ -48275,10 +48282,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `skills` * `skill-sharing` *
-        /// `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
-        /// * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` *
-        /// `workflow-agents` * `in-app-notifications`
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
+        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -60457,6 +60464,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Customer provided configurations.</summary>
     public class GoogleCloudDiscoveryengineV1alphaWidgetConfigCustomerProvidedConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The customer's Assured Workloads compliance level. `customer_type` collapses every compliance
+        /// level into a single `GOVERNMENT_CUSTOMER` value, so a client that gates a feature on one specific level
+        /// rather than on government status as a whole must read this field instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceLevel")]
+        public virtual string ComplianceLevel { get; set; }
+
         /// <summary>Customer type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerType")]
         public virtual string CustomerType { get; set; }
@@ -60743,10 +60758,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `session-sharing` * `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access`
         /// * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `skills` * `skill-sharing` *
-        /// `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
-        /// * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` *
-        /// `workflow-agents` * `in-app-notifications`
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
+        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -63677,10 +63692,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `personalization-memory` * `personalization-suggested-highlights` * `mobile-app-access` *
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` *
         /// `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload` *
-        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `skills` * `skill-sharing` *
-        /// `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` * `enable-end-user-sharing-with-groups`
-        /// * `single-agent-orchestration` * `multi-agent-orchestration` * `cross-product-intelligence` *
-        /// `workflow-agents` * `in-app-notifications`
+        /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
+        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
+        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
