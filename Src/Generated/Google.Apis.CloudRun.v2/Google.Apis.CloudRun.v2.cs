@@ -5435,7 +5435,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxLauncher")]
         public virtual System.Nullable<bool> SandboxLauncher { get; set; }
 
-        /// <summary>Optional. Location of the source.</summary>
+        /// <summary>Optional. Location of the source. This field is only supported in Cloud Run Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceCode")]
         public virtual GoogleCloudRunV2SourceCode SourceCode { get; set; }
 
@@ -8089,13 +8089,6 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. Indicates whether the Service has durable execution enabled. This field is immutable
-        /// once the Service is created.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("durableExecution")]
-        public virtual System.Nullable<bool> DurableExecution { get; set; }
-
-        /// <summary>
         /// Optional. A system-generated fingerprint for this version of the resource. May be used to detect
         /// modification conflict during updates.
         /// </summary>
@@ -8398,7 +8391,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud
-        /// Storage and replace the field with cloud_storage_source.
+        /// Storage and replace the field with cloud_storage_source. This field is only supported in Cloud Run Service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlinedSource")]
         public virtual GoogleCloudRunV2InlinedSource InlinedSource { get; set; }
