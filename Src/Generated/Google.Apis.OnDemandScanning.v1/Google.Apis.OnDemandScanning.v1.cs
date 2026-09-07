@@ -2812,6 +2812,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scanStatus")]
         public virtual string ScanStatus { get; set; }
 
+        /// <summary>Telemetry metrics tracking token usage for the AI scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUsage")]
+        public virtual TokenUsage TokenUsage { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4247,6 +4251,33 @@ namespace Google.Apis.OnDemandScanning.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Token usage associated with an AI scan.</summary>
+    public class TokenUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cache matched tokens for implicit cache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheCount")]
+        public virtual System.Nullable<long> CacheCount { get; set; }
+
+        /// <summary>Tokens in the model response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidateCount")]
+        public virtual System.Nullable<long> CandidateCount { get; set; }
+
+        /// <summary>Tokens in the user request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptCount")]
+        public virtual System.Nullable<long> PromptCount { get; set; }
+
+        /// <summary>Tokens in the thinking output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingCount")]
+        public virtual System.Nullable<long> ThinkingCount { get; set; }
+
+        /// <summary>Prompt tokens for using tools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolUsePromptCount")]
+        public virtual System.Nullable<long> ToolUsePromptCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
