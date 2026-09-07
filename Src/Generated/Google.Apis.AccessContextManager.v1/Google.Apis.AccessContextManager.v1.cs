@@ -35,9 +35,11 @@ namespace Google.Apis.AccessContextManager.v1
         public AccessContextManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             AccessPolicies = new AccessPoliciesResource(this);
+            Folders = new FoldersResource(this);
             Operations = new OperationsResource(this);
             Organizations = new OrganizationsResource(this);
             Permissions = new PermissionsResource(this);
+            Projects = new ProjectsResource(this);
             Services = new ServicesResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://accesscontextmanager.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://accesscontextmanager.googleapis.com/batch");
@@ -84,6 +86,9 @@ namespace Google.Apis.AccessContextManager.v1
         /// <summary>Gets the AccessPolicies resource.</summary>
         public virtual AccessPoliciesResource AccessPolicies { get; }
 
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders { get; }
+
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
 
@@ -92,6 +97,9 @@ namespace Google.Apis.AccessContextManager.v1
 
         /// <summary>Gets the Permissions resource.</summary>
         public virtual PermissionsResource Permissions { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the Services resource.</summary>
         public virtual ServicesResource Services { get; }
@@ -2418,6 +2426,72 @@ namespace Google.Apis.AccessContextManager.v1
         }
     }
 
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}',
+        /// 'folders/{folderNumber}'].
+        /// </summary>
+        /// <param name="resource">Required. The Resource to resolve (e.g. "projects/123", "folders/456").</param>
+        public virtual LookupConfiguredServicePerimeterRequest LookupConfiguredServicePerimeter(string resource)
+        {
+            return new LookupConfiguredServicePerimeterRequest(this.service, resource);
+        }
+
+        /// <summary>
+        /// Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}',
+        /// 'folders/{folderNumber}'].
+        /// </summary>
+        public class LookupConfiguredServicePerimeterRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.LookupConfiguredServicePerimeterResponse>
+        {
+            /// <summary>Constructs a new LookupConfiguredServicePerimeter request.</summary>
+            public LookupConfiguredServicePerimeterRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+            {
+                Resource = resource;
+                InitParameters();
+            }
+
+            /// <summary>Required. The Resource to resolve (e.g. "projects/123", "folders/456").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "lookupConfiguredServicePerimeter";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+resource}:lookupConfiguredServicePerimeter";
+
+            /// <summary>Initializes LookupConfiguredServicePerimeter parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+    }
+
     /// <summary>The "operations" collection of methods.</summary>
     public class OperationsResource
     {
@@ -3171,6 +3245,72 @@ namespace Google.Apis.AccessContextManager.v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}',
+        /// 'folders/{folderNumber}'].
+        /// </summary>
+        /// <param name="resource">Required. The Resource to resolve (e.g. "projects/123", "folders/456").</param>
+        public virtual LookupConfiguredServicePerimeterRequest LookupConfiguredServicePerimeter(string resource)
+        {
+            return new LookupConfiguredServicePerimeterRequest(this.service, resource);
+        }
+
+        /// <summary>
+        /// Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}',
+        /// 'folders/{folderNumber}'].
+        /// </summary>
+        public class LookupConfiguredServicePerimeterRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.LookupConfiguredServicePerimeterResponse>
+        {
+            /// <summary>Constructs a new LookupConfiguredServicePerimeter request.</summary>
+            public LookupConfiguredServicePerimeterRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+            {
+                Resource = resource;
+                InitParameters();
+            }
+
+            /// <summary>Required. The Resource to resolve (e.g. "projects/123", "folders/456").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "lookupConfiguredServicePerimeter";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+resource}:lookupConfiguredServicePerimeter";
+
+            /// <summary>Initializes LookupConfiguredServicePerimeter parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
                 });
             }
         }
@@ -4108,16 +4248,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual Principal Principal { get; set; }
 
         /// <summary>
-        /// Optional. Deprecated: Use `scoped_access_settings` instead. A list of applications that are subject to this
-        /// binding's restrictions. If the list is empty, the binding restrictions will universally apply to all
-        /// applications.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restrictedClientApplications")]
-        public virtual System.Collections.Generic.IList<Application> RestrictedClientApplications { get; set; }
-
-        /// <summary>
         /// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
-        /// This field cannot be set if restricted_client_applications is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopedAccessSettings")]
         public virtual System.Collections.Generic.IList<ScopedAccessSettings> ScopedAccessSettings { get; set; }
@@ -4436,6 +4567,42 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>List of services supported by VPC Service Controls instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedServices")]
         public virtual System.Collections.Generic.IList<SupportedService> SupportedServices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A configured service perimeter returned by Access Context Manager.</summary>
+    public class LookupConfiguredServicePerimeterResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource (e.g. "projects/123", "folders/456") that directly owns/is restricted by the enforced
+        /// perimeter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedResource")]
+        public virtual string RestrictedResource { get; set; }
+
+        /// <summary>
+        /// The resource (e.g. "projects/123", "folders/456") that directly owns/is restricted by the dry-run perimeter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedResourceDryRun")]
+        public virtual string RestrictedResourceDryRun { get; set; }
+
+        /// <summary>
+        /// Fully qualified name of the configured enforced perimeter. Format:
+        /// `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}` This field is empty if no enforced perimeter
+        /// applies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeter")]
+        public virtual string ServicePerimeter { get; set; }
+
+        /// <summary>
+        /// Fully qualified name of the configured dry-run perimeter. Format:
+        /// `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}` This field is empty if no dry-run perimeter
+        /// configuration applies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeterDryRun")]
+        public virtual string ServicePerimeterDryRun { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
