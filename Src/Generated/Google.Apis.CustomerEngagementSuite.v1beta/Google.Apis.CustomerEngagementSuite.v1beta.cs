@@ -9545,6 +9545,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bargeInConfig")]
         public virtual BargeInConfig BargeInConfig { get; set; }
 
+        /// <summary>Optional. Configures custom voice samples for voice cloning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customVoiceSamples")]
+        public virtual System.Collections.Generic.IList<CustomVoiceSample> CustomVoiceSamples { get; set; }
+
         /// <summary>
         /// Optional. The duration of user inactivity (no speech or interaction) before the agent prompts the user for
         /// reengagement. If not set, the agent will not prompt the user for reengagement.
@@ -10444,6 +10448,43 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIntendedText")]
         public virtual string UserIntendedText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a custom voice sample used for voice cloning.</summary>
+    public class CustomVoiceSample : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Consent audio for voice cloning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentAudioGcsUri")]
+        public virtual string ConsentAudioGcsUri { get; set; }
+
+        /// <summary>Optional. The user-defined name for the custom voice sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Synthesized preview audio for custom voice, formatted as canonical WAV (LINEAR16, 24kHz,
+        /// 16-bit, mono).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previewAudioContent")]
+        public virtual string PreviewAudioContent { get; set; }
+
+        /// <summary>Optional. Text for synthesizing preview audio for custom voice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previewText")]
+        public virtual string PreviewText { get; set; }
+
+        /// <summary>Optional. Natural language instructions for voice style, tone, pacing, or pronunciation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceInstruction")]
+        public virtual string VoiceInstruction { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage URI to the audio sample for voice cloning. The audio sample should be a
+        /// mono-channel, 24kHz WAV file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceSampleGcsUri")]
+        public virtual string VoiceSampleGcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18334,6 +18375,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Custom payload with structured output from the CES agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>Intermediate progress update from the CES agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual string Progress { get; set; }
 
         /// <summary>Output text from the CES agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
