@@ -3021,6 +3021,10 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
+            /// <summary>Whether to copy the comments associated with the file.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("copyComments", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> CopyComments { get; set; }
+
             /// <summary>
             /// Deprecated: Copying files into multiple folders is no longer supported. Use shortcuts instead.
             /// </summary>
@@ -3092,6 +3096,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("copyComments", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "copyComments",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
                     Pattern = null,
                 });
                 RequestParameters.Add("enforceSingleParent", new Google.Apis.Discovery.Parameter
