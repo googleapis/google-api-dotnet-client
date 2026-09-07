@@ -3016,8 +3016,8 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>
-        /// Advise on whether extending an existing Future Reservation is possible based on the desired extension end
-        /// time. If capacity is not available for the entire requested duration, the method will recommend the longest
+        /// Advises on whether extending an existing future reservation is possible based on the desired extension end
+        /// time. If capacity isn't available for the entire requested duration, the method recommends the longest
         /// possible extension.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -3029,8 +3029,8 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>
-        /// Advise on whether extending an existing Future Reservation is possible based on the desired extension end
-        /// time. If capacity is not available for the entire requested duration, the method will recommend the longest
+        /// Advises on whether extending an existing future reservation is possible based on the desired extension end
+        /// time. If capacity isn't available for the entire requested duration, the method recommends the longest
         /// possible extension.
         /// </summary>
         public class CalendarModeExtensionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.CalendarModeExtensionAdviceResponse>
@@ -135359,6 +135359,13 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Optional. The URL of the network attachment that this resource belongs
+        /// to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
         /// Configures traffic steering properties of internal passthrough Network Load Balancers.
         /// networkPassThroughLbTrafficPolicy cannot be specified with haPolicy.
         /// </summary>
@@ -135459,6 +135466,14 @@ namespace Google.Apis.Compute.alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceBindings")]
         public virtual System.Collections.Generic.IList<string> ServiceBindings { get; set; }
+
+        /// <summary>
+        /// Optional. The service class ID associated with this resource. Producer Service's Service class ID for the
+        /// region of this backend service. Can only be used with network_attachment. It is not possible to use on its
+        /// own; however, network_attachment can be used without service_class_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClassId")]
+        public virtual string ServiceClassId { get; set; }
 
         /// <summary>
         /// URL to networkservices.ServiceLbPolicy resource.  Can only be set if load balancing scheme is
@@ -136031,9 +136046,9 @@ namespace Google.Apis.Compute.alpha.Data
     {
         /// <summary>
         /// The name of the VM instance of the leader network endpoint. The instance must already be attached to the NEG
-        /// specified in the haPolicy.leader.backendGroup.  The name must be 1-63 characters long, and comply with
-        /// RFC1035. Authorization requires the following IAM permission on the specified resource instance:
-        /// compute.instances.use
+        /// specified in the haPolicy.leader.backendGroup.  The value must be a valid RFC1035 name (1-63 characters) or
+        /// a valid instance URL. Authorization requires the following IAM permission on the specified resource
+        /// instance: compute.instances.use
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
@@ -137482,8 +137497,8 @@ namespace Google.Apis.Compute.alpha.Data
     }
 
     /// <summary>
-    /// A request to recommend the best duration for extending an existing Future Reservation in CALENDAR mode, that is
-    /// equal or less than the specified extension duration.
+    /// A request to recommend the maximum duration for extending an existing future reservation in calendar mode. The
+    /// recommended duration is shorter than or equal to the specified extension duration.
     /// </summary>
     public class CalendarModeExtensionAdviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -137491,7 +137506,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         private object _endTimeNotLaterThan;
 
-        /// <summary>Required. The desired end time after the Future Reservation is extended.</summary>
+        /// <summary>Required. The desired end time for the extension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTimeNotLaterThan")]
         public virtual string EndTimeNotLaterThanRaw
         {
@@ -137527,7 +137542,7 @@ namespace Google.Apis.Compute.alpha.Data
         }
 
         /// <summary>
-        /// Required. Reference to the Future Reservation, in the format:
+        /// Required. Reference to the future reservation, in the format:
         /// projects/{project}/zones/{zone}/futureReservations/{name} Full URIs that include hostnames (like
         /// compute.googleapis.com or www.googleapis.com) are also supported.
         /// </summary>
@@ -137539,7 +137554,7 @@ namespace Google.Apis.Compute.alpha.Data
     }
 
     /// <summary>
-    /// A response containing the recommended duration to extend a Future Reservation in CALENDAR mode based on the
+    /// A response that contains the recommended duration for extending a future reservation in calendar mode based on
     /// available capacity during the extension period.
     /// </summary>
     public class CalendarModeExtensionAdviceResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -137549,9 +137564,9 @@ namespace Google.Apis.Compute.alpha.Data
         private object _endTime;
 
         /// <summary>
-        /// The recommended end time for the extension, which will either be the end time requested by the caller or the
-        /// longest alternative for which there is sufficient capacity. If extension is not possible, this field will be
-        /// empty, and not_recommended_reason will be populated instead.
+        /// The recommended end time for the extension, which is either the end time requested by the caller or the
+        /// longest alternative with sufficient capacity. If the extension is not possible, this field is empty, and
+        /// notRecommendedReason is populated instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
@@ -137586,13 +137601,13 @@ namespace Google.Apis.Compute.alpha.Data
         }
 
         /// <summary>
-        /// Information regarding the reason why the Future Reservation cannot be extended at all. If a recommendation
-        /// is provided, whether that is the requested end time or an alternative, this field will be empty.
+        /// The reason why the future reservation can't be extended. If a recommendation is provided, whether for the
+        /// requested end time or an alternative, this field is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notRecommendedReason")]
         public virtual CalendarModeExtensionAdviceResponseNotRecommendedReason NotRecommendedReason { get; set; }
 
-        /// <summary>Unique id of the recommendation, a UUID string generated by the API.</summary>
+        /// <summary>The unique ID of the recommendation, which is a UUID string generated by the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationId")]
         public virtual string RecommendationId { get; set; }
 
@@ -137604,9 +137619,8 @@ namespace Google.Apis.Compute.alpha.Data
     public class CalendarModeExtensionAdviceResponseNotRecommendedReason : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Details (human readable) describing why the recommendation was not provided. For example, if the status is
-        /// CONDITION_NOT_MET, then this field will contain information about why the requested extension duration is
-        /// not eligible.
+        /// Human-readable details describing why the recommendation wasn't provided. For example, if the status is
+        /// CONDITIONS_NOT_MET, this field explains why the requested extension duration isn't possible.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; }
@@ -141192,6 +141206,19 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Dynamic compression policy for this URL Map's route.</summary>
+    public class DynamicCompressionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionMode")]
+        public virtual string CompressionMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Describes the cause of the error with structured details.  Example of an error when contacting the
     /// "pubsub.googleapis.com" API when it is not enabled:      { "reason": "API_DISABLED"       "domain":
@@ -143302,6 +143329,13 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Optional. The URL of the network attachment that this resource belongs
+        /// to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
         /// This signifies the networking tier used for configuring this load balancer and can only take the following
         /// values:PREMIUM, STANDARD.  For regional ForwardingRule, the valid values are PREMIUM andSTANDARD. For
         /// GlobalForwardingRule, the valid value isPREMIUM.  If this field is not specified, it is assumed to be
@@ -143379,6 +143413,14 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Output only. [Output Only] Server-defined URL for this resource with the resource id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
         public virtual string SelfLinkWithId { get; set; }
+
+        /// <summary>
+        /// Optional. Producer Service's Service class ID for the region of this forwarding rule. Can only be used with
+        /// network_attachment. It is not possible to use on its own; however, network_attachment can be used without
+        /// service_class_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClassId")]
+        public virtual string ServiceClassId { get; set; }
 
         /// <summary>
         /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service
@@ -148998,6 +149040,13 @@ namespace Google.Apis.Compute.alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corsPolicy")]
         public virtual CorsPolicy CorsPolicy { get; set; }
+
+        /// <summary>
+        /// Dynamic compression policy for this URL Map's route. Available only for Global EXTERNAL_MANAGED load
+        /// balancer schemes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicCompressionPolicy")]
+        public virtual DynamicCompressionPolicy DynamicCompressionPolicy { get; set; }
 
         /// <summary>
         /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend
@@ -161806,6 +161855,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("IPv4Range")]
         public virtual string IPv4Range { get; set; }
 
+        /// <summary>Output only. [Output Only] Additional tags for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTags")]
+        public virtual System.Collections.Generic.IList<string> AdditionalTags { get; set; }
+
         /// <summary>
         /// Must be set to create a VPC network. If not set, a legacy network is created.  When set to true, the VPC
         /// network is created in auto mode. When set to false, the VPC network is created in custom mode.  An auto mode
@@ -174473,6 +174526,13 @@ namespace Google.Apis.Compute.alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The ID of the machine on which the running instance is located. It is only
+        /// populated for machines which have multiple hosts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machine")]
+        public virtual string Machine { get; set; }
 
         /// <summary>
         /// [Output Only] The ID of the sub-block in which the running instance is located. Instances in the same
