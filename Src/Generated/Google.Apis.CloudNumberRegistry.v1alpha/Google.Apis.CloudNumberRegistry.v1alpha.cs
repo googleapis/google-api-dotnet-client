@@ -5114,6 +5114,10 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("claimedScopes")]
         public virtual System.Collections.Generic.IList<string> ClaimedScopes { get; set; }
 
+        /// <summary>Output only. Detailed scope information corresponding to each entry in `claimed_scopes`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claimedScopesInfo")]
+        public virtual System.Collections.Generic.IList<ScopeInfo> ClaimedScopesInfo { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -5204,6 +5208,31 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a scope (e.g. project or folder).</summary>
+    public class ScopeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Human-readable display title of the scope shown in Console (e.g. "My Cloud Project"). Used for
+        /// UI display.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Programmatic string identifier of the scope (e.g. GCP Project ID "my-project-id"). Used for API
+        /// and code logic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Output only. Resource name of the scope, e.g. "projects/1234567890".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the CloudNumberRegistry.SearchIpResources method.</summary>
     public class SearchIpResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5230,14 +5259,16 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         /// <summary>
         /// Optional. Search query. This string filters resources in an AIP-160-like format. It has some limitations.
         /// You can only specify top level conjunctions or attribute level negations. Each restriction can only be used
-        /// once except the attribute restriction. The available restrictions for Ranges are: - `realm`: The Realm name
-        /// to search in. - `ip_address`: The IP address to search for within Ranges. - `ip_version`: The IP version to
-        /// filter by (e.g., "IPV4", "IPV6"). - `parent_range`: The parent Range of the Range to search for. -
-        /// `attribute_text`: The attribute text to search for within Ranges. - `attribute`: The attribute key and value
-        /// to filter by. The available restrictions for Realms are: - `ip_version`: The IP version to search for. -
-        /// `management_type`: The management type of the Realm (e.g., "CNR", "USER"). Only one of attribute_text or
-        /// multiple attribute filters can be specified. Examples: - `realm=test-realm` - `realm=test-realm AND
-        /// ip_address=10.0.0.0` - `realm=test-realm AND ip_version=IPV6` - `realm=test-realm AND attribute_text=test` -
+        /// once except the attribute restriction. The available restrictions for Ranges are: - `resource_id`: The
+        /// resource ID to search for within Ranges (only substring matching using the format `resource_id="*value*"` is
+        /// supported). - `realm`: The Realm name to search in. - `ip_address`: The IP address to search for within
+        /// Ranges. - `ip_version`: The IP version to filter by (e.g., "IPV4", "IPV6"). - `parent_range`: The parent
+        /// Range of the Range to search for. - `attribute_text`: The attribute text to search for within Ranges. -
+        /// `attribute`: The attribute key and value to filter by. The available restrictions for Realms are: -
+        /// `ip_version`: The IP version to search for. - `management_type`: The management type of the Realm (e.g.,
+        /// "CNR", "USER"). Only one of attribute_text or multiple attribute filters can be specified. Examples: -
+        /// `realm=test-realm` - `realm=test-realm AND ip_address=10.0.0.0` - `realm=test-realm AND ip_version=IPV6` -
+        /// `realm=test-realm AND resource_id="*my-range*"` - `realm=test-realm AND attribute_text=test` -
         /// `ip_address=10.0.0.0 AND attribute:(key1=value1) AND attribute:(key2=value2)` - `attribute_text=test AND
         /// parent_range=projects/123/locations/global/discoveredRanges/test-parent-range` - `management_type=CNR`
         /// </summary>
