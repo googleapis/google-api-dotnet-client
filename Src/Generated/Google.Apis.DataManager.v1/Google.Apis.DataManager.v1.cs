@@ -621,8 +621,8 @@ namespace Google.Apis.DataManager.v1
                     /// `owning_account.account_type` - `owning_account.account_id` - `partner_account.account_type` -
                     /// `partner_account.account_id` - `feature_set` For partner links with the
                     /// FEATURE_SET_AD_EVENT_MANAGEMENT feature set, the following fields are also supported: -
-                    /// `partner_customer_account.account_id` Example: `owning_account.account_type = "GOOGLE_ADS" AND
-                    /// partner_account.account_id = 987654321`
+                    /// `partner_customer_account.account_id` - `partner_link_metadata.implicit_accounts.account_id`
+                    /// Example: `owning_account.account_type = "GOOGLE_ADS" AND partner_account.account_id = 987654321`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
