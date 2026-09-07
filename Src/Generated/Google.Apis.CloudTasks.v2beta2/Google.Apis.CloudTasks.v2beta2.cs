@@ -3445,7 +3445,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     }
 
     /// <summary>
-    /// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the
+    /// HTTP target. When specified at the Queue level, all tasks with HttpRequest are overridden according to the
     /// target.
     /// </summary>
     public class HttpTarget : Google.Apis.Requests.IDirectResponseSchema
