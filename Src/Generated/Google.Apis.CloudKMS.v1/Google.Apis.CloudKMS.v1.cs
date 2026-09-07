@@ -4643,9 +4643,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// <summary>
                 /// Permanently deletes the given KeyRing. All child resources of the KeyRing must have been previously
                 /// deleted using their corresponding Delete operations. The specified key ring will be immediately and
-                /// permanently deleted upon calling this method. This action cannot be undone. Note: the key ring and
-                /// its metadata will be remembered by KeyManagementService to prevent re-use of the key ring's resource
-                /// name.
+                /// permanently deleted upon calling this method. This action cannot be undone.
                 /// </summary>
                 /// <param name="name">Required. The name of the KeyRing to delete.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -4656,9 +4654,7 @@ namespace Google.Apis.CloudKMS.v1
                 /// <summary>
                 /// Permanently deletes the given KeyRing. All child resources of the KeyRing must have been previously
                 /// deleted using their corresponding Delete operations. The specified key ring will be immediately and
-                /// permanently deleted upon calling this method. This action cannot be undone. Note: the key ring and
-                /// its metadata will be remembered by KeyManagementService to prevent re-use of the key ring's resource
-                /// name.
+                /// permanently deleted upon calling this method. This action cannot be undone.
                 /// </summary>
                 public class DeleteRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
                 {
