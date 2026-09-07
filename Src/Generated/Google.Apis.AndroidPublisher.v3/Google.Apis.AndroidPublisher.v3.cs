@@ -17951,6 +17951,30 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Reporting details unique to the external content link program.</summary>
+    public class ExternalContentLinkDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The category of the downlaoded app. This must match the category provided in Play Console during
+        /// the external app verification process. Only required for app installs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAppCategory")]
+        public virtual string ExternalAppCategory { get; set; }
+
+        /// <summary>
+        /// Optional. The package name of the app downloaded through this transaction. Only required for app installs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedAppPackage")]
+        public virtual string InstalledAppPackage { get; set; }
+
+        /// <summary>Required. The type content being reported by this transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
+        public virtual string LinkType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Reporting details unique to the external offers program.</summary>
     public class ExternalOfferDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18053,6 +18077,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentTaxAmount")]
         public virtual Price CurrentTaxAmount { get; set; }
+
+        /// <summary>Optional. Details necessary to accurately report external content link transactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalContentLinkDetails")]
+        public virtual ExternalContentLinkDetails ExternalContentLinkDetails { get; set; }
 
         /// <summary>Optional. Details necessary to accurately report external offers transactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalOfferDetails")]
@@ -19932,6 +19960,20 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration specific to game reward offers.</summary>
+    public class OneTimeProductGameRewardOffer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of times this offer can be redeemed. If unset or set to 0, allows for unlimited offer
+        /// redemptions. Otherwise must be a number between 1 and 50 inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redemptionLimit")]
+        public virtual System.Nullable<long> RedemptionLimit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Regional store listing for a one-time product.</summary>
     public class OneTimeProductListing : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19962,6 +20004,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>A discounted offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discountedOffer")]
         public virtual OneTimeProductDiscountedOffer DiscountedOffer { get; set; }
+
+        /// <summary>A game reward offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gameRewardOffer")]
+        public virtual OneTimeProductGameRewardOffer GameRewardOffer { get; set; }
 
         /// <summary>
         /// Required. Immutable. The ID of this product offer. Must be unique within the purchase option. It must start
