@@ -14562,12 +14562,6 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
 
-        /// <summary>
-        /// Optional. InspectTemplate to use to produce findings. Deprecated: use inspect_config instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
-        public virtual GooglePrivacyDlpV2InspectTemplate InspectTemplate { get; set; }
-
         /// <summary>Optional. Log the actions taken by the content policy to external systems.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfigs")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2LoggingConfig> LoggingConfigs { get; set; }
@@ -14662,9 +14656,19 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Single message in a conversation.</summary>
     public class GooglePrivacyDlpV2ConversationMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The contents of this message.</summary>
+        /// <summary>
+        /// Deprecated: Use `message_parts` instead. The contents of this message. Only one of `content` and
+        /// `message_parts` can be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Optional. The parts of the message. Restricted to being at most a single text item. Only one of `content`
+        /// and `message_parts` can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageParts")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2MessagePart> MessageParts { get; set; }
 
         /// <summary>The type of message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
@@ -19904,6 +19908,17 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A part of a conversation message.</summary>
+    public class GooglePrivacyDlpV2MessagePart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>String content for text-based messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration for a custom infoType that detects key-value pairs in the metadata matching the specified regular
     /// expressions.
@@ -20276,10 +20291,6 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2PolicyCondition> Conditions { get; set; }
-
-        /// <summary>If set, the verdict will be returned to the user. Deprecated: Use `action` instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("returnVerdict")]
-        public virtual string ReturnVerdict { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
