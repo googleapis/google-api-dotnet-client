@@ -91,6 +91,7 @@ namespace Google.Apis.Compute.v1
             OrganizationSecurityPolicies = new OrganizationSecurityPoliciesResource(this);
             PacketMirrorings = new PacketMirroringsResource(this);
             PreviewFeatures = new PreviewFeaturesResource(this);
+            ProjectViews = new ProjectViewsResource(this);
             Projects = new ProjectsResource(this);
             PublicAdvertisedPrefixes = new PublicAdvertisedPrefixesResource(this);
             PublicDelegatedPrefixes = new PublicDelegatedPrefixesResource(this);
@@ -407,6 +408,9 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Gets the PreviewFeatures resource.</summary>
         public virtual PreviewFeaturesResource PreviewFeatures { get; }
+
+        /// <summary>Gets the ProjectViews resource.</summary>
+        public virtual ProjectViewsResource ProjectViews { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -2264,6 +2268,146 @@ namespace Google.Apis.Compute.v1
             public override string RestPath => "projects/{project}/regions/{region}/advice/calendarMode";
 
             /// <summary>Initializes CalendarMode parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Advice on making real-time decisions (such as choosing zone or machine types) during deployment to maximize
+        /// your chances of obtaining capacity.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this request.</param>
+        public virtual CapacityRequest Capacity(Google.Apis.Compute.v1.Data.CapacityAdviceRequest body, string project, string region)
+        {
+            return new CapacityRequest(this.service, body, project, region);
+        }
+
+        /// <summary>
+        /// Advice on making real-time decisions (such as choosing zone or machine types) during deployment to maximize
+        /// your chances of obtaining capacity.
+        /// </summary>
+        public class CapacityRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.CapacityAdviceResponse>
+        {
+            /// <summary>Constructs a new Capacity request.</summary>
+            public CapacityRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.CapacityAdviceRequest body, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.CapacityAdviceRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "capacity";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/advice/capacity";
+
+            /// <summary>Initializes Capacity parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+            }
+        }
+
+        /// <summary>Gets the capacity history.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this request.</param>
+        public virtual CapacityHistoryRequest CapacityHistory(Google.Apis.Compute.v1.Data.CapacityHistoryRequest body, string project, string region)
+        {
+            return new CapacityHistoryRequest(this.service, body, project, region);
+        }
+
+        /// <summary>Gets the capacity history.</summary>
+        public class CapacityHistoryRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.CapacityHistoryResponse>
+        {
+            /// <summary>Constructs a new CapacityHistory request.</summary>
+            public CapacityHistoryRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.CapacityHistoryRequest body, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.CapacityHistoryRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "capacityHistory";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/advice/capacityHistory";
+
+            /// <summary>Initializes CapacityHistory parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -52674,6 +52818,92 @@ namespace Google.Apis.Compute.v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "projectViews" collection of methods.</summary>
+    public class ProjectViewsResource
+    {
+        private const string Resource = "projectViews";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectViewsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Returns the specified global ProjectViews resource, with a regional context. This regional API endpoint
+        /// reads resource metadata from regional read-only replicas. Because changes are copied to these regional
+        /// replicas asynchronously, for real-time resource reads or any write operations (creating, updating, or
+        /// deleting resources), use the global
+        /// [projects.get](https://cloud.google.com/compute/docs/reference/rest/v1/projects/get) endpoint.
+        /// </summary>
+        /// <param name="project">Required. Project ID for this request. This is part of the URL path.</param>
+        /// <param name="region">Required. Name of the region for this request. This is part of the URL path.</param>
+        public virtual GetRequest Get(string project, string region)
+        {
+            return new GetRequest(this.service, project, region);
+        }
+
+        /// <summary>
+        /// Returns the specified global ProjectViews resource, with a regional context. This regional API endpoint
+        /// reads resource metadata from regional read-only replicas. Because changes are copied to these regional
+        /// replicas asynchronously, for real-time resource reads or any write operations (creating, updating, or
+        /// deleting resources), use the global
+        /// [projects.get](https://cloud.google.com/compute/docs/reference/rest/v1/projects/get) endpoint.
+        /// </summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ProjectView>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID for this request. This is part of the URL path.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Name of the region for this request. This is part of the URL path.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/projectViews";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
         }
@@ -114237,9 +114467,9 @@ namespace Google.Apis.Compute.v1.Data
     {
         /// <summary>
         /// The name of the VM instance of the leader network endpoint. The instance must already be attached to the NEG
-        /// specified in the haPolicy.leader.backendGroup.  The name must be 1-63 characters long, and comply with
-        /// RFC1035. Authorization requires the following IAM permission on the specified resource instance:
-        /// compute.instances.use
+        /// specified in the haPolicy.leader.backendGroup.  The value must be a valid RFC1035 name (1-63 characters) or
+        /// a valid instance URL. Authorization requires the following IAM permission on the specified resource
+        /// instance: compute.instances.use
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
@@ -115617,6 +115847,327 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationsPerSpec")]
         public virtual System.Collections.Generic.IDictionary<string, FutureResourcesRecommendation> RecommendationsPerSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A request to provide Assistant Scores. These scores determine VM obtainability and preemption likelihood.
+    /// </summary>
+    public class CapacityAdviceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy specifying the distribution of instances across zones within the requested region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distributionPolicy")]
+        public virtual CapacityAdviceRequestDistributionPolicy DistributionPolicy { get; set; }
+
+        /// <summary>Policy for instance selectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceFlexibilityPolicy")]
+        public virtual CapacityAdviceRequestInstanceFlexibilityPolicy InstanceFlexibilityPolicy { get; set; }
+
+        /// <summary>Instance properties for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
+        public virtual CapacityAdviceRequestInstanceProperties InstanceProperties { get; set; }
+
+        /// <summary>The number of VM instances to request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<int> Size { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Distribution policy.</summary>
+    public class CapacityAdviceRequestDistributionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Target distribution shape. You can specify the following values:ANY, ANY_SINGLE_ZONE, or BALANCED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetShape")]
+        public virtual string TargetShape { get; set; }
+
+        /// <summary>Zones where Capacity Advisor looks for capacity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<CapacityAdviceRequestDistributionPolicyZoneConfiguration> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Zone configuration for the distribution policy.</summary>
+    public class CapacityAdviceRequestDistributionPolicyZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The URL of the zone. It can be a partial or full URL. For example, the following are valid values:
+        ///     - https://www.googleapis.com/compute/v1/projects/project/zones/zone     - projects/project/zones/zone
+        ///  - zones/zone
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of alternative, flexible instance configurations.</summary>
+    public class CapacityAdviceRequestInstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Named instance selections to configure properties. The key is an arbitrary, unique RFC1035 string that
+        /// identifies the instance selection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceSelections")]
+        public virtual System.Collections.Generic.IDictionary<string, CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection> InstanceSelections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Machine specification.</summary>
+    public class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Local SSDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk> Disks { get; set; }
+
+        /// <summary>Accelerators configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; }
+
+        /// <summary>Full machine-type names, e.g. "n1-standard-16".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineTypes")]
+        public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Attached disk configuration.</summary>
+    public class CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Instance provisioning properties.</summary>
+    public class CapacityAdviceRequestInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the scheduling options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
+        public virtual CapacityAdviceRequestInstancePropertiesScheduling Scheduling { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the instance scheduling options.</summary>
+    public class CapacityAdviceRequestInstancePropertiesScheduling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the provisioning model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
+        public virtual string ProvisioningModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response contains scoring recommendations.</summary>
+    public class CapacityAdviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Initially the API will provide one recommendation which balances the individual scores according to the
+        /// service provider's preference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendations")]
+        public virtual System.Collections.Generic.IList<CapacityAdviceResponseRecommendation> Recommendations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Recommendation.</summary>
+    public class CapacityAdviceResponseRecommendation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Scores for the recommendation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual CapacityAdviceResponseRecommendationScores Scores { get; set; }
+
+        /// <summary>Shards represent blocks of uniform capacity in recommendations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shards")]
+        public virtual System.Collections.Generic.IList<CapacityAdviceResponseRecommendationShard> Shards { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Groups information about a shard of capacity.</summary>
+    public class CapacityAdviceResponseRecommendationScores : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The estimated run time of the majority of Spot VMs in the request before preemption. The estimate is
+        /// best-effort only. It is based on historical data and current conditions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedUptime")]
+        public virtual object EstimatedUptime { get; set; }
+
+        /// <summary>
+        /// The obtainability score indicates the likelihood of successfully obtaining (provisioning) the requested
+        /// number of VMs. The score range is 0.0 through 1.0. Higher is better.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obtainability")]
+        public virtual System.Nullable<double> Obtainability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Shards represent blocks of uniform capacity in recommendations. Each shard is for a single zone and a single
+    /// machine shape. Each shard defines a size expressed as the number of VMs.
+    /// </summary>
+    public class CapacityAdviceResponseRecommendationShard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceCount")]
+        public virtual System.Nullable<int> InstanceCount { get; set; }
+
+        /// <summary>The machine type corresponds to the instance selection in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>The provisioning model that you want to view recommendations for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
+        public virtual string ProvisioningModel { get; set; }
+
+        /// <summary>Output only. The zone name for this shard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to get the capacity history.</summary>
+    public class CapacityHistoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Instance properties for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
+        public virtual CapacityHistoryRequestInstanceProperties InstanceProperties { get; set; }
+
+        /// <summary>Location policy for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationPolicy")]
+        public virtual CapacityHistoryRequestLocationPolicy LocationPolicy { get; set; }
+
+        /// <summary>List of history types to get capacity history for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Instance properties for this request.</summary>
+    public class CapacityHistoryRequestInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The machine type for the VM, such as `n2-standard-4`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Specifies the scheduling options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
+        public virtual CapacityHistoryRequestInstancePropertiesScheduling Scheduling { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Scheduling options.</summary>
+    public class CapacityHistoryRequestInstancePropertiesScheduling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The provisioning model to get capacity history for. This field must be set to SPOT.  For more information,
+        /// see Compute Engine instances provisioning models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
+        public virtual string ProvisioningModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location policy for this request.</summary>
+    public class CapacityHistoryRequestLocationPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The region or zone to get capacity history for.  It can be a partial or full URL. For example, the following
+        /// are valid values:               - https://www.googleapis.com/compute/v1/projects/project/zones/zone     -
+        /// projects/project/zones/zone     - zones/zone    This field is optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the capacity history.</summary>
+    public class CapacityHistoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The location (region or zone) for which the capacity history is returned. It is returned as a
+        /// URL - For example,https://www.googleapis.com/compute/v1/projects/project/zones/zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The machine type for which the capacity history is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>The preemption history for the requested machine type and location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preemptionHistory")]
+        public virtual System.Collections.Generic.IList<CapacityHistoryResponsePreemptionRecord> PreemptionHistory { get; set; }
+
+        /// <summary>The price history for the requested machine type and location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceHistory")]
+        public virtual System.Collections.Generic.IList<CapacityHistoryResponsePriceRecord> PriceHistory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A record of Spot VM preemption history.</summary>
+    public class CapacityHistoryResponsePreemptionRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time interval for this preemption record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual Interval Interval { get; set; }
+
+        /// <summary>
+        /// The preemption rate during the interval, representing the fraction of Spot VMs that were preempted. Range:
+        /// 0.0 to 1.0. Preemption rate is calculated as (total preempted Spots) / (total Spots that stopped running).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preemptionRate")]
+        public virtual System.Nullable<double> PreemptionRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A record of price history.</summary>
+    public class CapacityHistoryResponsePriceRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time interval for this price record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual Interval Interval { get; set; }
+
+        /// <summary>The Spot VM list price during the interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listPrice")]
+        public virtual Money ListPrice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -128558,6 +129109,10 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Represents the change that you want to make to the instance properties.</summary>
     public class InstancePropertiesPatch : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>This optional flag exposes the hashed physical host ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposeHostTopology")]
+        public virtual System.Nullable<bool> ExposeHostTopology { get; set; }
+
         /// <summary>The label key-value pairs that you want to patch onto the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -132894,6 +133449,97 @@ namespace Google.Apis.Compute.v1.Data
     }
 
     /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).  The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval.  If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval.  If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a License resource.  A License represents billing and aggregate usage data forpublic andmarketplace
     /// images.  *Caution* This resource is intended for use only by third-party partners who are creatingCloud
     /// Marketplace images.
@@ -134504,6 +135150,32 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -140373,6 +141045,24 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xpnProjectStatus")]
         public virtual string XpnProjectStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a ProjectView resource.  A ProjectView resource contains read-only project data which is available
+    /// globally.
+    /// </summary>
+    public class ProjectView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The project data. The returned Project data does not contain regional or zonal quota usage data. Global
+        /// quota limits are present. For accurate, real-time quota usage numbers, query the global
+        /// [projects.get](https://cloud.google.com/compute/docs/reference/rest/v1/projects/get) endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual Project Project { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -147621,6 +148311,12 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityDomain")]
         public virtual System.Nullable<int> AvailabilityDomain { get; set; }
+
+        /// <summary>
+        /// This optional flag exposes the hashed physical host ID in the ResourceStatus resource of the VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposeHostTopology")]
+        public virtual System.Nullable<bool> ExposeHostTopology { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulShutdown")]
         public virtual SchedulingGracefulShutdown GracefulShutdown { get; set; }
