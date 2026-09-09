@@ -3866,6 +3866,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
 
+        /// <summary>Output only. If true, the parameter value can be provided through Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerAllowed")]
+        public virtual System.Nullable<bool> SecretManagerAllowed { get; set; }
+
         /// <summary>Parameter type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4128,6 +4132,21 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>The Dataplex Universal Catalog configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexConfiguration")]
         public virtual DataplexConfiguration DataplexConfiguration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for data source parameters.</summary>
+    public class ParameterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The list of parameters that are stored in Secret Manager. The value of a parameter included in
+        /// this list will be interpreted as a Secret Manager key version resource name instead of a raw value. The raw
+        /// value will be retrieved from Secret Manager upon execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerManagedParams")]
+        public virtual System.Collections.Generic.IList<string> SecretManagerManagedParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4801,6 +4820,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ownerInfo")]
         public virtual UserInfo OwnerInfo { get; set; }
 
+        /// <summary>Optional. The config for values in `params`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paramConfig")]
+        public virtual ParameterConfig ParamConfig { get; set; }
+
         /// <summary>
         /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data
         /// transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed
@@ -5103,6 +5126,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
+
+        /// <summary>Output only. The parameter config of the transfer run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterConfig")]
+        public virtual ParameterConfig ParameterConfig { get; set; }
 
         /// <summary>
         /// Output only. Parameters specific to each data source. For more information see the bq tab in the 'Setting up
