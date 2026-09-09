@@ -8670,7 +8670,8 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1SearchGeoSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Disables geoJSON indexing for the field. By default, geoJSON points are indexed.
+        /// Optional. Disables geoJSON indexing for the field. By default, geoJSON points are indexed. Firestore
+        /// GeoPoints are indexed regardless of the value of this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoJsonIndexingDisabled")]
         public virtual System.Nullable<bool> GeoJsonIndexingDisabled { get; set; }
