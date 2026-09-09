@@ -7478,7 +7478,8 @@ namespace Google.Apis.ManagedKafka.v1.Data
         public virtual GcpConfig GcpConfig { get; set; }
 
         /// <summary>
-        /// Output only. Only populated when FULL view is requested. The Kafka version of the cluster.
+        /// Optional. The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during
+        /// cluster creation, defaults to `3.7.x`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kafkaVersion")]
         public virtual string KafkaVersion { get; set; }
