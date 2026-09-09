@@ -2351,6 +2351,81 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>
+        /// Advises on whether extending an existing future reservation is possible based on the desired extension end
+        /// time. If capacity isn't available for the entire requested duration, the method recommends the longest
+        /// possible extension.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this request.</param>
+        public virtual CalendarModeExtensionRequest CalendarModeExtension(Google.Apis.Compute.beta.Data.CalendarModeExtensionAdviceRequest body, string project, string region)
+        {
+            return new CalendarModeExtensionRequest(this.service, body, project, region);
+        }
+
+        /// <summary>
+        /// Advises on whether extending an existing future reservation is possible based on the desired extension end
+        /// time. If capacity isn't available for the entire requested duration, the method recommends the longest
+        /// possible extension.
+        /// </summary>
+        public class CalendarModeExtensionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.CalendarModeExtensionAdviceResponse>
+        {
+            /// <summary>Constructs a new CalendarModeExtension request.</summary>
+            public CalendarModeExtensionRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.CalendarModeExtensionAdviceRequest body, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.CalendarModeExtensionAdviceRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "calendarModeExtension";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/advice/calendarModeExtension";
+
+            /// <summary>Initializes CalendarModeExtension parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+            }
+        }
+
+        /// <summary>
         /// Advice on making real-time decisions (such as choosing zone or machine types) during deployment to maximize
         /// your chances of obtaining capacity.
         /// </summary>
@@ -87363,6 +87438,95 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string region, string resource)
+        {
+            return new GetIamPolicyRequest(this.service, project, region, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string region, string resource) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/sslPolicies/{resource}/getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "optionsRequestedPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Creates a new policy in the specified project and region using the data included in the request.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -87902,6 +88066,87 @@ namespace Google.Apis.Compute.beta
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+        {
+            return new SetIamPolicyRequest(this.service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.RegionSetPolicyRequest body, string project, string region, string resource) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.RegionSetPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/sslPolicies/{resource}/setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
         }
@@ -105808,6 +106053,81 @@ namespace Google.Apis.Compute.beta
             }
         }
 
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(this.service, project, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource) : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/sslPolicies/{resource}/getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "optionsRequestedPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Returns the specified SSL policy resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -106284,6 +106604,73 @@ namespace Google.Apis.Compute.beta
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(this.service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest body, string project, string resource) : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.GlobalSetPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/sslPolicies/{resource}/setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
         }
@@ -122400,6 +122787,21 @@ namespace Google.Apis.Compute.beta.Data
     public class AliasIpRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Identifies the candidate subnetwork range names for the alias IPs to be allocated from. When it is set, the
+        /// IP would be allocated from any subnetwork range defined here if the IPs are available. Only one of
+        /// subnetwork_range_name or candidate_subnetwork_range_names should be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidateSubnetworkRangeNames")]
+        public virtual System.Collections.Generic.IList<string> CandidateSubnetworkRangeNames { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The subnetwork range name where the IP is allocated. It will be set to the
+        /// subnetwork range where the IP is allocated only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSubnetworkRangeName")]
+        public virtual string EffectiveSubnetworkRangeName { get; set; }
+
+        /// <summary>
         /// The IP alias ranges to allocate for this interface. This IP CIDR range must belong to the specified
         /// subnetwork and cannot contain IP addresses reserved by system or used by other network interfaces. This
         /// range may be a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such
@@ -125499,9 +125901,9 @@ namespace Google.Apis.Compute.beta.Data
     {
         /// <summary>
         /// The name of the VM instance of the leader network endpoint. The instance must already be attached to the NEG
-        /// specified in the haPolicy.leader.backendGroup.  The name must be 1-63 characters long, and comply with
-        /// RFC1035. Authorization requires the following IAM permission on the specified resource instance:
-        /// compute.instances.use
+        /// specified in the haPolicy.leader.backendGroup.  The value must be a valid RFC1035 name (1-63 characters) or
+        /// a valid instance URL. Authorization requires the following IAM permission on the specified resource
+        /// instance: compute.instances.use
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
@@ -126872,6 +127274,143 @@ namespace Google.Apis.Compute.beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendations")]
         public virtual System.Collections.Generic.IList<CalendarModeRecommendation> Recommendations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A request to recommend the maximum duration for extending an existing future reservation in calendar mode. The
+    /// recommended duration is shorter than or equal to the specified extension duration.
+    /// </summary>
+    public class CalendarModeExtensionAdviceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeNotLaterThanRaw;
+
+        private object _endTimeNotLaterThan;
+
+        /// <summary>Required. The desired end time for the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeNotLaterThan")]
+        public virtual string EndTimeNotLaterThanRaw
+        {
+            get => _endTimeNotLaterThanRaw;
+            set
+            {
+                _endTimeNotLaterThan = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeNotLaterThanRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeNotLaterThanRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeNotLaterThanDateTimeOffset instead.")]
+        public virtual object EndTimeNotLaterThan
+        {
+            get => _endTimeNotLaterThan;
+            set
+            {
+                _endTimeNotLaterThanRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTimeNotLaterThan = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeNotLaterThanRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeNotLaterThanDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeNotLaterThanRaw);
+            set => EndTimeNotLaterThanRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Reference to the future reservation, in the format:
+        /// projects/{project}/zones/{zone}/futureReservations/{name} Full URIs that include hostnames (like
+        /// compute.googleapis.com or www.googleapis.com) are also supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("futureReservation")]
+        public virtual string FutureReservation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A response that contains the recommended duration for extending a future reservation in calendar mode based on
+    /// available capacity during the extension period.
+    /// </summary>
+    public class CalendarModeExtensionAdviceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// The recommended end time for the extension, which is either the end time requested by the caller or the
+        /// longest alternative with sufficient capacity. If the extension is not possible, this field is empty, and
+        /// notRecommendedReason is populated instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The reason why the future reservation can't be extended. If a recommendation is provided, whether for the
+        /// requested end time or an alternative, this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notRecommendedReason")]
+        public virtual CalendarModeExtensionAdviceResponseNotRecommendedReason NotRecommendedReason { get; set; }
+
+        /// <summary>The unique ID of the recommendation, which is a UUID string generated by the API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationId")]
+        public virtual string RecommendationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about why no recommendation was provided.</summary>
+    public class CalendarModeExtensionAdviceResponseNotRecommendedReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Human-readable details describing why the recommendation wasn't provided. For example, if the status is
+        /// CONDITIONS_NOT_MET, this field explains why the requested extension duration isn't possible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>Status of recommendation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -130148,6 +130687,19 @@ namespace Google.Apis.Compute.beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<long> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dynamic compression policy for this URL Map's route.</summary>
+    public class DynamicCompressionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionMode")]
+        public virtual string CompressionMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -136688,6 +137240,13 @@ namespace Google.Apis.Compute.beta.Data
         public virtual CorsPolicy CorsPolicy { get; set; }
 
         /// <summary>
+        /// Dynamic compression policy for this URL Map's route. Available only for Global EXTERNAL_MANAGED load
+        /// balancer schemes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicCompressionPolicy")]
+        public virtual DynamicCompressionPolicy DynamicCompressionPolicy { get; set; }
+
+        /// <summary>
         /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend
         /// service failure. As part of fault injection, when clients send requests to a backend service, delays can be
         /// introduced by a load balancer on a percentage of requests before sending those requests to the backend
@@ -141280,6 +141839,10 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Represents the change that you want to make to the instance properties.</summary>
     public class InstancePropertiesPatch : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>This optional flag exposes the hashed physical host ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposeHostTopology")]
+        public virtual System.Nullable<bool> ExposeHostTopology { get; set; }
+
         /// <summary>The label key-value pairs that you want to patch onto the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -145197,6 +145760,13 @@ namespace Google.Apis.Compute.beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failOpen")]
         public virtual System.Nullable<bool> FailOpen { get; set; }
+
+        /// <summary>
+        /// Optional. URL of the InterconnectKeyGroup resource to use for MACsec, in the format:
+        /// projects/{project}/locations/{region}/interconnectKeyGroups/{interconnectKeyGroup}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectKeyGroup")]
+        public virtual string InterconnectKeyGroup { get; set; }
 
         /// <summary>
         /// Required. A keychain placeholder describing a set of named key objects along with their start times. A
@@ -159510,6 +160080,13 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Host { get; set; }
 
         /// <summary>
+        /// Output only. [Output Only] The ID of the machine on which the running instance is located. It is only
+        /// populated for machines which have multiple hosts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machine")]
+        public virtual string Machine { get; set; }
+
+        /// <summary>
         /// [Output Only] The ID of the sub-block in which the running instance is located. Instances in the same
         /// sub-block experience lower network latency than instances in the same block.
         /// </summary>
@@ -162523,6 +163100,12 @@ namespace Google.Apis.Compute.beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityDomain")]
         public virtual System.Nullable<int> AvailabilityDomain { get; set; }
+
+        /// <summary>
+        /// This optional flag exposes the hashed physical host ID in the ResourceStatus resource of the VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposeHostTopology")]
+        public virtual System.Nullable<bool> ExposeHostTopology { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulShutdown")]
         public virtual SchedulingGracefulShutdown GracefulShutdown { get; set; }
