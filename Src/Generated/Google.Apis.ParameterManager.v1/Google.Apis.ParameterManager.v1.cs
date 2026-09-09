@@ -2565,6 +2565,18 @@ namespace Google.Apis.ParameterManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyMember")]
         public virtual ResourcePolicyMember PolicyMember { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys and tag values that are bound to this Parameter. You must
+        /// represent each item in the map as: `"" : ""`. For example, a single resource can have the following tags:
+        /// ```
+        /// "123/environment": "production", "123/costCenter": "marketing",
+        /// ```
+        /// Tags are used to organize and group
+        /// resources. Tags can be used to control policy evaluation for the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -2609,6 +2621,10 @@ namespace Google.Apis.ParameterManager.v1.Data
     /// <summary>Message describing ParameterVersion resource</summary>
     public class ParameterVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Output only. [Output only] The source of the checksum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checksumSource")]
+        public virtual string ChecksumSource { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -2724,6 +2740,13 @@ namespace Google.Apis.ParameterManager.v1.Data
         /// <summary>Required. bytes data for storing payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Optional. [Optional] The integrity checksum of the payload. If provided, the server will verify that the
+        /// checksum matches the payload. If not provided, the server will generate the checksum.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCrc32c")]
+        public virtual System.Nullable<long> DataCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
