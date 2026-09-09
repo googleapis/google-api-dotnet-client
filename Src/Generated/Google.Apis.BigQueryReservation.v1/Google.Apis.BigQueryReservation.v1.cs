@@ -2870,15 +2870,14 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual System.Nullable<long> Precedence { get; set; }
 
         /// <summary>
-        /// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will
-        /// utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the
-        /// project, folder, or organization (in that order). If no reservation is assigned at any of these levels,
-        /// on-demand capacity will be used. The supported formats are: * `principal://goog/subject/USER_EMAIL_ADDRESS`
-        /// for users, * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service
-        /// accounts, *
+        /// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal utilize the
+        /// associated reservation. Otherwise, jobs fall back to using the reservation assigned to the project, folder,
+        /// or organization, in that order. If no reservation is assigned at any of these levels, on-demand capacity is
+        /// used. The supported formats are: * `principal://goog/subject/USER_EMAIL_ADDRESS` for users, *
+        /// `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts, *
         /// `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID`
         /// for workload identity pool identities. * The special value `unknown_or_deleted_user` represents principals
-        /// which cannot be read from the user info service, for example deleted users.
+        /// which cannot be read from the user info service, for example, deleted users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual string Principal { get; set; }
