@@ -91,8 +91,14 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// <summary>See exercise GPS location data in Google Health</summary>
             public static string GooglehealthLocationReadonly = "https://www.googleapis.com/auth/googlehealth.location.readonly";
 
+            /// <summary>See your Google Health logged symptoms data</summary>
+            public static string GooglehealthLoggedSymptomsReadonly = "https://www.googleapis.com/auth/googlehealth.logged_symptoms.readonly";
+
             /// <summary>Add logged symptoms data to Google Health, and edit or delete the data it adds</summary>
             public static string GooglehealthLoggedSymptomsWriteonly = "https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly";
+
+            /// <summary>See your Google Health mindfulness data</summary>
+            public static string GooglehealthMindfulnessReadonly = "https://www.googleapis.com/auth/googlehealth.mindfulness.readonly";
 
             /// <summary>Add mindfulness data to Google Health, and edit or delete the data it adds</summary>
             public static string GooglehealthMindfulnessWriteonly = "https://www.googleapis.com/auth/googlehealth.mindfulness.writeonly";
@@ -105,6 +111,9 @@ namespace Google.Apis.GoogleHealthAPI.v4
 
             /// <summary>Add profile data to Google Health, and edit or delete the data it adds.</summary>
             public static string GooglehealthProfileWriteonly = "https://www.googleapis.com/auth/googlehealth.profile.writeonly";
+
+            /// <summary>See your Google Health reproductive health data</summary>
+            public static string GooglehealthReproductiveHealthReadonly = "https://www.googleapis.com/auth/googlehealth.reproductive_health.readonly";
 
             /// <summary>Add reproductive health data to Google Health, and edit or delete the data it adds</summary>
             public static string GooglehealthReproductiveHealthWriteonly = "https://www.googleapis.com/auth/googlehealth.reproductive_health.writeonly";
@@ -154,8 +163,14 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// <summary>See exercise GPS location data in Google Health</summary>
             public const string GooglehealthLocationReadonly = "https://www.googleapis.com/auth/googlehealth.location.readonly";
 
+            /// <summary>See your Google Health logged symptoms data</summary>
+            public const string GooglehealthLoggedSymptomsReadonly = "https://www.googleapis.com/auth/googlehealth.logged_symptoms.readonly";
+
             /// <summary>Add logged symptoms data to Google Health, and edit or delete the data it adds</summary>
             public const string GooglehealthLoggedSymptomsWriteonly = "https://www.googleapis.com/auth/googlehealth.logged_symptoms.writeonly";
+
+            /// <summary>See your Google Health mindfulness data</summary>
+            public const string GooglehealthMindfulnessReadonly = "https://www.googleapis.com/auth/googlehealth.mindfulness.readonly";
 
             /// <summary>Add mindfulness data to Google Health, and edit or delete the data it adds</summary>
             public const string GooglehealthMindfulnessWriteonly = "https://www.googleapis.com/auth/googlehealth.mindfulness.writeonly";
@@ -168,6 +183,9 @@ namespace Google.Apis.GoogleHealthAPI.v4
 
             /// <summary>Add profile data to Google Health, and edit or delete the data it adds.</summary>
             public const string GooglehealthProfileWriteonly = "https://www.googleapis.com/auth/googlehealth.profile.writeonly";
+
+            /// <summary>See your Google Health reproductive health data</summary>
+            public const string GooglehealthReproductiveHealthReadonly = "https://www.googleapis.com/auth/googlehealth.reproductive_health.readonly";
 
             /// <summary>Add reproductive health data to Google Health, and edit or delete the data it adds</summary>
             public const string GooglehealthReproductiveHealthWriteonly = "https://www.googleapis.com/auth/googlehealth.reproductive_health.writeonly";
@@ -3457,7 +3475,11 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual CivilTimeInterval Range { get; set; }
 
-        /// <summary>Optional. Aggregation window size, in number of days. Defaults to 1 if not specified.</summary>
+        /// <summary>
+        /// Optional. Aggregation window size, in number of days. Defaults to 1 if not specified. If the requested range
+        /// is not an exact multiple of `window_size_days`, the final bucket chronologically will be truncated at the
+        /// upper endpoint of the range and will cover a duration shorter than `window_size_days`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowSizeDays")]
         public virtual System.Nullable<int> WindowSizeDays { get; set; }
 
@@ -4636,6 +4658,58 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a type of health data a user can have data points recorded for. It matches the parent resource of
+    /// collection containing data points of the given type. Clients currently do not need to interact with this
+    /// resource directly.
+    /// </summary>
+    public class GoogleDevicesandservicesHealthV4betaDataType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The resource name of the data type. Format: `users/{user}/dataTypes/{data_type}` See
+        /// DataPoint.name for examples and possible values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a user in the Google Health API. It matches the parent resource of collections owned by the user.
+    /// Clients currently do not need to interact with this resource directly.
+    /// </summary>
+    public class GoogleDevicesandservicesHealthV4betaUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The resource name of the user. The `{user}` ID is a system-generated identifier, as described in
+        /// Identity.health_user_id. Format: `users/{user}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Log message for a webhook notification sent by the Google Health API to a subscriber's endpoint. Includes the
+    /// HTTP response received from the endpoint.
+    /// </summary>
+    public class GoogleDevicesandservicesHealthV4betaWebhookNotificationCloudLog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Represents the HTTP response. This message includes the status code, reason phrase, headers, and
+        /// body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpResponse")]
+        public virtual HttpResponse HttpResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single heart beat measurement.</summary>
     public class HeartBeat : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4757,6 +4831,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// </summary>
     public class HeartRateVariability : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Metadata used in 1P surfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual HeartRateVariabilityMetadata Metadata { get; set; }
+
         /// <summary>
         /// Optional. The root mean square of successive differences between normal heartbeats. This is a measure of
         /// heart rate variability used by Google Health.
@@ -4771,6 +4849,25 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// <summary>Optional. The standard deviation of the heart rate variability measurement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardDeviationMilliseconds")]
         public virtual System.Nullable<double> StandardDeviationMilliseconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for HeartRateVariability.</summary>
+    public class HeartRateVariabilityMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The power in interbeat interval fluctuations within the high frequency band (0.15 Hz - 0.4 Hz).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highFrequencyPower")]
+        public virtual System.Nullable<double> HighFrequencyPower { get; set; }
+
+        /// <summary>
+        /// Optional. The power in interbeat interval fluctuations within the low frequency band (0.04 Hz - 0.15 Hz).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowFrequencyPower")]
+        public virtual System.Nullable<double> LowFrequencyPower { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6312,7 +6409,9 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
 
         /// <summary>
         /// Required. The size of the time window to group data points into before applying the aggregation functions.
-        /// Must be at least 1 second.
+        /// Must be at least 1 second. If the requested range is not an exact multiple of `window_size`, the final
+        /// bucket chronologically will be truncated at the upper endpoint of the range and will cover a duration
+        /// shorter than `window_size`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowSize")]
         public virtual object WindowSize { get; set; }
