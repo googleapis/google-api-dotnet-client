@@ -643,6 +643,10 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appAccessRiskVerdict")]
         public virtual AppAccessRiskVerdict AppAccessRiskVerdict { get; set; }
 
+        /// <summary>The evaluation of the Location Spoofing Risk verdict.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationSpoofingRiskVerdict")]
+        public virtual System.Collections.Generic.IList<string> LocationSpoofingRiskVerdict { get; set; }
+
         /// <summary>The evaluation of Play Protect verdict.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playProtectVerdict")]
         public virtual string PlayProtectVerdict { get; set; }
