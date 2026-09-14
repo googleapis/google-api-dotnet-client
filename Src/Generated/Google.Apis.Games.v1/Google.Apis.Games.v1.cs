@@ -5305,45 +5305,6 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
-        private string _timestampValueRaw;
-
-        private object _timestampValue;
-
-        /// <summary>A timestamp value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
-        public virtual string TimestampValueRaw
-        {
-            get => _timestampValueRaw;
-            set
-            {
-                _timestampValue = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _timestampValueRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TimestampValueRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampValueDateTimeOffset instead.")]
-        public virtual object TimestampValue
-        {
-            get => _timestampValue;
-            set
-            {
-                _timestampValueRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _timestampValue = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampValueRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
-            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
