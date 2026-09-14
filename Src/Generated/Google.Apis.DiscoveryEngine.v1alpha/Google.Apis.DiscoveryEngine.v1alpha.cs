@@ -8626,22 +8626,22 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
-                            /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
-                            /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
-                            /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
-                            /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile`
-                            /// header instead (see `ModelInfoView`).
+                            /// computes. `ADMIN` is set by the Cloud Console admin "Feature Management" page
+                            /// (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                            /// `ResolvedModel.admin_view` populated; `END_USER_MOBILE` is set by the Gemini Enterprise
+                            /// mobile app to receive the mobile model set; unset / `END_USER_WEB` returns the end-user
+                            /// web selector.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("modelInfoView", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<ModelInfoViewEnum> ModelInfoView { get; set; }
 
                             /// <summary>
                             /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
-                            /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
-                            /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
-                            /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
-                            /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile`
-                            /// header instead (see `ModelInfoView`).
+                            /// computes. `ADMIN` is set by the Cloud Console admin "Feature Management" page
+                            /// (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                            /// `ResolvedModel.admin_view` populated; `END_USER_MOBILE` is set by the Gemini Enterprise
+                            /// mobile app to receive the mobile model set; unset / `END_USER_WEB` returns the end-user
+                            /// web selector.
                             /// </summary>
                             public enum ModelInfoViewEnum
                             {
@@ -8659,6 +8659,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                                 ADMIN = 2,
+
+                                /// <summary>
+                                /// The end-user model selector view for the Gemini Enterprise mobile app. Returns only
+                                /// mobile-surfaced models, with the mobile default selected. Set explicitly by the
+                                /// mobile client.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("END_USER_MOBILE")]
+                                ENDUSERMOBILE = 3,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -15435,22 +15443,22 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
-                            /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
-                            /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
-                            /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
-                            /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile`
-                            /// header instead (see `ModelInfoView`).
+                            /// computes. `ADMIN` is set by the Cloud Console admin "Feature Management" page
+                            /// (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                            /// `ResolvedModel.admin_view` populated; `END_USER_MOBILE` is set by the Gemini Enterprise
+                            /// mobile app to receive the mobile model set; unset / `END_USER_WEB` returns the end-user
+                            /// web selector.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("modelInfoView", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<ModelInfoViewEnum> ModelInfoView { get; set; }
 
                             /// <summary>
                             /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
-                            /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
-                            /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
-                            /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
-                            /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile`
-                            /// header instead (see `ModelInfoView`).
+                            /// computes. `ADMIN` is set by the Cloud Console admin "Feature Management" page
+                            /// (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                            /// `ResolvedModel.admin_view` populated; `END_USER_MOBILE` is set by the Gemini Enterprise
+                            /// mobile app to receive the mobile model set; unset / `END_USER_WEB` returns the end-user
+                            /// web selector.
                             /// </summary>
                             public enum ModelInfoViewEnum
                             {
@@ -15468,6 +15476,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                                 ADMIN = 2,
+
+                                /// <summary>
+                                /// The end-user model selector view for the Gemini Enterprise mobile app. Returns only
+                                /// mobile-surfaced models, with the mobile default selected. Set explicitly by the
+                                /// mobile client.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("END_USER_MOBILE")]
+                                ENDUSERMOBILE = 3,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -22989,22 +23005,22 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
-                        /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
-                        /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
-                        /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
-                        /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile` header
-                        /// instead (see `ModelInfoView`).
+                        /// computes. `ADMIN` is set by the Cloud Console admin "Feature Management" page
+                        /// (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                        /// `ResolvedModel.admin_view` populated; `END_USER_MOBILE` is set by the Gemini Enterprise
+                        /// mobile app to receive the mobile model set; unset / `END_USER_WEB` returns the end-user web
+                        /// selector.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("modelInfoView", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ModelInfoViewEnum> ModelInfoView { get; set; }
 
                         /// <summary>
                         /// Optional. Selects which view of `WidgetConfig.UiSettings.ModelConfigInfo` the backend
-                        /// computes. `MODEL_INFO_VIEW_ADMIN` is set by the Cloud Console admin "Feature Management"
-                        /// page (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
-                        /// `ResolvedModel.admin_view` populated; unset / `MODEL_INFO_VIEW_WEB` returns the end-user
-                        /// selector. The mobile surface is detected from the `X-Goog-Gemini-Enterprise-Mobile` header
-                        /// instead (see `ModelInfoView`).
+                        /// computes. `ADMIN` is set by the Cloud Console admin "Feature Management" page
+                        /// (screen/4Vn9gQKbN8tb7gm) to receive the admin-surfaced model set with
+                        /// `ResolvedModel.admin_view` populated; `END_USER_MOBILE` is set by the Gemini Enterprise
+                        /// mobile app to receive the mobile model set; unset / `END_USER_WEB` returns the end-user web
+                        /// selector.
                         /// </summary>
                         public enum ModelInfoViewEnum
                         {
@@ -23022,6 +23038,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("ADMIN")]
                             ADMIN = 2,
+
+                            /// <summary>
+                            /// The end-user model selector view for the Gemini Enterprise mobile app. Returns only
+                            /// mobile-surfaced models, with the mobile default selected. Set explicitly by the mobile
+                            /// client.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("END_USER_MOBILE")]
+                            ENDUSERMOBILE = 3,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -26088,7 +26112,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 {
                     this.service = service;
                     AudioOverviews = new AudioOverviewsResource(service);
-                    Sources = new SourcesResource(service);
                 }
 
                 /// <summary>Gets the AudioOverviews resource.</summary>
@@ -26216,493 +26239,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+/audioOverviews/[^/]+$",
                             });
                         }
-                    }
-                }
-
-                /// <summary>Gets the Sources resource.</summary>
-                public virtual SourcesResource Sources { get; }
-
-                /// <summary>The "sources" collection of methods.</summary>
-                public class SourcesResource
-                {
-                    private const string Resource = "sources";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public SourcesResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Creates a list of Sources.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Required. The parent resource where the sources will be created. Format:
-                    /// projects/{project}/locations/{location}/notebooks/{notebook}
-                    /// </param>
-                    public virtual BatchCreateRequest BatchCreate(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest body, string parent)
-                    {
-                        return new BatchCreateRequest(this.service, body, parent);
-                    }
-
-                    /// <summary>Creates a list of Sources.</summary>
-                    public class BatchCreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse>
-                    {
-                        /// <summary>Constructs a new BatchCreate request.</summary>
-                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The parent resource where the sources will be created. Format:
-                        /// projects/{project}/locations/{location}/notebooks/{notebook}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "batchCreate";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+parent}/sources:batchCreate";
-
-                        /// <summary>Initializes BatchCreate parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Deletes multiple sources</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Required. The parent resource where the sources will be deleted. Format:
-                    /// projects/{project}/locations/{location}/notebooks/{notebook}
-                    /// </param>
-                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest body, string parent)
-                    {
-                        return new BatchDeleteRequest(this.service, body, parent);
-                    }
-
-                    /// <summary>Deletes multiple sources</summary>
-                    public class BatchDeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
-                    {
-                        /// <summary>Constructs a new BatchDelete request.</summary>
-                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The parent resource where the sources will be deleted. Format:
-                        /// projects/{project}/locations/{location}/notebooks/{notebook}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "batchDelete";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+parent}/sources:batchDelete";
-
-                        /// <summary>Initializes BatchDelete parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Gets a Source.</summary>
-                    /// <param name="name">
-                    /// Required. The resource name for source Format:
-                    /// projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source}
-                    /// </param>
-                    public virtual GetRequest Get(string name)
-                    {
-                        return new GetRequest(this.service, name);
-                    }
-
-                    /// <summary>Gets a Source.</summary>
-                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaSource>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The resource name for source Format:
-                        /// projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "get";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1alpha/{+name}";
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+/sources/[^/]+$",
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>Batch deletes Notebooks.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
-                /// </param>
-                public virtual BatchDeleteRequest BatchDelete(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest body, string parent)
-                {
-                    return new BatchDeleteRequest(this.service, body, parent);
-                }
-
-                /// <summary>Batch deletes Notebooks.</summary>
-                public class BatchDeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
-                {
-                    /// <summary>Constructs a new BatchDelete request.</summary>
-                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "batchDelete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/notebooks:batchDelete";
-
-                    /// <summary>Initializes BatchDelete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Creates a notebook.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent resource name, such as `projects/{project}/locations/{location}`.
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook body, string parent)
-                {
-                    return new CreateRequest(this.service, body, parent);
-                }
-
-                /// <summary>Creates a notebook.</summary>
-                public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent resource name, such as `projects/{project}/locations/{location}`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/notebooks";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Gets a notebook.</summary>
-                /// <param name="name">
-                /// Required. Full resource name of Notebook, such as
-                /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Gets a notebook.</summary>
-                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaNotebook>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Full resource name of Notebook, such as
-                    /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Lists the notebooks ordered by last view time.</summary>
-                /// <param name="parent">
-                /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
-                /// </param>
-                public virtual ListRecentlyViewedRequest ListRecentlyViewed(string parent)
-                {
-                    return new ListRecentlyViewedRequest(this.service, parent);
-                }
-
-                /// <summary>Lists the notebooks ordered by last view time.</summary>
-                public class ListRecentlyViewedRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse>
-                {
-                    /// <summary>Constructs a new ListRecentlyViewed request.</summary>
-                    public ListRecentlyViewedRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. Maximum number of Notebooks to return. If unspecified, defaults to "500". The maximum
-                    /// allowed value is "500". If this field is negative, will use the default value.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. The page token, provide this to retrieve the subsequent page.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "listRecentlyViewed";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/notebooks:listRecentlyViewed";
-
-                    /// <summary>Initializes ListRecentlyViewed parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Shares a notebook to other accounts.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. Full resource name of Notebook, such as
-                /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
-                /// </param>
-                public virtual ShareRequest Share(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookRequest body, string name)
-                {
-                    return new ShareRequest(this.service, body, name);
-                }
-
-                /// <summary>Shares a notebook to other accounts.</summary>
-                public class ShareRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookResponse>
-                {
-                    /// <summary>Constructs a new Share request.</summary>
-                    public ShareRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Full resource name of Notebook, such as
-                    /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudNotebooklmV1alphaShareNotebookRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "share";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}:share";
-
-                    /// <summary>Initializes Share parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebooks/[^/]+$",
-                        });
                     }
                 }
             }
@@ -31398,6 +30934,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bannedPhrases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase> BannedPhrases { get; set; }
 
+        /// <summary>Optional. Data protection policy to be used for sanitizing file uploads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1DataProtectionPolicy DataProtectionPolicy { get; set; }
+
         /// <summary>
         /// Optional. Model Armor configuration to be used for sanitizing user prompts and assistant responses.
         /// </summary>
@@ -32805,6 +32345,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Specifies the data protection policy for the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1DataProtectionPolicy DataProtectionPolicy { get; set; }
+
         /// <summary>
         /// Required. The identifier for the data source. For the full, up-to-date list of supported connectors and
         /// their values, see [Connect a third-party data
@@ -33292,6 +32836,31 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the data protection policy config for a DataStore or a connector.</summary>
+    public class GoogleCloudDiscoveryengineV1DataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the sensitive data protection policy for the connector source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveDataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1DataProtectionPolicySensitiveDataProtectionPolicy SensitiveDataProtectionPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a Sensitive Data Protection
+    /// (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DataProtectionPolicySensitiveDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the resource name of the Sensitive Data Protection content policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1DataStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -33406,6 +32975,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Specifies the data protection policy for the data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1DataProtectionPolicy DataProtectionPolicy { get; set; }
 
         /// <summary>Output only. The id of the default Schema associated to this data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
@@ -35026,6 +34599,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1EngineSearchEngineConfig SearchEngineConfig { get; set; }
+
+        /// <summary>Optional. Non-empty default. Session config for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionConfig")]
+        public virtual GoogleCloudDiscoveryengineV1SessionConfig SessionConfig { get; set; }
 
         /// <summary>Required. The solutions of the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
@@ -37682,6 +37259,32 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the session.</summary>
+    public class GoogleCloudDiscoveryengineV1SessionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Session management policy that defines who will manage the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionManagementPolicy")]
+        public virtual string SessionManagementPolicy { get; set; }
+
+        /// <summary>Optional. The TTL for the session. If unset, the default value is 60 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionTtl")]
+        public virtual GoogleCloudDiscoveryengineV1SessionConfigSessionTtl SessionTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the TTL for sessions.</summary>
+    public class GoogleCloudDiscoveryengineV1SessionConfigSessionTtl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines the number of days for session TTL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("days")]
+        public virtual System.Nullable<int> Days { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for DataConnectorService.SetUpDataConnector method.</summary>
     public class GoogleCloudDiscoveryengineV1SetUpDataConnectorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -39746,6 +39349,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Sent as Vertex `ThinkingConfig.thinking_level`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingLevel")]
+        public virtual string ThinkingLevel { get; set; }
 
         /// <summary>
         /// Optional. Relative weight for this model in the mixture. Must be a finite, strictly positive value. Weights
@@ -48353,6 +47960,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig SearchEngineConfig { get; set; }
+
+        /// <summary>Optional. Non-empty default. Session config for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSessionConfig SessionConfig { get; set; }
 
         /// <summary>Additional config specs for a `similar-items` engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("similarDocumentsConfig")]
@@ -57684,6 +57295,32 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the session.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSessionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Session management policy that defines who will manage the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionManagementPolicy")]
+        public virtual string SessionManagementPolicy { get; set; }
+
+        /// <summary>Optional. The TTL for the session. If unset, the default value is 60 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionTtl")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSessionConfigSessionTtl SessionTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the TTL for sessions.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSessionConfigSessionTtl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines the number of days for session TTL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("days")]
+        public virtual System.Nullable<int> Days { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a turn, including a query from the user and a answer from service.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSessionTurn : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -60955,6 +60592,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string Icon { get; set; }
 
         /// <summary>
+        /// Output only. Absolute URL of a brand mark to render instead of `icon`, for models whose vendor logo is not a
+        /// GM3 glyph. `icon` stays populated as the fallback, so a client that does not render images, or that fails to
+        /// fetch this one, shows the glyph instead of nothing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
+        /// <summary>
         /// Output only. Whether the model is currently in preview. Clients should surface this via a "Preview" badge in
         /// the selector UI.
         /// </summary>
@@ -62213,6 +61858,31 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the data protection policy config for a DataStore or a connector.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the sensitive data protection policy for the connector source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveDataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy SensitiveDataProtectionPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a Sensitive Data Protection
+    /// (https://cloud.google.com/sensitive-data-protection/docs/sensitive-data-protection-overview) policy.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the resource name of the Sensitive Data Protection content policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
     public class GoogleCloudDiscoveryengineV1betaDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -62327,6 +61997,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Specifies the data protection policy for the data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionPolicy")]
+        public virtual GoogleCloudDiscoveryengineV1betaDataProtectionPolicy DataProtectionPolicy { get; set; }
 
         /// <summary>Output only. The id of the default Schema associated to this data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
@@ -63756,6 +63430,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchEngineConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig SearchEngineConfig { get; set; }
+
+        /// <summary>Optional. Non-empty default. Session config for the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaSessionConfig SessionConfig { get; set; }
 
         /// <summary>Required. The solutions of the engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
@@ -67533,6 +67211,32 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the session.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSessionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Session management policy that defines who will manage the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionManagementPolicy")]
+        public virtual string SessionManagementPolicy { get; set; }
+
+        /// <summary>Optional. The TTL for the session. If unset, the default value is 60 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionTtl")]
+        public virtual GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl SessionTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the TTL for sessions.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines the number of days for session TTL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("days")]
+        public virtual System.Nullable<int> Days { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the CrawlRateManagementService.SetDedicatedCrawlRate operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -68453,36 +68157,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Account and role information.</summary>
-    public class GoogleCloudNotebooklmV1alphaAccountAndRole : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The email address associated with the account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
-        /// <summary>Required. The role in the notebook.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata about an agentspace source.</summary>
-    public class GoogleCloudNotebooklmV1alphaAgentspaceMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The full document name in Agentspace.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentName")]
-        public virtual string DocumentName { get; set; }
-
-        /// <summary>Output only. The title of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentTitle")]
-        public virtual string DocumentTitle { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>An audio overview of a notebook. This is a summary of the notebook in audio format.</summary>
     public class GoogleCloudNotebooklmV1alphaAudioOverview : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -68540,70 +68214,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for SourceService.BatchCreateSources method.</summary>
-    public class GoogleCloudNotebooklmV1alphaBatchCreateSourcesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The UserContents to be uploaded.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userContents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudNotebooklmV1alphaUserContent> UserContents { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for SourceService.BatchCreateSources method.</summary>
-    public class GoogleCloudNotebooklmV1alphaBatchCreateSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Sources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudNotebooklmV1alphaSource> Sources { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for NotebookService.BatchDeleteNotebooks method.</summary>
-    public class GoogleCloudNotebooklmV1alphaBatchDeleteNotebooksRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Full resource names of Notebook, such as
-        /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("names")]
-        public virtual System.Collections.Generic.IList<string> Names { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for BatchDeleteSourcesRequest method.</summary>
-    public class GoogleCloudNotebooklmV1alphaBatchDeleteSourcesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Names of sources to be deleted. Format:
-        /// projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("names")]
-        public virtual System.Collections.Generic.IList<string> Names { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Customer-managed encryption configuration for Notebooks.</summary>
-    public class GoogleCloudNotebooklmV1alphaCmekConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. KMS key resource name which will be used to encrypt resources
-        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
-        public virtual string KmsKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request for AudioOverviewService.CreateAudioOverview method.</summary>
     public class GoogleCloudNotebooklmV1alphaCreateAudioOverviewRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -68626,663 +68236,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Failure reason containing details about why a source failed to ingest.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReason : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An audio file transcription specific error.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audioTranscriptionError")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError AudioTranscriptionError { get; set; }
-
-        /// <summary>Error if the user tries to add a source from a blocked domain.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domainBlocked")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked DomainBlocked { get; set; }
-
-        /// <summary>A google drive specific error.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleDriveError")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError GoogleDriveError { get; set; }
-
-        /// <summary>Indicates an error occurred while ingesting the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ingestionError")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonIngestionError IngestionError { get; set; }
-
-        /// <summary>Indicates that the source MIME type is blocked.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeTypeBlocked")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked MimeTypeBlocked { get; set; }
-
-        /// <summary>Indicates that the source is paywalled and cannot be ingested.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("paywallError")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonPaywallError PaywallError { get; set; }
-
-        /// <summary>Indicates that the policy check failed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyCheckFailed")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed PolicyCheckFailed { get; set; }
-
-        /// <summary>Indicates that the source is empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceEmpty")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty SourceEmpty { get; set; }
-
-        /// <summary>Error if the user tries to update beyond their limits.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceLimitExceeded")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded SourceLimitExceeded { get; set; }
-
-        /// <summary>Indicates source word count exceeded the user's limit.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceTooLong")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong SourceTooLong { get; set; }
-
-        /// <summary>Indicates that the source is unreachable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceUnreachable")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable SourceUnreachable { get; set; }
-
-        /// <summary>Indicates an unknown error occurred.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unknown")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonUnknown Unknown { get; set; }
-
-        /// <summary>Indicates an error occurred while uploading the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadError")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonUploadError UploadError { get; set; }
-
-        /// <summary>A youtube specific error.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("youtubeError")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError YoutubeError { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An audio file transcription specific error.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Could not detect language of the file (it may not be speech).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageDetectionFailed")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed LanguageDetectionFailed { get; set; }
-
-        /// <summary>No audio was detected in the input file (it may have been a video).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("noAudioDetected")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected NoAudioDetected { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Could not detect language of the file (it may not be speech).</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorLanguageDetectionFailed : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>No audio was detected in the input file.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonAudioTranscriptionErrorNoAudioDetected : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Error to indicate that the source was removed because the domain was blocked.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonDomainBlocked : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A google drive specific error.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The user was prevented from downloading the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("downloadPrevented")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented DownloadPrevented { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The user was prevented from downloading the file.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonGoogleDriveErrorDownloadPrevented : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates an error occurred while ingesting the source.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonIngestionError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates that the source MIME type is blocked.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonMimeTypeBlocked : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates that the source is paywalled and cannot be ingested.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonPaywallError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates that the policy check failed.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonPolicyCheckFailed : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates that the source is empty.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonSourceEmpty : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates that the user does not have space for this source.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonSourceLimitExceeded : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates source word count exceeded the user's limit.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonSourceTooLong : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The number of words in the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wordCount")]
-        public virtual System.Nullable<int> WordCount { get; set; }
-
-        /// <summary>The word count limit for the current user at the time of the upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wordLimit")]
-        public virtual System.Nullable<int> WordLimit { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Indicates that the source is unreachable. This is primarily used for sources that are added via URL.
-    /// </summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonSourceUnreachable : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Describes why the source is unreachable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorDetails")]
-        public virtual string ErrorDetails { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates an unknown error occurred.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonUnknown : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Indicates an error occurred while uploading the source.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonUploadError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A youtube specific error.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Error to indicate that the source was removed because the video was deleted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoDeleted")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted VideoDeleted { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Error to indicate that the source was removed because the video was deleted.</summary>
-    public class GoogleCloudNotebooklmV1alphaFailureReasonYoutubeErrorVideoDeleted : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata about a google doc source.</summary>
-    public class GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The document id of the google doc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
-        public virtual string DocumentId { get; set; }
-
-        /// <summary>Output only. Revision id for the doc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
-        public virtual string RevisionId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for NotebookService.ListRecentlyViewedNotebooks method.</summary>
-    public class GoogleCloudNotebooklmV1alphaListRecentlyViewedNotebooksResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The page token, provide this to retrieve the subsequent page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The list of recently viewed notebooks.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notebooks")]
-        public virtual System.Collections.Generic.IList<GoogleCloudNotebooklmV1alphaNotebook> Notebooks { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Notebook is a resource where users can store their content (as sources) and interacts with the content.
-    /// </summary>
-    public class GoogleCloudNotebooklmV1alphaNotebook : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. CMEK-related information for the Notebook.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
-        public virtual GoogleCloudNotebooklmV1alphaCmekConfig CmekConfig { get; set; }
-
-        /// <summary>Output only. The emoji of the notebook.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
-        public virtual string Emoji { get; set; }
-
-        /// <summary>Output only. The metadata of the notebook.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual GoogleCloudNotebooklmV1alphaNotebookMetadata Metadata { get; set; }
-
-        /// <summary>
-        /// Identifier. The identifier of the notebook. Format:
-        /// `projects/{project}/locations/{location}/notebooks/{notebook_id}`. This field must be a UTF-8 encoded
-        /// string.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. Notebook id, which is the last segment of the notebook's resource name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notebookId")]
-        public virtual string NotebookId { get; set; }
-
-        /// <summary>Output only. List of sources in the notebook. This is an output only field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudNotebooklmV1alphaSource> Sources { get; set; }
-
-        /// <summary>Optional. The title of the notebook.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for a notebook.</summary>
-    public class GoogleCloudNotebooklmV1alphaNotebookMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>The time at which this project was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>True if the project is shareable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isShareable")]
-        public virtual System.Nullable<bool> IsShareable { get; set; }
-
-        /// <summary>True if this project is currently shared with other people, false otherwise.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isShared")]
-        public virtual System.Nullable<bool> IsShared { get; set; }
-
-        private string _lastViewedRaw;
-
-        private object _lastViewed;
-
-        /// <summary>
-        /// A timestamp indicating the time that the current in session user has last viewed the project.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastViewed")]
-        public virtual string LastViewedRaw
-        {
-            get => _lastViewedRaw;
-            set
-            {
-                _lastViewed = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastViewedRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastViewedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastViewedDateTimeOffset instead.")]
-        public virtual object LastViewed
-        {
-            get => _lastViewed;
-            set
-            {
-                _lastViewedRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastViewed = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastViewedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastViewedDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastViewedRaw);
-            set => LastViewedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for NotebookService.ShareNotebook method.</summary>
-    public class GoogleCloudNotebooklmV1alphaShareNotebookRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The list of accounts and roles to share the notebook with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accountAndRoles")]
-        public virtual System.Collections.Generic.IList<GoogleCloudNotebooklmV1alphaAccountAndRole> AccountAndRoles { get; set; }
-
-        /// <summary>Required. Whether to notify the shared users via email.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notifyViaEmail")]
-        public virtual System.Nullable<bool> NotifyViaEmail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for NotebookService.ShareNotebook method.</summary>
-    public class GoogleCloudNotebooklmV1alphaShareNotebookResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Source represents a single source of content.</summary>
-    public class GoogleCloudNotebooklmV1alphaSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Metadata about the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual GoogleCloudNotebooklmV1alphaSourceMetadata Metadata { get; set; }
-
-        /// <summary>
-        /// Identifier. The full resource name of the source. Format:
-        /// `projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source_id}`. This field must be a
-        /// UTF-8 encoded string with a length limit of 1024 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. Status of the source, and any failure reasons.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual GoogleCloudNotebooklmV1alphaSourceSettings Settings { get; set; }
-
-        /// <summary>
-        /// Optional. Output only. Source id, which is the last segment of the source's resource name.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceId")]
-        public virtual GoogleCloudNotebooklmV1alphaSourceId SourceId { get; set; }
-
-        /// <summary>Optional. Title of the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>SourceId is the last segment of the source's resource name.</summary>
     public class GoogleCloudNotebooklmV1alphaSourceId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The id of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of a source and some additional information.</summary>
-    public class GoogleCloudNotebooklmV1alphaSourceMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Metadata for an agentspace source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentspaceMetadata")]
-        public virtual GoogleCloudNotebooklmV1alphaAgentspaceMetadata AgentspaceMetadata { get; set; }
-
-        /// <summary>Metadata for a google doc source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleDocsMetadata")]
-        public virtual GoogleCloudNotebooklmV1alphaGoogleDocsSourceMetadata GoogleDocsMetadata { get; set; }
-
-        private string _sourceAddedTimestampRaw;
-
-        private object _sourceAddedTimestamp;
-
-        /// <summary>The timestamp the source was added.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceAddedTimestamp")]
-        public virtual string SourceAddedTimestampRaw
-        {
-            get => _sourceAddedTimestampRaw;
-            set
-            {
-                _sourceAddedTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _sourceAddedTimestampRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SourceAddedTimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SourceAddedTimestampDateTimeOffset instead.")]
-        public virtual object SourceAddedTimestamp
-        {
-            get => _sourceAddedTimestamp;
-            set
-            {
-                _sourceAddedTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _sourceAddedTimestamp = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SourceAddedTimestampRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SourceAddedTimestampDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SourceAddedTimestampRaw);
-            set => SourceAddedTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The number of tokens in the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenCount")]
-        public virtual System.Nullable<int> TokenCount { get; set; }
-
-        /// <summary>The word count of the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wordCount")]
-        public virtual System.Nullable<int> WordCount { get; set; }
-
-        /// <summary>Metadata for a youtube video source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("youtubeMetadata")]
-        public virtual GoogleCloudNotebooklmV1alphaYoutubeMetadata YoutubeMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Allows extension of Source Settings in the BatchCreateSources (Formerly AddSource request).</summary>
-    public class GoogleCloudNotebooklmV1alphaSourceSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Failure reason containing details about why a source failed to ingest.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
-        public virtual GoogleCloudNotebooklmV1alphaFailureReason FailureReason { get; set; }
-
-        /// <summary>Status of the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The "Content" messages refer to data the user wants to upload.</summary>
-    public class GoogleCloudNotebooklmV1alphaUserContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Agentspace content uploaded as source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentspaceContent")]
-        public virtual GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent AgentspaceContent { get; set; }
-
-        /// <summary>The content from Google Drive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleDriveContent")]
-        public virtual GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent GoogleDriveContent { get; set; }
-
-        /// <summary>The text content uploaded as source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textContent")]
-        public virtual GoogleCloudNotebooklmV1alphaUserContentTextContent TextContent { get; set; }
-
-        /// <summary>The video content uploaded as source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoContent")]
-        public virtual GoogleCloudNotebooklmV1alphaUserContentVideoContent VideoContent { get; set; }
-
-        /// <summary>The web content uploaded as source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webContent")]
-        public virtual GoogleCloudNotebooklmV1alphaUserContentWebContent WebContent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Agentspace content uploaded as source.</summary>
-    public class GoogleCloudNotebooklmV1alphaUserContentAgentspaceContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The full resource name of the Agentspace document. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentName")]
-        public virtual string DocumentName { get; set; }
-
-        /// <summary>
-        /// Optional. Engine to verify the permission of the document. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("engineName")]
-        public virtual string EngineName { get; set; }
-
-        /// <summary>
-        /// Optional. Resource name of the idea forge instance. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}/ideaForgeInstances/{instance}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ideaforgeIdeaName")]
-        public virtual string IdeaforgeIdeaName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The content from Google Drive.</summary>
-    public class GoogleCloudNotebooklmV1alphaUserContentGoogleDriveContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The document id of the selected document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
-        public virtual string DocumentId { get; set; }
-
-        /// <summary>
-        /// The mime type of the selected document. This can be used to differentiate type of content selected in the
-        /// drive picker. Use application/vnd.google-apps.document for Google Docs or
-        /// application/vnd.google-apps.presentation for Google Slides.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; }
-
-        /// <summary>The name to be displayed for the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
-        public virtual string SourceName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The text content uploaded as source.</summary>
-    public class GoogleCloudNotebooklmV1alphaUserContentTextContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name to be displayed for the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; }
-
-        /// <summary>The display name of the text source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
-        public virtual string SourceName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Video content uploaded as source.</summary>
-    public class GoogleCloudNotebooklmV1alphaUserContentVideoContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The youtube url of the video content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("youtubeUrl")]
-        public virtual string YoutubeUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The web content uploaded as source.</summary>
-    public class GoogleCloudNotebooklmV1alphaUserContentWebContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name to be displayed for the source.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
-        public virtual string SourceName { get; set; }
-
-        /// <summary>If URL is supplied, will fetch the webpage in the backend.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata about a youtube video source.</summary>
-    public class GoogleCloudNotebooklmV1alphaYoutubeMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The channel name of the youtube video.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelName")]
-        public virtual string ChannelName { get; set; }
-
-        /// <summary>Output only. The id of the youtube video.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
