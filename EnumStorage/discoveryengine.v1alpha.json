@@ -52,7 +52,8 @@
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
     "MODEL_INFO_VIEW_UNSPECIFIED",
     "END_USER_WEB",
-    "ADMIN"
+    "ADMIN",
+    "END_USER_MOBILE"
   ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+EnginesResource+AssistantsResource+ListAvailableAgentViewsRequest.AgentOriginEnum": [
     "AGENT_ORIGIN_UNSPECIFIED",
@@ -70,7 +71,8 @@
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+EnginesResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
     "MODEL_INFO_VIEW_UNSPECIFIED",
     "END_USER_WEB",
-    "ADMIN"
+    "ADMIN",
+    "END_USER_MOBILE"
   ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CompleteExternalIdentitiesRequest.EntityTypeFilterEnum": [
     "ENTITY_TYPE_FILTER_UNSPECIFIED",
@@ -112,7 +114,8 @@
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
     "MODEL_INFO_VIEW_UNSPECIFIED",
     "END_USER_WEB",
-    "ADMIN"
+    "ADMIN",
+    "END_USER_MOBILE"
   ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+GetConfigurablePricingUsageStatsRequest.MetricTypesEnum": [
     "BILLING_METRIC_TYPE_UNSPECIFIED",
