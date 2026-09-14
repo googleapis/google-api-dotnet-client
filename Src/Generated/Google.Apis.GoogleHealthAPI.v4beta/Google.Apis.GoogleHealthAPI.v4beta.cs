@@ -6081,18 +6081,16 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
 
         /// <summary>
         /// Output only. The automatically calculated running stride length, in millimeters. The user must consent to
-        /// one of the following access scopes to access this field: -
-        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` -
-        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
+        /// the following access scope to access this field: -
+        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRunningStrideLengthMm")]
         public virtual System.Nullable<int> AutoRunningStrideLengthMm { get; set; }
 
         /// <summary>
         /// Output only. The automatically calculated walking stride length, in millimeters. The user must consent to
-        /// one of the following access scopes to access this field: -
-        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` -
-        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
+        /// the following access scope to access this field: -
+        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoWalkingStrideLengthMm")]
         public virtual System.Nullable<int> AutoWalkingStrideLengthMm { get; set; }
@@ -6113,19 +6111,17 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The user's user configured running stride length, in millimeters. The user must consent to one of
-        /// the following access scopes to access this field: -
-        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` -
-        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
+        /// Optional. The user's user configured running stride length, in millimeters. The user must consent to the
+        /// following access scope to access this field: -
+        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userConfiguredRunningStrideLengthMm")]
         public virtual System.Nullable<int> UserConfiguredRunningStrideLengthMm { get; set; }
 
         /// <summary>
-        /// Optional. The user's user configured walking stride length, in millimeters. The user must consent to one of
-        /// the following access scopes to access this field: -
-        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` -
-        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`
+        /// Optional. The user's user configured walking stride length, in millimeters. The user must consent to the
+        /// following access scope to access this field: -
+        /// `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userConfiguredWalkingStrideLengthMm")]
         public virtual System.Nullable<int> UserConfiguredWalkingStrideLengthMm { get; set; }
