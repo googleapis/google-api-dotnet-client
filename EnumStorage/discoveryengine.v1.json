@@ -11,16 +11,19 @@
   "Google.Apis.DiscoveryEngine.v1.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
     "MODEL_INFO_VIEW_UNSPECIFIED",
     "END_USER_WEB",
-    "ADMIN"
+    "ADMIN",
+    "END_USER_MOBILE"
   ],
   "Google.Apis.DiscoveryEngine.v1.ProjectsResource+LocationsResource+CollectionsResource+EnginesResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
     "MODEL_INFO_VIEW_UNSPECIFIED",
     "END_USER_WEB",
-    "ADMIN"
+    "ADMIN",
+    "END_USER_MOBILE"
   ],
   "Google.Apis.DiscoveryEngine.v1.ProjectsResource+LocationsResource+DataStoresResource+WidgetConfigsResource+GetRequest.ModelInfoViewEnum": [
     "MODEL_INFO_VIEW_UNSPECIFIED",
     "END_USER_WEB",
-    "ADMIN"
+    "ADMIN",
+    "END_USER_MOBILE"
   ]
 }
