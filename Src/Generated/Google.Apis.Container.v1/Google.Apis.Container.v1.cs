@@ -6841,7 +6841,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeReadinessConfig")]
         public virtual NodeReadinessConfig NodeReadinessConfig { get; set; }
 
-        /// <summary>Configuration for the Cloud Storage Parallelstore CSI driver.</summary>
+        /// <summary>
+        /// Deprecated: The Parallelstore CSI driver is no longer supported. Configuration for the Cloud Storage
+        /// Parallelstore CSI driver.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parallelstoreCsiDriverConfig")]
         public virtual ParallelstoreCsiDriverConfig ParallelstoreCsiDriverConfig { get; set; }
 
@@ -11700,6 +11703,12 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<long> PodPidsLimit { get; set; }
 
         /// <summary>
+        /// Optional. Controls the reserved resources on the node. Only included if any fields are specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservedResourcesConfig")]
+        public virtual ReservedResourcesConfig ReservedResourcesConfig { get; set; }
+
+        /// <summary>
         /// Optional. shutdown_grace_period_critical_pods_seconds is the maximum allowed grace period (in seconds) used
         /// to terminate critical pods during a node shutdown. This value should be &amp;lt;=
         /// shutdown_grace_period_seconds, and is only valid if shutdown_grace_period_seconds is set.
@@ -12449,7 +12458,10 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for the Cloud Storage Parallelstore CSI driver.</summary>
+    /// <summary>
+    /// Deprecated: The Parallelstore CSI driver is no longer supported. Configuration for the Cloud Storage
+    /// Parallelstore CSI driver.
+    /// </summary>
     public class ParallelstoreCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the Cloud Storage Parallelstore CSI driver is enabled for this cluster.</summary>
@@ -12955,6 +12967,41 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Corresponds to the label value(s) of reservation resource(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ReservedResourcesConfig contains the configuration for the reserved resources on the node.</summary>
+    public class ReservedResourcesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The amount of CPU to reserve for system daemons. This is a user-specified value. If unspecified,
+        /// GKE decides the default based on node version using different formula.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuReservedMillicore")]
+        public virtual System.Nullable<long> CpuReservedMillicore { get; set; }
+
+        /// <summary>
+        /// Output only. The effective amount of CPU reserved for system daemons. If `cpu_reserved_millicore` is
+        /// specified, user-specified value is used. Otherwise the GKE default is applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveCpuReservedMillicore")]
+        public virtual System.Nullable<long> EffectiveCpuReservedMillicore { get; set; }
+
+        /// <summary>
+        /// Output only. The effective amount of memory reserved for system daemons. If `memory_reserved_mib` is
+        /// specified, the user-specified value is used. Otherwise the GKE default is applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveMemoryReservedMib")]
+        public virtual System.Nullable<long> EffectiveMemoryReservedMib { get; set; }
+
+        /// <summary>
+        /// Optional. The amount of memory to reserve for system daemons (in MiB). This is a user-specified value. If
+        /// unspecified, GKE decides the default based on node version using different formula.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryReservedMib")]
+        public virtual System.Nullable<long> MemoryReservedMib { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
