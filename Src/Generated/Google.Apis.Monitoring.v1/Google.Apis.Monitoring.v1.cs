@@ -3938,6 +3938,27 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a time range.</summary>
+    public class TimeRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Represents a time range with absolute start and end times. The start time is inclusive, and the
+        /// end time is exclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("absoluteWindow")]
+        public virtual Interval AbsoluteWindow { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the duration used to shift the data relative to current time as the end time. The
+        /// duration must be positive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeDuration")]
+        public virtual object RelativeDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched
     /// using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list)
@@ -4272,6 +4293,13 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>A raw string or markdown displaying textual content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual Text Text { get; set; }
+
+        /// <summary>
+        /// Optional. Represents a time range for the widget. When set, this time range will override the dashboard time
+        /// range. Supported for line, stacked area and stacked bar widgets only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
+        public virtual TimeRange TimeRange { get; set; }
 
         /// <summary>A widget that displays time series data in a tabular format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesTable")]
