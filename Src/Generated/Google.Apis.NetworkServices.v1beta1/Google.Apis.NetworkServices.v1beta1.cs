@@ -916,6 +916,13 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// Optional. A filter expression to filter the results listed in the response. The expression must
+                    /// follow the syntax described in [AIP-160](https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>Optional. Maximum number of AgentGateways to return per call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -955,6 +962,14 @@ namespace Google.Apis.NetworkServices.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
