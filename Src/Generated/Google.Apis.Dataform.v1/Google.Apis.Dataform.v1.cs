@@ -6643,6 +6643,72 @@ namespace Google.Apis.Dataform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a BigQuery unit test.</summary>
+    public class BigQueryUnitTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of actions that this action depends on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencyTargets")]
+        public virtual System.Collections.Generic.IList<Target> DependencyTargets { get; set; }
+
+        /// <summary>Whether this action is disabled (i.e. should not be run).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The name of the unit test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Expected output query to compare against the test query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedOutputQuery")]
+        public virtual string ExpectedOutputQuery { get; set; }
+
+        /// <summary>Arbitrary, user-defined tags on this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>Test query to execute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testQuery")]
+        public virtual string TestQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a workflow action that will run a BigQuery unit test.</summary>
+    public class BigQueryUnitTestAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Job ID for the actual results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actualResultsJobId")]
+        public virtual string ActualResultsJobId { get; set; }
+
+        /// <summary>Output only. SQL script for the actual results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actualResultsSqlScript")]
+        public virtual string ActualResultsSqlScript { get; set; }
+
+        /// <summary>Output only. Job ID for the expected results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedResultsJobId")]
+        public virtual string ExpectedResultsJobId { get; set; }
+
+        /// <summary>Output only. SQL script for the expected results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedResultsSqlScript")]
+        public virtual string ExpectedResultsSqlScript { get; set; }
+
+        /// <summary>
+        /// Output only. Total bytes billed for this action. Combined total for actual and expected jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBilledBytes")]
+        public virtual System.Nullable<long> TotalBilledBytes { get; set; }
+
+        /// <summary>
+        /// Output only. Total bytes processed for this action. Combined total for actual and expected jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalProcessedBytes")]
+        public virtual System.Nullable<long> TotalProcessedBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7112,6 +7178,10 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assertion")]
         public virtual Assertion Assertion { get; set; }
 
+        /// <summary>The unit test executed by this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryUnitTest")]
+        public virtual BigQueryUnitTest BigqueryUnitTest { get; set; }
+
         /// <summary>
         /// The action's identifier if the project had been compiled without any overrides configured. Unique within the
         /// compilation result.
@@ -7362,6 +7432,32 @@ namespace Google.Apis.Dataform.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Includes configuration options for repository end user authentication.</summary>
+    public class EndUserAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. OAuth configuration for repository end user authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
+        public virtual OAuthConfig OauthConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Includes configuration options for end user authentication.</summary>
+    public class EndUserAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. OAuth configuration for end user authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
+        public virtual OAuthConfig OauthConfig { get; set; }
+
+        /// <summary>Output only. Email address of the user to run workflow invocations under.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7971,6 +8067,17 @@ namespace Google.Apis.Dataform.v1.Data
     /// </summary>
     public class InvocationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Configuration for end user authentication. Note that this should not be set when `service_account`
+        /// is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserAuthConfig")]
+        public virtual EndUserAuthenticationConfig EndUserAuthConfig { get; set; }
+
+        /// <summary>Optional. Specifies the execution mode for the workflow invocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionMode")]
+        public virtual string ExecutionMode { get; set; }
+
         /// <summary>Optional. When set to true, any incremental tables will be fully refreshed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyRefreshIncrementalTablesEnabled")]
         public virtual System.Nullable<bool> FullyRefreshIncrementalTablesEnabled { get; set; }
@@ -8402,6 +8509,20 @@ namespace Google.Apis.Dataform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsRepositorySnapshotDestination")]
         public virtual GcsRepositorySnapshotDestination GcsRepositorySnapshotDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OAuth configuration for end user authentication.</summary>
+    public class OAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Additional OAuth scopes to use for BigQuery executions. Scopes always in use:
+        /// `https://www.googleapis.com/auth/bigquery`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalOauthScopes")]
+        public virtual System.Collections.Generic.IList<string> AdditionalOauthScopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9199,6 +9320,10 @@ namespace Google.Apis.Dataform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. Includes configuration options for end user authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserAuthConfig")]
+        public virtual EndUserAuthConfig EndUserAuthConfig { get; set; }
+
         /// <summary>Optional. If set, configures this repository to be linked to a Git remote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitRemoteSettings")]
         public virtual GitRemoteSettings GitRemoteSettings { get; set; }
@@ -9959,6 +10084,10 @@ namespace Google.Apis.Dataform.v1.Data
         /// <summary>Output only. The workflow action's bigquery action details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryAction")]
         public virtual BigQueryAction BigqueryAction { get; set; }
+
+        /// <summary>Output only. The workflow action's unit test details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryUnitTestAction")]
+        public virtual BigQueryUnitTestAction BigqueryUnitTestAction { get; set; }
 
         /// <summary>
         /// Output only. The action's identifier if the project had been compiled without any overrides configured.
