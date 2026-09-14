@@ -344,34 +344,15 @@ namespace Google.Apis.DataManager.v1
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Retrieves marketing data insights for a given user list. This feature is only available to data
-                /// partners. Authorization Headers: This method supports the following optional headers to define how
-                /// the API authorizes access for the request: * `login-account`: (Optional) The resource name of the
-                /// account where the Google Account of the credentials is a user. If not set, defaults to the account
-                /// of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent account that owns the user list. Format:
-                /// `accountTypes/{account_type}/accounts/{account}`
-                /// </param>
+                /// <param name="parent"><c>null</c></param>
                 public virtual RetrieveRequest Retrieve(Google.Apis.DataManager.v1.Data.RetrieveInsightsRequest body, string parent)
                 {
                     return new RetrieveRequest(this.service, body, parent);
                 }
 
-                /// <summary>
-                /// Retrieves marketing data insights for a given user list. This feature is only available to data
-                /// partners. Authorization Headers: This method supports the following optional headers to define how
-                /// the API authorizes access for the request: * `login-account`: (Optional) The resource name of the
-                /// account where the Google Account of the credentials is a user. If not set, defaults to the account
-                /// of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class RetrieveRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.RetrieveInsightsResponse>
                 {
                     /// <summary>Constructs a new Retrieve request.</summary>
@@ -382,10 +363,6 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The parent account that owns the user list. Format:
-                    /// `accountTypes/{account_type}/accounts/{account}`
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -437,30 +414,15 @@ namespace Google.Apis.DataManager.v1
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Creates a partner link for the given account. Authorization Headers: This method supports the
-                /// following optional headers to define how the API authorizes access for the request: *
-                /// `login-account`: (Optional) The resource name of the account where the Google Account of the
-                /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent, which owns this collection of partner links. Format:
-                /// accountTypes/{account_type}/accounts/{account}
-                /// </param>
+                /// <param name="parent"><c>null</c></param>
                 public virtual CreateRequest Create(Google.Apis.DataManager.v1.Data.PartnerLink body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>
-                /// Creates a partner link for the given account. Authorization Headers: This method supports the
-                /// following optional headers to define how the API authorizes access for the request: *
-                /// `login-account`: (Optional) The resource name of the account where the Google Account of the
-                /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class CreateRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.PartnerLink>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -471,10 +433,6 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The parent, which owns this collection of partner links. Format:
-                    /// accountTypes/{account_type}/accounts/{account}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -508,29 +466,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Deletes a partner link for the given account. Authorization Headers: This method supports the
-                /// following optional headers to define how the API authorizes access for the request: *
-                /// `login-account`: (Optional) The resource name of the account where the Google Account of the
-                /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
-                /// </summary>
-                /// <param name="name">
-                /// Required. The resource name of the partner link to delete. Format:
-                /// accountTypes/{account_type}/accounts/{account}/partnerLinks/{partner_link}
-                /// </param>
+                /// <summary></summary>
+                /// <param name="name"><c>null</c></param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>
-                /// Deletes a partner link for the given account. Authorization Headers: This method supports the
-                /// following optional headers to define how the API authorizes access for the request: *
-                /// `login-account`: (Optional) The resource name of the account where the Google Account of the
-                /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class DeleteRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -540,10 +483,6 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The resource name of the partner link to delete. Format:
-                    /// accountTypes/{account_type}/accounts/{account}/partnerLinks/{partner_link}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -571,30 +510,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Searches for all partner links to and from a given account. Authorization Headers: This method
-                /// supports the following optional headers to define how the API authorizes access for the request: *
-                /// `login-account`: (Optional) The resource name of the account where the Google Account of the
-                /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
-                /// </summary>
-                /// <param name="parent">
-                /// Required. Account to search for partner links. If no `filter` is specified, all partner links where
-                /// this account is either the `owning_account` or `partner_account` are returned. Format:
-                /// `accountTypes/{account_type}/accounts/{account}`
-                /// </param>
+                /// <summary></summary>
+                /// <param name="parent"><c>null</c></param>
                 public virtual SearchRequest Search(string parent)
                 {
                     return new SearchRequest(this.service, parent);
                 }
 
-                /// <summary>
-                /// Searches for all partner links to and from a given account. Authorization Headers: This method
-                /// supports the following optional headers to define how the API authorizes access for the request: *
-                /// `login-account`: (Optional) The resource name of the account where the Google Account of the
-                /// credentials is a user. If not set, defaults to the account of the request. Format:
-                /// `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class SearchRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.SearchPartnerLinksResponse>
                 {
                     /// <summary>Constructs a new Search request.</summary>
@@ -604,42 +527,15 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. Account to search for partner links. If no `filter` is specified, all partner links
-                    /// where this account is either the `owning_account` or `partner_account` are returned. Format:
-                    /// `accountTypes/{account_type}/accounts/{account}`
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Optional. A [filter string](https://google.aip.dev/160). All fields need to be on the left hand
-                    /// side of each condition (for example: `partner_link_id = 123456789`). Fields must be specified
-                    /// using either all [camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake
-                    /// case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case and snake
-                    /// case. Supported operations: - `AND` - `=` - `!=` Supported fields: - `partner_link_id` -
-                    /// `owning_account.account_type` - `owning_account.account_id` - `partner_account.account_type` -
-                    /// `partner_account.account_id` - `feature_set` For partner links with the
-                    /// FEATURE_SET_AD_EVENT_MANAGEMENT feature set, the following fields are also supported: -
-                    /// `partner_customer_account.account_id` - `partner_link_metadata.implicit_accounts.account_id`
-                    /// Example: `owning_account.account_type = "GOOGLE_ADS" AND partner_account.account_id = 987654321`
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>
-                    /// The maximum number of partner links to return. The service may return fewer than this value. If
-                    /// unspecified, at most 50 partner links will be returned. The maximum value is 100; values above
-                    /// 100 will be coerced to 100.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>
-                    /// A page token, received from a previous `SearchPartnerLinks` call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to `SearchPartnerLinks` must
-                    /// match the call that provided the page token.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -709,22 +605,15 @@ namespace Google.Apis.DataManager.v1
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Creates a user list direct license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The account that owns the user list being licensed. Should be in the format
-                /// accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
-                /// </param>
+                /// <param name="parent"><c>null</c></param>
                 public virtual CreateRequest Create(Google.Apis.DataManager.v1.Data.UserListDirectLicense body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>
-                /// Creates a user list direct license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 public class CreateRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserListDirectLicense>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -735,10 +624,6 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The account that owns the user list being licensed. Should be in the format
-                    /// accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -772,18 +657,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Retrieves a user list direct license. This feature is only available to data partners.
-                /// </summary>
-                /// <param name="name">Required. The resource name of the user list direct license.</param>
+                /// <summary></summary>
+                /// <param name="name"><c>null</c></param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>
-                /// Retrieves a user list direct license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 public class GetRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserListDirectLicense>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -793,7 +674,6 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The resource name of the user list direct license.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -821,23 +701,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Lists all user list direct licenses owned by the parent account. This feature is only available to
-                /// data partners.
-                /// </summary>
-                /// <param name="parent">
-                /// Required. The account whose licenses are being queried. Should be in the format
-                /// accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
-                /// </param>
+                /// <summary></summary>
+                /// <param name="parent"><c>null</c></param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>
-                /// Lists all user list direct licenses owned by the parent account. This feature is only available to
-                /// data partners.
-                /// </summary>
+                /// <summary></summary>
                 public class ListRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.ListUserListDirectLicensesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -847,40 +718,15 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The account whose licenses are being queried. Should be in the format
-                    /// accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Optional. A [filter string](https://google.aip.dev/160) to apply to the list request. All fields
-                    /// need to be on the left hand side of each condition (for example: `user_list_id = 123`). Fields
-                    /// must be specified using either all [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
-                    /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case
-                    /// and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `&amp;gt;` - `&amp;gt;=` -
-                    /// `&amp;lt;` - `&amp;lt;=` **Supported Functions:** - `IN(field, value1, value2, ...)`: returns
-                    /// true if the field matches any of the values. Example: `IN(user_list_id, 123, 456)` **Unsupported
-                    /// Fields:** - `name` (use get method instead) - `historical_pricings` and all its subfields -
-                    /// `pricing.start_time` - `pricing.end_time`
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>
-                    /// Optional. The maximum number of licenses to return per page. The service may return fewer than
-                    /// this value. If unspecified, at most 50 licenses will be returned. The maximum value is 1000;
-                    /// values above 1000 will be coerced to 1000.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>
-                    /// Optional. A page token, received from a previous `ListUserListDirectLicense` call. Provide this
-                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
-                    /// `ListUserListDirectLicense` must match the call that provided the page token.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -932,19 +778,15 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Updates a user list direct license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Identifier. The resource name of the user list direct license.</param>
+                /// <param name="name"><c>null</c></param>
                 public virtual PatchRequest Patch(Google.Apis.DataManager.v1.Data.UserListDirectLicense body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>
-                /// Updates a user list direct license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 public class PatchRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserListDirectLicense>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -955,14 +797,9 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>Identifier. The resource name of the user list direct license.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Optional. The list of fields to update. The special character `*` is not supported and an
-                    /// `INVALID_UPDATE_MASK` error will be thrown if used.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -1040,25 +877,14 @@ namespace Google.Apis.DataManager.v1
                         this.service = service;
                     }
 
-                    /// <summary>
-                    /// Lists all customer info for a user list global license. This feature is only available to data
-                    /// partners.
-                    /// </summary>
-                    /// <param name="parent">
-                    /// Required. The global license whose customer info are being queried. Should be in the format
-                    /// `accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}/userListGlobalLicenses/{USER_LIST_GLOBAL_LICENSE_ID}`.
-                    /// To list all global license customer info under an account, replace the user list global license
-                    /// id with a '-' (for example, `accountTypes/DATA_PARTNER/accounts/123/userListGlobalLicenses/-`)
-                    /// </param>
+                    /// <summary></summary>
+                    /// <param name="parent"><c>null</c></param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>
-                    /// Lists all customer info for a user list global license. This feature is only available to data
-                    /// partners.
-                    /// </summary>
+                    /// <summary></summary>
                     public class ListRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.ListUserListGlobalLicenseCustomerInfosResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1068,44 +894,15 @@ namespace Google.Apis.DataManager.v1
                             InitParameters();
                         }
 
-                        /// <summary>
-                        /// Required. The global license whose customer info are being queried. Should be in the format
-                        /// `accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}/userListGlobalLicenses/{USER_LIST_GLOBAL_LICENSE_ID}`.
-                        /// To list all global license customer info under an account, replace the user list global
-                        /// license id with a '-' (for example,
-                        /// `accountTypes/DATA_PARTNER/accounts/123/userListGlobalLicenses/-`)
-                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>
-                        /// Optional. A [filter string](https://google.aip.dev/160) to apply to the list request. All
-                        /// fields need to be on the left hand side of each condition (for example: `user_list_id =
-                        /// 123`). Fields must be specified using either all [camel
-                        /// case](https://en.wikipedia.org/wiki/Camel_case) or all [snake
-                        /// case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case and
-                        /// snake case. **Supported Operations:** - `AND` - `=` - `!=` - `&amp;gt;` - `&amp;gt;=` -
-                        /// `&amp;lt;` - `&amp;lt;=` **Supported Functions:** - `IN(field, value1, value2, ...)`:
-                        /// returns true if the field matches any of the values. Example: `IN(user_list_id, 123, 456)`
-                        /// **Unsupported Fields:** - `name` (use get method instead) - `historical_pricings` and all
-                        /// its subfields - `pricing.start_time` - `pricing.end_time`
-                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>
-                        /// Optional. The maximum number of licenses to return. The service may return fewer than this
-                        /// value. If unspecified, at most 50 licenses will be returned. The maximum value is 1000;
-                        /// values above 1000 will be coerced to 1000.
-                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>
-                        /// Optional. A page token, received from a previous `ListUserListDirectLicense` call. Provide
-                        /// this to retrieve the subsequent page. When paginating, all other parameters provided to
-                        /// `ListUserListDirectLicense` must match the call that provided the page token.
-                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1158,22 +955,15 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Creates a user list global license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The account that owns the user list being licensed. Should be in the format
-                /// accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
-                /// </param>
+                /// <param name="parent"><c>null</c></param>
                 public virtual CreateRequest Create(Google.Apis.DataManager.v1.Data.UserListGlobalLicense body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>
-                /// Creates a user list global license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 public class CreateRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserListGlobalLicense>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1184,10 +974,6 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The account that owns the user list being licensed. Should be in the format
-                    /// accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1221,18 +1007,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Retrieves a user list global license. This feature is only available to data partners.
-                /// </summary>
-                /// <param name="name">Required. The resource name of the user list global license.</param>
+                /// <summary></summary>
+                /// <param name="name"><c>null</c></param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>
-                /// Retrieves a user list global license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 public class GetRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserListGlobalLicense>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1242,7 +1024,6 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The resource name of the user list global license.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1270,23 +1051,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Lists all user list global licenses owned by the parent account. This feature is only available to
-                /// data partners.
-                /// </summary>
-                /// <param name="parent">
-                /// Required. The account whose licenses are being queried. Should be in the format
-                /// accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
-                /// </param>
+                /// <summary></summary>
+                /// <param name="parent"><c>null</c></param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>
-                /// Lists all user list global licenses owned by the parent account. This feature is only available to
-                /// data partners.
-                /// </summary>
+                /// <summary></summary>
                 public class ListRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.ListUserListGlobalLicensesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1296,40 +1068,15 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The account whose licenses are being queried. Should be in the format
-                    /// accountTypes/{ACCOUNT_TYPE}/accounts/{ACCOUNT_ID}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Optional. A [filter string](https://google.aip.dev/160) to apply to the list request. All fields
-                    /// need to be on the left hand side of each condition (for example: `user_list_id = 123`). Fields
-                    /// must be specified using either all [camel case](https://en.wikipedia.org/wiki/Camel_case) or all
-                    /// [snake case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case
-                    /// and snake case. **Supported Operations:** - `AND` - `=` - `!=` - `&amp;gt;` - `&amp;gt;=` -
-                    /// `&amp;lt;` - `&amp;lt;=` **Supported Functions:** - `IN(field, value1, value2, ...)`: returns
-                    /// true if the field matches any of the values. Example: `IN(user_list_id, 123, 456)` **Unsupported
-                    /// Fields:** - `name` (use get method instead) - `historical_pricings` and all its subfields -
-                    /// `pricing.start_time` - `pricing.end_time`
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>
-                    /// Optional. The maximum number of licenses to return. The service may return fewer than this
-                    /// value. If unspecified, at most 50 licenses will be returned. The maximum value is 1000; values
-                    /// above 1000 will be coerced to 1000.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>
-                    /// Optional. A page token, received from a previous `ListUserListGlobalLicense` call. Provide this
-                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
-                    /// `ListUserListDirectLicense` must match the call that provided the page token.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1381,19 +1128,15 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Updates a user list global license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Identifier. The resource name of the user list global license.</param>
+                /// <param name="name"><c>null</c></param>
                 public virtual PatchRequest Patch(Google.Apis.DataManager.v1.Data.UserListGlobalLicense body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>
-                /// Updates a user list global license. This feature is only available to data partners.
-                /// </summary>
+                /// <summary></summary>
                 public class PatchRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserListGlobalLicense>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1404,14 +1147,9 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>Identifier. The resource name of the user list global license.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Optional. The list of fields to update. The special character `*` is not supported and an
-                    /// `INVALID_UPDATE_MASK` error will be thrown if used.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -1471,32 +1209,15 @@ namespace Google.Apis.DataManager.v1
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Creates a UserList. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The parent account where this user list will be created. Format:
-                /// accountTypes/{account_type}/accounts/{account}
-                /// </param>
+                /// <param name="parent"><c>null</c></param>
                 public virtual CreateRequest Create(Google.Apis.DataManager.v1.Data.UserList body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>
-                /// Creates a UserList. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class CreateRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserList>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1507,14 +1228,9 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The parent account where this user list will be created. Format:
-                    /// accountTypes/{account_type}/accounts/{account}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. If true, the request is validated but not executed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -1556,31 +1272,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Deletes a UserList. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
-                /// <param name="name">
-                /// Required. The name of the user list to delete. Format:
-                /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
-                /// </param>
+                /// <summary></summary>
+                /// <param name="name"><c>null</c></param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>
-                /// Deletes a UserList. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class DeleteRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1590,14 +1289,9 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The name of the user list to delete. Format:
-                    /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. If true, the request is validated but not executed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -1633,31 +1327,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Gets a UserList. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
-                /// <param name="name">
-                /// Required. The resource name of the UserList to retrieve. Format:
-                /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
-                /// </param>
+                /// <summary></summary>
+                /// <param name="name"><c>null</c></param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>
-                /// Gets a UserList. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class GetRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserList>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1667,10 +1344,6 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The resource name of the UserList to retrieve. Format:
-                    /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1698,31 +1371,14 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Lists UserLists. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
-                /// <param name="parent">
-                /// Required. The parent account which owns this collection of user lists. Format:
-                /// accountTypes/{account_type}/accounts/{account}
-                /// </param>
+                /// <summary></summary>
+                /// <param name="parent"><c>null</c></param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>
-                /// Lists UserLists. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class ListRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.ListUserListsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1732,40 +1388,15 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The parent account which owns this collection of user lists. Format:
-                    /// accountTypes/{account_type}/accounts/{account}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Optional. A [filter string](https://google.aip.dev/160). All fields need to be on the left hand
-                    /// side of each condition (for example: `display_name = "list 1"`). Fields must be specified using
-                    /// either all [camel case](https://en.wikipedia.org/wiki/Camel_case) or all [snake
-                    /// case](https://en.wikipedia.org/wiki/Snake_case). Don't use a combination of camel case and snake
-                    /// case. Supported operations: - `AND` - `=` - `!=` - `&amp;gt;` - `&amp;gt;=` - `&amp;lt;` -
-                    /// `&amp;lt;=` - `:` (has) **Supported Functions:** - `IN(field, value1, value2, ...)`: returns
-                    /// true if the field matches any of the values. Example: `IN(display_name, "name1", "name2")`
-                    /// Supported fields: - `id` - `display_name` - `description` - `membership_status` -
-                    /// `integration_code` - `access_reason` - `ingested_user_list_info.upload_key_types`
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>
-                    /// Optional. The maximum number of user lists to return. The service may return fewer than this
-                    /// value. If unspecified, at most 50 user lists will be returned. The maximum value is 1000; values
-                    /// above 1000 will be coerced to 1000.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>
-                    /// Optional. A page token, received from a previous `ListUserLists` call. Provide this to retrieve
-                    /// the subsequent page. When paginating, all other parameters provided to `ListUserLists` must
-                    /// match the call that provided the page token.
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1817,32 +1448,15 @@ namespace Google.Apis.DataManager.v1
                     }
                 }
 
-                /// <summary>
-                /// Updates a UserList. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Identifier. The resource name of the user list. Format:
-                /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
-                /// </param>
+                /// <param name="name"><c>null</c></param>
                 public virtual PatchRequest Patch(Google.Apis.DataManager.v1.Data.UserList body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>
-                /// Updates a UserList. Authorization Headers: This method supports the following optional headers to
-                /// define how the API authorizes access for the request: * `login-account`: (Optional) The resource
-                /// name of the account where the Google Account of the credentials is a user. If not set, defaults to
-                /// the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` *
-                /// `linked-account`: (Optional) The resource name of the account with an established product link to
-                /// the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-                /// </summary>
+                /// <summary></summary>
                 public class PatchRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.UserList>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1853,18 +1467,12 @@ namespace Google.Apis.DataManager.v1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Identifier. The resource name of the user list. Format:
-                    /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
-                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The list of fields to update.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
-                    /// <summary>Optional. If true, the request is validated but not executed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -1931,20 +1539,14 @@ namespace Google.Apis.DataManager.v1
             this.service = service;
         }
 
-        /// <summary>
-        /// Uploads a list of AdEvent resources to Google Analytics. This feature is only available to accounts on an
-        /// allowlist.
-        /// </summary>
+        /// <summary></summary>
         /// <param name="body">The body of the request.</param>
         public virtual IngestRequest Ingest(Google.Apis.DataManager.v1.Data.IngestAdEventsRequest body)
         {
             return new IngestRequest(this.service, body);
         }
 
-        /// <summary>
-        /// Uploads a list of AdEvent resources to Google Analytics. This feature is only available to accounts on an
-        /// allowlist.
-        /// </summary>
+        /// <summary></summary>
         public class IngestRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.IngestAdEventsResponse>
         {
             /// <summary>Constructs a new Ingest request.</summary>
@@ -1991,14 +1593,14 @@ namespace Google.Apis.DataManager.v1
             this.service = service;
         }
 
-        /// <summary>Uploads a list of AudienceMember resources to the provided Destination.</summary>
+        /// <summary></summary>
         /// <param name="body">The body of the request.</param>
         public virtual IngestRequest Ingest(Google.Apis.DataManager.v1.Data.IngestAudienceMembersRequest body)
         {
             return new IngestRequest(this.service, body);
         }
 
-        /// <summary>Uploads a list of AudienceMember resources to the provided Destination.</summary>
+        /// <summary></summary>
         public class IngestRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.IngestAudienceMembersResponse>
         {
             /// <summary>Constructs a new Ingest request.</summary>
@@ -2030,14 +1632,14 @@ namespace Google.Apis.DataManager.v1
             }
         }
 
-        /// <summary>Removes a list of AudienceMember resources from the provided Destination.</summary>
+        /// <summary></summary>
         /// <param name="body">The body of the request.</param>
         public virtual RemoveRequest Remove(Google.Apis.DataManager.v1.Data.RemoveAudienceMembersRequest body)
         {
             return new RemoveRequest(this.service, body);
         }
 
-        /// <summary>Removes a list of AudienceMember resources from the provided Destination.</summary>
+        /// <summary></summary>
         public class RemoveRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.RemoveAudienceMembersResponse>
         {
             /// <summary>Constructs a new Remove request.</summary>
@@ -2069,14 +1671,14 @@ namespace Google.Apis.DataManager.v1
             }
         }
 
-        /// <summary>Removes all audience members from the provided destinations.</summary>
+        /// <summary></summary>
         /// <param name="body">The body of the request.</param>
         public virtual RemoveAllRequest RemoveAll(Google.Apis.DataManager.v1.Data.RemoveAllAudienceMembersRequest body)
         {
             return new RemoveAllRequest(this.service, body);
         }
 
-        /// <summary>Removes all audience members from the provided destinations.</summary>
+        /// <summary></summary>
         public class RemoveAllRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.RemoveAllAudienceMembersResponse>
         {
             /// <summary>Constructs a new RemoveAll request.</summary>
@@ -2123,14 +1725,14 @@ namespace Google.Apis.DataManager.v1
             this.service = service;
         }
 
-        /// <summary>Uploads a list of Event resources from the provided Destination.</summary>
+        /// <summary></summary>
         /// <param name="body">The body of the request.</param>
         public virtual IngestRequest Ingest(Google.Apis.DataManager.v1.Data.IngestEventsRequest body)
         {
             return new IngestRequest(this.service, body);
         }
 
-        /// <summary>Uploads a list of Event resources from the provided Destination.</summary>
+        /// <summary></summary>
         public class IngestRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.IngestEventsResponse>
         {
             /// <summary>Constructs a new Ingest request.</summary>
@@ -2177,13 +1779,13 @@ namespace Google.Apis.DataManager.v1
             this.service = service;
         }
 
-        /// <summary>Gets the status of a request given request id.</summary>
+        /// <summary></summary>
         public virtual RetrieveRequest Retrieve()
         {
             return new RetrieveRequest(this.service);
         }
 
-        /// <summary>Gets the status of a request given request id.</summary>
+        /// <summary></summary>
         public class RetrieveRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.RetrieveRequestStatusResponse>
         {
             /// <summary>Constructs a new Retrieve request.</summary>
@@ -2192,7 +1794,6 @@ namespace Google.Apis.DataManager.v1
                 InitParameters();
             }
 
-            /// <summary>Required. Required. The request ID of the Data Manager API request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2223,137 +1824,98 @@ namespace Google.Apis.DataManager.v1
 }
 namespace Google.Apis.DataManager.v1.Data
 {
-    /// <summary>An ad event.</summary>
     public class AdEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enum value for ad format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adFormat")]
         public virtual string AdFormat { get; set; }
 
-        /// <summary>String value for ad format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adFormatString")]
         public virtual string AdFormatString { get; set; }
 
-        /// <summary>Optional. The ID of the associated ad group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
         public virtual string AdGroupId { get; set; }
 
-        /// <summary>Optional. The height of the ad in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adHeight")]
         public virtual System.Nullable<int> AdHeight { get; set; }
 
-        /// <summary>Optional. The ID of the associated ad within the group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adId")]
         public virtual string AdId { get; set; }
 
-        /// <summary>Enum value for ad placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adPlacement")]
         public virtual string AdPlacement { get; set; }
 
-        /// <summary>String value for ad placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adPlacementString")]
         public virtual string AdPlacementString { get; set; }
 
-        /// <summary>Enum value for ad type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adType")]
         public virtual string AdType { get; set; }
 
-        /// <summary>String value for ad type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adTypeString")]
         public virtual string AdTypeString { get; set; }
 
-        /// <summary>Optional. The width of the ad in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adWidth")]
         public virtual System.Nullable<int> AdWidth { get; set; }
 
-        /// <summary>
-        /// Required. The ID of the advertiser for the ad event. This must match the ID sent in the linking flow.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual string AdvertiserId { get; set; }
 
-        /// <summary>
-        /// Optional. The partner-assumed attribution status for this ad event. This acts only as a signal for how the
-        /// partner assumed attribution played out, and does not force an end result in final reports.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionHint")]
         public virtual string AttributionHint { get; set; }
 
-        /// <summary>Required. The ID of the associated campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
         public virtual string CampaignId { get; set; }
 
-        /// <summary>Required. The name of the associated campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignName")]
         public virtual string CampaignName { get; set; }
 
-        /// <summary>Required. Information gathered about the device being used when the ad event happened.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceInfo")]
         public virtual DeviceInfo DeviceInfo { get; set; }
 
-        /// <summary>
-        /// Optional. An ID created and managed by the caller that uniquely identifies this event. Required if you want
-        /// to deduplicate ad events that are included in multiple requests. Otherwise, this field is optional.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
         public virtual string EventId { get; set; }
 
-        /// <summary>Enum value for event subtype.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventSubtype")]
         public virtual string EventSubtype { get; set; }
 
-        /// <summary>String value for event subtype.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventSubtypeString")]
         public virtual string EventSubtypeString { get; set; }
 
-        /// <summary>Required. The type of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
-        /// <summary>
-        /// Optional. Represents if the row is allowed to be used for measurement purposes, as governed by applicable
-        /// privacy laws within regional jurisdiction.
-        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("measurementAllowed")]
         public virtual System.Nullable<bool> MeasurementAllowed { get; set; }
 
-        /// <summary>Required. The medium of the ad, akin to the Google Analytics medium.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
 
-        /// <summary>Optional. The device ID of the device that the ad was served to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
         public virtual string MobileDeviceId { get; set; }
 
-        /// <summary>Enum value for platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual string Platform { get; set; }
 
-        /// <summary>String value for platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformString")]
         public virtual string PlatformString { get; set; }
 
-        /// <summary>Enum value for platform type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
         public virtual string PlatformType { get; set; }
 
-        /// <summary>String value for platform type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformTypeString")]
         public virtual string PlatformTypeString { get; set; }
 
-        /// <summary>Optional. The ISO 3166-2 country plus subdivision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
-        /// <summary>Required. The platform source of the ad, akin to the Google Analytics source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
-        /// <summary>Enum value for targeting type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingType")]
         public virtual string TargetingType { get; set; }
 
-        /// <summary>String value for targeting type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingTypeString")]
         public virtual string TargetingTypeString { get; set; }
 
@@ -2361,7 +1923,6 @@ namespace Google.Apis.DataManager.v1.Data
 
         private object _timestamp;
 
-        /// <summary>Required. The time the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual string TimestampRaw
         {
@@ -2394,15 +1955,9 @@ namespace Google.Apis.DataManager.v1.Data
             set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Optional. Multiple pieces of user-provided data, representing the user the event is associated with. It is
-        /// possible to provide multiple instances of the same type of data (e.g. email address). The more data
-        /// provided, the more likely a match will be found.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userData")]
         public virtual UserData UserData { get; set; }
 
-        /// <summary>Required. Details of the viewability of the ad served.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityInfo")]
         public virtual ViewabilityInfo ViewabilityInfo { get; set; }
 
@@ -2410,61 +1965,41 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Identifiers and other information used to match the conversion event with other online activity (such as ad
-    /// clicks).
-    /// </summary>
     public class AdIdentifiers : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The display click ID associated with this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dclid")]
         public virtual string Dclid { get; set; }
 
-        /// <summary>Optional. Any number of encrypted user IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedUserIds")]
         public virtual System.Collections.Generic.IList<EncryptedUserId> EncryptedUserIds { get; set; }
 
-        /// <summary>
-        /// Optional. The click identifier for clicks associated with app events and originating from iOS devices
-        /// starting with iOS14.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gbraid")]
         public virtual string Gbraid { get; set; }
 
-        /// <summary>Optional. The Google click ID (gclid) associated with this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gclid")]
         public virtual string Gclid { get; set; }
 
-        /// <summary>Optional. The impression ID associated with this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionId")]
         public virtual string ImpressionId { get; set; }
 
-        /// <summary>
-        /// Optional. Information gathered about the device being used (if any) at the time of landing onto the
-        /// advertiser’s site after interacting with the ad.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageDeviceInfo")]
         public virtual DeviceInfo LandingPageDeviceInfo { get; set; }
 
-        /// <summary>Optional. The match ID field used to join this event with a previous event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchId")]
         public virtual string MatchId { get; set; }
 
-        /// <summary>
-        /// Optional. The mobile identifier for advertisers. This would be IDFA on iOS, AdID on Android, or other
-        /// platforms’ identifiers for advertisers.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDeviceId")]
         public virtual string MobileDeviceId { get; set; }
 
-        /// <summary>Optional. Session attributes for event attribution and modeling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ppid")]
+        public virtual string Ppid { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAttributes")]
         public virtual string SessionAttributes { get; set; }
 
-        /// <summary>
-        /// Optional. The click identifier for clicks associated with web events and originating from iOS devices
-        /// starting with iOS14.
-        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitorPpid")]
+        public virtual string VisitorPpid { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("wbraid")]
         public virtual string Wbraid { get; set; }
 
@@ -2472,51 +2007,26 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Address information for the user.</summary>
     public class AddressInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The street and number of the user's address. Used only for Google Analytics. This field is hashed
-        /// and possibly encrypted. Normalize the value before hashing: - Remove symbol characters - Convert to
-        /// lowercase - Remove leading and trailing whitespace
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressLine")]
         public virtual string AddressLine { get; set; }
 
-        /// <summary>
-        /// Optional. The administrative area (state/province) of the user's address. Used only for Google Analytics.
-        /// The value should be normalized as such: - Remove symbol characters - Convert to lowercase - Remove leading
-        /// and trailing whitespace
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
         public virtual string AdministrativeArea { get; set; }
 
-        /// <summary>
-        /// Optional. The city of the user's address. Used only for Google Analytics. The value should be normalized as
-        /// such: - Remove symbol characters - Convert to lowercase - Remove leading and trailing whitespace
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; }
 
-        /// <summary>
-        /// Required. Family (last) name of the user, all lowercase, with no punctuation, no leading or trailing
-        /// whitespace, and hashed as SHA-256.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
         public virtual string FamilyName { get; set; }
 
-        /// <summary>
-        /// Required. Given (first) name of the user, all lowercase, with no punctuation, no leading or trailing
-        /// whitespace, and hashed as SHA-256.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
         public virtual string GivenName { get; set; }
 
-        /// <summary>Required. The postal code of the user's address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
         public virtual string PostalCode { get; set; }
 
-        /// <summary>Required. The 2-letter region code in ISO-3166-1 alpha-2 of the user's address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
@@ -2524,51 +2034,35 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The audience member to be operated on.</summary>
     public class AudienceMember : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Group of multiple identifier types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compositeData")]
         public virtual CompositeData CompositeData { get; set; }
 
-        /// <summary>Optional. The consent setting for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
-        /// <summary>Optional. Defines which Destination to send the audience member to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationReferences")]
         public virtual System.Collections.Generic.IList<string> DestinationReferences { get; set; }
 
-        /// <summary>Encrypted Google User IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdData")]
         public virtual GoogleUserIdData GoogleUserIdData { get; set; }
 
-        /// <summary>Data identifying the user's mobile devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileData")]
         public virtual MobileData MobileData { get; set; }
 
-        /// <summary>
-        /// [Publisher Advertiser Identity Reconciliation (PAIR) IDs](//support.google.com/admanager/answer/15067908).
-        /// This feature is only available to data partners.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairData")]
         public virtual PairData PairData { get; set; }
 
-        /// <summary>Partner-provided identifiers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdData")]
         public virtual PartnerProvidedIdData PartnerProvidedIdData { get; set; }
 
-        /// <summary>
-        /// Data related to publisher provided identifiers. This feature is only available to data partners.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ppidData")]
         public virtual PpidData PpidData { get; set; }
 
-        /// <summary>User-provided data that identifies the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userData")]
         public virtual UserData UserData { get; set; }
 
-        /// <summary>Data related to unique identifiers for a user, as defined by the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdData")]
         public virtual UserIdData UserIdData { get; set; }
 
@@ -2576,29 +2070,17 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A data encryption key wrapped by an AWS KMS key.</summary>
     public class AwsWrappedKeyInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The base64 encoded encrypted data encryption key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedDek")]
         public virtual string EncryptedDek { get; set; }
 
-        /// <summary>
-        /// Required. The URI of the AWS KMS key used to decrypt the DEK. Should be in the format of
-        /// `arn:{partition}:kms:{region}:{account_id}:key/{key_id}` or
-        /// `aws-kms://arn:{partition}:kms:{region}:{account_id}:key/{key_id}`
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kekUri")]
         public virtual string KekUri { get; set; }
 
-        /// <summary>Required. The type of algorithm used to encrypt the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
         public virtual string KeyType { get; set; }
 
-        /// <summary>
-        /// Required. The Amazon Resource Name of the IAM Role to assume for KMS decryption access. Should be in the
-        /// format of `arn:{partition}:iam::{account_id}:role/{role_name}`
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleArn")]
         public virtual string RoleArn { get; set; }
 
@@ -2606,18 +2088,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Baseline criteria against which insights are compared.</summary>
     public class Baseline : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The baseline location of the request. Baseline location is an OR-list of the requested regions.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baselineLocation")]
         public virtual Location BaselineLocation { get; set; }
 
-        /// <summary>
-        /// If set to true, the service will try to automatically detect the baseline location for insights.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationAutoDetectionEnabled")]
         public virtual System.Nullable<bool> LocationAutoDetectionEnabled { get; set; }
 
@@ -2625,37 +2100,23 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The cart data associated with the event.</summary>
     public class CartData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The list of coupon codes that were applied to the cart. Cart-level and item-level coupon codes are
-        /// independent. If the event is for a Google Analytics destination, only provide a single coupon code. Google
-        /// Analytics ignores additional coupon codes.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("couponCodes")]
         public virtual System.Collections.Generic.IList<string> CouponCodes { get; set; }
 
-        /// <summary>Optional. The list of items associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Item> Items { get; set; }
 
-        /// <summary>Optional. The Merchant Center feed label associated with the feed of the items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLabel")]
         public virtual string MerchantFeedLabel { get; set; }
 
-        /// <summary>
-        /// Optional. The language code in ISO 639-1 associated with the Merchant Center feed of the items.where your
-        /// items are uploaded.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLanguageCode")]
         public virtual string MerchantFeedLanguageCode { get; set; }
 
-        /// <summary>Optional. The Merchant Center ID associated with the items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual string MerchantId { get; set; }
 
-        /// <summary>Optional. The sum of all discounts associated with the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionDiscount")]
         public virtual System.Nullable<double> TransactionDiscount { get; set; }
 
@@ -2663,17 +2124,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Composite data holding identifiers and associated data for a user. At least one of `user_data` or `ip_data` is
-    /// required.
-    /// </summary>
     public class CompositeData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. IP address data representing customer interaction used to build the audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipData")]
         public virtual System.Collections.Generic.IList<IpData> IpData { get; set; }
 
-        /// <summary>Optional. User-provided data that identifies the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userData")]
         public virtual UserData UserData { get; set; }
 
@@ -2681,16 +2136,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// [Digital Markets Act (DMA)](//digital-markets-act.ec.europa.eu/index_en) consent settings for the user.
-    /// </summary>
     public class Consent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Represents if the user consents to ad personalization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adPersonalization")]
         public virtual string AdPersonalization { get; set; }
 
-        /// <summary>Optional. Represents if the user consents to ad user data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adUserData")]
         public virtual string AdUserData { get; set; }
 
@@ -2698,14 +2148,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Additional information when `CONTACT_ID` is one of the `upload_key_types`.</summary>
     public class ContactIdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Immutable. Source of the upload data</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
         public virtual string DataSourceType { get; set; }
 
-        /// <summary>Output only. Match rate for customer match user lists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchRatePercentage")]
         public virtual System.Nullable<int> MatchRatePercentage { get; set; }
 
@@ -2713,10 +2160,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about the coordinator key.</summary>
     public class CoordinatorKeyInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ID of the chosen coordinator key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
         public virtual string KeyId { get; set; }
 
@@ -2724,24 +2169,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Custom variable for ads conversions.</summary>
     public class CustomVariable : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Reference string used to determine which of the Event.destination_references the custom variable
-        /// should be sent to. If empty, the Event.destination_references will be used.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationReferences")]
         public virtual System.Collections.Generic.IList<string> DestinationReferences { get; set; }
 
-        /// <summary>Optional. The value to store for the custom variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
-        /// <summary>
-        /// Optional. The name of the custom variable to set. If the variable is not found for the given destination, it
-        /// will be ignored.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual string Variable { get; set; }
 
@@ -2749,14 +2184,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The count for a specific data type.</summary>
     public class DataTypeCount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The count for this data type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
-        /// <summary>The type of data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -2764,41 +2196,20 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The Google product you're sending data to. For example, a Google Ads account.</summary>
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. An account that the calling user's `login_account` has access to, through an established account
-        /// link. For example, a data partner's `login_account` might have access to a client's `linked_account`. The
-        /// partner might use this field to send data from the `linked_account` to another `operating_account`.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccount")]
         public virtual ProductAccount LinkedAccount { get; set; }
 
-        /// <summary>
-        /// Optional. The account used to make this API call. To add or remove data from the `operating_account`, this
-        /// `login_account` must have write access to the `operating_account`. For example, a manager account of the
-        /// `operating_account`, or an account with an established link to the `operating_account`.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginAccount")]
         public virtual ProductAccount LoginAccount { get; set; }
 
-        /// <summary>Required. The account to send the data to or remove the data from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingAccount")]
         public virtual ProductAccount OperatingAccount { get; set; }
 
-        /// <summary>
-        /// Optional. The object within the product account to ingest into. For example, a Google Ads audience ID, a
-        /// Display &amp;amp; Video 360 audience ID or a Google Ads conversion action ID. This field is optional for
-        /// Google Ad Manager event ingestion and User ingestion. Required for all other use cases.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDestinationId")]
         public virtual string ProductDestinationId { get; set; }
 
-        /// <summary>
-        /// Optional. ID for this `Destination` resource, unique within the request. Use to reference this `Destination`
-        /// in the IngestEventsRequest and IngestAudienceMembersRequest.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reference")]
         public virtual string Reference { get; set; }
 
@@ -2806,56 +2217,41 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about the device being used (if any) when the event happened.</summary>
     public class DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The brand of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }
 
-        /// <summary>Optional. The brand or type of the browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browser")]
         public virtual string Browser { get; set; }
 
-        /// <summary>Optional. The version of the browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserVersion")]
         public virtual string BrowserVersion { get; set; }
 
-        /// <summary>Optional. The category of device. For example, “desktop”, “tablet”, “mobile”, “smart TV”.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
-        /// <summary>
-        /// Optional. The IP address of the device for the given context. Required when used in an AdEvent.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
-        /// <summary>Optional. The language the device uses in ISO 639-1 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
-        /// <summary>Optional. The model of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
-        /// <summary>Optional. The operating system or platform of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
         public virtual string OperatingSystem { get; set; }
 
-        /// <summary>Optional. The version of the operating system or platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemVersion")]
         public virtual string OperatingSystemVersion { get; set; }
 
-        /// <summary>Optional. The height of the screen in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenHeight")]
         public virtual System.Nullable<int> ScreenHeight { get; set; }
 
-        /// <summary>Optional. The width of the screen in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenWidth")]
         public virtual System.Nullable<int> ScreenWidth { get; set; }
 
-        /// <summary>Optional. The user-agent string of the device for the given context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; }
 
@@ -2863,42 +2259,23 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
-    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
-    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A user identifier issued to be used for attribution. All fields are required if this is used.</summary>
     public class EncryptedUserId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The alphanumeric encrypted id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedId")]
         public virtual string EncryptedId { get; set; }
 
-        /// <summary>
-        /// Required. The encryption entity ID. This should match the encryption configuration for ad serving or Data
-        /// Transfer.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
         public virtual System.Nullable<long> EntityId { get; set; }
 
-        /// <summary>
-        /// Required. The encryption entity type. This should match the encryption configuration for ad serving or Data
-        /// Transfer.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
         public virtual string EntityType { get; set; }
 
-        /// <summary>
-        /// Required. Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data
-        /// Transfer.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
@@ -2906,21 +2283,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Encryption information for the data being ingested.</summary>
     public class EncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Amazon Web Services wrapped key information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsWrappedKeyInfo")]
         public virtual AwsWrappedKeyInfo AwsWrappedKeyInfo { get; set; }
 
-        /// <summary>
-        /// Key information for the chosen coordinator key. This is not supported for the IngestEvents,
-        /// IngestAudienceMembers, and RemoveAudienceMembers methods.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coordinatorKeyInfo")]
         public virtual CoordinatorKeyInfo CoordinatorKeyInfo { get; set; }
 
-        /// <summary>Google Cloud Platform wrapped key information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpWrappedKeyInfo")]
         public virtual GcpWrappedKeyInfo GcpWrappedKeyInfo { get; set; }
 
@@ -2928,14 +2298,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The error count for a given error reason.</summary>
     public class ErrorCount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The error reason of the failed records.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
-        /// <summary>The count of records that failed to upload for a given reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -2943,10 +2310,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Error counts for each type of error.</summary>
     public class ErrorInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of errors and counts per error reason. May not be populated in all cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCounts")]
         public virtual System.Collections.Generic.IList<ErrorCount> ErrorCounts { get; set; }
 
@@ -2954,89 +2319,50 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An event representing a user interaction with an advertiser's website or app.</summary>
     public class Event : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Identifiers and other information used to match the conversion event with other online activity
-        /// (such as ad clicks).
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adIdentifiers")]
         public virtual AdIdentifiers AdIdentifiers { get; set; }
 
-        /// <summary>
-        /// Optional. A bucket of any [event
-        /// parameters](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events) to
-        /// be included within the event that were not already specified using other structured fields.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalEventParameters")]
         public virtual System.Collections.Generic.IList<EventParameter> AdditionalEventParameters { get; set; }
 
-        /// <summary>
-        /// Optional. A unique identifier for the user instance of an app client for this GA4 app stream.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appInstanceId")]
         public virtual string AppInstanceId { get; set; }
 
-        /// <summary>Optional. Information about the transaction and items associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cartData")]
         public virtual CartData CartData { get; set; }
 
-        /// <summary>
-        /// Optional. A unique identifier for the user instance of a web client for this GA4 web stream.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
-        /// <summary>
-        /// Optional. Information about whether the associated user has provided different types of consent.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
-        /// <summary>
-        /// Optional. The conversion quantity associated with the event, for counting-based conversions.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionCount")]
         public virtual System.Nullable<double> ConversionCount { get; set; }
 
-        /// <summary>Optional. The conversion value associated with the event, for value-based conversions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionValue")]
         public virtual System.Nullable<double> ConversionValue { get; set; }
 
-        /// <summary>Optional. The currency code associated with all monetary values within this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
         public virtual string Currency { get; set; }
 
-        /// <summary>
-        /// Optional. Additional key/value pair information to send to the conversion containers (conversion action or
-        /// FL activity).
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
         public virtual System.Collections.Generic.IList<CustomVariable> CustomVariables { get; set; }
 
-        /// <summary>
-        /// Optional. Reference string used to determine the destination. If empty, the event will be sent to all
-        /// destinations in the request.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationReferences")]
         public virtual System.Collections.Generic.IList<string> DestinationReferences { get; set; }
 
-        /// <summary>
-        /// Optional. Information gathered about the device being used (if any) when the event happened.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventDeviceInfo")]
         public virtual DeviceInfo EventDeviceInfo { get; set; }
 
-        /// <summary>Optional. Information gathered about the location of the user when this event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventLocation")]
         public virtual EventLocation EventLocation { get; set; }
 
-        /// <summary>Optional. The name of the event. Required for GA4 events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
         public virtual string EventName { get; set; }
 
-        /// <summary>Optional. Signal for where the event happened (web, app, in-store, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventSource")]
         public virtual string EventSource { get; set; }
 
@@ -3044,7 +2370,6 @@ namespace Google.Apis.DataManager.v1.Data
 
         private object _eventTimestamp;
 
-        /// <summary>Required. The time the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTimestamp")]
         public virtual string EventTimestampRaw
         {
@@ -3079,10 +2404,6 @@ namespace Google.Apis.DataManager.v1.Data
             set => EventTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Optional. A list of key/value pairs for experimental fields that may eventually be promoted to be part of
-        /// the API.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentalFields")]
         public virtual System.Collections.Generic.IList<ExperimentalField> ExperimentalFields { get; set; }
 
@@ -3090,7 +2411,6 @@ namespace Google.Apis.DataManager.v1.Data
 
         private object _lastUpdatedTimestamp;
 
-        /// <summary>Optional. The last time the event was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestamp")]
         public virtual string LastUpdatedTimestampRaw
         {
@@ -3125,33 +2445,18 @@ namespace Google.Apis.DataManager.v1.Data
             set => LastUpdatedTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Optional. The same type of data provided in user_data, but explicitly flagged as being provided as owned by
-        /// a third-party and not first-party advertiser data.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyUserData")]
         public virtual UserData ThirdPartyUserData { get; set; }
 
-        /// <summary>
-        /// Optional. The unique identifier for this event. Required for events sent as an additional data source for
-        /// tag conversions.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
         public virtual string TransactionId { get; set; }
 
-        /// <summary>
-        /// Optional. Pieces of user provided data, representing the user the event is associated with.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userData")]
         public virtual UserData UserData { get; set; }
 
-        /// <summary>Optional. A unique identifier for a user, as defined by the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
 
-        /// <summary>
-        /// Optional. Advertiser-assessed information about the user at the time that the event happened.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProperties")]
         public virtual UserProperties UserProperties { get; set; }
 
@@ -3159,32 +2464,23 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The location where the event occurred.</summary>
     public class EventLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The name of the city where the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; }
 
-        /// <summary>Optional. The continent code in UN M49 format where the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continentCode")]
         public virtual string ContinentCode { get; set; }
 
-        /// <summary>Optional. The 2-letter CLDR region code of the user's address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
-        /// <summary>
-        /// Optional. Required for Store Sales. The identifier to represent a physical store where the event happened.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeId")]
         public virtual string StoreId { get; set; }
 
-        /// <summary>Optional. The subcontinent code in UN M49 format where the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subcontinentCode")]
         public virtual string SubcontinentCode { get; set; }
 
-        /// <summary>Optional. The ISO 3166-2 subdivision code where the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subdivisionCode")]
         public virtual string SubdivisionCode { get; set; }
 
@@ -3192,14 +2488,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Event parameter for GA4 events.</summary>
     public class EventParameter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the parameter to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
         public virtual string ParameterName { get; set; }
 
-        /// <summary>Required. The string representation of the value of the parameter to set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3207,14 +2500,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Experimental field representing unofficial fields.</summary>
     public class ExperimentalField : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The name of the field to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
-        /// <summary>Optional. The value the field to set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3222,21 +2512,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Detailed row-level warning with field paths.</summary>
     public class FieldWarning : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The detailed warning message describing the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// The field path that triggered the warning. Uses the same format as
-        /// google.rpc.BadRequest.FieldViolation.field.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
-        /// <summary>The warning reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
@@ -3244,30 +2527,17 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about the Google Cloud Platform wrapped key.</summary>
     public class GcpWrappedKeyInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The base64 encoded encrypted data encryption key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedDek")]
         public virtual string EncryptedDek { get; set; }
 
-        /// <summary>
-        /// Required. Google Cloud Platform [Cloud Key Management Service resource
-        /// ID](//cloud.google.com/kms/docs/getting-resource-ids). Should be in the format of
-        /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}` or
-        /// `gcp-kms://projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}`
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kekUri")]
         public virtual string KekUri { get; set; }
 
-        /// <summary>Required. The type of algorithm used to encrypt the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
         public virtual string KeyType { get; set; }
 
-        /// <summary>
-        /// Required. The [Workload Identity](//cloud.google.com/iam/docs/workload-identity-federation) pool provider
-        /// required to use KEK.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wipProvider")]
         public virtual string WipProvider { get; set; }
 
@@ -3275,12 +2545,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Google user id data holding encrypted google user IDs. At least one google user ID is required.
-    /// </summary>
     public class GoogleUserIdData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The list of encrypted google user IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleUserIds")]
         public virtual System.Collections.Generic.IList<string> GoogleUserIds { get; set; }
 
@@ -3288,18 +2554,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to upload ad events.</summary>
     public class IngestAdEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Required (at least 1). A list of ad events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adEvents")]
         public virtual System.Collections.Generic.IList<AdEvent> AdEvents { get; set; }
 
-        /// <summary>Required. Information about encryption keys which are used to encrypt the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
         public virtual EncryptionInfo EncryptionInfo { get; set; }
 
-        /// <summary>Optional. If true, the request is validated, but not executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -3307,61 +2569,32 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from an ad event ingestion operation.</summary>
     public class IngestAdEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request to upload audience members to the provided destinations. Returns an IngestAudienceMembersResponse.
-    /// </summary>
     public class IngestAudienceMembersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The list of users to send to the specified destinations. At most 10000 AudienceMember resources
-        /// can be sent in a single request.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceMembers")]
         public virtual System.Collections.Generic.IList<AudienceMember> AudienceMembers { get; set; }
 
-        /// <summary>
-        /// Optional. Request-level consent to apply to all users in the request. User-level consent overrides
-        /// request-level consent, and can be specified in each AudienceMember.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
-        /// <summary>Required. The list of destinations to send the audience members to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
 
-        /// <summary>
-        /// Optional. Required for UserData uploads. The encoding type of the user identifiers. For hashed user
-        /// identifiers, this is the encoding type of the hashed string. For encrypted hashed user identifiers, this is
-        /// the encoding type of the outer encrypted string, but not necessarily the inner hashed string, meaning the
-        /// inner hashed string could be encoded in a different way than the outer encrypted string. For non `UserData`
-        /// uploads, this field is ignored.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
-        /// <summary>
-        /// Optional. Encryption information for UserData uploads. If not set, it's assumed that uploaded identifying
-        /// information is hashed but not encrypted. For non `UserData` uploads, this field is ignored.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
         public virtual EncryptionInfo EncryptionInfo { get; set; }
 
-        /// <summary>Optional. The terms of service that the user has accepted/rejected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("termsOfService")]
         public virtual TermsOfService TermsOfService { get; set; }
 
-        /// <summary>
-        /// Optional. For testing purposes. If `true`, the request is validated but not executed. Only errors are
-        /// returned, not results.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -3369,14 +2602,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the IngestAudienceMembersRequest.</summary>
     public class IngestAudienceMembersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Detailed row-level warnings with field paths.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldWarnings")]
         public virtual System.Collections.Generic.IList<FieldWarning> FieldWarnings { get; set; }
 
-        /// <summary>The auto-generated ID of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
@@ -3384,38 +2614,29 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the ingest audience members request.</summary>
     public class IngestAudienceMembersStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status of the composite data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compositeDataIngestionStatus")]
         public virtual IngestCompositeDataStatus CompositeDataIngestionStatus { get; set; }
 
-        /// <summary>The status of the google user id data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdDataIngestionStatus")]
         public virtual IngestGoogleUserIdDataStatus GoogleUserIdDataIngestionStatus { get; set; }
 
-        /// <summary>The status of the mobile data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDataIngestionStatus")]
         public virtual IngestMobileDataStatus MobileDataIngestionStatus { get; set; }
 
-        /// <summary>The status of the pair data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairDataIngestionStatus")]
         public virtual IngestPairDataStatus PairDataIngestionStatus { get; set; }
 
-        /// <summary>The status of the partner provided id data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdDataIngestionStatus")]
         public virtual IngestPartnerProvidedIdDataStatus PartnerProvidedIdDataIngestionStatus { get; set; }
 
-        /// <summary>The status of the ppid data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ppidDataIngestionStatus")]
         public virtual IngestPpidDataStatus PpidDataIngestionStatus { get; set; }
 
-        /// <summary>The status of the user data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDataIngestionStatus")]
         public virtual IngestUserDataStatus UserDataIngestionStatus { get; set; }
 
-        /// <summary>The status of the user id data ingestion to the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdDataIngestionStatus")]
         public virtual IngestUserIdDataStatus UserIdDataIngestionStatus { get; set; }
 
@@ -3423,26 +2644,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The status of the composite data ingestion to the destination containing stats related to the ingestion.
-    /// </summary>
     public class IngestCompositeDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of data types sent in the upload request for the destination, broken down by data type.
-        /// Includes all data types in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTypeCounts")]
         public virtual System.Collections.Generic.IList<DataTypeCount> DataTypeCounts { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the upload request for the destination. Includes all audience
-        /// members in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
-        /// <summary>The match rate range of the upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadMatchRateRange")]
         public virtual string UploadMatchRateRange { get; set; }
 
@@ -3450,50 +2659,23 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request to upload audience members to the provided destinations. Returns an IngestEventsResponse.
-    /// </summary>
     public class IngestEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Request-level consent to apply to all users in the request. User-level consent overrides
-        /// request-level consent, and can be specified in each Event.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
-        /// <summary>Required. The list of destinations to send the events to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
 
-        /// <summary>
-        /// Optional. Required for UserData uploads. The encoding type of the user identifiers. For hashed user
-        /// identifiers, this is the encoding type of the hashed string. For encrypted hashed user identifiers, this is
-        /// the encoding type of the outer encrypted string, but not necessarily the inner hashed string, meaning the
-        /// inner hashed string could be encoded in a different way than the outer encrypted string. For non `UserData`
-        /// uploads, this field is ignored.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
-        /// <summary>
-        /// Optional. Encryption information for UserData uploads. If not set, it's assumed that uploaded identifying
-        /// information is hashed but not encrypted. For non `UserData` uploads, this field is ignored.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
         public virtual EncryptionInfo EncryptionInfo { get; set; }
 
-        /// <summary>
-        /// Required. The list of events to send to the specified destinations. At most 2000 Event resources can be sent
-        /// in a single request.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<Event> Events { get; set; }
 
-        /// <summary>
-        /// Optional. For testing purposes. If `true`, the request is validated but not executed. Only errors are
-        /// returned, not results.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -3501,14 +2683,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the IngestEventsRequest.</summary>
     public class IngestEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Detailed row-level warnings with field paths.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldWarnings")]
         public virtual System.Collections.Generic.IList<FieldWarning> FieldWarnings { get; set; }
 
-        /// <summary>The auto-generated ID of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
@@ -3516,13 +2695,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the events ingestion to the destination.</summary>
     public class IngestEventsStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of events sent in the upload request. Includes all events in the request, regardless of
-        /// whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -3530,22 +2704,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The status of the google user id data ingestion to the destination containing stats related to the ingestion.
-    /// </summary>
     public class IngestGoogleUserIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of google user ids sent in the upload request for the destination. Includes all google user
-        /// ids in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdCount")]
         public virtual System.Nullable<long> GoogleUserIdCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the upload request for the destination. Includes all audience
-        /// members in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -3553,22 +2716,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The status of the mobile data ingestion to the destination containing stats related to the ingestion.
-    /// </summary>
     public class IngestMobileDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of mobile ids sent in the upload request for the destination. Includes all mobile ids in the
-        /// request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileIdCount")]
         public virtual System.Nullable<long> MobileIdCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the upload request for the destination. Includes all audience
-        /// members in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -3576,22 +2728,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The status of the pair data ingestion to the destination containing stats related to the ingestion.
-    /// </summary>
     public class IngestPairDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of pair ids sent in the upload request for the destination. Includes all pair ids in the
-        /// request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairIdCount")]
         public virtual System.Nullable<long> PairIdCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the upload request for the destination. Includes all audience
-        /// members in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -3599,23 +2740,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The status of the partner provided id data ingestion to the destination containing stats related to the
-    /// ingestion.
-    /// </summary>
     public class IngestPartnerProvidedIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of partner provided ids sent in the upload request for the destination. Includes all partner
-        /// provided ids in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdCount")]
         public virtual System.Nullable<long> PartnerProvidedIdCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the upload request for the destination. Includes all audience
-        /// members in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -3623,22 +2752,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The status of the ppid data ingestion to the destination containing stats related to the ingestion.
-    /// </summary>
     public class IngestPpidDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of ppids sent in the upload request for the destination. Includes all ppids in the request,
-        /// regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ppidCount")]
         public virtual System.Nullable<long> PpidCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the upload request for the destination. Includes all audience
-        /// members in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -3646,26 +2764,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The status of the user data ingestion to the destination containing stats related to the ingestion.
-    /// </summary>
     public class IngestUserDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of audience members sent in the upload request for the destination. Includes all audience
-        /// members in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
-        /// <summary>The match rate range of the upload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadMatchRateRange")]
         public virtual string UploadMatchRateRange { get; set; }
 
-        /// <summary>
-        /// The total count of user identifiers sent in the upload request for the destination. Includes all user
-        /// identifiers in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdentifierCount")]
         public virtual System.Nullable<long> UserIdentifierCount { get; set; }
 
@@ -3673,22 +2779,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The status of the user id data ingestion to the destination containing stats related to the ingestion.
-    /// </summary>
     public class IngestUserIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of audience members sent in the upload request for the destination. Includes all audience
-        /// members in the request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
-        /// <summary>
-        /// The total count of user ids sent in the upload request for the destination. Includes all user ids in the
-        /// request, regardless of whether they were successfully ingested or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdCount")]
         public virtual System.Nullable<long> UserIdCount { get; set; }
 
@@ -3696,39 +2791,26 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a user list that is populated by user provided data.</summary>
     public class IngestedUserListInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Additional information when `CONTACT_ID` is one of the `upload_key_types`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactIdInfo")]
         public virtual ContactIdInfo ContactIdInfo { get; set; }
 
-        /// <summary>Optional. Additional information when `MOBILE_ID` is one of the `upload_key_types`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileIdInfo")]
         public virtual MobileIdInfo MobileIdInfo { get; set; }
 
-        /// <summary>
-        /// Optional. Additional information when `PAIR_ID` is one of the `upload_key_types`. This feature is only
-        /// available to data partners.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairIdInfo")]
         public virtual PairIdInfo PairIdInfo { get; set; }
 
-        /// <summary>
-        /// Optional. Additional information for partner audiences. This feature is only available to data partners.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerAudienceInfo")]
         public virtual PartnerAudienceInfo PartnerAudienceInfo { get; set; }
 
-        /// <summary>Optional. Additional information for `PSEUDONYMOUS_ID` is one of the `upload_key_types`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pseudonymousIdInfo")]
         public virtual PseudonymousIdInfo PseudonymousIdInfo { get; set; }
 
-        /// <summary>Required. Immutable. Upload key types of this user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadKeyTypes")]
         public virtual System.Collections.Generic.IList<string> UploadKeyTypes { get; set; }
 
-        /// <summary>Optional. Additional information when `USER_ID` is one of the `upload_key_types`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdInfo")]
         public virtual UserIdInfo UserIdInfo { get; set; }
 
@@ -3736,16 +2818,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// IP address information for a user. We recommend including observe_start_time and observe_end_time to help
-    /// improve Customer Match match rates.
-    /// </summary>
     public class IpData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. IP address captured at the time of customer interaction. Accepts standard string formats for both
-        /// IPv4 and IPv6.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
@@ -3753,7 +2827,6 @@ namespace Google.Apis.DataManager.v1.Data
 
         private object _observeEndTime;
 
-        /// <summary>Optional. Last recorded interaction time from this IP address in a session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observeEndTime")]
         public virtual string ObserveEndTimeRaw
         {
@@ -3792,7 +2865,6 @@ namespace Google.Apis.DataManager.v1.Data
 
         private object _observeStartTime;
 
-        /// <summary>Optional. First recorded interaction time from this IP address in a session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observeStartTime")]
         public virtual string ObserveStartTimeRaw
         {
@@ -3831,66 +2903,35 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents an item in the cart associated with the event.</summary>
     public class Item : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. A bucket of any [event parameters related to an
-        /// item](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events) to be
-        /// included within the event that were not already specified using other structured fields.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalItemParameters")]
         public virtual System.Collections.Generic.IList<ItemParameter> AdditionalItemParameters { get; set; }
 
-        /// <summary>
-        /// Optional. The conversion value associated with this item within the event, for cases where the conversion
-        /// value is different for each item.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionValue")]
         public virtual System.Nullable<double> ConversionValue { get; set; }
 
-        /// <summary>
-        /// Optional. Additional key/value pair information to send to the conversion containers (conversion action or
-        /// Floodlight activity), when tracking per-item conversions.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customVariables")]
         public virtual System.Collections.Generic.IList<ItemCustomVariable> CustomVariables { get; set; }
 
-        /// <summary>Optional. A unique identifier to reference the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; }
 
-        /// <summary>
-        /// Optional. The feed label of the Merchant Center feed. If countries are still being used, the 2-letter
-        /// country code in ISO-3166-1 alpha-2 can be used instead. For Store Sales events this will override the value
-        /// set at the cart level. This field is ignored for other events.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLabel")]
         public virtual string MerchantFeedLabel { get; set; }
 
-        /// <summary>
-        /// Optional. The language code in ISO 639-1 associated with the Merchant Center feed where your items are
-        /// uploaded.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantFeedLanguageCode")]
         public virtual string MerchantFeedLanguageCode { get; set; }
 
-        /// <summary>
-        /// Optional. The Merchant Center ID associated with the item. For Store Sales events this will override the
-        /// value set at the cart level. This field is ignored for other events.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual string MerchantId { get; set; }
 
-        /// <summary>Optional. The product ID within the Merchant Center account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantProductId")]
         public virtual string MerchantProductId { get; set; }
 
-        /// <summary>Optional. The number of this item associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 
-        /// <summary>Optional. The unit price excluding tax, shipping, and any transaction level discounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
         public virtual System.Nullable<double> UnitPrice { get; set; }
 
@@ -3898,24 +2939,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Item-level custom variable for ads conversions.</summary>
     public class ItemCustomVariable : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Reference string used to determine which of the Event.destination_references the custom variable
-        /// should be sent to. If empty, the Event.destination_references will be used.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationReferences")]
         public virtual System.Collections.Generic.IList<string> DestinationReferences { get; set; }
 
-        /// <summary>Optional. The value to store for the custom variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
-        /// <summary>
-        /// Optional. The name of the custom variable to set. If the variable is not found for the given destination, it
-        /// will be ignored.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual string Variable { get; set; }
 
@@ -3923,18 +2954,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A bucket of any [event parameters related to an
-    /// item](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events) to be included
-    /// within the event that were not already specified using other structured fields.
-    /// </summary>
     public class ItemParameter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the parameter to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
         public virtual string ParameterName { get; set; }
 
-        /// <summary>Required. The string representation of the value of the parameter to set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -3942,17 +2966,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the ListUserListDirectLicensesRequest.</summary>
     public class ListUserListDirectLicensesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The licenses for the given user list in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListDirectLicenses")]
         public virtual System.Collections.Generic.IList<UserListDirectLicense> UserListDirectLicenses { get; set; }
 
@@ -3960,17 +2978,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the ListUserListGlobalLicensesCustomerInfoRequest.</summary>
     public class ListUserListGlobalLicenseCustomerInfosResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The customer information for the given license in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListGlobalLicenseCustomerInfos")]
         public virtual System.Collections.Generic.IList<UserListGlobalLicenseCustomerInfo> UserListGlobalLicenseCustomerInfos { get; set; }
 
@@ -3978,17 +2990,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the ListUserListGlobalLicensesRequest.</summary>
     public class ListUserListGlobalLicensesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The licenses for the given user list in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListGlobalLicenses")]
         public virtual System.Collections.Generic.IList<UserListGlobalLicense> UserListGlobalLicenses { get; set; }
 
@@ -3996,17 +3002,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ListUserLists.</summary>
     public class ListUserListsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The user lists from the specified account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLists")]
         public virtual System.Collections.Generic.IList<UserList> UserLists { get; set; }
 
@@ -4014,13 +3014,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The baseline location of the request. Baseline location is on OR-list of ISO 3166-1 alpha-2 region codes of the
-    /// requested regions.
-    /// </summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of ISO 3166-1 alpha-2 region codes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCodes")]
         public virtual System.Collections.Generic.IList<string> RegionCodes { get; set; }
 
@@ -4028,14 +3023,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Insights for marketing data. This feature is only available to data partners.</summary>
     public class MarketingDataInsight : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Insights for values of a given dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IList<MarketingDataInsightsAttribute> Attributes { get; set; }
 
-        /// <summary>The dimension to which the insight belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
         public virtual string Dimension { get; set; }
 
@@ -4043,24 +3035,17 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Insights for a collection of related attributes of the same dimension.</summary>
     public class MarketingDataInsightsAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Age range of the audience for which the lift is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; }
 
-        /// <summary>Gender of the audience for which the lift is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
 
-        /// <summary>
-        /// Measure of lift that the audience has for the attribute value as compared to the baseline. Range [0-1].
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lift")]
         public virtual System.Nullable<float> Lift { get; set; }
 
-        /// <summary>The user interest ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userInterestId")]
         public virtual System.Nullable<long> UserInterestId { get; set; }
 
@@ -4068,14 +3053,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Mobile IDs for the audience. At least one mobile ID is required.</summary>
     public class MobileData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The list of mobile device IDs (Android advertising ID, iOS IDFA for Customer Match user lists and
-        /// Android advertising ID, iOS IDFA, Xbox or Microsoft ID, Amazon Fire TV ID, Roku ID, Generic Device ID for
-        /// basic user lists). At most 10 `mobileIds` can be provided in a single AudienceMember.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileIds")]
         public virtual System.Collections.Generic.IList<string> MobileIds { get; set; }
 
@@ -4083,21 +3062,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Additional information when `MOBILE_ID` is one of the `upload_key_types`.</summary>
     public class MobileIdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. Immutable. A string that uniquely identifies a mobile application from which the data was
-        /// collected.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; }
 
-        /// <summary>Optional. Immutable. Source of the upload data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
         public virtual string DataSourceType { get; set; }
 
-        /// <summary>Required. Immutable. The key space of mobile IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keySpace")]
         public virtual string KeySpace { get; set; }
 
@@ -4105,17 +3077,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// [PAIR](//support.google.com/admanager/answer/15067908) IDs for the audience. At least one PAIR ID is required.
-    /// This feature is only available to data partners.
-    /// </summary>
     public class PairData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. Cleanroom-provided PII data, hashed with SHA256, and encrypted with an EC commutative cipher using
-        /// publisher key for the [PAIR]((//support.google.com/admanager/answer/15067908)) user list. At most 10
-        /// `pairIds` can be provided in a single AudienceMember.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairIds")]
         public virtual System.Collections.Generic.IList<string> PairIds { get; set; }
 
@@ -4123,44 +3086,20 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Additional information when `PAIR_ID` is one of the `upload_key_types`. This feature is only available to data
-    /// partners.
-    /// </summary>
     public class PairIdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The count of the advertiser's first party data records that have been uploaded to a clean room
-        /// provider. This does not signify the size of a PAIR user list.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserIdentifierCount")]
         public virtual System.Nullable<long> AdvertiserIdentifierCount { get; set; }
 
-        /// <summary>
-        /// Required. Immutable. Identifies a unique advertiser to publisher relationship with one clean room provider
-        /// or across multiple clean room providers.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cleanRoomIdentifier")]
         public virtual string CleanRoomIdentifier { get; set; }
 
-        /// <summary>
-        /// Required. This field denotes the percentage of membership match of this user list with the corresponding
-        /// publisher's first party data. Must be between 0 and 100 inclusive.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchRatePercentage")]
         public virtual System.Nullable<int> MatchRatePercentage { get; set; }
 
-        /// <summary>
-        /// Required. Immutable. Identifies the publisher that the Publisher Advertiser Identity Reconciliation user
-        /// list is reconciled with. This field is provided by the cleanroom provider and is only unique in the scope of
-        /// that cleanroom. This cannot be used as a global identifier across multiple cleanrooms.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherId")]
         public virtual System.Nullable<long> PublisherId { get; set; }
 
-        /// <summary>
-        /// Required. Descriptive name of the publisher to be displayed in the UI for a better targeting experience.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherName")]
         public virtual string PublisherName { get; set; }
 
@@ -4168,18 +3107,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Additional information for partner audiences. This feature is only available to data partners.
-    /// </summary>
     public class PartnerAudienceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The commerce partner name. Only allowed if `partner_audience_source` is `COMMERCE_AUDIENCE`.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commercePartner")]
         public virtual string CommercePartner { get; set; }
 
-        /// <summary>Required. Immutable. The source of the partner audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerAudienceSource")]
         public virtual string PartnerAudienceSource { get; set; }
 
@@ -4187,21 +3119,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a customer account in the partner's system.</summary>
     public class PartnerCustomerAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The identifier of the customer account in the partner's ID space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>Optional. The name of the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
         public virtual string AccountName { get; set; }
 
-        /// <summary>
-        /// Optional. The type of the account. Can be used to distinguish between advertiser accounts and business level
-        /// accounts, for example.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountType")]
         public virtual string AccountType { get; set; }
 
@@ -4209,46 +3134,26 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A partner link between an owning account and a partner account.</summary>
     public class PartnerLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Immutable. The set of features supported for the partner link. If not specified, the system
-        /// behavior defaults to FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureSet")]
         public virtual string FeatureSet { get; set; }
 
-        /// <summary>
-        /// Identifier. The name of the partner link. Format:
-        /// accountTypes/{account_type}/accounts/{account}/partnerLinks/{partner_link}
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The owning account granting access to the partner account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owningAccount")]
         public virtual ProductAccount OwningAccount { get; set; }
 
-        /// <summary>Required. The partner account granted access by the owning account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerAccount")]
         public virtual ProductAccount PartnerAccount { get; set; }
 
-        /// <summary>
-        /// Optional. The customer account in the partner system. This is required for partner links with the
-        /// FEATURE_SET_AD_EVENT_MANAGEMENT feature set.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerCustomerAccount")]
         public virtual PartnerCustomerAccount PartnerCustomerAccount { get; set; }
 
-        /// <summary>Output only. The partner link ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerLinkId")]
         public virtual string PartnerLinkId { get; set; }
 
-        /// <summary>
-        /// Optional. Metadata associated with the partner link. This is optional and only accepted for partner links
-        /// with the FEATURE_SET_AD_EVENT_MANAGEMENT.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerLinkMetadata")]
         public virtual PartnerLinkMetadata PartnerLinkMetadata { get; set; }
 
@@ -4256,10 +3161,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents metadata associated with a partner link.</summary>
     public class PartnerLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The list of implicit accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("implicitAccounts")]
         public virtual System.Collections.Generic.IList<PartnerCustomerAccount> ImplicitAccounts { get; set; }
 
@@ -4267,13 +3170,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Partner-provided data holding the partner-provided identifiers. At least one partner-provided identifier is
-    /// required.
-    /// </summary>
     public class PartnerProvidedIdData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The list of partner-provided identifiers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIds")]
         public virtual System.Collections.Generic.IList<string> PartnerProvidedIds { get; set; }
 
@@ -4281,13 +3179,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Publisher provided identifiers data holding the ppids. At least one ppid is required. This feature is only
-    /// available to data partners.
-    /// </summary>
     public class PpidData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The list of publisher provided identifiers for a user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ppids")]
         public virtual System.Collections.Generic.IList<string> Ppids { get; set; }
 
@@ -4295,21 +3188,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a specific account.</summary>
     public class ProductAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The ID of the account. For example, your Google Ads account ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>
-        /// Required. The type of the account. For example, `GOOGLE_ADS`. Either `account_type` or the deprecated
-        /// `product` is required. If both are set, the values must match.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountType")]
         public virtual string AccountType { get; set; }
 
-        /// <summary>Deprecated. Use `account_type` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual string Product { get; set; }
 
@@ -4317,14 +3203,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Additional information when `PSEUDONYMOUS_ID` is one of the `upload_key_types`.</summary>
     public class PseudonymousIdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Immutable. The number of billable records (e.g. uploaded or matched).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billableRecordCount")]
         public virtual System.Nullable<long> BillableRecordCount { get; set; }
 
-        /// <summary>Output only. Sync status of the user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncStatus")]
         public virtual string SyncStatus { get; set; }
 
@@ -4332,13 +3215,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request to remove all users from an audience in the provided destinations. Returns a
-    /// RemoveAllAudienceMembersResponse.
-    /// </summary>
     public class RemoveAllAudienceMembersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The list of destinations to remove the users from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
 
@@ -4346,10 +3224,6 @@ namespace Google.Apis.DataManager.v1.Data
 
         private object _removeAsOfTime;
 
-        /// <summary>
-        /// Optional. The remove as of time. If set, only audience members last added before this time will be removed.
-        /// If not set, it defaults to current time. The remove as of time must not be in the future.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeAsOfTime")]
         public virtual string RemoveAsOfTimeRaw
         {
@@ -4384,10 +3258,6 @@ namespace Google.Apis.DataManager.v1.Data
             set => RemoveAsOfTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Optional. For testing purposes. If `true`, the request is validated but not executed. Only errors are
-        /// returned, not results.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -4395,10 +3265,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the RemoveAllAudienceMembersRequest.</summary>
     public class RemoveAllAudienceMembersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The auto-generated ID of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
@@ -4406,44 +3274,26 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the remove all audience members request.</summary>
     public class RemoveAllAudienceMembersStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request to remove users from an audience in the provided destinations. Returns a RemoveAudienceMembersResponse.
-    /// </summary>
     public class RemoveAudienceMembersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The list of users to remove.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceMembers")]
         public virtual System.Collections.Generic.IList<AudienceMember> AudienceMembers { get; set; }
 
-        /// <summary>Required. The list of destinations to remove the users from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
 
-        /// <summary>
-        /// Optional. Required for UserData uploads. The encoding type of the user identifiers. Applies to only the
-        /// outer encoding for encrypted user identifiers. For non `UserData` uploads, this field is ignored.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
-        /// <summary>
-        /// Optional. Encryption information for UserData uploads. If not set, it's assumed that uploaded identifying
-        /// information is hashed but not encrypted. For non `UserData` uploads, this field is ignored.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
         public virtual EncryptionInfo EncryptionInfo { get; set; }
 
-        /// <summary>
-        /// Optional. For testing purposes. If `true`, the request is validated but not executed. Only errors are
-        /// returned, not results.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -4451,10 +3301,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the RemoveAudienceMembersRequest.</summary>
     public class RemoveAudienceMembersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The auto-generated ID of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
@@ -4462,38 +3310,29 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the remove audience members request.</summary>
     public class RemoveAudienceMembersStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status of the composite data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compositeDataRemovalStatus")]
         public virtual RemoveCompositeDataStatus CompositeDataRemovalStatus { get; set; }
 
-        /// <summary>The status of the google user id data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdDataRemovalStatus")]
         public virtual RemoveGoogleUserIdDataStatus GoogleUserIdDataRemovalStatus { get; set; }
 
-        /// <summary>The status of the mobile data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileDataRemovalStatus")]
         public virtual RemoveMobileDataStatus MobileDataRemovalStatus { get; set; }
 
-        /// <summary>The status of the pair data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairDataRemovalStatus")]
         public virtual RemovePairDataStatus PairDataRemovalStatus { get; set; }
 
-        /// <summary>The status of the partner provided id data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdDataRemovalStatus")]
         public virtual RemovePartnerProvidedIdDataStatus PartnerProvidedIdDataRemovalStatus { get; set; }
 
-        /// <summary>The status of the ppid data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ppidDataRemovalStatus")]
         public virtual RemovePpidDataStatus PpidDataRemovalStatus { get; set; }
 
-        /// <summary>The status of the user data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDataRemovalStatus")]
         public virtual RemoveUserDataStatus UserDataRemovalStatus { get; set; }
 
-        /// <summary>The status of the user id data removal from the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdDataRemovalStatus")]
         public virtual RemoveUserIdDataStatus UserIdDataRemovalStatus { get; set; }
 
@@ -4501,20 +3340,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the composite data removal from the destination.</summary>
     public class RemoveCompositeDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of data types sent in the removal request, broken down by data type. Includes all data types
-        /// in the request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTypeCounts")]
         public virtual System.Collections.Generic.IList<DataTypeCount> DataTypeCounts { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the removal request. Includes all audience members in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -4522,20 +3352,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the google user id data removal from the destination.</summary>
     public class RemoveGoogleUserIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of google user ids sent in the removal request. Includes all google user ids in the request,
-        /// regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleUserIdCount")]
         public virtual System.Nullable<long> GoogleUserIdCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the removal request. Includes all audience members in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -4543,20 +3364,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the mobile data removal from the destination.</summary>
     public class RemoveMobileDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of mobile Ids sent in the removal request. Includes all mobile ids in the request,
-        /// regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileIdCount")]
         public virtual System.Nullable<long> MobileIdCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the removal request. Includes all audience members in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -4564,20 +3376,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the pair data removal from the destination.</summary>
     public class RemovePairDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of pair ids sent in the removal request. Includes all pair ids in the request, regardless of
-        /// whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairIdCount")]
         public virtual System.Nullable<long> PairIdCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the removal request. Includes all audience members in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -4585,20 +3388,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the partner provided id data removal from the destination.</summary>
     public class RemovePartnerProvidedIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of partner provided ids sent in the removal request. Includes all partner provided ids in
-        /// the request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerProvidedIdCount")]
         public virtual System.Nullable<long> PartnerProvidedIdCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the removal request. Includes all audience members in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -4606,20 +3400,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the ppid data removal from the destination.</summary>
     public class RemovePpidDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of ppids sent in the removal request. Includes all ppids in the request, regardless of
-        /// whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ppidCount")]
         public virtual System.Nullable<long> PpidCount { get; set; }
 
-        /// <summary>
-        /// The total count of audience members sent in the removal request. Includes all audience members in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -4627,20 +3412,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the user data removal from the destination.</summary>
     public class RemoveUserDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of audience members sent in the removal request. Includes all audience members in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
-        /// <summary>
-        /// The total count of user identifiers sent in the removal request. Includes all user identifiers in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdentifierCount")]
         public virtual System.Nullable<long> UserIdentifierCount { get; set; }
 
@@ -4648,20 +3424,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The status of the user id data removal from the destination.</summary>
     public class RemoveUserIdDataStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The total count of audience members sent in the removal request. Includes all audience members in the
-        /// request, regardless of whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
-        /// <summary>
-        /// The total count of user ids sent in the removal request. Includes all user ids in the request, regardless of
-        /// whether they were successfully removed or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdCount")]
         public virtual System.Nullable<long> UserIdCount { get; set; }
 
@@ -4669,45 +3436,29 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A request status per destination.</summary>
     public class RequestStatusPerDestination : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status of the ingest audience members request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceMembersIngestionStatus")]
         public virtual IngestAudienceMembersStatus AudienceMembersIngestionStatus { get; set; }
 
-        /// <summary>The status of the remove audience members request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceMembersRemovalStatus")]
         public virtual RemoveAudienceMembersStatus AudienceMembersRemovalStatus { get; set; }
 
-        /// <summary>A destination within a DM API request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual Destination Destination { get; set; }
 
-        /// <summary>
-        /// An error info error containing the error reason and error counts related to the upload. Only populated if
-        /// the `request_status` is `FAILED` or `PARTIAL_SUCCESS`. This field isn't populated while the request has
-        /// `request_status` of `PROCESSING`.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
         public virtual ErrorInfo ErrorInfo { get; set; }
 
-        /// <summary>The status of the ingest events request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventsIngestionStatus")]
         public virtual IngestEventsStatus EventsIngestionStatus { get; set; }
 
-        /// <summary>The status of the remove all audience members request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeAllAudienceMembersStatus")]
         public virtual RemoveAllAudienceMembersStatus RemoveAllAudienceMembersStatus { get; set; }
 
-        /// <summary>The request status of the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestStatus")]
         public virtual string RequestStatus { get; set; }
 
-        /// <summary>
-        /// A warning info containing the warning reason and warning counts related to the upload. This field isn't
-        /// populated while the request has `request_status` of `PROCESSING`.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningInfo")]
         public virtual WarningInfo WarningInfo { get; set; }
 
@@ -4715,14 +3466,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for DM API MarketingDataInsightsService.RetrieveInsights</summary>
     public class RetrieveInsightsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Baseline for the insights requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseline")]
         public virtual Baseline Baseline { get; set; }
 
-        /// <summary>Required. The user list ID for which insights are requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListId")]
         public virtual string UserListId { get; set; }
 
@@ -4730,10 +3478,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for DM API MarketingDataInsightsService.RetrieveInsights</summary>
     public class RetrieveInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Contains the insights for the marketing data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingDataInsights")]
         public virtual System.Collections.Generic.IList<MarketingDataInsight> MarketingDataInsights { get; set; }
 
@@ -4741,13 +3487,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the RetrieveRequestStatusRequest.</summary>
     public class RetrieveRequestStatusResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A list of request statuses per destination. The order of the statuses matches the order of the destinations
-        /// in the original request.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestStatusPerDestination")]
         public virtual System.Collections.Generic.IList<RequestStatusPerDestination> RequestStatusPerDestination { get; set; }
 
@@ -4755,17 +3496,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from the SearchPartnerLinksRequest.</summary>
     public class SearchPartnerLinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The partner links for the given account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerLinks")]
         public virtual System.Collections.Generic.IList<PartnerLink> PartnerLinks { get; set; }
 
@@ -4773,27 +3508,17 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Estimated number of members in this user list in different target networks.</summary>
     public class SizeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. Estimated number of members in this user list, on the Google Display Network.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayNetworkMembersCount")]
         public virtual System.Nullable<long> DisplayNetworkMembersCount { get; set; }
 
-        /// <summary>Output only. Estimated number of members in this user list on Gmail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmailMembersCount")]
         public virtual System.Nullable<long> GmailMembersCount { get; set; }
 
-        /// <summary>
-        /// Output only. Estimated number of members in this user list in the google.com domain. These are the members
-        /// available for targeting in Search campaigns.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchNetworkMembersCount")]
         public virtual System.Nullable<long> SearchNetworkMembersCount { get; set; }
 
-        /// <summary>Output only. Estimated number of members in this user list on YouTube.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeMembersCount")]
         public virtual System.Nullable<long> YoutubeMembersCount { get; set; }
 
@@ -4801,28 +3526,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The `Status` type defines a logical error model that is suitable for different programming environments,
-    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
-    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
-    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>
-        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>
-        /// A developer-facing error message, which should be in English. Any user-facing error message should be
-        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
@@ -4830,14 +3541,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Eligibility information for different target networks.</summary>
     public class TargetNetworkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Indicates this user list is eligible for Google Display Network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibleForDisplay")]
         public virtual System.Nullable<bool> EligibleForDisplay { get; set; }
 
-        /// <summary>Optional. Indicates if this user list is eligible for Google Search Network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibleForSearch")]
         public virtual System.Nullable<bool> EligibleForSearch { get; set; }
 
@@ -4845,14 +3553,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The terms of service that the user has accepted/rejected.</summary>
     public class TermsOfService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The Customer Match terms of service: https://support.google.com/adspolicy/answer/6299717. This
-        /// must be accepted when ingesting UserData or MobileData. This field is not required for Partner Match User
-        /// list.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerMatchTermsOfServiceStatus")]
         public virtual string CustomerMatchTermsOfServiceStatus { get; set; }
 
@@ -4860,14 +3562,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Data that identifies the user. At least one identifier is required.</summary>
     public class UserData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The identifiers for the user. It's possible to provide multiple instances of the same type of data
-        /// (for example, multiple email addresses). To increase the likelihood of a match, provide as many identifiers
-        /// as possible. At most 10 `userIdentifiers` can be provided in a single AudienceMember or Event.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userIdentifiers")]
         public virtual System.Collections.Generic.IList<UserIdentifier> UserIdentifiers { get; set; }
 
@@ -4875,10 +3571,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>User id data holding the user id.</summary>
     public class UserIdData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A unique identifier for a user, as defined by the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
 
@@ -4886,10 +3580,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Additional information when `USER_ID` is one of the `upload_key_types`.</summary>
     public class UserIdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Immutable. Source of the upload data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
         public virtual string DataSourceType { get; set; }
 
@@ -4897,20 +3589,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single identifier for the user.</summary>
     public class UserIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The known components of a user's address. Holds a grouping of identifiers that are matched all at once.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual AddressInfo Address { get; set; }
 
-        /// <summary>Hashed email address using SHA-256 hash function after normalization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
-        /// <summary>Hashed phone number using SHA-256 hash function after normalization (E164 standard).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
 
@@ -4918,74 +3604,47 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A user list resource.</summary>
     public class UserList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The reason this account has been granted access to the list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessReason")]
         public virtual string AccessReason { get; set; }
 
-        /// <summary>
-        /// Optional. Indicates if this share is still enabled. When a user list is shared with the account this field
-        /// is set to `ENABLED`. Later the user list owner can decide to revoke the share and make it `DISABLED`.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountAccessStatus")]
         public virtual string AccountAccessStatus { get; set; }
 
-        /// <summary>Output only. The reason why this user list membership status is closed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("closingReason")]
         public virtual string ClosingReason { get; set; }
 
-        /// <summary>Optional. A description of the user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Required. The display name of the user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. The unique ID of the user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
 
-        /// <summary>Optional. Represents a user list that is populated by user ingested data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestedUserListInfo")]
         public virtual IngestedUserListInfo IngestedUserListInfo { get; set; }
 
-        /// <summary>
-        /// Optional. An ID from external system. It is used by user list sellers to correlate IDs on their systems.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationCode")]
         public virtual string IntegrationCode { get; set; }
 
-        /// <summary>
-        /// Optional. The duration a user remains in the user list. Valid durations are exact multiples of 24 hours
-        /// (86400 seconds). Providing a value that is not an exact multiple of 24 hours will result in an
-        /// INVALID_ARGUMENT error.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDuration")]
         public virtual object MembershipDuration { get; set; }
 
-        /// <summary>Optional. Membership status of this user list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipStatus")]
         public virtual string MembershipStatus { get; set; }
 
-        /// <summary>
-        /// Identifier. The resource name of the user list. Format:
-        /// accountTypes/{account_type}/accounts/{account}/userLists/{user_list}
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. An option that indicates if a user may edit a list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
-        /// <summary>Output only. Estimated number of members in this user list in different target networks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeInfo")]
         public virtual SizeInfo SizeInfo { get; set; }
 
-        /// <summary>Optional. Eligibility information for different target networks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNetworkInfo")]
         public virtual TargetNetworkInfo TargetNetworkInfo { get; set; }
 
@@ -4993,51 +3652,35 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A user list direct license. This feature is only available to data partners.</summary>
     public class UserListDirectLicense : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. Name of client customer which the user list is being licensed to. This field is read-only.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountDisplayName")]
         public virtual string ClientAccountDisplayName { get; set; }
 
-        /// <summary>Immutable. ID of client customer which the user list is being licensed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountId")]
         public virtual System.Nullable<long> ClientAccountId { get; set; }
 
-        /// <summary>Immutable. Account type of client customer which the user list is being licensed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountType")]
         public virtual string ClientAccountType { get; set; }
 
-        /// <summary>Output only. Pricing history of this user list license. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historicalPricings")]
         public virtual System.Collections.Generic.IList<UserListLicensePricing> HistoricalPricings { get; set; }
 
-        /// <summary>
-        /// Output only. Metrics related to this license This field is read-only and only populated if the start and end
-        /// dates are set in the ListUserListDirectLicenses call
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual UserListLicenseMetrics Metrics { get; set; }
 
-        /// <summary>Identifier. The resource name of the user list direct license.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. UserListDirectLicense pricing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricing")]
         public virtual UserListLicensePricing Pricing { get; set; }
 
-        /// <summary>Optional. Status of UserListDirectLicense - ENABLED or DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Output only. Name of the user list being licensed. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListDisplayName")]
         public virtual string UserListDisplayName { get; set; }
 
-        /// <summary>Immutable. ID of the user list being licensed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListId")]
         public virtual System.Nullable<long> UserListId { get; set; }
 
@@ -5045,41 +3688,29 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A user list global license. This feature is only available to data partners.</summary>
     public class UserListGlobalLicense : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Pricing history of this user list license. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historicalPricings")]
         public virtual System.Collections.Generic.IList<UserListLicensePricing> HistoricalPricings { get; set; }
 
-        /// <summary>Immutable. Product type of client customer which the user list is being licensed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
         public virtual string LicenseType { get; set; }
 
-        /// <summary>
-        /// Output only. Metrics related to this license This field is read-only and only populated if the start and end
-        /// dates are set in the ListUserListGlobalLicenses call
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual UserListLicenseMetrics Metrics { get; set; }
 
-        /// <summary>Identifier. The resource name of the user list global license.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. UserListGlobalLicense pricing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricing")]
         public virtual UserListLicensePricing Pricing { get; set; }
 
-        /// <summary>Optional. Status of UserListGlobalLicense - ENABLED or DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Output only. Name of the user list being licensed. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListDisplayName")]
         public virtual string UserListDisplayName { get; set; }
 
-        /// <summary>Immutable. ID of the user list being licensed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListId")]
         public virtual System.Nullable<long> UserListId { get; set; }
 
@@ -5087,56 +3718,38 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Information about a customer of a user list global license. This will automatically be created by the system
-    /// when a customer purchases a global license.
-    /// </summary>
     public class UserListGlobalLicenseCustomerInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Name of client customer which the user list is being licensed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountDisplayName")]
         public virtual string ClientAccountDisplayName { get; set; }
 
-        /// <summary>Output only. ID of client customer which the user list is being licensed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountId")]
         public virtual System.Nullable<long> ClientAccountId { get; set; }
 
-        /// <summary>Output only. Product type of client customer which the user list is being licensed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAccountType")]
         public virtual string ClientAccountType { get; set; }
 
-        /// <summary>Output only. Pricing history of this user list license.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historicalPricings")]
         public virtual System.Collections.Generic.IList<UserListLicensePricing> HistoricalPricings { get; set; }
 
-        /// <summary>Output only. Product type of client customer which the user list is being licensed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
         public virtual string LicenseType { get; set; }
 
-        /// <summary>
-        /// Output only. Metrics related to this license This field is only populated if the start and end dates are set
-        /// in the ListUserListGlobalLicenseCustomerInfos call.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual UserListLicenseMetrics Metrics { get; set; }
 
-        /// <summary>Identifier. The resource name of the user list global license customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. UserListDirectLicense pricing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricing")]
         public virtual UserListLicensePricing Pricing { get; set; }
 
-        /// <summary>Output only. Status of UserListDirectLicense - ENABLED or DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Output only. Name of the user list being licensed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListDisplayName")]
         public virtual string UserListDisplayName { get; set; }
 
-        /// <summary>Output only. ID of the user list being licensed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListId")]
         public virtual System.Nullable<long> UserListId { get; set; }
 
@@ -5144,36 +3757,20 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metrics related to a user list license.</summary>
     public class UserListLicenseMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The number of clicks for the user list license.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickCount")]
         public virtual System.Nullable<long> ClickCount { get; set; }
 
-        /// <summary>
-        /// Output only. The end date (inclusive) of the metrics in the format YYYYMMDD. For example, 20260102
-        /// represents January 2, 2026. If `start_date` is used in the filter, `end_date` is also required. If neither
-        /// `start_date` nor `end_date` are included in the filter, the UserListLicenseMetrics fields will not be
-        /// populated in the response.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
         public virtual System.Nullable<long> EndDate { get; set; }
 
-        /// <summary>Output only. The number of impressions for the user list license.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressionCount")]
         public virtual System.Nullable<long> ImpressionCount { get; set; }
 
-        /// <summary>Output only. The revenue for the user list license in USD micros.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revenueUsdMicros")]
         public virtual System.Nullable<long> RevenueUsdMicros { get; set; }
 
-        /// <summary>
-        /// Output only. The start date (inclusive) of the metrics in the format YYYYMMDD. For example, 20260102
-        /// represents January 2, 2026. If `end_date` is used in the filter, `start_date` is also required. If neither
-        /// `start_date` nor `end_date` are included in the filter, the UserListLicenseMetrics fields will not be
-        /// populated in the response.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual System.Nullable<long> StartDate { get; set; }
 
@@ -5181,31 +3778,17 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A user list license pricing.</summary>
     public class UserListLicensePricing : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The buyer approval state of this pricing. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyerApprovalState")]
         public virtual string BuyerApprovalState { get; set; }
 
-        /// <summary>
-        /// Optional. The cost associated with the model, in micro units (10^-6), in the currency specified by the
-        /// currency_code field. For example, 2000000 means $2 if `currency_code` is `USD`.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costMicros")]
         public virtual System.Nullable<long> CostMicros { get; set; }
 
-        /// <summary>
-        /// Immutable. The cost type of this pricing. Can be set only in the `create` operation. Can't be updated for an
-        /// existing license.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costType")]
         public virtual string CostType { get; set; }
 
-        /// <summary>
-        /// Optional. The currency in which cost and max_cost is specified. Must be a three-letter currency code defined
-        /// in ISO 4217.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
 
@@ -5213,7 +3796,6 @@ namespace Google.Apis.DataManager.v1.Data
 
         private object _endTime;
 
-        /// <summary>Optional. End time of the pricing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTimeRaw
         {
@@ -5246,21 +3828,12 @@ namespace Google.Apis.DataManager.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Optional. The maximum CPM a commerce audience can be charged when the MEDIA_SHARE cost type is used. The
-        /// value is in micro units (10^-6) and in the currency specified by the currency_code field. For example,
-        /// 2000000 means $2 if `currency_code` is `USD`. This is only relevant when cost_type is MEDIA_SHARE. When
-        /// cost_type is not MEDIA_SHARE, and this field is set, a MAX_COST_NOT_ALLOWED error will be returned. If not
-        /// set or set to`0`, there is no cap.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCostMicros")]
         public virtual System.Nullable<long> MaxCostMicros { get; set; }
 
-        /// <summary>Output only. Whether this pricing is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingActive")]
         public virtual System.Nullable<bool> PricingActive { get; set; }
 
-        /// <summary>Output only. The ID of this pricing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingId")]
         public virtual System.Nullable<long> PricingId { get; set; }
 
@@ -5268,7 +3841,6 @@ namespace Google.Apis.DataManager.v1.Data
 
         private object _startTime;
 
-        /// <summary>Output only. Start time of the pricing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
         {
@@ -5305,25 +3877,14 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Advertiser-assessed information about the user at the time that the event happened. See
-    /// https://support.google.com/google-ads/answer/14007601 for more details.
-    /// </summary>
     public class UserProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. A bucket of any additional [user
-        /// properties](https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties) for
-        /// the user associated with this event.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalUserProperties")]
         public virtual System.Collections.Generic.IList<UserProperty> AdditionalUserProperties { get; set; }
 
-        /// <summary>Optional. Type of the customer associated with the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerType")]
         public virtual string CustomerType { get; set; }
 
-        /// <summary>Optional. The advertiser-assessed value of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerValueBucket")]
         public virtual string CustomerValueBucket { get; set; }
 
@@ -5331,18 +3892,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A bucket of any additional [user
-    /// properties](https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties) for the
-    /// user associated with this event.
-    /// </summary>
     public class UserProperty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the user property to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyName")]
         public virtual string PropertyName { get; set; }
 
-        /// <summary>Required. The string representation of the value of the user property to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -5350,40 +3904,29 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of the viewability of the ad served.</summary>
     public class ViewabilityInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The duration of the ad media.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaDuration")]
         public virtual object MediaDuration { get; set; }
 
-        /// <summary>Optional. The amount of the media that was played as discrete quartiles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaQuartile")]
         public virtual string MediaQuartile { get; set; }
 
-        /// <summary>Optional. Whether the ad media was skippable or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaSkippable")]
         public virtual System.Nullable<bool> MediaSkippable { get; set; }
 
-        /// <summary>Optional. The numerical percent (0-100) of the volume of the media playback.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaVolumePercent")]
         public virtual System.Nullable<int> MediaVolumePercent { get; set; }
 
-        /// <summary>
-        /// Optional. The duration of playback of the ad media, regardless of whether it was viewable or not.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playbackDuration")]
         public virtual object PlaybackDuration { get; set; }
 
-        /// <summary>Required. The type of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewType")]
         public virtual string ViewType { get; set; }
 
-        /// <summary>Optional. The amount of time the ad was viewable for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewableDuration")]
         public virtual object ViewableDuration { get; set; }
 
-        /// <summary>Optional. The numerical percent (0-100) of the pixels that were viewable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewablePercent")]
         public virtual System.Nullable<int> ViewablePercent { get; set; }
 
@@ -5391,14 +3934,11 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The warning count for a given warning reason.</summary>
     public class WarningCount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The warning reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
-        /// <summary>The count of records that have a warning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
@@ -5406,10 +3946,8 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Warning counts for each type of warning.</summary>
     public class WarningInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of warnings and counts per warning reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningCounts")]
         public virtual System.Collections.Generic.IList<WarningCount> WarningCounts { get; set; }
 
