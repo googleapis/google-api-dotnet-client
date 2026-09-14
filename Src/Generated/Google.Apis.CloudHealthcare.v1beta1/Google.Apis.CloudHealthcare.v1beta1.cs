@@ -10679,6 +10679,133 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
+                    /// <summary>Export resources using POST.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Name of the `Group` resource that is exported, in format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+                    /// </param>
+                    public virtual BulkExportGroupPostRequest BulkExportGroupPost(Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string name)
+                    {
+                        return new BulkExportGroupPostRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Export resources using POST.</summary>
+                    public class BulkExportGroupPostRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
+                    {
+                        /// <summary>Constructs a new BulkExportGroupPost request.</summary>
+                        public BulkExportGroupPostRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the `Group` resource that is exported, in format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If provided, only resources updated after this time are exported. The time uses
+                        /// the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or
+                        /// `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time zone.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("_since", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Since { get; set; }
+
+                        /// <summary>
+                        /// Optional. String of comma-delimited FHIR resource types. If provided, only resources of the
+                        /// specified resource type(s) are exported.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("_type", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Type { get; set; }
+
+                        /// <summary>
+                        /// Required. The FHIR resource type used to organize exported resources. Only supports
+                        /// "Patient". When organized by Patient resource, output files are grouped as follows: *
+                        /// Patient file(s) containing the Patient resources. Each Patient is sequentially followed by
+                        /// all resources the Patient references, and all resources that reference the Patient
+                        /// (equivalent to a GetPatientEverything request). * Individual files grouped by resource type
+                        /// for resources in the Group's member field and the Group resource itself. Resources may be
+                        /// duplicated across multiple Patients. For example, if two Patient resources reference the
+                        /// same Organization resource, it will appear twice, once after each Patient. The Group
+                        /// resource from the request does not appear in the Patient files.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("organizeOutputBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrganizeOutputBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. Output format of the export. This field is optional and only
+                        /// `application/fhir+ndjson` is supported.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("outputFormat", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OutputFormat { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "bulk-export-group-post";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}/$export";
+
+                        /// <summary>Initializes BulkExportGroupPost parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+/fhir/Group/[^/]+$",
+                            });
+                            RequestParameters.Add("_since", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "_since",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("_type", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "_type",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("organizeOutputBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "organizeOutputBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("outputFormat", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "outputFormat",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Bulk deletes the FHIR resources from the given FHIR store. This method returns an Operation that
                     /// can be used to track the progress of the deletion by calling GetOperation. The success and
