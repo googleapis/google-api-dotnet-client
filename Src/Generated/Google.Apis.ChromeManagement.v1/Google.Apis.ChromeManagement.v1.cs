@@ -4593,6 +4593,386 @@ namespace Google.Apis.ChromeManagement.v1
                     });
                 }
             }
+
+            /// <summary>Find SaaS usage reports of a customer based on the given search and sorting criteria.</summary>
+            /// <param name="customer">
+            /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+            /// </param>
+            public virtual FindSaasUsageRequest FindSaasUsage(string customer)
+            {
+                return new FindSaasUsageRequest(this.service, customer);
+            }
+
+            /// <summary>Find SaaS usage reports of a customer based on the given search and sorting criteria.</summary>
+            public class FindSaasUsageRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1FindSaasUsageReportsResponse>
+            {
+                /// <summary>Constructs a new FindSaasUsage request.</summary>
+                public FindSaasUsageRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Optional. The filter expression to narrow down the SaaS reports to return. Supported operators are:
+                /// =, !=, &amp;lt;, &amp;lt;=, &amp;gt;, &amp;gt;=, :. Logical operators AND, OR, and NOT are
+                /// supported. Supported fields: * app * org_unit_id * first_navigation_time * last_navigation_time *
+                /// category * organization * founded_year * headquarters * primary_domain * domains *
+                /// encryption_protocols * visits_count * distinct_users_count * distinct_browsers_count *
+                /// content_transfer_count Example: `(first_navigation_time &amp;lt; "2026-01-31T00:00:00Z" AND
+                /// last_navigation_time &amp;gt; "2026-01-01T00:00:00Z") AND visits_count &amp;gt; 100`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The order by expression to sort the SaaS reports. Supported fields: * app * category *
+                /// organization * founded_year * headquarters * primary_domain * visits_count * distinct_users_count *
+                /// distinct_browsers_count * content_transfer_count Default order is ascending. To specify descending
+                /// order for a field, append " desc". Example: `visits_count desc`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of reports to return. The service may return fewer than this value. If
+                /// unspecified, at most 100 reports will be returned. The maximum value is 200; values above 200 will
+                /// be coerced to 200.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `FindSaasUsageReports` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `FindSaasUsageReports` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "findSaasUsage";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:findSaasUsage";
+
+                /// <summary>Initializes FindSaasUsage parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Find SaaS usage reports of a customer grouped by browsers based on the given search and sorting
+            /// criteria.
+            /// </summary>
+            /// <param name="customer">
+            /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+            /// </param>
+            public virtual FindSaasUsageBrowsersRequest FindSaasUsageBrowsers(string customer)
+            {
+                return new FindSaasUsageBrowsersRequest(this.service, customer);
+            }
+
+            /// <summary>
+            /// Find SaaS usage reports of a customer grouped by browsers based on the given search and sorting
+            /// criteria.
+            /// </summary>
+            public class FindSaasUsageBrowsersRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1FindSaasUsageBrowsersResponse>
+            {
+                /// <summary>Constructs a new FindSaasUsageBrowsers request.</summary>
+                public FindSaasUsageBrowsersRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>Required. The name of the SaaS application (e.g., `ChatGPT`, `Gemini`).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string App { get; set; }
+
+                /// <summary>
+                /// Optional. The filter expression to narrow down the SaaS browser reports to return. Supported
+                /// operators are: =, !=, &amp;lt;, &amp;lt;=, &amp;gt;, &amp;gt;=, :. Logical operators AND, OR, and
+                /// NOT are supported. Supported fields: * machine * os_platform * first_navigation_time *
+                /// last_navigation_time * org_unit_id
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The order by expression to sort the SaaS browser reports. Supported fields: * machine *
+                /// os_platform * first_navigation_time * last_navigation_time Default order is ascending. To specify
+                /// descending order for a field, append " desc".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of browsers to return. The service may return fewer than this value. If
+                /// unspecified, at most 100 browsers will be returned. The maximum value is 200; values above 200 will
+                /// be coerced to 200.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `FindSaasUsageBrowsers` call. Provide this to
+                /// retrieve the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "findSaasUsageBrowsers";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:findSaasUsageBrowsers";
+
+                /// <summary>Initializes FindSaasUsageBrowsers parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Find SaaS usage reports of a customer grouped by profiles based on the given search and sorting
+            /// criteria.
+            /// </summary>
+            /// <param name="customer">
+            /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+            /// </param>
+            public virtual FindSaasUsageProfilesRequest FindSaasUsageProfiles(string customer)
+            {
+                return new FindSaasUsageProfilesRequest(this.service, customer);
+            }
+
+            /// <summary>
+            /// Find SaaS usage reports of a customer grouped by profiles based on the given search and sorting
+            /// criteria.
+            /// </summary>
+            public class FindSaasUsageProfilesRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1FindSaasUsageProfilesResponse>
+            {
+                /// <summary>Constructs a new FindSaasUsageProfiles request.</summary>
+                public FindSaasUsageProfilesRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>Required. The name of the SaaS application (e.g., `ChatGPT`, `Gemini`).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string App { get; set; }
+
+                /// <summary>
+                /// Optional. The filter expression to narrow down the SaaS profile reports to return. Supported
+                /// operators are: =, !=, &amp;lt;, &amp;lt;=, &amp;gt;, &amp;gt;=, :. Logical operators AND, OR, and
+                /// NOT are supported. Supported fields: * email * org_unit_id * os_platform * first_navigation_time *
+                /// last_navigation_time
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The order by expression to sort the SaaS profile reports. Supported fields: * email *
+                /// os_platform * first_navigation_time * last_navigation_time Default order is ascending. To specify
+                /// descending order for a field, append " desc".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of reports to return. The service may return fewer than this value. If
+                /// unspecified, at most 100 reports will be returned. The maximum value is 200; values above 200 will
+                /// be coerced to 200.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `FindSaasUsageProfiles` call. Provide this to
+                /// retrieve the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "findSaasUsageProfiles";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:findSaasUsageProfiles";
+
+                /// <summary>Initializes FindSaasUsageProfiles parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Telemetry resource.</summary>
@@ -7375,6 +7755,69 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to `FindSaasUsageBrowsers` method.</summary>
+    public class GoogleChromeManagementV1FindSaasUsageBrowsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token, which can be sent as `page_token` to retrieve the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of SaaS usage browser reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saasUsageBrowsers")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1SaasUsageBrowser> SaasUsageBrowsers { get; set; }
+
+        /// <summary>Total number of SaaS usage browser reports that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<long> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to `FindSaasUsageProfiles` method.</summary>
+    public class GoogleChromeManagementV1FindSaasUsageProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of SaaS usage profile reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1SaasUsageProfileReport> ProfileReports { get; set; }
+
+        /// <summary>Total number of SaaS usage profile reports that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<long> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to `FindSaasUsage` method.</summary>
+    public class GoogleChromeManagementV1FindSaasUsageReportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of SaaS usage reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saasReports")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1SaasUsageReport> SaasReports { get; set; }
+
+        /// <summary>Total number of SaaS usage reports that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<long> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information of a graphics adapter (GPU).</summary>
     public class GoogleChromeManagementV1GraphicsAdapterInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8628,6 +9071,364 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Total lifetime runtime. Currently always S0 runtime from Intel vPro PSR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uptimeRuntimeDuration")]
         public virtual object UptimeRuntimeDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a SaaS usage browser.</summary>
+    public class GoogleChromeManagementV1SaasUsageBrowser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The device permanent ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devicePermanentId")]
+        public virtual string DevicePermanentId { get; set; }
+
+        private string _firstNavigationTimeRaw;
+
+        private object _firstNavigationTime;
+
+        /// <summary>Output only. The timestamp when the application was first navigated to by this browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstNavigationTime")]
+        public virtual string FirstNavigationTimeRaw
+        {
+            get => _firstNavigationTimeRaw;
+            set
+            {
+                _firstNavigationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstNavigationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstNavigationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstNavigationTimeDateTimeOffset instead.")]
+        public virtual object FirstNavigationTime
+        {
+            get => _firstNavigationTime;
+            set
+            {
+                _firstNavigationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstNavigationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstNavigationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstNavigationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstNavigationTimeRaw);
+            set => FirstNavigationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastNavigationTimeRaw;
+
+        private object _lastNavigationTime;
+
+        /// <summary>Output only. The timestamp when the application was last navigated to by this browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastNavigationTime")]
+        public virtual string LastNavigationTimeRaw
+        {
+            get => _lastNavigationTimeRaw;
+            set
+            {
+                _lastNavigationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastNavigationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastNavigationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastNavigationTimeDateTimeOffset instead.")]
+        public virtual object LastNavigationTime
+        {
+            get => _lastNavigationTime;
+            set
+            {
+                _lastNavigationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastNavigationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastNavigationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastNavigationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastNavigationTimeRaw);
+            set => LastNavigationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The machine name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machine")]
+        public virtual string Machine { get; set; }
+
+        /// <summary>Output only. The ID of the organizational unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>Output only. The OS platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPlatform")]
+        public virtual string OsPlatform { get; set; }
+
+        /// <summary>Output only. The OS version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single SaaS report entry grouped by profile.</summary>
+    public class GoogleChromeManagementV1SaasUsageProfileReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The email of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        private string _firstNavigationTimeRaw;
+
+        private object _firstNavigationTime;
+
+        /// <summary>Output only. The timestamp when the application was first navigated to by this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstNavigationTime")]
+        public virtual string FirstNavigationTimeRaw
+        {
+            get => _firstNavigationTimeRaw;
+            set
+            {
+                _firstNavigationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstNavigationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstNavigationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstNavigationTimeDateTimeOffset instead.")]
+        public virtual object FirstNavigationTime
+        {
+            get => _firstNavigationTime;
+            set
+            {
+                _firstNavigationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstNavigationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstNavigationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstNavigationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstNavigationTimeRaw);
+            set => FirstNavigationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastNavigationTimeRaw;
+
+        private object _lastNavigationTime;
+
+        /// <summary>Output only. The timestamp when the application was last navigated to by this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastNavigationTime")]
+        public virtual string LastNavigationTimeRaw
+        {
+            get => _lastNavigationTimeRaw;
+            set
+            {
+                _lastNavigationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastNavigationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastNavigationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastNavigationTimeDateTimeOffset instead.")]
+        public virtual object LastNavigationTime
+        {
+            get => _lastNavigationTime;
+            set
+            {
+                _lastNavigationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastNavigationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastNavigationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastNavigationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastNavigationTimeRaw);
+            set => LastNavigationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The ID of the organizational unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>Output only. The OS platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPlatform")]
+        public virtual string OsPlatform { get; set; }
+
+        /// <summary>Output only. The OS version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>Output only. The permanent ID of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profilePermanentId")]
+        public virtual string ProfilePermanentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single SaaS report entry.</summary>
+    public class GoogleChromeManagementV1SaasUsageReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("app")]
+        public virtual string App { get; set; }
+
+        /// <summary>Output only. The category of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Output only. Provides information about content transfer events, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentTransferDetails")]
+        public virtual GoogleChromeManagementV1SaasUsageReportContentTransferDetails ContentTransferDetails { get; set; }
+
+        /// <summary>Output only. Number of distinct browsers that visited the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distinctBrowsersCount")]
+        public virtual System.Nullable<long> DistinctBrowsersCount { get; set; }
+
+        /// <summary>Output only. Number of distinct users who visited the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distinctUsersCount")]
+        public virtual System.Nullable<long> DistinctUsersCount { get; set; }
+
+        /// <summary>Output only. A list of domains and subdomains associated with the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; }
+
+        /// <summary>Output only. A list of encryption protocols used to access the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionProtocols")]
+        public virtual System.Collections.Generic.IList<string> EncryptionProtocols { get; set; }
+
+        private string _firstNavigationTimeRaw;
+
+        private object _firstNavigationTime;
+
+        /// <summary>Output only. The timestamp when the application was first navigated to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstNavigationTime")]
+        public virtual string FirstNavigationTimeRaw
+        {
+            get => _firstNavigationTimeRaw;
+            set
+            {
+                _firstNavigationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstNavigationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstNavigationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstNavigationTimeDateTimeOffset instead.")]
+        public virtual object FirstNavigationTime
+        {
+            get => _firstNavigationTime;
+            set
+            {
+                _firstNavigationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstNavigationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstNavigationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstNavigationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstNavigationTimeRaw);
+            set => FirstNavigationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The year the organization was founded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foundedYear")]
+        public virtual System.Nullable<int> FoundedYear { get; set; }
+
+        /// <summary>Output only. The headquarters location of the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headquarters")]
+        public virtual string Headquarters { get; set; }
+
+        private string _lastNavigationTimeRaw;
+
+        private object _lastNavigationTime;
+
+        /// <summary>Output only. The timestamp when the application was last navigated to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastNavigationTime")]
+        public virtual string LastNavigationTimeRaw
+        {
+            get => _lastNavigationTimeRaw;
+            set
+            {
+                _lastNavigationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastNavigationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastNavigationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastNavigationTimeDateTimeOffset instead.")]
+        public virtual object LastNavigationTime
+        {
+            get => _lastNavigationTime;
+            set
+            {
+                _lastNavigationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastNavigationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastNavigationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastNavigationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastNavigationTimeRaw);
+            set => LastNavigationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The ID of the organizational unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>Output only. The organization that develops the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>Output only. The primary domain of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryDomain")]
+        public virtual string PrimaryDomain { get; set; }
+
+        /// <summary>Output only. Total number of visits to the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitsCount")]
+        public virtual System.Nullable<long> VisitsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Provides information about content transfer events, if available.</summary>
+    public class GoogleChromeManagementV1SaasUsageReportContentTransferDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Total number of content transfers associated with the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentTransferCount")]
+        public virtual System.Nullable<long> ContentTransferCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
