@@ -14317,6 +14317,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<string> AdvertisedRoutes { get; set; }
 
         /// <summary>
+        /// Optional. Immutable. Controls whether resources proposed by the Transport are automatically accepted on
+        /// behalf of the user. List of actions that can be automatically accepted are: 1. VPC Peering creation 2.
+        /// Routing VPC Spoke creation 3. Hybrid Spoke creation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoAccept")]
+        public virtual System.Nullable<bool> AutoAccept { get; set; }
+
+        /// <summary>
         /// Optional. Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile,
         /// and must be set when no activation key is being provided.
         /// </summary>
@@ -14372,6 +14380,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generatedActivationKey")]
         public virtual string GeneratedActivationKey { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. The NCC Hub that the Transport should attach to. The hub must be in the same project as
+        /// the Transport. Format: `{hub}` or `projects/{project}/locations/global/hubs/{hub}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hub")]
+        public virtual string Hub { get; set; }
+
         /// <summary>Optional. Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -14406,6 +14421,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providedActivationKey")]
         public virtual string ProvidedActivationKey { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
+        /// This will provide Private Service Connect (PSC) connectivity through NCC. This can only be set when the
+        /// Transport is first created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscRoutingEnabled")]
+        public virtual System.Nullable<bool> PscRoutingEnabled { get; set; }
 
         /// <summary>
         /// Optional. Immutable. The user supplied account id for the CSP associated with the remote profile.
