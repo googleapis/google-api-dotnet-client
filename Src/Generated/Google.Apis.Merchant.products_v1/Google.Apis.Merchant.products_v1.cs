@@ -2881,6 +2881,12 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("downpayment")]
         public virtual Price Downpayment { get; set; }
 
+        /// <summary>
+        /// Optional. The mileage allowance for the lease of the vehicle. Only applicable to vehicle products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mileageAllowance")]
+        public virtual Mileage MileageAllowance { get; set; }
+
         /// <summary>The number of installments the buyer has to pay.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("months")]
         public virtual System.Nullable<long> Months { get; set; }
