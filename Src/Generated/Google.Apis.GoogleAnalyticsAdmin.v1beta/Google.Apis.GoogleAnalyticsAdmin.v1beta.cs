@@ -3163,7 +3163,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 }
             }
 
-            /// <summary>Retrieve a single Key Event.</summary>
+            /// <summary>Retrieves a single Key Event.</summary>
             /// <param name="name">
             /// Required. The resource name of the Key Event to retrieve. Format:
             /// properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456"
@@ -3173,7 +3173,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 return new GetRequest(this.service, name);
             }
 
-            /// <summary>Retrieve a single Key Event.</summary>
+            /// <summary>Retrieves a single Key Event.</summary>
             public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent>
             {
                 /// <summary>Constructs a new Get request.</summary>
