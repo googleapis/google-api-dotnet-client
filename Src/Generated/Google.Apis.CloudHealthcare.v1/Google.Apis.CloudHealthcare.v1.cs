@@ -15120,6 +15120,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1DicomBigQueryDestination BigqueryDestination { get; set; }
 
+        /// <summary>Specifies the filter configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterConfig")]
+        public virtual DicomFilterConfig FilterConfig { get; set; }
+
         /// <summary>
         /// The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the
         /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location.
