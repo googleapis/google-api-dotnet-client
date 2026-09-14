@@ -8196,7 +8196,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("originalMigrationName")]
         public virtual string OriginalMigrationName { get; set; }
 
-        /// <summary>Optional. Data dump parallelism settings used by the migration.</summary>
+        /// <summary>Optional. Data dump and load parallelism settings used by the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceConfig")]
         public virtual PerformanceConfig PerformanceConfig { get; set; }
 
@@ -8556,9 +8556,21 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
+        /// <summary>Private connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
+        public virtual PrivateConnectivity PrivateConnectivity { get; set; }
+
+        /// <summary>Private Service Connect connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConnectivity")]
+        public virtual PrivateServiceConnectConnectivity PrivateServiceConnectConnectivity { get; set; }
+
         /// <summary>SSL configuration for the destination to connect to the source database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssl")]
         public virtual SslConfig Ssl { get; set; }
+
+        /// <summary>Static Service IP connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticServiceIpConnectivity")]
+        public virtual StaticServiceIpConnectivity StaticServiceIpConnectivity { get; set; }
 
         /// <summary>
         /// Required. The username that Database Migration Service will use to connect to the database. The value is
@@ -8811,6 +8823,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dumpParallelLevel")]
         public virtual string DumpParallelLevel { get; set; }
 
+        /// <summary>Optional. Initial load parallelism level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadParallelLevel")]
+        public virtual string LoadParallelLevel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8976,7 +8992,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
 
-        /// <summary>Private service connect connectivity.</summary>
+        /// <summary>Private Service Connect connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConnectivity")]
         public virtual PrivateServiceConnectConnectivity PrivateServiceConnectConnectivity { get; set; }
 
