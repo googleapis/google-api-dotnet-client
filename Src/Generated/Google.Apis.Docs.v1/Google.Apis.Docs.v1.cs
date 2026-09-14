@@ -1488,8 +1488,8 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string SuggestionsViewMode { get; set; }
 
         /// <summary>
-        /// Tabs that are part of a document. Tabs can contain child tabs, a tab nested within another tab. Child tabs
-        /// are represented by the Tab.childTabs field.
+        /// Output only. Tabs that are part of a document. Tabs can contain child tabs, a tab nested within another tab.
+        /// Child tabs are represented by the Tab.childTabs field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabs")]
         public virtual System.Collections.Generic.IList<Tab> Tabs { get; set; }
