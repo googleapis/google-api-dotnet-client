@@ -2960,6 +2960,311 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message describing PipelineRun object</summary>
+    public class GoogleDevtoolsCloudbuildV2PipelineRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User annotations. See https://google.aip.dev/128#annotations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>
+        /// Output only. List of TaskRun and Run names and PipelineTask names for children of this PipelineRun.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childReferences")]
+        public virtual System.Collections.Generic.IList<ChildStatusReference> ChildReferences { get; set; }
+
+        private string _completionTimeRaw;
+
+        private object _completionTime;
+
+        /// <summary>Output only. Time the pipeline completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
+        public virtual string CompletionTimeRaw
+        {
+            get => _completionTimeRaw;
+            set
+            {
+                _completionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletionTimeDateTimeOffset instead.")]
+        public virtual object CompletionTime
+        {
+            get => _completionTime;
+            set
+            {
+                _completionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Kubernetes Conditions convention for PipelineRun status and error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV2Condition> Conditions { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time at which the request to create the `PipelineRun` was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Needed for declarative-friendly resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        private string _finallyStartTimeRaw;
+
+        private object _finallyStartTime;
+
+        /// <summary>
+        /// Output only. FinallyStartTime is when all non-finally tasks have been completed and only finally tasks are
+        /// being executed. +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finallyStartTime")]
+        public virtual string FinallyStartTimeRaw
+        {
+            get => _finallyStartTimeRaw;
+            set
+            {
+                _finallyStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finallyStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinallyStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinallyStartTimeDateTimeOffset instead.")]
+        public virtual object FinallyStartTime
+        {
+            get => _finallyStartTime;
+            set
+            {
+                _finallyStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finallyStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FinallyStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinallyStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinallyStartTimeRaw);
+            set => FinallyStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. GCB default params.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcbParams")]
+        public virtual System.Collections.Generic.IDictionary<string, string> GcbParams { get; set; }
+
+        /// <summary>
+        /// Output only. The `PipelineRun` name with format
+        /// `projects/{project}/locations/{location}/pipelineRuns/{pipeline_run}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Params is a list of parameter names and values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IList<Param> Params__ { get; set; }
+
+        /// <summary>PipelineRef refer to a specific instance of a Pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineRef")]
+        public virtual PipelineRef PipelineRef { get; set; }
+
+        /// <summary>Pipelinerun status the user can provide. Used for cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineRunStatus")]
+        public virtual string PipelineRunStatus { get; set; }
+
+        /// <summary>PipelineSpec defines the desired state of Pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineSpec")]
+        public virtual PipelineSpec PipelineSpec { get; set; }
+
+        /// <summary>Output only. Inline pipelineSpec yaml string, used by workflow run requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineSpecYaml")]
+        public virtual string PipelineSpecYaml { get; set; }
+
+        /// <summary>Optional. Provenance configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual Provenance Provenance { get; set; }
+
+        /// <summary>
+        /// Output only. The `Record` of this `PipelineRun`. Format:
+        /// `projects/{project}/locations/{location}/results/{result_id}/records/{record_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("record")]
+        public virtual string Record { get; set; }
+
+        /// <summary>Output only. The exact PipelineSpec used to instantiate the run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedPipelineSpec")]
+        public virtual PipelineSpec ResolvedPipelineSpec { get; set; }
+
+        /// <summary>Optional. Output only. List of results written out by the pipeline's containers</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<PipelineRunResult> Results { get; set; }
+
+        /// <summary>Optional. Security configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("security")]
+        public virtual Security Security { get; set; }
+
+        /// <summary>
+        /// Service account used in the Pipeline. Deprecated; please use security.service_account instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Output only. List of tasks that were skipped due to when expressions evaluating to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedTasks")]
+        public virtual System.Collections.Generic.IList<SkippedTask> SkippedTasks { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. Time the pipeline is actually started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Time after which the Pipeline times out. Currently three keys are accepted in the map pipeline, tasks and
+        /// finally with Timeouts.pipeline &amp;gt;= Timeouts.tasks + Timeouts.finally
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeouts")]
+        public virtual TimeoutFields Timeouts { get; set; }
+
+        /// <summary>Output only. A unique identifier for the `PipelineRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time at which the request to update the `PipelineRun` was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Worker configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("worker")]
+        public virtual Worker Worker { get; set; }
+
+        /// <summary>Output only. The WorkerPool used to run this PipelineRun.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
+
+        /// <summary>Output only. The Workflow used to create this PipelineRun.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workflow")]
+        public virtual string Workflow { get; set; }
+
+        /// <summary>Workspaces is a list of WorkspaceBindings from volumes to workspaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaces")]
+        public virtual System.Collections.Generic.IList<WorkspaceBinding> Workspaces { get; set; }
+    }
+
     /// <summary>ServiceDirectoryConfig represents Service Directory configuration for a connection.</summary>
     public class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3398,311 +3703,6 @@ namespace Google.Apis.CloudBuild.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message describing PipelineRun object</summary>
-    public class PipelineRun : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>User annotations. See https://google.aip.dev/128#annotations</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
-
-        /// <summary>
-        /// Output only. List of TaskRun and Run names and PipelineTask names for children of this PipelineRun.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("childReferences")]
-        public virtual System.Collections.Generic.IList<ChildStatusReference> ChildReferences { get; set; }
-
-        private string _completionTimeRaw;
-
-        private object _completionTime;
-
-        /// <summary>Output only. Time the pipeline completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
-        public virtual string CompletionTimeRaw
-        {
-            get => _completionTimeRaw;
-            set
-            {
-                _completionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completionTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompletionTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletionTimeDateTimeOffset instead.")]
-        public virtual object CompletionTime
-        {
-            get => _completionTime;
-            set
-            {
-                _completionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completionTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CompletionTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompletionTimeRaw);
-            set => CompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Output only. Kubernetes Conditions convention for PipelineRun status and error.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV2Condition> Conditions { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. Time at which the request to create the `PipelineRun` was received.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Needed for declarative-friendly resources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        private string _finallyStartTimeRaw;
-
-        private object _finallyStartTime;
-
-        /// <summary>
-        /// Output only. FinallyStartTime is when all non-finally tasks have been completed and only finally tasks are
-        /// being executed. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("finallyStartTime")]
-        public virtual string FinallyStartTimeRaw
-        {
-            get => _finallyStartTimeRaw;
-            set
-            {
-                _finallyStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _finallyStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="FinallyStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinallyStartTimeDateTimeOffset instead.")]
-        public virtual object FinallyStartTime
-        {
-            get => _finallyStartTime;
-            set
-            {
-                _finallyStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _finallyStartTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FinallyStartTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? FinallyStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinallyStartTimeRaw);
-            set => FinallyStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Output only. GCB default params.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcbParams")]
-        public virtual System.Collections.Generic.IDictionary<string, string> GcbParams { get; set; }
-
-        /// <summary>
-        /// Output only. The `PipelineRun` name with format
-        /// `projects/{project}/locations/{location}/pipelineRuns/{pipeline_run}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Params is a list of parameter names and values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IList<Param> Params__ { get; set; }
-
-        /// <summary>PipelineRef refer to a specific instance of a Pipeline.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pipelineRef")]
-        public virtual PipelineRef PipelineRef { get; set; }
-
-        /// <summary>Pipelinerun status the user can provide. Used for cancellation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pipelineRunStatus")]
-        public virtual string PipelineRunStatus { get; set; }
-
-        /// <summary>PipelineSpec defines the desired state of Pipeline.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pipelineSpec")]
-        public virtual PipelineSpec PipelineSpec { get; set; }
-
-        /// <summary>Output only. Inline pipelineSpec yaml string, used by workflow run requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pipelineSpecYaml")]
-        public virtual string PipelineSpecYaml { get; set; }
-
-        /// <summary>Optional. Provenance configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
-        public virtual Provenance Provenance { get; set; }
-
-        /// <summary>
-        /// Output only. The `Record` of this `PipelineRun`. Format:
-        /// `projects/{project}/locations/{location}/results/{result_id}/records/{record_id}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("record")]
-        public virtual string Record { get; set; }
-
-        /// <summary>Output only. The exact PipelineSpec used to instantiate the run.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resolvedPipelineSpec")]
-        public virtual PipelineSpec ResolvedPipelineSpec { get; set; }
-
-        /// <summary>Optional. Output only. List of results written out by the pipeline's containers</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<PipelineRunResult> Results { get; set; }
-
-        /// <summary>Optional. Security configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("security")]
-        public virtual Security Security { get; set; }
-
-        /// <summary>
-        /// Service account used in the Pipeline. Deprecated; please use security.service_account instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
-        public virtual string ServiceAccount { get; set; }
-
-        /// <summary>Output only. List of tasks that were skipped due to when expressions evaluating to false.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("skippedTasks")]
-        public virtual System.Collections.Generic.IList<SkippedTask> SkippedTasks { get; set; }
-
-        private string _startTimeRaw;
-
-        private object _startTime;
-
-        /// <summary>Output only. Time the pipeline is actually started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// Time after which the Pipeline times out. Currently three keys are accepted in the map pipeline, tasks and
-        /// finally with Timeouts.pipeline &amp;gt;= Timeouts.tasks + Timeouts.finally
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeouts")]
-        public virtual TimeoutFields Timeouts { get; set; }
-
-        /// <summary>Output only. A unique identifier for the `PipelineRun`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. Time at which the request to update the `PipelineRun` was received.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Optional. Worker configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("worker")]
-        public virtual Worker Worker { get; set; }
-
-        /// <summary>Output only. The WorkerPool used to run this PipelineRun.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
-        public virtual string WorkerPool { get; set; }
-
-        /// <summary>Output only. The Workflow used to create this PipelineRun.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workflow")]
-        public virtual string Workflow { get; set; }
-
-        /// <summary>Workspaces is a list of WorkspaceBindings from volumes to workspaces.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workspaces")]
-        public virtual System.Collections.Generic.IList<WorkspaceBinding> Workspaces { get; set; }
     }
 
     /// <summary>PipelineRunResult used to describe the results of a pipeline</summary>
