@@ -6613,6 +6613,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
+        /// <summary>Optional. Enables SSH access to the Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshEnabled")]
+        public virtual System.Nullable<bool> SshEnabled { get; set; }
+
         /// <summary>
         /// Output only. The Condition of this Instance, containing its readiness status, and detailed error information
         /// in case it did not reach a serving state. See comments in `reconciling` for additional information on
@@ -6886,6 +6890,10 @@ namespace Google.Apis.CloudRun.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The functional type of the Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionalType")]
+        public virtual string FunctionalType { get; set; }
 
         /// <summary>
         /// Output only. A number that monotonically increases every time the user modifies the desired state.
@@ -7694,6 +7702,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
         public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
+
+        /// <summary>Optional. The Revision's workload identity settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityConfig")]
+        public virtual GoogleCloudRunV2WorkloadIdentityConfig WorkloadIdentityConfig { get; set; }
     }
 
     /// <summary>Settings for revision-level scaling settings.</summary>
@@ -7864,6 +7876,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
         public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
+
+        /// <summary>Optional. The Revision's workload identity settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityConfig")]
+        public virtual GoogleCloudRunV2WorkloadIdentityConfig WorkloadIdentityConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8131,6 +8147,10 @@ namespace Google.Apis.CloudRun.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. The functional type of the Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionalType")]
+        public virtual string FunctionalType { get; set; }
 
         /// <summary>
         /// Output only. A number that monotonically increases every time the user modifies the desired state. Please
@@ -9009,6 +9029,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
         public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
+
+        /// <summary>Optional. The Task's workload identity settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityConfig")]
+        public virtual GoogleCloudRunV2WorkloadIdentityConfig WorkloadIdentityConfig { get; set; }
     }
 
     /// <summary>Result of a task attempt.</summary>
@@ -9095,6 +9119,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
         public virtual GoogleCloudRunV2VpcAccess VpcAccess { get; set; }
+
+        /// <summary>Optional. The Task's workload identity settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityConfig")]
+        public virtual GoogleCloudRunV2WorkloadIdentityConfig WorkloadIdentityConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9749,6 +9777,30 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. The total number of instances in manual scaling mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualInstanceCount")]
         public virtual System.Nullable<int> ManualInstanceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Workload identity settings.</summary>
+    public class GoogleCloudRunV2WorkloadIdentityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual string Identity { get; set; }
+
+        /// <summary>
+        /// Optional. Controls whether an instance receives a MWLID certificate. Corresponds to the intention of the
+        /// original --[no-]identity-certificate flag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityCertificateEnabled")]
+        public virtual System.Nullable<bool> IdentityCertificateEnabled { get; set; }
+
+        /// <summary>Optional. The type of identity to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityType")]
+        public virtual string IdentityType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
