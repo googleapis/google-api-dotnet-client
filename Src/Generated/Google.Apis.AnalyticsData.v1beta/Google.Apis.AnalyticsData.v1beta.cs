@@ -1624,6 +1624,46 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Define the truncated date range from start_date to end_date.</summary>
+    public class DataTruncationDateRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end date in the format YYYY-MM-DD (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>The start date in the format YYYY-MM-DD (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a reason for data truncation in the report.</summary>
+    public class DataTruncationReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The data truncation date in the format YYYY-MM-DD. Indicates data before this date is truncated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTruncationDate")]
+        public virtual string DataTruncationDate { get; set; }
+
+        /// <summary>The truncated date ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTruncationDateRanges")]
+        public virtual System.Collections.Generic.IList<DataTruncationDateRange> DataTruncationDateRanges { get; set; }
+
+        /// <summary>A descriptive message explaining the data truncation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTruncationMessage")]
+        public virtual string DataTruncationMessage { get; set; }
+
+        /// <summary>The type of data truncation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTruncationType")]
+        public virtual string DataTruncationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`. Requests are allowed up to 4 date
     /// ranges.
@@ -2535,6 +2575,10 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLossFromOtherRow")]
         public virtual System.Nullable<bool> DataLossFromOtherRow { get; set; }
+
+        /// <summary>If set, indicate there is data truncation in the report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataTruncationReasons")]
+        public virtual System.Collections.Generic.IList<DataTruncationReason> DataTruncationReasons { get; set; }
 
         /// <summary>If empty reason is specified, the report is empty for this reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emptyReason")]
