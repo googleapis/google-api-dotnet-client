@@ -1134,7 +1134,7 @@
       }
     }
   },
-  "revision": "20260907",
+  "revision": "20260908",
   "rootUrl": "https://health.googleapis.com/",
   "schemas": {
     "ActiveEnergyBurned": {
@@ -4842,13 +4842,13 @@
           "type": "integer"
         },
         "autoRunningStrideLengthMm": {
-          "description": "Output only. The automatically calculated running stride length, in millimeters. The user must consent to one of the following access scopes to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`",
+          "description": "Output only. The automatically calculated running stride length, in millimeters. The user must consent to the following access scope to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`",
           "format": "int32",
           "readOnly": true,
           "type": "integer"
         },
         "autoWalkingStrideLengthMm": {
-          "description": "Output only. The automatically calculated walking stride length, in millimeters. The user must consent to one of the following access scopes to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`",
+          "description": "Output only. The automatically calculated walking stride length, in millimeters. The user must consent to the following access scope to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`",
           "format": "int32",
           "readOnly": true,
           "type": "integer"
@@ -4863,12 +4863,12 @@
           "type": "string"
         },
         "userConfiguredRunningStrideLengthMm": {
-          "description": "Optional. The user's user configured running stride length, in millimeters. The user must consent to one of the following access scopes to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`",
+          "description": "Optional. The user's user configured running stride length, in millimeters. The user must consent to the following access scope to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`",
           "format": "int32",
           "type": "integer"
         },
         "userConfiguredWalkingStrideLengthMm": {
-          "description": "Optional. The user's user configured walking stride length, in millimeters. The user must consent to one of the following access scopes to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness`",
+          "description": "Optional. The user's user configured walking stride length, in millimeters. The user must consent to the following access scope to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`",
           "format": "int32",
           "type": "integer"
         }
