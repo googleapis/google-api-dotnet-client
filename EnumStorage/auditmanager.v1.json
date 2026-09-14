@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudAuditManager.v1.CloudAuditManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudAuditManager.v1.CloudAuditManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
