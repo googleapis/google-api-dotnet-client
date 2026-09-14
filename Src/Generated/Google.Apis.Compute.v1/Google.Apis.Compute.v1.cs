@@ -116381,10 +116381,10 @@ namespace Google.Apis.Compute.v1.Data
         /// COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D,COMPUTE_OPTIMIZED_H3, GENERAL_PURPOSE,GENERAL_PURPOSE_C4,
         /// GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4,
         /// GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
-        /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3. For example, type MEMORY_OPTIMIZED specifies
-        /// a commitment that applies only to eligible resources of memory optimized M1 and M2 machine series. Type
-        /// GENERAL_PURPOSE specifies a commitment that applies only to eligible resources of general purpose N1 machine
-        /// series.
+        /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,STORAGE_OPTIMIZED_Z4DS,
+        /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For example, type MEMORY_OPTIMIZED specifies a commitment
+        /// that applies only to eligible resources of memory optimized M1 and M2 machine series. Type GENERAL_PURPOSE
+        /// specifies a commitment that applies only to eligible resources of general purpose N1 machine series.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
