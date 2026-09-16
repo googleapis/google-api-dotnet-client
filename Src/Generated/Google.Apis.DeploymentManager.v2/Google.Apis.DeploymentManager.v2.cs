@@ -2745,13 +2745,86 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for FirewallPolicyRule operations.</summary>
     public class FirewallPolicyRuleOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The priority allocated for the firewall policy rule if query parameters specified minPriority/maxPriority.
+        /// Output only. [Output Only] The priority allocated for the firewall policy rule if query parameters specified
+        /// minPriority/maxPriority.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocatedPriority")]
         public virtual System.Nullable<int> AllocatedPriority { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for GetHealth operations.</summary>
+    public class GetHealthOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The health information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthInfo")]
+        public virtual GetHealthOperationMetadataHealthInfo HealthInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Health information.</summary>
+    public class GetHealthOperationMetadataHealthInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The availability SLO status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilitySloStatus")]
+        public virtual string AvailabilitySloStatus { get; set; }
+
+        /// <summary>Output only. The health status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthStatus")]
+        public virtual string HealthStatus { get; set; }
+
+        /// <summary>Output only. The repair category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairCategory")]
+        public virtual string RepairCategory { get; set; }
+
+        /// <summary>Output only. The reason for unhealthy status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unhealthyReason")]
+        public virtual string UnhealthyReason { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when health info was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2769,15 +2842,12 @@ namespace Google.Apis.DeploymentManager.v2.Data
     public class GetVersionOperationMetadataSbomInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// SBOM versions currently applied to the resource. The key is the component name and the value is the version.
+        /// A mapping of components to their currently-applied versions or other appropriate identifiers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentComponentVersions")]
         public virtual System.Collections.Generic.IDictionary<string, string> CurrentComponentVersions { get; set; }
 
-        /// <summary>
-        /// SBOM versions scheduled for the next maintenance. The key is the component name and the value is the
-        /// version.
-        /// </summary>
+        /// <summary>A mapping of components to their target versions or other appropriate identifiers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetComponentVersions")]
         public virtual System.Collections.Generic.IDictionary<string, string> TargetComponentVersions { get; set; }
 
@@ -2867,6 +2937,17 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>Status information per location (location name is key). Example key: zones/us-central1-a</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perLocationStatus")]
         public virtual System.Collections.Generic.IDictionary<string, BulkInsertOperationStatus> PerLocationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[Output Only] Operation metadata for instances.troubleshoot.</summary>
+    public class InstancesTroubleshootOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output Only] Serialized output of the troubleshooting diagnostic run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("troubleshootOutput")]
+        public virtual string TroubleshootOutput { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2986,6 +3067,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>[Output Only] Extended details about the operation's execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual OperationDetails Details { get; set; }
+
         /// <summary>
         /// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
         /// </summary>
@@ -2998,8 +3083,17 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual ErrorData Error { get; set; }
 
+        /// <summary>
+        /// Output only. [Output Only] Metadata containing the allocated priority from the
+        /// networkFirewallPolicies.addRule and regionNetworkFirewallPolicies.addRule methods if not explicitly provided
+        /// by the user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyRuleOperationMetadata")]
         public virtual FirewallPolicyRuleOperationMetadata FirewallPolicyRuleOperationMetadata { get; set; }
+
+        /// <summary>Output only. Metadata for GetHealth operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("getHealthOperationMetadata")]
+        public virtual GetHealthOperationMetadata GetHealthOperationMetadata { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("getVersionOperationMetadata")]
         public virtual GetVersionOperationMetadata GetVersionOperationMetadata { get; set; }
@@ -3032,6 +3126,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("instancesBulkInsertOperationMetadata")]
         public virtual InstancesBulkInsertOperationMetadata InstancesBulkInsertOperationMetadata { get; set; }
+
+        /// <summary>Output only. [Output Only] Operation metadata for instances.troubleshoot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancesTroubleshootOperationMetadata")]
+        public virtual InstancesTroubleshootOperationMetadata InstancesTroubleshootOperationMetadata { get; set; }
 
         /// <summary>
         /// Output only. [Output Only] Type of the resource. Always `compute#operation` for Operation resources.
@@ -3168,6 +3266,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; }
 
+                /// <summary>
+                /// Output only. [Output Only] Advanced debugging information with stack traces and other diagnostic
+                /// details for the error.
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
                 public virtual DebugInfo DebugInfo { get; set; }
 
@@ -3196,15 +3298,19 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 /// </summary>
                 public class ErrorDetailsData
                 {
+                    /// <summary>Error information containing structured domain, reason, and metadata.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
                     public virtual ErrorInfo ErrorInfo { get; set; }
 
+                    /// <summary>Links and information to help the user resolve the error.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("help")]
                     public virtual Help Help { get; set; }
 
+                    /// <summary>A localized human-readable error message intended for end users.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("localizedMessage")]
                     public virtual LocalizedMessage LocalizedMessage { get; set; }
 
+                    /// <summary>Details about quota limits and metrics when a quota is exceeded.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("quotaInfo")]
                     public virtual QuotaExceededInfo QuotaInfo { get; set; }
                 }
@@ -3226,7 +3332,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
             /// <summary>
             /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
-            /// "value": "zones/us-east1-d" }
+            /// "value": "zones/us-east1-d" }]
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
@@ -3237,7 +3343,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
             /// <summary>
             /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
-            /// "value": "zones/us-east1-d" }
+            /// "value": "zones/us-east1-d" }]
             /// </summary>
             public class DataData
             {
@@ -3256,6 +3362,20 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 public virtual string Value { get; set; }
             }
         }
+    }
+
+    public class OperationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Machine readable data from the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
+
+        /// <summary>Human or AI readable details on execution of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -3467,7 +3587,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
             /// <summary>
             /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
-            /// "value": "zones/us-east1-d" }
+            /// "value": "zones/us-east1-d" }]
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
@@ -3478,7 +3598,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
             /// <summary>
             /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
-            /// "value": "zones/us-east1-d" }
+            /// "value": "zones/us-east1-d" }]
             /// </summary>
             public class DataData
             {
@@ -3582,6 +3702,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("code")]
                 public virtual string Code { get; set; }
 
+                /// <summary>
+                /// Output only. [Output Only] Advanced debugging information with stack traces and other diagnostic
+                /// details for the error.
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
                 public virtual DebugInfo DebugInfo { get; set; }
 
@@ -3610,15 +3734,19 @@ namespace Google.Apis.DeploymentManager.v2.Data
                 /// </summary>
                 public class ErrorDetailsData
                 {
+                    /// <summary>Error information containing structured domain, reason, and metadata.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
                     public virtual ErrorInfo ErrorInfo { get; set; }
 
+                    /// <summary>Links and information to help the user resolve the error.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("help")]
                     public virtual Help Help { get; set; }
 
+                    /// <summary>A localized human-readable error message intended for end users.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("localizedMessage")]
                     public virtual LocalizedMessage LocalizedMessage { get; set; }
 
+                    /// <summary>Details about quota limits and metrics when a quota is exceeded.</summary>
                     [Newtonsoft.Json.JsonPropertyAttribute("quotaInfo")]
                     public virtual QuotaExceededInfo QuotaInfo { get; set; }
                 }
@@ -3640,7 +3768,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
             /// <summary>
             /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
-            /// "value": "zones/us-east1-d" }
+            /// "value": "zones/us-east1-d" }]
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("data")]
             public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
@@ -3651,7 +3779,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
             /// <summary>
             /// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope",
-            /// "value": "zones/us-east1-d" }
+            /// "value": "zones/us-east1-d" }]
             /// </summary>
             public class DataData
             {
