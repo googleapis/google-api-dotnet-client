@@ -1352,6 +1352,396 @@ namespace Google.Apis.Meet.v2
         public SpacesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Members = new MembersResource(service);
+        }
+
+        /// <summary>Gets the Members resource.</summary>
+        public virtual MembersResource Members { get; }
+
+        /// <summary>The "members" collection of methods.</summary>
+        public class MembersResource
+        {
+            private const string Resource = "members";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MembersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Updates members of one space within a batch.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource shared by all Members being updated. Format: spaces/{space}
+            /// </param>
+            public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Meet.v2.Data.BatchUpdateMembersRequest body, string parent)
+            {
+                return new BatchUpdateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Updates members of one space within a batch.</summary>
+            public class BatchUpdateRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.BatchUpdateMembersResponse>
+            {
+                /// <summary>Constructs a new BatchUpdate request.</summary>
+                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Meet.v2.Data.BatchUpdateMembersRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource shared by all Members being updated. Format: spaces/{space}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Meet.v2.Data.BatchUpdateMembersRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchUpdate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/members:batchUpdate";
+
+                /// <summary>Initializes BatchUpdate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Creates a member. This API supports the `fields` parameter in
+            /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
+            /// parameter is omitted, this API response will default to "name,email,role,user".
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Format: spaces/{space}</param>
+            public virtual CreateRequest Create(Google.Apis.Meet.v2.Data.Member body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a member. This API supports the `fields` parameter in
+            /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
+            /// parameter is omitted, this API response will default to "name,email,role,user".
+            /// </summary>
+            public class CreateRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Member>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Meet.v2.Data.Member body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: spaces/{space}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Meet.v2.Data.Member Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/members";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes the member who was previously assigned roles in the space.</summary>
+            /// <param name="name">Required. Format: “spaces/{space}/members/{member}”</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes the member who was previously assigned roles in the space.</summary>
+            public class DeleteRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: “spaces/{space}/members/{member}”</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/members/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Gets a member. This API supports the `fields` parameter in
+            /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
+            /// parameter is omitted, this API response will default to "name,email,role,user".
+            /// </summary>
+            /// <param name="name">Required. Format: “spaces/{space}/members/{member}”</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Gets a member. This API supports the `fields` parameter in
+            /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
+            /// parameter is omitted, this API response will default to "name,email,role,user".
+            /// </summary>
+            public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Member>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: “spaces/{space}/members/{member}”</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/members/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists members. This API supports the `fields` parameter in
+            /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
+            /// parameter is omitted this API response will default to "name,email,role,user".
+            /// </summary>
+            /// <param name="parent">Required. Format: spaces/{space}</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists members. This API supports the `fields` parameter in
+            /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
+            /// parameter is omitted this API response will default to "name,email,role,user".
+            /// </summary>
+            public class ListRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ListMembersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: spaces/{space}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Maximum number of members to return. The service might return fewer than this value. If
+                /// unspecified or set to 0, at most 250 members are returned. The maximum value is 500; values above
+                /// 500 are coerced to 500. Maximum might change in the future.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Page token returned from previous List Call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/members";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a member.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. Resource name of the member. Format: spaces/{space}/members/{member}
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Meet.v2.Data.Member body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a member.</summary>
+            public class PatchRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Member>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Meet.v2.Data.Member body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Identifier. Resource name of the member. Format: spaces/{space}/members/{member}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Field mask used to specify the fields to be updated in the member. If update_mask isn't
+                /// provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields
+                /// provided with values in the request. Using "*" as update_mask will update all fields, including
+                /// deleting fields not set in the request. In case of BatchUpdate, it must be absent or the same as the
+                /// update_mask in BatchUpdateMembersRequest when UpdateMemberRequest is built as a child request of
+                /// BatchUpdateMembersRequest.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Meet.v2.Data.Member Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/members/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Creates a space.</summary>
@@ -1668,6 +2058,43 @@ namespace Google.Apis.Meet.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to update members of one space within a batch.</summary>
+    public class BatchUpdateMembersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The request message specifying the resources to update. A maximum of 500 members can be modified
+        /// in a batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateMemberRequest> Requests { get; set; }
+
+        /// <summary>
+        /// Optional. Top-level field mask used to specify the fields to be updated in the member for all
+        /// UpdateMemberRequests. There are 4 possible scenarios for top-level and child field mask: 1. top-level and
+        /// child field mask is absent: All fields provided in the requests are updated, including deleting fields not
+        /// set in the requests. 2. top-level field mask is present but child field mask is absent: The fields specified
+        /// in the top-level field mask are updated. 3. top-level and child field mask is present: The child field mask
+        /// must be the same as the top-level field mask. 4. top-level field mask is absent but child field mask is
+        /// present: It isn't supported and will return an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of batch update members.</summary>
+    public class BatchUpdateMembersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Members updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<Member> Members { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Single instance of a meeting held in a space.</summary>
     public class ConferenceRecord : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1903,6 +2330,24 @@ namespace Google.Apis.Meet.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response of list members.</summary>
+    public class ListMembersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of members for the current page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<Member> Members { get; set; }
+
+        /// <summary>
+        /// Token to be circulated back for further list call if current list doesn't include all the members. Unset if
+        /// all members are returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of ListParticipants method.</summary>
     public class ListParticipantSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2014,6 +2459,27 @@ namespace Google.Apis.Meet.v2.Data
         /// <summary>List of transcripts in one page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcripts")]
         public virtual System.Collections.Generic.IList<Transcript> Transcripts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Users who are configured to have a role in the space. These users can join the space without knocking.
+    /// </summary>
+    public class Member : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email for the member. This is required for creating the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Identifier. Resource name of the member. Format: spaces/{space}/members/{member}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The meeting role assigned to the member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2852,6 +3318,27 @@ namespace Google.Apis.Meet.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoTranscriptionGeneration")]
         public virtual string AutoTranscriptionGeneration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to update a member.</summary>
+    public class UpdateMemberRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Member to update. Format: spaces/{space}/members/{member}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("member")]
+        public virtual Member Member { get; set; }
+
+        /// <summary>
+        /// Optional. Field mask used to specify the fields to be updated in the member. If update_mask isn't
+        /// provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields provided
+        /// with values in the request. Using "*" as update_mask will update all fields, including deleting fields not
+        /// set in the request. In case of BatchUpdate, it must be absent or the same as the update_mask in
+        /// BatchUpdateMembersRequest when UpdateMemberRequest is built as a child request of BatchUpdateMembersRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
