@@ -11785,7 +11785,7 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class OauthClient : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The list of OAuth grant types is allowed for the OauthClient.</summary>
+        /// <summary>Optional. The list of OAuth grant types is allowed for the OauthClient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedGrantTypes")]
         public virtual System.Collections.Generic.IList<string> AllowedGrantTypes { get; set; }
 
