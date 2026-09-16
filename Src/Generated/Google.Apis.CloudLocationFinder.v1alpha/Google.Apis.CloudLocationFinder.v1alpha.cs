@@ -778,6 +778,10 @@ namespace Google.Apis.CloudLocationFinder.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. GCP-specific attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpAttributes")]
+        public virtual GcpAttributes GcpAttributes { get; set; }
+
         /// <summary>
         /// Identifier. Name of the cloud location. Unique name of the cloud location including project and location
         /// using the form: `projects/{project_id}/locations/{location}/cloudLocations/{cloud_location}`
@@ -790,6 +794,17 @@ namespace Google.Apis.CloudLocationFinder.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("territoryCode")]
         public virtual string TerritoryCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GCP-specific attributes.</summary>
+    public class GcpAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The type of the cloud zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneType")]
+        public virtual string ZoneType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
