@@ -14957,7 +14957,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     public class AuthzPolicyAuthzRuleToRequestOperationMCP : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize *
+        /// Optional. If specified, matches on the MCP protocol's non-access specific methods namely: * initialize *
         /// completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseProtocolMethodsOption")]
