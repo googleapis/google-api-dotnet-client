@@ -8425,6 +8425,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual string Event__ { get; set; }
 
+        /// <summary>Optional. Additional variables associated with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variables")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Variables { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9024,6 +9028,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Guardrail that runs supervisor intervention.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supervisor")]
+        public virtual GuardrailSupervisor Supervisor { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -9243,6 +9251,21 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Required. The harm block threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual string Threshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Guardrail that runs supervisor intervention.</summary>
+    public class GuardrailSupervisor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The detection mode of the supervisor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectionMode")]
+        public virtual string DetectionMode { get; set; }
+
+        /// <summary>Optional. The type of the supervisor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11468,9 +11491,25 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Optional. Mapping of input variable names of remote agent to GECX variable names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputVariableMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> InputVariableMapping { get; set; }
+
         /// <summary>Required. The name of the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Mapping of output variable names of remote agent to GECX variable names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputVariableMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> OutputVariableMapping { get; set; }
+
+        /// <summary>
+        /// Optional. When enabled, the interaction between the CXAS app and the remote agent will share the same
+        /// context. If the remote agent returns a context_id, it will be persisted for the entirety of the session for
+        /// this remote agent tool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statefulAgent")]
+        public virtual System.Nullable<bool> StatefulAgent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
