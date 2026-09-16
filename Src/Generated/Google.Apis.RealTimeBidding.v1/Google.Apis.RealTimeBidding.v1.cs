@@ -2010,6 +2010,65 @@ namespace Google.Apis.RealTimeBidding.v1
                 this.service = service;
             }
 
+            /// <summary>
+            /// Adds a list of deals to a creative, which submits the creative for publisher review. Returns the updated
+            /// creative.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. Name of the creative to add the deals to. See creative.name.</param>
+            public virtual AddDealsRequest AddDeals(Google.Apis.RealTimeBidding.v1.Data.AddDealsRequest body, string name)
+            {
+                return new AddDealsRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Adds a list of deals to a creative, which submits the creative for publisher review. Returns the updated
+            /// creative.
+            /// </summary>
+            public class AddDealsRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.Creative>
+            {
+                /// <summary>Constructs a new AddDeals request.</summary>
+                public AddDealsRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1.Data.AddDealsRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Name of the creative to add the deals to. See creative.name.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1.Data.AddDealsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "addDeals";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:addDeals";
+
+                /// <summary>Initializes AddDeals parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^buyers/[^/]+/creatives/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Creates a creative.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -3072,6 +3131,21 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unidentifiedProviderDomains")]
         public virtual System.Collections.Generic.IList<string> UnidentifiedProviderDomains { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to add deals to a creative resource.</summary>
+    public class AddDealsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The IDs of the deals to associate with the creative. This can include Programmatic Guaranteed,
+        /// Private Auction, Preferred Deal, and Marketplace Package deal IDs. You can associate no more than 100 deal
+        /// IDs per request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealIds")]
+        public virtual System.Collections.Generic.IList<string> DealIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
