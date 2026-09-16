@@ -330,6 +330,71 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Swaps an input credential for a target credential as per the rules and provider defined in the
+                    /// given auth provider.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="authProvider">
+                    /// Required. The resource name of the auth provider. Format:
+                    /// `projects/{project}/locations/{location}/authProviders/{auth_provider}`
+                    /// </param>
+                    public virtual ExchangeRequest Exchange(Google.Apis.AgentIdentityCredentials.v1alpha.Data.GoogleCloudAgentidentitycredentialsV1alphaExchangeCredentialsRequest body, string authProvider)
+                    {
+                        return new ExchangeRequest(this.service, body, authProvider);
+                    }
+
+                    /// <summary>
+                    /// Swaps an input credential for a target credential as per the rules and provider defined in the
+                    /// given auth provider.
+                    /// </summary>
+                    public class ExchangeRequest : AgentIdentityCredentialsBaseServiceRequest<Google.Apis.AgentIdentityCredentials.v1alpha.Data.GoogleCloudAgentidentitycredentialsV1alphaExchangeCredentialsResponse>
+                    {
+                        /// <summary>Constructs a new Exchange request.</summary>
+                        public ExchangeRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentIdentityCredentials.v1alpha.Data.GoogleCloudAgentidentitycredentialsV1alphaExchangeCredentialsRequest body, string authProvider) : base(service)
+                        {
+                            AuthProvider = authProvider;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the auth provider. Format:
+                        /// `projects/{project}/locations/{location}/authProviders/{auth_provider}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("authProvider", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AuthProvider { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AgentIdentityCredentials.v1alpha.Data.GoogleCloudAgentidentitycredentialsV1alphaExchangeCredentialsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "exchange";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+authProvider}/credentials:exchange";
+
+                        /// <summary>Initializes Exchange parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("authProvider", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "authProvider",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authProviders/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Finalizes the credentials after a successful consent flow.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="authProvider">
@@ -469,6 +534,124 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
     /// <summary>Indicates the user has rejected the permission delegation or canceled the request.</summary>
     public class GoogleCloudAgentidentitycredentialsV1alphaConsentRejected : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `ExchangeCredentials`.</summary>
+    public class GoogleCloudAgentidentitycredentialsV1alphaExchangeCredentialsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The desired downstream OAuth scopes to request for the exchanged token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>Required. The incoming identity or assertion token to be exchanged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCredential")]
+        public virtual string SourceCredential { get; set; }
+
+        /// <summary>
+        /// Optional. The desired target token type to be returned from the exchange. If unspecified, defaults to the
+        /// token type configured on the AuthProvider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetTokenType")]
+        public virtual string TargetTokenType { get; set; }
+
+        /// <summary>
+        /// Optional. The token binding parameters to be applied to downstream tokens and embedded into the ID-JAG
+        /// assertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenBinding")]
+        public virtual GoogleCloudAgentidentitycredentialsV1alphaTokenBinding TokenBinding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `ExchangeCredentials` containing the resulting credentials.</summary>
+    public class GoogleCloudAgentidentitycredentialsV1alphaExchangeCredentialsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _acquireTimeRaw;
+
+        private object _acquireTime;
+
+        /// <summary>Optional. The time when the token was acquired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acquireTime")]
+        public virtual string AcquireTimeRaw
+        {
+            get => _acquireTimeRaw;
+            set
+            {
+                _acquireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _acquireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AcquireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AcquireTimeDateTimeOffset instead.")]
+        public virtual object AcquireTime
+        {
+            get => _acquireTime;
+            set
+            {
+                _acquireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _acquireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AcquireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AcquireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AcquireTimeRaw);
+            set => AcquireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Optional. The expiration time of the exchanged access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The scopes actually associated with the retrieved token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The user-consented workforce access token resulting from the exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -633,6 +816,22 @@ namespace Google.Apis.AgentIdentityCredentials.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for binding downstream credentials to client communication channel properties.</summary>
+    public class GoogleCloudAgentidentitycredentialsV1alphaTokenBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The base64url-encoded SHA-256 hash of the DER-encoded X.509 client certificate, as defined in RFC
+        /// 8705 Section 3.1 (corresponding to "x5t#S256"). Format requirements: - Base64url encoding (RFC 4648 Section
+        /// 5) using URL-safe characters ('-' and '_') without padding ('='). - Exactly 43 characters long for a 256-bit
+        /// SHA-256 digest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateFingerprint")]
+        public virtual string CertificateFingerprint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
