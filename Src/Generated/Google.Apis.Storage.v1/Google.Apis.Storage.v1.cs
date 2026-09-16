@@ -12707,6 +12707,10 @@ namespace Google.Apis.Storage.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
+        /// <summary>The type URL of the object context's extended data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedDataTypeUrl")]
+        public virtual string ExtendedDataTypeUrl { get; set; }
+
         /// <summary>The time at which the object context was last updated in RFC 3339 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw { get; set; }
