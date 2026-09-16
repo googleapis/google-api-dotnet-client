@@ -46,5 +46,7 @@ the request and want to put work into it.
 - Issue [#1812 Support for limited input device flow](https://github.com/googleapis/google-api-dotnet-client/issues/1812)
 - Issue [#1827 PCKE flow should no require client_secret](https://github.com/googleapis/google-api-dotnet-client/issues/1827)
 - Issue [#2011 Add support for Domain-Wide Delegation using ImpersonatedCredential](https://github.com/googleapis/google-api-dotnet-client/issues/2011)
+- Issue [#1816 ASP.NET Core does not prompt for access when user has removed access](https://github.com/googleapis/google-api-dotnet-client/issues/1816)
+- Issue [#2225 Integration with .NET Identity](https://github.com/googleapis/google-api-dotnet-client/issues/2225)
 - Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries. These feature requests are on the Auth team backlog.
 - Action: Auth team will prioritize these issues and we'll work on them accordingly.
