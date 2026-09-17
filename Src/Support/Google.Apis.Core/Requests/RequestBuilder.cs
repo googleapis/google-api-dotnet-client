@@ -260,77 +260,56 @@ namespace Google.Apis.Requests
                     if (PathParameters.ContainsKey(parameterName))
                     {
                         var parameterValues = PathParameters[parameterName];
-                        foreach (var val in parameterValues)
+                        var processedValues = new List<string>(parameterValues.Count);
+
+                        foreach (var rawVal in parameterValues)
                         {
-                            if (val is null)
+                            if (rawVal is null)
                             {
                                 continue;
                             }
-                            // Reject query (?) or fragment (#) injections in reserved expansions (+ or #).
-                            // Since reserved expansions bypass escaping (to preserve slashes), this check acts as the primary control to prevent parameter injection.
-                            if ((op == "+" || op == "#") && (val.IndexOf('?') != -1 || val.IndexOf('#') != -1))
-                            {
-                                throw new ArgumentException($"Reserved path parameter '{parameterName}' contains invalid character '?' or '#': '{val}'");
-                            }
-                            // Unescape the entire value first to prevent bypasses using URL-encoded slashes (e.g. %2f).
-                            string unescapedVal = Uri.UnescapeDataString(val);
-                            bool isReserved = op == "+" || op == "#";
-                            // Scan for '.' and '..' segments in place using char-index scanning to avoid heap allocations.
-                            int valStart = 0;
-                            while (valStart < unescapedVal.Length)
-                            {
-                                int nextSlash = unescapedVal.IndexOf('/', valStart);
-                                int segmentLength = nextSlash == -1 ? unescapedVal.Length - valStart : nextSlash - valStart;
 
-                                if (segmentLength == 1 && unescapedVal[valStart] == '.')
+                            string val = rawVal;
+                            // Check if we need to use a substring of the value.
+                            if (numOfChars != 0 && numOfChars < val.Length)
+                            {
+                                val = val.Substring(0, numOfChars);
+                            }
+
+                            if (op == "+" || op == "#")
+                            {
+                                // Multi-segment path parameters (+ and #) preserve slashes but percent-encode each individual segment,
+                                // rejecting path traversal segments ('.' or '..').
+                                // We unescape first to prevent path traversal bypasses via URL-encoded slashes (e.g. %2f).
+                                string[] segments = Uri.UnescapeDataString(val).Split('/');
+                                for (int i = 0; i < segments.Length; i++)
                                 {
-                                    if (!isReserved)
-                                    {
-                                        throw new ArgumentException($"Invalid value '.' for {parameterName}");
-                                    }
-                                    else
+                                    string segment = segments[i];
+                                    if (segment == "." || segment == "..")
                                     {
                                         throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly . or ..");
                                     }
+                                    segments[i] = Uri.EscapeDataString(segment);
                                 }
-                                if (segmentLength == 2 && unescapedVal[valStart] == '.' && unescapedVal[valStart + 1] == '.')
+                                processedValues.Add(string.Join("/", segments));
+                            }
+                            else
+                            {
+                                // Standard single-segment parameters escape all special characters (including '/').
+                                string unescaped = Uri.UnescapeDataString(val);
+                                if (unescaped == "." || unescaped == "..")
                                 {
-                                    if (!isReserved)
-                                    {
-                                        throw new ArgumentException($"Invalid value '..' for {parameterName}");
-                                    }
-                                    else
-                                    {
-                                        throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly . or ..");
-                                    }
+                                    throw new ArgumentException($"Invalid value '{unescaped}' for {parameterName}");
                                 }
-
-                                if (nextSlash == -1)
+                                if (PathParameters[parameterName].Count == 1)
                                 {
-                                    break;
+                                    val = Uri.EscapeDataString(val);
                                 }
-                                valStart = nextSlash + 1;
+                                processedValues.Add(val);
                             }
                         }
 
-                        var value = string.Join(joiner, PathParameters[parameterName]);
-
-                        // Check if we need to use a substring of the value.
-                        if (numOfChars != 0 && numOfChars < value.Length)
-                        {
-                            value = value.Substring(0, numOfChars);
-                        }
-
-                        // Do not escape the value if the operator is a reserved (+) or fragment (#) expansion.
-                        // The former is needed for path values (to preserve slashes), and the latter for OAuth2 callback and redirection URIs.
-                        // Since these operators bypass URL-escaping, any query (?) or fragment (#) characters in their values
-                        // must be explicitly rejected (handled in the validation loop above) to prevent parameter injection.
-                        if (op != "+" && op != "#" && PathParameters[parameterName].Count == 1)
-                        {
-                            value = Uri.EscapeDataString(value);
-                        }
-
-                        value = start + value;
+                        var value = start + string.Join(joiner, processedValues);
                         newContent.Append(value);
                     }
                     else

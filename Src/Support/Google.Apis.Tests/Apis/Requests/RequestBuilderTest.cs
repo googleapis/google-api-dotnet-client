@@ -283,7 +283,7 @@ namespace Google.Apis.Tests.Apis.Requests
             vars["path"] = new List<string> { "/foo/bar" };
 
             SubtestPathParameters(vars, "{+var}", "value");
-            SubtestPathParameters(vars, "{+hello}", "Hello%20World!");
+            SubtestPathParameters(vars, "{+hello}", "Hello%20World%21");
             SubtestPathParameters(vars, "{+path}/here", "foo/bar/here");
             SubtestPathParameters(vars, "here?ref={+path}", "here?ref=/foo/bar");
         }
@@ -303,9 +303,9 @@ namespace Google.Apis.Tests.Apis.Requests
 
             SubtestPathParameters(vars, "map?{x,y}", "map?1024,768");
             SubtestPathParameters(vars, "{x,hello,y}", "1024,Hello%20World%21,768");
-            SubtestPathParameters(vars, "{+x,hello,y}", "1024,Hello%20World!,768");
+            SubtestPathParameters(vars, "{+x,hello,y}", "1024,Hello%20World%21,768");
             SubtestPathParameters(vars, "{+path,x}/here", "foo/bar,1024/here");
-            SubtestPathParameters(vars, "{#x,hello,y}", "#1024,Hello%20World!,768");
+            SubtestPathParameters(vars, "{#x,hello,y}", "#1024,Hello%20World%21,768");
             SubtestPathParameters(vars, "{#path,x}/here", "#/foo/bar,1024/here");
             SubtestPathParameters(vars, "X{.var}", "X.value");
             SubtestPathParameters(vars, "X{.x,y}", "X.1024.768");
@@ -395,9 +395,9 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         [Theory]
-        // Dialogflow session (standard single-wildcard path)
-        [InlineData("v3/{session}:detectIntent", "projects/p/locations/l/agents/a/sessions/..")]
-        [InlineData("v3/{session}:detectIntent", "projects/p/locations/l/agents/a/sessions/.")]
+        // Dialogflow session (multi-segment reserved path)
+        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/..")]
+        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/.")]
         // Firestore documents (reserved template expansion)
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../default")]
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db")]
@@ -406,8 +406,6 @@ namespace Google.Apis.Tests.Apis.Requests
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/%2e%2e%2f%2e%2e%2fescape-db")]
         [InlineData("v1/{+name}", "../escape-db")]
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/./child")]
-        [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc?key=val")]
-        [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc#frag")]
         // Webhooks (multiple standard wildcards)
         [InlineData("v3/projects/{project}/webhooks/{webhook}", "..")]
         [InlineData("v3/projects/{project}/webhooks/{webhook}", ".")]
@@ -431,12 +429,6 @@ namespace Google.Apis.Tests.Apis.Requests
 
             var exception = Assert.Throws<ArgumentException>(() => builder.BuildUri());
             string unescaped = Uri.UnescapeDataString(paramValue);
-
-            if (unescaped.Contains("?") || unescaped.Contains("#"))
-            {
-                Assert.StartsWith($"Reserved path parameter '{paramName}' contains invalid character", exception.Message);
-                return;
-            }
 
             bool isReserved = path.Contains("{+") || path.Contains("{#");
             bool hasDoubleDot = false;
@@ -462,6 +454,9 @@ namespace Google.Apis.Tests.Apis.Requests
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/doc-1")]
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/my-file.txt", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/my-file.txt")]
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/my-file..txt", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/my-file..txt")]
+        [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc?key=val", "http://www.example.com/v1/projects/p/databases/d/documents/doc%3Fkey%3Dval")]
+        [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc#frag", "http://www.example.com/v1/projects/p/databases/d/documents/doc%23frag")]
+        [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc with space", "http://www.example.com/v1/projects/p/databases/d/documents/doc%20with%20space")]
         public void ValidRealisticPatterns_Succeed(string path, string paramValue, string expectedUri)
         {
             var builder = new RequestBuilder()
