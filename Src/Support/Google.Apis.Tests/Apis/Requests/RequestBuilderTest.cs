@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2012 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -283,7 +283,7 @@ namespace Google.Apis.Tests.Apis.Requests
             vars["path"] = new List<string> { "/foo/bar" };
 
             SubtestPathParameters(vars, "{+var}", "value");
-            SubtestPathParameters(vars, "{+hello}", "Hello%20World!");
+            SubtestPathParameters(vars, "{+hello}", "Hello%20World%21");
             SubtestPathParameters(vars, "{+path}/here", "foo/bar/here");
             SubtestPathParameters(vars, "here?ref={+path}", "here?ref=/foo/bar");
         }
@@ -303,9 +303,9 @@ namespace Google.Apis.Tests.Apis.Requests
 
             SubtestPathParameters(vars, "map?{x,y}", "map?1024,768");
             SubtestPathParameters(vars, "{x,hello,y}", "1024,Hello%20World%21,768");
-            SubtestPathParameters(vars, "{+x,hello,y}", "1024,Hello%20World!,768");
+            SubtestPathParameters(vars, "{+x,hello,y}", "1024,Hello%20World%21,768");
             SubtestPathParameters(vars, "{+path,x}/here", "foo/bar,1024/here");
-            SubtestPathParameters(vars, "{#x,hello,y}", "#1024,Hello%20World!,768");
+            SubtestPathParameters(vars, "{#x,hello,y}", "#1024,Hello%20World%21,768");
             SubtestPathParameters(vars, "{#path,x}/here", "#/foo/bar,1024/here");
             SubtestPathParameters(vars, "X{.var}", "X.value");
             SubtestPathParameters(vars, "X{.x,y}", "X.1024.768");
@@ -392,6 +392,80 @@ namespace Google.Apis.Tests.Apis.Requests
             }
 
             Assert.Equal("http://www.example.com/" + expected, builder.BuildUri().AbsoluteUri);
+        }
+
+        [Theory]
+        // Dialogflow session (multi-segment reserved path)
+        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/..")]
+        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/.")]
+        // Firestore documents (reserved template expansion)
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../default")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db")]
+        [InlineData("v1/{+name}", "../escape-db")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/./child")]
+        // Webhooks (multiple standard wildcards)
+        [InlineData("v3/projects/{project}/webhooks/{webhook}", "..")]
+        [InlineData("v3/projects/{project}/webhooks/{webhook}", ".")]
+        public void PathTraversalAndInjection_ThrowsArgumentException(string path, string paramValue)
+        {
+            var builder = new RequestBuilder()
+            {
+                BaseUri = new Uri("http://www.example.com"),
+                Path = path
+            };
+
+            string paramName = path.Contains("session") ? "session" :
+                               path.Contains("webhook") ? "webhook" : "name";
+
+            if (path.Contains("project"))
+            {
+                builder.AddParameter(RequestParameterType.Path, "project", "p1");
+            }
+
+            builder.AddParameter(RequestParameterType.Path, paramName, paramValue);
+
+            var exception = Assert.Throws<ArgumentException>(() => builder.BuildUri());
+
+            bool isReserved = path.Contains("{+") || path.Contains("{#");
+            bool hasDoubleDot = false;
+            bool hasSingleDot = false;
+            foreach (var segment in paramValue.Split('/'))
+            {
+                if (segment == "..") hasDoubleDot = true;
+                if (segment == ".") hasSingleDot = true;
+            }
+
+            if (!isReserved)
+            {
+                string matchedDot = hasDoubleDot ? ".." : (hasSingleDot ? "." : "");
+                Assert.StartsWith($"Invalid value '{matchedDot}' for {paramName}", exception.Message);
+            }
+            else
+            {
+                Assert.StartsWith($"Value for {paramName} must not contain segments that are exactly . or ..", exception.Message);
+            }
+        }
+
+        [Theory]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/doc-1")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/my-file.txt", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/my-file.txt")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/my-file..txt", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/my-file..txt")]
+        [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc?key=val", "http://www.example.com/v1/projects/p/databases/d/documents/doc%3Fkey%3Dval")]
+        [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc#frag", "http://www.example.com/v1/projects/p/databases/d/documents/doc%23frag")]
+        [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc with space", "http://www.example.com/v1/projects/p/databases/d/documents/doc%20with%20space")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/..%2f..%2fescape-db", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/doc-1/..%252f..%252fescape-db")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/%2e%2e/escape-db", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/doc-1/%252e%252e/escape-db")]
+        public void ValidRealisticPatterns_Succeed(string path, string paramValue, string expectedUri)
+        {
+            var builder = new RequestBuilder()
+            {
+                BaseUri = new Uri("http://www.example.com"),
+                Path = path
+            };
+
+            builder.AddParameter(RequestParameterType.Path, "name", paramValue);
+
+            Assert.Equal(expectedUri, builder.BuildUri().AbsoluteUri);
         }
     }
 }

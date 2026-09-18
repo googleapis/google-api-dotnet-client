@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2012 Google Inc
 
 Licensed under the Apache License, Version 2.0(the "License");
@@ -259,20 +259,55 @@ namespace Google.Apis.Requests
                     // Check if a path parameter equals the name which appears in the REST path.
                     if (PathParameters.ContainsKey(parameterName))
                     {
-                        var value = string.Join(joiner, PathParameters[parameterName]);
+                        var parameterValues = PathParameters[parameterName];
+                        var processedValues = new List<string>(parameterValues.Count);
 
-                        // Check if we need to use a substring of the value.
-                        if (numOfChars != 0 && numOfChars < value.Length)
+                        foreach (var rawVal in parameterValues)
                         {
-                            value = value.Substring(0, numOfChars);
+                            if (rawVal is null)
+                            {
+                                continue;
+                            }
+
+                            string val = rawVal;
+                            // Check if we need to use a substring of the value.
+                            if (numOfChars != 0 && numOfChars < val.Length)
+                            {
+                                val = val.Substring(0, numOfChars);
+                            }
+
+                            if (op == "+" || op == "#")
+                            {
+                                // Multi-segment path parameters (+ and #) preserve slashes but percent-encode each individual segment,
+                                // rejecting path traversal segments ('.' or '..').
+                                string[] segments = val.Split('/');
+                                for (int i = 0; i < segments.Length; i++)
+                                {
+                                    string segment = segments[i];
+                                    if (segment == "." || segment == "..")
+                                    {
+                                        throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly . or ..");
+                                    }
+                                    segments[i] = Uri.EscapeDataString(segment);
+                                }
+                                processedValues.Add(string.Join("/", segments));
+                            }
+                            else
+                            {
+                                // Standard single-segment parameters escape all special characters (including '/').
+                                if (val == "." || val == "..")
+                                {
+                                    throw new ArgumentException($"Invalid value '{val}' for {parameterName}");
+                                }
+                                if (PathParameters[parameterName].Count == 1)
+                                {
+                                    val = Uri.EscapeDataString(val);
+                                }
+                                processedValues.Add(val);
+                            }
                         }
 
-                        if (op != "+" && op != "#" && PathParameters[parameterName].Count == 1)
-                        {
-                            value = Uri.EscapeDataString(value);
-                        }
-
-                        value = start + value;
+                        var value = start + string.Join(joiner, processedValues);
                         newContent.Append(value);
                     }
                     else
