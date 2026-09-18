@@ -401,9 +401,6 @@ namespace Google.Apis.Tests.Apis.Requests
         // Firestore documents (reserved template expansion)
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../default")]
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db")]
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/%2e%2e/escape-db")]
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/..%2f..%2fescape-db")]
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/%2e%2e%2f%2e%2e%2fescape-db")]
         [InlineData("v1/{+name}", "../escape-db")]
         [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/./child")]
         // Webhooks (multiple standard wildcards)
@@ -428,12 +425,11 @@ namespace Google.Apis.Tests.Apis.Requests
             builder.AddParameter(RequestParameterType.Path, paramName, paramValue);
 
             var exception = Assert.Throws<ArgumentException>(() => builder.BuildUri());
-            string unescaped = Uri.UnescapeDataString(paramValue);
 
             bool isReserved = path.Contains("{+") || path.Contains("{#");
             bool hasDoubleDot = false;
             bool hasSingleDot = false;
-            foreach (var segment in unescaped.Split('/'))
+            foreach (var segment in paramValue.Split('/'))
             {
                 if (segment == "..") hasDoubleDot = true;
                 if (segment == ".") hasSingleDot = true;
@@ -457,6 +453,8 @@ namespace Google.Apis.Tests.Apis.Requests
         [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc?key=val", "http://www.example.com/v1/projects/p/databases/d/documents/doc%3Fkey%3Dval")]
         [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc#frag", "http://www.example.com/v1/projects/p/databases/d/documents/doc%23frag")]
         [InlineData("v1/{+name}", "projects/p/databases/d/documents/doc with space", "http://www.example.com/v1/projects/p/databases/d/documents/doc%20with%20space")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/..%2f..%2fescape-db", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/doc-1/..%252f..%252fescape-db")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/%2e%2e/escape-db", "http://www.example.com/v1/projects/sys-prod-123/databases/default/documents/doc-1/%252e%252e/escape-db")]
         public void ValidRealisticPatterns_Succeed(string path, string paramValue, string expectedUri)
         {
             var builder = new RequestBuilder()

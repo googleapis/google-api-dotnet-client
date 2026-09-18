@@ -280,8 +280,7 @@ namespace Google.Apis.Requests
                             {
                                 // Multi-segment path parameters (+ and #) preserve slashes but percent-encode each individual segment,
                                 // rejecting path traversal segments ('.' or '..').
-                                // We unescape first to prevent path traversal bypasses via URL-encoded slashes (e.g. %2f).
-                                string[] segments = Uri.UnescapeDataString(val).Split('/');
+                                string[] segments = val.Split('/');
                                 for (int i = 0; i < segments.Length; i++)
                                 {
                                     string segment = segments[i];
@@ -296,10 +295,9 @@ namespace Google.Apis.Requests
                             else
                             {
                                 // Standard single-segment parameters escape all special characters (including '/').
-                                string unescaped = Uri.UnescapeDataString(val);
-                                if (unescaped == "." || unescaped == "..")
+                                if (val == "." || val == "..")
                                 {
-                                    throw new ArgumentException($"Invalid value '{unescaped}' for {parameterName}");
+                                    throw new ArgumentException($"Invalid value '{val}' for {parameterName}");
                                 }
                                 if (PathParameters[parameterName].Count == 1)
                                 {
