@@ -3021,7 +3021,7 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>Whether to copy the comments associated with the file.</summary>
+            /// <summary>Whether to copy the open (unresolved) comments associated with the file.</summary>
             [Google.Apis.Util.RequestParameterAttribute("copyComments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> CopyComments { get; set; }
 
