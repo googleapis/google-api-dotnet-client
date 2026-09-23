@@ -3053,9 +3053,7 @@ namespace Google.Apis.Apigateway.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-        /// </summary>
+        /// <summary>Output only. The default hostname that serves traffic for this Gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultHostname")]
         public virtual string DefaultHostname { get; set; }
 
