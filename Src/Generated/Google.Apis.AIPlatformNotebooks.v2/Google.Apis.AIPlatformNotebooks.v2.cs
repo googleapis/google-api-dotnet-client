@@ -2818,6 +2818,13 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
 
         /// <summary>
+        /// Output only. Represents system-managed metadata for this instance: the subset of `metadata` whose keys are
+        /// recognized Workbench system keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SystemMetadata { get; set; }
+
+        /// <summary>
         /// Optional. The Compute Engine network tags to add to runtime (see [Add network
         /// tags](https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         /// </summary>
