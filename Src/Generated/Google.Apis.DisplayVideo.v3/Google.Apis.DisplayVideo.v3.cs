@@ -29541,7 +29541,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb2")]
         public virtual string DisplayUrlBreadcrumb2 { get; set; }
 
-        /// <summary>The domain of the display URL.</summary>
+        /// <summary>Output only. The domain of the display URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
