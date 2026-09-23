@@ -27898,6 +27898,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notebooklmConfig")]
         public virtual GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigNotebooklmConfig NotebooklmConfig { get; set; }
 
+        /// <summary>Optional. Resource-level access control config for Gemini Enterprise users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAccessControlConfig")]
+        public virtual GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigResourceAccessControlConfig ResourceAccessControlConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27974,6 +27978,20 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPromptTemplate")]
         public virtual string UserPromptTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Controls resource-level access control for Gemini Enterprise users.</summary>
+    public class GoogleCloudDiscoveryengineV1ProjectCustomerProvidedConfigResourceAccessControlConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If `true`, the data stores and data connectors shown to Gemini Enterprise users are filtered to
+        /// those the user has the required resource-level `.get` IAM permission on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreAccessControlEnabled")]
+        public virtual System.Nullable<bool> DataStoreAccessControlEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38267,6 +38285,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notebooklmConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigNotebooklmConfig NotebooklmConfig { get; set; }
 
+        /// <summary>Optional. Resource-level access control config for Gemini Enterprise users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAccessControlConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigResourceAccessControlConfig ResourceAccessControlConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -38343,6 +38365,20 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPromptTemplate")]
         public virtual string UserPromptTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Controls resource-level access control for Gemini Enterprise users.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaProjectCustomerProvidedConfigResourceAccessControlConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If `true`, the data stores and data connectors shown to Gemini Enterprise users are filtered to
+        /// those the user has the required resource-level `.get` IAM permission on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreAccessControlEnabled")]
+        public virtual System.Nullable<bool> DataStoreAccessControlEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39047,6 +39083,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uiJsonPayload")]
         public virtual string UiJsonPayload { get; set; }
 
+        /// <summary>
+        /// Reference to a user-supplied file attached to a long-running-agent (Sobi) task. See
+        /// `UserSuppliedSobiArtifactReference` above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSuppliedSobiArtifactReference")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQueryPartUserSuppliedSobiArtifactReference UserSuppliedSobiArtifactReference { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -39152,6 +39195,38 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The person id of the person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personId")]
         public virtual string PersonId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Reference to a user-supplied file attached to a long-running-agent (Sobi) task. Rendered by the client as an
+    /// attachment chip on the user turn's bubble. The file itself is stored on the task's `AgentArtifact` list; the
+    /// client resolves full metadata (source URI, size, ...) for download or preview by calling `GetTask` on the Sobi
+    /// Task API and matching `AgentArtifact.name` against `file_name`. Only `file_name` and `mime_type` appear on this
+    /// wire deliberately: the backing `gs://` or Drive URI is not exposed to conversation-history readers. Same variant
+    /// is used for both byte-uploaded and Drive-picked files -- "user attached a file" is one concept regardless of
+    /// source.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaQueryPartUserSuppliedSobiArtifactReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Client-supplied filename. Unique per task within the user-supplied artifact set (UI dedupes before
+        /// upload). Doubles as the artifact identifier used to look up the artifact on `Task.artifacts`. The `_name`
+        /// suffix is deliberate and the AIP-122 lint is suppressed: this field is not a resource name (which is what
+        /// AIP-122 reserves the bare `name` for). It is the literal filename, and it serves as the join key against
+        /// `AgentArtifact.name` on the backing Sobi task -- a structural role that `title` or `display_name` would not
+        /// communicate to a client picking what to send. The internal mirror
+        /// (`cloud/ml/discoveryengine/schema/assistant.proto`) uses the same field name so the round-trip converter
+        /// stays name-for-name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
+        public virtual string FileName { get; set; }
+
+        /// <summary>Optional. IANA MIME type. Used for icon/preview rendering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -40870,6 +40945,35 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The condition under which search as you type should occur. Default to Condition.DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
+
+        /// <summary>Optional. The list of fields to be used for Search As You Type scoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpecField> Fields { get; set; }
+
+        /// <summary>
+        /// Optional. Search As You Type score threshold for filtering purpose. We keep the result if `score` &amp;gt;=
+        /// `score_threshold`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreThreshold")]
+        public virtual System.Nullable<double> ScoreThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A schema field to be used for Search As You Type scoring on this request. Overrides any data-store-level Search
+    /// As You Type field configuration for the duration of the request.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpecField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A field key that has been indexed for Search As You Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Weight for scores from this field. Defaults to 1.0 if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<double> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52026,6 +52130,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notebooklmConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigNotebooklmConfig NotebooklmConfig { get; set; }
 
+        /// <summary>Optional. Resource-level access control config for Gemini Enterprise users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAccessControlConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigResourceAccessControlConfig ResourceAccessControlConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -52102,6 +52210,20 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPromptTemplate")]
         public virtual string UserPromptTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Controls resource-level access control for Gemini Enterprise users.</summary>
+    public class GoogleCloudDiscoveryengineV1betaProjectCustomerProvidedConfigResourceAccessControlConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If `true`, the data stores and data connectors shown to Gemini Enterprise users are filtered to
+        /// those the user has the required resource-level `.get` IAM permission on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreAccessControlEnabled")]
+        public virtual System.Nullable<bool> DataStoreAccessControlEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -54705,6 +54827,35 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The condition under which search as you type should occur. Default to Condition.DISABLED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
+
+        /// <summary>Optional. The list of fields to be used for Search As You Type scoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField> Fields { get; set; }
+
+        /// <summary>
+        /// Optional. Search As You Type score threshold for filtering purpose. We keep the result if `score` &amp;gt;=
+        /// `score_threshold`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreThreshold")]
+        public virtual System.Nullable<double> ScoreThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A schema field to be used for Search As You Type scoring on this request. Overrides any data-store-level Search
+    /// As You Type field configuration for the duration of the request.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A field key that has been indexed for Search As You Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Weight for scores from this field. Defaults to 1.0 if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<double> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
