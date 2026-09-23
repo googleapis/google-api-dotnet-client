@@ -9213,6 +9213,12 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual GoogleCloudRetailV2alphaCompletionDataInputConfig DenylistInputConfig { get; set; }
 
         /// <summary>
+        /// Optional. If set to true, the conversational shopping agent prompts will be served. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAgentPrompts")]
+        public virtual System.Nullable<bool> EnableAgentPrompts { get; set; }
+
+        /// <summary>
         /// Output only. Name of the LRO corresponding to the latest allowlist import. Can use GetOperation API to
         /// retrieve the latest state of the Long Running Operation.
         /// </summary>
