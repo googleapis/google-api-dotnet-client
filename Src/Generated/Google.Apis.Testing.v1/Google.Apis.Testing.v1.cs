@@ -1818,7 +1818,7 @@ namespace Google.Apis.Testing.v1.Data
             set => ActiveStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The requested device</summary>
+        /// <summary>Required. The requested device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidDevice")]
         public virtual AndroidDevice AndroidDevice { get; set; }
 
