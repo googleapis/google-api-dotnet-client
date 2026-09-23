@@ -2306,13 +2306,6 @@ namespace Google.Apis.Dns.v1beta2
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>
-            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
-            /// operation resources in the Operations collection.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ClientOperationId { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -2331,14 +2324,6 @@ namespace Google.Apis.Dns.v1beta2
                     Name = "project",
                     IsRequired = true,
                     ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "clientOperationId",
-                    IsRequired = false,
-                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4017,7 +4002,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("changes")]
         public virtual System.Collections.Generic.IList<Change> Changes { get; set; }
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>Output only. Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4161,7 +4146,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeys")]
         public virtual System.Collections.Generic.IList<DnsKey> DnsKeys { get; set; }
 
-        /// <summary>Type of resource.</summary>
+        /// <summary>Output only. Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4749,7 +4734,7 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class ManagedZoneOperationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of resource.</summary>
+        /// <summary>Output only. Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4907,7 +4892,7 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class ManagedZonesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of resource.</summary>
+        /// <summary>Output only. Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5015,7 +5000,7 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class PoliciesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of resource.</summary>
+        /// <summary>Output only. Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5608,7 +5593,6 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rrdatas")]
         public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
 
-        /// <summary>As defined in RFC 4034 (section 3.2).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
         public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
 
@@ -5626,7 +5610,7 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class ResourceRecordSetsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of resource.</summary>
+        /// <summary>Output only. Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
