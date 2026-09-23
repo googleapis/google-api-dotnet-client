@@ -420,6 +420,7 @@ namespace Google.Apis.CloudResourceManager.v3
         {
             this.service = service;
             Capabilities = new CapabilitiesResource(service);
+            CapabilityConfigs = new CapabilityConfigsResource(service);
         }
 
         /// <summary>Gets the Capabilities resource.</summary>
@@ -551,6 +552,399 @@ namespace Google.Apis.CloudResourceManager.v3
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/capabilities/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the CapabilityConfigs resource.</summary>
+        public virtual CapabilityConfigsResource CapabilityConfigs { get; }
+
+        /// <summary>The "capabilityConfigs" collection of methods.</summary>
+        public class CapabilityConfigsResource
+        {
+            private const string Resource = "capabilityConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CapabilityConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig
+            /// triggers the creation of a Management Project if one is not supplied.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource under which the CapabilityConfig will be created. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}` or `projects/{project_number}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig
+            /// triggers the creation of a Management Project if one is not supplied.
+            /// </summary>
+            public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource under which the CapabilityConfig will be created. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}` or `projects/{project_number}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. The user-assigned ID for the CapabilityConfig, which will become the final component of
+                /// the CapabilityConfig's resource name. Must be unique within the parent resource. It must be 6 to 30
+                /// lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are
+                /// prohibited. Example: `my-capability-config-123`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("capabilityConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CapabilityConfigId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/capabilityConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("capabilityConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "capabilityConfigId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the CapabilityConfig to delete. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Deletes the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CapabilityConfig to delete. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/capabilityConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the CapabilityConfig to retrieve. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+            /// `folders/123456789/capabilityConfigs/my-capability-config`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CapabilityConfig to retrieve. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+                /// `folders/123456789/capabilityConfigs/my-capability-config`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/capabilityConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists CapabilityConfigs that are direct children of the specified organization, folder or project
+            /// resource.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the parent resource whose CapabilityConfigs are being listed. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists CapabilityConfigs that are direct children of the specified organization, folder or project
+            /// resource.
+            /// </summary>
+            public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListCapabilityConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the parent resource whose CapabilityConfigs are being listed. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of CapabilityConfigs to return in the response. The service may return
+                /// fewer CapabilityConfigs than requested. If unspecified, at most 100 CapabilityConfigs will be
+                /// returned. The maximum value is 100; values above 100 will be coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A pagination token received from a previous call to `ListCapabilityConfigs` that indicates
+                /// from where listing should continue. Provide this to retrieve the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/capabilityConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified
+            /// `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The unique resource name of the CapabilityConfig. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified
+            /// `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The unique resource name of the CapabilityConfig. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The list of fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/capabilityConfigs/[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -1956,6 +2350,400 @@ namespace Google.Apis.CloudResourceManager.v3
         public OrganizationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            CapabilityConfigs = new CapabilityConfigsResource(service);
+        }
+
+        /// <summary>Gets the CapabilityConfigs resource.</summary>
+        public virtual CapabilityConfigsResource CapabilityConfigs { get; }
+
+        /// <summary>The "capabilityConfigs" collection of methods.</summary>
+        public class CapabilityConfigsResource
+        {
+            private const string Resource = "capabilityConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CapabilityConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig
+            /// triggers the creation of a Management Project if one is not supplied.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource under which the CapabilityConfig will be created. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}` or `projects/{project_number}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig
+            /// triggers the creation of a Management Project if one is not supplied.
+            /// </summary>
+            public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource under which the CapabilityConfig will be created. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}` or `projects/{project_number}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. The user-assigned ID for the CapabilityConfig, which will become the final component of
+                /// the CapabilityConfig's resource name. Must be unique within the parent resource. It must be 6 to 30
+                /// lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are
+                /// prohibited. Example: `my-capability-config-123`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("capabilityConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CapabilityConfigId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/capabilityConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("capabilityConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "capabilityConfigId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the CapabilityConfig to delete. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Deletes the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CapabilityConfig to delete. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/capabilityConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the CapabilityConfig to retrieve. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+            /// `folders/123456789/capabilityConfigs/my-capability-config`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CapabilityConfig to retrieve. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+                /// `folders/123456789/capabilityConfigs/my-capability-config`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/capabilityConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists CapabilityConfigs that are direct children of the specified organization, folder or project
+            /// resource.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the parent resource whose CapabilityConfigs are being listed. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists CapabilityConfigs that are direct children of the specified organization, folder or project
+            /// resource.
+            /// </summary>
+            public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListCapabilityConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the parent resource whose CapabilityConfigs are being listed. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of CapabilityConfigs to return in the response. The service may return
+                /// fewer CapabilityConfigs than requested. If unspecified, at most 100 CapabilityConfigs will be
+                /// returned. The maximum value is 100; values above 100 will be coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A pagination token received from a previous call to `ListCapabilityConfigs` that indicates
+                /// from where listing should continue. Provide this to retrieve the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/capabilityConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified
+            /// `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The unique resource name of the CapabilityConfig. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified
+            /// `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The unique resource name of the CapabilityConfig. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The list of fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/capabilityConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Fetches an organization resource identified by the specified resource name.</summary>
@@ -2320,6 +3108,400 @@ namespace Google.Apis.CloudResourceManager.v3
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            CapabilityConfigs = new CapabilityConfigsResource(service);
+        }
+
+        /// <summary>Gets the CapabilityConfigs resource.</summary>
+        public virtual CapabilityConfigsResource CapabilityConfigs { get; }
+
+        /// <summary>The "capabilityConfigs" collection of methods.</summary>
+        public class CapabilityConfigsResource
+        {
+            private const string Resource = "capabilityConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CapabilityConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig
+            /// triggers the creation of a Management Project if one is not supplied.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource under which the CapabilityConfig will be created. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}` or `projects/{project_number}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a CapabilityConfig under a parent Organization, Folder or Project. Creating a CapabilityConfig
+            /// triggers the creation of a Management Project if one is not supplied.
+            /// </summary>
+            public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource under which the CapabilityConfig will be created. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}` or `projects/{project_number}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. The user-assigned ID for the CapabilityConfig, which will become the final component of
+                /// the CapabilityConfig's resource name. Must be unique within the parent resource. It must be 6 to 30
+                /// lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are
+                /// prohibited. Example: `my-capability-config-123`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("capabilityConfigId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CapabilityConfigId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/capabilityConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("capabilityConfigId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "capabilityConfigId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the CapabilityConfig to delete. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Deletes the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CapabilityConfig to delete. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/capabilityConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the CapabilityConfig to retrieve. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+            /// `folders/123456789/capabilityConfigs/my-capability-config`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the CapabilityConfig identified by the specified `name` (for example,
+            /// `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CapabilityConfig to retrieve. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}` Example:
+                /// `folders/123456789/capabilityConfigs/my-capability-config`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/capabilityConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists CapabilityConfigs that are direct children of the specified organization, folder or project
+            /// resource.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the parent resource whose CapabilityConfigs are being listed. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists CapabilityConfigs that are direct children of the specified organization, folder or project
+            /// resource.
+            /// </summary>
+            public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListCapabilityConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the parent resource whose CapabilityConfigs are being listed. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of CapabilityConfigs to return in the response. The service may return
+                /// fewer CapabilityConfigs than requested. If unspecified, at most 100 CapabilityConfigs will be
+                /// returned. The maximum value is 100; values above 100 will be coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A pagination token received from a previous call to `ListCapabilityConfigs` that indicates
+                /// from where listing should continue. Provide this to retrieve the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/capabilityConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified
+            /// `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The unique resource name of the CapabilityConfig. Format:
+            /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+            /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+            /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the `display_name`, `types` and `boundaries` of the CapabilityConfig identified by the specified
+            /// `name` (for example, `folders/123456789/capabilityConfigs/my-capability-config`).
+            /// </summary>
+            public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The unique resource name of the CapabilityConfig. Format:
+                /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+                /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+                /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The list of fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.CapabilityConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/capabilityConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>
@@ -5057,6 +6239,135 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A CapabilityConfig allows managing experiences like applications and agents on a logical administrative
+    /// perimeter of Projects (Boundary).
+    /// </summary>
+    public class CapabilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The list of Boundaries associated with this CapabilityConfig. Format:
+        /// `organizations/{organization}/boundaries/{boundary}` or, `folders/{folder}/boundaries/{boundary}` or,
+        /// `projects/{project}/boundaries/{boundary}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundaries")]
+        public virtual System.Collections.Generic.IList<string> Boundaries { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time of the CapabilityConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Human-readable non-unique display name of the CapabilityConfig. When present it must be between 4
+        /// to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote,
+        /// double-quote, space, and exclamation point. Example: `My CapabilityConfig`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
+        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The Management Project associated with this CapabilityConfig. If not provided during
+        /// creation, a management project will be automatically created. Cannot be modified after creation. Format:
+        /// `projects/{project_number}` Example: `projects/123456789012`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementProject")]
+        public virtual string ManagementProject { get; set; }
+
+        /// <summary>
+        /// Identifier. The unique resource name of the CapabilityConfig. Format:
+        /// `organizations/{organization}/capabilityConfigs/{capabilityConfig}` or,
+        /// `folders/{folder}/capabilityConfigs/{capabilityConfig}` or,
+        /// `projects/{project}/capabilityConfigs/{capabilityConfig}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The lifecycle state of the CapabilityConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. The CapabilityConfig types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time this CapabilityConfig was modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>Metadata describing a long running folder operation</summary>
     public class CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5767,6 +7078,30 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
         public virtual System.Collections.Generic.IList<string> Restrictions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A page of the response received from the ListCapabilityConfigs method. A paginated response where more pages are
+    /// available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next page.
+    /// NOTE: A response may contain fewer elements than the request `page_size` and still have a `next_page_token`.
+    /// </summary>
+    public class ListCapabilityConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of CapabilityConfigs under the parent. This list can be paginated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capabilityConfigs")]
+        public virtual System.Collections.Generic.IList<CapabilityConfig> CapabilityConfigs { get; set; }
+
+        /// <summary>
+        /// Pagination token. If the result set is too large to fit in a single response, this token is returned. It
+        /// encodes the position of the current result cursor. Feeding this value into a new list request with the
+        /// `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is
+        /// no next page and the list returned is the last page in the result set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
