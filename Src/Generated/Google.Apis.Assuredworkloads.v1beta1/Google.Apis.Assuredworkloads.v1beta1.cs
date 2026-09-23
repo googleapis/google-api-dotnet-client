@@ -2842,19 +2842,19 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A custom filter for filtering by properties of a workload. At this time, only filtering by
-                    /// labels is supported.
+                    /// Optional. A custom filter for filtering by properties of a workload. At this time, only
+                    /// filtering by labels is supported.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Page size.</summary>
+                    /// <summary>Optional. Page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Page token returned from previous request. Page token contains context from previous request.
-                    /// Page token needs to be passed in the second and following requests.
+                    /// Optional. Page token returned from previous request. Page token contains context from previous
+                    /// request. Page token needs to be passed in the second and following requests.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -4079,6 +4079,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingsCount")]
         public virtual System.Nullable<int> FindingsCount { get; set; }
 
+        /// <summary>Output only. Number of organization policy findings for the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyFindingCount")]
+        public virtual System.Nullable<long> OrgPolicyFindingCount { get; set; }
+
+        /// <summary>Output only. Number of resource findings for the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFindingCount")]
+        public virtual System.Nullable<long> ResourceFindingCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4295,9 +4303,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Number of organization policy findings for this control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyFindingCount")]
+        public virtual System.Nullable<long> OrgPolicyFindingCount { get; set; }
+
         /// <summary>Output only. The overall evaluation status of the control.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overallEvaluationState")]
         public virtual string OverallEvaluationState { get; set; }
+
+        /// <summary>Output only. Number of resource findings for this control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFindingCount")]
+        public virtual System.Nullable<long> ResourceFindingCount { get; set; }
 
         /// <summary>The list of similar controls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("similarControls")]
