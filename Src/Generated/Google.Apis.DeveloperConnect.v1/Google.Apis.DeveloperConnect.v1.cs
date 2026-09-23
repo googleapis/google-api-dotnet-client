@@ -5473,7 +5473,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The git proxy configuration.</summary>
+    /// <summary>
+    /// Configuration for proxies. For legacy reasons, this message is named `GitProxyConfig`, but it includes settings
+    /// for both Git and HTTP proxy.
+    /// </summary>
     public class GitProxyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
