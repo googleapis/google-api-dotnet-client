@@ -1433,7 +1433,9 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
 
         /// <summary>Updates the specified location.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Google identifier for this location in the form: `locations/{location_id}`.</param>
+        /// <param name="name">
+        /// Identifier. Google identifier for this location in the form: `locations/{location_id}`.
+        /// </param>
         public virtual PatchRequest Patch(Google.Apis.MyBusinessBusinessInformation.v1.Data.Location body, string name)
         {
             return new PatchRequest(this.service, body, name);
@@ -1450,7 +1452,9 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
                 InitParameters();
             }
 
-            /// <summary>Google identifier for this location in the form: `locations/{location_id}`.</summary>
+            /// <summary>
+            /// Identifier. Google identifier for this location in the form: `locations/{location_id}`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -2146,7 +2150,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("moreHours")]
         public virtual System.Collections.Generic.IList<MoreHours> MoreHours { get; set; }
 
-        /// <summary>Google identifier for this location in the form: `locations/{location_id}`.</summary>
+        /// <summary>Identifier. Google identifier for this location in the form: `locations/{location_id}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2261,8 +2265,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         public virtual System.Nullable<bool> CanOperateHealthData { get; set; }
 
         /// <summary>
-        /// Output only. Indicates if the listing can manage local posts. Deprecated: This field is no longer populated
-        /// and will be removed in a future version.
+        /// Output only. Deprecated: This field is no longer populated and will be removed in a future version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canOperateLocalPost")]
         public virtual System.Nullable<bool> CanOperateLocalPost { get; set; }
@@ -2296,7 +2299,11 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasVoiceOfMerchant")]
         public virtual System.Nullable<bool> HasVoiceOfMerchant { get; set; }
 
-        /// <summary>Output only.</summary>
+        /// <summary>
+        /// Output only. Indicates whether the location is classified as a particularly personal place. This means there
+        /// are restrictions on Location History features. If you believe this was a mistake, see the [help center
+        /// article](https://support.google.com/business/answer/3480441).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isParticularlyPersonalPlace")]
         public virtual System.Nullable<bool> IsParticularlyPersonalPlace { get; set; }
 
@@ -2460,7 +2467,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
     /// <summary>Defines the union of areas represented by a set of places.</summary>
     public class Places : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The areas represented by place IDs. Limited to a maximum of 20 places.</summary>
+        /// <summary>Optional. The areas represented by place IDs. Limited to a maximum of 20 places.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeInfos")]
         public virtual System.Collections.Generic.IList<PlaceInfo> PlaceInfos { get; set; }
 
@@ -2592,15 +2599,17 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
     /// <summary>Information of all parent and children locations related to this one.</summary>
     public class RelationshipData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of children locations that this location has relations with.</summary>
+        /// <summary>Optional. The list of children locations that this location has relations with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childrenLocations")]
         public virtual System.Collections.Generic.IList<RelevantLocation> ChildrenLocations { get; set; }
 
-        /// <summary>The resource name of the Chain that this location is member of. How to find Chain ID</summary>
+        /// <summary>
+        /// Optional. The resource name of the Chain that this location is member of. How to find Chain ID
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentChain")]
         public virtual string ParentChain { get; set; }
 
-        /// <summary>The parent location that this location has relations with.</summary>
+        /// <summary>Optional. The parent location that this location has relations with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentLocation")]
         public virtual RelevantLocation ParentLocation { get; set; }
 
@@ -2711,7 +2720,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("businessType")]
         public virtual string BusinessType { get; set; }
 
-        /// <summary>The area that this business serves defined through a set of places.</summary>
+        /// <summary>Optional. The area that this business serves defined through a set of places.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("places")]
         public virtual Places Places { get; set; }
 
