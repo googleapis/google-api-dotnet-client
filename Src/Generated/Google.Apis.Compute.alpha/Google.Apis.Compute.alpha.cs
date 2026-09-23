@@ -14713,7 +14713,7 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Retrieves details of a specific VM extension.</summary>
         /// <param name="folder">Folder ID for this request.</param>
-        /// <param name="extensionName"><c>null</c></param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
         public virtual GetVmExtensionRequest GetVmExtension(string folder, string extensionName)
         {
             return new GetVmExtensionRequest(this.service, folder, extensionName);
@@ -14734,6 +14734,7 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Folder { get; private set; }
 
+            /// <summary>Required. Name of the VM extension for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ExtensionName { get; private set; }
 
@@ -15429,7 +15430,7 @@ namespace Google.Apis.Compute.alpha
         /// <summary>Retrieves details of a specific VM extension within a folder.</summary>
         /// <param name="folder">Folder ID for this request.</param>
         /// <param name="zone">Name of the zone for this request.</param>
-        /// <param name="extensionName"><c>null</c></param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
         public virtual GetVmExtensionRequest GetVmExtension(string folder, string zone, string extensionName)
         {
             return new GetVmExtensionRequest(this.service, folder, zone, extensionName);
@@ -15455,6 +15456,7 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>Required. Name of the VM extension for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ExtensionName { get; private set; }
 
@@ -19635,7 +19637,7 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Gets the Global Frontend Billing Bundle Settings for a project.</summary>
-        /// <param name="project"><c>null</c></param>
+        /// <param name="project">Required. Project ID for this request.</param>
         public virtual GetRequest Get(string project)
         {
             return new GetRequest(this.service, project);
@@ -19651,6 +19653,7 @@ namespace Google.Apis.Compute.alpha
                 InitParameters();
             }
 
+            /// <summary>Required. Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
@@ -19680,7 +19683,7 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Updates the Global Frontend Billing Bundle Settings for a project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project"><c>null</c></param>
+        /// <param name="project">Required. Project ID for this request.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.alpha.Data.GlobalFrontendSettings body, string project)
         {
             return new PatchRequest(this.service, body, project);
@@ -19697,13 +19700,15 @@ namespace Google.Apis.Compute.alpha
                 InitParameters();
             }
 
+            /// <summary>Required. Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
-            /// <summary>e.g., "type"</summary>
+            /// <summary>Field mask to support patch. E.g., "type".</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -22234,7 +22239,7 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Retrieves details of a specific VM extension.</summary>
         /// <param name="project">Project ID for this request.</param>
-        /// <param name="extensionName"><c>null</c></param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
         public virtual GetVmExtensionRequest GetVmExtension(string project, string extensionName)
         {
             return new GetVmExtensionRequest(this.service, project, extensionName);
@@ -22255,6 +22260,7 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>Required. Name of the VM extension for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ExtensionName { get; private set; }
 
@@ -59514,7 +59520,7 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Retrieves details of a specific VM extension.</summary>
         /// <param name="organization">Organization ID for this request.</param>
-        /// <param name="extensionName"><c>null</c></param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
         public virtual GetVmExtensionRequest GetVmExtension(string organization, string extensionName)
         {
             return new GetVmExtensionRequest(this.service, organization, extensionName);
@@ -59535,6 +59541,7 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Organization { get; private set; }
 
+            /// <summary>Required. Name of the VM extension for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ExtensionName { get; private set; }
 
@@ -62782,7 +62789,7 @@ namespace Google.Apis.Compute.alpha
         /// <summary>Retrieves details of a specific VM extension within an organization.</summary>
         /// <param name="organization">Organization ID for this request.</param>
         /// <param name="zone">Name of the zone for this request.</param>
-        /// <param name="extensionName"><c>null</c></param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
         public virtual GetVmExtensionRequest GetVmExtension(string organization, string zone, string extensionName)
         {
             return new GetVmExtensionRequest(this.service, organization, zone, extensionName);
@@ -62808,6 +62815,7 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>Required. Name of the VM extension for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ExtensionName { get; private set; }
 
@@ -130783,7 +130791,7 @@ namespace Google.Apis.Compute.alpha
         /// <summary>Retrieves details of a specific VM extension within a project.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this request.</param>
-        /// <param name="extensionName"><c>null</c></param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
         public virtual GetVmExtensionRequest GetVmExtension(string project, string zone, string extensionName)
         {
             return new GetVmExtensionRequest(this.service, project, zone, extensionName);
@@ -130809,6 +130817,7 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
+            /// <summary>Required. Name of the VM extension for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ExtensionName { get; private set; }
 
@@ -137757,6 +137766,13 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypes")]
         public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
 
+        /// <summary>
+        /// Optional. Rank when prioritizing the shape flexibilities. The instance selections are considered in the
+        /// ascending order of the rank. If not set, defaults to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
+        public virtual System.Nullable<long> Rank { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -137918,6 +137934,14 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Instance properties for this request.</summary>
     public class CapacityHistoryRequestInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Local SSDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<CapacityHistoryRequestInstancePropertiesAttachedDisk> Disks { get; set; }
+
+        /// <summary>Accelerators configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; }
+
         /// <summary>The machine type for the VM, such as `n2-standard-4`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
@@ -137925,6 +137949,17 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Specifies the scheduling options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual CapacityHistoryRequestInstancePropertiesScheduling Scheduling { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AttachedDisk modeled after Instance's AttachedDisk.</summary>
+    public class CapacityHistoryRequestInstancePropertiesAttachedDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -141171,6 +141206,14 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class DistributionPolicyZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The maximum size of the group in this zone. This value can be either a fixed number or, a
+        /// percentage. If you set a percentage, the number of instances is rounded up if necessary. If unset, it is
+        /// interpreted as unbounded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSize")]
+        public virtual FixedOrPercent MaxSize { get; set; }
+
         /// <summary>
         /// The URL of thezone. The zone must exist in the region where the managed instance group is located.
         /// </summary>
@@ -144934,7 +144977,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Output only. For optimistic locking</summary>
+        /// <summary>Output only. For optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
@@ -144961,6 +145004,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Response to an UpdateGlobalFrontendSettingsRequest.</summary>
     public class GlobalFrontendSettingsPatchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Operation resource for this long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; }
 
@@ -149917,6 +149961,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Represents a read-only view of a global Image resource.</summary>
     public class ImageView : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Image resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual Image Image { get; set; }
 
@@ -149927,6 +149972,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Response message for ImageViewsService.List</summary>
     public class ImageViewsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Etag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
@@ -151345,6 +151391,10 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstanceGroupManagerInstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Constraints applied to instance flexibility spreading and selection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
+        public virtual InstanceGroupManagerInstanceFlexibilityPolicyConstraints Constraints { get; set; }
+
         /// <summary>
         /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
@@ -151360,6 +151410,20 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Provisioning model configuration used by this managed instance group to create instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningModelMix")]
         public virtual InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix ProvisioningModelMix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Constraints applied to instance flexibility spreading and selection.</summary>
+    public class InstanceGroupManagerInstanceFlexibilityPolicyConstraints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When set to true, all instances in the group will be provisioned with the exact same machine type, ensuring
+        /// cluster homogeneity across zones. Defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleMachineType")]
+        public virtual System.Nullable<bool> SingleMachineType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -161044,6 +161108,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>The list of managed rulesets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<ManagedRuleset> Items { get; set; }
 
