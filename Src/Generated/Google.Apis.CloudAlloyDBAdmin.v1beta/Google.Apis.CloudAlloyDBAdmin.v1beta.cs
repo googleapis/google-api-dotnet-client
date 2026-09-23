@@ -4700,6 +4700,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Output only. The edition of the cluster this backup was created from. Any restored cluster created from this
+        /// backup will have the same edition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
+        /// <summary>
         /// Optional. The encryption config can be specified to encrypt the backup with a customer-managed encryption
         /// key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect
         /// the user data.
@@ -5325,6 +5332,12 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>User-settable and human-readable display name for the Cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Edition of the cluster. If left unspecified, the cluster behaves as `EDITION_ALLOYDB`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
 
         /// <summary>
         /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data
