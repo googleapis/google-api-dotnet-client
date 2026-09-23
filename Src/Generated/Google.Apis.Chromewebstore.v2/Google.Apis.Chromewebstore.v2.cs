@@ -592,6 +592,120 @@ namespace Google.Apis.Chromewebstore.v2
                 }
             }
 
+            /// <summary>Fetch user reviews for an item.</summary>
+            /// <param name="name">
+            /// Required. The item resource name whose reviews are being fetched. Format:
+            /// publishers/{publisher_id}/items/{item_id}
+            /// </param>
+            public virtual FetchReviewsRequest FetchReviews(string name)
+            {
+                return new FetchReviewsRequest(this.service, name);
+            }
+
+            /// <summary>Fetch user reviews for an item.</summary>
+            public class FetchReviewsRequest : ChromewebstoreBaseServiceRequest<Google.Apis.Chromewebstore.v2.Data.FetchItemReviewsResponse>
+            {
+                /// <summary>Constructs a new FetchReviews request.</summary>
+                public FetchReviewsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The item resource name whose reviews are being fetched. Format:
+                /// publishers/{publisher_id}/items/{item_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. A filter to apply to the reviews. Only equality comparison on rating is supported, e.g.
+                /// `rating = 5`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. An optional comma-separated list of fields by which to sort the results. Supported fields
+                /// are `rating` and `create_time`. Supported orders are `asc` (default) and `desc`. Example: "rating
+                /// desc, create_time".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of reviews to return. The service may return fewer than this value. If
+                /// unspecified, at most 50 reviews will be returned. The maximum value is 200; values above 200 will be
+                /// coerced to 200.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `FetchItemReviews` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `FetchItemReviews` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "fetchReviews";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}:fetchReviews";
+
+                /// <summary>Initializes FetchReviews parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/items/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Fetch the status of an item.</summary>
             /// <param name="name">
             /// Required. Name of the item to retrieve the status of in the form
@@ -777,6 +891,17 @@ namespace Google.Apis.Chromewebstore.v2
 }
 namespace Google.Apis.Chromewebstore.v2.Data
 {
+    /// <summary>Info on the author of the review.</summary>
+    public class AuthorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name for the author.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CancelSubmission.</summary>
     public class CancelSubmissionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -818,6 +943,24 @@ namespace Google.Apis.Chromewebstore.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployPercentage")]
         public virtual System.Nullable<int> DeployPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchItemReviews.</summary>
+    public class FetchItemReviewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of reviews.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
+        public virtual System.Collections.Generic.IList<Review> Reviews { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -945,6 +1088,72 @@ namespace Google.Apis.Chromewebstore.v2.Data
         /// <summary>Output only. Non-blocking warnings encountered during the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningInfo")]
         public virtual WarningsInfo WarningInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A review written by a user to rate an item in the Chrome Web Store.</summary>
+    public class Review : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Info on the author of the review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorInfo")]
+        public virtual AuthorInfo AuthorInfo { get; set; }
+
+        /// <summary>Content of the review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. When the review was posted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The item that this review evaluates. Format: publishers/{publisher}/items/{item}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("item")]
+        public virtual string Item { get; set; }
+
+        /// <summary>Identifier. Review resource name. Format: reviews/{reviewId}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Rating of the item, between 1 and 5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rating")]
+        public virtual System.Nullable<int> Rating { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
