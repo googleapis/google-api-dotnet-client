@@ -6921,6 +6921,21 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a collection of Avro schemas.</summary>
+    public class AvroSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Avro schemas in JSON format. Each element must be the content of a valid, self-contained Avro
+        /// schema file (.avsc), as described in https://avro.apache.org/docs/1.8.1/spec.html. Use repeated elements to
+        /// include multiple Avro schema files in a single bundle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchemas")]
+        public virtual System.Collections.Generic.IList<string> JsonSchemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A backup of a Cloud Bigtable table.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10611,6 +10626,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>A named collection of related schemas.</summary>
     public class SchemaBundle : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Schema for Avros.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avroSchema")]
+        public virtual AvroSchema AvroSchema { get; set; }
+
         /// <summary>
         /// Optional. The etag for this schema bundle. This may be sent on update and delete requests to ensure the
         /// client has an up-to-date value before proceeding. The server returns an ABORTED error on a mismatched etag.
