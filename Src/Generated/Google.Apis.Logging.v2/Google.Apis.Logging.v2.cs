@@ -25601,7 +25601,8 @@ namespace Google.Apis.Logging.v2.Data
         /// URL-encoded. For example: "projects/my-project-id/logs/syslog"
         /// "organizations/123/logs/cloudaudit.googleapis.com%2Factivity" The permission logging.logEntries.create is
         /// needed on each project, organization, billing account, or folder that is receiving new log entries, whether
-        /// the resource is specified in logName or in an individual log entry.
+        /// the resource is specified in logName or in an individual log entry.Only platform services can write logs to
+        /// billing accounts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; }
