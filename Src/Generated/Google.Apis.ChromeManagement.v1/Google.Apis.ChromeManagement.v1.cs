@@ -10878,7 +10878,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string CommandState { get; set; }
 
         /// <summary>
-        /// Required. Type of the remote command. The only supported command_type is "clearBrowsingData".
+        /// Required. Type of the remote command. Supported commands: "clearBrowsingData" and "extensionUpdateCheck".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commandType")]
         public virtual string CommandType { get; set; }
@@ -10928,7 +10928,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
 
         /// <summary>
         /// Required. Payload of the remote command. The payload for "clearBrowsingData" command supports: - fields
-        /// "clearCache" and "clearCookies" - values of boolean type.
+        /// "clearCache" and "clearCookies" - values of boolean type. The payload for "extensionUpdateCheck" should be
+        /// empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
@@ -11122,6 +11123,10 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Pub/Sub XDR connector config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubSubXdrConfig")]
         public virtual GoogleChromeManagementVersionsV1PubSubXdrConfig PubSubXdrConfig { get; set; }
+
+        /// <summary>Secure gateway connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureGatewayConfig")]
+        public virtual GoogleChromeManagementVersionsV1SecureGatewayConfig SecureGatewayConfig { get; set; }
 
         /// <summary>Splunk connector config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("splunkConfig")]
@@ -11917,6 +11922,21 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. The common name of the subject.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectCommonName")]
         public virtual string SubjectCommonName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Secure gateway connector config.</summary>
+    public class GoogleChromeManagementVersionsV1SecureGatewayConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The enabled platforms for the secure gateway connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledPlatforms")]
+        public virtual System.Collections.Generic.IList<string> EnabledPlatforms { get; set; }
+
+        /// <summary>Required. The resource ID of the secure gateway connector config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
