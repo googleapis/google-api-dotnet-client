@@ -281,6 +281,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
         {
             this.service = service;
             Messages = new MessagesResource(service);
+            Registrations = new RegistrationsResource(service);
         }
 
         /// <summary>Gets the Messages resource.</summary>
@@ -300,7 +301,11 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
                 this.service = service;
             }
 
-            /// <summary>Send a message to specified target (a registration token, topic or condition).</summary>
+            /// <summary>
+            /// Send a message to specified target (a [Firebase Installation ID
+            /// (FID)](/docs/cloud-messaging/android/get-started#access-firebase-installation-id), registration token,
+            /// topic, or condition).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. It contains the Firebase project id (i.e. the unique identifier for your Firebase project), in
@@ -312,7 +317,11 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
                 return new SendRequest(this.service, body, parent);
             }
 
-            /// <summary>Send a message to specified target (a registration token, topic or condition).</summary>
+            /// <summary>
+            /// Send a message to specified target (a [Firebase Installation ID
+            /// (FID)](/docs/cloud-messaging/android/get-started#access-firebase-installation-id), registration token,
+            /// topic, or condition).
+            /// </summary>
             public class SendRequest : FirebaseCloudMessagingBaseServiceRequest<Google.Apis.FirebaseCloudMessaging.v1.Data.Message>
             {
                 /// <summary>Constructs a new Send request.</summary>
@@ -358,6 +367,413 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
                     });
+                }
+            }
+        }
+
+        /// <summary>Gets the Registrations resource.</summary>
+        public virtual RegistrationsResource Registrations { get; }
+
+        /// <summary>The "registrations" collection of methods.</summary>
+        public class RegistrationsResource
+        {
+            private const string Resource = "registrations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RegistrationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                TopicSubscriptions = new TopicSubscriptionsResource(service);
+            }
+
+            /// <summary>Gets the TopicSubscriptions resource.</summary>
+            public virtual TopicSubscriptionsResource TopicSubscriptions { get; }
+
+            /// <summary>The "topicSubscriptions" collection of methods.</summary>
+            public class TopicSubscriptionsResource
+            {
+                private const string Resource = "topicSubscriptions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TopicSubscriptionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a TopicSubscription. Subscribes an app installation instance (by registration_id, either FID
+                /// or FCM Token) to a topicSubscription. Returns a TopicSubscription if it is created successfully. If
+                /// the subscription already exists, returns error of ALREADY_EXISTS.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this subscription will be created. Format:
+                /// projects/{project}/registrations/{registration} The {registration} part can be an FID or an FCM
+                /// Token.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a TopicSubscription. Subscribes an app installation instance (by registration_id, either FID
+                /// or FCM Token) to a topicSubscription. Returns a TopicSubscription if it is created successfully. If
+                /// the subscription already exists, returns error of ALREADY_EXISTS.
+                /// </summary>
+                public class CreateRequest : FirebaseCloudMessagingBaseServiceRequest<Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this subscription will be created. Format:
+                    /// projects/{project}/registrations/{registration} The {registration} part can be an FID or an FCM
+                    /// Token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the subscription, which is the topic name. This will become the last
+                    /// segment of the TopicSubscription's resource name. Topic names match the pattern of
+                    /// "[a-zA-Z0-9-_.~%]{1,900}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("topicName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TopicName { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/topicSubscriptions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/registrations/[^/]+$",
+                        });
+                        RequestParameters.Add("topicName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "topicName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a TopicSubscription.</summary>
+                /// <param name="name">
+                /// Required. The name of the topic subscription to delete. Format:
+                /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a TopicSubscription.</summary>
+                public class DeleteRequest : FirebaseCloudMessagingBaseServiceRequest<Google.Apis.FirebaseCloudMessaging.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the topic subscription to delete. Format:
+                    /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the topic subscription is not found, the request will succeed but
+                    /// no action will be taken on the server.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/registrations/[^/]+/topicSubscriptions/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets a TopicSubscription.</summary>
+                /// <param name="name">
+                /// Required. The name of the topic subscription to retrieve. Format:
+                /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a TopicSubscription.</summary>
+                public class GetRequest : FirebaseCloudMessagingBaseServiceRequest<Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the topic subscription to retrieve. Format:
+                    /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/registrations/[^/]+/topicSubscriptions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists TopicSubscriptions for a given app instance.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource, which owns this collection of subscriptions. Format:
+                /// projects/{project}/registrations/{registration} The {registration} part can be an FID or an FCM
+                /// Token.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists TopicSubscriptions for a given app instance.</summary>
+                public class ListRequest : FirebaseCloudMessagingBaseServiceRequest<Google.Apis.FirebaseCloudMessaging.v1.Data.ListTopicSubscriptionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource, which owns this collection of subscriptions. Format:
+                    /// projects/{project}/registrations/{registration} The {registration} part can be an FID or an FCM
+                    /// Token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of subscriptions to return. The service may return fewer than this
+                    /// value. If unspecified, at most 1000 subscriptions will be returned. The maximum value is 2000;
+                    /// values above 2000 will be coerced to 2000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListTopicSubscriptions` call. Provide this to
+                    /// retrieve the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/topicSubscriptions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/registrations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a TopicSubscription. Subscribes an app installation instance by registration_id, either FID
+                /// or FCM Token, to a topicSubscription. Returns an existing TopicSubscription or creates a new one if
+                /// it does not exist.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the subscription. Format:
+                /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription} The
+                /// {registration} part contains the registration ID (e.g., FID).
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a TopicSubscription. Subscribes an app installation instance by registration_id, either FID
+                /// or FCM Token, to a topicSubscription. Returns an existing TopicSubscription or creates a new one if
+                /// it does not exist.
+                /// </summary>
+                public class PatchRequest : FirebaseCloudMessagingBaseServiceRequest<Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the subscription. Format:
+                    /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription} The
+                    /// {registration} part contains the registration ID (e.g., FID).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the topic subscription is not found, a new topic subscription will
+                    /// be created.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.FirebaseCloudMessaging.v1.Data.TopicSubscription Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/registrations/[^/]+/topicSubscriptions/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
                 }
             }
         }
@@ -835,6 +1251,17 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Platform independent options for features provided by the FCM SDKs.</summary>
     public class FcmOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -874,6 +1301,24 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListTopicSubscriptions.</summary>
+    public class ListTopicSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The topic subscriptions for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicSubscriptions")]
+        public virtual System.Collections.Generic.IList<TopicSubscription> TopicSubscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message to send by Firebase Cloud Messaging Service.</summary>
     public class Message : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -905,7 +1350,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
         public virtual FcmOptions FcmOptions { get; set; }
 
-        /// <summary>Firebase Installation ID to send a message to.</summary>
+        /// <summary>
+        /// [Firebase Installation ID (FID)](/docs/cloud-messaging/android/get-started#access-firebase-installation-id)
+        /// to send a message to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fid")]
         public virtual string Fid { get; set; }
 
@@ -920,8 +1368,8 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual Notification Notification { get; set; }
 
         /// <summary>
-        /// Deprecated: Use `fid` instead. Registration token to send a message to. During the transition period, this
-        /// field also accepts a Firebase Installation ID (FID).
+        /// Deprecated: Use `fid` instead. During the transition period, this field also accepts a Firebase Installation
+        /// ID (FID). Registration token to send a message to.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
@@ -975,6 +1423,66 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         /// <summary>Flag for testing the request without actually delivering the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a subscription of a single app instance to a single FCM topic.</summary>
+    public class TopicSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the subscription was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The resource name of the subscription. Format:
+        /// projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription} The {registration}
+        /// part contains the registration ID (e.g., FID).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the TopicSubscription, which is the topic name. This corresponds to the
+        /// {topicSubscription} segment in the resource name. Topic names match the pattern of
+        /// "[a-zA-Z0-9-_.~%]{1,900}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicName")]
+        public virtual string TopicName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
