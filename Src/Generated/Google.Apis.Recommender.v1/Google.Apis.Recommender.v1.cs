@@ -4306,6 +4306,272 @@ namespace Google.Apis.Recommender.v1
 }
 namespace Google.Apis.Recommender.v1.Data
 {
+    public class CloudRecommendationsRecommendersDatabasesV1ContentChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Table with headers and rows content for the content chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual CloudRecommendationsRecommendersDatabasesV1Table Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudRecommendationsRecommendersDatabasesV1CtaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrimary")]
+        public virtual System.Nullable<bool> IsPrimary { get; set; }
+
+        /// <summary>Enum used to map to the string to be shown in the UI for the button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectPage")]
+        public virtual string RedirectPage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Presentational config that maps to the UI components of templatized issue subtasks.</summary>
+    public class CloudRecommendationsRecommendersDatabasesV1DatabasesPresentationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Call to action buttons for the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ctaConfigs")]
+        public virtual System.Collections.Generic.IList<CloudRecommendationsRecommendersDatabasesV1CtaConfig> CtaConfigs { get; set; }
+
+        /// <summary>Content chunks for the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueContentChunks")]
+        public virtual System.Collections.Generic.IList<CloudRecommendationsRecommendersDatabasesV1ContentChunk> IssueContentChunks { get; set; }
+
+        /// <summary>Issue description for the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDescription")]
+        public virtual CloudRecommendationsRecommendersDatabasesV1Description IssueDescription { get; set; }
+
+        /// <summary>Fields for the table containing metadata associated with the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueTableFields")]
+        public virtual System.Collections.Generic.IList<CloudRecommendationsRecommendersDatabasesV1TableField> IssueTableFields { get; set; }
+
+        /// <summary>Content chunks for the next steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextStepsContentChunks")]
+        public virtual System.Collections.Generic.IList<CloudRecommendationsRecommendersDatabasesV1ContentChunk> NextStepsContentChunks { get; set; }
+
+        /// <summary>Next steps description for the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextStepsDescription")]
+        public virtual CloudRecommendationsRecommendersDatabasesV1Description NextStepsDescription { get; set; }
+
+        /// <summary>Fields for the table containing metadata associated with the next steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextStepsTableFields")]
+        public virtual System.Collections.Generic.IList<CloudRecommendationsRecommendersDatabasesV1TableField> NextStepsTableFields { get; set; }
+
+        /// <summary>Playbook links for the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playbookLinks")]
+        public virtual System.Collections.Generic.IList<CloudRecommendationsRecommendersDatabasesV1PlaybookLink> PlaybookLinks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudRecommendationsRecommendersDatabasesV1Description : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enum used to map to the html template to be shown in the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptionEnum")]
+        public virtual string DescriptionEnum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudRecommendationsRecommendersDatabasesV1Link : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>String label for the link. This value is not translated</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Enum used to map to the redirect page for the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectPage")]
+        public virtual string RedirectPage { get; set; }
+
+        /// <summary>Resource name for the table cell. This is used to construct the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudRecommendationsRecommendersDatabasesV1PlaybookLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enum used to map to the string to be shown in the UI for the link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual string Link { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudRecommendationsRecommendersDatabasesV1SimpleValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enum value for the table cell. This should be used when value MUST be translated and represents common
+        /// status/field like Enabled, Disabled, Success, Failure, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValue")]
+        public virtual string EnumValue { get; set; }
+
+        /// <summary>Link value for the table cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkValue")]
+        public virtual CloudRecommendationsRecommendersDatabasesV1Link LinkValue { get; set; }
+
+        /// <summary>Number value for the table cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
+        public virtual System.Nullable<double> NumberValue { get; set; }
+
+        /// <summary>
+        /// String value for the table cell. This should be used when value doesn't need to be translated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        private string _timestampValueRaw;
+
+        private object _timestampValue;
+
+        /// <summary>Timestamp value for the table cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
+        public virtual string TimestampValueRaw
+        {
+            get => _timestampValueRaw;
+            set
+            {
+                _timestampValue = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampValueRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampValueRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampValueDateTimeOffset instead.")]
+        public virtual object TimestampValue
+        {
+            get => _timestampValue;
+            set
+            {
+                _timestampValueRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestampValue = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampValueRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Field for adding custom complex table</summary>
+    public class CloudRecommendationsRecommendersDatabasesV1Table : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Headers for the table. IMPORTANT: Each header defines a column and its title. All Headers must be unique and
+        /// shouldn't be used more than once within the same list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
+
+        /// <summary>
+        /// Rows for the table. Ensure that the order of the cells in the row matches the order of the headers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<CloudRecommendationsRecommendersDatabasesV1TableRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudRecommendationsRecommendersDatabasesV1TableField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enum used to map to the string to be shown in the UI for the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Number value for the table field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
+        public virtual System.Nullable<double> NumberValue { get; set; }
+
+        /// <summary>
+        /// String value for the table field. Note that this string won't be translated. It is advised to provide values
+        /// that don't require translation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        private string _timestampValueRaw;
+
+        private object _timestampValue;
+
+        /// <summary>
+        /// Timestamp value for the table field. Timestamp will be shown in the user's timezone with the format: "Feb
+        /// 27, 2009 3:22:54 PM".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
+        public virtual string TimestampValueRaw
+        {
+            get => _timestampValueRaw;
+            set
+            {
+                _timestampValue = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampValueRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampValueRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampValueDateTimeOffset instead.")]
+        public virtual object TimestampValue
+        {
+            get => _timestampValue;
+            set
+            {
+                _timestampValueRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestampValue = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampValueRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Table row for a table</summary>
+    public class CloudRecommendationsRecommendersDatabasesV1TableRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Table cells for the table row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<CloudRecommendationsRecommendersDatabasesV1SimpleValue> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains metadata about how much money a recommendation can save or incur.</summary>
     public class GoogleCloudRecommenderV1CostProjection : Google.Apis.Requests.IDirectResponseSchema
     {
