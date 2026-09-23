@@ -4831,14 +4831,15 @@ namespace Google.Apis.HangoutsChat.v1
             /// users](https://developers.google.com/workspace/chat/space-target-audience).
             /// `access_settings.access_permission_settings` is not supported with `useAdminAccess`. The supported field
             /// masks include: - `access_settings.access_permission_settings.discoverSpaceSetting` -
-            /// `access_settings.access_permission_settings.joinSpaceSetting` `permission_settings`: Supports changing
-            /// the [permission settings](https://support.google.com/chat/answer/13340792) of a space. When updating
-            /// permission settings, you can only specify `permissionSettings` field masks; you cannot update other
-            /// field masks at the same time. The supported field masks include: -
+            /// `access_settings.access_permission_settings.joinSpaceSetting` -
+            /// `access_settings.access_permission_settings.viewSpaceMembershipSetting` `permission_settings`: Supports
+            /// changing the [permission settings](https://support.google.com/chat/answer/13340792) of a space. When
+            /// updating permission settings, you can only specify `permissionSettings` field masks; you cannot update
+            /// other field masks at the same time. The supported field masks include: -
             /// `permission_settings.manageMembersAndGroups` - `permission_settings.modifySpaceDetails` -
             /// `permission_settings.toggleHistory` - `permission_settings.useAtMentionAll` -
             /// `permission_settings.manageApps` - `permission_settings.manageWebhooks` -
-            /// `permission_settings.replyMessages`
+            /// `permission_settings.replyMessages` - `permission_settings.viewSpaceMembership`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -6751,6 +6752,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Optional. Access permission setting for joining the space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joinSpaceSetting")]
         public virtual AccessPermissionSetting JoinSpaceSetting { get; set; }
+
+        /// <summary>
+        /// Optional. Access permission setting for viewing space membership. Must be specified together with
+        /// `PermissionSettings.view_space_membership` in the update mask and request body when updating who can view
+        /// space membership. When granting view access to a target audience, you must also grant
+        /// `PermissionSettings.view_space_membership` to all members in the same request. To remove an existing target
+        /// audience (for example, to restrict view access to space managers or assistant managers only), specify an
+        /// empty `AccessPermissionSetting` (with no `principals`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewSpaceMembershipSetting")]
+        public virtual AccessPermissionSetting ViewSpaceMembershipSetting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10672,8 +10684,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Optional. The Google Chat user or app the membership corresponds to. If your Chat app [authenticates as a
-        /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output populates
-        /// the [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User) `name` and `type`.
+        /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output only
+        /// populates the [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User) `name` and
+        /// `type` fields for both internal and external users, unless they are members of the space or have a prior
+        /// affinity, like a direct message (DM) conversation, with the calling user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }
@@ -11070,8 +11084,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Output only. The user who created the message. If your Chat app [authenticates as a
-        /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output populates
-        /// the [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User) `name` and `type`.
+        /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output only
+        /// populates the [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User) `name` and
+        /// `type` fields for both internal and external users, unless they are members of the space or have a prior
+        /// affinity, like a direct message (DM) conversation, with the calling user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sender")]
         public virtual User Sender { get; set; }
@@ -11332,6 +11348,18 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Optional. Setting for using @all in a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAtMentionAll")]
         public virtual PermissionSetting UseAtMentionAll { get; set; }
+
+        /// <summary>
+        /// Optional. Setting for viewing space membership. Must be specified together with
+        /// `AccessPermissionSettings.view_space_membership_setting` in the update mask and request body when updating
+        /// who can view space membership. When restricting view access to specific roles (for example, space managers
+        /// or assistant managers only), specify the desired role permissions here and provide an empty
+        /// `AccessPermissionSettings.view_space_membership_setting` in the same request. If a target audience is
+        /// configured in `AccessPermissionSettings.view_space_membership_setting`, this setting must be granted to all
+        /// members.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewSpaceMembership")]
+        public virtual PermissionSetting ViewSpaceMembership { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12768,13 +12796,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A user in Google Chat. When returned as an output from a request, if your Chat app [authenticates as a
+    /// If your Chat app [authenticates as a
     /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output for a `User`
-    /// resource only populates the user's `name` and `type`.
+    /// resource (such as in the Messages and Memberships APIs) only populates the `name` and `type` fields for both
+    /// internal and external users, unless they are members of the space or have prior affinity with the calling user.
     /// </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The user's display name.</summary>
+        /// <summary>
+        /// Output only. The user's display name. Populated for both app authentication and user authentication. This
+        /// field is always populated for requests made with [app
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). When calling
+        /// the Messages and Memberships APIs with [user
+        /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), this field
+        /// is populated for both internal and external users for the `sender` of a message, users within `annotations`
+        /// (such as user mentions), and within `Membership` resources, provided the user is a member of the space or
+        /// has prior affinity with the calling user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -12782,7 +12820,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual string DomainId { get; set; }
 
-        /// <summary>Output only. When `true`, the user is deleted or their profile is not visible.</summary>
+        /// <summary>
+        /// Output only. When `true`, the user is deleted or their profile is not visible, such as when a user is
+        /// mentioned in a space without being a member and without prior affinity with the calling user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAnonymous")]
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 
