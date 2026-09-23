@@ -1110,7 +1110,8 @@ namespace Google.Apis.APIhub.v1
                         /// <summary>
                         /// Delete an operation in an API version and we can delete only the operations created via
                         /// create API. If the operation was created by parsing the spec, then it can be deleted by
-                        /// editing or deleting the spec.
+                        /// editing or deleting the spec. Deleting an operation will also remove any links between the
+                        /// operation and deployments.
                         /// </summary>
                         /// <param name="name">
                         /// Required. The name of the operation resource to delete. Format:
@@ -1124,7 +1125,8 @@ namespace Google.Apis.APIhub.v1
                         /// <summary>
                         /// Delete an operation in an API version and we can delete only the operations created via
                         /// create API. If the operation was created by parsing the spec, then it can be deleted by
-                        /// editing or deleting the spec.
+                        /// editing or deleting the spec. Deleting an operation will also remove any links between the
+                        /// operation and deployments.
                         /// </summary>
                         public class DeleteRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.Empty>
                         {
@@ -1582,7 +1584,8 @@ namespace Google.Apis.APIhub.v1
                         }
 
                         /// <summary>
-                        /// Delete a spec. Deleting a spec will also delete the associated operations from the version.
+                        /// Delete a spec. Deleting a spec will also delete the associated operations from the version
+                        /// and remove any links between the spec and deployments.
                         /// </summary>
                         /// <param name="name">
                         /// Required. The name of the spec to delete. Format:
@@ -1594,7 +1597,8 @@ namespace Google.Apis.APIhub.v1
                         }
 
                         /// <summary>
-                        /// Delete a spec. Deleting a spec will also delete the associated operations from the version.
+                        /// Delete a spec. Deleting a spec will also delete the associated operations from the version
+                        /// and remove any links between the spec and deployments.
                         /// </summary>
                         public class DeleteRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.Empty>
                         {
@@ -4342,7 +4346,10 @@ namespace Google.Apis.APIhub.v1
                     }
                 }
 
-                /// <summary>Delete a deployment resource in the API hub.</summary>
+                /// <summary>
+                /// Deletes a deployment resource in the API hub. A deployment can only be deleted after its links to
+                /// any versions, specs, and API operations have been removed.
+                /// </summary>
                 /// <param name="name">
                 /// Required. The name of the deployment resource to delete. Format:
                 /// `projects/{project}/locations/{location}/deployments/{deployment}`
@@ -4352,7 +4359,10 @@ namespace Google.Apis.APIhub.v1
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Delete a deployment resource in the API hub.</summary>
+                /// <summary>
+                /// Deletes a deployment resource in the API hub. A deployment can only be deleted after its links to
+                /// any versions, specs, and API operations have been removed.
+                /// </summary>
                 public class DeleteRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
