@@ -16637,7 +16637,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Gets the Global Frontend Billing Bundle Settings for a project.</summary>
-        /// <param name="project"><c>null</c></param>
+        /// <param name="project">Required. Project ID for this request.</param>
         public virtual GetRequest Get(string project)
         {
             return new GetRequest(this.service, project);
@@ -16653,6 +16653,7 @@ namespace Google.Apis.Compute.beta
                 InitParameters();
             }
 
+            /// <summary>Required. Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
@@ -16682,7 +16683,7 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Updates the Global Frontend Billing Bundle Settings for a project.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project"><c>null</c></param>
+        /// <param name="project">Required. Project ID for this request.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.GlobalFrontendSettings body, string project)
         {
             return new PatchRequest(this.service, body, project);
@@ -16699,13 +16700,15 @@ namespace Google.Apis.Compute.beta
                 InitParameters();
             }
 
+            /// <summary>Required. Project ID for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>An optional request ID to identify requests.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
-            /// <summary>e.g., "type"</summary>
+            /// <summary>Field mask to support patch. E.g., "type".</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -22268,6 +22271,178 @@ namespace Google.Apis.Compute.beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+        }
+
+        /// <summary>Returns a list of global ImageView resources, with a regional context.</summary>
+        /// <param name="project">Required. Project ID for this request.</param>
+        /// <param name="region">Required. Name of the region for this request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(this.service, project, region);
+        }
+
+        /// <summary>Returns a list of global ImageView resources, with a regional context.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ImageViewsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
+            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
+            /// either returns all resources in the zone or no resources, with an error code.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/imageViews";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPartialSuccess",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -97742,6 +97917,14 @@ namespace Google.Apis.Compute.beta
             public virtual string Router { get; private set; }
 
             /// <summary>
+            /// ETag for optimistic concurrency control as described by AIP 154. Used to prevent conflicting updates. If
+            /// provided, the request will succeed only if the etag matches the current etag of the router; otherwise,
+            /// the request fails with an ABORTED error.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Etag { get; set; }
+
+            /// <summary>
             /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
             /// request, the server will know to ignore the request if it has already been completed.  For example,
             /// consider a situation where you make an initial request and the request times out. If you make the
@@ -97789,6 +97972,14 @@ namespace Google.Apis.Compute.beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "etag",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                 {
@@ -126973,6 +127164,15 @@ namespace Google.Apis.Compute.beta.Data
     public class CacheInvalidationRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// If set, this invalidation rule will only apply to requests routed to the given backend service or backend
+        /// bucket. For example, for a backend bucket `bb1` in the same scope as the URL map, the path would be
+        /// `projects/my-project/global/backendBuckets/bb1`; and for a backend service `bs1` in the same scope as the
+        /// URL map, the path would be `projects/my-project/global/backendServices/bs1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
+        public virtual string BackendService { get; set; }
+
+        /// <summary>
         /// A list of cache tags used to identify cached objects.         - Cache tags are specified when the response
         /// is first cached, by setting    the `Cache-Tag` response header at the origin.    - Multiple cache tags in
         /// the same invalidation request are treated as    Boolean `OR` - for example, `tag1 OR tag2 OR tag3`.    - If
@@ -126983,10 +127183,24 @@ namespace Google.Apis.Compute.beta.Data
         public virtual System.Collections.Generic.IList<string> CacheTags { get; set; }
 
         /// <summary>
+        /// If set, this invalidation rule will only apply to responses with the given content-type. Parameters are not
+        /// allowed and are ignored from the response when matching. Wildcards are not allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>
         /// If set, this invalidation rule will only apply to requests with a Host header matching host.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
+
+        /// <summary>
+        /// If set, this invalidation rule will only apply to responses with the given HTTP status. Valid range is
+        /// 200-599.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpStatus")]
+        public virtual System.Nullable<int> HttpStatus { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -130658,6 +130872,14 @@ namespace Google.Apis.Compute.beta.Data
     public class DistributionPolicyZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The maximum size of the group in this zone. This value can be either a fixed number or, a
+        /// percentage. If you set a percentage, the number of instances is rounded up if necessary. If unset, it is
+        /// interpreted as unbounded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSize")]
+        public virtual FixedOrPercent MaxSize { get; set; }
+
+        /// <summary>
         /// The URL of thezone. The zone must exist in the region where the managed instance group is located.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
@@ -133040,6 +133262,13 @@ namespace Google.Apis.Compute.beta.Data
         public virtual System.Nullable<bool> AutoDeleteAutoCreatedReservations { get; set; }
 
         /// <summary>
+        /// Full or partial URL of an existing future reservation to indicate intent for reserving capacity in the same
+        /// cluster as the colocation resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colocationResource")]
+        public virtual string ColocationResource { get; set; }
+
+        /// <summary>
         /// If not present, then FR will not deliver a new commitment or update an existing commitment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentInfo")]
@@ -134155,7 +134384,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Output only. For optimistic locking</summary>
+        /// <summary>Output only. For optimistic locking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
@@ -134182,6 +134411,7 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Response to an UpdateGlobalFrontendSettingsRequest.</summary>
     public class GlobalFrontendSettingsPatchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Operation resource for this long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; }
 
@@ -138107,11 +138337,89 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Represents a read-only view of a global Image resource.</summary>
     public class ImageView : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Image resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual Image Image { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ImageViewsService.List</summary>
+    public class ImageViewsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of Image resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<ImageView> Items { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. [Output Only] Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
     }
 
     /// <summary>Initial State for shielded instance, these are public keys which are safe to store in public</summary>
@@ -139356,6 +139664,10 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagerInstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Constraints applied to instance flexibility spreading and selection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
+        public virtual InstanceGroupManagerInstanceFlexibilityPolicyConstraints Constraints { get; set; }
+
         /// <summary>
         /// Named instance selections configuring properties that the group will use when creating new VMs.
         /// </summary>
@@ -139365,6 +139677,20 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Provisioning model configuration used by this managed instance group to create instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningModelMix")]
         public virtual InstanceGroupManagerInstanceFlexibilityPolicyProvisioningModelMix ProvisioningModelMix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Constraints applied to instance flexibility spreading and selection.</summary>
+    public class InstanceGroupManagerInstanceFlexibilityPolicyConstraints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When set to true, all instances in the group will be provisioned with the exact same machine type, ensuring
+        /// cluster homogeneity across zones. Defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleMachineType")]
+        public virtual System.Nullable<bool> SingleMachineType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -148106,6 +148432,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>The list of managed rulesets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<ManagedRuleset> Items { get; set; }
 
@@ -161363,6 +161690,14 @@ namespace Google.Apis.Compute.beta.Data
         public virtual System.Nullable<bool> EncryptedInterconnectRouter { get; set; }
 
         /// <summary>
+        /// ETag for optimistic concurrency control as described by AIP 154. Used to prevent conflicting updates. If
+        /// provided, the request will succeed only if the etag matches the current etag of the router; otherwise, the
+        /// request fails with an ABORTED error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -161424,9 +161759,6 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Description-tagged IP ranges for the router to advertise.</summary>
@@ -162184,6 +162516,10 @@ namespace Google.Apis.Compute.beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleNumber")]
         public virtual System.Nullable<long> RuleNumber { get; set; }
+
+        /// <summary>A list of source workload identities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceWorkloadIdentities")]
+        public virtual System.Collections.Generic.IList<string> SourceWorkloadIdentities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
