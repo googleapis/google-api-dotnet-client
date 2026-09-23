@@ -313,6 +313,7 @@ namespace Google.Apis.CloudAuditManager.v1
             {
                 this.service = service;
                 AuditReports = new AuditReportsResource(service);
+                AuditSchedules = new AuditSchedulesResource(service);
                 AuditScopeReports = new AuditScopeReportsResource(service);
                 OperationDetails = new OperationDetailsResource(service);
                 OperationIds = new OperationIdsResource(service);
@@ -540,6 +541,353 @@ namespace Google.Apis.CloudAuditManager.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the AuditSchedules resource.</summary>
+            public virtual AuditSchedulesResource AuditSchedules { get; }
+
+            /// <summary>The "auditSchedules" collection of methods.</summary>
+            public class AuditSchedulesResource
+            {
+                private const string Resource = "auditSchedules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuditSchedulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new audit schedule in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Project or folder that this audit schedule is for, in one of the following formats: *
+                /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new audit schedule in a given project and location.</summary>
+                public class CreateRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Project or folder that this audit schedule is for, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. ID to use for the audit schedule, which becomes the final component of the audit
+                    /// schedule's resource name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("auditScheduleId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AuditScheduleId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If `true`, only validates the request and does not create the audit schedule. This
+                    /// executes standard request validation (such as schema, framework existence, scope, and IAM
+                    /// checks) and skips the apply phase. Use this field for the following purposes: * **Infrastructure
+                    /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations (e.g., `terraform plan`)
+                    /// without creating real resources or incurring costs. * **User Interface Validation**: Enable
+                    /// real-time form and permission validation in custom UIs before submitting requests. * **CI/CD
+                    /// &amp;amp; Automation**: Test your scripts, permissions, and parameters safely without consuming
+                    /// resource quotas.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAuditManager.v1.Data.AuditSchedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/auditSchedules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("auditScheduleId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "auditScheduleId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single audit schedule.</summary>
+                /// <param name="name">
+                /// Required. Name of the audit schedule to retrieve, in one of the following formats: *
+                /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` *
+                /// `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` *
+                /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single audit schedule.</summary>
+                public class GetRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the audit schedule to retrieve, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` *
+                    /// `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` *
+                    /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/auditSchedules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists audit schedules in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent for the audit schedule, in one of the following formats: *
+                /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `organizations/{organization}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists audit schedules in a given project and location.</summary>
+                public class ListRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.ListAuditSchedulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent for the audit schedule, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `organizations/{organization}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of items to return in a single page. The service might return fewer
+                    /// items than this value. If unspecified, the service picks an appropriate default. The maximum
+                    /// value is 100; values above 100 are reduced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous call, to retrieve the next page of results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/auditSchedules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing audit schedule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Unique identifier for the audit schedule. Format:
+                /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+                /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+                /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing audit schedule.</summary>
+                public class PatchRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Unique identifier for the audit schedule. Format:
+                    /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. List of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If `true`, only validates the request and does not update the audit schedule. This
+                    /// executes standard request validation (such as schema, framework existence, scope, and IAM
+                    /// checks) and skips the apply phase. Use this field for the following purposes: * **Infrastructure
+                    /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations (e.g., `terraform plan`)
+                    /// without creating real resources or incurring costs. * **User Interface Validation**: Enable
+                    /// real-time form and permission validation in custom UIs before submitting requests. * **CI/CD
+                    /// &amp;amp; Automation**: Test your scripts, permissions, and parameters safely without consuming
+                    /// resource quotas.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAuditManager.v1.Data.AuditSchedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/auditSchedules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1156,6 +1504,7 @@ namespace Google.Apis.CloudAuditManager.v1
             {
                 this.service = service;
                 AuditReports = new AuditReportsResource(service);
+                AuditSchedules = new AuditSchedulesResource(service);
                 AuditScopeReports = new AuditScopeReportsResource(service);
                 OperationDetails = new OperationDetailsResource(service);
                 OperationIds = new OperationIdsResource(service);
@@ -1384,6 +1733,353 @@ namespace Google.Apis.CloudAuditManager.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the AuditSchedules resource.</summary>
+            public virtual AuditSchedulesResource AuditSchedules { get; }
+
+            /// <summary>The "auditSchedules" collection of methods.</summary>
+            public class AuditSchedulesResource
+            {
+                private const string Resource = "auditSchedules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuditSchedulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new audit schedule in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Project or folder that this audit schedule is for, in one of the following formats: *
+                /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new audit schedule in a given project and location.</summary>
+                public class CreateRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Project or folder that this audit schedule is for, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. ID to use for the audit schedule, which becomes the final component of the audit
+                    /// schedule's resource name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("auditScheduleId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AuditScheduleId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If `true`, only validates the request and does not create the audit schedule. This
+                    /// executes standard request validation (such as schema, framework existence, scope, and IAM
+                    /// checks) and skips the apply phase. Use this field for the following purposes: * **Infrastructure
+                    /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations (e.g., `terraform plan`)
+                    /// without creating real resources or incurring costs. * **User Interface Validation**: Enable
+                    /// real-time form and permission validation in custom UIs before submitting requests. * **CI/CD
+                    /// &amp;amp; Automation**: Test your scripts, permissions, and parameters safely without consuming
+                    /// resource quotas.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAuditManager.v1.Data.AuditSchedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/auditSchedules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("auditScheduleId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "auditScheduleId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single audit schedule.</summary>
+                /// <param name="name">
+                /// Required. Name of the audit schedule to retrieve, in one of the following formats: *
+                /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` *
+                /// `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` *
+                /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single audit schedule.</summary>
+                public class GetRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the audit schedule to retrieve, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` *
+                    /// `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` *
+                    /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/auditSchedules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists audit schedules in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent for the audit schedule, in one of the following formats: *
+                /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `organizations/{organization}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists audit schedules in a given project and location.</summary>
+                public class ListRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.ListAuditSchedulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent for the audit schedule, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `organizations/{organization}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of items to return in a single page. The service might return fewer
+                    /// items than this value. If unspecified, the service picks an appropriate default. The maximum
+                    /// value is 100; values above 100 are reduced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous call, to retrieve the next page of results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/auditSchedules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing audit schedule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Unique identifier for the audit schedule. Format:
+                /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+                /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+                /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing audit schedule.</summary>
+                public class PatchRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Unique identifier for the audit schedule. Format:
+                    /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. List of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If `true`, only validates the request and does not update the audit schedule. This
+                    /// executes standard request validation (such as schema, framework existence, scope, and IAM
+                    /// checks) and skips the apply phase. Use this field for the following purposes: * **Infrastructure
+                    /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations (e.g., `terraform plan`)
+                    /// without creating real resources or incurring costs. * **User Interface Validation**: Enable
+                    /// real-time form and permission validation in custom UIs before submitting requests. * **CI/CD
+                    /// &amp;amp; Automation**: Test your scripts, permissions, and parameters safely without consuming
+                    /// resource quotas.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAuditManager.v1.Data.AuditSchedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/auditSchedules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2295,6 +2991,7 @@ namespace Google.Apis.CloudAuditManager.v1
             {
                 this.service = service;
                 AuditReports = new AuditReportsResource(service);
+                AuditSchedules = new AuditSchedulesResource(service);
                 AuditScopeReports = new AuditScopeReportsResource(service);
                 OperationDetails = new OperationDetailsResource(service);
                 OperationIds = new OperationIdsResource(service);
@@ -2523,6 +3220,353 @@ namespace Google.Apis.CloudAuditManager.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the AuditSchedules resource.</summary>
+            public virtual AuditSchedulesResource AuditSchedules { get; }
+
+            /// <summary>The "auditSchedules" collection of methods.</summary>
+            public class AuditSchedulesResource
+            {
+                private const string Resource = "auditSchedules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuditSchedulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new audit schedule in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Project or folder that this audit schedule is for, in one of the following formats: *
+                /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new audit schedule in a given project and location.</summary>
+                public class CreateRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Project or folder that this audit schedule is for, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. ID to use for the audit schedule, which becomes the final component of the audit
+                    /// schedule's resource name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("auditScheduleId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AuditScheduleId { get; set; }
+
+                    /// <summary>
+                    /// Optional. If `true`, only validates the request and does not create the audit schedule. This
+                    /// executes standard request validation (such as schema, framework existence, scope, and IAM
+                    /// checks) and skips the apply phase. Use this field for the following purposes: * **Infrastructure
+                    /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations (e.g., `terraform plan`)
+                    /// without creating real resources or incurring costs. * **User Interface Validation**: Enable
+                    /// real-time form and permission validation in custom UIs before submitting requests. * **CI/CD
+                    /// &amp;amp; Automation**: Test your scripts, permissions, and parameters safely without consuming
+                    /// resource quotas.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAuditManager.v1.Data.AuditSchedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/auditSchedules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("auditScheduleId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "auditScheduleId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single audit schedule.</summary>
+                /// <param name="name">
+                /// Required. Name of the audit schedule to retrieve, in one of the following formats: *
+                /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` *
+                /// `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` *
+                /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single audit schedule.</summary>
+                public class GetRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the audit schedule to retrieve, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` *
+                    /// `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` *
+                    /// `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/auditSchedules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists audit schedules in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent for the audit schedule, in one of the following formats: *
+                /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `organizations/{organization}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists audit schedules in a given project and location.</summary>
+                public class ListRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.ListAuditSchedulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent for the audit schedule, in one of the following formats: *
+                    /// `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `organizations/{organization}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of items to return in a single page. The service might return fewer
+                    /// items than this value. If unspecified, the service picks an appropriate default. The maximum
+                    /// value is 100; values above 100 are reduced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous call, to retrieve the next page of results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/auditSchedules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing audit schedule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Unique identifier for the audit schedule. Format:
+                /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+                /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+                /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing audit schedule.</summary>
+                public class PatchRequest : CloudAuditManagerBaseServiceRequest<Google.Apis.CloudAuditManager.v1.Data.AuditSchedule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAuditManager.v1.Data.AuditSchedule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Unique identifier for the audit schedule. Format:
+                    /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. List of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. If `true`, only validates the request and does not update the audit schedule. This
+                    /// executes standard request validation (such as schema, framework existence, scope, and IAM
+                    /// checks) and skips the apply phase. Use this field for the following purposes: * **Infrastructure
+                    /// as Code (IaC)**: Allow tools like Terraform to run dry-run mutations (e.g., `terraform plan`)
+                    /// without creating real resources or incurring costs. * **User Interface Validation**: Enable
+                    /// real-time form and permission validation in custom UIs before submitting requests. * **CI/CD
+                    /// &amp;amp; Automation**: Test your scripts, permissions, and parameters safely without consuming
+                    /// resource quotas.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAuditManager.v1.Data.AuditSchedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/auditSchedules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3587,6 +4631,216 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An audit schedule, in one of the following formats: *
+    /// `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` *
+    /// `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}`
+    /// </summary>
+    public class AuditSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Framework (set of controls) that the audit scope report is generated against. For example,
+        /// `NIST_800_53`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceFramework")]
+        public virtual string ComplianceFramework { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when the schedule was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Display name for the audit schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Describes the error if the schedule is in an error state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Required. Cloud Storage bucket where Audit Manager can upload the audit report and evidence. The format is
+        /// `gs://{bucket_name}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        private string _lastTriggerTimeRaw;
+
+        private object _lastTriggerTime;
+
+        /// <summary>Output only. Timestamp when the audit run was last triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastTriggerTime")]
+        public virtual string LastTriggerTimeRaw
+        {
+            get => _lastTriggerTimeRaw;
+            set
+            {
+                _lastTriggerTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastTriggerTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastTriggerTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastTriggerTimeDateTimeOffset instead.")]
+        public virtual object LastTriggerTime
+        {
+            get => _lastTriggerTime;
+            set
+            {
+                _lastTriggerTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastTriggerTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastTriggerTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastTriggerTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastTriggerTimeRaw);
+            set => LastTriggerTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. Unique identifier for the audit schedule. Format:
+        /// projects/{project}/locations/{location}/auditSchedules/{audit_schedule}
+        /// folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}
+        /// organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _nextRunTimeRaw;
+
+        private object _nextRunTime;
+
+        /// <summary>Output only. Calculated timestamp for the next scheduled run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextRunTime")]
+        public virtual string NextRunTimeRaw
+        {
+            get => _nextRunTimeRaw;
+            set
+            {
+                _nextRunTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextRunTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextRunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextRunTimeDateTimeOffset instead.")]
+        public virtual object NextRunTime
+        {
+            get => _nextRunTime;
+            set
+            {
+                _nextRunTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextRunTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NextRunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextRunTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextRunTimeRaw);
+            set => NextRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Format for the audit report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportFormat")]
+        public virtual string ReportFormat { get; set; }
+
+        /// <summary>
+        /// Required. Configuration that defines when and how often audit runs are automatically triggered for this
+        /// schedule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleConfig")]
+        public virtual ScheduleConfig ScheduleConfig { get; set; }
+
+        /// <summary>
+        /// Optional. State of the audit schedule. While most states are managed by the system, you can use
+        /// UpdateAuditSchedule to start, pause, or delete the schedule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when the schedule was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Audit scope report.</summary>
     public class AuditScopeReport : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3882,6 +5136,28 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListAuditSchedules.</summary>
+    public class ListAuditSchedulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of audit schedules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditSchedules")]
+        public virtual System.Collections.Generic.IList<AuditSchedule> AuditSchedules { get; set; }
+
+        /// <summary>
+        /// A token that you can send as the `page_token` in a subsequent request to retrieve the next page of results.
+        /// If this field is empty, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that can't be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4246,6 +5522,102 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Timing and frequency parameters for recurring audit runs.</summary>
+    public class ScheduleConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Optional. Date that the schedule stops. If not specified, the schedule runs indefinitely.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Frequency of audit runs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual string Frequency { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Required. Date and time when the first audit run is triggered. Subsequent runs are based on this time and
+        /// the chosen frequency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Time zone for the audit schedule in IANA format (for example, `America/New_York`). The time zone
+        /// is used to interpret the `start_time` and the `end_time`, and to calculate subsequent run dates. If not
+        /// specified, the time zone default is UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
