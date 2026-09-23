@@ -329,14 +329,20 @@ namespace Google.Apis.Meet.v2
                     this.service = service;
                 }
 
-                /// <summary>Gets a participant session by participant session ID.</summary>
+                /// <summary>
+                /// Gets a participant session by participant session ID. For more information, see [Work with
+                /// participants](https://developers.google.com/workspace/meet/api/guides/participants).
+                /// </summary>
                 /// <param name="name">Required. Resource name of the participant.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets a participant session by participant session ID.</summary>
+                /// <summary>
+                /// Gets a participant session by participant session ID. For more information, see [Work with
+                /// participants](https://developers.google.com/workspace/meet/api/guides/participants).
+                /// </summary>
                 public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ParticipantSession>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -378,7 +384,8 @@ namespace Google.Apis.Meet.v2
                 /// Lists the participant sessions of a participant in a conference record. By default, ordered by join
                 /// time and in descending order. This API supports `fields` as standard parameters like every other
                 /// API. However, when the `fields` request parameter is omitted this API defaults to
-                /// `'participantsessions/*, next_page_token'`.
+                /// `'participantsessions/*, next_page_token'`. For more information, see [Work with
+                /// participants](https://developers.google.com/workspace/meet/api/guides/participants).
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Format: `conferenceRecords/{conference_record}/participants/{participant}`
@@ -392,7 +399,8 @@ namespace Google.Apis.Meet.v2
                 /// Lists the participant sessions of a participant in a conference record. By default, ordered by join
                 /// time and in descending order. This API supports `fields` as standard parameters like every other
                 /// API. However, when the `fields` request parameter is omitted this API defaults to
-                /// `'participantsessions/*, next_page_token'`.
+                /// `'participantsessions/*, next_page_token'`. For more information, see [Work with
+                /// participants](https://developers.google.com/workspace/meet/api/guides/participants).
                 /// </summary>
                 public class ListRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ListParticipantSessionsResponse>
                 {
@@ -479,14 +487,20 @@ namespace Google.Apis.Meet.v2
                 }
             }
 
-            /// <summary>Gets a participant by participant ID.</summary>
+            /// <summary>
+            /// Gets a participant by participant ID. For more information, see [Work with
+            /// participants](https://developers.google.com/workspace/meet/api/guides/participants).
+            /// </summary>
             /// <param name="name">Required. Resource name of the participant.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(this.service, name);
             }
 
-            /// <summary>Gets a participant by participant ID.</summary>
+            /// <summary>
+            /// Gets a participant by participant ID. For more information, see [Work with
+            /// participants](https://developers.google.com/workspace/meet/api/guides/participants).
+            /// </summary>
             public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Participant>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -527,7 +541,9 @@ namespace Google.Apis.Meet.v2
             /// <summary>
             /// Lists the participants in a conference record. By default, ordered by join time and in descending order.
             /// This API supports `fields` as standard parameters like every other API. However, when the `fields`
-            /// request parameter is omitted, this API defaults to `'participants/*, next_page_token'`.
+            /// request parameter is omitted, this API defaults to `'participants/*, next_page_token'`. For more
+            /// information, see [Work with
+            /// participants](https://developers.google.com/workspace/meet/api/guides/participants).
             /// </summary>
             /// <param name="parent">Required. Format: `conferenceRecords/{conference_record}`</param>
             public virtual ListRequest List(string parent)
@@ -538,7 +554,9 @@ namespace Google.Apis.Meet.v2
             /// <summary>
             /// Lists the participants in a conference record. By default, ordered by join time and in descending order.
             /// This API supports `fields` as standard parameters like every other API. However, when the `fields`
-            /// request parameter is omitted, this API defaults to `'participants/*, next_page_token'`.
+            /// request parameter is omitted, this API defaults to `'participants/*, next_page_token'`. For more
+            /// information, see [Work with
+            /// participants](https://developers.google.com/workspace/meet/api/guides/participants).
             /// </summary>
             public class ListRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ListParticipantsResponse>
             {
@@ -640,14 +658,20 @@ namespace Google.Apis.Meet.v2
                 this.service = service;
             }
 
-            /// <summary>Gets a recording by recording ID.</summary>
+            /// <summary>
+            /// Gets a recording by recording ID. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+            /// </summary>
             /// <param name="name">Required. Resource name of the recording.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(this.service, name);
             }
 
-            /// <summary>Gets a recording by recording ID.</summary>
+            /// <summary>
+            /// Gets a recording by recording ID. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+            /// </summary>
             public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Recording>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -687,7 +711,8 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>
             /// Lists the recording resources from the conference record. By default, ordered by start time and in
-            /// ascending order.
+            /// ascending order. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
             /// </summary>
             /// <param name="parent">Required. Format: `conferenceRecords/{conference_record}`</param>
             public virtual ListRequest List(string parent)
@@ -697,7 +722,8 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>
             /// Lists the recording resources from the conference record. By default, ordered by start time and in
-            /// ascending order.
+            /// ascending order. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
             /// </summary>
             public class ListRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ListRecordingsResponse>
             {
@@ -782,7 +808,10 @@ namespace Google.Apis.Meet.v2
                 this.service = service;
             }
 
-            /// <summary>Gets smart notes by smart note ID.</summary>
+            /// <summary>
+            /// Gets smart notes by smart note ID. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+            /// </summary>
             /// <param name="name">
             /// Required. Resource name of the smart note. Format:
             /// conferenceRecords/{conference_record}/smartNotes/{smart_note}
@@ -792,7 +821,10 @@ namespace Google.Apis.Meet.v2
                 return new GetRequest(this.service, name);
             }
 
-            /// <summary>Gets smart notes by smart note ID.</summary>
+            /// <summary>
+            /// Gets smart notes by smart note ID. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+            /// </summary>
             public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.SmartNote>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -835,7 +867,8 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>
             /// Lists the set of smart notes from the conference record. By default, ordered by start time and in
-            /// ascending order.
+            /// ascending order. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
             /// </summary>
             /// <param name="parent">Required. Format: `conferenceRecords/{conference_record}`</param>
             public virtual ListRequest List(string parent)
@@ -845,7 +878,8 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>
             /// Lists the set of smart notes from the conference record. By default, ordered by start time and in
-            /// ascending order.
+            /// ascending order. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
             /// </summary>
             public class ListRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ListSmartNotesResponse>
             {
@@ -949,10 +983,11 @@ namespace Google.Apis.Meet.v2
                 }
 
                 /// <summary>
-                /// Gets a `TranscriptEntry` resource by entry ID. Note: The transcript entries returned by the Google
-                /// Meet API might not match the transcription found in the Google Docs transcript file. This can occur
-                /// when 1) we have interleaved speakers within milliseconds, or 2) the Google Docs transcript file is
-                /// modified after generation.
+                /// Gets a `TranscriptEntry` resource by entry ID. For more information, see [Work with
+                /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts). Note: The transcript
+                /// entries returned by the Google Meet API might not match the transcription found in the Google Docs
+                /// transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the
+                /// Google Docs transcript file is modified after generation.
                 /// </summary>
                 /// <param name="name">Required. Resource name of the `TranscriptEntry`.</param>
                 public virtual GetRequest Get(string name)
@@ -961,10 +996,11 @@ namespace Google.Apis.Meet.v2
                 }
 
                 /// <summary>
-                /// Gets a `TranscriptEntry` resource by entry ID. Note: The transcript entries returned by the Google
-                /// Meet API might not match the transcription found in the Google Docs transcript file. This can occur
-                /// when 1) we have interleaved speakers within milliseconds, or 2) the Google Docs transcript file is
-                /// modified after generation.
+                /// Gets a `TranscriptEntry` resource by entry ID. For more information, see [Work with
+                /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts). Note: The transcript
+                /// entries returned by the Google Meet API might not match the transcription found in the Google Docs
+                /// transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the
+                /// Google Docs transcript file is modified after generation.
                 /// </summary>
                 public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.TranscriptEntry>
                 {
@@ -1005,9 +1041,11 @@ namespace Google.Apis.Meet.v2
 
                 /// <summary>
                 /// Lists the structured transcript entries per transcript. By default, ordered by start time and in
-                /// ascending order. Note: The transcript entries returned by the Google Meet API might not match the
-                /// transcription found in the Google Docs transcript file. This can occur when 1) we have interleaved
-                /// speakers within milliseconds, or 2) the Google Docs transcript file is modified after generation.
+                /// ascending order. For more information, see [Work with
+                /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts). Note: The transcript
+                /// entries returned by the Google Meet API might not match the transcription found in the Google Docs
+                /// transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the
+                /// Google Docs transcript file is modified after generation.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}`
@@ -1019,9 +1057,11 @@ namespace Google.Apis.Meet.v2
 
                 /// <summary>
                 /// Lists the structured transcript entries per transcript. By default, ordered by start time and in
-                /// ascending order. Note: The transcript entries returned by the Google Meet API might not match the
-                /// transcription found in the Google Docs transcript file. This can occur when 1) we have interleaved
-                /// speakers within milliseconds, or 2) the Google Docs transcript file is modified after generation.
+                /// ascending order. For more information, see [Work with
+                /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts). Note: The transcript
+                /// entries returned by the Google Meet API might not match the transcription found in the Google Docs
+                /// transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the
+                /// Google Docs transcript file is modified after generation.
                 /// </summary>
                 public class ListRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ListTranscriptEntriesResponse>
                 {
@@ -1091,14 +1131,20 @@ namespace Google.Apis.Meet.v2
                 }
             }
 
-            /// <summary>Gets a transcript by transcript ID.</summary>
+            /// <summary>
+            /// Gets a transcript by transcript ID. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+            /// </summary>
             /// <param name="name">Required. Resource name of the transcript.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(this.service, name);
             }
 
-            /// <summary>Gets a transcript by transcript ID.</summary>
+            /// <summary>
+            /// Gets a transcript by transcript ID. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
+            /// </summary>
             public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Transcript>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1138,7 +1184,8 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>
             /// Lists the set of transcripts from the conference record. By default, ordered by start time and in
-            /// ascending order.
+            /// ascending order. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
             /// </summary>
             /// <param name="parent">Required. Format: `conferenceRecords/{conference_record}`</param>
             public virtual ListRequest List(string parent)
@@ -1148,7 +1195,8 @@ namespace Google.Apis.Meet.v2
 
             /// <summary>
             /// Lists the set of transcripts from the conference record. By default, ordered by start time and in
-            /// ascending order.
+            /// ascending order. For more information, see [Work with
+            /// artifacts](https://developers.google.com/workspace/meet/api/guides/artifacts).
             /// </summary>
             public class ListRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ListTranscriptsResponse>
             {
@@ -1216,14 +1264,20 @@ namespace Google.Apis.Meet.v2
             }
         }
 
-        /// <summary>Gets a conference record by conference ID.</summary>
+        /// <summary>
+        /// Gets a conference record by conference ID. For more information, see [Work with
+        /// conferences](https://developers.google.com/workspace/meet/api/guides/conferences).
+        /// </summary>
         /// <param name="name">Required. Resource name of the conference.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(this.service, name);
         }
 
-        /// <summary>Gets a conference record by conference ID.</summary>
+        /// <summary>
+        /// Gets a conference record by conference ID. For more information, see [Work with
+        /// conferences](https://developers.google.com/workspace/meet/api/guides/conferences).
+        /// </summary>
         public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ConferenceRecord>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1261,13 +1315,21 @@ namespace Google.Apis.Meet.v2
             }
         }
 
-        /// <summary>Lists the conference records. By default, ordered by start time and in descending order.</summary>
+        /// <summary>
+        /// Lists the conference records. By default, ordered by start time and in descending order. For more
+        /// information, see [Work with
+        /// conferences](https://developers.google.com/workspace/meet/api/guides/conferences).
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>Lists the conference records. By default, ordered by start time and in descending order.</summary>
+        /// <summary>
+        /// Lists the conference records. By default, ordered by start time and in descending order. For more
+        /// information, see [Work with
+        /// conferences](https://developers.google.com/workspace/meet/api/guides/conferences).
+        /// </summary>
         public class ListRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.ListConferenceRecordsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1372,7 +1434,10 @@ namespace Google.Apis.Meet.v2
                 this.service = service;
             }
 
-            /// <summary>Updates members of one space within a batch.</summary>
+            /// <summary>
+            /// Updates members of one space within a batch. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent resource shared by all Members being updated. Format: spaces/{space}
@@ -1382,7 +1447,10 @@ namespace Google.Apis.Meet.v2
                 return new BatchUpdateRequest(this.service, body, parent);
             }
 
-            /// <summary>Updates members of one space within a batch.</summary>
+            /// <summary>
+            /// Updates members of one space within a batch. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+            /// </summary>
             public class BatchUpdateRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.BatchUpdateMembersResponse>
             {
                 /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -1430,7 +1498,9 @@ namespace Google.Apis.Meet.v2
             }
 
             /// <summary>
-            /// Creates a member. This API supports the `fields` parameter in
+            /// Creates a member. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API
+            /// supports the `fields` parameter in
             /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
             /// parameter is omitted, this API response will default to "name,email,role,user".
             /// </summary>
@@ -1442,7 +1512,9 @@ namespace Google.Apis.Meet.v2
             }
 
             /// <summary>
-            /// Creates a member. This API supports the `fields` parameter in
+            /// Creates a member. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API
+            /// supports the `fields` parameter in
             /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
             /// parameter is omitted, this API response will default to "name,email,role,user".
             /// </summary>
@@ -1490,14 +1562,20 @@ namespace Google.Apis.Meet.v2
                 }
             }
 
-            /// <summary>Deletes the member who was previously assigned roles in the space.</summary>
+            /// <summary>
+            /// Deletes the member who was previously assigned roles in the space. For more information, see [Manage
+            /// meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+            /// </summary>
             /// <param name="name">Required. Format: “spaces/{space}/members/{member}”</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(this.service, name);
             }
 
-            /// <summary>Deletes the member who was previously assigned roles in the space.</summary>
+            /// <summary>
+            /// Deletes the member who was previously assigned roles in the space. For more information, see [Manage
+            /// meeting space members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+            /// </summary>
             public class DeleteRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1536,7 +1614,9 @@ namespace Google.Apis.Meet.v2
             }
 
             /// <summary>
-            /// Gets a member. This API supports the `fields` parameter in
+            /// Gets a member. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API
+            /// supports the `fields` parameter in
             /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
             /// parameter is omitted, this API response will default to "name,email,role,user".
             /// </summary>
@@ -1547,7 +1627,9 @@ namespace Google.Apis.Meet.v2
             }
 
             /// <summary>
-            /// Gets a member. This API supports the `fields` parameter in
+            /// Gets a member. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API
+            /// supports the `fields` parameter in
             /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
             /// parameter is omitted, this API response will default to "name,email,role,user".
             /// </summary>
@@ -1589,7 +1671,9 @@ namespace Google.Apis.Meet.v2
             }
 
             /// <summary>
-            /// Lists members. This API supports the `fields` parameter in
+            /// Lists members. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API
+            /// supports the `fields` parameter in
             /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
             /// parameter is omitted this API response will default to "name,email,role,user".
             /// </summary>
@@ -1600,7 +1684,9 @@ namespace Google.Apis.Meet.v2
             }
 
             /// <summary>
-            /// Lists members. This API supports the `fields` parameter in
+            /// Lists members. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members). This API
+            /// supports the `fields` parameter in
             /// [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters). When the `fields`
             /// parameter is omitted this API response will default to "name,email,role,user".
             /// </summary>
@@ -1669,7 +1755,10 @@ namespace Google.Apis.Meet.v2
                 }
             }
 
-            /// <summary>Updates a member.</summary>
+            /// <summary>
+            /// Updates a member. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Identifier. Resource name of the member. Format: spaces/{space}/members/{member}
@@ -1679,7 +1768,10 @@ namespace Google.Apis.Meet.v2
                 return new PatchRequest(this.service, body, name);
             }
 
-            /// <summary>Updates a member.</summary>
+            /// <summary>
+            /// Updates a member. For more information, see [Manage meeting space
+            /// members](https://developers.google.com/workspace/meet/api/guides/meeting-space-members).
+            /// </summary>
             public class PatchRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Member>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1744,14 +1836,20 @@ namespace Google.Apis.Meet.v2
             }
         }
 
-        /// <summary>Creates a space.</summary>
+        /// <summary>
+        /// Creates a space. For more information, see [Manage meeting
+        /// spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Meet.v2.Data.Space body)
         {
             return new CreateRequest(this.service, body);
         }
 
-        /// <summary>Creates a space.</summary>
+        /// <summary>
+        /// Creates a space. For more information, see [Manage meeting
+        /// spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
+        /// </summary>
         public class CreateRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Space>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1784,8 +1882,8 @@ namespace Google.Apis.Meet.v2
         }
 
         /// <summary>
-        /// Ends an active conference (if there's one). For an example, see [End active
-        /// conference](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#end-active-conference).
+        /// Ends an active conference (if there's one). For more information, see [Manage meeting
+        /// spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -1800,8 +1898,8 @@ namespace Google.Apis.Meet.v2
         }
 
         /// <summary>
-        /// Ends an active conference (if there's one). For an example, see [End active
-        /// conference](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#end-active-conference).
+        /// Ends an active conference (if there's one). For more information, see [Manage meeting
+        /// spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
         /// </summary>
         public class EndActiveConferenceRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Empty>
         {
@@ -1853,7 +1951,9 @@ namespace Google.Apis.Meet.v2
         }
 
         /// <summary>
-        /// Gets details about a meeting space. For an example, see [Get a meeting
+        /// Gets details about a meeting space. For more information, see [Manage meeting
+        /// spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces). For an example, see
+        /// [Get a meeting
         /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space).
         /// </summary>
         /// <param name="name">
@@ -1874,7 +1974,9 @@ namespace Google.Apis.Meet.v2
         }
 
         /// <summary>
-        /// Gets details about a meeting space. For an example, see [Get a meeting
+        /// Gets details about a meeting space. For more information, see [Manage meeting
+        /// spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces). For an example, see
+        /// [Get a meeting
         /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space).
         /// </summary>
         public class GetRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Space>
@@ -1926,8 +2028,8 @@ namespace Google.Apis.Meet.v2
         }
 
         /// <summary>
-        /// Updates details about a meeting space. For an example, see [Update a meeting
-        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#update-meeting-space).
+        /// Updates details about a meeting space. For more information, see [Manage meeting
+        /// spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -1942,8 +2044,8 @@ namespace Google.Apis.Meet.v2
         }
 
         /// <summary>
-        /// Updates details about a meeting space. For an example, see [Update a meeting
-        /// space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#update-meeting-space).
+        /// Updates details about a meeting space. For more information, see [Manage meeting
+        /// spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces).
         /// </summary>
         public class PatchRequest : MeetBaseServiceRequest<Google.Apis.Meet.v2.Data.Space>
         {
