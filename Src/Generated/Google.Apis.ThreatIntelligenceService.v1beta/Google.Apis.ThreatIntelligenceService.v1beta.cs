@@ -2445,6 +2445,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("legacyMonitorMetadata")]
         public virtual LegacyMetadata LegacyMonitorMetadata { get; set; }
 
+        /// <summary>Optional. The custom threat scenario type used to create this configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scenarioType")]
+        public virtual string ScenarioType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2841,10 +2845,6 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>Represents a query to match documents.</summary>
     public class DocumentQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The data model to query against.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataModel")]
-        public virtual string DataModel { get; set; }
-
         /// <summary>Required. The query string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
