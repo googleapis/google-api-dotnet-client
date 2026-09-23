@@ -5674,13 +5674,17 @@ namespace Google.Apis.BackupforGKE.v1.Data
     }
 
     /// <summary>
-    /// Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 27
+    /// Log entry for Backup and Restore Job for resources using BackupPlan based protection. Next Id: 28
     /// </summary>
     public class BDRBackupRestoreJobLog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The auto-protection policy that created the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoProtectionPolicy")]
         public virtual string AutoProtectionPolicy { get; set; }
+
+        /// <summary>The auto-protection policy binding that created the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoProtectionPolicyBinding")]
+        public virtual string AutoProtectionPolicyBinding { get; set; }
 
         private string _backupConsistencyTimeRaw;
 
