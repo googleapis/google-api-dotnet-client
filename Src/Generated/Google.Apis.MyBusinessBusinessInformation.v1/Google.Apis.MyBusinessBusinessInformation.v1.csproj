@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.MyBusinessBusinessInformation.v1 Client Library</Title>
-    <Version>1.76.0.4255</Version>
+    <Version>1.76.0.4276</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
