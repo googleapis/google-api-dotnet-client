@@ -7318,6 +7318,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autofillPolicy")]
         public virtual string AutofillPolicy { get; set; }
 
+        /// <summary>
+        /// Optional. Controls whether the backup service is disabled. Supported only on fully managed devices running
+        /// Android 8 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupService")]
+        public virtual string BackupService { get; set; }
+
         /// <summary>This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockApplicationsEnabled")]
         public virtual System.Nullable<bool> BlockApplicationsEnabled { get; set; }
