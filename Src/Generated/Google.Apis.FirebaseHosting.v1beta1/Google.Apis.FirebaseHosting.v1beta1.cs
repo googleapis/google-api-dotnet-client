@@ -1500,7 +1500,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>Updates the specified `CustomDomain`.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The fully-qualified name of the `CustomDomain`.</param>
+                /// <param name="name">Identifier. The fully-qualified name of the `CustomDomain`.</param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.CustomDomain body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -1517,7 +1517,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The fully-qualified name of the `CustomDomain`.</summary>
+                    /// <summary>Identifier. The fully-qualified name of the `CustomDomain`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -5857,7 +5857,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The fully-qualified name of the `CustomDomain`.</summary>
+        /// <summary>Identifier. The fully-qualified name of the `CustomDomain`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
