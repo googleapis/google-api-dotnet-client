@@ -264,11 +264,6 @@ namespace Google.Apis.Requests
 
                         foreach (var rawVal in parameterValues)
                         {
-                            if (rawVal is null)
-                            {
-                                continue;
-                            }
-
                             string val = rawVal;
                             // Check if we need to use a substring of the value.
                             if (numOfChars != 0 && numOfChars < val.Length)
@@ -299,11 +294,7 @@ namespace Google.Apis.Requests
                                 {
                                     throw new ArgumentException($"Invalid value '{val}' for {parameterName}");
                                 }
-                                if (PathParameters[parameterName].Count == 1)
-                                {
-                                    val = Uri.EscapeDataString(val);
-                                }
-                                processedValues.Add(val);
+                                processedValues.Add(Uri.EscapeDataString(val));
                             }
                         }
 
