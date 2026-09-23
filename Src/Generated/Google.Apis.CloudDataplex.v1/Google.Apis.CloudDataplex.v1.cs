@@ -15967,7 +15967,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Deletes a MetadataFeed.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the metadata feed, in the format
-                /// projects/{project_id_or_number}/locations/{location_id}/MetadataFeeds/{metadata_feed_id}.
+                /// projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -15986,7 +15986,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the metadata feed, in the format
-                    /// projects/{project_id_or_number}/locations/{location_id}/MetadataFeeds/{metadata_feed_id}.
+                    /// projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -16018,7 +16018,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Gets a MetadataFeed.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the metadata feed, in the format
-                /// projects/{project_id_or_number}/locations/{location_id}/MetadataFeeds/{metadata_feed_id}.
+                /// projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -16037,7 +16037,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the metadata feed, in the format
-                    /// projects/{project_id_or_number}/locations/{location_id}/MetadataFeeds/{metadata_feed_id}.
+                    /// projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -22288,6 +22288,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Data documentation result for data documentation (insights) scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentation")]
+        public virtual GoogleCloudDataplexV1DataScanEventDataDocumentationResult DataDocumentation { get; set; }
+
         /// <summary>Data profile result for data profile type data scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfile")]
         public virtual GoogleCloudDataplexV1DataScanEventDataProfileResult DataProfile { get; set; }
@@ -22418,6 +22422,59 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Data documentation result for data scan job.</summary>
+    public class GoogleCloudDataplexV1DataScanEventDataDocumentationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Breakdown of token consumption for the data documentation scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billableTokenUsage")]
+        public virtual GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage BillableTokenUsage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Captures structured token usage breakdown for LLM-powered scans.</summary>
+    public class GoogleCloudDataplexV1DataScanEventDataDocumentationResultTokenUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Billable cached content tokens (billed at discounted prompt caching SKU).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cachedContentTokenCount")]
+        public virtual System.Nullable<long> CachedContentTokenCount { get; set; }
+
+        /// <summary>Generated candidate response tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
+        public virtual System.Nullable<long> CandidatesTokenCount { get; set; }
+
+        /// <summary>Billable non-cached input tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputTokenCount")]
+        public virtual System.Nullable<long> InputTokenCount { get; set; }
+
+        /// <summary>Billable output tokens (candidates + thoughts).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputTokenCount")]
+        public virtual System.Nullable<long> OutputTokenCount { get; set; }
+
+        /// <summary>Base prompt and system instructions tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
+        public virtual System.Nullable<long> PromptTokenCount { get; set; }
+
+        /// <summary>Reasoning / Chain-of-Thought tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thoughtsTokenCount")]
+        public virtual System.Nullable<long> ThoughtsTokenCount { get; set; }
+
+        /// <summary>Tool use context tokens (schema, profile, query history).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolUsePromptTokenCount")]
+        public virtual System.Nullable<long> ToolUsePromptTokenCount { get; set; }
+
+        /// <summary>
+        /// Total billable tokens (billable_input + billable_cached + billable_output). Evaluates to 0 for failed or
+        /// cancelled jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<long> TotalTokenCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Applied configs for data profile type data scan job.</summary>
     public class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22443,6 +22500,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Data profile result for data scan job.</summary>
     public class GoogleCloudDataplexV1DataScanEventDataProfileResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Dataplex Compute Units (DCUs) used in the data scan job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dcuConsumed")]
+        public virtual System.Nullable<double> DcuConsumed { get; set; }
+
         /// <summary>The count of rows processed in the data scan job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<long> RowCount { get; set; }
