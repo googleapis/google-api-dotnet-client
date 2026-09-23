@@ -274,7 +274,296 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha
         public OrganizationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            AdminAccessBindings = new AdminAccessBindingsResource(service);
             AnalyticsAccountLinks = new AnalyticsAccountLinksResource(service);
+            UserGroups = new UserGroupsResource(service);
+        }
+
+        /// <summary>Gets the AdminAccessBindings resource.</summary>
+        public virtual AdminAccessBindingsResource AdminAccessBindings { get; }
+
+        /// <summary>The "adminAccessBindings" collection of methods.</summary>
+        public class AdminAccessBindingsResource
+        {
+            private const string Resource = "adminAccessBindings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AdminAccessBindingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates an admin access binding in the specified GMP organization.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent organization, which owns this Admin Access Binding. Format: organizations/{org_id}
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Creates an admin access binding in the specified GMP organization.</summary>
+            public class CreateRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent organization, which owns this Admin Access Binding. Format:
+                /// organizations/{org_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/adminAccessBindings";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Looks up a single admin access binding.</summary>
+            /// <param name="name">
+            /// Required. The name of the AdminAccessBinding to retrieve. Format:
+            /// organizations/{org_id}/adminAccessBindings/{admin_access_binding_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Looks up a single admin access binding.</summary>
+            public class GetRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the AdminAccessBinding to retrieve. Format:
+                /// organizations/{org_id}/adminAccessBindings/{admin_access_binding_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/adminAccessBindings/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Returns a list of admin access bindings in the specified GMP organization.</summary>
+            /// <param name="parent">
+            /// Required. The parent organization, which owns this collection of Admin Access Bindings. Format:
+            /// organizations/{org_id}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Returns a list of admin access bindings in the specified GMP organization.</summary>
+            public class ListRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.ListAdminAccessBindingsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent organization, which owns this collection of Admin Access Bindings. Format:
+                /// organizations/{org_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of Admin Access Bindings to return in one call. The service may return
+                /// fewer than this value. If unspecified, at most 50 Admin Access Bindings will be returned. The
+                /// maximum value is 1000; values above 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous ListAdminAccessBindings call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListAdminAccessBindings` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/adminAccessBindings";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates an admin access binding in the specified GMP organization.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of this AdminAccessBinding. Format:
+            /// organizations/{org_id}/adminAccessBindings/{admin_access_binding_id} Example:
+            /// "organizations/123abc/adminAccessBindings/456def"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates an admin access binding in the specified GMP organization.</summary>
+            public class PatchRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of this AdminAccessBinding. Format:
+                /// organizations/{org_id}/adminAccessBindings/{admin_access_binding_id} Example:
+                /// "organizations/123abc/adminAccessBindings/456def"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to update. Field names must be in snake case (for example,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.AdminAccessBinding Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/adminAccessBindings/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the AnalyticsAccountLinks resource.</summary>
@@ -569,6 +858,679 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha
             }
         }
 
+        /// <summary>Gets the UserGroups resource.</summary>
+        public virtual UserGroupsResource UserGroups { get; }
+
+        /// <summary>The "userGroups" collection of methods.</summary>
+        public class UserGroupsResource
+        {
+            private const string Resource = "userGroups";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public UserGroupsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Members = new MembersResource(service);
+            }
+
+            /// <summary>Gets the Members resource.</summary>
+            public virtual MembersResource Members { get; }
+
+            /// <summary>The "members" collection of methods.</summary>
+            public class MembersResource
+            {
+                private const string Resource = "members";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MembersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Adds a member to the specified GMP user group.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this UserGroupMember will be created. Format:
+                /// organizations/{org_id}/userGroups/{user_group_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Adds a member to the specified GMP user group.</summary>
+                public class CreateRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this UserGroupMember will be created. Format:
+                    /// organizations/{org_id}/userGroups/{user_group_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/members";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/userGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a member in the specified GMP user group.</summary>
+                /// <param name="name">
+                /// Required. The name of the user group member to delete. Format:
+                /// organizations/{org_id}/userGroups/{user_group_id}/members/{member_id}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a member in the specified GMP user group.</summary>
+                public class DeleteRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the user group member to delete. Format:
+                    /// organizations/{org_id}/userGroups/{user_group_id}/members/{member_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/userGroups/[^/]+/members/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Looks up a single user group member.</summary>
+                /// <param name="name">
+                /// Required. The name of the user group member to retrieve. Format:
+                /// organizations/{org_id}/userGroups/{user_group_id}/members/{member_id}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Looks up a single user group member.</summary>
+                public class GetRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the user group member to retrieve. Format:
+                    /// organizations/{org_id}/userGroups/{user_group_id}/members/{member_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/userGroups/[^/]+/members/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns a list of members in the specified user group.</summary>
+                /// <param name="parent">
+                /// Required. The parent user group where this UserGroupMember will be listed. Format:
+                /// organizations/{org_id}/userGroups/{user_group_id}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Returns a list of members in the specified user group.</summary>
+                public class ListRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.ListUserGroupMembersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent user group where this UserGroupMember will be listed. Format:
+                    /// organizations/{org_id}/userGroups/{user_group_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of user group members to return in one call. The service may return
+                    /// fewer than this value. If unspecified, at most 50 user group members will be returned. The
+                    /// maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous ListUserGroupMembers call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListUserGroupMembers` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/members";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/userGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a member in the specified GMP user group.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of this UserGroupMember. Format:
+                /// organizations/{org_id}/userGroups/{user_group_id}/members/{member_id} Example:
+                /// "organizations/123abc/userGroups/456def/members/789ghi"
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a member in the specified GMP user group.</summary>
+                public class PatchRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of this UserGroupMember. Format:
+                    /// organizations/{org_id}/userGroups/{user_group_id}/members/{member_id} Example:
+                    /// "organizations/123abc/userGroups/456def/members/789ghi"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to update. Field names must be in snake case (for example,
+                    /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one
+                    /// path with the string "*" to match all fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroupMember Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/userGroups/[^/]+/members/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Creates a user group in the specified GMP organization.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource where this UserGroup will be created. Format: organizations/{org_id}
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Creates a user group in the specified GMP organization.</summary>
+            public class CreateRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource where this UserGroup will be created. Format: organizations/{org_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/userGroups";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a user group in the specified GMP organization.</summary>
+            /// <param name="name">
+            /// Required. The name of the user group to delete. Format:
+            /// organizations/{org_id}/userGroups/{user_group_id}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes a user group in the specified GMP organization.</summary>
+            public class DeleteRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the user group to delete. Format:
+                /// organizations/{org_id}/userGroups/{user_group_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/userGroups/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Looks up a single user group.</summary>
+            /// <param name="name">
+            /// Required. The name of the UserGroup to retrieve. Format:
+            /// organizations/{org_id}/userGroups/{user_group_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Looks up a single user group.</summary>
+            public class GetRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the UserGroup to retrieve. Format:
+                /// organizations/{org_id}/userGroups/{user_group_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/userGroups/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Returns a list of user groups in the specified GMP organization.</summary>
+            /// <param name="parent">
+            /// Required. The parent org where this UserGroup will be listed. Format: organizations/{org_id}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Returns a list of user groups in the specified GMP organization.</summary>
+            public class ListRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.ListUserGroupsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent org where this UserGroup will be listed. Format: organizations/{org_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of user groups to return in one call. The service may return fewer than
+                /// this value. If unspecified, at most 50 user groups will be returned. The maximum value is 1000;
+                /// values above 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous ListUserGroups call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListUserGroups` must match the
+                /// call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/userGroups";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a user group in the specified GMP organization.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. Resource name of this UserGroup. Format: organizations/{org_id}/userGroups/{user_group_id}
+            /// Example: "organizations/123abc/userGroups/456def"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a user group in the specified GMP organization.</summary>
+            public class PatchRequest : GoogleMarketingPlatformAdminAPIBaseServiceRequest<Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. Resource name of this UserGroup. Format:
+                /// organizations/{org_id}/userGroups/{user_group_id} Example: "organizations/123abc/userGroups/456def"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to update. Field names must be in snake case (for example,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data.UserGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/userGroups/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>
         /// Returns a list of clients managed by the sales partner organization. User needs to be an
         /// OrgAdmin/BillingAdmin on the sales partner organization in order to view the end clients.
@@ -812,6 +1774,36 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha
 }
 namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data
 {
+    /// <summary>A resource message representing a binding to a set of roles.</summary>
+    public class AdminAccessBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The resource name of this AdminAccessBinding. Format:
+        /// organizations/{org_id}/adminAccessBindings/{admin_access_binding_id} Example:
+        /// "organizations/123abc/adminAccessBindings/456def"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. A list of roles granted to the parent organization. USER_ADMIN_ROLE and BILLING_ADMIN_ROLE will be
+        /// automatically added if ORG_ADMIN_ROLE is assigned. No roles will be assigned if no roles are specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationRoles")]
+        public virtual System.Collections.Generic.IList<string> OrganizationRoles { get; set; }
+
+        /// <summary>Email address of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
+        /// <summary>Resource name of the user group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userGroup")]
+        public virtual string UserGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A resource message representing the link between a Google Analytics account and a Google Marketing Platform
     /// organization.
@@ -952,6 +1944,24 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListAdminAccessBindings RPC.</summary>
+    public class ListAdminAccessBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Admin Access Bindings in the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminAccessBindings")]
+        public virtual System.Collections.Generic.IList<AdminAccessBinding> AdminAccessBindings { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListAnalyticsAccountLinks RPC.</summary>
     public class ListAnalyticsAccountLinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -985,6 +1995,42 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
         public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListUserGroupMembers RPC.</summary>
+    public class ListUserGroupMembersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>User group members in the user group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userGroupMembers")]
+        public virtual System.Collections.Generic.IList<UserGroupMember> UserGroupMembers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListUserGroups RPC.</summary>
+    public class ListUserGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>User groups in the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userGroups")]
+        public virtual System.Collections.Generic.IList<UserGroup> UserGroups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1123,6 +2169,55 @@ namespace Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.Data
     /// <summary>Response message for SetPropertyServiceLevel RPC.</summary>
     public class SetPropertyServiceLevelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource message representing a user group in a GMP organization.</summary>
+    public class UserGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The description of the user group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The human-readable name for the user group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of this UserGroup. Format: organizations/{org_id}/userGroups/{user_group_id}
+        /// Example: "organizations/123abc/userGroups/456def"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource message representing a member of a user group.</summary>
+    public class UserGroupMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The role of the member in the user group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipRole")]
+        public virtual string MembershipRole { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of this UserGroupMember. Format:
+        /// organizations/{org_id}/userGroups/{user_group_id}/members/{member_id} Example:
+        /// "organizations/123abc/userGroups/456def/members/789ghi"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Email address of the user member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
+        /// <summary>User group resource name of the group member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userGroup")]
+        public virtual string UserGroup { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
