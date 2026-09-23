@@ -314,7 +314,10 @@ namespace Google.Apis.OSConfig.v1alpha
                     this.service = service;
                 }
 
-                /// <summary>Get OS policies compliance data for the specified Compute Engine VM instance.</summary>
+                /// <summary>
+                /// Deprecated: Use GetOSPolicyAssignmentReport instead. Get OS policies compliance data for the
+                /// specified Compute Engine VM instance.
+                /// </summary>
                 /// <param name="name">
                 /// Required. API resource name for instance OS policies compliance resource. Format:
                 /// `projects/{project}/locations/{location}/instanceOSPoliciesCompliances/{instance}` For `{project}`,
@@ -326,7 +329,10 @@ namespace Google.Apis.OSConfig.v1alpha
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Get OS policies compliance data for the specified Compute Engine VM instance.</summary>
+                /// <summary>
+                /// Deprecated: Use GetOSPolicyAssignmentReport instead. Get OS policies compliance data for the
+                /// specified Compute Engine VM instance.
+                /// </summary>
                 public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1alpha.Data.InstanceOSPoliciesCompliance>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -370,7 +376,8 @@ namespace Google.Apis.OSConfig.v1alpha
                 }
 
                 /// <summary>
-                /// List OS policies compliance data for all Compute Engine VM instances in the specified zone.
+                /// Deprecated: Use ListOSPolicyAssignmentReports instead. List OS policies compliance data for all
+                /// Compute Engine VM instances in the specified zone.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The parent resource name. Format: `projects/{project}/locations/{location}` For
@@ -382,7 +389,8 @@ namespace Google.Apis.OSConfig.v1alpha
                 }
 
                 /// <summary>
-                /// List OS policies compliance data for all Compute Engine VM instances in the specified zone.
+                /// Deprecated: Use ListOSPolicyAssignmentReports instead. List OS policies compliance data for all
+                /// Compute Engine VM instances in the specified zone.
                 /// </summary>
                 public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1alpha.Data.ListInstanceOSPoliciesCompliancesResponse>
                 {
