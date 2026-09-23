@@ -2775,8 +2775,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>
         /// Optional. The service account to use to make prediction requests against endpoints. The resource creator or
         /// updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account.
-        /// If not specified, the Pub/Sub [service
-        /// agent]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+        /// If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
@@ -2987,8 +2986,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>
         /// Optional. The service account to use to write to Bigtable. The subscription creator or updater that
         /// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not
-        /// specified, the Pub/Sub [service
-        /// agent]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+        /// specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
@@ -3409,6 +3407,20 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption configuration for the query template.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The KMS key used to encrypt the query template. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4441,6 +4453,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>Optional. Documentation describing the QueryTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
         public virtual string Documentation { get; set; }
+
+        /// <summary>
+        /// Optional. Encryption configuration for the query template. If set, the customer-managed KMS key is used to
+        /// encrypt the query template definition body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfiguration")]
+        public virtual EncryptionConfig EncryptionConfiguration { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the QueryTemplate. e.g.
