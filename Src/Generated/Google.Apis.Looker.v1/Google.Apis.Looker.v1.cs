@@ -1686,6 +1686,103 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ComponentMetrics contains sizing, timing, retries, and metrics for an exported component.</summary>
+    public class ComponentMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the exported component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentType")]
+        public virtual string ComponentType { get; set; }
+
+        /// <summary>Duration of the component export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>End timestamp of the component export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Number of retries during the component export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryCount")]
+        public virtual System.Nullable<int> RetryCount { get; set; }
+
+        /// <summary>Size of the exported component in gigabytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<double> SizeGb { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Start timestamp of the component export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Controlled egress configuration.</summary>
     public class ControlledEgressConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1852,6 +1949,10 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exportEncryptionKey")]
         public virtual ExportMetadataEncryptionKey ExportEncryptionKey { get; set; }
 
+        /// <summary>Overall export metrics, timing, and component telemetry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportMetrics")]
+        public virtual ExportMetrics ExportMetrics { get; set; }
+
         /// <summary>
         /// List of files created as part of export artifact (excluding the metadata). The paths are relative to the
         /// folder containing the metadata.
@@ -1898,6 +1999,21 @@ namespace Google.Apis.Looker.v1.Data
         /// <summary>Version of the CMEK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExportMetrics contains overall export execution metrics, timing, and component telemetry.</summary>
+    public class ExportMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metrics and telemetry for each exported component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentMetrics")]
+        public virtual System.Collections.Generic.IList<ComponentMetrics> ComponentMetrics { get; set; }
+
+        /// <summary>Internal name of the instance being exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceInternalName")]
+        public virtual string InstanceInternalName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
