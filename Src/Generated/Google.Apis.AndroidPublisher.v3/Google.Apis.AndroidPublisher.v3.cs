@@ -15637,6 +15637,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// </summary>
     public class AppStoreAppActiveApkSet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Whether all APKs referenced in this active APK set are published on Play Store (or derived from an
+        /// app bundle published on Play Store). When this is set, version_code must be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alreadyPublishedOnPlay")]
+        public virtual System.Nullable<bool> AlreadyPublishedOnPlay { get; set; }
+
         /// <summary>Required. The ID for the main base application module. Example: base.apk or app.apk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseApkId")]
         public virtual string BaseApkId { get; set; }
@@ -15647,6 +15654,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("splitApkId")]
         public virtual System.Collections.Generic.IList<string> SplitApkId { get; set; }
+
+        /// <summary>Optional. Version code for the version this APK set represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<long> VersionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
