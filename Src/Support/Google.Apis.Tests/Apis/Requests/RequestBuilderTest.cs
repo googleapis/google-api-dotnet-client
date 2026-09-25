@@ -396,17 +396,17 @@ namespace Google.Apis.Tests.Apis.Requests
 
         [Theory]
         // Dialogflow session (multi-segment reserved path)
-        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/..")]
-        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/.")]
+        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/..", "Value for session must not contain segments that are exactly '..'.")]
+        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/.", "Value for session must not contain segments that are exactly '.'.")]
         // Firestore documents (reserved template expansion)
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../default")]
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db")]
-        [InlineData("v1/{+name}", "../escape-db")]
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/./child")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../default", "Value for name must not contain segments that are exactly '..'.")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db", "Value for name must not contain segments that are exactly '..'.")]
+        [InlineData("v1/{+name}", "../escape-db", "Value for name must not contain segments that are exactly '..'.")]
+        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/./child", "Value for name must not contain segments that are exactly '.'.")]
         // Webhooks (multiple standard wildcards)
-        [InlineData("v3/projects/{project}/webhooks/{webhook}", "..")]
-        [InlineData("v3/projects/{project}/webhooks/{webhook}", ".")]
-        public void PathTraversalAndInjection_ThrowsArgumentException(string path, string paramValue)
+        [InlineData("v3/projects/{project}/webhooks/{webhook}", "..", "Invalid value for webhook '..'.")]
+        [InlineData("v3/projects/{project}/webhooks/{webhook}", ".", "Invalid value for webhook '.'.")]
+        public void PathTraversalAndInjection_ThrowsArgumentException(string path, string paramValue, string expectedMessage)
         {
             var builder = new RequestBuilder()
             {
@@ -425,25 +425,7 @@ namespace Google.Apis.Tests.Apis.Requests
             builder.AddParameter(RequestParameterType.Path, paramName, paramValue);
 
             var exception = Assert.Throws<ArgumentException>(() => builder.BuildUri());
-
-            bool isReserved = path.Contains("{+") || path.Contains("{#");
-            bool hasDoubleDot = false;
-            bool hasSingleDot = false;
-            foreach (var segment in paramValue.Split('/'))
-            {
-                if (segment == "..") hasDoubleDot = true;
-                if (segment == ".") hasSingleDot = true;
-            }
-
-            if (!isReserved)
-            {
-                string matchedDot = hasDoubleDot ? ".." : (hasSingleDot ? "." : "");
-                Assert.StartsWith($"Invalid value '{matchedDot}' for {paramName}", exception.Message);
-            }
-            else
-            {
-                Assert.StartsWith($"Value for {paramName} must not contain segments that are exactly . or ..", exception.Message);
-            }
+            Assert.Equal(expectedMessage, exception.Message);
         }
 
         [Theory]

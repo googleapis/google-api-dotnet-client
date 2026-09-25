@@ -259,46 +259,45 @@ namespace Google.Apis.Requests
                     // Check if a path parameter equals the name which appears in the REST path.
                     if (PathParameters.ContainsKey(parameterName))
                     {
-                        var parameterValues = PathParameters[parameterName];
-                        var processedValues = new List<string>(parameterValues.Count);
+                        var value = string.Join(joiner, PathParameters[parameterName]);
 
-                        foreach (var rawVal in parameterValues)
+                        // Check if we need to use a substring of the value.
+                        if (numOfChars != 0 && numOfChars < value.Length)
                         {
-                            string val = rawVal;
-                            // Check if we need to use a substring of the value.
-                            if (numOfChars != 0 && numOfChars < val.Length)
-                            {
-                                val = val.Substring(0, numOfChars);
-                            }
+                            value = value.Substring(0, numOfChars);
+                        }
 
-                            if (op == "+" || op == "#")
+                        if (op == "+" || op == "#")
+                        {
+                            // Multi-segment path parameters (+ and #) preserve slashes but percent-encode each individual segment,
+                            // rejecting path traversal segments ('.' or '..').
+                            string[] segments = value.Split('/');
+                            foreach (var segment in segments)
                             {
-                                // Multi-segment path parameters (+ and #) preserve slashes but percent-encode each individual segment,
-                                // rejecting path traversal segments ('.' or '..').
-                                string[] segments = val.Split('/');
-                                for (int i = 0; i < segments.Length; i++)
+                                if (segment == "." || segment == "..")
                                 {
-                                    string segment = segments[i];
-                                    if (segment == "." || segment == "..")
-                                    {
-                                        throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly . or ..");
-                                    }
-                                    segments[i] = Uri.EscapeDataString(segment);
+                                    throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly '{segment}'.");
                                 }
-                                processedValues.Add(string.Join("/", segments));
                             }
-                            else
+                            if (PathParameters[parameterName].Count == 1)
                             {
-                                // Standard single-segment parameters escape all special characters (including '/').
-                                if (val == "." || val == "..")
-                                {
-                                    throw new ArgumentException($"Invalid value '{val}' for {parameterName}");
-                                }
-                                processedValues.Add(Uri.EscapeDataString(val));
+                                value = string.Join("/", segments.Select(Uri.EscapeDataString));
+                            }
+                        }
+                        else
+                        {
+                            // Standard single-segment parameters escape all special characters (including '/').
+                            if (value == "." || value == "..")
+                            {
+                                throw new ArgumentException($"Invalid value for {parameterName} '{value}'.");
+                            }
+                            if (PathParameters[parameterName].Count == 1)
+                            {
+                                value = Uri.EscapeDataString(value);
                             }
                         }
 
-                        var value = start + string.Join(joiner, processedValues);
+                        value = start + value;
                         newContent.Append(value);
                     }
                     else
