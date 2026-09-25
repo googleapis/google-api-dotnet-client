@@ -396,31 +396,23 @@ namespace Google.Apis.Tests.Apis.Requests
 
         [Theory]
         // Dialogflow session (multi-segment reserved path)
-        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/..", "Value for session must not contain segments that are exactly '..'.")]
-        [InlineData("v3/{+session}:detectIntent", "projects/p/locations/l/agents/a/sessions/.", "Value for session must not contain segments that are exactly '.'.")]
+        [InlineData("v3/{+session}:detectIntent", "session", "projects/p/locations/l/agents/a/sessions/..", "Value for session must not contain segments that are exactly '..'.")]
+        [InlineData("v3/{+session}:detectIntent", "session", "projects/p/locations/l/agents/a/sessions/.", "Value for session must not contain segments that are exactly '.'.")]
         // Firestore documents (reserved template expansion)
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../default", "Value for name must not contain segments that are exactly '..'.")]
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db", "Value for name must not contain segments that are exactly '..'.")]
-        [InlineData("v1/{+name}", "../escape-db", "Value for name must not contain segments that are exactly '..'.")]
-        [InlineData("v1/{+name}", "projects/sys-prod-123/databases/default/documents/doc-1/./child", "Value for name must not contain segments that are exactly '.'.")]
-        // Webhooks (multiple standard wildcards)
-        [InlineData("v3/projects/{project}/webhooks/{webhook}", "..", "Invalid value for webhook '..'.")]
-        [InlineData("v3/projects/{project}/webhooks/{webhook}", ".", "Invalid value for webhook '.'.")]
-        public void PathTraversalAndInjection_ThrowsArgumentException(string path, string paramValue, string expectedMessage)
+        [InlineData("v1/{+name}", "name", "projects/sys-prod-123/databases/default/documents/doc-1/../../default", "Value for name must not contain segments that are exactly '..'.")]
+        [InlineData("v1/{+name}", "name", "projects/sys-prod-123/databases/default/documents/doc-1/../../../../../../../escape-db", "Value for name must not contain segments that are exactly '..'.")]
+        [InlineData("v1/{+name}", "name", "../escape-db", "Value for name must not contain segments that are exactly '..'.")]
+        [InlineData("v1/{+name}", "name", "projects/sys-prod-123/databases/default/documents/doc-1/./child", "Value for name must not contain segments that are exactly '.'.")]
+        // Webhooks (single-segment path parameters)
+        [InlineData("v3/webhooks/{webhook}", "webhook", "..", "Invalid value for webhook '..'.")]
+        [InlineData("v3/webhooks/{webhook}", "webhook", ".", "Invalid value for webhook '.'.")]
+        public void PathTraversalAndInjection_ThrowsArgumentException(string path, string paramName, string paramValue, string expectedMessage)
         {
             var builder = new RequestBuilder()
             {
                 BaseUri = new Uri("http://www.example.com"),
                 Path = path
             };
-
-            string paramName = path.Contains("session") ? "session" :
-                               path.Contains("webhook") ? "webhook" : "name";
-
-            if (path.Contains("project"))
-            {
-                builder.AddParameter(RequestParameterType.Path, "project", "p1");
-            }
 
             builder.AddParameter(RequestParameterType.Path, paramName, paramValue);
 
