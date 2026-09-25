@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2012 Google Inc
 
 Licensed under the Apache License, Version 2.0(the "License");
@@ -267,9 +267,34 @@ namespace Google.Apis.Requests
                             value = value.Substring(0, numOfChars);
                         }
 
-                        if (op != "+" && op != "#" && PathParameters[parameterName].Count == 1)
+                        if (op == "+" || op == "#")
                         {
-                            value = Uri.EscapeDataString(value);
+                            // Multi-segment path parameters (+ and #) preserve slashes but percent-encode each individual segment,
+                            // rejecting path traversal segments ('.' or '..').
+                            string[] segments = value.Split('/');
+                            foreach (var segment in segments)
+                            {
+                                if (segment == "." || segment == "..")
+                                {
+                                    throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly '{segment}'.");
+                                }
+                            }
+                            if (PathParameters[parameterName].Count == 1)
+                            {
+                                value = string.Join("/", segments.Select(Uri.EscapeDataString));
+                            }
+                        }
+                        else
+                        {
+                            // Standard single-segment parameters escape all special characters (including '/').
+                            if (value == "." || value == "..")
+                            {
+                                throw new ArgumentException($"Invalid value for {parameterName} '{value}'.");
+                            }
+                            if (PathParameters[parameterName].Count == 1)
+                            {
+                                value = Uri.EscapeDataString(value);
+                            }
                         }
 
                         value = start + value;
