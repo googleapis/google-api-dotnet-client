@@ -305,7 +305,7 @@ namespace Google.Apis.Tests.Apis.Requests
             SubtestPathParameters(vars, "{x,hello,y}", "1024,Hello%20World%21,768");
             SubtestPathParameters(vars, "{+x,hello,y}", "1024,Hello%20World%21,768");
             SubtestPathParameters(vars, "{+path,x}/here", "foo/bar,1024/here");
-            SubtestPathParameters(vars, "{#x,hello,y}", "#1024,Hello%20World%21,768");
+            SubtestPathParameters(vars, "{#x,hello,y}", "#1024,Hello%20World!,768");
             SubtestPathParameters(vars, "{#path,x}/here", "#/foo/bar,1024/here");
             SubtestPathParameters(vars, "X{.var}", "X.value");
             SubtestPathParameters(vars, "X{.x,y}", "X.1024.768");

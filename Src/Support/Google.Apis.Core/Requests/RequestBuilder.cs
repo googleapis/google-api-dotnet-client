@@ -267,33 +267,30 @@ namespace Google.Apis.Requests
                             value = value.Substring(0, numOfChars);
                         }
 
-                        if (op == "+" || op == "#")
+                        if (op != "+" && op != "#" && PathParameters[parameterName].Count == 1)
                         {
-                            // Multi-segment path parameters (+ and #) preserve slashes but percent-encode each individual segment,
-                            // rejecting path traversal segments ('.' or '..').
-                            string[] segments = value.Split('/');
-                            foreach (var segment in segments)
-                            {
-                                if (segment == "." || segment == "..")
-                                {
-                                    throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly '{segment}'.");
-                                }
-                            }
+                            value = Uri.EscapeDataString(value);
+                        }
+
+                        if (op == "+")
+                        {
                             if (PathParameters[parameterName].Count == 1)
                             {
-                                value = string.Join("/", segments.Select(Uri.EscapeDataString));
+                                value = string.Join("/", value.Split('/').Select(segment =>
+                                {
+                                    if (segment == "." || segment == "..")
+                                    {
+                                        throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly '{segment}'.");
+                                    }
+                                    return Uri.EscapeDataString(segment);
+                                }));
                             }
                         }
-                        else
+                        else if (string.IsNullOrEmpty(op))
                         {
-                            // Standard single-segment parameters escape all special characters (including '/').
                             if (value == "." || value == "..")
                             {
                                 throw new ArgumentException($"Invalid value for {parameterName} '{value}'.");
-                            }
-                            if (PathParameters[parameterName].Count == 1)
-                            {
-                                value = Uri.EscapeDataString(value);
                             }
                         }
 
