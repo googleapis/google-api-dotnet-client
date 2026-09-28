@@ -36,5 +36,8 @@
   "aiplatform.v1",
 
   // b/533068783
-  "readerrevenuesubscriptionlinking.v1"
+  "readerrevenuesubscriptionlinking.v1",
+
+  // b/567102951
+  "compute.preview"
 ]
