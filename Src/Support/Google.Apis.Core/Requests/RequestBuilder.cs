@@ -288,6 +288,7 @@ namespace Google.Apis.Requests
                         }
                         else if (string.IsNullOrEmpty(op))
                         {
+                            // Single-segment parameter values have already been percent-encoded above.
                             if (value == "." || value == "..")
                             {
                                 throw new ArgumentException($"Invalid value for {parameterName} '{value}'.");
