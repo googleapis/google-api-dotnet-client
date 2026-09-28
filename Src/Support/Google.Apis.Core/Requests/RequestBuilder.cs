@@ -272,27 +272,26 @@ namespace Google.Apis.Requests
                             value = Uri.EscapeDataString(value);
                         }
 
-                        if (op == "+")
-                        {
-                            if (PathParameters[parameterName].Count == 1)
-                            {
-                                value = string.Join("/", value.Split('/').Select(segment =>
-                                {
-                                    if (segment == "." || segment == "..")
-                                    {
-                                        throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly '{segment}'.");
-                                    }
-                                    return Uri.EscapeDataString(segment);
-                                }));
-                            }
-                        }
-                        else if (string.IsNullOrEmpty(op))
+                        if (string.IsNullOrEmpty(op))
                         {
                             // Single-segment parameter values have already been percent-encoded above.
                             if (value == "." || value == "..")
                             {
                                 throw new ArgumentException($"Invalid value for {parameterName} '{value}'.");
                             }
+                        }
+
+                        // See b/565852687 for why we only do this for non-list parameters.
+                        if (op == "+" && PathParameters[parameterName].Count == 1)
+                        {
+                            value = string.Join("/", value.Split('/').Select(segment =>
+                            {
+                                if (segment == "." || segment == "..")
+                                {
+                                    throw new ArgumentException($"Value for {parameterName} must not contain segments that are exactly '{segment}'.");
+                                }
+                                return Uri.EscapeDataString(segment);
+                            }));
                         }
 
                         value = start + value;
