@@ -5489,6 +5489,32 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for Dataproc Metastore to Lakehouse proxy routing.In a phased migration, namespaces are migrated
+    /// from Dataproc Metastore to a Lakehouse Iceberg REST Catalog in batches. Between and after migration phases, the
+    /// metastore service operates in PROXY state where requests for migrated namespaces are forwarded to the Lakehouse
+    /// catalog while unmigrated namespaces continue to be served locally by DPMS.
+    /// </summary>
+    public class LakehouseProxyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The Lakehouse Iceberg REST Catalog where requests are being proxied to. Format:
+        /// projects/{project_id_or_number}/catalogs/{catalog_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalog")]
+        public virtual string Catalog { get; set; }
+
+        /// <summary>
+        /// Output only. The list of namespaces currently proxied to the Lakehouse catalog. As each migration batch
+        /// completes, newly migrated namespaces are added to this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaces")]
+        public virtual System.Collections.Generic.IList<string> Namespaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The details of the latest scheduled backup.</summary>
     public class LatestBackup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7062,6 +7088,10 @@ namespace Google.Apis.DataprocMetastore.v1alpha.Data
         /// <summary>User-defined labels for the metastore service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The Lakehouse proxy routing configuration for the metastore service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lakehouseProxyConfig")]
+        public virtual LakehouseProxyConfig LakehouseProxyConfig { get; set; }
 
         /// <summary>
         /// Optional. The one hour maintenance window of the metastore service. This specifies when the service can be
