@@ -945,14 +945,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -1020,14 +1012,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -1037,6 +1021,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified accelerator type.</summary>
@@ -1110,6 +1097,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of accelerator types that are available to the specified project.</summary>
@@ -1204,14 +1194,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -1273,15 +1255,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -1402,14 +1379,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -1477,14 +1446,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -1494,6 +1455,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified address resource.</summary>
@@ -1587,6 +1551,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified address resource.</summary>
@@ -1660,6 +1627,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -1751,6 +1721,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of addresses contained within the specified region.</summary>
@@ -1845,14 +1818,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -1914,15 +1879,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Moves the specified address resource.</summary>
@@ -2024,6 +1984,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -2129,6 +2092,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -2210,6 +2176,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -2300,6 +2269,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -2373,6 +2345,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets the capacity history.</summary>
@@ -2440,6 +2415,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -2560,14 +2538,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -2635,14 +2605,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -2652,6 +2614,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified autoscaler.</summary>
@@ -2745,6 +2710,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified autoscaler resource.</summary>
@@ -2818,6 +2786,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
@@ -2905,6 +2876,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of autoscalers contained within the specified zone.</summary>
@@ -2999,14 +2973,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -3068,15 +3034,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -3182,6 +3143,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -3263,6 +3227,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
@@ -3362,6 +3329,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -3470,6 +3440,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -3575,14 +3548,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -3650,14 +3615,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -3667,6 +3624,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified BackendBucket resource.</summary>
@@ -3746,6 +3706,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a key for validating requests with signed URLs for this backend bucket.</summary>
@@ -3845,6 +3808,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified BackendBucket resource.</summary>
@@ -3904,6 +3870,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -3979,6 +3948,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -4056,6 +4028,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of BackendBucket resources available to the specified project.</summary>
@@ -4144,14 +4119,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -4205,15 +4172,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of all usable backend buckets in the specified project.</summary>
@@ -4302,14 +4264,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listUsable";
 
@@ -4363,15 +4317,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -4465,6 +4414,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the edge security policy for the specified backend bucket.</summary>
@@ -4558,6 +4510,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -4625,6 +4580,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -4692,6 +4650,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates the specified BackendBucket resource with the data included in the request.</summary>
@@ -4779,6 +4740,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -4887,6 +4851,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -4992,14 +4959,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -5067,14 +5026,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -5084,6 +5035,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified BackendService resource.</summary>
@@ -5163,6 +5117,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a key for validating requests with signed URLs for this backend service.</summary>
@@ -5262,6 +5219,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified BackendService resource.</summary>
@@ -5321,6 +5281,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns effective security policies applied to this backend service.</summary>
@@ -5380,6 +5343,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -5454,6 +5420,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -5529,6 +5498,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -5608,6 +5580,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of BackendService resources available to the specified project.</summary>
@@ -5696,14 +5671,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -5757,15 +5724,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -5862,14 +5824,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listUsable";
 
@@ -5923,15 +5877,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -6027,6 +5976,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the edge security policy for the specified backend service.</summary>
@@ -6120,6 +6072,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -6187,6 +6142,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -6286,6 +6244,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -6353,6 +6314,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -6446,6 +6410,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -6540,6 +6507,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified cross-site network in the given scope.</summary>
@@ -6599,6 +6569,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -6690,6 +6663,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the cross-site networks for a project in the given scope.</summary>
@@ -6778,14 +6754,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -6839,15 +6807,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -6965,6 +6928,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -7085,14 +7051,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -7160,14 +7118,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -7177,6 +7127,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified disk type.</summary>
@@ -7250,6 +7203,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of disk types available to the specified project.</summary>
@@ -7344,14 +7300,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -7413,15 +7361,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -7544,6 +7487,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -7649,14 +7595,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -7724,14 +7662,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -7741,6 +7671,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Bulk create a set of disks.</summary>
@@ -7828,6 +7761,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -7931,6 +7867,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -8055,6 +7994,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -8156,6 +8098,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified persistent disk.</summary>
@@ -8229,6 +8174,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -8318,6 +8266,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -8427,6 +8378,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of persistent disks contained within the specified zone.</summary>
@@ -8521,14 +8475,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -8590,15 +8536,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes resource policies from a disk.</summary>
@@ -8700,6 +8641,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Resizes the specified persistent disk. You can only increase the size of the disk.</summary>
@@ -8801,6 +8745,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -8882,6 +8829,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -8987,6 +8937,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Starts asynchronous replication. Must be invoked on the primary disk.</summary>
@@ -9088,6 +9041,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -9185,6 +9141,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -9284,6 +9243,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -9365,6 +9327,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -9495,6 +9460,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -9600,6 +9568,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -9694,6 +9665,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -9759,6 +9733,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -9836,6 +9813,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of ExternalVpnGateway available to the specified project.</summary>
@@ -9924,14 +9904,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -9985,15 +9957,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -10067,6 +10034,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -10134,6 +10104,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -10237,6 +10210,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Inserts a rule into a firewall policy.</summary>
@@ -10310,6 +10286,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Copies rules to the specified firewall policy.</summary>
@@ -10387,6 +10366,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified policy.</summary>
@@ -10452,6 +10434,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified firewall policy.</summary>
@@ -10497,6 +10482,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"(firewallPolicies/)?[0-9]{0,20}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets an association with the specified name.</summary>
@@ -10554,6 +10542,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -10615,6 +10606,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets a rule of the specified priority.</summary>
@@ -10672,6 +10666,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
@@ -10746,6 +10743,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -10839,14 +10839,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("parentId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ParentId { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -10900,15 +10892,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists associations of a specified target, i.e., organization or folder.</summary>
@@ -10967,6 +10954,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Moves the specified firewall policy.</summary>
@@ -11047,6 +11037,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches the specified policy with the data included in the request.</summary>
@@ -11120,6 +11113,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches a rule of the specified priority.</summary>
@@ -11205,6 +11201,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes an association for the specified firewall policy.</summary>
@@ -11282,6 +11281,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a rule of the specified priority.</summary>
@@ -11359,6 +11361,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -11412,6 +11417,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"(firewallPolicies/)?[0-9]{0,20}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -11465,6 +11473,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"(firewallPolicies/)?[0-9]{0,20}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -11559,6 +11570,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified firewall.</summary>
@@ -11618,6 +11632,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a firewall rule in the specified project using the data included in the request.</summary>
@@ -11691,6 +11708,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of firewall rules available to the specified project.</summary>
@@ -11779,14 +11799,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -11840,15 +11852,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -11942,6 +11949,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -12009,6 +12019,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -12104,6 +12117,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -12224,14 +12240,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -12299,14 +12307,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -12316,6 +12316,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified ForwardingRule resource.</summary>
@@ -12409,6 +12412,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified ForwardingRule resource.</summary>
@@ -12504,6 +12510,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -12597,6 +12606,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -12695,14 +12707,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -12764,15 +12768,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -12882,6 +12881,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -12989,6 +12991,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -13094,6 +13099,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -13214,14 +13222,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -13289,14 +13289,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -13306,6 +13298,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Cancel the specified future reservation.</summary>
@@ -13401,6 +13396,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified future reservation.</summary>
@@ -13496,6 +13494,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves information about the specified future reservation.</summary>
@@ -13571,6 +13572,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new Future Reservation.</summary>
@@ -13658,6 +13662,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -13756,14 +13763,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -13825,15 +13824,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates the specified future reservation.</summary>
@@ -13947,6 +13941,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -14041,6 +14038,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified address resource.</summary>
@@ -14100,6 +14100,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -14177,6 +14180,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of global addresses.</summary>
@@ -14265,14 +14271,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -14326,15 +14324,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Moves the specified address resource from one project to another project.</summary>
@@ -14422,6 +14415,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -14493,6 +14489,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -14560,6 +14559,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -14654,6 +14656,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -14741,6 +14746,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -14818,6 +14826,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project.</summary>
@@ -14906,14 +14917,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -14967,15 +14970,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -15071,6 +15069,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -15144,6 +15145,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -15237,6 +15241,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -15297,6 +15304,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates the Global Frontend Billing Bundle Settings for a project.</summary>
@@ -15374,6 +15384,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -15482,6 +15495,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -15569,6 +15585,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Detach the network endpoint from the specified network endpoint group.</summary>
@@ -15662,6 +15681,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified network endpoint group.</summary>
@@ -15723,6 +15745,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -15808,6 +15833,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of network endpoint groups that are located in the specified project.</summary>
@@ -15896,14 +15924,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -15957,15 +15977,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the network endpoints in the specified network endpoint group.</summary>
@@ -16066,14 +16081,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listNetworkEndpoints";
 
@@ -16135,15 +16142,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -16264,14 +16266,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -16339,14 +16333,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -16356,6 +16342,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified Operations resource.</summary>
@@ -16415,6 +16404,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the specified Operations resource.</summary>
@@ -16474,6 +16466,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of Operation resources contained within the specified project.</summary>
@@ -16562,14 +16557,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -16623,15 +16610,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -16709,6 +16691,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -16781,6 +16766,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -16844,6 +16832,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of Operation resources contained within the specified organization.</summary>
@@ -16930,14 +16921,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("parentId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ParentId { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -16991,15 +16974,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -17094,6 +17072,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified global PublicDelegatedPrefix resource.</summary>
@@ -17153,6 +17134,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -17232,6 +17216,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the global PublicDelegatedPrefixes for a project.</summary>
@@ -17320,14 +17307,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -17381,15 +17360,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -17483,6 +17457,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -17603,14 +17580,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -17678,14 +17647,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -17695,6 +17656,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -17794,6 +17758,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets details of a global VM extension policy.</summary>
@@ -17853,6 +17820,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new project level GlobalVmExtensionPolicy.</summary>
@@ -17926,6 +17896,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists global VM extension policies.</summary>
@@ -18014,14 +17987,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -18075,15 +18040,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates a global VM extension policy.</summary>
@@ -18171,6 +18131,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -18291,14 +18254,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -18366,14 +18321,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -18383,6 +18330,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified HealthCheck resource.</summary>
@@ -18462,6 +18412,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified HealthCheck resource.</summary>
@@ -18521,6 +18474,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -18598,6 +18554,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of HealthCheck resources available to the specified project.</summary>
@@ -18686,14 +18645,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -18747,15 +18698,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -18849,6 +18795,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -18916,6 +18865,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -19007,6 +18959,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -19119,6 +19074,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Allows customers to get SBOM versions of a host.</summary>
@@ -19235,6 +19193,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of hosts.</summary>
@@ -19345,14 +19306,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -19422,15 +19375,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -19525,6 +19473,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified HttpHealthCheck resource.</summary>
@@ -19584,6 +19535,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -19661,6 +19615,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of HttpHealthCheck resources available to the specified project.</summary>
@@ -19749,14 +19706,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -19810,15 +19759,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -19912,6 +19856,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -19979,6 +19926,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -20070,6 +20020,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -20164,6 +20117,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified HttpsHealthCheck resource.</summary>
@@ -20223,6 +20179,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -20300,6 +20259,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of HttpsHealthCheck resources available to the specified project.</summary>
@@ -20388,14 +20350,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -20449,15 +20403,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -20551,6 +20500,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -20618,6 +20570,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -20709,6 +20664,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -20803,6 +20761,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -20891,6 +20852,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns a list of global ImageView resources, with a regional context.</summary>
@@ -20985,14 +20949,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -21054,15 +21010,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -21157,6 +21108,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -21250,6 +21204,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified image.</summary>
@@ -21309,6 +21266,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -21380,6 +21340,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -21455,6 +21418,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates an image in the specified project using the data included in the request.</summary>
@@ -21540,6 +21506,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -21638,14 +21607,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -21699,15 +21660,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -21801,6 +21757,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -21868,6 +21827,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -21939,6 +21901,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -22006,6 +21971,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -22148,6 +22116,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -22273,6 +22244,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns all of the details about the specified resize request.</summary>
@@ -22372,6 +22346,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -22489,6 +22466,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of resize requests that are contained in the managed instance group.</summary>
@@ -22595,14 +22575,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -22672,15 +22644,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -22815,6 +22782,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -22920,14 +22890,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -22995,14 +22957,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -23012,6 +22966,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -23105,6 +23062,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -23221,6 +23181,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -23334,6 +23297,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -23467,6 +23433,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes selected per-instance configurations for the managed instance group.</summary>
@@ -23554,6 +23523,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns all of the details about the specified managed instance group.</summary>
@@ -23627,6 +23599,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -23728,6 +23703,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -23826,14 +23804,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -23895,15 +23865,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -24020,14 +23985,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listErrors";
 
@@ -24097,15 +24054,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -24220,14 +24172,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listManagedInstances";
 
@@ -24297,15 +24241,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -24418,14 +24357,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listPerInstanceConfigs";
 
@@ -24495,15 +24426,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -24621,6 +24547,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -24734,6 +24663,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -24866,6 +24798,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -25002,6 +24937,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -25123,6 +25061,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -25232,6 +25173,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -25345,6 +25289,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -25466,6 +25413,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -25609,6 +25559,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -25738,6 +25691,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -25851,6 +25807,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -25973,6 +25932,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -26078,14 +26040,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -26153,14 +26107,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -26170,6 +26116,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -26269,6 +26218,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -26350,6 +26302,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -26441,6 +26396,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -26541,14 +26499,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -26610,15 +26560,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -26733,14 +26678,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.v1.Data.InstanceGroupsListInstancesRequest Body { get; set; }
 
@@ -26816,15 +26753,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -26936,6 +26868,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the named ports for the specified instance group.</summary>
@@ -27037,6 +26972,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -27118,6 +27056,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -27192,6 +27133,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patch Instance settings</summary>
@@ -27291,6 +27235,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -27411,14 +27358,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -27486,14 +27425,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -27503,6 +27434,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -27588,6 +27522,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified instance template.</summary>
@@ -27647,6 +27584,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -27722,6 +27662,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -27803,6 +27746,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of instance templates that are contained within the specified project.</summary>
@@ -27891,14 +27837,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -27952,15 +27890,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -28028,6 +27961,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -28095,6 +28031,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -28225,6 +28164,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Adds one dynamic network interface to an active instance.</summary>
@@ -28332,6 +28274,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -28439,6 +28384,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -28548,14 +28496,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -28623,14 +28563,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -28640,6 +28572,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -28764,6 +28699,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -28857,6 +28795,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified Instance resource. For more information, seeDeleting an instance.</summary>
@@ -28962,6 +28903,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes an access config from an instance's network interface.</summary>
@@ -29083,6 +29027,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -29206,6 +29153,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Detaches a disk from an instance.</summary>
@@ -29319,6 +29269,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified Instance resource.</summary>
@@ -29392,6 +29345,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns effective firewalls applied to an interface of the instance.</summary>
@@ -29479,6 +29435,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified guest attributes entry.</summary>
@@ -29576,6 +29535,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -29665,6 +29627,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the screenshot from the specified instance.</summary>
@@ -29738,6 +29703,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
@@ -29846,6 +29814,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the Shielded Instance Identity of an instance</summary>
@@ -29919,6 +29890,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -30045,6 +30019,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of instances contained within the specified zone.</summary>
@@ -30139,14 +30116,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -30208,15 +30177,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -30331,14 +30295,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listReferrers";
 
@@ -30408,15 +30364,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Perform a manual maintenance on the instance.</summary>
@@ -30510,6 +30461,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes resource policies from an instance.</summary>
@@ -30611,6 +30565,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Mark the host as faulty and try to restart the instance on a new host.</summary>
@@ -30712,6 +30669,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -30811,6 +30771,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Resumes an instance that was suspended using theinstances().suspend method.</summary>
@@ -30904,6 +30867,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sends diagnostic interrupt to the instance.</summary>
@@ -30977,6 +30943,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets deletion protection on the instance.</summary>
@@ -31082,6 +31051,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the auto-delete flag for a disk attached to an instance.</summary>
@@ -31209,6 +31181,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -31290,6 +31265,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -31395,6 +31373,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -31500,6 +31481,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -31605,6 +31589,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets metadata for the specified instance to the data included in the request.</summary>
@@ -31706,6 +31693,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -31813,6 +31803,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets name of an instance.</summary>
@@ -31914,6 +31907,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -32025,6 +32021,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -32138,6 +32137,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -32245,6 +32247,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -32352,6 +32357,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
@@ -32453,6 +32461,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -32564,6 +32575,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -32663,6 +32677,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -32770,6 +32787,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -32901,6 +32921,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -33022,6 +33045,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -33103,6 +33129,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -33304,6 +33333,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -33427,6 +33459,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -33534,6 +33569,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -33659,6 +33697,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -33766,6 +33807,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -33874,6 +33918,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>returns the specified InstantSnapshotGroup resource in the specified zone.</summary>
@@ -33947,6 +33994,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -34036,6 +34086,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>inserts a Zonal InstantSnapshotGroup resource</summary>
@@ -34135,6 +34188,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>retrieves the list of InstantSnapshotGroup resources contained within the specified zone.</summary>
@@ -34229,14 +34285,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -34298,15 +34346,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -34388,6 +34431,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -34469,6 +34515,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -34589,14 +34638,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -34664,14 +34705,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -34681,6 +34714,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -34784,6 +34820,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified InstantSnapshot resource in the specified zone.</summary>
@@ -34857,6 +34896,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -34946,6 +34988,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates an instant snapshot in the specified zone.</summary>
@@ -35033,6 +35078,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of InstantSnapshot resources contained within the specified zone.</summary>
@@ -35127,14 +35175,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -35196,15 +35236,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -35286,6 +35321,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -35393,6 +35431,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -35474,6 +35515,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -35570,6 +35614,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified InterconnectAttachmentGroup resource in the given scope.</summary>
@@ -35631,6 +35678,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -35706,6 +35756,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -35769,6 +35822,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -35848,6 +35904,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the InterconnectAttachmentGroups for a project in the given scope.</summary>
@@ -35936,14 +35995,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -35997,15 +36048,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -36111,6 +36157,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -36178,6 +36227,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -36245,6 +36297,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -36365,14 +36420,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -36440,14 +36487,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -36457,6 +36496,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified interconnect attachment.</summary>
@@ -36550,6 +36592,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified interconnect attachment.</summary>
@@ -36623,6 +36668,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -36726,6 +36774,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of interconnect attachments contained within the specified region.</summary>
@@ -36820,14 +36871,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -36889,15 +36932,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -37005,6 +37043,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -37112,6 +37153,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -37194,6 +37238,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified InterconnectGroup in the given scope</summary>
@@ -37273,6 +37320,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified InterconnectGroup resource in the given scope.</summary>
@@ -37332,6 +37382,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -37407,6 +37460,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the interconnectStatuses for the specified InterconnectGroup.</summary>
@@ -37466,6 +37522,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -37545,6 +37604,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the InterconnectGroups for a project in the given scope.</summary>
@@ -37633,14 +37695,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -37694,15 +37748,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -37808,6 +37857,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -37875,6 +37927,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -37942,6 +37997,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -38022,6 +38080,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of interconnect locations available to the specified project.</summary>
@@ -38110,14 +38171,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -38171,15 +38224,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -38260,6 +38308,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of interconnect remote locations available to the specified project.</summary>
@@ -38348,14 +38399,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -38409,15 +38452,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -38512,6 +38550,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -38575,6 +38616,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -38644,6 +38688,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the interconnectMacsecConfig for the specified Interconnect.</summary>
@@ -38703,6 +38750,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates an Interconnect in the specified project using the data included in the request.</summary>
@@ -38776,6 +38826,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of Interconnects available to the specified project.</summary>
@@ -38864,14 +38917,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -38925,15 +38970,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39027,6 +39067,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39098,6 +39141,99 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
+        }
+
+        /// <summary>Sets name of an interconnect.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="interconnect">Name of the interconnect to update.</param>
+        public virtual SetNameRequest SetName(Google.Apis.Compute.v1.Data.InterconnectsSetNameRequest body, string project, string interconnect)
+        {
+            return new SetNameRequest(this.service, body, project, interconnect);
+        }
+
+        /// <summary>Sets name of an interconnect.</summary>
+        public class SetNameRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetName request.</summary>
+            public SetNameRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.InterconnectsSetNameRequest body, string project, string interconnect) : base(service)
+            {
+                Project = project;
+                Interconnect = interconnect;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the interconnect to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("interconnect", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Interconnect { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.InterconnectsSetNameRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setName";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/interconnects/{interconnect}/setName";
+
+            /// <summary>Initializes SetName parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("interconnect", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "interconnect",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -39180,6 +39316,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[0-9]{0,61}?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39257,6 +39396,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39330,6 +39472,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39403,6 +39548,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -39503,6 +39651,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39568,6 +39719,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39645,6 +39799,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39724,6 +39881,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39824,14 +39984,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -39885,15 +40037,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -39967,6 +40114,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -40040,6 +40190,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -40145,6 +40298,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -40243,6 +40399,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified machine image.</summary>
@@ -40302,6 +40461,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -40377,6 +40539,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -40470,6 +40635,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of machine images that are contained within the specified project.</summary>
@@ -40558,14 +40726,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -40619,15 +40779,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -40695,6 +40850,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -40766,6 +40924,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -40833,6 +40994,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -40953,14 +41117,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -41028,14 +41184,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -41045,6 +41193,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified machine type.</summary>
@@ -41118,6 +41269,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of machine types available to the specified project.</summary>
@@ -41212,14 +41366,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -41281,15 +41427,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -41364,6 +41505,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of all the managed rulesets available.</summary>
@@ -41452,14 +41596,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -41513,15 +41649,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -41642,14 +41773,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -41717,14 +41840,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -41734,6 +41849,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified NetworkAttachment in the given scope</summary>
@@ -41827,6 +41945,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified NetworkAttachment resource in the given scope.</summary>
@@ -41900,6 +42021,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -41989,6 +42113,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -42082,6 +42209,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the NetworkAttachments for a project in the given scope.</summary>
@@ -42176,14 +42306,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -42245,15 +42367,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -42361,6 +42478,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -42442,6 +42562,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -42523,6 +42646,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -42643,14 +42769,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -42718,14 +42836,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -42735,6 +42845,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified service.</summary>
@@ -42828,6 +42941,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets a specified NetworkEdgeSecurityService.</summary>
@@ -42901,6 +43017,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new service in the specified project using the data included in the request.</summary>
@@ -43000,6 +43119,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches the specified policy with the data included in the request.</summary>
@@ -43124,6 +43246,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -43244,14 +43369,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -43319,14 +43436,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -43336,6 +43445,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Attach a list of network endpoints to the specified network endpoint group.</summary>
@@ -43447,6 +43559,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -43554,6 +43669,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Detach a list of network endpoints from the specified network endpoint group.</summary>
@@ -43665,6 +43783,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified network endpoint group.</summary>
@@ -43744,6 +43865,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -43847,6 +43971,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -43949,14 +44076,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -44018,15 +44137,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the network endpoints in the specified network endpoint group.</summary>
@@ -44139,14 +44253,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.v1.Data.NetworkEndpointGroupsListEndpointsRequest Body { get; set; }
 
@@ -44222,15 +44328,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -44312,6 +44413,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -44429,6 +44533,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Inserts a packet mirroring rule into a firewall policy.</summary>
@@ -44546,6 +44653,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Inserts a rule into a firewall policy.</summary>
@@ -44663,6 +44773,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -44770,14 +44883,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -44845,14 +44950,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -44862,6 +44959,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Copies rules to the specified firewall policy.</summary>
@@ -44953,6 +45053,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified policy.</summary>
@@ -45032,6 +45135,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified network firewall policy.</summary>
@@ -45091,6 +45197,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets an association with the specified name.</summary>
@@ -45162,6 +45271,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -45237,6 +45349,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets a packet mirroring rule of the specified priority.</summary>
@@ -45308,6 +45423,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets a rule of the specified priority.</summary>
@@ -45379,6 +45497,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
@@ -45452,6 +45573,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists all the policies that have been configured for the specified project.</summary>
@@ -45540,14 +45664,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -45601,15 +45717,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches the specified policy with the data included in the request.</summary>
@@ -45697,6 +45808,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches a packet mirroring rule of the specified priority.</summary>
@@ -45796,6 +45910,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches a rule of the specified priority.</summary>
@@ -45895,6 +46012,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes an association for the specified firewall policy.</summary>
@@ -45986,6 +46106,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a packet mirroring rule of the specified priority.</summary>
@@ -46077,6 +46200,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a rule of the specified priority.</summary>
@@ -46168,6 +46294,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -46235,6 +46364,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -46302,6 +46434,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -46376,6 +46511,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of network profiles available to the specified project.</summary>
@@ -46464,14 +46602,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -46525,15 +46655,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -46636,6 +46761,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -46729,6 +46857,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified network.</summary>
@@ -46808,6 +46939,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified network.</summary>
@@ -46867,6 +47001,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the effective firewalls on a given network.</summary>
@@ -46926,6 +47063,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a network in the specified project using the data included in the request.</summary>
@@ -46999,6 +47139,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of networks available to the specified project.</summary>
@@ -47087,14 +47230,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -47148,15 +47283,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the peering routes exchanged over peering connection.</summary>
@@ -47278,14 +47408,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Region { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listPeeringRoutes";
 
@@ -47371,15 +47493,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -47471,6 +47588,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes a peering from the specified network.</summary>
@@ -47558,6 +47678,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -47651,6 +47774,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Switches the network mode from auto subnet mode to custom subnet mode.</summary>
@@ -47730,6 +47856,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -47823,6 +47952,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -47939,6 +48071,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -48044,14 +48179,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -48119,14 +48246,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -48136,6 +48255,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified NodeGroup resource.</summary>
@@ -48229,6 +48351,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes specified nodes from the node group.</summary>
@@ -48330,6 +48455,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -48409,6 +48537,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -48498,6 +48629,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -48603,6 +48737,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -48703,14 +48840,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -48772,15 +48901,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists nodes in the node group.</summary>
@@ -48881,14 +49005,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listNodes";
 
@@ -48958,15 +49074,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates the specified node group.</summary>
@@ -49068,6 +49179,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Perform maintenance on a subset of nodes in the node group.</summary>
@@ -49169,6 +49283,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -49250,6 +49367,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates the node template of the node group.</summary>
@@ -49351,6 +49471,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Simulates maintenance event on specified nodes from the node group.</summary>
@@ -49454,6 +49577,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -49535,6 +49661,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -49655,14 +49784,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -49730,14 +49851,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -49747,6 +49860,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified NodeTemplate resource.</summary>
@@ -49840,6 +49956,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified node template.</summary>
@@ -49913,6 +50032,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -50002,6 +50124,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -50093,6 +50218,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of node templates available to the specified project.</summary>
@@ -50187,14 +50315,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -50256,15 +50376,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -50346,6 +50461,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -50427,6 +50545,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -50547,14 +50668,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -50622,14 +50735,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -50639,6 +50744,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified node type.</summary>
@@ -50712,6 +50820,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of node types available to the specified project.</summary>
@@ -50806,14 +50917,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -50875,15 +50978,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -50999,6 +51097,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51080,6 +51181,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51165,6 +51269,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51238,6 +51345,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51291,6 +51401,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"(securityPolicies/)?[0-9]{0,20}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51356,6 +51469,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51421,6 +51537,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51503,6 +51622,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51597,14 +51719,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("parentId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ParentId { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -51658,15 +51772,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51718,6 +51827,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets the current list of preconfigured Web Application Firewall (WAF) expressions.</summary>
@@ -51804,14 +51916,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("parentId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ParentId { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listPreconfiguredExpressionSets";
 
@@ -51865,15 +51969,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -51959,6 +52058,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -52040,6 +52142,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -52133,6 +52238,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -52218,6 +52326,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -52303,6 +52414,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -52423,14 +52537,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -52498,14 +52604,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -52515,6 +52613,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified PacketMirroring resource.</summary>
@@ -52608,6 +52709,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified PacketMirroring resource.</summary>
@@ -52681,6 +52785,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -52774,6 +52881,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -52872,14 +52982,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -52941,15 +53043,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -53057,6 +53154,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -53138,6 +53238,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -53212,6 +53315,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the details of the given PreviewFeature.</summary>
@@ -53300,14 +53406,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -53361,15 +53459,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -53461,6 +53554,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -53547,6 +53643,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -53627,6 +53726,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -53704,6 +53806,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Enable this project as a shared VPC host project.</summary>
@@ -53769,6 +53874,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -53848,6 +53956,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -53905,6 +54016,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -53954,6 +54068,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets service resources (a.k.a service project) associated with this host project.</summary>
@@ -54042,14 +54159,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getXpnResources";
 
@@ -54103,15 +54212,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists all shared VPC host projects visible to the user in an organization.</summary>
@@ -54202,14 +54306,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.v1.Data.ProjectsListXpnHostsRequest Body { get; set; }
 
@@ -54269,15 +54365,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -54367,6 +54458,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -54452,6 +54546,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -54531,6 +54628,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -54608,6 +54708,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -54687,6 +54790,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -54766,6 +54872,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -54862,6 +54971,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified PublicAdvertisedPrefix</summary>
@@ -54941,6 +55053,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified PublicAdvertisedPrefix resource.</summary>
@@ -55000,6 +55115,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -55079,6 +55197,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the PublicAdvertisedPrefixes for a project.</summary>
@@ -55167,14 +55288,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -55228,15 +55341,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -55330,6 +55438,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Withdraws the specified PublicAdvertisedPrefix</summary>
@@ -55411,6 +55522,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -55531,14 +55645,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -55606,14 +55712,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -55623,6 +55721,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Announces the specified PublicDelegatedPrefix in the given region.</summary>
@@ -55722,6 +55823,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified PublicDelegatedPrefix in the given region.</summary>
@@ -55815,6 +55919,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified PublicDelegatedPrefix resource in the given region.</summary>
@@ -55888,6 +55995,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -55981,6 +56091,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the PublicDelegatedPrefixes for a project in the given region.</summary>
@@ -56075,14 +56188,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -56144,15 +56249,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -56260,6 +56360,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Withdraws the specified PublicDelegatedPrefix in the given region.</summary>
@@ -56359,6 +56462,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -56467,6 +56573,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified autoscaler.</summary>
@@ -56540,6 +56649,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
@@ -56627,6 +56739,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of autoscalers contained within the specified region.</summary>
@@ -56721,14 +56836,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -56790,15 +56897,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -56904,6 +57006,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -56985,6 +57090,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
@@ -57084,6 +57192,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -57192,6 +57303,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified regional BackendBucket resource.</summary>
@@ -57265,6 +57379,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -57354,6 +57471,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -57447,6 +57567,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -57545,14 +57668,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -57614,15 +57729,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -57725,14 +57835,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listUsable";
 
@@ -57794,15 +57896,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -57910,6 +58007,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -57991,6 +58091,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -58072,6 +58175,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -58180,6 +58286,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified regional BackendService resource.</summary>
@@ -58253,6 +58362,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets the most recent health check results for this regional BackendService.</summary>
@@ -58333,6 +58445,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -58422,6 +58537,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -58515,6 +58633,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -58615,14 +58736,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -58684,15 +58797,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -58799,14 +58907,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listUsable";
 
@@ -58868,15 +58968,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -58986,6 +59081,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -59067,6 +59165,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -59180,6 +59281,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -59261,6 +59365,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -59368,6 +59475,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -59488,14 +59598,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -59563,14 +59665,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -59580,6 +59674,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified commitment resource.</summary>
@@ -59653,6 +59750,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a commitment in the specified project using the data included in the request.</summary>
@@ -59740,6 +59840,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of commitments contained within the specified region.</summary>
@@ -59834,14 +59937,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -59903,15 +59998,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -60042,6 +60132,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -60162,14 +60255,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -60237,14 +60322,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -60254,6 +60331,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified CompositeHealthCheck in the given region</summary>
@@ -60347,6 +60427,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified CompositeHealthCheck resource in the given region.</summary>
@@ -60420,6 +60503,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets the most recent health check results for this regional CompositeHealthCheck.</summary>
@@ -60493,6 +60579,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -60586,6 +60675,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the CompositeHealthChecks for a project in the given region.</summary>
@@ -60680,14 +60772,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -60749,15 +60833,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -60870,6 +60949,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -60951,6 +61033,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -61039,6 +61124,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of regional disk types available to the specified project.</summary>
@@ -61133,14 +61221,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -61202,15 +61282,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -61333,6 +61408,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Bulk create a set of disks.</summary>
@@ -61420,6 +61498,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -61529,6 +61610,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -61630,6 +61714,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns a specified regional persistent disk.</summary>
@@ -61703,6 +61790,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -61792,6 +61882,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -61895,6 +61988,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of persistent disks contained within the specified region.</summary>
@@ -61989,14 +62085,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -62058,15 +62146,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes resource policies from a regional disk.</summary>
@@ -62168,6 +62251,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Resizes the specified regional persistent disk.</summary>
@@ -62269,6 +62355,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -62350,6 +62439,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the labels on the target regional disk.</summary>
@@ -62451,6 +62543,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Starts asynchronous replication. Must be invoked on the primary disk.</summary>
@@ -62552,6 +62647,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -62649,6 +62747,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -62748,6 +62849,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -62829,6 +62933,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -62959,6 +63066,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -63064,6 +63174,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -63184,14 +63297,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -63259,14 +63364,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -63276,6 +63373,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified HealthAggregationPolicy in the given region.</summary>
@@ -63369,6 +63469,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified HealthAggregationPolicy resource in the given region.</summary>
@@ -63442,6 +63545,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -63535,6 +63641,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the HealthAggregationPolicies for a project in the given region.</summary>
@@ -63629,14 +63738,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -63698,15 +63799,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -63820,6 +63916,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -63901,6 +64000,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -64021,14 +64123,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -64096,14 +64190,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -64113,6 +64199,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified regional HealthCheckService.</summary>
@@ -64211,6 +64300,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified regional HealthCheckService resource.</summary>
@@ -64289,6 +64381,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -64382,6 +64477,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -64482,14 +64580,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -64551,15 +64641,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -64672,6 +64757,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -64753,6 +64841,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -64861,6 +64952,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified HealthCheck resource.</summary>
@@ -64934,6 +65028,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -65025,6 +65122,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of HealthCheck resources available to the specified project.</summary>
@@ -65119,14 +65219,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -65188,15 +65280,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -65304,6 +65391,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -65385,6 +65475,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -65490,6 +65583,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -65610,14 +65706,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -65685,14 +65773,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -65702,6 +65782,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified HealthSource in the given region</summary>
@@ -65795,6 +65878,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified HealthSource resource in the given region.</summary>
@@ -65868,6 +65954,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets the most recent health check results for this regional HealthSource.</summary>
@@ -65941,6 +66030,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -66034,6 +66126,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the HealthSources for a project in the given region.</summary>
@@ -66128,14 +66223,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -66197,15 +66284,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -66317,6 +66399,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -66398,6 +66483,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -66534,6 +66622,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -66655,6 +66746,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns all of the details about the specified resize request.</summary>
@@ -66748,6 +66842,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -66859,6 +66956,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of Resize Requests that are contained in the managed instance group.</summary>
@@ -66961,14 +67061,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -67038,15 +67130,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -67183,6 +67270,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Apply updates to selected instances the managed instance group.</summary>
@@ -67266,6 +67356,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -67382,6 +67475,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified managed instance group and all of the instances in that group.</summary>
@@ -67489,6 +67585,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -67622,6 +67721,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes selected per-instance configurations for the managed instance group.</summary>
@@ -67705,6 +67807,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns all of the details about the specified managed instance group.</summary>
@@ -67778,6 +67883,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -67877,6 +67985,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -67975,14 +68086,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -68044,15 +68147,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -68165,14 +68263,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listErrors";
 
@@ -68242,15 +68332,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -68361,14 +68446,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listManagedInstances";
 
@@ -68438,15 +68515,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -68555,14 +68627,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listPerInstanceConfigs";
 
@@ -68632,15 +68696,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -68758,6 +68817,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -68867,6 +68929,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -68999,6 +69064,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -69122,6 +69190,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -69243,6 +69314,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -69350,6 +69424,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -69457,6 +69534,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -69578,6 +69658,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -69721,6 +69804,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -69850,6 +69936,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -69959,6 +70048,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -70047,6 +70139,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of instance group resources contained within the specified region.</summary>
@@ -70141,14 +70236,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -70210,15 +70297,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -70331,14 +70413,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.v1.Data.RegionInstanceGroupsListInstancesRequest Body { get; set; }
 
@@ -70414,15 +70488,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the named ports for the specified regional instance group.</summary>
@@ -70526,6 +70595,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -70607,6 +70679,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -70719,6 +70794,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified instance template.</summary>
@@ -70792,6 +70870,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -70885,6 +70966,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -70983,14 +71067,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -71052,15 +71128,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -71167,6 +71238,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -71275,6 +71349,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>returns the specified InstantSnapshotGroup resource in the specified region.</summary>
@@ -71348,6 +71425,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -71437,6 +71517,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>creates a Regional InstantSnapshotGroup resource</summary>
@@ -71536,6 +71619,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -71634,14 +71720,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -71703,15 +71781,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -71793,6 +71866,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -71874,6 +71950,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -71992,6 +72071,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified InstantSnapshot resource in the specified region.</summary>
@@ -72065,6 +72147,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -72154,6 +72239,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates an instant snapshot in the specified region.</summary>
@@ -72241,6 +72329,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of InstantSnapshot resources contained within the specified region.</summary>
@@ -72335,14 +72426,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -72404,15 +72487,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -72494,6 +72572,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -72601,6 +72682,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -72682,6 +72766,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -72809,6 +72896,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -72914,6 +73004,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Detach the network endpoint from the specified network endpoint group.</summary>
@@ -73025,6 +73118,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified network endpoint group.</summary>
@@ -73104,6 +73200,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -73208,6 +73307,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -73312,14 +73414,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -73381,15 +73475,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the network endpoints in the specified network endpoint group.</summary>
@@ -73500,14 +73589,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listNetworkEndpoints";
 
@@ -73577,15 +73658,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -73732,6 +73808,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Inserts a rule into a network firewall policy.</summary>
@@ -73863,6 +73942,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Copies rules to the specified network firewall policy.</summary>
@@ -73968,6 +74050,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified network firewall policy.</summary>
@@ -74061,6 +74146,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified network firewall policy.</summary>
@@ -74134,6 +74222,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets an association with the specified name.</summary>
@@ -74219,6 +74310,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the effective firewalls on a given network.</summary>
@@ -74292,6 +74386,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -74381,6 +74478,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets a rule of the specified priority.</summary>
@@ -74466,6 +74566,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new network firewall policy in the specified project and region.</summary>
@@ -74553,6 +74656,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -74653,14 +74759,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -74722,15 +74820,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches the specified network firewall policy.</summary>
@@ -74832,6 +74925,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates an association for the specified network firewall policy.</summary>
@@ -74933,6 +75029,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches a rule of the specified priority.</summary>
@@ -75046,6 +75145,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes an association for the specified network firewall policy.</summary>
@@ -75151,6 +75253,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a rule of the specified priority.</summary>
@@ -75256,6 +75361,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -75337,6 +75445,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -75418,6 +75529,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -75538,14 +75652,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -75613,14 +75719,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -75630,6 +75728,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified NotificationEndpoint in the given region</summary>
@@ -75723,6 +75824,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified NotificationEndpoint resource in the given region.</summary>
@@ -75796,6 +75900,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -75889,6 +75996,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the NotificationEndpoints for a project in the given region.</summary>
@@ -75983,14 +76093,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -76052,15 +76154,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -76142,6 +76239,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -76230,6 +76330,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the specified region-specific Operations resource.</summary>
@@ -76303,6 +76406,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of Operation resources contained within the specified region.</summary>
@@ -76397,14 +76503,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -76466,15 +76564,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -76566,6 +76659,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -76674,6 +76770,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified policy.</summary>
@@ -76767,6 +76866,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>List all of the ordered rules present in a single specified policy.</summary>
@@ -76840,6 +76942,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets a rule at the specified priority.</summary>
@@ -76925,6 +77030,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
@@ -77024,6 +77132,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>List all the policies that have been configured for the specified project and region.</summary>
@@ -77118,14 +77229,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -77187,15 +77290,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -77317,6 +77415,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -77440,6 +77541,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a rule at the specified priority.</summary>
@@ -77525,6 +77629,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -77630,6 +77737,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -77704,6 +77814,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patch region snapshot settings.</summary>
@@ -77803,6 +77916,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -77921,6 +78037,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified Snapshot resource.</summary>
@@ -77994,6 +78113,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -78083,6 +78205,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a snapshot in the specified region using the data included in the request.</summary>
@@ -78170,6 +78295,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of Snapshot resources contained within the specified region.</summary>
@@ -78264,14 +78392,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -78333,15 +78453,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -78423,6 +78538,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -78530,6 +78648,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -78611,6 +78732,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -78716,6 +78840,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -78824,6 +78951,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -78903,6 +79033,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -78994,6 +79127,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -79092,14 +79228,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -79161,15 +79289,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -79288,6 +79411,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists all of the ordered rules present in a single specified policy.</summary>
@@ -79365,6 +79491,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -79456,6 +79585,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -79554,14 +79686,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -79623,15 +79747,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists all features that can be specified in the SSL policy when using custom profile.</summary>
@@ -79726,14 +79845,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listAvailableFeatures";
 
@@ -79795,15 +79906,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches the specified SSL policy with the data included in the request.</summary>
@@ -79909,6 +80015,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -80017,6 +80126,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetHttpProxy resource in the specified region.</summary>
@@ -80090,6 +80202,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -80183,6 +80298,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -80281,14 +80399,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -80350,15 +80460,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the URL map for TargetHttpProxy.</summary>
@@ -80460,6 +80565,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -80568,6 +80676,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetHttpsProxy resource in the specified region.</summary>
@@ -80641,6 +80752,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -80734,6 +80848,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -80832,14 +80949,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -80901,15 +81010,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -81017,6 +81121,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
@@ -81120,6 +81227,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the URL map for TargetHttpsProxy.</summary>
@@ -81221,6 +81331,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -81329,6 +81442,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetTcpProxy resource.</summary>
@@ -81402,6 +81518,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -81495,6 +81614,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -81593,14 +81715,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -81662,15 +81776,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -81771,6 +81880,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified UrlMap resource.</summary>
@@ -81844,6 +81956,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -81927,6 +82042,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -82025,14 +82143,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -82094,15 +82204,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -82202,6 +82307,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
@@ -82295,6 +82403,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -82382,6 +82493,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -82495,14 +82609,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -82564,15 +82670,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -82669,6 +82770,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -82779,14 +82883,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -82840,15 +82936,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -82923,6 +83014,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of reliabilityRisks available in the specified project.</summary>
@@ -83011,14 +83105,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -83072,15 +83158,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -83217,6 +83298,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -83320,6 +83404,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of reservation blocks under a single reservation.</summary>
@@ -83422,14 +83509,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -83499,15 +83578,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Allows customers to perform maintenance on a reservation block</summary>
@@ -83629,6 +83703,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -83724,6 +83801,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -83819,6 +83899,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -83929,6 +84012,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Get health info on a reservation slot.</summary>
@@ -84036,6 +84122,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Allows customers to get SBOM versions of a reservation slot.</summary>
@@ -84159,6 +84248,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of reservation slots under a single reservation.</summary>
@@ -84265,14 +84357,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -84342,15 +84426,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Update a reservation slot in the specified sub-block.</summary>
@@ -84458,6 +84537,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -84598,6 +84680,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -84701,6 +84786,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Allows customers to get SBOM versions of a reservation subBlock.</summary>
@@ -84826,6 +84914,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of reservation subBlocks under a single reservation.</summary>
@@ -84932,14 +85023,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -85009,15 +85092,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Allows customers to perform maintenance on a reservation subBlock</summary>
@@ -85135,6 +85213,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Allows customers to report a faulty subBlock.</summary>
@@ -85260,6 +85341,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -85355,6 +85439,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -85450,6 +85537,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -85570,14 +85660,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -85645,14 +85727,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -85662,6 +85736,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified reservation.</summary>
@@ -85755,6 +85832,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves information about the specified reservation.</summary>
@@ -85828,6 +85908,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -85917,6 +86000,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new reservation. For more information, readReserving zonal resources.</summary>
@@ -86004,6 +86090,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -86102,14 +86191,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -86171,15 +86252,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Perform maintenance on an extended reservation</summary>
@@ -86283,6 +86359,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -86390,6 +86469,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -86471,6 +86553,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -86552,6 +86637,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Update share settings of the reservation.</summary>
@@ -86676,6 +86764,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -86796,14 +86887,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -86871,14 +86954,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -86888,6 +86963,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified resource policy.</summary>
@@ -86981,6 +87059,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves all information of the specified resource policy.</summary>
@@ -87054,6 +87135,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -87143,6 +87227,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new resource policy.</summary>
@@ -87230,6 +87317,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -87328,14 +87418,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -87397,15 +87479,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Modify the specified resource policy.</summary>
@@ -87519,6 +87596,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -87600,6 +87680,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -87681,6 +87764,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -87775,6 +87861,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets details of a single project-scoped RolloutPlan.</summary>
@@ -87834,6 +87923,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new RolloutPlan in a given project and location.</summary>
@@ -87907,6 +87999,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists RolloutPlans in a given project and location.</summary>
@@ -87995,14 +88090,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -88056,15 +88143,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -88171,6 +88253,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Cancels a Rollout.</summary>
@@ -88266,6 +88351,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a Rollout.</summary>
@@ -88345,6 +88433,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets details of a single project-scoped Rollout.</summary>
@@ -88404,6 +88495,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists Rollouts in a given project and location.</summary>
@@ -88492,14 +88586,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -88553,15 +88639,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Pauses a Rollout.</summary>
@@ -88656,6 +88737,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Resumes a Rollout.</summary>
@@ -88750,6 +88834,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -88870,14 +88957,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -88945,14 +89024,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -88962,6 +89033,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified Router resource.</summary>
@@ -89055,6 +89129,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes Named Set</summary>
@@ -89160,6 +89237,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes Route Policy</summary>
@@ -89265,6 +89345,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified Router resource.</summary>
@@ -89338,6 +89421,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns specified Named Set</summary>
@@ -89427,6 +89513,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves runtime NAT IP information.</summary>
@@ -89519,6 +89608,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves runtime Nat mapping information of VM endpoints.</summary>
@@ -89628,14 +89720,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getNatMappingInfo";
 
@@ -89713,15 +89797,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns specified Route Policy</summary>
@@ -89811,6 +89890,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves runtime information of the specified router.</summary>
@@ -89884,6 +89966,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -89975,6 +90060,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of Router resources available to the specified project.</summary>
@@ -90069,14 +90157,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -90138,15 +90218,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of router bgp routes available to the specified project.</summary>
@@ -90283,14 +90358,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("policyApplied", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PolicyApplied { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>(Required) limit results to this type of route (either LEARNED or ADVERTISED)</summary>
             [Google.Apis.Util.RequestParameterAttribute("routeType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RouteTypeEnum> RouteType { get; set; }
@@ -90412,14 +90479,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = "true",
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("routeType", new Google.Apis.Discovery.Parameter
                 {
                     Name = "routeType",
@@ -90429,6 +90488,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of router named set subresources available to the specified project.</summary>
@@ -90529,14 +90591,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listNamedSets";
 
@@ -90606,15 +90660,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of router route policy subresources available to the specified project.</summary>
@@ -90715,14 +90764,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listRoutePolicies";
 
@@ -90792,15 +90833,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -90908,6 +90944,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches Named Set</summary>
@@ -91009,6 +91048,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches Route Policy</summary>
@@ -91110,6 +91152,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -91197,6 +91242,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -91306,6 +91354,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates or creates new Named Set</summary>
@@ -91407,6 +91458,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates or creates new Route Policy</summary>
@@ -91508,6 +91562,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -91602,6 +91659,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified Route resource.</summary>
@@ -91661,6 +91721,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a Route resource in the specified project using the data included in the request.</summary>
@@ -91734,6 +91797,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of Route resources available to the specified project.</summary>
@@ -91822,14 +91888,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -91883,15 +91941,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -91959,6 +92012,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -92053,6 +92109,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -92158,14 +92217,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -92233,14 +92284,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -92250,6 +92293,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified policy.</summary>
@@ -92329,6 +92375,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>List all of the ordered rules present in a single specified policy.</summary>
@@ -92388,6 +92437,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets a rule at the specified priority.</summary>
@@ -92459,6 +92511,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
@@ -92544,6 +92599,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>List all the policies that have been configured for the specified project.</summary>
@@ -92632,14 +92690,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -92693,15 +92743,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets the current list of preconfigured Web Application Firewall (WAF) expressions.</summary>
@@ -92790,14 +92835,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listPreconfiguredExpressionSets";
 
@@ -92851,15 +92888,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -92967,6 +92999,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -93076,6 +93111,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes a rule at the specified priority.</summary>
@@ -93147,6 +93185,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -93218,6 +93259,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -93338,14 +93382,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -93413,14 +93449,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -93430,6 +93458,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified ServiceAttachment in the given scope</summary>
@@ -93523,6 +93554,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified ServiceAttachment resource in the given scope.</summary>
@@ -93608,6 +93642,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -93697,6 +93734,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -93790,6 +93830,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the ServiceAttachments for a project in the given scope.</summary>
@@ -93884,14 +93927,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -93953,15 +93988,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -94075,6 +94105,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -94156,6 +94189,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -94237,6 +94273,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -94297,6 +94336,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patch snapshot settings.</summary>
@@ -94382,6 +94424,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -94486,6 +94531,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified Snapshot resource.</summary>
@@ -94545,6 +94593,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -94620,6 +94671,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -94701,6 +94755,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of Snapshot resources contained within the specified project.</summary>
@@ -94789,14 +94846,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -94850,15 +94899,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -94926,6 +94970,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -94997,6 +95044,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -95064,6 +95114,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -95155,6 +95208,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -95275,14 +95331,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -95350,14 +95398,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -95367,6 +95407,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified SslCertificate resource.</summary>
@@ -95446,6 +95489,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified SslCertificate resource.</summary>
@@ -95505,6 +95551,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -95582,6 +95631,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of SslCertificate resources available to the specified project.</summary>
@@ -95670,14 +95722,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -95731,15 +95775,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -95860,14 +95899,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -95935,14 +95966,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -95952,6 +95975,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -96041,6 +96067,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists all of the ordered rules present in a single specified policy.</summary>
@@ -96104,6 +96133,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified SSL policy resource.</summary>
@@ -96177,6 +96209,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists all the SSL policies that have been configured for the specified project.</summary>
@@ -96265,14 +96300,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -96326,15 +96353,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists all features that can be specified in the SSL policy when using custom profile.</summary>
@@ -96423,14 +96445,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listAvailableFeatures";
 
@@ -96484,15 +96498,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Patches the specified SSL policy with the data included in the request.</summary>
@@ -96584,6 +96593,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -96704,14 +96716,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -96779,14 +96783,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -96796,6 +96792,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified storage pool type.</summary>
@@ -96869,6 +96868,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of storage pool types available to the specified project.</summary>
@@ -96963,14 +96965,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -97032,15 +97026,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -97161,14 +97150,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -97236,14 +97217,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -97253,6 +97226,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -97354,6 +97330,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -97431,6 +97410,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -97520,6 +97502,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a storage pool in the specified project using the data in the request.</summary>
@@ -97607,6 +97592,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of storage pools contained within the specified zone.</summary>
@@ -97701,14 +97689,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -97770,15 +97750,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the disks in a specified storage pool.</summary>
@@ -97879,14 +97854,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listDisks";
 
@@ -97956,15 +97923,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -98046,6 +98008,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -98127,6 +98092,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -98248,6 +98216,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -98368,14 +98339,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -98480,14 +98443,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -98505,6 +98460,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified subnetwork.</summary>
@@ -98598,6 +98556,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Expands the IP CIDR range of the subnetwork to a specified value.</summary>
@@ -98699,6 +98660,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified subnetwork.</summary>
@@ -98817,6 +98781,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -98906,6 +98873,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a subnetwork in the specified project using the data included in the request.</summary>
@@ -98993,6 +98963,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of subnetworks available to the specified project.</summary>
@@ -99086,14 +99059,6 @@ namespace Google.Apis.Compute.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
 
             /// <summary>
             /// Defines the extra views returned back in the subnetwork resource. Supported values:        -
@@ -99193,14 +99158,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("views", new Google.Apis.Discovery.Parameter
                 {
                     Name = "views",
@@ -99210,6 +99167,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves an aggregated list of all usable subnetworks in the project.</summary>
@@ -99299,14 +99259,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The project id or project number in which the subnetwork is intended to be used. Only applied for Shared
             /// VPC. See [Shared VPC documentation](https://cloud.google.com/vpc/docs/shared-vpc/)
             /// </summary>
@@ -99366,14 +99318,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProject", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProject",
@@ -99383,6 +99327,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -99511,6 +99458,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -99592,6 +99542,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -99699,6 +99652,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -99780,6 +99736,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -99874,6 +99833,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetGrpcProxy resource in the given scope.</summary>
@@ -99933,6 +99895,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -100012,6 +99977,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the TargetGrpcProxies for a project in the given scope.</summary>
@@ -100100,14 +100068,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -100161,15 +100121,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -100263,6 +100218,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -100383,14 +100341,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -100458,14 +100408,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -100475,6 +100417,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified TargetHttpProxy resource.</summary>
@@ -100554,6 +100499,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetHttpProxy resource.</summary>
@@ -100613,6 +100561,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -100690,6 +100641,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of TargetHttpProxy resources available to the specified project.</summary>
@@ -100778,14 +100732,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -100839,15 +100785,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -100941,6 +100882,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the URL map for TargetHttpProxy.</summary>
@@ -101028,6 +100972,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -101148,14 +101095,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -101223,14 +101162,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -101240,6 +101171,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified TargetHttpsProxy resource.</summary>
@@ -101319,6 +101253,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetHttpsProxy resource.</summary>
@@ -101378,6 +101315,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -101455,6 +101395,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of TargetHttpsProxy resources available to the specified project.</summary>
@@ -101543,14 +101486,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -101604,15 +101539,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -101706,6 +101636,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the Certificate Map for TargetHttpsProxy.</summary>
@@ -101799,6 +101732,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Sets the QUIC override policy for TargetHttpsProxy.</summary>
@@ -101892,6 +101828,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
@@ -101981,6 +101920,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -102082,6 +102024,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the URL map for TargetHttpsProxy.</summary>
@@ -102169,6 +102114,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -102289,14 +102237,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -102364,14 +102304,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -102381,6 +102313,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified TargetInstance resource.</summary>
@@ -102474,6 +102409,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetInstance resource.</summary>
@@ -102547,6 +102485,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -102638,6 +102579,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of TargetInstance resources available to the specified project and zone.</summary>
@@ -102732,14 +102676,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -102801,15 +102737,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -102923,6 +102854,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -103004,6 +102938,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -103120,6 +103057,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Adds an instance to a target pool.</summary>
@@ -103221,6 +103161,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -103326,14 +103269,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -103401,14 +103336,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -103418,6 +103345,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified target pool.</summary>
@@ -103511,6 +103441,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified target pool.</summary>
@@ -103584,6 +103517,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -103671,6 +103607,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -103762,6 +103701,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of target pools available to the specified project and region.</summary>
@@ -103856,14 +103798,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -103925,15 +103859,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes health check URL from a target pool.</summary>
@@ -104035,6 +103964,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Removes instance URL from a target pool.</summary>
@@ -104136,6 +104068,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes a backup target pool's configurations.</summary>
@@ -104249,6 +104184,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -104362,6 +104300,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -104443,6 +104384,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -104537,6 +104481,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetSslProxy resource.</summary>
@@ -104596,6 +104543,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -104673,6 +104623,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of TargetSslProxy resources available to the specified project.</summary>
@@ -104761,14 +104714,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -104822,15 +104767,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the BackendService for TargetSslProxy.</summary>
@@ -104920,6 +104860,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the Certificate Map for TargetSslProxy.</summary>
@@ -105013,6 +104956,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the ProxyHeaderType for TargetSslProxy.</summary>
@@ -105100,6 +105046,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes SslCertificates for TargetSslProxy.</summary>
@@ -105189,6 +105138,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -105290,6 +105242,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -105357,6 +105312,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -105477,14 +105435,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -105552,14 +105502,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -105569,6 +105511,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified TargetTcpProxy resource.</summary>
@@ -105648,6 +105593,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified TargetTcpProxy resource.</summary>
@@ -105707,6 +105655,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -105784,6 +105735,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project.</summary>
@@ -105872,14 +105826,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -105933,15 +105879,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the BackendService for TargetTcpProxy.</summary>
@@ -106031,6 +105972,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Changes the ProxyHeaderType for TargetTcpProxy.</summary>
@@ -106118,6 +106062,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -106185,6 +106132,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -106305,14 +106255,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -106380,14 +106322,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -106397,6 +106331,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified target VPN gateway.</summary>
@@ -106490,6 +106427,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified target VPN gateway.</summary>
@@ -106563,6 +106503,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -106654,6 +106597,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of target VPN gateways available to the specified project and region.</summary>
@@ -106748,14 +106694,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -106817,15 +106755,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -106931,6 +106864,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -107051,14 +106987,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -107126,14 +107054,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -107143,6 +107063,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified UrlMap resource.</summary>
@@ -107222,6 +107145,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified UrlMap resource.</summary>
@@ -107281,6 +107207,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -107358,6 +107287,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -107451,6 +107383,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of UrlMap resources available to the specified project.</summary>
@@ -107539,14 +107474,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -107600,15 +107527,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -107702,6 +107624,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -107769,6 +107694,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
@@ -107856,6 +107784,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -107929,6 +107860,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -108049,14 +107983,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -108124,14 +108050,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -108141,6 +108059,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified VPN gateway.</summary>
@@ -108234,6 +108155,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified VPN gateway.</summary>
@@ -108307,6 +108231,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the status for the specified VPN gateway.</summary>
@@ -108380,6 +108307,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -108471,6 +108401,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of VPN gateways available to the specified project and region.</summary>
@@ -108565,14 +108498,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -108634,15 +108559,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -108748,6 +108668,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -108829,6 +108752,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -108949,14 +108875,6 @@ namespace Google.Apis.Compute.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>
             /// The Shared VPC service project id or service project number for which aggregated list request is invoked
             /// for subnetworks list-usable api.
             /// </summary>
@@ -109024,14 +108942,6 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
                 {
                     Name = "serviceProjectNumber",
@@ -109041,6 +108951,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Deletes the specified VpnTunnel resource.</summary>
@@ -109134,6 +109047,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Returns the specified VpnTunnel resource.</summary>
@@ -109207,6 +109123,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -109298,6 +109217,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of VpnTunnel resources contained in the specified project and region.</summary>
@@ -109392,14 +109314,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -109461,15 +109375,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -109575,6 +109484,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -109682,6 +109594,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Gets the specified wire group resource in the given scope.</summary>
@@ -109754,6 +109669,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -109858,6 +109776,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists the wire groups for a project in the given scope.</summary>
@@ -109951,14 +109872,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -110020,15 +109933,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -110159,6 +110067,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -110247,6 +110158,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the specified zone-specific Operations resource.</summary>
@@ -110320,6 +110234,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves a list of Operation resources contained within the specified zone.</summary>
@@ -110414,14 +110331,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -110483,15 +110392,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>
@@ -110581,6 +110485,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -110689,6 +110596,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves details of a specific zone VM extension policy within a project.</summary>
@@ -110762,6 +110672,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Creates a new zone-level VM extension policy within a project.</summary>
@@ -110849,6 +110762,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Lists all VM extension policies within a specific zone for a project.</summary>
@@ -110943,14 +110859,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -111012,15 +110920,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Modifies an existing zone VM extension policy within a project.</summary>
@@ -111122,6 +111025,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = null,
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 
@@ -111196,6 +111102,9 @@ namespace Google.Apis.Compute.v1
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
                 });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
 
         /// <summary>Retrieves the list of Zone resources available to the specified project.</summary>
@@ -111284,14 +111193,6 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Opt-in for partial success behavior which provides partial results in case of failure. The default value
-            /// is false.  For example, when partial success behavior is enabled, aggregatedList for a single zone scope
-            /// either returns all resources in the zone or no resources, with an error code.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -111345,15 +111246,10 @@ namespace Google.Apis.Compute.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-09-01";
         }
     }
 }
@@ -116695,6 +116591,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypes")]
         public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
 
+        /// <summary>
+        /// Optional. Rank when prioritizing the shape flexibilities. The instance selections are considered in the
+        /// ascending order of the rank. If not set, defaults to 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
+        public virtual System.Nullable<long> Rank { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -116830,6 +116733,14 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Instance properties for this request.</summary>
     public class CapacityHistoryRequestInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Local SSDs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<CapacityHistoryRequestInstancePropertiesAttachedDisk> Disks { get; set; }
+
+        /// <summary>Accelerators configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; }
+
         /// <summary>The machine type for the VM, such as `n2-standard-4`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
@@ -116837,6 +116748,17 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Specifies the scheduling options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual CapacityHistoryRequestInstancePropertiesScheduling Scheduling { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AttachedDisk modeled after Instance's AttachedDisk.</summary>
+    public class CapacityHistoryRequestInstancePropertiesAttachedDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -117139,9 +117061,10 @@ namespace Google.Apis.Compute.v1.Data
         /// GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4,
         /// GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
         /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,STORAGE_OPTIMIZED_Z4DS,
-        /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For example, type MEMORY_OPTIMIZED specifies a commitment
-        /// that applies only to eligible resources of memory optimized M1 and M2 machine series. Type GENERAL_PURPOSE
-        /// specifies a commitment that applies only to eligible resources of general purpose N1 machine series.
+        /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T,STORAGE_OPTIMIZED_Z4M. For example, type MEMORY_OPTIMIZED
+        /// specifies a commitment that applies only to eligible resources of memory optimized M1 and M2 machine series.
+        /// Type GENERAL_PURPOSE specifies a commitment that applies only to eligible resources of general purpose N1
+        /// machine series.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -134369,6 +134292,25 @@ namespace Google.Apis.Compute.v1.Data
         public virtual InterconnectMacsecConfig Result { get; set; }
     }
 
+    /// <summary>Request to rename an interconnect.</summary>
+    public class InterconnectsSetNameRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The current name of the interconnect. The name must be 1-63 characters long, and comply with RFC1035.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentName")]
+        public virtual string CurrentName { get; set; }
+
+        /// <summary>
+        /// The new name of the interconnect. The name must be 1-63 characters long, and comply with RFC1035.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).  The start
     /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
@@ -148431,9 +148373,10 @@ namespace Google.Apis.Compute.v1.Data
         /// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it
         /// evaluates to true, the corresponding `action` is enforced.  The following examples are valid match
         /// expressions for public NAT:  `inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip,
-        /// '2.2.0.0/16')`  `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'`  The following example is a
-        /// valid match expression for private NAT:  `nexthop.hub ==
-        /// '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'`
+        /// '2.2.0.0/16')`  `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'`  The following examples are
+        /// valid match expressions for private NAT:  (NAT 44) `nexthop.hub ==
+        /// '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'`  `nexthop.is_hybrid`
+        ///  (NAT 64) `isIPv6(source.ip)`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("match")]
         public virtual string Match { get; set; }
