@@ -1896,7 +1896,10 @@ namespace Google.Apis.Merchant.products_v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A message that represents loyalty program.</summary>
+    /// <summary>
+    /// A message that represents loyalty program. For more information on loyalty programs, see [Overview of loyalty
+    /// programs](/merchant/api/guides/loyalty/loyalty-programs).
+    /// </summary>
     public class LoyaltyProgram : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The cashback that can be used for future purchases.</summary>
