@@ -11065,7 +11065,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual GoogleChromeManagementVersionsV1ConnectorConfigDetails Details { get; set; }
 
-        /// <summary>Required. The display name of the config.</summary>
+        /// <summary>Required. The display name of the config. Must be at most 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -11274,11 +11274,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>CrowdStrike connector config.</summary>
     public class GoogleChromeManagementVersionsV1CrowdStrikeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        /// <summary>Required. Input only. API key to use on the ingestion API. Must be at most 50 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
         public virtual string ApiKey { get; set; }
 
-        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        /// <summary>
+        /// Required. Host to identify the customer specific server to receive the events. Must be at most 256
+        /// characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
@@ -11293,11 +11296,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>CrowdStrike Falcon Next Gen connector config.</summary>
     public class GoogleChromeManagementVersionsV1CrowdStrikeFalconNextGenConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        /// <summary>Required. Input only. API key to use on the ingestion API. Must be at most 50 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
         public virtual string ApiKey { get; set; }
 
-        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        /// <summary>
+        /// Required. Host to identify the customer specific server to receive the events. Must be at most 256
+        /// characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
@@ -11312,11 +11318,16 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>CrowdStrike XDR connector config.</summary>
     public class GoogleChromeManagementVersionsV1CrowdStrikeXdrConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        /// <summary>
+        /// Required. Input only. API key to use on the ingestion API. Must be at most 256 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
         public virtual string ApiKey { get; set; }
 
-        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        /// <summary>
+        /// Required. Host to identify the customer specific server to receive the events. Must be at most 256
+        /// characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
@@ -11468,13 +11479,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Google SecOps connector config.</summary>
     public class GoogleChromeManagementVersionsV1GoogleSecOpsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        /// <summary>Required. Input only. API key to use on the ingestion API. Must be 39 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
         public virtual string ApiKey { get; set; }
 
         /// <summary>
         /// Required. Host of ingestion API endpoint. Allows customer to upload events to servers in specific
-        /// geographical regions. Existing configs that don't have this setting default to US.
+        /// geographical regions. Existing configs that don't have this setting default to US. Must be at most 256
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
@@ -11591,11 +11603,16 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Palo Alto Networks connector config.</summary>
     public class GoogleChromeManagementVersionsV1PaloAltoNetworksConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. API key to use on the ingestion API.</summary>
+        /// <summary>
+        /// Required. Input only. API key to use on the ingestion API. Must be at most 256 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
         public virtual string ApiKey { get; set; }
 
-        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        /// <summary>
+        /// Required. Host to identify the customer specific server to receive the events. Must be at most 256
+        /// characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
@@ -11614,7 +11631,9 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
         public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
 
-        /// <summary>Required. The full path to the topic to send the event to.</summary>
+        /// <summary>
+        /// Required. The full path to the topic to send the event to. Must be at most 1000 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicFullPath")]
         public virtual string TopicFullPath { get; set; }
 
@@ -11625,7 +11644,9 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Pub/Sub XDR connector config.</summary>
     public class GoogleChromeManagementVersionsV1PubSubXdrConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The full path to the topic to send the event to.</summary>
+        /// <summary>
+        /// Required. The full path to the topic to send the event to. Must be at most 1000 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topicFullPath")]
         public virtual string TopicFullPath { get; set; }
 
@@ -11934,7 +11955,9 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabledPlatforms")]
         public virtual System.Collections.Generic.IList<string> EnabledPlatforms { get; set; }
 
-        /// <summary>Required. The resource ID of the secure gateway connector config.</summary>
+        /// <summary>
+        /// Required. The resource ID of the secure gateway connector config. Must be at most 256 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
 
@@ -12046,12 +12069,16 @@ namespace Google.Apis.ChromeManagement.v1.Data
     public class GoogleChromeManagementVersionsV1SplunkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Input only. The data input's HTTP Event Collector token to use as an Authorization header.
+        /// Required. Input only. The data input's HTTP Event Collector token to use as an Authorization header. Must be
+        /// at most 50 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hecToken")]
         public virtual string HecToken { get; set; }
 
-        /// <summary>Required. Host to identify the customer specific server to receive the events.</summary>
+        /// <summary>
+        /// Required. Host to identify the customer specific server to receive the events. Must be at most 256
+        /// characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
@@ -12064,7 +12091,8 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
 
         /// <summary>
-        /// Optional. Optional source name to override the default one set in the Splunk admin console.
+        /// Optional. Optional source name to override the default one set in the Splunk admin console. Must be at most
+        /// 100 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
