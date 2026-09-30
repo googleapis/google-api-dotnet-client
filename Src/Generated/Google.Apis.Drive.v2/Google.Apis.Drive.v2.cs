@@ -6137,8 +6137,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Deletes a permission from a file or shared drive. **Warning:** Concurrent permissions operations on the same
-        /// file are not supported; only the last update is applied.
+        /// Deletes a permission from a file or shared drive. **Warning:** Concurrent permission modifications (such as
+        /// update or delete) on the same file, folder, or shared drive aren't supported across any users or clients;
+        /// only the last update is applied.
         /// </summary>
         /// <param name="fileId">The ID for the file or shared drive.</param>
         /// <param name="permissionId">The ID for the permission.</param>
@@ -6148,8 +6149,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Deletes a permission from a file or shared drive. **Warning:** Concurrent permissions operations on the same
-        /// file are not supported; only the last update is applied.
+        /// Deletes a permission from a file or shared drive. **Warning:** Concurrent permission modifications (such as
+        /// update or delete) on the same file, folder, or shared drive aren't supported across any users or clients;
+        /// only the last update is applied.
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -6398,8 +6400,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Inserts a permission for a file or shared drive. **Warning:** Concurrent permissions operations on the same
-        /// file are not supported; only the last update is applied.
+        /// Inserts a permission for a file or shared drive. **Warning:** Concurrent permission modifications (such as
+        /// update or delete) on the same file, folder, or shared drive aren't supported across any users or clients;
+        /// only the last update is applied.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID for the file or shared drive.</param>
@@ -6409,8 +6412,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Inserts a permission for a file or shared drive. **Warning:** Concurrent permissions operations on the same
-        /// file are not supported; only the last update is applied.
+        /// Inserts a permission for a file or shared drive. **Warning:** Concurrent permission modifications (such as
+        /// update or delete) on the same file, folder, or shared drive aren't supported across any users or clients;
+        /// only the last update is applied.
         /// </summary>
         public class InsertRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Permission>
         {
@@ -6694,8 +6698,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Updates a permission using patch semantics. **Warning:** Concurrent permissions operations on the same file
-        /// are not supported; only the last update is applied.
+        /// Updates a permission using patch semantics. **Warning:** Concurrent permission modifications (such as update
+        /// or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the
+        /// last update is applied.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID for the file or shared drive.</param>
@@ -6706,8 +6711,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Updates a permission using patch semantics. **Warning:** Concurrent permissions operations on the same file
-        /// are not supported; only the last update is applied.
+        /// Updates a permission using patch semantics. **Warning:** Concurrent permission modifications (such as update
+        /// or delete) on the same file, folder, or shared drive aren't supported across any users or clients; only the
+        /// last update is applied.
         /// </summary>
         public class PatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Permission>
         {
@@ -6846,8 +6852,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Updates a permission. **Warning:** Concurrent permissions operations on the same file are not supported;
-        /// only the last update is applied.
+        /// Updates a permission. **Warning:** Concurrent permission modifications (such as update or delete) on the
+        /// same file, folder, or shared drive aren't supported across any users or clients; only the last update is
+        /// applied.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID for the file or shared drive.</param>
@@ -6858,8 +6865,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Updates a permission. **Warning:** Concurrent permissions operations on the same file are not supported;
-        /// only the last update is applied.
+        /// Updates a permission. **Warning:** Concurrent permission modifications (such as update or delete) on the
+        /// same file, folder, or shared drive aren't supported across any users or clients; only the last update is
+        /// applied.
         /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Permission>
         {
