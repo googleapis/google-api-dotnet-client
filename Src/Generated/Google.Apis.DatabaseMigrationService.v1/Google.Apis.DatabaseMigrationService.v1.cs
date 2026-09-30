@@ -1995,6 +1995,323 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
                 }
 
+                /// <summary>
+                /// An internal, RPC only method that returns a list of the (filtered) entities with minimal information
+                /// required for the entities tree view.
+                /// </summary>
+                /// <param name="conversionWorkspace">
+                /// Required. Name of the conversion workspace resource whose database entities are described. Must be
+                /// in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                /// </param>
+                public virtual FetchEntitiesStatusViewRequest FetchEntitiesStatusView(string conversionWorkspace)
+                {
+                    return new FetchEntitiesStatusViewRequest(this.service, conversionWorkspace);
+                }
+
+                /// <summary>
+                /// An internal, RPC only method that returns a list of the (filtered) entities with minimal information
+                /// required for the entities tree view.
+                /// </summary>
+                public class FetchEntitiesStatusViewRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.FetchEntitiesStatusViewResponse>
+                {
+                    /// <summary>Constructs a new FetchEntitiesStatusView request.</summary>
+                    public FetchEntitiesStatusViewRequest(Google.Apis.Services.IClientService service, string conversionWorkspace) : base(service)
+                    {
+                        ConversionWorkspace = conversionWorkspace;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the conversion workspace resource whose database entities are described. Must
+                    /// be in the form of:
+                    /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("conversionWorkspace", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ConversionWorkspace { get; private set; }
+
+                    /// <summary>Optional. The view to fetch. If not specified, FULL is used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("fetchView", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<FetchViewEnum> FetchView { get; set; }
+
+                    /// <summary>Optional. The view to fetch. If not specified, FULL is used.</summary>
+                    public enum FetchViewEnum
+                    {
+                        /// <summary>Unspecified view. Defaults to FULL.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FETCH_VIEW_UNSPECIFIED")]
+                        FETCHVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Get all entities matching the filter.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 1,
+
+                        /// <summary>
+                        /// Each schema will have one entity per (non sub) type with a dummy name that will contain the
+                        /// aggregated information for all entities of that type. Counters like number of statements and
+                        /// issues will be aggregated accordingly.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("SUMMARY")]
+                        SUMMARY = 2,
+
+                        /// <summary>Same as FULL plus dependency information.</summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL_WITH_DEPENDENCIES")]
+                        FULLWITHDEPENDENCIES = 3,
+                    }
+
+                    /// <summary>Optional. Filter the returned entities based on AIP-160 standard.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of entities to return. The service may return fewer entities than
+                    /// the value specifies. Default is 100000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The nextPageToken value received in the previous call to
+                    /// conversionWorkspace.FetchEntitiesStatusView, used in the subsequent request to retrieve the next
+                    /// page of results. On first call this should be left blank. When paginating, all other parameters
+                    /// provided to conversionWorkspace.FetchEntitiesStatusView must match the call that provided the
+                    /// page token, except for the page_size parameter.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. The tree to fetch.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("tree", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<TreeEnum> Tree { get; set; }
+
+                    /// <summary>Required. The tree to fetch.</summary>
+                    public enum TreeEnum
+                    {
+                        /// <summary>Unspecified tree type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DB_TREE_TYPE_UNSPECIFIED")]
+                        DBTREETYPEUNSPECIFIED = 0,
+
+                        /// <summary>The source database tree.</summary>
+                        [Google.Apis.Util.StringValueAttribute("SOURCE_TREE")]
+                        SOURCETREE = 1,
+
+                        /// <summary>The draft database tree.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DRAFT_TREE")]
+                        DRAFTTREE = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchEntitiesStatusView";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+conversionWorkspace}:fetchEntitiesStatusView";
+
+                    /// <summary>Initializes FetchEntitiesStatusView parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("conversionWorkspace", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "conversionWorkspace",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/conversionWorkspaces/[^/]+$",
+                        });
+                        RequestParameters.Add("fetchView", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "fetchView",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("tree", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tree",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List issues of conversion workspace operations e.g. conversion.</summary>
+                /// <param name="conversionWorkspace">
+                /// Required. Conversion workspace with issues to fetch. Must be in the form of:
+                /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                /// </param>
+                public virtual FetchIssuesRequest FetchIssues(string conversionWorkspace)
+                {
+                    return new FetchIssuesRequest(this.service, conversionWorkspace);
+                }
+
+                /// <summary>List issues of conversion workspace operations e.g. conversion.</summary>
+                public class FetchIssuesRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.FetchIssuesResponse>
+                {
+                    /// <summary>Constructs a new FetchIssues request.</summary>
+                    public FetchIssuesRequest(Google.Apis.Services.IClientService service, string conversionWorkspace) : base(service)
+                    {
+                        ConversionWorkspace = conversionWorkspace;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Conversion workspace with issues to fetch. Must be in the form of:
+                    /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("conversionWorkspace", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ConversionWorkspace { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If 'true', gets all issues matching the filter. Otherwise, for each entity only the
+                    /// issues matching the DdlKind chosen for application on the destination are returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allIssues", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllIssues { get; set; }
+
+                    /// <summary>
+                    /// Optional. AIP-160 standard filter. Supporting both entity and issue fields. Supported fields: -
+                    /// `name` / `fullname`: The entity full name. - `type`: The entity type (e.g. `TABLE`, `VIEW`,
+                    /// `INDEX`, `TRIGGER`). - `ddlkind`: The kind of DDL (e.g. `DDL_KIND_SOURCE`, `DDL_KIND_AI`,
+                    /// `DDL_KIND_DETERMINISTIC`). - `issue.severity`: The severity of the issue (e.g. `INFO`,
+                    /// `WARNING`, `ERROR`). - `issue.state`: The state of the issue (e.g. `OPEN`, `RESOLVED`). -
+                    /// `issue.origin`: The origin of the issue (e.g. `DETERMINISTIC`, `AI`). - `issue.category_id`: The
+                    /// category ID of the issue. - `issue.group_id`: The group ID of the issue.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of issues to return. The service may return fewer issues than the
+                    /// value specifies.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The FetchIssuesResponse.next_page_token value received in the previous call to
+                    /// FetchIssues, used in the subsequent request to retrieve the next page of results. On first call
+                    /// this should be left blank. When paginating, all other parameters provided to FetchIssues must
+                    /// match the call that provided the page token, except for the page_size parameter.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. The tree to fetch issues from. If not specified, source tree is assumed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("tree", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<TreeEnum> Tree { get; set; }
+
+                    /// <summary>
+                    /// Optional. The tree to fetch issues from. If not specified, source tree is assumed.
+                    /// </summary>
+                    public enum TreeEnum
+                    {
+                        /// <summary>Unspecified tree type.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DB_TREE_TYPE_UNSPECIFIED")]
+                        DBTREETYPEUNSPECIFIED = 0,
+
+                        /// <summary>Returns seed and conversion issues</summary>
+                        [Google.Apis.Util.StringValueAttribute("SOURCE")]
+                        SOURCE = 1,
+
+                        /// <summary>Returns apply issues.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DRAFT")]
+                        DRAFT = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchIssues";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+conversionWorkspace}:fetchIssues";
+
+                    /// <summary>Initializes FetchIssues parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("conversionWorkspace", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "conversionWorkspace",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/conversionWorkspaces/[^/]+$",
+                        });
+                        RequestParameters.Add("allIssues", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allIssues",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("tree", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "tree",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single conversion workspace.</summary>
                 /// <param name="name">Required. Name of the conversion workspace resource to get.</param>
                 public virtual GetRequest Get(string name)
@@ -2542,6 +2859,65 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/conversionWorkspaces/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates the draft DDL of an entity.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="conversionWorkspace">
+                /// Required. Name of the conversion workspace resource in the form of:
+                /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                /// </param>
+                public virtual SetDraftEntityDdlRequest SetDraftEntityDdl(Google.Apis.DatabaseMigrationService.v1.Data.SetDraftEntityDdlRequest body, string conversionWorkspace)
+                {
+                    return new SetDraftEntityDdlRequest(this.service, body, conversionWorkspace);
+                }
+
+                /// <summary>Updates the draft DDL of an entity.</summary>
+                public class SetDraftEntityDdlRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.SetDraftEntityDdlResponse>
+                {
+                    /// <summary>Constructs a new SetDraftEntityDdl request.</summary>
+                    public SetDraftEntityDdlRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1.Data.SetDraftEntityDdlRequest body, string conversionWorkspace) : base(service)
+                    {
+                        ConversionWorkspace = conversionWorkspace;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the conversion workspace resource in the form of:
+                    /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("conversionWorkspace", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ConversionWorkspace { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DatabaseMigrationService.v1.Data.SetDraftEntityDdlRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setDraftEntityDdl";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+conversionWorkspace}:setDraftEntityDdl";
+
+                    /// <summary>Initializes SetDraftEntityDdl parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("conversionWorkspace", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "conversionWorkspace",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -6447,6 +6823,45 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasUncommittedChanges")]
         public virtual System.Nullable<bool> HasUncommittedChanges { get; set; }
 
+        private string _latestApplyTimeRaw;
+
+        private object _latestApplyTime;
+
+        /// <summary>Optional. Output only. The timestamp when the workspace was last applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestApplyTime")]
+        public virtual string LatestApplyTimeRaw
+        {
+            get => _latestApplyTimeRaw;
+            set
+            {
+                _latestApplyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestApplyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestApplyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestApplyTimeDateTimeOffset instead.")]
+        public virtual object LatestApplyTime
+        {
+            get => _latestApplyTime;
+            set
+            {
+                _latestApplyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestApplyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestApplyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestApplyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestApplyTimeRaw);
+            set => LatestApplyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. The latest commit ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestCommitId")]
         public virtual string LatestCommitId { get; set; }
@@ -6488,6 +6903,45 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestCommitTimeRaw);
             set => LatestCommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _latestConvertTimeRaw;
+
+        private object _latestConvertTime;
+
+        /// <summary>Optional. Output only. The timestamp when the workspace was last converted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestConvertTime")]
+        public virtual string LatestConvertTimeRaw
+        {
+            get => _latestConvertTimeRaw;
+            set
+            {
+                _latestConvertTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestConvertTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestConvertTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestConvertTimeDateTimeOffset instead.")]
+        public virtual object LatestConvertTime
+        {
+            get => _latestConvertTime;
+            set
+            {
+                _latestConvertTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestConvertTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestConvertTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestConvertTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestConvertTimeRaw);
+            set => LatestConvertTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -6920,6 +7374,29 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An entity identifier.</summary>
+    public class EntityId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parent entity full name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentName")]
+        public virtual string ParentName { get; set; }
+
+        /// <summary>The type of the database entity (schema, table, view, ...).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentType")]
+        public virtual string ParentType { get; set; }
+
+        /// <summary>The short name (e.g. table name) of the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortName")]
+        public virtual string ShortName { get; set; }
+
+        /// <summary>The type of the database entity (schema, table, view, index, ...).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Issue related to the entity.</summary>
     public class EntityIssue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7030,6 +7507,60 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single entity for the UI view.</summary>
+    public class EntityStatusView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The set of entities that this entity directly depends on, i.e., it does not include transitive
+        /// dependencies. Provided only for FULL_WITH_DEPENDENCIES view. Dependencies are provided according to the
+        /// request tree type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
+        public virtual System.Collections.Generic.IList<EntityId> Dependencies { get; set; }
+
+        /// <summary>
+        /// The DDL Kind selected for apply. If UNSPECIFIED, the entity wasn't converted yet. For SUMMARY view, this
+        /// rolls up from descendants with the logic of UNSPECIFIED &amp;lt; DETERMINISTIC &amp;lt; AI. USER_EDIT is not
+        /// propagated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftDdlKind")]
+        public virtual string DraftDdlKind { get; set; }
+
+        /// <summary>The entity short name and type from the DRAFT tree.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("draftEntity")]
+        public virtual EntityId DraftEntity { get; set; }
+
+        /// <summary>
+        /// If ddl_kind is USER_EDIT, this holds the DDL kind of the original content - DETERMINISTIC or AI. Otherwise,
+        /// this is DDL_KIND_UNSPECIFIED. Relevant only for FULL view.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editedDdlKind")]
+        public virtual string EditedDdlKind { get; set; }
+
+        /// <summary>Unresolved issues information according to the current Draft DdlKind.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual IssueAggregateData Issues { get; set; }
+
+        /// <summary>Resolved issues information according to the current Draft DdlKind.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedIssues")]
+        public virtual IssueAggregateData ResolvedIssues { get; set; }
+
+        /// <summary>The entity short name and type from the SOURCE tree.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceEntity")]
+        public virtual EntityId SourceEntity { get; set; }
+
+        /// <summary>Optional. Whether the entity has successfully generated and executed validation tests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testedEntity")]
+        public virtual System.Nullable<bool> TestedEntity { get; set; }
+
+        /// <summary>Was the entity applied on the destination. Relevant only for FULL view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wasApplied")]
+        public virtual System.Nullable<bool> WasApplied { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Describes the cause of the error with structured details. Example of an error when contacting the
     /// "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com"
@@ -7110,6 +7641,69 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for DataMigrationService.FetchEntitiesStatusView.</summary>
+    public class FetchEntitiesStatusViewResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of the entities matching the request, sorted by their full name (source name if requested the SOURCE
+        /// tree, draft name if requested the DRAFT tree). Sub-entities (such as indexes) always appear immediately
+        /// after their parent element.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<EntityStatusView> Entities { get; set; }
+
+        /// <summary>
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for fetching issues of a conversion workspace.</summary>
+    public class FetchIssuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of issues for the conversion workspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<Issue> Issues { get; set; }
+
+        /// <summary>
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issue position.</summary>
+    public class FetchIssuesResponseIssuePosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Issue column number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual System.Nullable<int> Column { get; set; }
+
+        /// <summary>Issue length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<int> Length { get; set; }
+
+        /// <summary>Issue line number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("line")]
+        public virtual System.Nullable<int> Line { get; set; }
+
+        /// <summary>Issue offset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<int> Offset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7533,6 +8127,79 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Required. Relation between source value and compare value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueComparison")]
         public virtual string ValueComparison { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issue related to the entity.</summary>
+    public class Issue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The category ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryId")]
+        public virtual string CategoryId { get; set; }
+
+        /// <summary>Entity full name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityFullName")]
+        public virtual string EntityFullName { get; set; }
+
+        /// <summary>The entity type (if the DDL is for a sub entity).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>The group ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// Unique Issue ID. Use this ID when referencing a specific issue in other API calls, such as
+        /// DataMigrationService.SetIssuesState.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The source of the issue (deterministic, gemini, etc).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueOrigin")]
+        public virtual string IssueOrigin { get; set; }
+
+        /// <summary>Output only. The state of the issue (open, resolved, etc).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueState")]
+        public virtual string IssueState { get; set; }
+
+        /// <summary>Issue detailed message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The position of the issue found, if relevant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual FetchIssuesResponseIssuePosition Position { get; set; }
+
+        /// <summary>Severity of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The type of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregate issue information.</summary>
+    public class IssueAggregateData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of error issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCount")]
+        public virtual System.Nullable<int> ErrorCount { get; set; }
+
+        /// <summary>Number of info issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoCount")]
+        public virtual System.Nullable<int> InfoCount { get; set; }
+
+        /// <summary>Number of warning issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningCount")]
+        public virtual System.Nullable<int> WarningCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9728,6 +10395,47 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startValue")]
         public virtual string StartValue { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for DataMigrationService.SetDraftEntityDdl.</summary>
+    public class SetDraftEntityDdlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Which DDL (Deterministic/AI) the updated DDL is based on. Defaults to DETERMINISTIC if not
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basedOnDdlKind")]
+        public virtual string BasedOnDdlKind { get; set; }
+
+        /// <summary>Required. The DDL to set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddl")]
+        public virtual string Ddl { get; set; }
+
+        /// <summary>Optional. The updated DDL Kind. Can be either USER_EDIT (default) or AI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlKind")]
+        public virtual string DdlKind { get; set; }
+
+        /// <summary>Required. The draft entity full name from the tree. .</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
+        public virtual string EntityName { get; set; }
+
+        /// <summary>Required. The type of the database entity (table, view, index, ...).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>Optional. An optional explanation of the generated DDL if ddl_kind is AI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for DataMigrationService.SetDraftEntityDdl.</summary>
+    public class SetDraftEntityDdlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
