@@ -639,7 +639,7 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         public virtual Date Date { get; set; }
 
         /// <summary>
-        /// Domain of your competitor or your domain, if 'is_your_domain' is true. Required in the `SELECT` clause.
+        /// Domain of your competitor or your domain, if `is_your_domain` is true. Required in the `SELECT` clause.
         /// Cannot be filtered on in the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
@@ -731,7 +731,7 @@ namespace Google.Apis.Merchant.reports_v1beta.Data
         public virtual Date Date { get; set; }
 
         /// <summary>
-        /// Domain of your competitor or your domain, if 'is_your_domain' is true. Required in the `SELECT` clause.
+        /// Domain of your competitor or your domain, if `is_your_domain` is true. Required in the `SELECT` clause.
         /// Cannot be filtered on in the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
