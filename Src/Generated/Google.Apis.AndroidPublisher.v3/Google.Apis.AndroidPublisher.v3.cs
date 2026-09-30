@@ -23917,6 +23917,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Response for updating an app record for an app store hosted app.</summary>
     public class UpdateAppStoreHostedAppResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Unique identifier for the specific version of the hosted app submitted in this update. This identifier can
+        /// be used to correlate publishing signals (such as those returned by ListHostedAppsPublishingSignals) with
+        /// this specific app update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateId")]
+        public virtual string UpdateId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
