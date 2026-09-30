@@ -401,6 +401,138 @@ namespace Google.Apis.CloudTasks.v2
                     }
 
                     /// <summary>
+                    /// Creates a batch of tasks and adds them to a queue. All tasks must be for the same queue. A
+                    /// maximum of 100 tasks can be created in a single batch.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The queue name. For example:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
+                    /// </param>
+                    public virtual BatchCreateRequest BatchCreate(Google.Apis.CloudTasks.v2.Data.BatchCreateTasksRequest body, string parent)
+                    {
+                        return new BatchCreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a batch of tasks and adds them to a queue. All tasks must be for the same queue. A
+                    /// maximum of 100 tasks can be created in a single batch.
+                    /// </summary>
+                    public class BatchCreateRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new BatchCreate request.</summary>
+                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2.Data.BatchCreateTasksRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The queue name. For example:
+                        /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudTasks.v2.Data.BatchCreateTasksRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchCreate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/tasks:batchCreate";
+
+                        /// <summary>Initializes BatchCreate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a batch of tasks. This is a non-atomic operation: if deletion fails for some tasks, it
+                    /// can still succeed for others. The metadata field of google.longrunning.Operation contains
+                    /// details of failed deletions. A maximum of 1000 tasks can be deleted in a batch.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The queue name. For example: Format:
+                    /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+                    /// </param>
+                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.CloudTasks.v2.Data.BatchDeleteTasksRequest body, string parent)
+                    {
+                        return new BatchDeleteRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Deletes a batch of tasks. This is a non-atomic operation: if deletion fails for some tasks, it
+                    /// can still succeed for others. The metadata field of google.longrunning.Operation contains
+                    /// details of failed deletions. A maximum of 1000 tasks can be deleted in a batch.
+                    /// </summary>
+                    public class BatchDeleteRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new BatchDelete request.</summary>
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2.Data.BatchDeleteTasksRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The queue name. For example: Format:
+                        /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudTasks.v2.Data.BatchDeleteTasksRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/tasks:batchDelete";
+
+                        /// <summary>Initializes BatchDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Creates and buffers a new task without the need to explicitly define a Task message. The queue
                     /// must have HTTP target. To create the task with a custom ID, use the following format and set
                     /// TASK_ID to your desired ID:
@@ -2343,6 +2475,50 @@ namespace Google.Apis.CloudTasks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for [BatchCreateTasks].</summary>
+    public class BatchCreateTasksRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This field will be used to identify the long running operation, avoiding duplication when user
+        /// retries. If not provided, then a UUID will be generated at server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. The list of requests to create tasks. The queue specified in parent field of each
+        /// CreateTaskRequest will be the same. This validation happens on the client side as well as in the handler.
+        /// BatchCreateTasksRequest.parent will also be the same value as the individual CreateTaskRequest.parent . The
+        /// maximum number of requests is 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<CreateTaskRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for deleting a batch of tasks using BatchDeleteTasks.</summary>
+    public class BatchDeleteTasksRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the tasks to delete. A maximum of 1000 tasks can be deleted in a batch. For example:
+        /// Format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>
+        /// Optional. This field will be used to identify the long running operation, avoiding duplication when user
+        /// retries. If not provided, then a UUID will be generated at server side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2468,6 +2644,13 @@ namespace Google.Apis.CloudTasks.v2.Data
     /// <summary>Request message for CreateTask.</summary>
     public class CreateTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Required. The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue
+        /// must already exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
         /// <summary>
         /// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC;
         /// not all information is retrieved by default because some data, such as payloads, might be desirable to
@@ -3510,6 +3693,13 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// <summary>Output only. The number of attempts which have received a response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseCount")]
         public virtual System.Nullable<int> ResponseCount { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the task-level RetryConfig. If present, this overrides the Queue.retry_config for this
+        /// task.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
+        public virtual RetryConfig RetryConfig { get; set; }
 
         private string _scheduleTimeRaw;
 
