@@ -1,0 +1,21 @@
+{
+  "Google.Apis.DeviceRun.v1alpha.DeviceRunBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DeviceRun.v1alpha.DeviceRunBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.DeviceRun.v1alpha.ProjectsResource+LocationsResource+SessionsResource+GetRequest.ViewEnum": [
+    "SESSION_VIEW_UNSPECIFIED",
+    "SESSION_VIEW_BASIC",
+    "SESSION_VIEW_FULL"
+  ],
+  "Google.Apis.DeviceRun.v1alpha.ProjectsResource+LocationsResource+SessionsResource+ListRequest.ViewEnum": [
+    "SESSION_VIEW_UNSPECIFIED",
+    "SESSION_VIEW_BASIC",
+    "SESSION_VIEW_FULL"
+  ]
+}
