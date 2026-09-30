@@ -1452,7 +1452,7 @@ namespace Google.Apis.NetworkServices.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Used to specify the fields to be overwritten in the `AuthzExtension` resource by the
+                    /// Optional. Used to specify the fields to be overwritten in the `AuthzExtension` resource by the
                     /// update. The fields specified in the `update_mask` are relative to the resource, not the full
                     /// request. A field is overwritten if it is in the mask. If the user does not specify a mask, then
                     /// all fields are overwritten.
@@ -7471,6 +7471,18 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees this for 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID version 4
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
                     /// <summary>Required. Short name of the ServiceBinding resource to be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceBindingId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServiceBindingId { get; set; }
@@ -7501,6 +7513,14 @@ namespace Google.Apis.NetworkServices.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("serviceBindingId", new Google.Apis.Discovery.Parameter
                         {
@@ -7540,6 +7560,18 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees this for 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID version 4
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -7560,6 +7592,14 @@ namespace Google.Apis.NetworkServices.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/serviceBindings/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -7724,6 +7764,18 @@ namespace Google.Apis.NetworkServices.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees this for 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID version 4
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
                     /// Optional. Field mask is used to specify the fields to be overwritten in the ServiceBinding
                     /// resource by the update. The fields specified in the update_mask are relative to the resource,
                     /// not the full request. A field will be overwritten if it is in the mask. If the user does not
@@ -7758,6 +7810,14 @@ namespace Google.Apis.NetworkServices.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/serviceBindings/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -10370,9 +10430,13 @@ namespace Google.Apis.NetworkServices.v1.Data
     /// <summary>DNS Peering configuration.</summary>
     public class DnsPeeringConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The domain to peer.</summary>
+        /// <summary>Optional. Deprecated: Use `domains` instead. The domain to peer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
+
+        /// <summary>Optional. The domains to peer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; }
 
         /// <summary>
         /// Optional. The target network resource name for DNS peering. Format:
@@ -10385,6 +10449,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Egress network config</summary>
     public class EgressNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. DNS Peering configuration.</summary>
@@ -10398,6 +10463,10 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
         public virtual string NetworkAttachment { get; set; }
 
+        /// <summary>Optional. The TLS configuration for the egress traffic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tlsConfig")]
+        public virtual EgressNetworkConfigTlsConfig TlsConfig { get; set; }
+
         /// <summary>
         /// Optional. Deprecated: Use tls_config instead. The trust config resource name. Format:
         /// projects/{project}/locations/{location}/trustConfigs/{trust_config}
@@ -10408,6 +10477,24 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>Optional. The VPC egress setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcEgress")]
         public virtual string VpcEgress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for TLS connections.</summary>
+    public class EgressNetworkConfigTlsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The additional roots to trust.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalRoots")]
+        public virtual string AdditionalRoots { get; set; }
+
+        /// <summary>
+        /// Optional. The trust config resource name. Format:
+        /// projects/{project}/locations/{location}/trustConfigs/{trust_config}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustConfig")]
+        public virtual string TrustConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11005,8 +11092,8 @@ namespace Google.Apis.NetworkServices.v1.Data
     {
         /// <summary>
         /// Required. A set of extensions to execute for the matching request. At least one extension is required. Up to
-        /// 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`
-        /// and `LbEdgeExtension` chains are limited to 1 extension per extension chain.
+        /// 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`,
+        /// `LbEdgeExtension`, and `LbTcpExtension` chains are limited to 1 extension per extension chain.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<ExtensionChainExtension> Extensions { get; set; }
@@ -11149,7 +11236,9 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// optional. If unspecified, `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension`
         /// resource, this field is required and must only contain `REQUEST_HEADERS` event. For the `AuthzExtension`
         /// resource, this field is optional. `REQUEST_HEADERS` is the only supported event. If unspecified,
-        /// `REQUEST_HEADERS` event is assumed as supported.
+        /// `REQUEST_HEADERS` event is assumed as supported. For the `CdnEdgeExtension` resource, this field is
+        /// optional. Eligible values are `REQUEST_HEADERS` and `RESPONSE_HEADERS`. If unspecified, both are assumed as
+        /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedEvents")]
         public virtual System.Collections.Generic.IList<string> SupportedEvents { get; set; }
@@ -13794,7 +13883,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Labels as key-value pairs</summary>
+        /// <summary>Optional. Labels as key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -13841,8 +13930,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all
-        /// multicast consumer association resources. If a consumer association is deleted and another with the same
-        /// name is created, the new consumer association is assigned a different unique_id.
+        /// multicast consumer association resources. If a multicast consumer association is deleted and another with
+        /// the same name is created, the new multicast consumer association is assigned a different unique_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }
@@ -13936,7 +14025,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Labels as key-value pairs</summary>
+        /// <summary>Optional. Labels as key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -13957,15 +14046,15 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. The resource name of the multicast group created by the admin in the same zone as this multicast
-        /// group consumer activation. Use the following format: // `projects/*/locations/*/multicastGroups/*`. This
-        /// field is deprecated. Use multicast_group_range_activation instead.
+        /// group consumer activation. Use the following format: `projects/*/locations/*/multicastGroups/*`. This field
+        /// is deprecated. Use multicast_group_range_activation instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multicastGroup")]
         public virtual string MulticastGroup { get; set; }
 
         /// <summary>
         /// Required. The resource name of the multicast group range activation created by the admin in the same zone as
-        /// this multicast group consumer activation. Use the following format: //
+        /// this multicast group consumer activation. Use the following format:
         /// `projects/*/locations/*/multicastGroupRangeActivations/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multicastGroupRangeActivation")]
@@ -13991,8 +14080,9 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Output only. [Output only] The Google-generated UUID for the resource. This value is unique across all
-        /// multicast group consumer activation resources. If a group consumer activation is deleted and another with
-        /// the same name is created, the new group consumer activation is assigned a different unique_id.
+        /// multicast group consumer activation resources. If a multicast group consumer activation is deleted and
+        /// another with the same name is created, the new multicast group consumer activation is assigned a different
+        /// unique_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }
