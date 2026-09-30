@@ -5594,6 +5594,10 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adultContent")]
         public virtual System.Nullable<bool> AdultContent { get; set; }
 
+        /// <summary>Output only. URI (typically a URL) of the store's homepage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homePageUri")]
+        public virtual string HomePageUri { get; set; }
+
         /// <summary>
         /// Required. The account's [BCP-47 language code](https://tools.ietf.org/html/bcp47), such as `en-US` or
         /// `sr-Latn`.
