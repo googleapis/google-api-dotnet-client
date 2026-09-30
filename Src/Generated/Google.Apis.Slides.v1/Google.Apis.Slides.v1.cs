@@ -355,6 +355,45 @@ namespace Google.Apis.Slides.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageObjectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PageObjectId { get; private set; }
 
+                /// <summary>
+                /// The comments view mode to apply to the page. This allows viewing the page with comments omitted or
+                /// included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. [Developer
+                /// Preview](https://developers.google.com/workspace/preview).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("commentsViewMode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CommentsViewModeEnum> CommentsViewMode { get; set; }
+
+                /// <summary>
+                /// The comments view mode to apply to the page. This allows viewing the page with comments omitted or
+                /// included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. [Developer
+                /// Preview](https://developers.google.com/workspace/preview).
+                /// </summary>
+                public enum CommentsViewModeEnum
+                {
+                    /// <summary>The CommentsViewMode is unspecified; COMMENTS_VIEW_MODE_OMITTED is applied.</summary>
+                    [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_UNSPECIFIED")]
+                    COMMENTSVIEWMODEUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// The CommentsViewMode applied to the returned presentation depends on the user's current access
+                    /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is applied. Otherwise,
+                    /// COMMENTS_VIEW_MODE_INCLUDED is applied.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS")]
+                    COMMENTSVIEWMODEDEFAULTFORCURRENTACCESS = 1,
+
+                    /// <summary>The returned presentation has comments omitted.</summary>
+                    [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_OMITTED")]
+                    COMMENTSVIEWMODEOMITTED = 2,
+
+                    /// <summary>
+                    /// The returned presentation has comments included. Requests to retrieve a presentation using this
+                    /// mode will return a 403 error if the user does not have permission to view comments.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_INCLUDED")]
+                    COMMENTSVIEWMODEINCLUDED = 3,
+                }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
@@ -381,6 +420,14 @@ namespace Google.Apis.Slides.v1
                         Name = "pageObjectId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("commentsViewMode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "commentsViewMode",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -669,6 +716,45 @@ namespace Google.Apis.Slides.v1
             [Google.Apis.Util.RequestParameterAttribute("presentationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PresentationId { get; private set; }
 
+            /// <summary>
+            /// The comments view mode to apply to the presentation. This allows viewing the presentation with comments
+            /// omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. [Developer
+            /// Preview](https://developers.google.com/workspace/preview).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("commentsViewMode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<CommentsViewModeEnum> CommentsViewMode { get; set; }
+
+            /// <summary>
+            /// The comments view mode to apply to the presentation. This allows viewing the presentation with comments
+            /// omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. [Developer
+            /// Preview](https://developers.google.com/workspace/preview).
+            /// </summary>
+            public enum CommentsViewModeEnum
+            {
+                /// <summary>The CommentsViewMode is unspecified; COMMENTS_VIEW_MODE_OMITTED is applied.</summary>
+                [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_UNSPECIFIED")]
+                COMMENTSVIEWMODEUNSPECIFIED = 0,
+
+                /// <summary>
+                /// The CommentsViewMode applied to the returned presentation depends on the user's current access
+                /// level. If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is applied. Otherwise,
+                /// COMMENTS_VIEW_MODE_INCLUDED is applied.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS")]
+                COMMENTSVIEWMODEDEFAULTFORCURRENTACCESS = 1,
+
+                /// <summary>The returned presentation has comments omitted.</summary>
+                [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_OMITTED")]
+                COMMENTSVIEWMODEOMITTED = 2,
+
+                /// <summary>
+                /// The returned presentation has comments included. Requests to retrieve a presentation using this mode
+                /// will return a 403 error if the user does not have permission to view comments.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_INCLUDED")]
+                COMMENTSVIEWMODEINCLUDED = 3,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -690,12 +776,50 @@ namespace Google.Apis.Slides.v1
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
                 });
+                RequestParameters.Add("commentsViewMode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentsViewMode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
 }
 namespace Google.Apis.Slides.v1.Data
 {
+    /// <summary>
+    /// Inserts a reply Post into a CommentThread. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class AddCommentReplyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentThread to add the reply to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>The Post representing the reply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("post")]
+        public virtual Post Post { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The result of creating a reply. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class AddCommentReplyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The newly-inserted reply Post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("post")]
+        public virtual Post Post { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to transform source coordinates (x,y)
     /// into destination coordinates (x', y') according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After
@@ -806,6 +930,13 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Response message from a batch update.</summary>
     public class BatchUpdatePresentationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether comment updates were applied in the batch request. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentUpdateState")]
+        public virtual string CommentUpdateState { get; set; }
+
         /// <summary>The presentation the updates were applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presentationId")]
         public virtual string PresentationId { get; set; }
@@ -875,6 +1006,61 @@ namespace Google.Apis.Slides.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual System.Nullable<float> Position { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains a list of all locations in a `Page` that are anchored to a CommentThread via the same anchorId.
+    /// Multiple separate anchors may refer to the same location, either within a `Page` or across different pages,
+    /// [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class CommentAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The unique ID of the comment anchor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anchorId")]
+        public virtual string AnchorId { get; set; }
+
+        /// <summary>Output only. All object ID-based locations within a page that refer to the anchor ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectAnchors")]
+        public virtual System.Collections.Generic.IList<ObjectAnchor> ObjectAnchors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a single comment thread inside a presentation. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class CommentThread : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentAnchor in the presentation that this thread is tied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anchorId")]
+        public virtual string AnchorId { get; set; }
+
+        /// <summary>The unique ID of the comment thread.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>The first post in the thread.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headPost")]
+        public virtual Post HeadPost { get; set; }
+
+        /// <summary>
+        /// The quoted text from the page element when the comment was created, formatted as plain-text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plainTextQuote")]
+        public virtual string PlainTextQuote { get; set; }
+
+        /// <summary>Replies to the head post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replies")]
+        public virtual System.Collections.Generic.IList<Post> Replies { get; set; }
+
+        /// <summary>Whether the thread is open or resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1309,6 +1495,39 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Deletes a reply Post from a CommentThread. Returns a 400 bad request error if: - The requesting user is not the
+    /// author of the post. - The reply post contains a comment action. - The reply post contains an assignee.
+    /// [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class DeleteCommentReplyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentThread which the post belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>The ID of the reply Post being deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
+        public virtual string PostId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Deletes a CommentThread. Returns a 400 bad request error if the requesting user is not the author of the
+    /// headPost. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class DeleteCommentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentThread that is being deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Deletes an object, either pages or page elements, from the presentation.</summary>
     public class DeleteObjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1601,6 +1820,66 @@ namespace Google.Apis.Slides.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transparency")]
         public virtual System.Nullable<float> Transparency { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inserts a CommentThread into the presentation. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class InsertCommentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The email address of the assignee of the comment. Leave empty for a non-assigned comment. May not
+        /// exceed 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assigneeEmailAddress")]
+        public virtual string AssigneeEmailAddress { get; set; }
+
+        /// <summary>
+        /// The text of the comment, as plain text. This text content will be handled similarly to comments created in
+        /// the Slides editor. It will have similar behaviors for formatting, notifications, etc. This field cannot be
+        /// empty, and must not exceed 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// The object ID of the Page or PageElement that is tied to this comment. If the specified object_id is a
+        /// Group, the comment will be anchored to at most 100 of the group's non-group descendants.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; }
+
+        /// <summary>Anchors a comment to a specific range of text within a Shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shapeTextAnchor")]
+        public virtual ShapeTextAnchor ShapeTextAnchor { get; set; }
+
+        /// <summary>
+        /// Anchors a comment to a specific range of cells within a Table. Returns a 400 bad request error if no cells
+        /// within the range contain text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableAnchor")]
+        public virtual TableAnchor TableAnchor { get; set; }
+
+        /// <summary>Anchors a comment to a specific range of text within a single cell in a Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableCellTextAnchor")]
+        public virtual TableCellTextAnchor TableCellTextAnchor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The result of creating a comment. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class InsertCommentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The newly-inserted comment thread.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentThread")]
+        public virtual CommentThread CommentThread { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1998,6 +2277,30 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents comment anchor data tied to a Slides object, for example a `Page` or PageElement. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class ObjectAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The page or page element that the comment thread is anchored to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; }
+
+        /// <summary>Populated for Shapes that have comments anchored to ranges of text in the shape's text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shapeTextAnchors")]
+        public virtual ShapeTextAnchors ShapeTextAnchors { get; set; }
+
+        /// <summary>
+        /// Populated for Tables that have comments anchored to ranges of text in one or more of the table's cells.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableCellAnchors")]
+        public virtual TableCellAnchors TableCellAnchors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A themeable solid color value.</summary>
     public class OpaqueColor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2072,6 +2375,29 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A page in a presentation.</summary>
     public class Page : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The comment anchors present on the page. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentAnchors")]
+        public virtual System.Collections.Generic.IList<CommentAnchor> CommentAnchors { get; set; }
+
+        /// <summary>
+        /// Output only. The comment threads associated with the page. Only populated if the page was fetched via a
+        /// GetPageRequest with a populated comments_view_mode. Otherwise, comments are returned in the Presentation via
+        /// the GetPresentationRequest. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comments")]
+        public virtual System.Collections.Generic.IList<CommentThread> Comments { get; set; }
+
+        /// <summary>
+        /// Output only. The comments view mode applied to the page. Only populated if the page was fetched via a
+        /// GetPageRequest with a populated comments_view_mode. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentsViewMode")]
+        public virtual string CommentsViewMode { get; set; }
+
         /// <summary>Layout specific properties. Only set if page_type = LAYOUT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layoutProperties")]
         public virtual LayoutProperties LayoutProperties { get; set; }
@@ -2382,9 +2708,188 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a single post in a comment thread. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class Post : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The email of the user who is being newly assigned to the thread as part of this post. Returns a
+        /// 400 bad request error if: - The parent thread is a CommentThread whose headPost does not have an assignee. -
+        /// commentAction is specified as `RESOLVE` or `REOPEN`. - `assignee_email` exceeds 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assigneeEmail")]
+        public virtual string AssigneeEmail { get; set; }
+
+        /// <summary>Output only. The user who created the post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual PostAuthor Author { get; set; }
+
+        /// <summary>Action taken as part of creating the post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentAction")]
+        public virtual string CommentAction { get; set; }
+
+        /// <summary>
+        /// The content of the post. Required to be non-empty if comment_action is not `RESOLVE` or `REOPEN`. This text
+        /// content will be handled similarly to comments created in the Slides editor. It will have similar behaviors
+        /// for formatting, notifications, etc. May not exceed 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Output only. The content of the post as HTML.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentHtml")]
+        public virtual string ContentHtml { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the post was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Whether the post is deleted. If `true`, content and author fields will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
+        public virtual System.Nullable<bool> Deleted { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the post is from a copied presentation. This field cannot be set directly by callers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromCopiedPresentation")]
+        public virtual System.Nullable<bool> FromCopiedPresentation { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the post is from an imported presentation. This field cannot be set directly by
+        /// callers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromImportedPresentation")]
+        public virtual System.Nullable<bool> FromImportedPresentation { get; set; }
+
+        /// <summary>Output only. The unique ID of the post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
+        public virtual string PostId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the post was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a user who authored a comment post. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class PostAuthor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the user is anonymous.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anonymous")]
+        public virtual System.Nullable<bool> Anonymous { get; set; }
+
+        /// <summary>The display name of the user. May be absent if the author is anonymous.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Whether the user is the authenticated user making the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("me")]
+        public virtual System.Nullable<bool> Me { get; set; }
+
+        /// <summary>
+        /// The resource name of the post author user, which can also be used to identify the user in the [Google People
+        /// API](https://developers.google.com/people/api/rest/v1/people). Format: `users/{user}`. Will not be populated
+        /// if the anonymous field is `true` or if the post is from an imported presentation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Google Slides presentation.</summary>
     public class Presentation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The comment threads associated with the presentation. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comments")]
+        public virtual System.Collections.Generic.IList<CommentThread> Comments { get; set; }
+
+        /// <summary>
+        /// Output only. The comments view mode applied to the presentation. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentsViewMode")]
+        public virtual string CommentsViewMode { get; set; }
+
         /// <summary>
         /// The layouts in the presentation. A layout is a template that determines how content is arranged and styled
         /// on the slides that inherit from that layout.
@@ -2687,6 +3192,12 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A single kind of update to apply to a presentation.</summary>
     public class Request : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Adds a reply to a CommentThread. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addCommentReply")]
+        public virtual AddCommentReplyRequest AddCommentReply { get; set; }
+
         /// <summary>Creates an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createImage")]
         public virtual CreateImageRequest CreateImage { get; set; }
@@ -2719,6 +3230,19 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createVideo")]
         public virtual CreateVideoRequest CreateVideo { get; set; }
 
+        /// <summary>
+        /// Deletes a CommentThread. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteComment")]
+        public virtual DeleteCommentRequest DeleteComment { get; set; }
+
+        /// <summary>
+        /// Deletes a reply Post from a CommentThread. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteCommentReply")]
+        public virtual DeleteCommentReplyRequest DeleteCommentReply { get; set; }
+
         /// <summary>Deletes a page or page element from the presentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObject")]
         public virtual DeleteObjectRequest DeleteObject { get; set; }
@@ -2746,6 +3270,13 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Groups objects, such as page elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupObjects")]
         public virtual GroupObjectsRequest GroupObjects { get; set; }
+
+        /// <summary>
+        /// Inserts a CommentThread into the presentation. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertComment")]
+        public virtual InsertCommentRequest InsertComment { get; set; }
 
         /// <summary>Inserts columns into a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTableColumns")]
@@ -2796,6 +3327,13 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Unmerges cells in a Table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmergeTableCells")]
         public virtual UnmergeTableCellsRequest UnmergeTableCells { get; set; }
+
+        /// <summary>
+        /// Updates an existing post (head post or reply) of a CommentThread. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateCommentPost")]
+        public virtual UpdateCommentPostRequest UpdateCommentPost { get; set; }
 
         /// <summary>Updates the properties of an Image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateImageProperties")]
@@ -2888,6 +3426,12 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>A single response from an update.</summary>
     public class Response : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The result of creating a reply. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addCommentReply")]
+        public virtual AddCommentReplyResponse AddCommentReply { get; set; }
+
         /// <summary>The result of creating an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createImage")]
         public virtual CreateImageResponse CreateImage { get; set; }
@@ -2923,6 +3467,12 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The result of grouping objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupObjects")]
         public virtual GroupObjectsResponse GroupObjects { get; set; }
+
+        /// <summary>
+        /// The result of creating a comment. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertComment")]
+        public virtual InsertCommentResponse InsertComment { get; set; }
 
         /// <summary>The result of replacing all shapes matching some criteria with an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllShapesWithImage")]
@@ -3115,6 +3665,39 @@ namespace Google.Apis.Slides.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shapeBackgroundFill")]
         public virtual ShapeBackgroundFill ShapeBackgroundFill { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An anchor to a specific range of text within a Shape's text. [Developer
+    /// Preview](https://developers.google.com/workspace/preview). To insert comments in speaker notes, use the
+    /// ShapeTextAnchor with the speaker notes object ID.
+    /// </summary>
+    public class ShapeTextAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object ID of the page element containing the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; }
+
+        /// <summary>The text range for the anchor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textRange")]
+        public virtual Range TextRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents text ranges within a shape covered by a comment anchor. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class ShapeTextAnchors : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of text ranges covered by the comment anchor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
+        public virtual System.Collections.Generic.IList<TextRange> Ranges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3345,6 +3928,27 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An anchor to a specific range of cells within a Table. Used to anchor a comment to all of the text in each cell
+    /// in a range within a table. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class TableAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object ID of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; }
+
+        /// <summary>
+        /// The range of cells in the table to apply the anchor to. If omitted, all cells in the table will be used for
+        /// the anchor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
+        public virtual TableRange TableRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The properties of each border cell.</summary>
     public class TableBorderCell : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3431,6 +4035,20 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents table cell ranges within a table covered by a comment anchor. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class TableCellAnchors : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of all table cells in a table that have text covered by the anchor in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellRanges")]
+        public virtual System.Collections.Generic.IList<TableCellTextRanges> CellRanges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The table cell background fill.</summary>
     public class TableCellBackgroundFill : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3481,6 +4099,46 @@ namespace Google.Apis.Slides.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCellBackgroundFill")]
         public virtual TableCellBackgroundFill TableCellBackgroundFill { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An anchor to a specific range of text within a TableCell's TextElement. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class TableCellTextAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location of the cell in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
+        public virtual TableCellLocation CellLocation { get; set; }
+
+        /// <summary>The object ID of the table containing the cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; }
+
+        /// <summary>The text range for the anchor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textRange")]
+        public virtual Range TextRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents text ranges within a table cell covered by a comment anchor. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class TableCellTextRanges : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location of the table cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellLocation")]
+        public virtual TableCellLocation CellLocation { get; set; }
+
+        /// <summary>A list of all text ranges covered by the anchor in this cell.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
+        public virtual System.Collections.Generic.IList<TextRange> Ranges { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3615,6 +4273,30 @@ namespace Google.Apis.Slides.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRun")]
         public virtual TextRun TextRun { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a contiguous range of text within a shape or table cell's text. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class TextRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The zero-based index of the end of the range. This field is an Int32Value in order to accommodate future use
+        /// cases with open-ended ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>
+        /// The zero-based index of the beginning range. This field is an Int32Value in order to accommodate future use
+        /// cases with open-ended ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3811,6 +4493,32 @@ namespace Google.Apis.Slides.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
         public virtual TableRange TableRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Updates a Post in a CommentThread. Returns a 400 bad request error if: - The requesting user is not the author
+    /// of the post. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class UpdateCommentPostRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentThread which the post belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>
+        /// The new text of the comment, as plain text. This text content will be handled similarly to comments created
+        /// in the Slides editor. It will have similar behaviors for formatting, notifications, etc. This field cannot
+        /// be empty, and must not exceed 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The ID of the post being updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
+        public virtual string PostId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
