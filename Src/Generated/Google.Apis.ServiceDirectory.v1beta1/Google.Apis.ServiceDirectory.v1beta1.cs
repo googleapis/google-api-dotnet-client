@@ -643,7 +643,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                         /// <summary>Updates an endpoint.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Immutable. The resource name for the endpoint in the format
+                        /// Identifier. The resource name for the endpoint in the format
                         /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1beta1.Data.Endpoint body, string name)
@@ -663,7 +663,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                             }
 
                             /// <summary>
-                            /// Immutable. The resource name for the endpoint in the format
+                            /// Identifier. The resource name for the endpoint in the format
                             /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1066,7 +1066,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                     /// <summary>Updates a service.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. The resource name for the service in the format
+                    /// Identifier. The resource name for the service in the format
                     /// `projects/*/locations/*/namespaces/*/services/*`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1beta1.Data.Service body, string name)
@@ -1086,7 +1086,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                         }
 
                         /// <summary>
-                        /// Immutable. The resource name for the service in the format
+                        /// Identifier. The resource name for the service in the format
                         /// `projects/*/locations/*/namespaces/*/services/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1877,7 +1877,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                 /// <summary>Updates a namespace.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
+                /// Identifier. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1beta1.Data.Namespace body, string name)
                 {
@@ -1896,7 +1896,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                     }
 
                     /// <summary>
-                    /// Immutable. The resource name for the namespace in the format
+                    /// Identifier. The resource name for the namespace in the format
                     /// `projects/*/locations/*/namespaces/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2390,7 +2390,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name for the endpoint in the format
+        /// Identifier. The resource name for the endpoint in the format
         /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2677,7 +2677,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
+        /// Identifier. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2915,7 +2915,8 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
+        /// Identifier. The resource name for the service in the format
+        /// `projects/*/locations/*/namespaces/*/services/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
