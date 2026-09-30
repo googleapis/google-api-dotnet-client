@@ -8,6 +8,12 @@
     "1",
     "2"
   ],
+  "Google.Apis.Docs.v1.DocumentsResource+GetRequest.CommentsViewModeEnum": [
+    "COMMENTS_VIEW_MODE_UNSPECIFIED",
+    "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS",
+    "COMMENTS_VIEW_MODE_OMITTED",
+    "COMMENTS_VIEW_MODE_INCLUDED"
+  ],
   "Google.Apis.Docs.v1.DocumentsResource+GetRequest.SuggestionsViewModeEnum": [
     "DEFAULT_FOR_CURRENT_ACCESS",
     "SUGGESTIONS_INLINE",
