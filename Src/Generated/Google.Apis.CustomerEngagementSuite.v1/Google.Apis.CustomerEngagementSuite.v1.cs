@@ -322,6 +322,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                 {
                     this.service = service;
                     Agents = new AgentsResource(service);
+                    AssistantSessions = new AssistantSessionsResource(service);
                     Changelogs = new ChangelogsResource(service);
                     Conversations = new ConversationsResource(service);
                     Deployments = new DeploymentsResource(service);
@@ -717,6 +718,148 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the AssistantSessions resource.</summary>
+                public virtual AssistantSessionsResource AssistantSessions { get; }
+
+                /// <summary>The "assistantSessions" collection of methods.</summary>
+                public class AssistantSessionsResource
+                {
+                    private const string Resource = "assistantSessions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AssistantSessionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Cancels the assistant session's in-flight turn, if any: the explicit user stop for a turn
+                    /// running detached from any stream. A cancel landing on a task that does not host the turn
+                    /// preempts it through the session turn epoch instead, ending it within one lease renewal.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The assistant session whose in-flight turn to cancel.</param>
+                    public virtual CancelAssistantTurnRequest CancelAssistantTurn(Google.Apis.CustomerEngagementSuite.v1.Data.CancelAssistantTurnRequest body, string name)
+                    {
+                        return new CancelAssistantTurnRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Cancels the assistant session's in-flight turn, if any: the explicit user stop for a turn
+                    /// running detached from any stream. A cancel landing on a task that does not host the turn
+                    /// preempts it through the session turn epoch instead, ending it within one lease renewal.
+                    /// </summary>
+                    public class CancelAssistantTurnRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1.Data.CancelAssistantTurnResponse>
+                    {
+                        /// <summary>Constructs a new CancelAssistantTurn request.</summary>
+                        public CancelAssistantTurnRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1.Data.CancelAssistantTurnRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The assistant session whose in-flight turn to cancel.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1.Data.CancelAssistantTurnRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancelAssistantTurn";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:cancelAssistantTurn";
+
+                        /// <summary>Initializes CancelAssistantTurn parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/assistantSessions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Runs the Chat AI assistant agent for the specified assistant session in a streaming fashion.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The assistant session to be used to run the assistant. Format:
+                    /// `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}`
+                    /// </param>
+                    public virtual StreamChatAiAssistantRequest StreamChatAiAssistant(Google.Apis.CustomerEngagementSuite.v1.Data.StreamChatAiAssistantRequest body, string name)
+                    {
+                        return new StreamChatAiAssistantRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Runs the Chat AI assistant agent for the specified assistant session in a streaming fashion.
+                    /// </summary>
+                    public class StreamChatAiAssistantRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1.Data.StreamChatAiAssistantResponse>
+                    {
+                        /// <summary>Constructs a new StreamChatAiAssistant request.</summary>
+                        public StreamChatAiAssistantRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1.Data.StreamChatAiAssistantRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The assistant session to be used to run the assistant. Format:
+                        /// `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CustomerEngagementSuite.v1.Data.StreamChatAiAssistantRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "streamChatAiAssistant";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:streamChatAiAssistant";
+
+                        /// <summary>Initializes StreamChatAiAssistant parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+/assistantSessions/[^/]+$",
                             });
                         }
                     }
@@ -4738,6 +4881,75 @@ namespace Google.Apis.CustomerEngagementSuite.v1
                     }
                 }
 
+                /// <summary>
+                /// Generates personalized onboarding suggestions for the AI assistant zero state: classifies the
+                /// requesting user (new / exploring / returning) from their assistant-session history in the app and
+                /// returns suggestion chips (resume a session, continue work, or start something new) to render before
+                /// any message is sent.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The app whose zero state is being rendered. Format:
+                /// `projects/{project}/locations/{location}/apps/{app}`
+                /// </param>
+                public virtual GenerateOnboardingSuggestionsRequest GenerateOnboardingSuggestions(Google.Apis.CustomerEngagementSuite.v1.Data.GenerateOnboardingSuggestionsRequest body, string name)
+                {
+                    return new GenerateOnboardingSuggestionsRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Generates personalized onboarding suggestions for the AI assistant zero state: classifies the
+                /// requesting user (new / exploring / returning) from their assistant-session history in the app and
+                /// returns suggestion chips (resume a session, continue work, or start something new) to render before
+                /// any message is sent.
+                /// </summary>
+                public class GenerateOnboardingSuggestionsRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1.Data.GenerateOnboardingSuggestionsResponse>
+                {
+                    /// <summary>Constructs a new GenerateOnboardingSuggestions request.</summary>
+                    public GenerateOnboardingSuggestionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CustomerEngagementSuite.v1.Data.GenerateOnboardingSuggestionsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The app whose zero state is being rendered. Format:
+                    /// `projects/{project}/locations/{location}/apps/{app}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CustomerEngagementSuite.v1.Data.GenerateOnboardingSuggestionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateOnboardingSuggestions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:generateOnboardingSuggestions";
+
+                    /// <summary>Initializes GenerateOnboardingSuggestions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/apps/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of the specified app.</summary>
                 /// <param name="name">Required. The resource name of the app to retrieve.</param>
                 public virtual GetRequest Get(string name)
@@ -6607,6 +6819,227 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         }
     }
 
+    /// <summary>
+    /// A streamed fragment of a document artifact (e.g. a markdown TDD) that the assistant is generating. Content
+    /// deltas stream while the document is being written so clients can render a live preview; the FINALIZED chunk
+    /// carries the GCS URI once the file has been persisted.
+    /// </summary>
+    public class ArtifactChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier of the artifact, stable across all chunks of one artifact within the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
+        public virtual string ArtifactId { get; set; }
+
+        /// <summary>Incremental artifact content. Set on DELTA chunks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentDelta")]
+        public virtual string ContentDelta { get; set; }
+
+        /// <summary>
+        /// The file name shown to the user, e.g. "hotel_booking_tdd.md". Set on STARTED (and repeated on FINALIZED).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The GCS object the artifact was persisted to. Set on FINALIZED chunks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The IANA media type of the artifact content, e.g. "text/markdown".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>Lifecycle position of this chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A blocking question or confirmation the assistant needs answered before an agent action can proceed. The
+    /// requesting agent is paused and resumes only when the answer arrives on a later
+    /// StreamChatAiAssistantRequest.confirmation_response.
+    /// </summary>
+    public class AssistantConfirmationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Display label of the agent that raised the confirmation (e.g. `"Contract Architect"`), for the card header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentName")]
+        public virtual string AgentName { get; set; }
+
+        /// <summary>
+        /// Identifier correlating this request with its response. Opaque to clients; must be echoed verbatim on the
+        /// answering request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmationId")]
+        public virtual string ConfirmationId { get; set; }
+
+        /// <summary>
+        /// Context describing what is being confirmed (e.g. the action the agent wants to take, or the question it
+        /// needs answered). Rendered as plain text, not Markdown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual string Context { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Time after which this confirmation can no longer be answered. An expired card renders as inactive, and the
+        /// server declines the confirmation on the next turn so the paused agent does not wait indefinitely.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Label for the declining action of a binary confirmation (e.g. "Not yet"). Unset when `questions` is
+        /// populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negativeLabel")]
+        public virtual string NegativeLabel { get; set; }
+
+        /// <summary>
+        /// Label for the approving action of a binary confirmation (e.g. "Publish"). Unset when `questions` is
+        /// populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positiveLabel")]
+        public virtual string PositiveLabel { get; set; }
+
+        /// <summary>
+        /// Multi-choice form of the confirmation. When populated, the card renders a selectable option list and the
+        /// chosen option's submit_text (or free-form user text) is returned as
+        /// AssistantConfirmationResponse.answer_text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questions")]
+        public virtual System.Collections.Generic.IList<OptionQuestionsChunkQuestion> Questions { get; set; }
+
+        /// <summary>
+        /// Name of the tool call the agent paused on (e.g. "update_app"), for the card header. Unset for pure
+        /// questions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The user's answer to an AssistantConfirmationRequest, sent on the next SessionService.StreamChatAiAssistant call
+    /// to resume the paused agent.
+    /// </summary>
+    public class AssistantConfirmationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The chosen option's submit_text, or free-form user text. The paused action is cancelled and the text is
+        /// handed to the agent to act on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
+        public virtual string AnswerText { get; set; }
+
+        /// <summary>The AssistantConfirmationRequest.confirmation_id being answered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmationId")]
+        public virtual string ConfirmationId { get; set; }
+
+        /// <summary>Binary answer: true approves the paused action, false declines it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmed")]
+        public virtual System.Nullable<bool> Confirmed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single personalized onboarding suggestion chip for the AI assistant's zero state.</summary>
+    public class AssistantSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Rule-table candidate type in kebab-case (e.g. "resume-pending-review"), for metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidateType")]
+        public virtual string CandidateType { get; set; }
+
+        /// <summary>Icon hint for the chip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual string Icon { get; set; }
+
+        /// <summary>Chip label shown to the user (at most 60 characters).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Open an existing assistant session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadSession")]
+        public virtual AssistantSuggestionLoadSession LoadSession { get; set; }
+
+        /// <summary>Optional short explanation of why this suggestion is shown (tooltip / rationale popover).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rationale")]
+        public virtual string Rationale { get; set; }
+
+        /// <summary>Prefill the composer with this text; the user reviews and sends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seedPrompt")]
+        public virtual string SeedPrompt { get; set; }
+
+        /// <summary>
+        /// Prefill the composer with this text and submit immediately. Only used for quick-reply chips inside an active
+        /// onboarding conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendMessage")]
+        public virtual string SendMessage { get; set; }
+
+        /// <summary>How this suggestion was produced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Stable identifier for this suggestion, round-tripped by clients in interaction logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionId")]
+        public virtual string SuggestionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters for the load_session action.</summary>
+    public class AssistantSuggestionLoadSession : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier of the assistant session to open (the final segment of the AssistantSession resource name).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistantSessionId")]
+        public virtual string AssistantSessionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for how the input and output audio should be processed and delivered.</summary>
     public class AudioProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6777,6 +7210,34 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Required. The python code to execute for the callback.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonCode")]
         public virtual string PythonCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to cancel an assistant session's in-flight turn.</summary>
+    public class CancelAssistantTurnRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The turn to cancel; empty cancels whichever turn is running. A cancel naming a turn that is no
+        /// longer the running one is a no-op.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnId")]
+        public virtual string TurnId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for CancelAssistantTurn.</summary>
+    public class CancelAssistantTurnResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether an in-flight turn was found and asked to stop (directly on this task, or through an epoch preemption
+        /// for a turn hosted elsewhere).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelled")]
+        public virtual System.Nullable<bool> Cancelled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7535,11 +7996,38 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string VoiceInstruction { get; set; }
 
         /// <summary>
+        /// Optional. Instruction mode for the voice sample. If unspecified, defaults to NO_INSTRUCTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceInstructionMode")]
+        public virtual string VoiceInstructionMode { get; set; }
+
+        /// <summary>
         /// Optional. The Cloud Storage URI to the audio sample for voice cloning. The audio sample should be a
         /// mono-channel, 24kHz WAV file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceSampleGcsUri")]
         public virtual string VoiceSampleGcsUri { get; set; }
+
+        /// <summary>
+        /// Output only. Warning messages encountered during voice clone processing (e.g. low audio level).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<CustomVoiceSampleWarning> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A warning message encountered during voice sample processing.</summary>
+    public class CustomVoiceSampleWarning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A human-readable description of the warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Output only. The type of the warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8834,6 +9322,39 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SessionService.GenerateOnboardingSuggestions.</summary>
+    public class GenerateOnboardingSuggestionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Maximum number of suggestions to return. Defaults to 4 when unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSuggestions")]
+        public virtual System.Nullable<int> MaxSuggestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SessionService.GenerateOnboardingSuggestions.</summary>
+    public class GenerateOnboardingSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Opaque token capturing the onboarding snapshot used to generate these suggestions. Clients echo it on the
+        /// first StreamChatAiAssistantRequest so the server can reuse the snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextToken")]
+        public virtual string ContextToken { get; set; }
+
+        /// <summary>Personalized suggestions, ranked most relevant first.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
+        public virtual System.Collections.Generic.IList<AssistantSuggestion> Suggestions { get; set; }
+
+        /// <summary>Classification of the requesting user's history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userProfile")]
+        public virtual string UserProfile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11083,6 +11604,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
         public virtual System.Nullable<double> Temperature { get; set; }
 
+        /// <summary>Optional. The thinking level of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingLevel")]
+        public virtual string ThinkingLevel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11253,6 +11778,48 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Event sent by the client or background worker to resume an assistant session after an asynchronous Long-Running
+    /// Operation (LRO) completes.
+    /// </summary>
+    public class OperationCompletedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional deduplication token (e.g. UUID) to prevent duplicate turn execution from concurrent browser tabs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deduplicationToken")]
+        public virtual string DeduplicationToken { get; set; }
+
+        /// <summary>Optional canonical error status if the operation failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Optional structured result metadata (e.g. pass_rate, total_examples, export_uri).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The operation resource name (e.g. `operations/{op}`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationName")]
+        public virtual string OperationName { get; set; }
+
+        /// <summary>The operation type or tool name (e.g. "run_evaluation", "copy_app", "export_app").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
+        /// <summary>Status of the operation run (e.g. "SUCCEEDED", "FAILED", "CANCELLED").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>
+        /// The primary resource targeted or produced by the operation (e.g. evaluation run ID, app ID, dataset ID).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceName")]
+        public virtual string TargetResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11341,6 +11908,55 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Structured clarification options the assistant asks the user to choose among, transduced server-side out of the
+    /// model's turn (the option block is stripped from the streamed and persisted text). The console renders a
+    /// keyboard-navigable option list docked above the composer.
+    /// </summary>
+    public class OptionQuestionsChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The questions asked this turn. More than one entry drives the console's "1 of N" pager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questions")]
+        public virtual System.Collections.Generic.IList<OptionQuestionsChunkQuestion> Questions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single selectable option.</summary>
+    public class OptionQuestionsChunkOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional trade-off details shown as secondary text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>Optional message text to send when the option is chosen; defaults to `title` when empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submitText")]
+        public virtual string SubmitText { get; set; }
+
+        /// <summary>Short plain-text option title (no markdown, no numbering).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>One question with its options.</summary>
+    public class OptionQuestionsChunkQuestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The selectable options, in presentation order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual System.Collections.Generic.IList<OptionQuestionsChunkOption> Options { get; set; }
+
+        /// <summary>The question header text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11868,6 +12484,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Session checkpoint containing inferred user intent for session title and UI.</summary>
+    public class SessionCheckpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inferred user goal or topic for the session (e.g. "Building E-Commerce Support Agent").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIntent")]
+        public virtual string UserIntent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration for the session.</summary>
     public class SessionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12039,10 +12666,6 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Citations that provide the source information for the agent's generated text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
         public virtual Citations Citations { get; set; }
-
-        /// <summary>Context messages for external supervision guardrails.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Context { get; set; }
 
         /// <summary>
         /// Optional. Diagnostic information contains execution details during the processing of the input. Only
@@ -12240,16 +12863,202 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for SessionService.StreamChatAiAssistant.</summary>
+    public class StreamChatAiAssistantRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional flag to attach to an existing in-flight turn without submitting a new message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachOnly")]
+        public virtual System.Nullable<bool> AttachOnly { get; set; }
+
+        /// <summary>
+        /// Optional. Cloud Storage URIs for files uploaded by the user during this turn. Example:
+        /// "gs://cxas-transient-uploads/uuid/prd.pdf"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedGcsUris")]
+        public virtual System.Collections.Generic.IList<string> AttachedGcsUris { get; set; }
+
+        /// <summary>
+        /// Optional. Response features this client can render. The server only emits events that need a capability
+        /// (e.g. `confirmation_request`) when the capability is declared, so older clients never receive events they
+        /// would silently drop.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCapabilities")]
+        public virtual System.Collections.Generic.IList<string> ClientCapabilities { get; set; }
+
+        /// <summary>
+        /// Optional. The user's answer to a pending AssistantConfirmationRequest. When set, the server resumes the
+        /// paused agent with this answer instead of (or in addition to) starting a new prompt turn.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmationResponse")]
+        public virtual AssistantConfirmationResponse ConfirmationResponse { get; set; }
+
+        /// <summary>
+        /// Optional. Opaque onboarding context token returned by SessionService.GenerateOnboardingSuggestions. When set
+        /// and still fresh, the server reuses the onboarding snapshot computed for the zero state instead of
+        /// recomputing it for the first conversation turn.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextToken")]
+        public virtual string ContextToken { get; set; }
+
+        /// <summary>
+        /// Optional. The message to send to the assistant agent. May be empty when `confirmation_response` is set
+        /// (answering a pending confirmation without adding a new message); at least one of the two must be provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// Optional. Resumes an assistant session paused waiting for a client-managed long-running operation to
+        /// complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationCompletedEvent")]
+        public virtual OperationCompletedEvent OperationCompletedEvent { get; set; }
+
+        /// <summary>
+        /// Optional. Optional cursor to resume and replay events from an in-flight or completed turn.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resumeFromSequenceNumber")]
+        public virtual System.Nullable<long> ResumeFromSequenceNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SessionService.StreamChatAiAssistant.</summary>
+    public class StreamChatAiAssistantResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Generated-document artifact event (live preview deltas + final GCS pointer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactChunk")]
+        public virtual ArtifactChunk ArtifactChunk { get; set; }
+
+        /// <summary>
+        /// A blocking confirmation the agent paused on. The agent resumes when the answer arrives on a later request's
+        /// `confirmation_response`. Only sent to clients that declared the CONFIRMATION_CARDS capability on the
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confirmationRequest")]
+        public virtual AssistantConfirmationRequest ConfirmationRequest { get; set; }
+
+        /// <summary>Unique identifier for the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Timestamp when the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Tells the client to silently reconnect with resume_from_sequence_number: the task serving this stream is
+        /// going away and the turn will continue elsewhere. Not an error; the stream completes normally after this
+        /// event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handoff")]
+        public virtual TurnHandoffEvent Handoff { get; set; }
+
+        /// <summary>
+        /// Structured clarification options parsed out of the model turn. The console renders these as a selectable
+        /// option list instead of raw text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optionQuestionsChunk")]
+        public virtual OptionQuestionsChunk OptionQuestionsChunk { get; set; }
+
+        /// <summary>
+        /// A compacted replay of an in-flight turn, sent as the first event of every attach or resume before any live
+        /// event. The client replaces any locally rendered state for this turn with the snapshot's contents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resumeSnapshot")]
+        public virtual TurnResumeSnapshot ResumeSnapshot { get; set; }
+
+        /// <summary>Optional. Monotonically increasing sequence number for this session turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sequenceNumber")]
+        public virtual System.Nullable<long> SequenceNumber { get; set; }
+
+        /// <summary>Session checkpoint/compaction recap event containing user intent and rolling summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionCheckpoint")]
+        public virtual SessionCheckpoint SessionCheckpoint { get; set; }
+
+        /// <summary>Simple status update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; }
+
+        /// <summary>Text Token (for streaming Gemini responses word-by-word).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textChunk")]
+        public virtual string TextChunk { get; set; }
+
+        /// <summary>Thought text chunk (agent's reasoning before generating response).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thoughtChunk")]
+        public virtual string ThoughtChunk { get; set; }
+
+        /// <summary>Tool call execution event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCall")]
+        public virtual ToolCall ToolCall { get; set; }
+
+        /// <summary>Tool call response event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolResponse")]
+        public virtual ToolResponse ToolResponse { get; set; }
+
+        /// <summary>
+        /// The turn has ended. Sent as the last event of every turn, on the original stream and on every attached or
+        /// resumed stream, so clients can end the turn on an explicit signal instead of inferring it from stream
+        /// closure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnCompleted")]
+        public virtual TurnCompletedEvent TurnCompleted { get; set; }
+
+        /// <summary>Optional. Indicates whether the turn is still actively running in the background.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnInProgress")]
+        public virtual System.Nullable<bool> TurnInProgress { get; set; }
+
+        /// <summary>Optional. Turn-level metadata and intent categorization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnMetadata")]
+        public virtual TurnMetadata TurnMetadata { get; set; }
+
+        /// <summary>Optional. UI event payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uiEvent")]
+        public virtual UiEvent UiEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for how the agent response should be synthesized.</summary>
     public class SynthesizeSpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead. The Cloud Storage URI to
-        /// the consent audio for voice cloning.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consentAudioGcsUri")]
-        public virtual string ConsentAudioGcsUri { get; set; }
-
         /// <summary>Optional. The instruction used to synthesize speech when using a generative model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instruction")]
         public virtual string Instruction { get; set; }
@@ -12276,15 +13085,6 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voice")]
         public virtual string Voice { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated: Use `custom_voice_samples` in AudioProcessingConfig instead. The Cloud Storage URI to
-        /// the audio sample for voice cloning. The audio sample should be a mono-channel, 24kHz WAV file. Note: Please
-        /// make sure the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get`
-        /// permission to the Cloud Storage object.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("voiceSampleGcsUri")]
-        public virtual string VoiceSampleGcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12470,6 +13270,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Optional. The python function tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonFunction")]
         public virtual PythonFunction PythonFunction { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the tool is read-only. If true, the tool cannot be modified by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
         /// <summary>Optional. The remote agent tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteAgentTool")]
@@ -12942,6 +13748,170 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Terminal event of a turn (see StreamChatAiAssistantResponse.turn_completed).</summary>
+    public class TurnCompletedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Sequence number of the last event the turn produced. A client whose cursor is lower missed content and
+        /// should reload the session to see it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalSequenceNumber")]
+        public virtual System.Nullable<long> FinalSequenceNumber { get; set; }
+
+        /// <summary>Why the turn ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>
+        /// Identifier of the turn that ended; matches TurnResumeSnapshot.turn_id and ActiveTurnInfo.turn_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnId")]
+        public virtual string TurnId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Emitted before this task stops serving the stream mid-turn (e.g. a server restart). The turn's state is
+    /// persisted; a reconnect carrying resume_from_sequence_number continues it on another task.
+    /// </summary>
+    public class TurnHandoffEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Why the stream is handing off.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>Identifies the turn to resume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnId")]
+        public virtual string TurnId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Turn-level metadata and intent categorization.</summary>
+    public class TurnMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Set on the terminal event of a contract draft whose every placeholder is resolved (contract_progress is
+        /// 100%), whether or not the draft was published. Clients complete and dismiss the contract progress display on
+        /// it; publication is reported separately by contract_finalized.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contractDraftComplete")]
+        public virtual System.Nullable<bool> ContractDraftComplete { get; set; }
+
+        /// <summary>
+        /// Set on the final artifact event of a turn whose contract draft was published (a revision was activated).
+        /// Terminal for the clarification flow of this draft: contract_progress is authoritative and complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contractFinalized")]
+        public virtual System.Nullable<bool> ContractFinalized { get; set; }
+
+        /// <summary>
+        /// Indicates whether this assistant turn was contract-related (e.g. contract drafting, alignment, extraction,
+        /// or revision).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contractRelated")]
+        public virtual System.Nullable<bool> ContractRelated { get; set; }
+
+        /// <summary>
+        /// Set only on in-flight progress estimates emitted while a contract artifact fence is streaming, and on the
+        /// revision-turn-start event. Unset on authoritative payloads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contractStreamingPhase")]
+        public virtual string ContractStreamingPhase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A compacted replay of an in-flight turn: everything needed to render the turn's visible output so far, plus the
+    /// position live events continue from.
+    /// </summary>
+    public class TurnResumeSnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Compacted events reconstructing the turn's visible output, in render order, using the same event shapes as
+        /// live streaming.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("events")]
+        public virtual System.Collections.Generic.IList<StreamChatAiAssistantResponse> Events { get; set; }
+
+        private string _orphanDeadlineTimeRaw;
+
+        private object _orphanDeadlineTime;
+
+        /// <summary>When the turn will be wound down if no client remains attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orphanDeadlineTime")]
+        public virtual string OrphanDeadlineTimeRaw
+        {
+            get => _orphanDeadlineTimeRaw;
+            set
+            {
+                _orphanDeadlineTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _orphanDeadlineTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="OrphanDeadlineTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OrphanDeadlineTimeDateTimeOffset instead.")]
+        public virtual object OrphanDeadlineTime
+        {
+            get => _orphanDeadlineTime;
+            set
+            {
+                _orphanDeadlineTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _orphanDeadlineTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="OrphanDeadlineTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OrphanDeadlineTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OrphanDeadlineTimeRaw);
+            set => OrphanDeadlineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The position this snapshot represents. Live events follow with sequence_number strictly greater than this.
+        /// When lower than the resume_from_sequence_number the client requested, flushed progress lags what the client
+        /// already rendered: the client must discard its rendered content of this turn beyond this position before
+        /// applying the snapshot.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedSequenceNumber")]
+        public virtual System.Nullable<long> ResolvedSequenceNumber { get; set; }
+
+        /// <summary>Identifies the turn being attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turnId")]
+        public virtual string TurnId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a UI event payload.</summary>
+    public class UiEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JSON payload representing the A2UI surface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonPayload")]
+        public virtual string JsonPayload { get; set; }
+
+        /// <summary>
+        /// The media type (MIME type) indicating the format of the UI event payload (e.g., "application/json+a2ui").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
