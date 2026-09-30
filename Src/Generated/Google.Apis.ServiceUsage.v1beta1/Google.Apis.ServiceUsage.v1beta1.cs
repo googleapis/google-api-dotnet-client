@@ -3839,12 +3839,12 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The consumer policy rule that defines enabled services and groups.</summary>
+    /// <summary>The consumer policy rule that defines enabled services and catalogs.</summary>
     public class EnableRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Deprecated: EnableType is not supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableType")]
-        public virtual string EnableType { get; set; }
+        /// <summary>The names of the catalogs that are enabled. Example: `catalogs/default-cloud-services`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogs")]
+        public virtual System.Collections.Generic.IList<string> Catalogs { get; set; }
 
         /// <summary>The names of the services that are enabled. Example: `services/storage.googleapis.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
@@ -4868,6 +4868,10 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// <summary>The consumer policy rule that defines enabled services, groups, and categories.</summary>
     public class GoogleApiServiceusageV2betaEnableRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The names of the catalogs that are enabled. Example: `catalogs/default-cloud-services`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("catalogs")]
+        public virtual System.Collections.Generic.IList<string> Catalogs { get; set; }
+
         /// <summary>The names of the services that are enabled. Example: `services/storage.googleapis.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
