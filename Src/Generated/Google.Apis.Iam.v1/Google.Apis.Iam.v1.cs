@@ -2634,6 +2634,69 @@ namespace Google.Apis.Iam.v1
                     }
                 }
 
+                /// <summary>Revokes all sessions for a given WorkforcePoolSubject.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the WorkforcePoolSubject. Special characters, like `/` and `:`, must
+                /// be escaped, because all URLs need to conform to the "When to Escape and Unescape" section of
+                /// [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
+                /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
+                /// </param>
+                public virtual RevokeSessionsRequest RevokeSessions(Google.Apis.Iam.v1.Data.RevokeWorkforcePoolSubjectSessionsRequest body, string name)
+                {
+                    return new RevokeSessionsRequest(this.service, body, name);
+                }
+
+                /// <summary>Revokes all sessions for a given WorkforcePoolSubject.</summary>
+                public class RevokeSessionsRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RevokeSessions request.</summary>
+                    public RevokeSessionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.RevokeWorkforcePoolSubjectSessionsRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the WorkforcePoolSubject. Special characters, like `/` and `:`,
+                    /// must be escaped, because all URLs need to conform to the "When to Escape and Unescape" section
+                    /// of [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
+                    /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.RevokeWorkforcePoolSubjectSessionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "revokeSessions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:revokeSessions";
+
+                    /// <summary>Initializes RevokeSessions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^locations/[^/]+/workforcePools/[^/]+/subjects/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Undeletes a WorkforcePoolSubject, as long as it was deleted fewer than 30 days ago.
                 /// </summary>
@@ -12420,6 +12483,13 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attestationRule")]
         public virtual AttestationRule AttestationRule { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for RevokeWorkforcePoolSubjectSessions.</summary>
+    public class RevokeWorkforcePoolSubjectSessionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
