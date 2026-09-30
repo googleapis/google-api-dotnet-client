@@ -4390,6 +4390,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nearbyNotificationStreaming")]
         public virtual string NearbyNotificationStreaming { get; set; }
 
+        /// <summary>
+        /// Optional. Controls the task continuity handoff
+        /// (https://developer.android.com/partners/android-17/features#handoff) feature. This policy applies to the
+        /// entire device for fully managed devices, and to the work profile for devices with a work profile. Requires
+        /// Android 17 QPR1 or higher.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskContinuityHandoff")]
+        public virtual string TaskContinuityHandoff { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4408,22 +4417,23 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string CrossProfileAppFunctions { get; set; }
 
         /// <summary>
-        /// Whether text copied from one profile (personal or work) can be pasted in the other profile.
+        /// Optional. Whether text copied from one profile (personal or work) can be pasted in the other profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossProfileCopyPaste")]
         public virtual string CrossProfileCopyPaste { get; set; }
 
         /// <summary>
-        /// Whether data from one profile (personal or work) can be shared with apps in the other profile. Specifically
-        /// controls simple data sharing via intents. Management of other cross-profile communication channels, such as
-        /// contact search, copy/paste, or connected work &amp;amp; personal apps, are configured separately.
+        /// Optional. Whether data from one profile (personal or work) can be shared with apps in the other profile.
+        /// Specifically controls simple data sharing via intents. Management of other cross-profile communication
+        /// channels, such as contact search, copy/paste, or connected work &amp;amp; personal apps, are configured
+        /// separately.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossProfileDataSharing")]
         public virtual string CrossProfileDataSharing { get; set; }
 
         /// <summary>
-        /// List of apps which are excluded from the ShowWorkContactsInPersonalProfile setting. For this to be set,
-        /// ShowWorkContactsInPersonalProfile must be set to one of the following values:
+        /// Optional. List of apps which are excluded from the ShowWorkContactsInPersonalProfile setting. For this to be
+        /// set, ShowWorkContactsInPersonalProfile must be set to one of the following values:
         /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED. In this case, these exemptions act as a blocklist.
         /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED. In this case, these exemptions act as an allowlist.
         /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM. In this case, these exemptions act as an
@@ -4434,14 +4444,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual PackageNameList ExemptionsToShowWorkContactsInPersonalProfile { get; set; }
 
         /// <summary>
-        /// Whether personal apps can access contacts stored in the work profile.See also
+        /// Optional. Whether personal apps can access contacts stored in the work profile.See also
         /// exemptions_to_show_work_contacts_in_personal_profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showWorkContactsInPersonalProfile")]
         public virtual string ShowWorkContactsInPersonalProfile { get; set; }
 
         /// <summary>
-        /// Specifies the default behaviour for work profile widgets. If the policy does not specify
+        /// Optional. Specifies the default behaviour for work profile widgets. If the policy does not specify
         /// work_profile_widgets for a specific application, it will behave according to the value specified here.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workProfileWidgetsDefault")]
@@ -6207,29 +6217,30 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// </summary>
     public class KioskCustomization : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies whether the Settings app is allowed in kiosk mode.</summary>
+        /// <summary>Optional. Specifies whether the Settings app is allowed in kiosk mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceSettings")]
         public virtual string DeviceSettings { get; set; }
 
         /// <summary>
-        /// Sets the behavior of a device in kiosk mode when a user presses and holds (long-presses) the Power button.
+        /// Optional. Sets the behavior of a device in kiosk mode when a user presses and holds (long-presses) the Power
+        /// button.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("powerButtonActions")]
         public virtual string PowerButtonActions { get; set; }
 
-        /// <summary>Specifies whether system info and notifications are disabled in kiosk mode.</summary>
+        /// <summary>Optional. Specifies whether system info and notifications are disabled in kiosk mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusBar")]
         public virtual string StatusBar { get; set; }
 
         /// <summary>
-        /// Specifies whether system error dialogs for crashed or unresponsive apps are blocked in kiosk mode. When
-        /// blocked, the system will force-stop the app as if the user chooses the "close app" option on the UI.
+        /// Optional. Specifies whether system error dialogs for crashed or unresponsive apps are blocked in kiosk mode.
+        /// When blocked, the system will force-stop the app as if the user chooses the "close app" option on the UI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemErrorWarnings")]
         public virtual string SystemErrorWarnings { get; set; }
 
         /// <summary>
-        /// Specifies which navigation features are enabled (e.g. Home, Overview buttons) in kiosk mode.
+        /// Optional. Specifies which navigation features are enabled (e.g. Home, Overview buttons) in kiosk mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemNavigation")]
         public virtual string SystemNavigation { get; set; }
@@ -7013,90 +7024,93 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class PasswordRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Number of incorrect device-unlock passwords that can be entered before a device is wiped. A value of 0 means
-        /// there is no restriction.
+        /// Optional. Number of incorrect device-unlock passwords that can be entered before a device is wiped. A value
+        /// of 0 means there is no restriction.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumFailedPasswordsForWipe")]
         public virtual System.Nullable<int> MaximumFailedPasswordsForWipe { get; set; }
 
-        /// <summary>Password expiration timeout.</summary>
+        /// <summary>Optional. Password expiration timeout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordExpirationTimeout")]
         public virtual object PasswordExpirationTimeout { get; set; }
 
         /// <summary>
-        /// The length of the password history. After setting this field, the user won't be able to enter a new password
-        /// that is the same as any password in the history. A value of 0 means there is no restriction.
+        /// Optional. The length of the password history. After setting this field, the user won't be able to enter a
+        /// new password that is the same as any password in the history. A value of 0 means there is no restriction.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordHistoryLength")]
         public virtual System.Nullable<int> PasswordHistoryLength { get; set; }
 
         /// <summary>
-        /// The minimum allowed password length. A value of 0 means there is no restriction. Only enforced when
-        /// password_quality is NUMERIC, NUMERIC_COMPLEX, ALPHABETIC, ALPHANUMERIC, or COMPLEX.
+        /// Optional. The minimum allowed password length. A value of 0 means there is no restriction. Only enforced
+        /// when password_quality is NUMERIC, NUMERIC_COMPLEX, ALPHABETIC, ALPHANUMERIC, or COMPLEX.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumLength")]
         public virtual System.Nullable<int> PasswordMinimumLength { get; set; }
 
         /// <summary>
-        /// Minimum number of letters required in the password. Only enforced when password_quality is COMPLEX.
+        /// Optional. Minimum number of letters required in the password. Only enforced when password_quality is
+        /// COMPLEX.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumLetters")]
         public virtual System.Nullable<int> PasswordMinimumLetters { get; set; }
 
         /// <summary>
-        /// Minimum number of lower case letters required in the password. Only enforced when password_quality is
-        /// COMPLEX.
+        /// Optional. Minimum number of lower case letters required in the password. Only enforced when password_quality
+        /// is COMPLEX.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumLowerCase")]
         public virtual System.Nullable<int> PasswordMinimumLowerCase { get; set; }
 
         /// <summary>
-        /// Minimum number of non-letter characters (numerical digits or symbols) required in the password. Only
-        /// enforced when password_quality is COMPLEX.
+        /// Optional. Minimum number of non-letter characters (numerical digits or symbols) required in the password.
+        /// Only enforced when password_quality is COMPLEX.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumNonLetter")]
         public virtual System.Nullable<int> PasswordMinimumNonLetter { get; set; }
 
         /// <summary>
-        /// Minimum number of numerical digits required in the password. Only enforced when password_quality is COMPLEX.
+        /// Optional. Minimum number of numerical digits required in the password. Only enforced when password_quality
+        /// is COMPLEX.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumNumeric")]
         public virtual System.Nullable<int> PasswordMinimumNumeric { get; set; }
 
         /// <summary>
-        /// Minimum number of symbols required in the password. Only enforced when password_quality is COMPLEX.
+        /// Optional. Minimum number of symbols required in the password. Only enforced when password_quality is
+        /// COMPLEX.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumSymbols")]
         public virtual System.Nullable<int> PasswordMinimumSymbols { get; set; }
 
         /// <summary>
-        /// Minimum number of upper case letters required in the password. Only enforced when password_quality is
-        /// COMPLEX.
+        /// Optional. Minimum number of upper case letters required in the password. Only enforced when password_quality
+        /// is COMPLEX.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumUpperCase")]
         public virtual System.Nullable<int> PasswordMinimumUpperCase { get; set; }
 
-        /// <summary>The required password quality.</summary>
+        /// <summary>Optional. The required password quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordQuality")]
         public virtual string PasswordQuality { get; set; }
 
-        /// <summary>The scope that the password requirement applies to.</summary>
+        /// <summary>Optional. The scope that the password requirement applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordScope")]
         public virtual string PasswordScope { get; set; }
 
         /// <summary>
-        /// The length of time after a device or work profile is unlocked using a strong form of authentication
-        /// (password, PIN, pattern) that it can be unlocked using any other authentication method (e.g. fingerprint,
-        /// trust agents, face). After the specified time period elapses, only strong forms of authentication can be
-        /// used to unlock the device or work profile.
+        /// Optional. The length of time after a device or work profile is unlocked using a strong form of
+        /// authentication (password, PIN, pattern) that it can be unlocked using any other authentication method (e.g.
+        /// fingerprint, trust agents, face). After the specified time period elapses, only strong forms of
+        /// authentication can be used to unlock the device or work profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirePasswordUnlock")]
         public virtual string RequirePasswordUnlock { get; set; }
 
         /// <summary>
-        /// Controls whether a unified lock is allowed for the device and the work profile, on devices running Android 9
-        /// and above with a work profile. This can be set only if password_scope is set to SCOPE_PROFILE, the policy
-        /// will be rejected otherwise. If user has not set a separate work lock and this field is set to
+        /// Optional. Controls whether a unified lock is allowed for the device and the work profile, on devices running
+        /// Android 9 and above with a work profile. This can be set only if password_scope is set to SCOPE_PROFILE, the
+        /// policy will be rejected otherwise. If user has not set a separate work lock and this field is set to
         /// REQUIRE_SEPARATE_WORK_LOCK, a NonComplianceDetail is reported with nonComplianceReason set to USER_ACTION.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unifiedLockSettings")]
@@ -7183,6 +7197,23 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Policies controlling cross-device communication in the personal profile.</summary>
+    public class PersonalCrossDevicePolicies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Controls the task continuity handoff
+        /// (https://developer.android.com/partners/android-17/features#handoff) feature for the personal profile on
+        /// company-owned devices with a work profile. To disable Handoff device-wide on a company-owned device, both
+        /// crossDevicePolicies.taskContinuityHandoff and this policy should be set to
+        /// TASK_CONTINUITY_HANDOFF_DISALLOWED. Requires Android 17 QPR1 or higher.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskContinuityHandoff")]
+        public virtual string TaskContinuityHandoff { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Policies controlling personal usage on a company-owned device with a work profile.</summary>
     public class PersonalUsagePolicies : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7197,6 +7228,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>If true, the camera is disabled on the personal profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cameraDisabled")]
         public virtual System.Nullable<bool> CameraDisabled { get; set; }
+
+        /// <summary>Optional. Policies controlling cross-device communication in the personal profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossDevicePolicies")]
+        public virtual PersonalCrossDevicePolicies CrossDevicePolicies { get; set; }
 
         /// <summary>
         /// Controls how long the work profile can stay off. The minimum duration must be at least 3 days. Other details
@@ -7400,7 +7435,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("crossDevicePolicies")]
         public virtual CrossDevicePolicies CrossDevicePolicies { get; set; }
 
-        /// <summary>Cross-profile policies applied on the device.</summary>
+        /// <summary>Optional. Cross-profile policies applied on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossProfilePolicies")]
         public virtual CrossProfilePolicies CrossProfilePolicies { get; set; }
 
@@ -7508,7 +7543,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> KioskCustomLauncherEnabled { get; set; }
 
         /// <summary>
-        /// Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set
+        /// Optional. Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set
         /// kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kioskCustomization")]
@@ -7593,8 +7628,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> OutgoingCallsDisabled { get; set; }
 
         /// <summary>
-        /// Password requirement policies. Different policies can be set for work profile or fully managed devices by
-        /// setting the password_scope field in the policy.
+        /// Optional. Password requirement policies. Different policies can be set for work profile or fully managed
+        /// devices by setting the password_scope field in the policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordPolicies")]
         public virtual System.Collections.Generic.IList<PasswordRequirements> PasswordPolicies { get; set; }
