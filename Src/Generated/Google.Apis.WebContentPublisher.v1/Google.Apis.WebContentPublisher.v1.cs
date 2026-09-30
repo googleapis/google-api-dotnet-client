@@ -722,7 +722,8 @@ namespace Google.Apis.WebContentPublisher.v1
 
             /// <summary>Lists publications.</summary>
             /// <param name="parent">
-            /// Required. The parent organization whose publications to list. Format: `organizations/{organization}`.
+            /// Required. The parent organization whose publications to list, or "organizations/-" for all organizations
+            /// a user has access to. Format: `organizations/{organization}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -740,8 +741,8 @@ namespace Google.Apis.WebContentPublisher.v1
                 }
 
                 /// <summary>
-                /// Required. The parent organization whose publications to list. Format:
-                /// `organizations/{organization}`.
+                /// Required. The parent organization whose publications to list, or "organizations/-" for all
+                /// organizations a user has access to. Format: `organizations/{organization}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
