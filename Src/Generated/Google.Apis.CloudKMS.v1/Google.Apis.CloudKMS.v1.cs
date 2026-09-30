@@ -3368,7 +3368,7 @@ namespace Google.Apis.CloudKMS.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/.*$",
                             });
                         }
                     }
@@ -9493,9 +9493,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
         public virtual string Algorithm { get; set; }
 
-        /// <summary>
-        /// The name of the CryptoKeyVersion public key. Provided here for verification. NOTE: This field is in Beta.
-        /// </summary>
+        /// <summary>The name of the CryptoKeyVersion public key. Provided here for verification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -9515,7 +9513,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This
         /// field is defined as int64 for reasons of compatibility across different languages. However, it is a
         /// non-negative integer, which will never exceed `2^32-1`, and can be safely downconverted to uint32 in
-        /// languages that support this type. NOTE: This field is in Beta.
+        /// languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemCrc32c")]
         public virtual System.Nullable<long> PemCrc32c { get; set; }
