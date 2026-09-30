@@ -5407,7 +5407,7 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual string UnitFilter { get; set; }
 
         /// <summary>
-        /// Required. Immutable. UnitKind that this rollout kind corresponds to. Rollouts stemming from this rollout
+        /// Optional. Immutable. UnitKind that this rollout kind corresponds to. Rollouts stemming from this rollout
         /// kind will target the units of this unit kind. In other words, this defines the population of target units to
         /// be upgraded by rollouts.
         /// </summary>
