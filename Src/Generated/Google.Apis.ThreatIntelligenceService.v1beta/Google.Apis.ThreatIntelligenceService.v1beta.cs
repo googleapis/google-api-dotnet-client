@@ -1857,6 +1857,21 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta
 }
 namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
 {
+    /// <summary>Details about the detection vendors.</summary>
+    public class AVDetections : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Number of vendors that detected the threat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedVendorCount")]
+        public virtual System.Nullable<int> DetectedVendorCount { get; set; }
+
+        /// <summary>Optional. Total number of vendors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalVendorCount")]
+        public virtual System.Nullable<int> TotalVendorCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Stateful object representing a group of Findings. Key feature to an Alert is that it expresses the user's intent
     /// towards the findings of that group, even those that haven't occurred yet.
@@ -1957,6 +1972,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailType")]
         public virtual string DetailType { get; set; }
+
+        /// <summary>Domain Monitoring alert detail type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainMonitoring")]
+        public virtual DomainMonitoringAlertDetail DomainMonitoring { get; set; }
 
         /// <summary>Initial Access Broker alert detail type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialAccessBroker")]
@@ -2291,6 +2310,54 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details regarding the SSL certificate configuration.</summary>
+    public class CertificateDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The SSL certificate issuer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>Optional. The SSL subject alternative names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectAlternativeNames")]
+        public virtual System.Collections.Generic.IList<string> SubjectAlternativeNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Detailed communication context metadata for documents originating from deep and dark web communication channels.
+    /// </summary>
+    public class CommunicationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Description of the communication channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelDescription")]
+        public virtual string ChannelDescription { get; set; }
+
+        /// <summary>Optional. Name of the communication channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelName")]
+        public virtual string ChannelName { get; set; }
+
+        /// <summary>Optional. Channel path (e.g. forum path or sub-channel).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelPath")]
+        public virtual string ChannelPath { get; set; }
+
+        /// <summary>Optional. URL of the communication channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelUrl")]
+        public virtual string ChannelUrl { get; set; }
+
+        /// <summary>Optional. Service from the collection event origin (e.g. forum or chat service name).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>Optional. Conversation thread identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threadId")]
+        public virtual string ThreadId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A configuration represents a behavior an engine should follow when producing new findings.</summary>
     public class Configuration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2360,6 +2427,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// <summary>Domain Configuration detail config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainConfiguration")]
         public virtual DomainConfiguration DomainConfiguration { get; set; }
+
+        /// <summary>Domain Monitoring detail config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainMonitoring")]
+        public virtual DomainMonitoringConfig DomainMonitoring { get; set; }
 
         /// <summary>Technology Watchlist detail config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyWatchlist")]
@@ -2590,6 +2661,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
         public virtual CustomerProfileSummary Summary { get; set; }
 
+        /// <summary>Optional. Technologies associated with the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
+        public virtual System.Collections.Generic.IList<CustomerProfileTechnology> Technologies { get; set; }
+
         /// <summary>Optional. Technology presence of the organization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologyPresence")]
         public virtual string TechnologyPresence { get; set; }
@@ -2782,6 +2857,21 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Technology information for the customer profile.</summary>
+    public class CustomerProfileTechnology : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The citation ids for the technology.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationIds")]
+        public virtual System.Collections.Generic.IList<string> CitationIds { get; set; }
+
+        /// <summary>Required. The name of the technology.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("technology")]
+        public virtual string Technology { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Web presence information for the customer profile.</summary>
     public class CustomerProfileWebPresence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2800,9 +2890,16 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>Captures the specific details of Data Leak alert.</summary>
     public class DataLeakAlertDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Array of ids to accommodate multiple discovery documents</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `discovery_documents` instead. Array of ids to accommodate multiple discovery
+        /// documents.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocumentIds")]
         public virtual System.Collections.Generic.IList<string> DiscoveryDocumentIds { get; set; }
+
+        /// <summary>Output only. New structured metadata payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocuments")]
+        public virtual System.Collections.Generic.IList<DiscoveryDocument> DiscoveryDocuments { get; set; }
 
         /// <summary>
         /// Required. The severity of the Data Leak alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL`
@@ -2817,9 +2914,13 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>A detail object for a Data Leak finding.</summary>
     public class DataLeakFindingDetail : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The discovery document associated with the Data Leak finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocument")]
+        public virtual DiscoveryDocument DiscoveryDocument { get; set; }
+
         /// <summary>
-        /// Required. The unique identifier of the document that triggered the Data Leak finding. This ID can be used to
-        /// retrieve the content of the document for further analysis.
+        /// Optional. Deprecated: Use `discovery_document` instead. The unique identifier of the document that triggered
+        /// the Data Leak finding. This ID can be used to retrieve the content of the document for further analysis.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual string DocumentId { get; set; }
@@ -2837,6 +2938,125 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Replaces the raw string ID to hold associated metadata.</summary>
+    public class DiscoveryDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Detailed communication context metadata for documents originating from deep and dark web
+        /// communication channels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("communicationContext")]
+        public virtual CommunicationContext CommunicationContext { get; set; }
+
+        /// <summary>Output only. The identifier of the discovery document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual string DocumentId { get; set; }
+
+        /// <summary>
+        /// Output only. The classification/type of the document (e.g. `COMMUNICATION`, `DDW_COMMUNICATION`, `message`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentType")]
+        public virtual string DocumentType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extracted WHOIS and DNS registration details of the domain.</summary>
+    public class DnsRegistrationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Optional. The specific timestamp when the current domain registration expires.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Indicates whether private registration is enabled on the WHOIS record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateRegistration")]
+        public virtual System.Nullable<bool> PrivateRegistration { get; set; }
+
+        /// <summary>Optional. The country code of the registrant (e.g., US). Use ISO 3166-1 alpha-2 codes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registrantCountry")]
+        public virtual string RegistrantCountry { get; set; }
+
+        /// <summary>Optional. The registrar where the domain was registered (e.g., NameCheap).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registrar")]
+        public virtual string Registrar { get; set; }
+
+        private string _registrationTimeRaw;
+
+        private object _registrationTime;
+
+        /// <summary>Optional. The specific timestamp when the domain registration was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registrationTime")]
+        public virtual string RegistrationTimeRaw
+        {
+            get => _registrationTimeRaw;
+            set
+            {
+                _registrationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _registrationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RegistrationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RegistrationTimeDateTimeOffset instead.")]
+        public virtual object RegistrationTime
+        {
+            get => _registrationTime;
+            set
+            {
+                _registrationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _registrationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RegistrationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RegistrationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RegistrationTimeRaw);
+            set => RegistrationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2868,12 +3088,330 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A detailed object for a Domain or URL alert.</summary>
+    public class DomainMonitoringAlertDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The DNS details of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsDetails")]
+        public virtual DomainMonitoringDnsDetails DnsDetails { get; set; }
+
+        /// <summary>Details specific to a monitored domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainDetails")]
+        public virtual DomainMonitoringDomainDetails DomainDetails { get; set; }
+
+        /// <summary>Optional. The GTI details of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtiDetails")]
+        public virtual DomainMonitoringGtiDetails GtiDetails { get; set; }
+
+        /// <summary>Optional. The infrastructure of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infrastructure")]
+        public virtual Infrastructure Infrastructure { get; set; }
+
+        /// <summary>Optional. The matched domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedDomain")]
+        public virtual string MatchedDomain { get; set; }
+
+        /// <summary>The protected brand name that triggered the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedBrand")]
+        public virtual string ProtectedBrand { get; set; }
+
+        /// <summary>The protected domain that triggered the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedDomain")]
+        public virtual DomainMonitoringDomainDetails ProtectedDomain { get; set; }
+
+        /// <summary>Optional. Extracted WHOIS and DNS registration details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registrationDetails")]
+        public virtual DnsRegistrationDetails RegistrationDetails { get; set; }
+
+        /// <summary>Optional. The relationships of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationships")]
+        public virtual Relationships Relationships { get; set; }
+
+        /// <summary>Optional. The threat attribution details of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatAttributionDetails")]
+        public virtual ThreatAttributionDetails ThreatAttributionDetails { get; set; }
+
+        /// <summary>Details specific to a monitored URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlDetails")]
+        public virtual DomainMonitoringUrlDetails UrlDetails { get; set; }
+
+        /// <summary>Optional. The whois details of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoisDetails")]
+        public virtual DomainMonitoringWhoIsDetails WhoisDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Any account-level configuration options will go here.</summary>
+    public class DomainMonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domains to use as "seeds" for Suspicious Domain Monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<DomainMonitoringDomain> Domains { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The DNS details of the domain.</summary>
+    public class DomainMonitoringDnsDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The DNS records of the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsRecords")]
+        public virtual System.Collections.Generic.IList<DomainMonitoringDnsRecord> DnsRecords { get; set; }
+
+        private string _retrievalTimeRaw;
+
+        private object _retrievalTime;
+
+        /// <summary>Optional. The time the DNS details were retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalTime")]
+        public virtual string RetrievalTimeRaw
+        {
+            get => _retrievalTimeRaw;
+            set
+            {
+                _retrievalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _retrievalTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RetrievalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RetrievalTimeDateTimeOffset instead.")]
+        public virtual object RetrievalTime
+        {
+            get => _retrievalTime;
+            set
+            {
+                _retrievalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _retrievalTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RetrievalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RetrievalTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RetrievalTimeRaw);
+            set => RetrievalTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The DNS record of the domain.</summary>
+    public class DomainMonitoringDnsRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The ASN hosting the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asnHosting")]
+        public virtual string AsnHosting { get; set; }
+
+        /// <summary>Optional. The region code of the ASN. Use ISO 3166-1 alpha-2 codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asnRegionCode")]
+        public virtual string AsnRegionCode { get; set; }
+
+        /// <summary>Optional. The region code associated with the resolved IP. Use ISO 3166-1 alpha-2 codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipRegionCode")]
+        public virtual string IpRegionCode { get; set; }
+
+        /// <summary>Optional. The value of the DNS record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordData")]
+        public virtual string RecordData { get; set; }
+
+        /// <summary>Optional. The resolved IP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedIp")]
+        public virtual string ResolvedIp { get; set; }
+
+        /// <summary>Optional. The TTL of the DNS record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual System.Nullable<int> Ttl { get; set; }
+
+        /// <summary>Optional. The type of the DNS record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Domain Monitoring "domain"</summary>
+    public class DomainMonitoringDomain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domain name to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details specific to a monitored domain.</summary>
+    public class DomainMonitoringDomainDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The domain name to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specific configuration for the Domain Monitoring feature.</summary>
     public class DomainMonitoringFeatureConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Whether the Domain Monitoring feature is disabled for the domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detailed object for a Domain or URL finding.</summary>
+    public class DomainMonitoringFindingDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The DNS details of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsDetails")]
+        public virtual DomainMonitoringDnsDetails DnsDetails { get; set; }
+
+        /// <summary>Details specific to a monitored domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainDetails")]
+        public virtual DomainMonitoringDomainDetails DomainDetails { get; set; }
+
+        /// <summary>Optional. The GTI details of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtiDetails")]
+        public virtual DomainMonitoringGtiDetails GtiDetails { get; set; }
+
+        /// <summary>Optional. The infrastructure of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infrastructure")]
+        public virtual Infrastructure Infrastructure { get; set; }
+
+        /// <summary>Optional. The matched domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedDomain")]
+        public virtual string MatchedDomain { get; set; }
+
+        /// <summary>The protected brand name that triggered the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedBrand")]
+        public virtual string ProtectedBrand { get; set; }
+
+        /// <summary>The protected domain that triggered the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedDomain")]
+        public virtual DomainMonitoringDomainDetails ProtectedDomain { get; set; }
+
+        /// <summary>Optional. Extracted WHOIS and DNS registration details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registrationDetails")]
+        public virtual DnsRegistrationDetails RegistrationDetails { get; set; }
+
+        /// <summary>Optional. The relationships of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationships")]
+        public virtual Relationships Relationships { get; set; }
+
+        /// <summary>Optional. The threat attribution details of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatAttributionDetails")]
+        public virtual ThreatAttributionDetails ThreatAttributionDetails { get; set; }
+
+        /// <summary>Details specific to a monitored URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlDetails")]
+        public virtual DomainMonitoringUrlDetails UrlDetails { get; set; }
+
+        /// <summary>Optional. The whois details of the domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whoisDetails")]
+        public virtual DomainMonitoringWhoIsDetails WhoisDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The GTI details of the domain.</summary>
+    public class DomainMonitoringGtiDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Detection counts across vendor feeds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avDetections")]
+        public virtual AVDetections AvDetections { get; set; }
+
+        /// <summary>Optional. The permutation technique used for the domain (e.g., dictionary, homoglyph).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainPermutation")]
+        public virtual string DomainPermutation { get; set; }
+
+        /// <summary>Optional. The GTI link for the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtiDomainUri")]
+        public virtual string GtiDomainUri { get; set; }
+
+        /// <summary>Optional. The GTI score of the domain. The threat score is a number between 0 and 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtiScore")]
+        public virtual System.Nullable<int> GtiScore { get; set; }
+
+        /// <summary>
+        /// Optional. The threat classification of the domain, obtained from the domain report (e.g. DomainMonitoring).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatClassification")]
+        public virtual string ThreatClassification { get; set; }
+
+        /// <summary>Output only. The verdict of the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details specific to a monitored URL.</summary>
+    public class DomainMonitoringUrlDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The URL to match against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The whois details of the domain.</summary>
+    public class DomainMonitoringWhoIsDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _retrievalTimeRaw;
+
+        private object _retrievalTime;
+
+        /// <summary>Optional. The time the whois details were retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalTime")]
+        public virtual string RetrievalTimeRaw
+        {
+            get => _retrievalTimeRaw;
+            set
+            {
+                _retrievalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _retrievalTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RetrievalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RetrievalTimeDateTimeOffset instead.")]
+        public virtual object RetrievalTime
+        {
+            get => _retrievalTime;
+            set
+            {
+                _retrievalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _retrievalTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RetrievalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RetrievalTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RetrievalTimeRaw);
+            set => RetrievalTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The whois details of the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whois")]
+        public virtual string Whois { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3066,6 +3604,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detailType")]
         public virtual string DetailType { get; set; }
 
+        /// <summary>Domain Monitoring finding detail type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainMonitoring")]
+        public virtual DomainMonitoringFindingDetail DomainMonitoring { get; set; }
+
         /// <summary>Initial Access Broker finding detail type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialAccessBroker")]
         public virtual InitialAccessBrokerFindingDetail InitialAccessBroker { get; set; }
@@ -3108,12 +3650,34 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Core infrastructure observations associated with the URL or Domain.</summary>
+    public class Infrastructure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. SSL certificate details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateDetails")]
+        public virtual CertificateDetails CertificateDetails { get; set; }
+
+        /// <summary>Optional. The raw URL response string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("urlResponse")]
+        public virtual string UrlResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Captures the specific details of InitialAccessBroker (IAB) alert.</summary>
     public class InitialAccessBrokerAlertDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Array of ids to accommodate multiple discovery documents</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `discovery_documents` instead. Array of ids to accommodate multiple discovery
+        /// documents.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocumentIds")]
         public virtual System.Collections.Generic.IList<string> DiscoveryDocumentIds { get; set; }
+
+        /// <summary>Output only. New structured metadata payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocuments")]
+        public virtual System.Collections.Generic.IList<DiscoveryDocument> DiscoveryDocuments { get; set; }
 
         /// <summary>
         /// Required. The severity of the Initial Access Broker (IAB) alert. Allowed values are: * `LOW` * `MEDIUM` *
@@ -3129,9 +3693,13 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>A detail object for an Initial Access Broker (IAB) finding.</summary>
     public class InitialAccessBrokerFindingDetail : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The discovery document associated with the IAB finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocument")]
+        public virtual DiscoveryDocument DiscoveryDocument { get; set; }
+
         /// <summary>
-        /// Required. The unique identifier of the document that triggered the IAB finding. This ID can be used to
-        /// retrieve the content of the document for further analysis.
+        /// Optional. Deprecated: Use `discovery_document` instead. The unique identifier of the document that triggered
+        /// the IAB finding. This ID can be used to retrieve the content of the document for further analysis.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual string DocumentId { get; set; }
@@ -3156,9 +3724,16 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>Captures the specific details of InsiderThreat alert.</summary>
     public class InsiderThreatAlertDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Array of ids to accommodate multiple discovery documents</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `discovery_documents` instead. Array of ids to accommodate multiple discovery
+        /// documents.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocumentIds")]
         public virtual System.Collections.Generic.IList<string> DiscoveryDocumentIds { get; set; }
+
+        /// <summary>Output only. New structured metadata payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocuments")]
+        public virtual System.Collections.Generic.IList<DiscoveryDocument> DiscoveryDocuments { get; set; }
 
         /// <summary>
         /// Required. The severity of the Insider Threat alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` *
@@ -3174,9 +3749,13 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>A detail object for a InsiderThreat finding.</summary>
     public class InsiderThreatFindingDetail : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The discovery document associated with the Insider Threat finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocument")]
+        public virtual DiscoveryDocument DiscoveryDocument { get; set; }
+
         /// <summary>
-        /// Required. The unique identifier of the document that triggered the InsiderThreat finding. This ID can be
-        /// used to retrieve the content of the document for further analysis.
+        /// Optional. Deprecated: Use `discovery_document` instead. The unique identifier of the document that triggered
+        /// the InsiderThreat finding. This ID can be used to retrieve the content of the document for further analysis.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual string DocumentId { get; set; }
@@ -3626,6 +4205,25 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Related entities and domains observed for the target.</summary>
+    public class Relationships : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Related URLs associated with the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedUrls")]
+        public virtual System.Collections.Generic.IList<string> RelatedUrls { get; set; }
+
+        /// <summary>Optional. Sibling domains sharing the same IP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siblingDomains")]
+        public virtual System.Collections.Generic.IList<string> SiblingDomains { get; set; }
+
+        /// <summary>Optional. Subdomains associated with the target domain or URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subdomains")]
+        public virtual System.Collections.Generic.IList<string> Subdomains { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Structured relevance analysis for a threat.</summary>
     public class RelevanceAnalysis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3787,6 +4385,25 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
         public virtual System.Collections.Generic.IList<string> Technologies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Threat attribution information (actor, campaign, etc.).</summary>
+    public class ThreatAttributionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The threat actors associated with the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actors")]
+        public virtual System.Collections.Generic.IList<string> Actors { get; set; }
+
+        /// <summary>Optional. The threat collections detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collections")]
+        public virtual System.Collections.Generic.IList<string> Collections { get; set; }
+
+        /// <summary>Optional. The malware associated with the threat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("malware")]
+        public virtual System.Collections.Generic.IList<string> Malware { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
