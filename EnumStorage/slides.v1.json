@@ -1,4 +1,16 @@
 {
+  "Google.Apis.Slides.v1.PresentationsResource+GetRequest.CommentsViewModeEnum": [
+    "COMMENTS_VIEW_MODE_UNSPECIFIED",
+    "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS",
+    "COMMENTS_VIEW_MODE_OMITTED",
+    "COMMENTS_VIEW_MODE_INCLUDED"
+  ],
+  "Google.Apis.Slides.v1.PresentationsResource+PagesResource+GetRequest.CommentsViewModeEnum": [
+    "COMMENTS_VIEW_MODE_UNSPECIFIED",
+    "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS",
+    "COMMENTS_VIEW_MODE_OMITTED",
+    "COMMENTS_VIEW_MODE_INCLUDED"
+  ],
   "Google.Apis.Slides.v1.PresentationsResource+PagesResource+GetThumbnailRequest.ThumbnailPropertiesMimeTypeEnum": [
     "PNG"
   ],
