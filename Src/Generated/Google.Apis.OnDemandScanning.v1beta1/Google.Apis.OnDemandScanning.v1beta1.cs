@@ -3276,6 +3276,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionSources")]
         public virtual System.Collections.Generic.IList<IngestionSource> IngestionSources { get; set; }
 
+        /// <summary>
+        /// Deprecated: Layer details are captured per file location in FileLocation.layer_details. Top-level layer
+        /// details is not persisted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layerDetails")]
         public virtual LayerDetails LayerDetails { get; set; }
 
