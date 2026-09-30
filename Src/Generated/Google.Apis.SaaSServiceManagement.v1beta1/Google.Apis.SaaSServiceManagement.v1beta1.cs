@@ -9655,7 +9655,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string UnitFilter { get; set; }
 
         /// <summary>
-        /// Required. Immutable. UnitKind that this rollout kind corresponds to. Rollouts stemming from this rollout
+        /// Optional. Immutable. UnitKind that this rollout kind corresponds to. Rollouts stemming from this rollout
         /// kind will target the units of this unit kind. In other words, this defines the population of target units to
         /// be upgraded by rollouts.
         /// </summary>
@@ -10871,6 +10871,46 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was marked for deletion (deletion is an asynchronous
+        /// operation).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
