@@ -8016,14 +8016,14 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
-    /// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data
-    /// is destroyed with it (it does not persist across sandbox runs).
+    /// In memory or disk-backed ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down,
+    /// the data is destroyed with it (it does not persist across sandbox runs).
     /// </summary>
     public class EmptyDirVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must
-        /// be an empty string (default) or Memory. More info:
+        /// be an empty string (default), `Memory`, or `Disk`. More info:
         /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
