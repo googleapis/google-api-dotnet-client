@@ -321,15 +321,15 @@ namespace Google.Apis.CloudSecurityToken.v1
 
                     /// <summary>
                     /// Fetches the signing keys for an agentic or managed workload identity pool and returns them in
-                    /// JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic
-                    /// system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms"
-                    /// in the General Service Terms section of the [Service Specific
+                    /// JWK Set format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only
+                    /// agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings
+                    /// Terms" in the General Service Terms section of the [Service Specific
                     /// Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is"
                     /// and might have limited support. For more information, see the [launch stage
                     /// descriptions](https://cloud.google.com/products#product-launch-stages).
                     /// </summary>
                     /// <param name="name">
-                    /// Required. The name of the pool whose JWKS needs to be retrieved. Format:
+                    /// Required. The name of the pool whose JWKs need to be retrieved. Format:
                     /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
                     /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s):
                     /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
@@ -342,9 +342,9 @@ namespace Google.Apis.CloudSecurityToken.v1
 
                     /// <summary>
                     /// Fetches the signing keys for an agentic or managed workload identity pool and returns them in
-                    /// JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic
-                    /// system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms"
-                    /// in the General Service Terms section of the [Service Specific
+                    /// JWK Set format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only
+                    /// agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings
+                    /// Terms" in the General Service Terms section of the [Service Specific
                     /// Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is"
                     /// and might have limited support. For more information, see the [launch stage
                     /// descriptions](https://cloud.google.com/products#product-launch-stages).
@@ -359,7 +359,7 @@ namespace Google.Apis.CloudSecurityToken.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the pool whose JWKS needs to be retrieved. Format:
+                        /// Required. The name of the pool whose JWKs need to be retrieved. Format:
                         /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
                         /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s):
                         /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
@@ -560,15 +560,15 @@ namespace Google.Apis.CloudSecurityToken.v1
 
                     /// <summary>
                     /// Fetches the signing keys for an agentic or managed workload identity pool and returns them in
-                    /// JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic
-                    /// system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms"
-                    /// in the General Service Terms section of the [Service Specific
+                    /// JWK Set format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only
+                    /// agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings
+                    /// Terms" in the General Service Terms section of the [Service Specific
                     /// Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is"
                     /// and might have limited support. For more information, see the [launch stage
                     /// descriptions](https://cloud.google.com/products#product-launch-stages).
                     /// </summary>
                     /// <param name="name">
-                    /// Required. The name of the pool whose JWKS needs to be retrieved. Format:
+                    /// Required. The name of the pool whose JWKs need to be retrieved. Format:
                     /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
                     /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s):
                     /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
@@ -581,9 +581,9 @@ namespace Google.Apis.CloudSecurityToken.v1
 
                     /// <summary>
                     /// Fetches the signing keys for an agentic or managed workload identity pool and returns them in
-                    /// JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic
-                    /// system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms"
-                    /// in the General Service Terms section of the [Service Specific
+                    /// JWK Set format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only
+                    /// agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings
+                    /// Terms" in the General Service Terms section of the [Service Specific
                     /// Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is"
                     /// and might have limited support. For more information, see the [launch stage
                     /// descriptions](https://cloud.google.com/products#product-launch-stages).
@@ -598,7 +598,7 @@ namespace Google.Apis.CloudSecurityToken.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the pool whose JWKS needs to be retrieved. Format:
+                        /// Required. The name of the pool whose JWKs need to be retrieved. Format:
                         /// 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}'
                         /// 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s):
                         /// 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog'
@@ -1109,7 +1109,7 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
 
     /// <summary>
     /// A JSON web key set (JWK) See also https://datatracker.ietf.org/doc/html/rfc7517 and
-    /// https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle
+    /// https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle.
     /// </summary>
     public class GoogleIdentityStsV1Jwk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1144,7 +1144,7 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
     /// <summary>Response message for GetJwks.</summary>
     public class GoogleIdentityStsV1Jwks : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The JWKS for this OP.</summary>
+        /// <summary>The JWKs for this OP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<GoogleIdentityStsV1Jwk> Keys { get; set; }
 
@@ -1154,7 +1154,7 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
 
     /// <summary>
     /// Response message for GetOpenIdProviderConfig. Message fields are defined in
-    /// https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse
+    /// https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse.
     /// </summary>
     public class GoogleIdentityStsV1OpenIdProviderConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1165,8 +1165,8 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         public virtual string AuthorizationEndpoint { get; set; }
 
         /// <summary>
-        /// JSON array containing a list of the JWS signing algorithms (alg values) supported by the OP for the ID token
-        /// to encode the claims in a JWT [JWT]. Note: Currently always "["RS256"]".
+        /// JSON array that contains a list of the JWS signing algorithms (alg values) supported by the OP for the ID
+        /// token to encode the claims in a JWT. Supported value: `RS256`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id_token_signing_alg_values_supported")]
         public virtual System.Collections.Generic.IList<string> IdTokenSigningAlgValuesSupported { get; set; }
@@ -1178,20 +1178,20 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
         public virtual string Issuer { get; set; }
 
-        /// <summary>URL of the OP's JWK Set [JWK] document, which MUST use the https scheme.</summary>
+        /// <summary>URL of the OP's JWK Set document, which MUST use the https scheme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jwks_uri")]
         public virtual string JwksUri { get; set; }
 
         /// <summary>
-        /// JSON array containing a list of the OAuth 2.0 response_type values that this OP supports. Note: Currently
-        /// always "["id_token"]".
+        /// JSON array that contains a list of the OAuth 2.0 response_type values that this OP supports. Supported
+        /// value: `id_token`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response_types_supported")]
         public virtual System.Collections.Generic.IList<string> ResponseTypesSupported { get; set; }
 
         /// <summary>
-        /// JSON array containing a list of the subject identifier types that this OP supports. Note: Currently always
-        /// "["public"]".
+        /// JSON array that contains a list of the subject identifier types that this OP supports. Supported value:
+        /// `public`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject_types_supported")]
         public virtual System.Collections.Generic.IList<string> SubjectTypesSupported { get; set; }
@@ -1221,7 +1221,7 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         public virtual GoogleIdentityStsV1AccessBoundary AccessBoundary { get; set; }
 
         /// <summary>
-        /// The unpadded, url-escaped, base64-encoded SHA-256 hash of the certificate's DER encoding. It must be 43
+        /// The unpadded, URL-escaped, base64-encoded SHA-256 hash of the certificate's DER encoding. It must be 43
         /// characters long. The resulting token will be bound to this value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindCertFingerprint")]
