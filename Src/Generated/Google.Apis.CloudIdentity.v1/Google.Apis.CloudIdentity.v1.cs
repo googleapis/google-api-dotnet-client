@@ -6076,21 +6076,20 @@ namespace Google.Apis.CloudIdentity.v1.Data
     }
 
     /// <summary>
-    /// An external identifier for an entity in the Cloud Identity Groups API. Used to link a `Group` in Cloud Identity
-    /// Groups API with a corresponding entity in an external identity system or directory.
+    /// Represents an external identifier that links a Group in the Cloud Identity Groups API with a corresponding
+    /// entity in an external directory or identity provider.
     /// </summary>
     public class ExternalId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The unique identifier assigned by the external identity provider. The API does not enforce
-        /// uniqueness of IDs across entities, but clients should ensure IDs are unique within their namespace.
+        /// Required. The unique identifier assigned by the external identity provider. The API does not enforce unique
+        /// IDs across entities, but clients **must** ensure IDs are unique within their namespace.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Required. The namespace in which the entity exists. Cannot be empty. Currently, the only allowable namespace
-        /// is `"system/external"`.
+        /// Required. The namespace in which the entity exists. The only supported namespace is `system/external`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }
@@ -7468,9 +7467,9 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual DynamicGroupMetadata DynamicGroupMetadata { get; set; }
 
         /// <summary>
-        /// Optional. External identifiers associated with the `Group`. Enables external identity providers and
-        /// directory sync tools to link their native unique identifiers with this group. Currently, the only allowable
-        /// namespace is `"system/external"`.
+        /// Optional. External identifiers associated with the `Group`. Allows external identity providers and directory
+        /// sync tools link their native unique identifiers with this group. The only supported namespace is
+        /// `system/external`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIds")]
         public virtual System.Collections.Generic.IList<ExternalId> ExternalIds { get; set; }
