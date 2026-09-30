@@ -133973,6 +133973,20 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual AutoscalingPolicyTimeAggregation TimeAggregation { get; set; }
 
         /// <summary>
+        /// The upper bound of the utilization range. Must be a float value in the range ('utilization_min', 1]. A value
+        /// of 0.0 is equivalent to leaving the field unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilizationMax")]
+        public virtual System.Nullable<double> UtilizationMax { get; set; }
+
+        /// <summary>
+        /// The lower bound of the utilization range. Must be a float value in the range (0, 'utilization_max']. A value
+        /// of 0.0 is equivalent to leaving the field unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilizationMin")]
+        public virtual System.Nullable<double> UtilizationMin { get; set; }
+
+        /// <summary>
         /// Defines a target range for CPU utilization. The values of `min_utilization` and `max_utilization` must be in
         /// the range (0.0, 1.0].  If the average CPU is between `min_utilization` and `max_utilization`, the autoscaler
         /// maintains the current size unless another configured metric requires scaling out.  If the average CPU is
@@ -138340,9 +138354,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4,
         /// GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
         /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,STORAGE_OPTIMIZED_Z4DS,
-        /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For example, type MEMORY_OPTIMIZED specifies a commitment
-        /// that applies only to eligible resources of memory optimized M1 and M2 machine series. Type GENERAL_PURPOSE
-        /// specifies a commitment that applies only to eligible resources of general purpose N1 machine series.
+        /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T,STORAGE_OPTIMIZED_Z4M. For example, type MEMORY_OPTIMIZED
+        /// specifies a commitment that applies only to eligible resources of memory optimized M1 and M2 machine series.
+        /// Type GENERAL_PURPOSE specifies a commitment that applies only to eligible resources of general purpose N1
+        /// machine series.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -176782,9 +176797,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it
         /// evaluates to true, the corresponding `action` is enforced.  The following examples are valid match
         /// expressions for public NAT:  `inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip,
-        /// '2.2.0.0/16')`  `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'`  The following example is a
-        /// valid match expression for private NAT:  `nexthop.hub ==
-        /// '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'`
+        /// '2.2.0.0/16')`  `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'`  The following examples are
+        /// valid match expressions for private NAT:  (NAT 44) `nexthop.hub ==
+        /// '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'`  `nexthop.is_hybrid`
+        ///  (NAT 64) `isIPv6(source.ip)`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("match")]
         public virtual string Match { get; set; }
