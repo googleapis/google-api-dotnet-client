@@ -8,6 +8,12 @@
     "1",
     "2"
   ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+GetRequest.CommentsViewModeEnum": [
+    "COMMENTS_VIEW_MODE_UNSPECIFIED",
+    "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS",
+    "COMMENTS_VIEW_MODE_OMITTED",
+    "COMMENTS_VIEW_MODE_INCLUDED"
+  ],
   "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+AppendRequest.InsertDataOptionEnum": [
     "OVERWRITE",
     "INSERT_ROWS"

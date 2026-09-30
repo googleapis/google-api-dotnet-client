@@ -1970,6 +1970,45 @@ namespace Google.Apis.Sheets.v4
             [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SpreadsheetId { get; private set; }
 
+            /// <summary>
+            /// The comments view mode to apply to the spreadsheet. This allows viewing the spreadsheet with comments
+            /// omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. [Developer
+            /// Preview](https://developers.google.com/workspace/preview).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("commentsViewMode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<CommentsViewModeEnum> CommentsViewMode { get; set; }
+
+            /// <summary>
+            /// The comments view mode to apply to the spreadsheet. This allows viewing the spreadsheet with comments
+            /// omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. [Developer
+            /// Preview](https://developers.google.com/workspace/preview).
+            /// </summary>
+            public enum CommentsViewModeEnum
+            {
+                /// <summary>The CommentsViewMode is unspecified; COMMENTS_VIEW_MODE_OMITTED is applied.</summary>
+                [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_UNSPECIFIED")]
+                COMMENTSVIEWMODEUNSPECIFIED = 0,
+
+                /// <summary>
+                /// The CommentsViewMode applied to the returned spreadsheet depends on the user's current access level.
+                /// If the user only has view access, COMMENTS_VIEW_MODE_OMITTED is applied. Otherwise,
+                /// COMMENTS_VIEW_MODE_INCLUDED is applied.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS")]
+                COMMENTSVIEWMODEDEFAULTFORCURRENTACCESS = 1,
+
+                /// <summary>The returned spreadsheet has comments omitted.</summary>
+                [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_OMITTED")]
+                COMMENTSVIEWMODEOMITTED = 2,
+
+                /// <summary>
+                /// The returned spreadsheet has comments included. Requests to retrieve a spreadsheet using this mode
+                /// will return a 403 error if the user does not have permission to view comments.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("COMMENTS_VIEW_MODE_INCLUDED")]
+                COMMENTSVIEWMODEINCLUDED = 3,
+            }
+
             /// <summary>True if tables should be excluded in the banded ranges. False if not set.</summary>
             [Google.Apis.Util.RequestParameterAttribute("excludeTablesInBandedRanges", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ExcludeTablesInBandedRanges { get; set; }
@@ -2002,6 +2041,14 @@ namespace Google.Apis.Sheets.v4
                     Name = "spreadsheetId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("commentsViewMode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "commentsViewMode",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -2156,6 +2203,36 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The newly added chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chart")]
         public virtual EmbeddedChart Chart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inserts a reply Post into a CommentThread. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class AddCommentReplyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentThread to add the reply to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>The Post representing the reply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("post")]
+        public virtual Post Post { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The result of creating a reply. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class AddCommentReplyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The newly-inserted reply Post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("post")]
+        public virtual Post Post { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3076,6 +3153,15 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The request for updating any aspect of a spreadsheet.</summary>
     public class BatchUpdateSpreadsheetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The comments view mode to apply to the spreadsheet. This allows viewing the spreadsheet with comments
+        /// omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. Meaningful only if
+        /// include_spreadsheet_in_response is 'true'. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentsViewMode")]
+        public virtual string CommentsViewMode { get; set; }
+
         /// <summary>Determines if the update response should include the spreadsheet resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeSpreadsheetInResponse")]
         public virtual System.Nullable<bool> IncludeSpreadsheetInResponse { get; set; }
@@ -3108,6 +3194,13 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The reply for batch updating a spreadsheet.</summary>
     public class BatchUpdateSpreadsheetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether comment updates were applied in the batch request. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentUpdateState")]
+        public virtual string CommentUpdateState { get; set; }
+
         /// <summary>
         /// The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty.
         /// </summary>
@@ -4214,6 +4307,60 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A location in the spreadsheet that is tied to a CommentThread with the same anchorId. Note: Multiple anchors may
+    /// refer to the same location. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class CommentAnchor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique ID of the comment anchor. Output only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anchorId")]
+        public virtual string AnchorId { get; set; }
+
+        /// <summary>The coordinate range inside the sheet where this comment is anchored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GridRange Range { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a single comment thread inside a spreadsheet. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class CommentThread : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentAnchor in the sheet that this thread is tied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anchorId")]
+        public virtual string AnchorId { get; set; }
+
+        /// <summary>The unique ID of the comment thread.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>The first post in the thread.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headPost")]
+        public virtual Post HeadPost { get; set; }
+
+        /// <summary>
+        /// The quoted text from the spreadsheet when the comment was created, formatted as plain-text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plainTextQuote")]
+        public virtual string PlainTextQuote { get; set; }
+
+        /// <summary>Replies to the head post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replies")]
+        public virtual System.Collections.Generic.IList<Post> Replies { get; set; }
+
+        /// <summary>Whether the thread is open or resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The value of the condition.</summary>
     public class ConditionValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4871,6 +5018,39 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The ID of the banded range to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandedRangeId")]
         public virtual System.Nullable<int> BandedRangeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Deletes a reply Post from a CommentThread. Returns a 400 bad request error if: - The requesting user is not the
+    /// author of the post. - The reply post contains a comment action. - The reply post contains an assignee.
+    /// [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class DeleteCommentReplyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentThread which the post belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>The ID of the reply Post being deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
+        public virtual string PostId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Deletes a CommentThread. Returns a 400 bad request error if the requesting user is not the author of the
+    /// headPost. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class DeleteCommentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentThread that is being deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5727,6 +5907,14 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The request for retrieving a Spreadsheet.</summary>
     public class GetSpreadsheetByDataFilterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The comments view mode to apply to the spreadsheet. This allows viewing the spreadsheet with comments
+        /// omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentsViewMode")]
+        public virtual string CommentsViewMode { get; set; }
+
         /// <summary>The DataFilters used to select which ranges to retrieve from the spreadsheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFilters")]
         public virtual System.Collections.Generic.IList<DataFilter> DataFilters { get; set; }
@@ -5991,6 +6179,48 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The data for this histogram series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual ChartData Data { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inserts a CommentThread into the spreadsheet. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class InsertCommentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The email address of the assignee of the comment. Leave empty for a non-assigned comment. May not
+        /// exceed 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assigneeEmailAddress")]
+        public virtual string AssigneeEmailAddress { get; set; }
+
+        /// <summary>
+        /// The text of the comment, as plain text. This text content will be handled similarly to comments created in
+        /// the Sheets editor. It will have similar behaviors for formatting, notifications, etc. This field cannot be
+        /// empty, and must not exceed 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The GridCoordinate in the sheet that is tied to this comment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coordinate")]
+        public virtual GridCoordinate Coordinate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The result of creating a comment. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class InsertCommentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The newly-inserted comment thread.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentThread")]
+        public virtual CommentThread CommentThread { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6889,6 +7119,170 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a single post in a comment thread. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class Post : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The email of the user who is being newly assigned to the thread as part of this post. Returns a
+        /// 400 bad request error if: - The parent thread is a CommentThread whose headPost does not have an assignee. -
+        /// commentAction is specified as `RESOLVE` or `REOPEN`. - `assignee_email` exceeds 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assigneeEmail")]
+        public virtual string AssigneeEmail { get; set; }
+
+        /// <summary>Output only. The user who created the post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual PostAuthor Author { get; set; }
+
+        /// <summary>Action taken as part of creating the post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentAction")]
+        public virtual string CommentAction { get; set; }
+
+        /// <summary>
+        /// The content of the post. Required to be non-empty if comment_action is not `RESOLVE` or `REOPEN`. This text
+        /// content will be handled similarly to comments created in the Sheets editor. It will have similar behaviors
+        /// for formatting, notifications, etc. May not exceed 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Output only. The content of the post as HTML.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentHtml")]
+        public virtual string ContentHtml { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the post was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Whether the post is deleted. If `true`, content and author fields will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
+        public virtual System.Nullable<bool> Deleted { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the post is from a copied spreadsheet. This field cannot be set directly by callers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromCopiedSpreadsheet")]
+        public virtual System.Nullable<bool> FromCopiedSpreadsheet { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the post is from an imported spreadsheet. This field cannot be set directly by callers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromImportedSpreadsheet")]
+        public virtual System.Nullable<bool> FromImportedSpreadsheet { get; set; }
+
+        /// <summary>Output only. The unique ID of the post.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
+        public virtual string PostId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the post was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a user who authored a comment post. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class PostAuthor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the user is anonymous.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anonymous")]
+        public virtual System.Nullable<bool> Anonymous { get; set; }
+
+        /// <summary>The display name of the user. May be absent if the author is anonymous.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Whether the user is the authenticated user making the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("me")]
+        public virtual System.Nullable<bool> Me { get; set; }
+
+        /// <summary>
+        /// The resource name of the post author user, which can also be used to identify the user in the [Google People
+        /// API](https://developers.google.com/people/api/rest/v1/people). Format: `users/{user}`. Will not be populated
+        /// if the anonymous field is `true` or if the post is from an imported spreadsheet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual string User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A protected range.</summary>
     public class ProtectedRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7086,6 +7480,12 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addChart")]
         public virtual AddChartRequest AddChart { get; set; }
 
+        /// <summary>
+        /// Adds a reply to a CommentThread. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addCommentReply")]
+        public virtual AddCommentReplyRequest AddCommentReply { get; set; }
+
         /// <summary>Adds a new conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addConditionalFormatRule")]
         public virtual AddConditionalFormatRuleRequest AddConditionalFormatRule { get; set; }
@@ -7164,6 +7564,19 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteBanding")]
         public virtual DeleteBandingRequest DeleteBanding { get; set; }
 
+        /// <summary>
+        /// Deletes a CommentThread. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteComment")]
+        public virtual DeleteCommentRequest DeleteComment { get; set; }
+
+        /// <summary>
+        /// Deletes a reply Post from a CommentThread [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteCommentReply")]
+        public virtual DeleteCommentReplyRequest DeleteCommentReply { get; set; }
+
         /// <summary>Deletes an existing conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteConditionalFormatRule")]
         public virtual DeleteConditionalFormatRuleRequest DeleteConditionalFormatRule { get; set; }
@@ -7227,6 +7640,13 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Finds and replaces occurrences of some text with other text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findReplace")]
         public virtual FindReplaceRequest FindReplace { get; set; }
+
+        /// <summary>
+        /// Inserts a CommentThread into the spreadsheet. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertComment")]
+        public virtual InsertCommentRequest InsertComment { get; set; }
 
         /// <summary>Inserts new rows or columns in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertDimension")]
@@ -7300,6 +7720,13 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateChartSpec")]
         public virtual UpdateChartSpecRequest UpdateChartSpec { get; set; }
 
+        /// <summary>
+        /// Updates an existing post (head post or reply) of a CommentThread. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateCommentPost")]
+        public virtual UpdateCommentPostRequest UpdateCommentPost { get; set; }
+
         /// <summary>Updates an existing conditional format rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateConditionalFormatRule")]
         public virtual UpdateConditionalFormatRuleRequest UpdateConditionalFormatRule { get; set; }
@@ -7371,6 +7798,12 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addChart")]
         public virtual AddChartResponse AddChart { get; set; }
 
+        /// <summary>
+        /// The result of creating a reply. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addCommentReply")]
+        public virtual AddCommentReplyResponse AddCommentReply { get; set; }
+
         /// <summary>A reply from adding a data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addDataSource")]
         public virtual AddDataSourceResponse AddDataSource { get; set; }
@@ -7438,6 +7871,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A reply from doing a find/replace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findReplace")]
         public virtual FindReplaceResponse FindReplace { get; set; }
+
+        /// <summary>
+        /// The result of creating a comment. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertComment")]
+        public virtual InsertCommentResponse InsertComment { get; set; }
 
         /// <summary>A reply from refreshing data source objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshDataSource")]
@@ -7638,6 +8077,12 @@ namespace Google.Apis.Sheets.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnGroups")]
         public virtual System.Collections.Generic.IList<DimensionGroup> ColumnGroups { get; set; }
+
+        /// <summary>
+        /// The comment anchors on this sheet. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentAnchors")]
+        public virtual System.Collections.Generic.IList<CommentAnchor> CommentAnchors { get; set; }
 
         /// <summary>The conditional format rules in this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalFormats")]
@@ -7910,6 +8355,20 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>Resource that represents a spreadsheet.</summary>
     public class Spreadsheet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The comment threads associated with the spreadsheet. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comments")]
+        public virtual System.Collections.Generic.IList<CommentThread> Comments { get; set; }
+
+        /// <summary>
+        /// Output only. The comments view mode applied to the spreadsheet. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentsViewMode")]
+        public virtual string CommentsViewMode { get; set; }
+
         /// <summary>Output only. A list of data source refresh schedules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSchedules")]
         public virtual System.Collections.Generic.IList<DataSourceRefreshSchedule> DataSourceSchedules { get; set; }
@@ -8590,6 +9049,32 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The specification to apply to the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual ChartSpec Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Updates a Post in a CommentThread. Returns a 400 bad request error if: - The requesting user is not the author
+    /// of the post. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class UpdateCommentPostRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CommentThread which the post belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commentId")]
+        public virtual string CommentId { get; set; }
+
+        /// <summary>
+        /// The new text of the comment, as plain text. This text content will be handled similarly to comments created
+        /// in the Sheets editor. It will have similar behaviors for formatting, notifications, etc. This field cannot
+        /// be empty, and must not exceed 2048 UTF-8 code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The ID of the post being updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
+        public virtual string PostId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
