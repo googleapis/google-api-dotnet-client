@@ -653,6 +653,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. An idempotency ID for the request. A random UUID is recommended. Restricted to 36
+                    /// ASCII characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
                     /// Required. The list of fields to update. Only a limited set of fields can be updated. The allowed
                     /// fields are the following: - `product_payload.googleHomePayload.googleStructureId`
                     /// </summary>
@@ -685,6 +692,14 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^partners/[^/]+/subscriptions/[^/]+/lineItems/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
