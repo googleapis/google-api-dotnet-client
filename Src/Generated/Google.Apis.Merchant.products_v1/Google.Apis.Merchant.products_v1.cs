@@ -1409,7 +1409,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A message that represents loyalty program.</summary>
+    /// <summary>
+    /// A message that represents loyalty program. For more information on loyalty programs, see [Overview of loyalty
+    /// programs](/merchant/api/guides/loyalty/loyalty-programs).
+    /// </summary>
     public class LoyaltyProgram : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The cashback that can be used for future purchases.</summary>
@@ -2584,7 +2587,7 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("virtualModelLink")]
         public virtual string VirtualModelLink { get; set; }
 
-        /// <summary>The [warranty](https://support.google.com/google-ads/answer/15957626) of the vehicle.</summary>
+        /// <summary>The [warranty](https://support.google.com/merchants/answer/15957626) of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warranty")]
         public virtual Warranty Warranty { get; set; }
 
@@ -3608,11 +3611,19 @@ namespace Google.Apis.Merchant.products_v1.Data
     /// <summary>The warranty of the vehicle.</summary>
     public class Warranty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The warranty duration in months.</summary>
+        /// <summary>
+        /// The warranty duration in units. Default is in months, can be overridden by the `duration_unit` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual System.Nullable<long> Duration { get; set; }
 
-        /// <summary>The warranty mileage.</summary>
+        /// <summary>
+        /// The unit for the warranty duration. Assumed to be `MONTH` if equal to `WARRANTY_DURATION_UNIT_UNSPECIFIED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationUnit")]
+        public virtual string DurationUnit { get; set; }
+
+        /// <summary>The warranty mileage (only applies to vehicles).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mileage")]
         public virtual Mileage Mileage { get; set; }
 
