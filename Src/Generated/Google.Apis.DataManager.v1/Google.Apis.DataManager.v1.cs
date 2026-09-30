@@ -39,6 +39,7 @@ namespace Google.Apis.DataManager.v1
             AudienceMembers = new AudienceMembersResource(this);
             Events = new EventsResource(this);
             RequestStatus = new RequestStatusResource(this);
+            Users = new UsersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://datamanager.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://datamanager.googleapis.com/batch");
         }
@@ -107,6 +108,9 @@ namespace Google.Apis.DataManager.v1
 
         /// <summary>Gets the RequestStatus resource.</summary>
         public virtual RequestStatusResource RequestStatus { get; }
+
+        /// <summary>Gets the Users resource.</summary>
+        public virtual UsersResource Users { get; }
     }
 
     /// <summary>A base abstract class for DataManager requests.</summary>
@@ -1821,6 +1825,99 @@ namespace Google.Apis.DataManager.v1
             }
         }
     }
+
+    /// <summary>The "users" collection of methods.</summary>
+    public class UsersResource
+    {
+        private const string Resource = "users";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public UsersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary></summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual IngestRequest Ingest(Google.Apis.DataManager.v1.Data.IngestUsersRequest body)
+        {
+            return new IngestRequest(this.service, body);
+        }
+
+        /// <summary></summary>
+        public class IngestRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.IngestUsersResponse>
+        {
+            /// <summary>Constructs a new Ingest request.</summary>
+            public IngestRequest(Google.Apis.Services.IClientService service, Google.Apis.DataManager.v1.Data.IngestUsersRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DataManager.v1.Data.IngestUsersRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "ingest";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/users:ingest";
+
+            /// <summary>Initializes Ingest parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary></summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual RemoveRequest Remove(Google.Apis.DataManager.v1.Data.RemoveUsersRequest body)
+        {
+            return new RemoveRequest(this.service, body);
+        }
+
+        /// <summary></summary>
+        public class RemoveRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.RemoveUsersResponse>
+        {
+            /// <summary>Constructs a new Remove request.</summary>
+            public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.DataManager.v1.Data.RemoveUsersRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DataManager.v1.Data.RemoveUsersRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "remove";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/users:remove";
+
+            /// <summary>Initializes Remove parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+    }
 }
 namespace Google.Apis.DataManager.v1.Data
 {
@@ -2791,6 +2888,36 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class IngestUsersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("users")]
+        public virtual System.Collections.Generic.IList<User> Users { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class IngestUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class IngestedUserListInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("contactIdInfo")]
@@ -3436,6 +3563,36 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class RemoveUsersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<Destination> Destinations { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userData")]
+        public virtual System.Collections.Generic.IList<UserData> UserData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RemoveUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class RequestStatusPerDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("audienceMembersIngestionStatus")]
@@ -3557,6 +3714,18 @@ namespace Google.Apis.DataManager.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("customerMatchTermsOfServiceStatus")]
         public virtual string CustomerMatchTermsOfServiceStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class User : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileData")]
+        public virtual MobileData MobileData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userData")]
+        public virtual UserData UserData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
