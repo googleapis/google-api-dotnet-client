@@ -4826,6 +4826,63 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Telemetry about a `Publish` operation which may or may not be common across individual RPCs.</summary>
+    public class PublishOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If the publisher client is using publish hedging, provides the attempt count for the hedge
+        /// (starting at 1). A value of 0 indicates that the request was not hedged.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hedgedAttemptCount")]
+        public virtual System.Nullable<int> HedgedAttemptCount { get; set; }
+
+        private string _publishStartTimeRaw;
+
+        private object _publishStartTime;
+
+        /// <summary>
+        /// Optional. Time at which the `publish()` call was initiated in the client library, meaning across all RPC
+        /// retry attempts, see [grpc retries](https://grpc.io/docs/guides/retry/). Provides a sense of the end-to-end
+        /// publish duration from the client perspective, across retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishStartTime")]
+        public virtual string PublishStartTimeRaw
+        {
+            get => _publishStartTimeRaw;
+            set
+            {
+                _publishStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishStartTimeDateTimeOffset instead.")]
+        public virtual object PublishStartTime
+        {
+            get => _publishStartTime;
+            set
+            {
+                _publishStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PublishStartTimeRaw);
+            set => PublishStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the Publish method.</summary>
     public class PublishRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4846,6 +4903,20 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageIds")]
         public virtual System.Collections.Generic.IList<string> MessageIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Client-side telemetry about Pub/Sub requests, useful for debugging purposes. If the client opts to provide this
+    /// information, it will be passed as a serialized proto in the `x-goog-pubsub-client-telemetry` header.
+    /// </summary>
+    public class PubsubClientTelemetry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Telemetry about a `Publish` operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishOperation")]
+        public virtual PublishOperation PublishOperation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
