@@ -1064,7 +1064,7 @@ namespace Google.Apis.APIhub.v1
                             /// will be used. This value should be 4-500 characters, overall resource name which will be
                             /// of format
                             /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}`,
-                            /// its length is limited to 700 characters, and valid characters are /a-z[0-9]-_/.
+                            /// its length is limited to 1000 characters, and valid characters are /a-z[0-9]-_/.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("apiOperationId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string ApiOperationId { get; set; }
@@ -8450,7 +8450,7 @@ namespace Google.Apis.APIhub.v1.Data
         /// if the specified id is already used by another allowed value in the same attribute resource. * If not
         /// provided, a system generated id derived from the display name will be used. In this case, the service will
         /// handle conflict resolution by adding a system generated suffix in case of duplicates. This value should be
-        /// 4-63 characters, and valid characters are /a-z-/.
+        /// 3-500 characters, and valid characters are /a-z[0-9]-_/.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -8608,6 +8608,14 @@ namespace Google.Apis.APIhub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedVersion")]
         public virtual string SelectedVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The type of the service. This maps to the following system defined attribute:
+        /// `projects/{project}/locations/{location}/attributes/system-service-type` attribute. The cardinality of this
+        /// attribute is 1. All values should be from the list of allowed values defined for the attribute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceType")]
+        public virtual GoogleCloudApihubV1AttributeValues ServiceType { get; set; }
 
         /// <summary>Output only. The list of sources and metadata from the sources of the API resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
@@ -10878,13 +10886,13 @@ namespace Google.Apis.APIhub.v1.Data
         }
 
         /// <summary>
-        /// Optional. Description of the external API. Max length is 2000 characters (Unicode Code Points).
+        /// Optional. Description of the external API. Max length is 500000 characters (Unicode Code Points).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. Display name of the external API. Max length is 63 characters (Unicode Code Points).
+        /// Required. Display name of the external API. Max length is 500 characters (Unicode Code Points).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -12272,12 +12280,12 @@ namespace Google.Apis.APIhub.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The plugin description. Max length is 2000 characters (Unicode code points).</summary>
+        /// <summary>Optional. The plugin description. Max length is 500000 characters (Unicode code points).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. The display name of the plugin. Max length is 50 characters (Unicode code points).
+        /// Required. The display name of the plugin. Max length is 500 characters (Unicode code points).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -12465,7 +12473,7 @@ namespace Google.Apis.APIhub.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The display name for this plugin instance. Max length is 255 characters.</summary>
+        /// <summary>Required. The display name for this plugin instance. Max length is 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
