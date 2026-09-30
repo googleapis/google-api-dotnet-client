@@ -20184,7 +20184,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Details for a bumper ad.</summary>
     public class BumperAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Common ad attributes.</summary>
+        /// <summary>Required. Common ad attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonInStreamAttribute")]
         public virtual CommonInStreamAttribute CommonInStreamAttribute { get; set; }
 
@@ -20735,31 +20735,31 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Common attributes for in-stream, non-skippable and bumper ads.</summary>
     public class CommonInStreamAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The text on the call-to-action button.</summary>
+        /// <summary>Optional. The text on the call-to-action button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionButtonLabel")]
         public virtual string ActionButtonLabel { get; set; }
 
-        /// <summary>The headline of the call-to-action banner.</summary>
+        /// <summary>Optional. The headline of the call-to-action banner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionHeadline")]
         public virtual string ActionHeadline { get; set; }
 
-        /// <summary>The image which shows next to the video ad.</summary>
+        /// <summary>Optional. The image which shows next to the video ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionBanner")]
         public virtual ImageAsset CompanionBanner { get; set; }
 
-        /// <summary>The webpage address that appears with the ad.</summary>
+        /// <summary>Required. The webpage address that appears with the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
         public virtual string DisplayUrl { get; set; }
 
-        /// <summary>The URL address of the webpage that people reach after they click the ad.</summary>
+        /// <summary>Required. The URL address of the webpage that people reach after they click the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; }
 
-        /// <summary>The URL address loaded in the background for tracking purposes.</summary>
+        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
-        /// <summary>The YouTube video of the ad.</summary>
+        /// <summary>Required. The YouTube video of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("video")]
         public virtual YoutubeVideoDetails Video { get; set; }
 
@@ -21957,7 +21957,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string DeviceType { get; set; }
 
         /// <summary>
-        /// Output only. Bid multiplier allows you to show your ads more or less frequently based on the device type. It
+        /// Optional. Bid multiplier allows you to show your ads more or less frequently based on the device type. It
         /// will apply a multiplier on the original bid price. When this field is 0, it indicates this field is not
         /// applicable instead of multiplying 0 on the original bid price. For example, if the bid price without
         /// multiplier is $10.0 and the multiplier is 1.5 for Tablet, the resulting bid price for Tablet will be $15.0.
@@ -22965,11 +22965,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Details for an in-stream ad.</summary>
     public class InStreamAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Common ad attributes.</summary>
+        /// <summary>Required. Common ad attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonInStreamAttribute")]
         public virtual CommonInStreamAttribute CommonInStreamAttribute { get; set; }
 
-        /// <summary>The custom parameters and accompanying values to add to the tracking URL.</summary>
+        /// <summary>Optional. The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -24709,11 +24709,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Details for a non-skippable ad.</summary>
     public class NonSkippableAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Common ad attributes.</summary>
+        /// <summary>Required. Common ad attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonInStreamAttribute")]
         public virtual CommonInStreamAttribute CommonInStreamAttribute { get; set; }
 
-        /// <summary>The custom parameters and accompanying values to add to the tracking URL.</summary>
+        /// <summary>Optional. The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
@@ -26601,27 +26601,27 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Details for a video performance ad.</summary>
     public class VideoPerformanceAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of text assets shown on the call-to-action button.</summary>
+        /// <summary>Optional. The list of text assets shown on the call-to-action button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionButtonLabels")]
         public virtual System.Collections.Generic.IList<string> ActionButtonLabels { get; set; }
 
-        /// <summary>The list of companion banners used by this ad.</summary>
+        /// <summary>Optional. The list of companion banners used by this ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionBanners")]
         public virtual System.Collections.Generic.IList<ImageAsset> CompanionBanners { get; set; }
 
-        /// <summary>The custom parameters and accompanying values to add to the tracking URL.</summary>
+        /// <summary>Optional. The custom parameters and accompanying values to add to the tracking URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
-        /// <summary>The list of descriptions shown on the call-to-action banner.</summary>
+        /// <summary>Optional. The list of descriptions shown on the call-to-action banner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
         public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
 
-        /// <summary>The first piece after the domain in the display URL.</summary>
+        /// <summary>Optional. The first piece after the domain in the display URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb1")]
         public virtual string DisplayUrlBreadcrumb1 { get; set; }
 
-        /// <summary>The second piece after the domain in the display URL.</summary>
+        /// <summary>Optional. The second piece after the domain in the display URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb2")]
         public virtual string DisplayUrlBreadcrumb2 { get; set; }
 
@@ -26629,23 +26629,23 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
-        /// <summary>The URL address of the webpage that people reach after they click the ad.</summary>
+        /// <summary>Required. The URL address of the webpage that people reach after they click the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; }
 
-        /// <summary>The list of headlines shown on the call-to-action banner.</summary>
+        /// <summary>Optional. The list of headlines shown on the call-to-action banner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
-        /// <summary>The list of long headlines shown on the call-to-action banner.</summary>
+        /// <summary>Optional. The list of long headlines shown on the call-to-action banner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
         public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
 
-        /// <summary>The URL address loaded in the background for tracking purposes.</summary>
+        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
-        /// <summary>The list of YouTube video assets used by this ad.</summary>
+        /// <summary>Required. The list of YouTube video assets used by this ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videos")]
         public virtual System.Collections.Generic.IList<YoutubeVideoDetails> Videos { get; set; }
 
@@ -27109,7 +27109,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The reason why the video data is not available.</summary>
+        /// <summary>Output only. The reason why the video data is not available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unavailableReason")]
         public virtual string UnavailableReason { get; set; }
 
