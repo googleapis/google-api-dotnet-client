@@ -1029,10 +1029,6 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyViolationInfo")]
         public virtual OrgPolicyViolationInfo OrgPolicyViolationInfo { get; set; }
 
-        /// <summary>Indicates the regional access boundary policy violations for this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rabPolicyViolationInfo")]
-        public virtual RabPolicyViolationInfo RabPolicyViolationInfo { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1048,25 +1044,6 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pamBindingIds")]
         public virtual System.Collections.Generic.IList<AuditPamBindingId> PamBindingIds { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents Regional Access Boundary (RAB) Policy Violation information.</summary>
-    public class RabPolicyViolationInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Error message detailing what triggered the violation. The error message content originates from
-        /// the authz library e.g., google3/cloud/security/iam/cap/deny_explanation/internal/make_error_msg.cc. This
-        /// will be the same (canonical) error message provided by the http error code.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; }
-
-        /// <summary>Optional. The list of target locations of the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceLocations")]
-        public virtual System.Collections.Generic.IList<string> ResourceLocations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
