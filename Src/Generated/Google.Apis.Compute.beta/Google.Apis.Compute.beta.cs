@@ -42049,6 +42049,93 @@ namespace Google.Apis.Compute.beta
             }
         }
 
+        /// <summary>Sets name of an interconnect.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="interconnect">Name of the interconnect to update.</param>
+        public virtual SetNameRequest SetName(Google.Apis.Compute.beta.Data.InterconnectsSetNameRequest body, string project, string interconnect)
+        {
+            return new SetNameRequest(this.service, body, project, interconnect);
+        }
+
+        /// <summary>Sets name of an interconnect.</summary>
+        public class SetNameRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetName request.</summary>
+            public SetNameRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.InterconnectsSetNameRequest body, string project, string interconnect) : base(service)
+            {
+                Project = project;
+                Interconnect = interconnect;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the interconnect to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("interconnect", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Interconnect { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.InterconnectsSetNameRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setName";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/interconnects/{interconnect}/setName";
+
+            /// <summary>Initializes SetName parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("interconnect", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "interconnect",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -128188,9 +128275,10 @@ namespace Google.Apis.Compute.beta.Data
         /// GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4,
         /// GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,GRAPHICS_OPTIMIZED_G4_VGPU,MEMORY_OPTIMIZED,
         /// MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3,STORAGE_OPTIMIZED_Z4DS,
-        /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T. For example, type MEMORY_OPTIMIZED specifies a commitment
-        /// that applies only to eligible resources of memory optimized M1 and M2 machine series. Type GENERAL_PURPOSE
-        /// specifies a commitment that applies only to eligible resources of general purpose N1 machine series.
+        /// STORAGE_OPTIMIZED_Z4DH,STORAGE_OPTIMIZED_Z4D4T,STORAGE_OPTIMIZED_Z4M. For example, type MEMORY_OPTIMIZED
+        /// specifies a commitment that applies only to eligible resources of memory optimized M1 and M2 machine series.
+        /// Type GENERAL_PURPOSE specifies a commitment that applies only to eligible resources of general purpose N1
+        /// machine series.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -146554,6 +146642,25 @@ namespace Google.Apis.Compute.beta.Data
         public virtual InterconnectMacsecConfig Result { get; set; }
     }
 
+    /// <summary>Request to rename an interconnect.</summary>
+    public class InterconnectsSetNameRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The current name of the interconnect. The name must be 1-63 characters long, and comply with RFC1035.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentName")]
+        public virtual string CurrentName { get; set; }
+
+        /// <summary>
+        /// The new name of the interconnect. The name must be 1-63 characters long, and comply with RFC1035.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).  The start
     /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
@@ -162503,9 +162610,10 @@ namespace Google.Apis.Compute.beta.Data
         /// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against. If it
         /// evaluates to true, the corresponding `action` is enforced.  The following examples are valid match
         /// expressions for public NAT:  `inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip,
-        /// '2.2.0.0/16')`  `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'`  The following example is a
-        /// valid match expression for private NAT:  `nexthop.hub ==
-        /// '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'`
+        /// '2.2.0.0/16')`  `destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'`  The following examples are
+        /// valid match expressions for private NAT:  (NAT 44) `nexthop.hub ==
+        /// '//networkconnectivity.googleapis.com/projects/my-project/locations/global/hubs/hub-1'`  `nexthop.is_hybrid`
+        ///  (NAT 64) `isIPv6(source.ip)`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("match")]
         public virtual string Match { get; set; }
