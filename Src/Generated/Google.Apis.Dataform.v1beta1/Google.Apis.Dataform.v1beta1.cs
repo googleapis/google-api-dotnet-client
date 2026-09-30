@@ -8149,7 +8149,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Client-facing representation of a file entry in search results.</summary>
     public class FileSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>File system path relative to the workspace root.</summary>
+        /// <summary>File system path relative to the file tree root.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
