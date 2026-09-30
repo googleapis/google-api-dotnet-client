@@ -2740,6 +2740,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1PartMediaResolution MediaResolution { get; set; }
 
         /// <summary>
+        /// Optional. Turn-level metadata for speech generation (e.g. Daikon speaker/style). May be set alongside `text`
+        /// to attach speaker and style information to a text part.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1SpeechMetadata SpeechMetadata { get; set; }
+
+        /// <summary>
         /// Optional. The text content of the part. When sent from the VSCode Gemini Code Assist extension, references
         /// to @mentioned items will be converted to markdown boldface text. For example `@my-repo` will be converted to
         /// and sent as `**my-repo**` by the IDE agent.
@@ -3392,6 +3399,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Structured Metadata Sub-Message for Part</summary>
+    public class GoogleCloudAiplatformV1beta1SpeechMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Identifies which speaker is speaking this turn.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speaker")]
+        public virtual string Speaker { get; set; }
+
+        /// <summary>Optional. Natural language description of the vocal style (e.g., "cheerful").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("style")]
+        public virtual string Style { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for text-specific output formatting.</summary>
     public class GoogleCloudAiplatformV1beta1TextResponseFormat : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3503,6 +3525,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Tool to support computer use.</summary>
     public class GoogleCloudAiplatformV1beta1ToolComputerUse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Disabled safety policies for computer use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabledSafetyPolicies")]
+        public virtual System.Collections.Generic.IList<string> DisabledSafetyPolicies { get; set; }
+
         /// <summary>Optional. Enables the prompt injection detection check on computer-use request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePromptInjectionDetection")]
         public virtual System.Nullable<bool> EnablePromptInjectionDetection { get; set; }
@@ -3905,6 +3931,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicatedVoiceConfig")]
         public virtual GoogleCloudAiplatformV1beta1ReplicatedVoiceConfig ReplicatedVoiceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The speaker identifier for synthesis. Supported formats: * Speaker name for prebuilt voices (for
+        /// example, `Orus` or `Kore`). * Voice ID for stored voices (for example, `voice_xxx`). * Voice replication key
+        /// (for example, `voicekey_xxx`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voice")]
+        public virtual string Voice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
