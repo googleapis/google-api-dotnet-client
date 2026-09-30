@@ -4659,6 +4659,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
         public virtual string RequestedVerifyOption { get; set; }
 
+        /// <summary>Output only. Worker release resolved from the release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedWorkerRelease")]
+        public virtual string ResolvedWorkerRelease { get; set; }
+
         /// <summary>
         /// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key.
         /// These values must be specified in the build's `Secret`. These variables will be available to all build steps
@@ -4692,6 +4696,13 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
 
+        /// <summary>
+        /// Optional. Option to specify which release or release channel (rapid|regular|stable) to use to run this
+        /// build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerRelease")]
+        public virtual string WorkerRelease { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4708,6 +4719,17 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. OUTPUT_ONLY. Worker release resolved from the release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedWorkerRelease")]
+        public virtual string ResolvedWorkerRelease { get; set; }
+
+        /// <summary>
+        /// Output only. OUTPUT_ONLY. The release or release channel used to run the Build. This is set to the same
+        /// value as `PrivatePoolV1Config.WorkerConfig.worker_release` for the UI to easily access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerRelease")]
+        public virtual string WorkerRelease { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
