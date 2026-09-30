@@ -2961,6 +2961,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 MirroringEndpointGroupAssociations = new MirroringEndpointGroupAssociationsResource(service);
                 MirroringEndpointGroups = new MirroringEndpointGroupsResource(service);
                 Operations = new OperationsResource(service);
+                RateLimitPolicies = new RateLimitPoliciesResource(service);
                 SacAttachments = new SacAttachmentsResource(service);
                 SacRealms = new SacRealmsResource(service);
                 SecurityProfileGroups = new SecurityProfileGroupsResource(service);
@@ -11850,6 +11851,416 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 }
             }
 
+            /// <summary>Gets the RateLimitPolicies resource.</summary>
+            public virtual RateLimitPoliciesResource RateLimitPolicies { get; }
+
+            /// <summary>The "rateLimitPolicies" collection of methods.</summary>
+            public class RateLimitPoliciesResource
+            {
+                private const string Resource = "rateLimitPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RateLimitPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new `RateLimitPolicy` in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Specifies the value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.RateLimitPolicy body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new `RateLimitPolicy` in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.RateLimitPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Specifies the value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Specifies the ID of the requesting object. If auto-generating Id server-side, remove
+                    /// this field and rate_limit_policy_id from the method_signature of Create RPC
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("rateLimitPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RateLimitPolicyId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specifies an optional request ID to identify requests. Specify a unique request ID so
+                    /// that if you must retry your request, the server will know to ignore the request if it has
+                    /// already been completed. The server will guarantee that for at least 60 minutes since the first
+                    /// request. For example, consider a situation where you make an initial request and the request
+                    /// times out. If you make the request again with the same request ID, the server can check if
+                    /// original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.RateLimitPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/rateLimitPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("rateLimitPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "rateLimitPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single `RateLimitPolicy`.</summary>
+                /// <param name="name">Required. Specifies the name of the resource.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single `RateLimitPolicy`.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Specifies the name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Specifies an optional request ID to identify requests. Specify a unique request ID so
+                    /// that if you must retry your request, the server will know to ignore the request if it has
+                    /// already been completed. The server will guarantee that for at least 60 minutes after the first
+                    /// request. For example, consider a situation where you make an initial request and the request
+                    /// times out. If you make the request again with the same request ID, the server can check if
+                    /// original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rateLimitPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single `RateLimitPolicy`.</summary>
+                /// <param name="name">Required. Specifies the name of the resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single `RateLimitPolicy`.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.RateLimitPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Specifies the name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rateLimitPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `RateLimitPolicy` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Specifies the parent value for `ListRateLimitPoliciesRequest`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists `RateLimitPolicy` resources in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListRateLimitPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Specifies the parent value for `ListRateLimitPoliciesRequest`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filters results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Provides a hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specifies the requested page size. Server may return fewer items than requested. If
+                    /// unspecified, server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Identifies a token for a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/rateLimitPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single `RateLimitPolicy`.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Identifier. Specifies the name of the `RateLimitPolicy` resource.</param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.RateLimitPolicy body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single `RateLimitPolicy`.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.RateLimitPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifier. Specifies the name of the `RateLimitPolicy` resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Specifies an optional request ID to identify requests. Specify a unique request ID so
+                    /// that if you must retry your request, the server will know to ignore the request if it has
+                    /// already been completed. The server will guarantee that for at least 60 minutes since the first
+                    /// request. For example, consider a situation where you make an initial request and the request
+                    /// times out. If you make the request again with the same request ID, the server can check if
+                    /// original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Specifies the fields to be overwritten in the `RateLimitPolicy` resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then all fields present in the request will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.RateLimitPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rateLimitPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the SacAttachments resource.</summary>
             public virtual SacAttachmentsResource SacAttachments { get; }
 
@@ -18108,6 +18519,25 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains a response to listing `RateLimitPolicy` resources.</summary>
+    public class ListRateLimitPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies a token for a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Contains a list of `RateLimitPolicy` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateLimitPolicies")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicy> RateLimitPolicies { get; set; }
+
+        /// <summary>Unordered list. Lists locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for `ListSACAttachments` method.</summary>
     public class ListSACAttachmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19146,6 +19576,586 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a `RateLimitPolicy` object.</summary>
+    public class RateLimitPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Represents the create timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Provides a human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies a list of rate limit HTTP rules to match against the incoming request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRules")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitRule> HttpRules { get; set; }
+
+        /// <summary>Optional. Stores labels as key value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Identifier. Specifies the name of the `RateLimitPolicy` resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies a list of rate limit buckets to be used for rate limiting. Rate limit buckets will be
+        /// referenced by the rate limit actions by name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateLimitBuckets")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitBucket> RateLimitBuckets { get; set; }
+
+        /// <summary>Required. Specifies a list of targets to which this policy applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyTarget> Targets { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Represents the update timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of a rate limit bucket.</summary>
+    public class RateLimitPolicyRateLimitBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the default limit to apply for this rate limit bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLimit")]
+        public virtual RateLimitPolicyRateLimitBucketLimit DefaultLimit { get; set; }
+
+        /// <summary>Optional. Specifies whether the rate limit bucket is in dry-run mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual System.Nullable<bool> DryRun { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the keys to use for rate limiting. At least one key is required. If multiple keys are
+        /// specified, the keys will be combined and used as a single key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keys")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitBucketKey> Keys { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the name of the rate limit bucket. Name will be used to reference the bucket in the
+        /// RateLimitAction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Specifies a list of user overrides to apply to the rate limit bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userOverrides")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitBucketUserOverride> UserOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the count limit for enforcement.</summary>
+    public class RateLimitPolicyRateLimitBucketCountLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Specifies the maximum number of costs allowed in the specified interval. Must be non-negative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the interval in units for which the count limit is enforced. Must be positive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interval")]
+        public virtual System.Nullable<long> Interval { get; set; }
+
+        /// <summary>Required. Specifies the unit of the interval. Defaults to MINUTES.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intervalUnit")]
+        public virtual string IntervalUnit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of a key to use for rate limiting.</summary>
+    public class RateLimitPolicyRateLimitBucketKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the header name if key_type is HTTP_HEADER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual string Header { get; set; }
+
+        /// <summary>Required. Specifies the type of key to use for rate limiting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
+        public virtual string KeyType { get; set; }
+
+        /// <summary>Optional. Specifies the principal type if key_type is PRINCIPAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalType")]
+        public virtual string PrincipalType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a limit for enforcement.</summary>
+    public class RateLimitPolicyRateLimitBucketLimit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Defines the count limit to enforce.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countLimit")]
+        public virtual RateLimitPolicyRateLimitBucketCountLimit CountLimit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of a user override for the rate limit bucket.</summary>
+    public class RateLimitPolicyRateLimitBucketUserOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the limit to apply for this specific key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual RateLimitPolicyRateLimitBucketLimit Limit { get; set; }
+
+        /// <summary>Required. Specifies the key to override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideKey")]
+        public virtual RateLimitPolicyRateLimitBucketUserOverrideOverrideKey OverrideKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the key to override. Key fields must match the key types specified in the rate limit bucket. Key type
+    /// ALL does not support overrides.
+    /// </summary>
+    public class RateLimitPolicyRateLimitBucketUserOverrideOverrideKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the HTTP headers if the rate limit bucket keys contain keys of type HTTP_HEADER. Number
+        /// of headers and header names must match the rate limit bucket key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpHeaders")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader> HttpHeaders { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the HTTP path if the rate limit bucket keys contain a key of type HTTP_PATH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpPath")]
+        public virtual string HttpPath { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the MCP tool if the rate limit bucket keys contain a key of type MCP_TOOL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpTool")]
+        public virtual string McpTool { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the principals if the rate limit bucket keys contain keys of PRINCIPAL. Number of
+        /// principals and principal types must match the rate limit bucket key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal> Principals { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the source IP if the rate limit bucket keys contain a key of type SOURCE_IP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
+        public virtual string SourceIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the key in the type HTTP header to override.</summary>
+    public class RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the header name of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual string Header { get; set; }
+
+        /// <summary>Required. Specifies the header value of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the key in the type PRINCIPAL to override.</summary>
+    public class RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the principal value of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual string Principal { get; set; }
+
+        /// <summary>Required. Specifies the principal type of the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalType")]
+        public virtual string PrincipalType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies conditions to match against the incoming request.</summary>
+    public class RateLimitPolicyRateLimitRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Describes properties of a source of a request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("from")]
+        public virtual RateLimitPolicyRateLimitRuleFrom From { get; set; }
+
+        /// <summary>Optional. Specifies the actions to take when this rule is matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateLimitActions")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitRuleRateLimitAction> RateLimitActions { get; set; }
+
+        /// <summary>Optional. Describes properties of a target of a request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("to")]
+        public virtual RateLimitPolicyRateLimitRuleTo To { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of the sources of a request.</summary>
+    public class RateLimitPolicyRateLimitRuleFrom : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Describes the negated properties of request source. Matches requests from source that does not
+        /// match the criteria specified in this field. At least one of source or not_source must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notSource")]
+        public virtual RateLimitPolicyRateLimitRuleFromSource NotSource { get; set; }
+
+        /// <summary>
+        /// Optional. Describes the properties of a request's source. At least one of source or not_source must be
+        /// specified. A match occurs when ANY fields in either source or not_source matches the request. Within a
+        /// single source, the match follows OR semantics across fields and AND semantics within a single field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual RateLimitPolicyRateLimitRuleFromSource Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the properties of a request source.</summary>
+    public class RateLimitPolicyRateLimitRuleFromSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Contains a list of identities derived from the client's certificate. This field does not match on
+        /// a request unless frontend mutual TLS is enabled for the Gateway and the client certificate is successfully
+        /// validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs, DNS Name
+        /// SANs, or the common name in the client's certificate. A match happens when any principal matches with the
+        /// rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitRulePrincipal> Principals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Determines how an HTTP header is matched.</summary>
+    public class RateLimitPolicyRateLimitRuleHeaderMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the name of the header in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Specifies how the header match is performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual RateLimitPolicyRateLimitRuleStringMatch Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the properties of a principal for matching.</summary>
+    public class RateLimitPolicyRateLimitRulePrincipal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Matches a non-empty string against the principal value based on the principal_selector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principal")]
+        public virtual RateLimitPolicyRateLimitRuleStringMatch Principal { get; set; }
+
+        /// <summary>
+        /// Optional. Decides what principal value the principal rule will match against. If not specified, defaults to
+        /// CLIENT_CERT_URI_SAN.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalSelector")]
+        public virtual string PrincipalSelector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the action to take when the rate limit rule is matched.</summary>
+    public class RateLimitPolicyRateLimitRuleRateLimitAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the name of the rate limit bucket to apply when this rule is matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateLimitBucket")]
+        public virtual string RateLimitBucket { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Determines how a string value is matched.</summary>
+    public class RateLimitPolicyRateLimitRuleStringMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Checks if the input string contains the substring specified here. Note: empty contains match is not allowed,
+        /// please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contains")]
+        public virtual string Contains { get; set; }
+
+        /// <summary>
+        /// Matches the input string exactly to the string specified here. Examples: * ``abc`` only matches the value
+        /// ``abc``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exact")]
+        public virtual string Exact { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates if the exact/prefix/suffix/contains matching should be case insensitive. For example,
+        /// when true, the matcher ``data`` matches both input strings ``Data`` and ``data``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
+        public virtual System.Nullable<bool> IgnoreCase { get; set; }
+
+        /// <summary>
+        /// Checks if the input string has the prefix specified here. Note: empty prefix is not allowed, please use
+        /// regex instead. Examples: * ``abc`` matches the value ``abc.xyz``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; }
+
+        /// <summary>
+        /// Checks if the input string has the suffix specified here. Note: empty suffix is not allowed, please use
+        /// regex instead. Examples: * ``abc`` matches the value ``xyz.abc``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
+        public virtual string Suffix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of the targets of a request.</summary>
+    public class RateLimitPolicyRateLimitRuleTo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Describes properties of a request's destination. At least one of destination or not_destination
+        /// must be specified. A match occurs when ANY fields in either destination or not_destination matches the
+        /// request. Within a destination, the match follows OR semantics across fields and AND semantics within a
+        /// single field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual RateLimitPolicyRateLimitRuleToDestination Destination { get; set; }
+
+        /// <summary>
+        /// Optional. Describes the negated properties of a request's destination. Matches requests for destination that
+        /// does not match the criteria specified in this field. At least one of destination or not_destination must be
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notDestination")]
+        public virtual RateLimitPolicyRateLimitRuleToDestination NotDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of a request target.</summary>
+    public class RateLimitPolicyRateLimitRuleToDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies a list of headers to match against in http header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerSet")]
+        public virtual RateLimitPolicyRateLimitRuleToDestinationHeaderSet HeaderSet { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies a list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or
+        /// contains (substring match). Matches are always case sensitive unless the ignoreCase is set. The match
+        /// follows OR semantics which means that if any of the hosts match, the operation is considered to be matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitRuleStringMatch> Hosts { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the MCP protocol attributes to match against. This field is only valid if the targeted
+        /// Gateway or Forwarding Rule has an Agent Gateway attached to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcp")]
+        public virtual RateLimitPolicyRateLimitRuleToDestinationMCP Mcp { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies a list of HTTP methods to match against. Each entry must be a valid HTTP method name
+        /// (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive. The
+        /// match follows OR semantics which means that if any of the methods match, the operation is considered to be
+        /// matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methods")]
+        public virtual System.Collections.Generic.IList<string> Methods { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies a list of paths to match against. The match can be one of exact, prefix, suffix, or
+        /// contains (substring match). Matches are always case sensitive unless the ignoreCase is set. The match
+        /// follows OR semantics which means that if any of the paths match, the operation is considered to be matched.
+        /// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified
+        /// name of the form /package.service/method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitRuleStringMatch> Paths { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a set of HTTP headers to match against.</summary>
+    public class RateLimitPolicyRateLimitRuleToDestinationHeaderSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Contains a list of headers to match against in http header. The match can be one of exact, prefix,
+        /// suffix, or contains (substring match). The match follows AND semantics which means all the headers must
+        /// match. Matches are always case sensitive unless the ignoreCase is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitRuleHeaderMatch> Headers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes a set of MCP protocol attributes to match against for a given MCP request. This field is only valid if
+    /// the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it.
+    /// </summary>
+    public class RateLimitPolicyRateLimitRuleToDestinationMCP : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize *
+        /// completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseProtocolMethodsOption")]
+        public virtual string BaseProtocolMethodsOption { get; set; }
+
+        /// <summary>
+        /// Optional. A list of MCP methods and associated parameter names to match on. It is recommended to use this
+        /// field to match on tools, prompts and resource accesses while setting the baseProtocolMethodsOption to
+        /// MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods. Limited to 10 MCP methods per
+        /// Rate Limit Policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methods")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitRuleToDestinationMCPMethod> Methods { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes a set of MCP methods to match against. This field is only valid if the targeted Gateway or Forwarding
+    /// Rule has an Agent Gateway attached to it.
+    /// </summary>
+    public class RateLimitPolicyRateLimitRuleToDestinationMCPMethod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Specifies the MCP method to match against. Allowed values are as follows: 1. `tools`, `prompts`,
+        /// `resources` - these will match against all sub methods under the respective methods. 2. `prompts/list`,
+        /// `tools/list`, `resources/list`, `resources/templates/list` 3. `prompts/get`, `tools/call`,
+        /// `resources/subscribe`, `resources/unsubscribe`, `resources/read` Params cannot be specified for categories 1
+        /// and 2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies a list of MCP method parameter names to match against. The match can be one of exact,
+        /// prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IList<RateLimitPolicyRateLimitRuleStringMatch> Params__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the target to which this policy applies.</summary>
+    public class RateLimitPolicyTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Reference to a Gateway or Forwarding Rule resource on which this policy will be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
