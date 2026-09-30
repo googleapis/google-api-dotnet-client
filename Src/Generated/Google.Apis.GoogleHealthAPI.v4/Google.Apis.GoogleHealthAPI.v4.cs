@@ -1831,6 +1831,30 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. The data source family name to filter by. If empty, data points from all available
+                    /// data sources will be returned. Format: `users/me/dataSourceFamilies/{data_source_family}` The
+                    /// supported values are: - `users/me/dataSourceFamilies/all-sources` - Default value. Includes data
+                    /// from all available data sources. - `users/me/dataSourceFamilies/google-wearables` - Includes
+                    /// data from Google and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch). Excludes
+                    /// manually logged data. - `users/me/dataSourceFamilies/google-sources` - Includes first-party
+                    /// Google data, such as data from tracker devices, manually logged data, and Health Connect. -
+                    /// `users/me/dataSourceFamilies/self-sources` - Includes only the data the calling client wrote
+                    /// through this API, that is, data points whose data source was registered through this API with
+                    /// the same OAuth client ID as the caller. Callers that were only granted write scopes for the
+                    /// requested data types may only read the data they wrote themselves: their requests are implicitly
+                    /// restricted to `self-sources`, and requesting any other data source family fails with
+                    /// `PERMISSION_DENIED`. If no data point matches the requested data source family, the response is
+                    /// an empty list rather than an error. Filtering by data source family is not supported for the
+                    /// `sleep`, `food` and `food-measurement-unit` data types, because the underlying listing
+                    /// implementation cannot restrict results by data source. Such requests fail with
+                    /// `INVALID_ARGUMENT` when the data source family is set explicitly, and with `PERMISSION_DENIED`
+                    /// when the restriction is only implied by the caller's scopes. For `sleep`, use
+                    /// ReconcileDataPoints instead.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dataSourceFamily", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DataSourceFamily { get; set; }
+
+                    /// <summary>
                     /// Optional. Filter expression following https://google.aip.dev/160. A time range (either physical
                     /// or civil) can be specified. The supported filter fields are: - Interval start time: - Pattern:
                     /// `{interval_data_type}.interval.start_time` - Supported comparison operators: `&amp;gt;=`,
@@ -1914,6 +1938,14 @@ namespace Google.Apis.GoogleHealthAPI.v4
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^users/[^/]+/dataTypes/[^/]+$",
+                        });
+                        RequestParameters.Add("dataSourceFamily", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dataSourceFamily",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
@@ -2058,7 +2090,14 @@ namespace Google.Apis.GoogleHealthAPI.v4
                     /// sources. - `users/me/dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit
                     /// tracker devices (such as Fitbit trackers and Pixel Watch). Excludes manually logged data. -
                     /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google data, such as data
-                    /// from tracker devices, manually logged data, and Health Connect.
+                    /// from tracker devices, manually logged data, and Health Connect. -
+                    /// `users/me/dataSourceFamilies/self-sources` - Includes only the data the calling client wrote
+                    /// through this API, that is, data points whose data source was registered through this API with
+                    /// the same OAuth client ID as the caller. Callers that were only granted write scopes for the
+                    /// requested data type may only read the data they wrote themselves: their requests are implicitly
+                    /// restricted to `self-sources`, and requesting any other data source family fails with
+                    /// `PERMISSION_DENIED`. If no data point matches the requested data source family, the response is
+                    /// an empty list rather than an error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataSourceFamily", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataSourceFamily { get; set; }
@@ -2553,7 +2592,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
         /// Identifier. The resource name of this Profile resource. Format: `users/{user}/profile` Example:
         /// `users/1234567890/profile` or `users/me/profile` The {user} ID is a system-generated Google Health API user
         /// ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens. The
-        /// literal `me` can also be used to refer to the authenticated user.
+        /// literal `me` can also be used to refer to the authenticated user. This field is read-only.
         /// </param>
         public virtual UpdateProfileRequest UpdateProfile(Google.Apis.GoogleHealthAPI.v4.Data.Profile body, string name)
         {
@@ -2575,7 +2614,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// Identifier. The resource name of this Profile resource. Format: `users/{user}/profile` Example:
             /// `users/1234567890/profile` or `users/me/profile` The {user} ID is a system-generated Google Health API
             /// user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and
-            /// hyphens. The literal `me` can also be used to refer to the authenticated user.
+            /// hyphens. The literal `me` can also be used to refer to the authenticated user. This field is read-only.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2628,7 +2667,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
         /// Identifier. The resource name of this Settings resource. Format: `users/{user}/settings` Example:
         /// `users/1234567890/settings` or `users/me/settings` The {user} ID is a system-generated Google Health API
         /// user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens.
-        /// The literal `me` can also be used to refer to the authenticated user.
+        /// The literal `me` can also be used to refer to the authenticated user. This field is read-only.
         /// </param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.GoogleHealthAPI.v4.Data.Settings body, string name)
         {
@@ -2650,7 +2689,7 @@ namespace Google.Apis.GoogleHealthAPI.v4
             /// Identifier. The resource name of this Settings resource. Format: `users/{user}/settings` Example:
             /// `users/1234567890/settings` or `users/me/settings` The {user} ID is a system-generated Google Health API
             /// user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and
-            /// hyphens. The literal `me` can also be used to refer to the authenticated user.
+            /// hyphens. The literal `me` can also be used to refer to the authenticated user. This field is read-only.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2707,7 +2746,9 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual ObservationTimeInterval Interval { get; set; }
 
-        /// <summary>Required. Energy burned during an activity, measured in kilocalories.</summary>
+        /// <summary>
+        /// Required. Energy burned during an activity, measured in kilocalories. Must be in the range `[0, 1000000]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kcal")]
         public virtual System.Nullable<double> Kcal { get; set; }
 
@@ -2991,7 +3032,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Captures the altitude gain (i.e. deltas), and not level above sea, for a user in millimeters.</summary>
     public class Altitude : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Altitude gain in millimeters over the observed interval.</summary>
+        /// <summary>
+        /// Required. Altitude gain in millimeters over the observed interval. Must be in the range `[-1000000000,
+        /// 1000000000]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gainMillimeters")]
         public virtual System.Nullable<long> GainMillimeters { get; set; }
 
@@ -3081,7 +3125,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents a blood glucose level measurement. LINT: LEGACY_NAMES</summary>
     public class BloodGlucose : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Blood glucose level concentration in mg/dL.</summary>
+        /// <summary>Required. Blood glucose level concentration in mg/dL. Must be in the range `[0, 900]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bloodGlucoseMilligramsPerDeciliter")]
         public virtual System.Nullable<double> BloodGlucoseMilligramsPerDeciliter { get; set; }
 
@@ -3127,7 +3171,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Body fat measurement.</summary>
     public class BodyFat : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Body fat percentage, in range [0, 100].</summary>
+        /// <summary>Required. Body fat percentage. Must be in the range `[0, 100]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
         public virtual System.Nullable<double> Percentage { get; set; }
 
@@ -3227,7 +3271,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual ObservationSampleTime SampleTime { get; set; }
 
-        /// <summary>Required. The core body temperature in Celsius.</summary>
+        /// <summary>Required. The core body temperature in Celsius. Must be in the range `[0, 100]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsius")]
         public virtual System.Nullable<double> TemperatureCelsius { get; set; }
 
@@ -3358,7 +3402,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// </summary>
     public class DailyOxygenSaturation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The average value of the oxygen saturation samples during the sleep.</summary>
+        /// <summary>
+        /// Required. The average value of the oxygen saturation samples during the sleep. Must be in the range `[0,
+        /// 100]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averagePercentage")]
         public virtual System.Nullable<double> AveragePercentage { get; set; }
 
@@ -3367,7 +3414,8 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual Date Date { get; set; }
 
         /// <summary>
-        /// Required. The lower bound of the confidence interval of oxygen saturation samples during sleep.
+        /// Required. The lower bound of the confidence interval of oxygen saturation samples during sleep. Must be in
+        /// the range `[0, 100]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lowerBoundPercentage")]
         public virtual System.Nullable<double> LowerBoundPercentage { get; set; }
@@ -3379,7 +3427,8 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual System.Nullable<double> StandardDeviationPercentage { get; set; }
 
         /// <summary>
-        /// Required. The upper bound of the confidence interval of oxygen saturation samples during sleep.
+        /// Required. The upper bound of the confidence interval of oxygen saturation samples during sleep. Must be in
+        /// the range `[0, 100]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBoundPercentage")]
         public virtual System.Nullable<double> UpperBoundPercentage { get; set; }
@@ -3448,7 +3497,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit tracker devices (such
         /// as Fitbit trackers and Pixel Watch). Excludes manually logged data. -
         /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google data, such as data from tracker
-        /// devices, manually logged data, and Health Connect.
+        /// devices, manually logged data, and Health Connect. - `users/me/dataSourceFamilies/self-sources` - Includes
+        /// only the data the calling client wrote through this API, that is, data points whose data source was
+        /// registered through this API with the same OAuth client ID as the caller. Callers that were only granted
+        /// write scopes for the requested data type may only read the data they wrote themselves: their requests are
+        /// implicitly restricted to `self-sources`, and requesting any other data source family fails with
+        /// `PERMISSION_DENIED`. If no data point matches the requested data source family, the response is an empty
+        /// list rather than an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFamily")]
         public virtual string DataSourceFamily { get; set; }
@@ -3731,7 +3786,8 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual System.Nullable<bool> Estimated { get; set; }
 
         /// <summary>
-        /// Required. Daily VO2 max value measured as in ml consumed oxygen / kg of body weight / min.
+        /// Required. Daily VO2 max value measured as in ml consumed oxygen / kg of body weight / min. Must be in the
+        /// range `[0, 100]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vo2Max")]
         public virtual System.Nullable<double> Vo2Max { get; set; }
@@ -4103,7 +4159,9 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual ObservationTimeInterval Interval { get; set; }
 
-        /// <summary>Required. Distance in millimeters over the observed interval.</summary>
+        /// <summary>
+        /// Required. Distance in millimeters over the observed interval. Must be in the range `[0, 1000000000]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("millimeters")]
         public virtual System.Nullable<long> Millimeters { get; set; }
 
@@ -4218,7 +4276,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents the energy quantity.</summary>
     public class EnergyQuantity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The energy value in kilocalories.</summary>
+        /// <summary>Required. The energy value in kilocalories. Must be in the range `[0, 100000]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kcal")]
         public virtual System.Nullable<double> Kcal { get; set; }
 
@@ -4464,7 +4522,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Gained elevation measured in floors over the time interval</summary>
     public class Floors : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Number of floors in the recorded interval</summary>
+        /// <summary>Required. Number of floors in the recorded interval. Must be in the range `[0, 1000000]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
@@ -4775,7 +4833,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>A heart rate measurement.</summary>
     public class HeartRate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The heart rate value in beats per minute.</summary>
+        /// <summary>Required. The heart rate value in beats per minute. Must be in the range `[1, 300]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("beatsPerMinute")]
         public virtual System.Nullable<long> BeatsPerMinute { get; set; }
 
@@ -4831,13 +4889,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// </summary>
     public class HeartRateVariability : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Metadata used in 1P surfaces.</summary>
+        /// <summary>Optional. Additional information about the heart rate variability measurement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual HeartRateVariabilityMetadata Metadata { get; set; }
 
         /// <summary>
         /// Optional. The root mean square of successive differences between normal heartbeats. This is a measure of
-        /// heart rate variability used by Google Health.
+        /// heart rate variability used by Google Health. Must be in the range `[1, 200]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootMeanSquareOfSuccessiveDifferencesMilliseconds")]
         public virtual System.Nullable<double> RootMeanSquareOfSuccessiveDifferencesMilliseconds { get; set; }
@@ -4912,7 +4970,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Body height measurement.</summary>
     public class Height : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Height of the user in millimeters.</summary>
+        /// <summary>Required. Height of the user in millimeters. Must be in the range `[0, 3000]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightMillimeters")]
         public virtual System.Nullable<long> HeightMillimeters { get; set; }
 
@@ -5942,7 +6000,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Captures the user's instantaneous oxygen saturation percentage (SpO2).</summary>
     public class OxygenSaturation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The oxygen saturation percentage. Valid values are from 0 to 100.</summary>
+        /// <summary>Required. The oxygen saturation percentage. Must be in the range `[0, 100]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentage")]
         public virtual System.Nullable<double> Percentage { get; set; }
 
@@ -6105,7 +6163,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// Identifier. The resource name of this Profile resource. Format: `users/{user}/profile` Example:
         /// `users/1234567890/profile` or `users/me/profile` The {user} ID is a system-generated Google Health API user
         /// ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens. The
-        /// literal `me` can also be used to refer to the authenticated user.
+        /// literal `me` can also be used to refer to the authenticated user. This field is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6376,7 +6434,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// `users/me/dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit tracker devices (such
         /// as Fitbit trackers and Pixel Watch). Excludes manually logged data. -
         /// `users/me/dataSourceFamilies/google-sources` - Includes first-party Google data, such as data from tracker
-        /// devices, manually logged data, and Health Connect.
+        /// devices, manually logged data, and Health Connect. - `users/me/dataSourceFamilies/self-sources` - Includes
+        /// only the data the calling client wrote through this API, that is, data points whose data source was
+        /// registered through this API with the same OAuth client ID as the caller. Callers that were only granted
+        /// write scopes for the requested data type may only read the data they wrote themselves: their requests are
+        /// implicitly restricted to `self-sources`, and requesting any other data source family fails with
+        /// `PERMISSION_DENIED`. If no data point matches the requested data source family, the response is an empty
+        /// list rather than an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFamily")]
         public virtual string DataSourceFamily { get; set; }
@@ -6665,7 +6729,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>VO2 max value calculated based on the user's running activity. Value stored in ml/kg/min.</summary>
     public class RunVO2Max : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Run VO2 max value in ml/kg/min.</summary>
+        /// <summary>Required. Run VO2 max value in ml/kg/min. Must be in the range `[0, 100]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runVo2Max")]
         public virtual System.Nullable<double> RunVo2Max { get; set; }
 
@@ -6895,7 +6959,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         /// Identifier. The resource name of this Settings resource. Format: `users/{user}/settings` Example:
         /// `users/1234567890/settings` or `users/me/settings` The {user} ID is a system-generated Google Health API
         /// user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens.
-        /// The literal `me` can also be used to refer to the authenticated user.
+        /// The literal `me` can also be used to refer to the authenticated user. This field is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7469,7 +7533,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Step count over the time interval.</summary>
     public class Steps : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Number of steps in the recorded interval.</summary>
+        /// <summary>Required. Number of steps in the recorded interval. Must be in the range `[0, 1000000]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
@@ -7851,7 +7915,10 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual ObservationSampleTime SampleTime { get; set; }
 
-        /// <summary>Required. VO2 max value measured as in ml consumed oxygen / kg of body weight / min.</summary>
+        /// <summary>
+        /// Required. VO2 max value measured as in ml consumed oxygen / kg of body weight / min. Must be in the range
+        /// `[0, 100]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vo2Max")]
         public virtual System.Nullable<double> Vo2Max { get; set; }
 
@@ -7862,7 +7929,9 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents the volume quantity.</summary>
     public class VolumeQuantity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Value representing the volume in milliliters.</summary>
+        /// <summary>
+        /// Required. Value representing the volume in milliliters. Must be in the range `[0, 100000]`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("milliliters")]
         public virtual System.Nullable<double> Milliliters { get; set; }
 
@@ -7903,7 +7972,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual ObservationSampleTime SampleTime { get; set; }
 
-        /// <summary>Required. Weight of a user in grams.</summary>
+        /// <summary>Required. Weight of a user in grams. Must be in the range `[0, 1000000]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weightGrams")]
         public virtual System.Nullable<double> WeightGrams { get; set; }
 
@@ -7914,7 +7983,7 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Represents the weight quantity.</summary>
     public class WeightQuantity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The weight value in grams.</summary>
+        /// <summary>Required. The weight value in grams. Must be in the range `[0, 100000]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grams")]
         public virtual System.Nullable<double> Grams { get; set; }
 
