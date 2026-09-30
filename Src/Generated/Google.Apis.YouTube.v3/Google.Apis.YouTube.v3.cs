@@ -2588,7 +2588,9 @@ namespace Google.Apis.YouTube.v3
             /// that own and manage many different YouTube channels. It allows content owners to authenticate once and
             /// get access to all their video and channel data, without having to provide authentication credentials for
             /// each individual channel. The actual CMS account that the user authenticates with needs to be linked to
-            /// the specified YouTube content owner.
+            /// the specified YouTube content owner. This parameter must be provided if the request is authenticated
+            /// with credentials for a CMS content owner user acting on a managed channel. If omitted, the request
+            /// executes under the authenticated user's direct context and returns an HTTP 403 Forbidden error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OnBehalfOfContentOwner { get; set; }
@@ -2811,10 +2813,6 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Returns the comment threads of the specified post.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PostId { get; set; }
-
             /// <summary>
             /// Limits the returned comment threads to those matching the specified key words. Not compatible with the
             /// 'id' filter.
@@ -2918,14 +2916,6 @@ namespace Google.Apis.YouTube.v3
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("postId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "postId",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -7444,7 +7434,7 @@ namespace Google.Apis.YouTube.v3
             /// <summary>Filter on the livestream status of the videos.</summary>
             public enum EventTypeEnum
             {
-                /// <summary></summary>
+                /// <summary>The resource does not have live broadcast content.</summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 0,
 
@@ -10203,7 +10193,7 @@ namespace Google.Apis.YouTube.v3
             /// </summary>
             public enum MyRatingEnum
             {
-                /// <summary></summary>
+                /// <summary>The entity has not been rated.</summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 0,
 
@@ -10392,7 +10382,7 @@ namespace Google.Apis.YouTube.v3
 
             public enum RatingEnum
             {
-                /// <summary></summary>
+                /// <summary>The entity has not been rated.</summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 0,
 
@@ -11193,20 +11183,6 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual ActivityContentDetailsComment Comment { get; set; }
 
         /// <summary>
-        /// The `favorite` object contains information about a video that was marked as a favorite video. This property
-        /// is only present if the `snippet.type` is `favorite`. Deprecated: This property is no longer returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("favorite")]
-        public virtual ActivityContentDetailsFavorite Favorite { get; set; }
-
-        /// <summary>
-        /// The `like` object contains information about a resource that received a positive (like) rating. This
-        /// property is only present if the `snippet.type` is `like`. Deprecated: This property is no longer returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("like")]
-        public virtual ActivityContentDetailsLike Like { get; set; }
-
-        /// <summary>
         /// The `playlistItem` object contains information about a new playlist item. This property is only present if
         /// the `snippet.type` is `playlistItem`.
         /// </summary>
@@ -11236,7 +11212,7 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>
         /// The `subscription` object contains information about a channel that a user subscribed to. This property is
-        /// only present if the `snippet.type` is `subscription`. Deprecated: This property is no longer returned.
+        /// only present if the `snippet.type` is `subscription`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual ActivityContentDetailsSubscription Subscription { get; set; }
@@ -11285,35 +11261,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>
         /// The `resourceId` object contains information that identifies the resource associated with the comment.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Information about a video that was marked as a favorite video. Deprecated: This resource is no longer returned.
-    /// </summary>
-    public class ActivityContentDetailsFavorite : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The `resourceId` object contains information that identifies the resource that was marked as a favorite.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual ResourceId ResourceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Information about a resource that received a positive (like) rating. Deprecated: This resource is no longer
-    /// returned.
-    /// </summary>
-    public class ActivityContentDetailsLike : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The `resourceId` object contains information that identifies the rated resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual ResourceId ResourceId { get; set; }
 
@@ -11453,9 +11400,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Information about a channel that a user subscribed to. Deprecated: This resource is no longer returned.
-    /// </summary>
+    /// <summary>Information about a channel that a user subscribed to.</summary>
     public class ActivityContentDetailsSubscription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12788,10 +12733,6 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
         public virtual string ParentId { get; set; }
 
-        /// <summary>The ID of the post the comment refers to, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
-        public virtual string PostId { get; set; }
-
         /// <summary>The date and time when the comment was originally published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
@@ -12982,10 +12923,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Whether the thread (and therefore all its comments) is visible to all YouTube users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPublic")]
         public virtual System.Nullable<bool> IsPublic { get; set; }
-
-        /// <summary>The ID of the post the comments refer to, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("postId")]
-        public virtual string PostId { get; set; }
 
         /// <summary>The top level comment of this thread.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLevelComment")]
@@ -18061,7 +17998,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Basic details about a video category, such as its localized title. Next Id: 19</summary>
+    /// <summary>Basic details about a video category, such as its localized title. Next Id: 20</summary>
     public class VideoStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Indicates if the video contains altered or synthetic media.</summary>
