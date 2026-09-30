@@ -7232,7 +7232,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// Indicates whether to track active query plans for an instance. If not set, the default value is "off". Can
-        /// only be enabled if track_active_queries is enabled.
+        /// only be enabled if track_active_queries is enabled. Deprecated: Use track_active_queries instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueryPlan")]
         public virtual System.Nullable<bool> TrackActiveQueryPlan { get; set; }
