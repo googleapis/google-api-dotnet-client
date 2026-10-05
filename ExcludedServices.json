@@ -12,13 +12,11 @@
   // Known exception for library generation
   "apigee.v1",
   
-  // b/299569133 method.request.type instead of method.request.$ref
+  // b/287068812 method.request.type instead of method.request.$ref
   // type is not a supported field in method.request.
   "integrations.v1alpha",
   "integrations.v1",
-
-  // b/299567447 method.request.type instead of method.request.$ref
-  // type is not a supported field in method.request.
+  "integrations.v2",
   "datalineage.v1",
   
   // b/170974415 
