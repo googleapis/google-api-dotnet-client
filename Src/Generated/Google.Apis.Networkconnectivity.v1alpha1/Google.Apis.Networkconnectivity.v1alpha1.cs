@@ -3193,6 +3193,13 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
         public virtual System.Nullable<int> PrefixLength { get; set; }
 
+        /// <summary>
+        /// Optional. The purpose of this internal range. Defines the intended use of the range and any restrictions
+        /// associated with it. If not specified, it defaults to VPC_SUBNET.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
+
         /// <summary>Output only. Status of the Internal Range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangeStatus")]
         public virtual string RangeStatus { get; set; }
