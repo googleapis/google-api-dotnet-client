@@ -3123,13 +3123,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per
-        /// second that the disk can handle. Values must be between 3000 and 100,000.
+        /// second that the disk can handle. Values must be between 3,000 and 100,000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedIops")]
         public virtual System.Nullable<long> ProvisionedIops { get; set; }
 
         /// <summary>
-        /// Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per
+        /// Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput MB per
         /// second that the disk can handle. Values must be between 1 and 2,400.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedThroughput")]
@@ -5101,7 +5101,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// workstations be stopped daily so that security updates can be applied upon restart. The idle_timeout and
         /// running_timeout fields are independent of each other. Note that the running_timeout field stops workstations
         /// after the specified time, regardless of whether or not the workstations are idle. Note: This timeout applies
-        /// to workstations in the following states: * STATE_RUNNING * STATE_SUSPENDED Suspending a workstation does not
+        /// to workstations in the following states: - STATE_RUNNING - STATE_SUSPENDED Suspending a workstation does not
         /// reset this timeout. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours).
         /// Defaults to `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration
         /// should never time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24
