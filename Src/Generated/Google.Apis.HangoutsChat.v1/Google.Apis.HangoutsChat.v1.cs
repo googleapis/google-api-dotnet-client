@@ -168,12 +168,12 @@ namespace Google.Apis.HangoutsChat.v1
             public static string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// See, compose, send, update, and delete messages as well as their message content; add, see, and delete
+            /// See, compose, send, update, and delete messages, their content, and attached cards; add, see, and delete
             /// reactions to messages.
             /// </summary>
             public static string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
 
-            /// <summary>Compose and send messages in Google Chat</summary>
+            /// <summary>Compose and send messages and attach cards</summary>
             public static string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
 
             /// <summary>
@@ -341,12 +341,12 @@ namespace Google.Apis.HangoutsChat.v1
             public const string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// See, compose, send, update, and delete messages as well as their message content; add, see, and delete
+            /// See, compose, send, update, and delete messages, their content, and attached cards; add, see, and delete
             /// reactions to messages.
             /// </summary>
             public const string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
 
-            /// <summary>Compose and send messages in Google Chat</summary>
+            /// <summary>Compose and send messages and attach cards</summary>
             public const string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
 
             /// <summary>
@@ -12285,7 +12285,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// Optional. A description of the space. For example, describe the space's discussion topic, functional
-        /// purpose, or participants. Supports up to 150 characters.
+        /// purpose, or participants. Supports up to 4,096 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
