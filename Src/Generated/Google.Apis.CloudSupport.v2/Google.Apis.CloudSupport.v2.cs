@@ -2958,8 +2958,11 @@ namespace Google.Apis.CloudSupport.v2.Data
         public virtual CaseClassification Classification { get; set; }
 
         /// <summary>
-        /// A user-supplied email address to send case update notifications for. This should only be used in BYOID
-        /// flows, where we cannot infer the user's email address directly from their EUCs.
+        /// A user-supplied email address to send case update notifications for. This field must be set when the request
+        /// is authenticated using a Workforce Identity Federation (BYOID) flow and must not be set otherwise. When
+        /// unset, the contact email is inferred from the authenticated user's credentials. If you use a service account
+        /// to create the case and its inferred email address cannot receive emails, you should add appropriate contact
+        /// emails in the `subscriber_email_addresses` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
         public virtual string ContactEmail { get; set; }
@@ -3002,8 +3005,8 @@ namespace Google.Apis.CloudSupport.v2.Data
         }
 
         /// <summary>
-        /// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google
-        /// Support.
+        /// The user who created the case. This field is ignored on input. Note: The name and email will be obfuscated
+        /// if the case was created by Google Support.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual Actor Creator { get; set; }
