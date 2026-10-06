@@ -42,7 +42,8 @@
     "graduation",
     "voice",
     "chrome_sync",
-    "workspace_studio"
+    "workspace_studio",
+    "gemini_notebook"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",
