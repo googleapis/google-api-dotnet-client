@@ -329,6 +329,14 @@ namespace Google.Apis.Solar.v1
                 ADDITIONALINSIGHTSUNSPECIFIED = 0,
 
                 /// <summary>
+                /// Determines whether to include the roof segment polygons and obstacles in the response. If specified,
+                /// the response will contain a polygon_geojson field in each RoofSegmentSizeAndSunshineStats and the
+                /// obstacles field in SolarPotential.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("ROOF_GEOMETRY")]
+                ROOFGEOMETRY = 2,
+
+                /// <summary>
                 /// Determines whether the response will include the detected arrays. If specified, the
                 /// `detected_arrays` field will be populated in the response.
                 /// </summary>
@@ -389,6 +397,13 @@ namespace Google.Apis.Solar.v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("EXPANDED_COVERAGE")]
                 EXPANDEDCOVERAGE = 1,
+
+                /// <summary>
+                /// Enables experimental roof geometry data via FindClosestBuildingInsights. Requires `ROOF_GEOMETRY` to
+                /// be included in the `additional_insights` field. Returns an error if passed to GetDataLayers.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("ROOF_GEOMETRY_INSIGHTS")]
+                ROOFGEOMETRYINSIGHTS = 2,
             }
 
             /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
@@ -591,6 +606,13 @@ namespace Google.Apis.Solar.v1
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("EXPANDED_COVERAGE")]
                 EXPANDEDCOVERAGE = 1,
+
+                /// <summary>
+                /// Enables experimental roof geometry data via FindClosestBuildingInsights. Requires `ROOF_GEOMETRY` to
+                /// be included in the `additional_insights` field. Returns an error if passed to GetDataLayers.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("ROOF_GEOMETRY_INSIGHTS")]
+                ROOFGEOMETRYINSIGHTS = 2,
             }
 
             /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
@@ -1340,6 +1362,23 @@ namespace Google.Apis.Solar.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of a single detected obstacle.</summary>
+    public class Obstacle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A GeoJSON representation of the obstacle. An obstacle is defined as any non-buildable area
+        /// where solar panels cannot be placed due to physical barriers (vents, chimneys, dormers, etc.). The GeoJSON
+        /// data must be in RFC 7946 format and represent a Polygon for a single contiguous area. The Polygon will be
+        /// represented by several loops when it contains holes. Example: { "type": "Polygon", "coordinates": [ [ [-1,
+        /// -1, 0], [-1, 0, 0], [0, 0, 0], [-1, -1, 0] ] ] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("polygonGeojson")]
+        public virtual System.Collections.Generic.IDictionary<string, object> PolygonGeojson { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about the size and sunniness quantiles of a roof segment.</summary>
     public class RoofSegmentSizeAndSunshineStats : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1372,6 +1411,18 @@ namespace Google.Apis.Solar.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("planeHeightAtCenterMeters")]
         public virtual System.Nullable<float> PlaneHeightAtCenterMeters { get; set; }
+
+        /// <summary>
+        /// Output only. A GeoJSON representation of the detailed geometry for the roof segment plane. The polygon
+        /// represents the physical roof facet, excluding overlapping vegetation and internal cutouts (e.g.,
+        /// courtyards). This field is only populated if ROOF_GEOMETRY is included in the request's
+        /// FindClosestBuildingInsightsRequest.additional_insights parameter. The GeoJSON data must be in RFC 7946
+        /// format and represent a Polygon for a single contiguous area. The Polygon will be represented by several
+        /// loops when it contains holes. Example: { "type": "Polygon", "coordinates": [ [ [-1, -1, 0], [-1, 0, 0], [0,
+        /// 0, 0], [-1, -1, 0] ] ] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("polygonGeojson")]
+        public virtual System.Collections.Generic.IDictionary<string, object> PolygonGeojson { get; set; }
 
         /// <summary>Total size and sunlight quantiles for the roof segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
@@ -1591,6 +1642,14 @@ namespace Google.Apis.Solar.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSunshineHoursPerYear")]
         public virtual System.Nullable<float> MaxSunshineHoursPerYear { get; set; }
+
+        /// <summary>
+        /// Details for each obstacle detected on the rooftop. An obstacle is defined as any non-buildable area where
+        /// solar panels cannot be placed due to physical barriers (vents, chimneys, etc.). This field is only populated
+        /// if ROOF_GEOMETRY is included in the request's FindClosestBuildingInsightsRequest.additional_insights.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obstacles")]
+        public virtual System.Collections.Generic.IList<Obstacle> Obstacles { get; set; }
 
         /// <summary>Capacity, in watts, of the panel used in the calculations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("panelCapacityWatts")]
