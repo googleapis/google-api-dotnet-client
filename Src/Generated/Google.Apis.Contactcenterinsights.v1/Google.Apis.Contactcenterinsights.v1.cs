@@ -13837,6 +13837,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14012,6 +14020,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
@@ -14427,6 +14443,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRule")]
         public virtual GoogleCloudContactcenterinsightsV1SampleRule SampleRule { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Schedule info for the assessment rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleInfo")]
         public virtual GoogleCloudContactcenterinsightsV1ScheduleInfo ScheduleInfo { get; set; }
@@ -14703,6 +14727,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -14794,6 +14826,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
@@ -15064,7 +15104,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
 
-        /// <summary>Output only. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        /// <summary>
+        /// Output only. Deprecated: Use `request.annotator_selector.run_auto_labeling_annotator` instead. If true, the
+        /// labeling rules will be re-evaluated for the conversations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
         public virtual System.Nullable<bool> Relabel { get; set; }
 
@@ -15105,7 +15148,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>Optional. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling
+        /// rules will be re-evaluated for the conversations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
         public virtual System.Nullable<bool> Relabel { get; set; }
 
@@ -16215,6 +16261,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1RuntimeAnnotation> RuntimeAnnotations { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _startTimeRaw;
 
@@ -17643,6 +17697,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Optional. Option TTL for the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
@@ -18360,6 +18422,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18832,6 +18902,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>QaAnswer label used for Quality AI example conversations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaAnswerLabel")]
         public virtual GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue QaAnswerLabel { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
@@ -21430,6 +21508,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("questionType")]
         public virtual string QuestionType { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// Questions are tagged for categorization and scoring. Tags can either be: - Default Tags: These are
         /// predefined categories. They are identified by their string value (e.g., "BUSINESS", "COMPLIANCE", and
@@ -21628,6 +21714,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionIds")]
         public virtual System.Collections.Generic.IList<string> QaQuestionIds { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -21753,6 +21847,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. The source of the scorecard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
@@ -22005,6 +22107,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>The snapshot of the scorecard at the time of this revision's creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
@@ -23277,6 +23387,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
         public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// Optional. The path to a Cloud Storage bucket containing conversation screen recordings. If provided,
         /// Insights will search in the bucket for a screen recording file matching the conversation data source object
@@ -24363,6 +24481,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24753,7 +24879,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
 
-        /// <summary>Output only. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        /// <summary>
+        /// Output only. Deprecated: Use `request.annotator_selector.run_auto_labeling_annotator` instead. If true, the
+        /// labeling rules will be re-evaluated for the conversations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
         public virtual System.Nullable<bool> Relabel { get; set; }
 
@@ -24794,7 +24923,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>Optional. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling
+        /// rules will be re-evaluated for the conversations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
         public virtual System.Nullable<bool> Relabel { get; set; }
 
@@ -25264,6 +25396,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation> RuntimeAnnotations { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _startTimeRaw;
 
@@ -26426,6 +26566,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Optional. Option TTL for the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
@@ -27106,6 +27254,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27567,6 +27723,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>QaAnswer label used for Quality AI example conversations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaAnswerLabel")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue QaAnswerLabel { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
@@ -29051,6 +29215,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionIds")]
         public virtual System.Collections.Generic.IList<string> QaQuestionIds { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
@@ -30747,6 +30919,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
             set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -31137,7 +31317,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
 
-        /// <summary>Output only. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        /// <summary>
+        /// Output only. Deprecated: Use `request.annotator_selector.run_auto_labeling_annotator` instead. If true, the
+        /// labeling rules will be re-evaluated for the conversations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
         public virtual System.Nullable<bool> Relabel { get; set; }
 
@@ -31178,7 +31361,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>Optional. If true, the labeling rules will be re-evaluated for the conversations.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `annotator_selector.run_auto_labeling_annotator` instead. If true, the labeling
+        /// rules will be re-evaluated for the conversations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relabel")]
         public virtual System.Nullable<bool> Relabel { get; set; }
 
@@ -31887,6 +32073,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation> RuntimeAnnotations { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _startTimeRaw;
 
@@ -33049,6 +33243,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Optional. Option TTL for the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
@@ -33729,6 +33931,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -34190,6 +34400,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>QaAnswer label used for Quality AI example conversations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaAnswerLabel")]
         public virtual GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue QaAnswerLabel { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
@@ -35674,6 +35892,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qaQuestionIds")]
         public virtual System.Collections.Generic.IList<string> QaQuestionIds { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone isolated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Whether this resource is zone separated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
