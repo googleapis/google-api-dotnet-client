@@ -627,6 +627,87 @@ namespace Google.Apis.AgentIdentity.v1beta
                         }
                     }
 
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    public class GetIamPolicyRequest : AgentIdentityBaseServiceRequest<Google.Apis.AgentIdentity.v1beta.Data.Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authProviders/[^/]+/authorizations/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Lists authorizations in a given project and location.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource where the search is performed. Format:
@@ -735,6 +816,144 @@ namespace Google.Apis.AgentIdentity.v1beta
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.AgentIdentity.v1beta.Data.SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    public class SetIamPolicyRequest : AgentIdentityBaseServiceRequest<Google.Apis.AgentIdentity.v1beta.Data.Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentIdentity.v1beta.Data.SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AgentIdentity.v1beta.Data.SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authProviders/[^/]+/authorizations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.AgentIdentity.v1beta.Data.TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : AgentIdentityBaseServiceRequest<Google.Apis.AgentIdentity.v1beta.Data.TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentIdentity.v1beta.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.AgentIdentity.v1beta.Data.TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/authProviders/[^/]+/authorizations/[^/]+$",
                             });
                         }
                     }
@@ -1543,6 +1762,71 @@ namespace Google.Apis.AgentIdentity.v1beta
                 }
 
                 /// <summary>
+                /// Resolves an authorization for a user on an auth provider, creating one if it does not exist or
+                /// returning an existing one.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the auth provider to resolve authorization for. Format:
+                /// projects/{project}/locations/{location}/authProviders/{auth_provider}
+                /// </param>
+                public virtual ResolveAuthorizationRequest ResolveAuthorization(Google.Apis.AgentIdentity.v1beta.Data.ResolveAuthorizationRequest body, string name)
+                {
+                    return new ResolveAuthorizationRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Resolves an authorization for a user on an auth provider, creating one if it does not exist or
+                /// returning an existing one.
+                /// </summary>
+                public class ResolveAuthorizationRequest : AgentIdentityBaseServiceRequest<Google.Apis.AgentIdentity.v1beta.Data.ResolveAuthorizationResponse>
+                {
+                    /// <summary>Constructs a new ResolveAuthorization request.</summary>
+                    public ResolveAuthorizationRequest(Google.Apis.Services.IClientService service, Google.Apis.AgentIdentity.v1beta.Data.ResolveAuthorizationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the auth provider to resolve authorization for. Format:
+                    /// projects/{project}/locations/{location}/authProviders/{auth_provider}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AgentIdentity.v1beta.Data.ResolveAuthorizationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resolveAuthorization";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}:resolveAuthorization";
+
+                    /// <summary>Initializes ResolveAuthorization parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authProviders/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Revokes all authorizations for a specific user on an auth provider. This deletes all authorization
                 /// records associated with the user and auth provider, effectively revoking access across all agents.
                 /// </summary>
@@ -2142,6 +2426,13 @@ namespace Google.Apis.AgentIdentity.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Marker message to indicate the managed Agent Identity Pool is used.</summary>
+    public class AgentIdentityPool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for API key authentication.</summary>
     public class ApiKeyParams : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2382,6 +2673,10 @@ namespace Google.Apis.AgentIdentity.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
         public virtual ApiKeyParams ApiKey { get; set; }
 
+        /// <summary>Parameters for Connector Reference authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorReferenceAuthProvider")]
+        public virtual ConnectorReferenceAuthProvider ConnectorReferenceAuthProvider { get; set; }
+
         /// <summary>Parameters for Gemini Enterprise authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geAuthProvider")]
         public virtual GeminiEnterpriseAuthProviderParams GeAuthProvider { get; set; }
@@ -2393,6 +2688,10 @@ namespace Google.Apis.AgentIdentity.v1beta.Data
         /// <summary>Parameters for 2-legged OAuth (2LO) authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("twoLeggedOauth")]
         public virtual TwoLeggedOAuth TwoLeggedOauth { get; set; }
+
+        /// <summary>Parameters for Cross-App Access authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xaaAuthProvider")]
+        public virtual CrossAppAccessAuthProvider XaaAuthProvider { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2571,6 +2870,113 @@ namespace Google.Apis.AgentIdentity.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for client ID and client assertion JWT authentication.</summary>
+    public class ClientAssertionJwtAuth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The client identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for client ID and client secret authentication.</summary>
+    public class ClientSecretAuth : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The client identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. Input only. The client secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration parameters for the Connector Reference auth provider.</summary>
+    public class ConnectorReferenceAuthProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Rich Authorization Requests (RFC 9396) detailing targeted OAuth resources/scopes, formatted as a
+        /// JSON array of JSON objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationDetails")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> AuthorizationDetails { get; set; }
+
+        /// <summary>Required. The name of the referenced connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connector")]
+        public virtual string Connector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration parameters for the Cross-App Access auth provider.</summary>
+    public class CrossAppAccessAuthProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional parameters to be passed to the token endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AdditionalParameters { get; set; }
+
+        /// <summary>Option 2: Authenticate using a standard `client_id` and a Client Assertion JWT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAssertionJwtAuth")]
+        public virtual ClientAssertionJwtAuth ClientAssertionJwtAuth { get; set; }
+
+        /// <summary>Option 1: Authenticate using a standard `client_id` and `client_secret`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecretAuth")]
+        public virtual ClientSecretAuth ClientSecretAuth { get; set; }
+
+        /// <summary>Configuration when using a custom or third-party authorization server as the issuer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customIssuer")]
+        public virtual CustomIssuer CustomIssuer { get; set; }
+
+        /// <summary>Configuration when using Google Accounts as the issuer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAccount")]
+        public virtual GoogleAccount GoogleAccount { get; set; }
+
+        /// <summary>Configuration for when the input is already an ID-JAG.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idJagInput")]
+        public virtual DirectIdJagInput IdJagInput { get; set; }
+
+        /// <summary>Configuration for when the input is an ID token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idTokenInput")]
+        public virtual IdTokenProcessingConfig IdTokenInput { get; set; }
+
+        /// <summary>Configuration when using Workforce Identity Federation as the issuer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforceIdentityFederation")]
+        public virtual WorkforceIdentityFederation WorkforceIdentityFederation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a custom or third-party authorization server issuer.</summary>
+    public class CustomIssuer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The issuer identifier of the target Authorization Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>
+        /// Required. The token endpoint of the target OAuth authorization server to retrieve resource tokens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenUrl")]
+        public virtual string TokenUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Marker message indicating the input is already an ID-JAG, so no fetching is required.</summary>
+    public class DirectIdJagInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `DisableAuthProvider`.</summary>
     public class DisableAuthProviderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2661,6 +3067,35 @@ namespace Google.Apis.AgentIdentity.v1beta.Data
     /// <summary>Configuration for Gemini Enterprise authentication.</summary>
     public class GeminiEnterpriseAuthProviderParams : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Google Account usage as the issuer.</summary>
+    public class GoogleAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines how to process an input ID token to obtain an ID-JAG.</summary>
+    public class IdTokenProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the managed Agent Identity pool should be used to fetch the ID-JAG.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentIdentityPool")]
+        public virtual AgentIdentityPool AgentIdentityPool { get; set; }
+
+        /// <summary>Optional. Optional additional claims to include when fetching an ID-JAG.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idJagAdditionalClaims")]
+        public virtual System.Collections.Generic.IDictionary<string, object> IdJagAdditionalClaims { get; set; }
+
+        /// <summary>
+        /// The resource name of the ID-JAG auth provider. Format:
+        /// "projects/{project}/locations/{location}/authProviders/{auth_provider}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idJagAuthProvider")]
+        public virtual string IdJagAuthProvider { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2881,6 +3316,31 @@ namespace Google.Apis.AgentIdentity.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for `ResolveAuthorization`.</summary>
+    public class ResolveAuthorizationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The user ID of the client for whom the authorization is resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientUserId")]
+        public virtual string ClientUserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `ResolveAuthorization`.</summary>
+    public class ResolveAuthorizationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the resolved authorization. Format:
+        /// projects/{project}/locations/{location}/authProviders/{auth_provider}/authorizations/{authorization}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorization")]
+        public virtual string Authorization { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `RevokeAuthorization`.</summary>
     public class RevokeAuthorizationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3028,6 +3488,13 @@ namespace Google.Apis.AgentIdentity.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Workforce Identity Federation usage as the issuer.</summary>
+    public class WorkforceIdentityFederation : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
