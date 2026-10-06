@@ -950,6 +950,37 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Creates a new DropdownDefinition in the document.</summary>
+    public class CreateDropdownDefinitionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The DropdownDefinition to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinition")]
+        public virtual DropdownDefinition DropdownDefinition { get; set; }
+
+        /// <summary>
+        /// The ID of the tab to create the dropdown definition in. When omitted, the request is applied to the first
+        /// tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted,
+        /// the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request
+        /// applies to the specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for creating a dropdown definition.</summary>
+    public class CreateDropdownDefinitionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The newly-created DropdownDefinition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinition")]
+        public virtual DropdownDefinition DropdownDefinition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Creates a Footer. The new footer is applied to the SectionStyle at the location of the SectionBreak if
     /// specified, otherwise it is applied to the DocumentStyle. If a footer of the specified type already exists, a 400
@@ -1397,6 +1428,29 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual Range Range { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Deletes a DropdownDefinition. If the dropdown definition is referenced by any dropdown instances (chips) in the
+    /// document, a 400 bad request error is returned.
+    /// </summary>
+    public class DeleteDropdownDefinitionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the DropdownDefinition to delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionId")]
+        public virtual string DropdownDefinitionId { get; set; }
+
+        /// <summary>
+        /// The ID of the tab that contains the dropdown definition to delete. When omitted, the request is applied to
+        /// the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If
+        /// omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the
+        /// request applies to the specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2020,6 +2074,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentStyle")]
         public virtual DocumentStyle DocumentStyle { get; set; }
 
+        /// <summary>The dropdown definitions in a document tab, keyed by dropdown definition ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitions")]
+        public virtual System.Collections.Generic.IDictionary<string, DropdownDefinition> DropdownDefinitions { get; set; }
+
         /// <summary>The footers in the document tab, keyed by footer ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("footers")]
         public virtual System.Collections.Generic.IDictionary<string, Footer> Footers { get; set; }
@@ -2059,6 +2117,180 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The suggested changes to the named styles of the document tab, keyed by suggestion ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedNamedStylesChanges")]
         public virtual System.Collections.Generic.IDictionary<string, SuggestedNamedStyles> SuggestedNamedStylesChanges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A dropdown in the document. The chip is displayed as a dropdown menu that allows users to select an option from
+    /// a configurable list of options.
+    /// </summary>
+    public class Dropdown : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of this dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownId")]
+        public virtual string DropdownId { get; set; }
+
+        /// <summary>The properties of this dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownProperties")]
+        public virtual DropdownProperties DropdownProperties { get; set; }
+
+        /// <summary>
+        /// IDs for suggestions that remove this dropdown from the document. If empty, then this dropdown isn't
+        /// suggested for deletion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDeletionIds")]
+        public virtual System.Collections.Generic.IList<string> SuggestedDeletionIds { get; set; }
+
+        /// <summary>The suggested properties changes to this dropdown, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDropdownPropertiesChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedDropdownProperties> SuggestedDropdownPropertiesChanges { get; set; }
+
+        /// <summary>
+        /// IDs for suggestions that insert this dropdown into the document. If empty, then this dropdown isn't a
+        /// suggested insertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedInsertionIds")]
+        public virtual System.Collections.Generic.IList<string> SuggestedInsertionIds { get; set; }
+
+        /// <summary>The suggested text style changes to this dropdown, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedTextStyleChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedTextStyle> SuggestedTextStyleChanges { get; set; }
+
+        /// <summary>The text style of this dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
+        public virtual TextStyle TextStyle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A dropdown definition in the document.</summary>
+    public class DropdownDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ID of this dropdown definition. If you specify an ID, it must be unique among all IDs in the tab. The ID
+        /// must start with `kix.` and match regex `^kix\.[a-zA-Z0-9_-]{2,14}$` (length 6-18 chars). If you don't
+        /// specify an ID, a unique one is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionId")]
+        public virtual string DropdownDefinitionId { get; set; }
+
+        /// <summary>The properties of this dropdown definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionProperties")]
+        public virtual DropdownDefinitionProperties DropdownDefinitionProperties { get; set; }
+
+        /// <summary>ID for suggestion that deletes this dropdown definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDeletionId")]
+        public virtual string SuggestedDeletionId { get; set; }
+
+        /// <summary>Suggested property changes to this definition, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDropdownDefinitionPropertiesChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedDropdownDefinitionProperties> SuggestedDropdownDefinitionPropertiesChanges { get; set; }
+
+        /// <summary>ID for suggestion that inserts this dropdown definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedInsertionId")]
+        public virtual string SuggestedInsertionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties of a dropdown definition.</summary>
+    public class DropdownDefinitionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of options defined by this dropdown definition. A dropdown definition must have at least 2 options
+        /// and at most 50 options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual System.Collections.Generic.IList<DropdownOption> Options { get; set; }
+
+        /// <summary>The title of the dropdown definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A mask that indicates which of the fields on the base DropdownDefinitionProperties have been changed in this
+    /// suggestion. For any field set to true, there's a new suggested value.
+    /// </summary>
+    public class DropdownDefinitionPropertiesSuggestionState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if there was a suggested change to options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optionsSuggested")]
+        public virtual System.Nullable<bool> OptionsSuggested { get; set; }
+
+        /// <summary>Indicates if there was a suggested change to title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("titleSuggested")]
+        public virtual System.Nullable<bool> TitleSuggested { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An option in a Dropdown.</summary>
+    public class DropdownOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display value of this dropdown option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayValue")]
+        public virtual string DisplayValue { get; set; }
+
+        /// <summary>
+        /// The ID of this dropdown option. If you specify an ID, it must be unique among all options in this dropdown
+        /// definition. The ID must start with `dropdownItem.` and match regex `^dropdownItem\.[a-zA-Z0-9_-]{2,14}$`
+        /// (length 15-27 chars). If you don't specify an ID, a unique one is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optionId")]
+        public virtual string OptionId { get; set; }
+
+        /// <summary>
+        /// The text style of this dropdown option. Currently, only the `foreground_color` and `background_color`
+        /// properties are supported. If other properties are set, a 400 bad request error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
+        public virtual TextStyle TextStyle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties specific to a dropdown.</summary>
+    public class DropdownProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The human-readable display text of the currently selected item. This field is populated by the server based
+        /// on the dropdown definition and the selected option ID. It may differ from `DropdownOption.display_value` if
+        /// the underlying option definition was modified or deleted, or during pending suggested changes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayValue")]
+        public virtual string DisplayValue { get; set; }
+
+        /// <summary>The ID of the DropdownDefinition that defines the options for this dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionId")]
+        public virtual string DropdownDefinitionId { get; set; }
+
+        /// <summary>The ID of the selected option in this dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedOptionId")]
+        public virtual string SelectedOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A mask that indicates which of the fields on the base DropdownProperties have been changed in this suggestion.
+    /// For any field set to true, there's a new suggested value.
+    /// </summary>
+    public class DropdownPropertiesSuggestionState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates if there was a suggested change to selected_option_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedOptionIdSuggested")]
+        public virtual System.Nullable<bool> SelectedOptionIdSuggested { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2671,6 +2903,44 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual Location Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Inserts a Dropdown at the specified location.</summary>
+    public class InsertDropdownRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The DropdownDefinition ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionId")]
+        public virtual string DropdownDefinitionId { get; set; }
+
+        /// <summary>The EndOfSegmentLocation in the document to insert the dropdown at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSegmentLocation")]
+        public virtual EndOfSegmentLocation EndOfSegmentLocation { get; set; }
+
+        /// <summary>The Location in the document to insert the dropdown at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual Location Location { get; set; }
+
+        /// <summary>
+        /// Optional initial value for the dropdown. If this field is not specified, the new dropdown will default to
+        /// selecting the first option defined in the dropdown definition. If this field is specified but does not
+        /// reference a valid option in the dropdown definition, a 400 bad request error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedOptionId")]
+        public virtual string SelectedOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of inserting a Dropdown.</summary>
+    public class InsertDropdownResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The newly-inserted Dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdown")]
+        public virtual Dropdown Dropdown { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3509,6 +3779,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>A paragraph element that represents a date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateElement")]
         public virtual DateElement DateElement { get; set; }
+
+        /// <summary>A paragraph element that represents a dropdown menu.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdown")]
+        public virtual Dropdown Dropdown { get; set; }
 
         /// <summary>The zero-base end index of this paragraph element, exclusive, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
@@ -4378,6 +4652,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addDocumentTab")]
         public virtual AddDocumentTabRequest AddDocumentTab { get; set; }
 
+        /// <summary>Creates a DropdownDefinition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createDropdownDefinition")]
+        public virtual CreateDropdownDefinitionRequest CreateDropdownDefinition { get; set; }
+
         /// <summary>Creates a footer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createFooter")]
         public virtual CreateFooterRequest CreateFooter { get; set; }
@@ -4414,6 +4692,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Deletes content from the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteContentRange")]
         public virtual DeleteContentRangeRequest DeleteContentRange { get; set; }
+
+        /// <summary>Deletes a DropdownDefinition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteDropdownDefinition")]
+        public virtual DeleteDropdownDefinitionRequest DeleteDropdownDefinition { get; set; }
 
         /// <summary>Deletes a footer from the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteFooter")]
@@ -4463,6 +4745,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Inserts a date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertDate")]
         public virtual InsertDateRequest InsertDate { get; set; }
+
+        /// <summary>Inserts a Dropdown at the specified location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertDropdown")]
+        public virtual InsertDropdownRequest InsertDropdown { get; set; }
 
         /// <summary>Inserts an inline image at the specified location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertInlineImage")]
@@ -4545,6 +4831,14 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateDocumentTabProperties")]
         public virtual UpdateDocumentTabPropertiesRequest UpdateDocumentTabProperties { get; set; }
 
+        /// <summary>Updates the properties of a DropdownDefinition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateDropdownDefinitionProperties")]
+        public virtual UpdateDropdownDefinitionPropertiesRequest UpdateDropdownDefinitionProperties { get; set; }
+
+        /// <summary>Updates the properties of a Dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateDropdownProperties")]
+        public virtual UpdateDropdownPropertiesRequest UpdateDropdownProperties { get; set; }
+
         /// <summary>Updates a named style.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateNamedStyle")]
         public virtual UpdateNamedStyleRequest UpdateNamedStyle { get; set; }
@@ -4591,6 +4885,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addDocumentTab")]
         public virtual AddDocumentTabResponse AddDocumentTab { get; set; }
 
+        /// <summary>The result of creating a dropdown definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createDropdownDefinition")]
+        public virtual CreateDropdownDefinitionResponse CreateDropdownDefinition { get; set; }
+
         /// <summary>The result of creating a footer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createFooter")]
         public virtual CreateFooterResponse CreateFooter { get; set; }
@@ -4612,6 +4910,10 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertComment")]
         public virtual InsertCommentResponse InsertComment { get; set; }
+
+        /// <summary>The result of inserting a dropdown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertDropdown")]
+        public virtual InsertDropdownResponse InsertDropdown { get; set; }
 
         /// <summary>The result of inserting an inline image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertInlineImage")]
@@ -5139,6 +5441,49 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentStyleSuggestionState")]
         public virtual DocumentStyleSuggestionState DocumentStyleSuggestionState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggested change to dropdown definition properties.</summary>
+    public class SuggestedDropdownDefinitionProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A DropdownDefinitionProperties that only includes the changes made in this suggestion. This can be used
+        /// along with the dropdown_definition_properties_suggestion_state to see which fields have changed and their
+        /// new values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionProperties")]
+        public virtual DropdownDefinitionProperties DropdownDefinitionProperties { get; set; }
+
+        /// <summary>
+        /// A mask that indicates which of the fields on the base DropdownDefinitionProperties have been changed in this
+        /// suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionPropertiesSuggestionState")]
+        public virtual DropdownDefinitionPropertiesSuggestionState DropdownDefinitionPropertiesSuggestionState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggested change to dropdown properties.</summary>
+    public class SuggestedDropdownProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A DropdownProperties that only includes the changes made in this suggestion. This can be used along with the
+        /// dropdown_properties_suggestion_state to see which fields have changed and their new values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownProperties")]
+        public virtual DropdownProperties DropdownProperties { get; set; }
+
+        /// <summary>
+        /// A mask that indicates which of the fields on the base DropdownProperties have been changed in this
+        /// suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownPropertiesSuggestionState")]
+        public virtual DropdownPropertiesSuggestionState DropdownPropertiesSuggestionState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6120,6 +6465,83 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The tab properties to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tabProperties")]
         public virtual TabProperties TabProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Updates the properties of a DropdownDefinition.</summary>
+    public class UpdateDropdownDefinitionPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the DropdownDefinition to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionId")]
+        public virtual string DropdownDefinitionId { get; set; }
+
+        /// <summary>The properties to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDefinitionProperties")]
+        public virtual DropdownDefinitionProperties DropdownDefinitionProperties { get; set; }
+
+        /// <summary>
+        /// The fields that should be updated. At least one field must be specified. The root
+        /// `dropdown_definition_properties` is implied and should not be specified. A single `"*"` can be used as
+        /// short-hand for listing every field. When `dropdown_definition_properties.options` is included in the field
+        /// mask, the full, complete list of desired options must be provided in
+        /// `dropdown_definition_properties.options`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; }
+
+        /// <summary>
+        /// A map of option IDs to their replacements, used to automatically reassign orphaned Dropdown chips when an
+        /// option is deleted. The keys are the IDs of the options being deleted, and the values are the IDs of their
+        /// replacement options. If an option being deleted is selected in one or more Dropdown chips in the document, a
+        /// replacement entry for that option must be provided in this map, and the replacement option ID must exist in
+        /// the updated DropdownDefinition. If a replacement is required but not provided, a 400 bad request error is
+        /// returned. Options being deleted that are not selected in any Dropdown chips do not require a replacement.
+        /// For example, if option A is being replaced by option B, the map should be `{"A": "B"}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedOptionIdReplacements")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SelectedOptionIdReplacements { get; set; }
+
+        /// <summary>
+        /// The ID of the tab that contains the dropdown definition to update. When omitted, the request is applied to
+        /// the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If
+        /// omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the
+        /// request applies to the specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Updates the properties of a Dropdown.</summary>
+    public class UpdateDropdownPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Dropdown ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownId")]
+        public virtual string DropdownId { get; set; }
+
+        /// <summary>The properties to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownProperties")]
+        public virtual DropdownProperties DropdownProperties { get; set; }
+
+        /// <summary>
+        /// The fields that should be updated. At least one field must be specified. The root `dropdown_properties` is
+        /// implied and should not be specified. A single `"*"` can be used as short-hand for listing every field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; }
+
+        /// <summary>
+        /// The ID of the tab that contains the dropdown to update. When omitted, the request is applied to the first
+        /// tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted,
+        /// the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request
+        /// applies to the specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
