@@ -13883,9 +13883,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string Until { get; set; }
 
         /// <summary>
-        /// Optional. If set to true, the request will only perform a dry run. By default (once the behavior change is
-        /// fully rolled out), this will default to true. During the transition period, the default depends on the
-        /// Mendel flag status for the project.
+        /// Optional. If set to `true`, the request will only perform a dry run. By default this will default to
+        /// `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
