@@ -936,6 +936,10 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessRole")]
         public virtual AwsAccessRole AccessRole { get; set; }
 
+        /// <summary>Optional. Configuration options for cross-cloud caching of data and metadata files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossCloudCacheOptions")]
+        public virtual CrossCloudCacheOptions CrossCloudCacheOptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -950,6 +954,10 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         /// <summary>Output only. The client id of the Azure Active Directory Application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
+
+        /// <summary>Optional. Configuration options for cross-cloud caching of data and metadata files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossCloudCacheOptions")]
+        public virtual CrossCloudCacheOptions CrossCloudCacheOptions { get; set; }
 
         /// <summary>The id of customer's directory that host the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerTenantId")]
@@ -1469,6 +1477,21 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for caching cross-cloud data and metadata files.</summary>
+    public class CrossCloudCacheOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether cross-cloud caching is enabled. This only affects queries through BigQuery. If this value
+        /// is `true`, read data and metadata are stored in a cache, which can increase performance and decrease network
+        /// egress costs for cross-cloud queries. If this value is `false`, cross-cloud caching is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1666,6 +1689,10 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
     /// </summary>
     public class SalesforceDataCloudProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration options for cross-cloud caching of data and metadata files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossCloudCacheOptions")]
+        public virtual CrossCloudCacheOptions CrossCloudCacheOptions { get; set; }
+
         /// <summary>
         /// Output only. A unique Google-owned and Google-generated service account identity for the connection.
         /// </summary>
