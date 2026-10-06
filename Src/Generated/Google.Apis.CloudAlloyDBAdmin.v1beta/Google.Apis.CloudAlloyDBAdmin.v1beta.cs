@@ -5355,6 +5355,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>Optional. Configuration that allows the customer to create an AlloyDB Express cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressConfig")]
+        public virtual ExpressConfig ExpressConfig { get; set; }
+
         /// <summary>Optional. Deprecated and unused. This field will be removed in the near future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
         public virtual GeminiClusterConfig GeminiConfig { get; set; }
@@ -6241,6 +6245,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration that allows the user to create an AlloyDB Express cluster.</summary>
+    public class ExpressConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether Express configuration is enabled for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for triggering failover on an Instance</summary>
     public class FailoverInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6702,6 +6717,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
         public virtual ObservabilityInstanceConfig ObservabilityConfig { get; set; }
 
+        /// <summary>
+        /// Output only. Instance level observability information, contains the effective values of observability
+        /// settings for this instance, by merging customer's provided `ObservabilityInstanceConfig` with the
+        /// Observability defaults.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityInstanceInfo")]
+        public virtual ObservabilityInstanceInfo ObservabilityInstanceInfo { get; set; }
+
         /// <summary>Output only. All outbound public IP addresses configured for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outboundPublicIpAddresses")]
         public virtual System.Collections.Generic.IList<string> OutboundPublicIpAddresses { get; set; }
@@ -6724,6 +6747,14 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Configuration for query insights.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInsightsConfig")]
         public virtual QueryInsightsInstanceConfig QueryInsightsConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Instance level Query Insights information, which is read-only and available in the output only.
+        /// Contains the effective query insights settings for this instance, by merging customer's provided
+        /// `QueryInsightsInstanceConfig` with the Query Insights defaults.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryInsightsInfo")]
+        public virtual QueryInsightsInstanceInfo QueryInsightsInfo { get; set; }
 
         /// <summary>
         /// Read pool instance configuration. This is required if the value of instanceType is READ_POOL.
@@ -7260,6 +7291,61 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ObservabilityInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether assistive experiences are enabled for this AlloyDB instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistiveExperiencesEnabled")]
+        public virtual System.Nullable<bool> AssistiveExperiencesEnabled { get; set; }
+
+        /// <summary>Output only. Observability feature status for an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Output only. Query string length. The default value is 10k.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxQueryStringLength")]
+        public virtual System.Nullable<int> MaxQueryStringLength { get; set; }
+
+        /// <summary>Output only. Preserve comments in query string for an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preserveComments")]
+        public virtual System.Nullable<bool> PreserveComments { get; set; }
+
+        /// <summary>
+        /// Output only. Number of query execution plans captured by Insights per minute for all queries combined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPlansPerMinute")]
+        public virtual System.Nullable<int> QueryPlansPerMinute { get; set; }
+
+        /// <summary>Output only. Record application tags for an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordApplicationTags")]
+        public virtual System.Nullable<bool> RecordApplicationTags { get; set; }
+
+        /// <summary>Output only. Track actively running queries on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueries")]
+        public virtual System.Nullable<bool> TrackActiveQueries { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether to track active query plans for an instance. Deprecated: Use
+        /// track_active_queries instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueryPlan")]
+        public virtual System.Nullable<bool> TrackActiveQueryPlan { get; set; }
+
+        /// <summary>Output only. Track client address for an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackClientAddress")]
+        public virtual System.Nullable<bool> TrackClientAddress { get; set; }
+
+        /// <summary>Output only. Track wait event types during query execution for an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackWaitEventTypes")]
+        public virtual System.Nullable<bool> TrackWaitEventTypes { get; set; }
+
+        /// <summary>Output only. Track wait events during query execution for an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackWaitEvents")]
+        public virtual System.Nullable<bool> TrackWaitEvents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7735,6 +7821,35 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// Record client address for an instance. Client address is PII information. This flag is turned "on" by
         /// default.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordClientAddress")]
+        public virtual System.Nullable<bool> RecordClientAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Instance level Query Insights information, which is read-only and available in the output only.
+    /// </summary>
+    public class QueryInsightsInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether Query Insights is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Output only. Number of query execution plans captured per minute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPlansPerMinute")]
+        public virtual System.Nullable<long> QueryPlansPerMinute { get; set; }
+
+        /// <summary>Output only. Maximum query string length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryStringLength")]
+        public virtual System.Nullable<long> QueryStringLength { get; set; }
+
+        /// <summary>Output only. Whether to record application tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordApplicationTags")]
+        public virtual System.Nullable<bool> RecordApplicationTags { get; set; }
+
+        /// <summary>Output only. Whether to record client address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordClientAddress")]
         public virtual System.Nullable<bool> RecordClientAddress { get; set; }
 
