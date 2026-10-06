@@ -7767,11 +7767,12 @@ namespace Google.Apis.VMwareEngine.v1
                 }
 
                 /// <summary>
-                /// Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`. Only
-                /// fields specified in `updateMask` are applied. During operation processing, the resource is
-                /// temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you
-                /// can't update the resource. Use the operation status to determine when the processing fully
-                /// completes.
+                /// Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`,
+                /// `encryption_config`. If `updateMask` is provided, only fields specified in it are applied. If
+                /// `updateMask` is not provided, the default behavior is to update the `description`. It is advised to
+                /// provide an `updateMask` to avoid confusion. During operation processing, the resource is temporarily
+                /// in the `ACTIVE` state before the operation fully completes. For that period of time, you can't
+                /// update the resource. Use the operation status to determine when the processing fully completes.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -7785,11 +7786,12 @@ namespace Google.Apis.VMwareEngine.v1
                 }
 
                 /// <summary>
-                /// Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`. Only
-                /// fields specified in `updateMask` are applied. During operation processing, the resource is
-                /// temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you
-                /// can't update the resource. Use the operation status to determine when the processing fully
-                /// completes.
+                /// Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`,
+                /// `encryption_config`. If `updateMask` is provided, only fields specified in it are applied. If
+                /// `updateMask` is not provided, the default behavior is to update the `description`. It is advised to
+                /// provide an `updateMask` to avoid confusion. During operation processing, the resource is temporarily
+                /// in the `ACTIVE` state before the operation fully completes. For that period of time, you can't
+                /// update the resource. Use the operation status to determine when the processing fully completes.
                 /// </summary>
                 public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
                 {
@@ -7820,7 +7822,7 @@ namespace Google.Apis.VMwareEngine.v1
                     /// Required. Field mask is used to specify the fields to be overwritten in the `PrivateCloud`
                     /// resource by the update. The fields specified in `updateMask` are relative to the resource, not
                     /// the full request. A field will be overwritten if it is in the mask. If the user does not provide
-                    /// a mask then all fields will be overwritten.
+                    /// a mask then only the description field will be overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -11214,7 +11216,10 @@ namespace Google.Apis.VMwareEngine.v1.Data
     {
         /// <summary>
         /// Required. The consumer provided user/service account which needs to be granted permission to bind with the
-        /// intranet VPC corresponding to the consumer project.
+        /// intranet VPC corresponding to the consumer project. Principal can be a user or a service account. For
+        /// example, to specify the user `user@example.com`, use `"principal": {"user": "user@example.com"}` and to
+        /// specify the service account `service-account@gserviceaccount.com`, use `"principal": {"serviceAccount":
+        /// "service-account@gserviceaccount.com"}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual Principal Principal { get; set; }
@@ -13071,7 +13076,9 @@ namespace Google.Apis.VMwareEngine.v1.Data
 
     /// <summary>
     /// Users/Service accounts which have access for DNS binding on the intranet VPC corresponding to the consumer
-    /// project.
+    /// project. Principal can be a user or a service account. For example: For specifying user `user@example.com` use
+    /// `{"user": "user@example.com"}` and for specifying service account `service-account@gserviceaccount.com` use
+    /// `{"serviceAccount": "service-account@gserviceaccount.com"}`.
     /// </summary>
     public class Principal : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13526,7 +13533,10 @@ namespace Google.Apis.VMwareEngine.v1.Data
     {
         /// <summary>
         /// Required. The consumer provided user/service account which needs to be granted permission to bind with the
-        /// intranet VPC corresponding to the consumer project.
+        /// intranet VPC corresponding to the consumer project. Principal can be a user or a service account. For
+        /// example, to specify the user `user@example.com`, use `"principal": {"user": "user@example.com"}` and to
+        /// specify the service account `service-account@gserviceaccount.com`, use `"principal": {"serviceAccount":
+        /// "service-account@gserviceaccount.com"}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
         public virtual Principal Principal { get; set; }
@@ -13675,18 +13685,18 @@ namespace Google.Apis.VMwareEngine.v1.Data
     {
         /// <summary>
         /// Required. Zone that will remain operational when connection between the two zones is lost. Specify the
-        /// resource name of a zone that belongs to the region of the private cloud. For example:
-        /// `projects/{project}/locations/europe-west3-a` where `{project}` can either be a project number or a project
-        /// ID.
+        /// resource name or ID of a zone that belongs to the region of the private cloud. For example:
+        /// `projects/{project}/locations/europe-west3-a` or `europe-west3-a`, where `{project}` can either be a project
+        /// number or a project ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferredLocation")]
         public virtual string PreferredLocation { get; set; }
 
         /// <summary>
         /// Required. Additional zone for a higher level of availability and load balancing. Specify the resource name
-        /// of a zone that belongs to the region of the private cloud. For example:
-        /// `projects/{project}/locations/europe-west3-b` where `{project}` can either be a project number or a project
-        /// ID.
+        /// or ID of a zone that belongs to the region of the private cloud. For example:
+        /// `projects/{project}/locations/europe-west3-b` or `europe-west3-b`, where `{project}` can either be a project
+        /// number or a project ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryLocation")]
         public virtual string SecondaryLocation { get; set; }
