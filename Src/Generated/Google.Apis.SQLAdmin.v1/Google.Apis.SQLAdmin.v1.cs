@@ -13215,7 +13215,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// </summary>
     public class SqlWorkloadCapturesStartReplayRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Contains details about the start workload replay operation.</summary>
+        /// <summary>Required. Contains details about the start workload replay operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startWorkloadReplayContext")]
         public virtual StartWorkloadReplayContext StartWorkloadReplayContext { get; set; }
 
@@ -13237,7 +13237,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Request to stop executing a captured workload on a replay instance.</summary>
     public class SqlWorkloadCapturesStopReplayRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Contains details about the stop workload replay operation.</summary>
+        /// <summary>Required. Contains details about the stop workload replay operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopWorkloadReplayContext")]
         public virtual StopWorkloadReplayContext StopWorkloadReplayContext { get; set; }
 
