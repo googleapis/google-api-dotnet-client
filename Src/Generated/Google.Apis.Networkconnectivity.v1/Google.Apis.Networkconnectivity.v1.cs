@@ -11015,6 +11015,17 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Nullable<int> PrefixLength { get; set; }
 
         /// <summary>
+        /// Optional. The purpose of this internal range. Defines the intended use of the range and any restrictions
+        /// associated with it. If not specified, it defaults to VPC_SUBNET.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
+
+        /// <summary>Output only. Status of the Internal Range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeStatus")]
+        public virtual string RangeStatus { get; set; }
+
+        /// <summary>
         /// Optional. Can be set to narrow down or pick a different address space while searching for a free range. If
         /// not set, defaults to the ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"] address space (for auto-mode
         /// networks, the "10.0.0.0/9" range is used instead of "10.0.0.0/8"). This can be used to target the search in
@@ -14005,7 +14016,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. The list of fields waiting for hub administrator's approval.</summary>
+        /// <summary>Output only. The list of fields waiting for hub administrator's approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPathsPendingUpdate")]
         public virtual System.Collections.Generic.IList<string> FieldPathsPendingUpdate { get; set; }
 
