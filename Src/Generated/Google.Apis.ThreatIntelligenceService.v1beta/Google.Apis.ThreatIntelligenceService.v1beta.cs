@@ -1957,6 +1957,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// <summary>Output only. State of the alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Output only. System taxonomy tags associated with this alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
     }
 
     /// <summary>Container for different types of alert details.</summary>
