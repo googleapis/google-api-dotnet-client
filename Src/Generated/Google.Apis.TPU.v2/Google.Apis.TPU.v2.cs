@@ -1806,10 +1806,14 @@ namespace Google.Apis.TPU.v2
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -1818,10 +1822,14 @@ namespace Google.Apis.TPU.v2
             }
 
             /// <summary>
-            /// Lists information about the supported locations for this service. This method can be called in two ways:
-            /// * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:**
-            /// Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as
-            /// private or other locations specifically visible to the project.
+            /// Lists information about the supported locations for this service. This method lists locations based on
+            /// the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is
+            /// empty, the method lists the public locations available to all projects. * **Project-specific
+            /// locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to
+            /// that specific project. This includes public, private, or other project-specific locations enabled for
+            /// the project. For gRPC and client library implementations, the resource name is passed as the `name`
+            /// field. For direct service calls, the resource name is incorporated into the request path based on the
+            /// specific service implementation and version.
             /// </summary>
             public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2.Data.ListLocationsResponse>
             {
@@ -1837,8 +1845,8 @@ namespace Google.Apis.TPU.v2
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented
-                /// otherwise. This is primarily for internal usage.
+                /// Optional. Do not use this field unless explicitly documented otherwise. This is primarily for
+                /// internal usage.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("extraLocationTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> ExtraLocationTypes { get; set; }
@@ -2617,6 +2625,13 @@ namespace Google.Apis.TPU.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpoints")]
         public virtual System.Collections.Generic.IList<NetworkEndpoint> NetworkEndpoints { get; set; }
+
+        /// <summary>
+        /// Output only. Protection tier for the workload which specifies the workload expectations in the event of
+        /// infrastructure failures at data center (e.g. power and/or cooling failures).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionTier")]
+        public virtual string ProtectionTier { get; set; }
 
         /// <summary>Output only. The qualified name of the QueuedResource that requested this Node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queuedResource")]
