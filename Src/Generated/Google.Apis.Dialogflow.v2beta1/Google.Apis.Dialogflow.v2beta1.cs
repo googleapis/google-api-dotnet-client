@@ -7445,6 +7445,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 this.service = service;
                 Agent = new AgentResource(service);
                 AnswerRecords = new AnswerRecordsResource(service);
+                CompanionAgents = new CompanionAgentsResource(service);
                 ConversationProfiles = new ConversationProfilesResource(service);
                 Conversations = new ConversationsResource(service);
                 EncryptionSpec = new EncryptionSpecResource(service);
@@ -11419,6 +11420,304 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/answerRecords/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the CompanionAgents resource.</summary>
+            public virtual CompanionAgentsResource CompanionAgents { get; }
+
+            /// <summary>The "companionAgents" collection of methods.</summary>
+            public class CompanionAgentsResource
+            {
+                private const string Resource = "companionAgents";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CompanionAgentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary></summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent"><c>null</c></param>
+                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary></summary>
+                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("companionAgentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CompanionAgentId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+parent}/companionAgents";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("companionAgentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "companionAgentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary></summary>
+                /// <param name="name"><c>null</c></param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary></summary>
+                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/companionAgents/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary></summary>
+                /// <param name="name"><c>null</c></param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary></summary>
+                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/companionAgents/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary></summary>
+                /// <param name="parent"><c>null</c></param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary></summary>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListCompanionAgentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+parent}/companionAgents";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary></summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name"><c>null</c></param>
+                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary></summary>
+                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1CompanionAgent Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/companionAgents/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -20378,6 +20677,60 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2CompanionSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("guidances")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2CompanionSuggestionGuidance> Guidances { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2CompanionSuggestionGuidance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
+        public virtual GoogleCloudDialogflowV2GroundingMetadata GroundingMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("instructionSource")]
+        public virtual GoogleCloudDialogflowV2GuidanceInstruction InstructionSource { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource> KnowledgeSources { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedAction")]
+        public virtual string SuggestedAction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedReply")]
+        public virtual string SuggestedReply { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCalls")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2ToolCallSuggestion> ToolCalls { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeringToolCallAnswerRecords")]
+        public virtual System.Collections.Generic.IList<string> TriggeringToolCallAnswerRecords { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2CompanionSuggestionGuidanceKnowledgeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeArticleTitle")]
+        public virtual string KnowledgeArticleTitle { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeArticleUrl")]
+        public virtual string KnowledgeArticleUrl { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSnippet")]
+        public virtual string KnowledgeSnippet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2Context : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("lifespanCount")]
@@ -20921,6 +21274,24 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("companionSuggestion")]
+        public virtual GoogleCloudDialogflowV2CompanionSuggestion CompanionSuggestion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionIndex")]
+        public virtual System.Nullable<int> SuggestionIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2GenerateSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestionAnswers")]
@@ -20973,6 +21344,111 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("toolCallResult")]
         public virtual GoogleCloudDialogflowV2ToolCallResult ToolCallResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2GroundingChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievedContext")]
+        public virtual GoogleCloudDialogflowV2GroundingChunkRetrievedContext RetrievedContext { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("web")]
+        public virtual GoogleCloudDialogflowV2GroundingChunkWeb Web { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2GroundingChunkRetrievedContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2GroundingChunkWeb : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2GroundingChunk> GroundingChunks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSupports")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2GroundingSupport> GroundingSupports { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
+        public virtual GoogleCloudDialogflowV2SearchEntryPoint SearchEntryPoint { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
+        public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2GroundingSupport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingChunkIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> GroundingChunkIndices { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudDialogflowV2Segment Segment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2GuidanceInstruction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2GuidanceInstructionAction> Actions { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSuggestedReply")]
+        public virtual System.Nullable<bool> DisableSuggestedReply { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDetails")]
+        public virtual string DisplayDetails { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
+        public virtual string TriggerEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2GuidanceInstructionAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22145,6 +22621,30 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2SearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("renderedContent")]
+        public virtual string RenderedContent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2Segment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2Sentiment : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
@@ -22462,6 +22962,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("generateCompanionSuggestionsResponse")]
+        public virtual GoogleCloudDialogflowV2GenerateCompanionSuggestionsResponse GenerateCompanionSuggestionsResponse { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("generateSuggestionsResponse")]
         public virtual GoogleCloudDialogflowV2GenerateSuggestionsResponse GenerateSuggestionsResponse { get; set; }
 
@@ -22655,6 +23158,18 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2ToolCallSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("textUpdate")]
+        public virtual string TextUpdate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCallInfo")]
+        public virtual GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo ToolCallInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2UndeployConversationModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
@@ -22828,6 +23343,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("answerRelevance")]
         public virtual string AnswerRelevance { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("companionFeedback")]
+        public virtual GoogleCloudDialogflowV2beta1AgentAssistantFeedbackCompanionFeedback CompanionFeedback { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("documentCorrectness")]
         public virtual string DocumentCorrectness { get; set; }
 
@@ -22843,6 +23361,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationFeedback")]
         public virtual GoogleCloudDialogflowV2beta1AgentAssistantFeedbackSummarizationFeedback SummarizationFeedback { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1AgentAssistantFeedbackCompanionFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -22964,6 +23488,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestionAnswer")]
         public virtual GoogleCloudDialogflowV2beta1ArticleAnswer ArticleSuggestionAnswer { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("companionSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1CompanionSuggestion CompanionSuggestion { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAssistAnswer")]
         public virtual GoogleCloudDialogflowV2beta1DialogflowAssistAnswer DialogflowAssistAnswer { get; set; }
 
@@ -22972,6 +23499,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
         public virtual GoogleCloudDialogflowV2beta1GeneratorSuggestion GeneratorSuggestion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("reactiveCompanionSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse ReactiveCompanionSuggestion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23676,6 +24206,189 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionFeatureType")]
         public virtual string SuggestionFeatureType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CompanionAgent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("cesToolSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1CesToolSpec> CesToolSpecs { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("skillConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1CompanionAgentSkillConfig> SkillConfigs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toolsetTools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ToolsetTool> ToolsetTools { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CompanionAgentGuidanceSkillConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("guidanceInstructions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1GuidanceInstruction> GuidanceInstructions { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSource")]
+        public virtual GoogleCloudDialogflowV2beta1CompanionAgentKnowledgeSource KnowledgeSource { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("overarchingGuidance")]
+        public virtual string OverarchingGuidance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CompanionAgentKnowledgeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CompanionAgentSkillConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("guidanceSkillConfig")]
+        public virtual GoogleCloudDialogflowV2beta1CompanionAgentGuidanceSkillConfig GuidanceSkillConfig { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("skillTriggeringEvent")]
+        public virtual string SkillTriggeringEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CompanionSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("guidances")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1CompanionSuggestionGuidance> Guidances { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CompanionSuggestionGuidance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
+        public virtual GoogleCloudDialogflowV2beta1GroundingMetadata GroundingMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("instructionSource")]
+        public virtual GoogleCloudDialogflowV2beta1GuidanceInstruction InstructionSource { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1CompanionSuggestionGuidanceKnowledgeSource> KnowledgeSources { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedAction")]
+        public virtual string SuggestedAction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedReply")]
+        public virtual string SuggestedReply { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCalls")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ToolCallSuggestion> ToolCalls { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeringToolCallAnswerRecords")]
+        public virtual System.Collections.Generic.IList<string> TriggeringToolCallAnswerRecords { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1CompanionSuggestionGuidanceKnowledgeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeArticleTitle")]
+        public virtual string KnowledgeArticleTitle { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeArticleUrl")]
+        public virtual string KnowledgeArticleUrl { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSnippet")]
+        public virtual string KnowledgeSnippet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24773,6 +25486,24 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2beta1GenerateCompanionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("companionSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1CompanionSuggestion CompanionSuggestion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionIndex")]
+        public virtual System.Nullable<int> SuggestionIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2beta1GenerateStatelessSuggestionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("contextReferences")]
@@ -25370,6 +26101,111 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2beta1GroundingChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievedContext")]
+        public virtual GoogleCloudDialogflowV2beta1GroundingChunkRetrievedContext RetrievedContext { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("web")]
+        public virtual GoogleCloudDialogflowV2beta1GroundingChunkWeb Web { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1GroundingChunkRetrievedContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1GroundingChunkWeb : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1GroundingChunk> GroundingChunks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSupports")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1GroundingSupport> GroundingSupports { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
+        public virtual GoogleCloudDialogflowV2beta1SearchEntryPoint SearchEntryPoint { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
+        public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1GroundingSupport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingChunkIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> GroundingChunkIndices { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudDialogflowV2beta1Segment Segment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1GuidanceInstruction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1GuidanceInstructionAction> Actions { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSuggestedReply")]
+        public virtual System.Nullable<bool> DisableSuggestedReply { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayDetails")]
+        public virtual string DisplayDetails { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
+        public virtual string TriggerEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1GuidanceInstructionAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("endUserSuggestionConfig")]
@@ -25414,6 +26250,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("companionAgent")]
+        public virtual string CompanionAgent { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("disableHighLatencyFeaturesSyncDelivery")]
         public virtual System.Nullable<bool> DisableHighLatencyFeaturesSyncDelivery { get; set; }
 
@@ -26969,6 +27808,18 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2beta1ListCompanionAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("companionAgents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1CompanionAgent> CompanionAgents { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2beta1ListContextsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
@@ -27806,6 +28657,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2beta1SearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("renderedContent")]
+        public virtual string RenderedContent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2beta1SearchKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
@@ -28014,6 +28874,21 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("searchKnowledgeDebugInfo")]
         public virtual GoogleCloudDialogflowV2beta1SearchKnowledgeDebugInfo SearchKnowledgeDebugInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1Segment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28407,6 +29282,21 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("word")]
         public virtual string Word { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1StreamingReactiveCompanionSuggestionsResponseReactiveModeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
+        public virtual GoogleCloudDialogflowV2beta1GroundingMetadata GroundingMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCalls")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ToolCallSuggestion> ToolCalls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28839,6 +29729,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("generateCompanionSuggestionsResponse")]
+        public virtual GoogleCloudDialogflowV2beta1GenerateCompanionSuggestionsResponse GenerateCompanionSuggestionsResponse { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("generateSuggestionsResponse")]
         public virtual GoogleCloudDialogflowV2beta1GenerateSuggestionsResponse GenerateSuggestionsResponse { get; set; }
@@ -29535,6 +30428,18 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("retryable")]
         public virtual System.Nullable<bool> Retryable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2beta1ToolCallSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("textUpdate")]
+        public virtual string TextUpdate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCallInfo")]
+        public virtual GoogleCloudDialogflowV2beta1GeneratorSuggestionToolCallInfo ToolCallInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
