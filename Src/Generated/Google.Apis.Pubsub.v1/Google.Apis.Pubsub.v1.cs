@@ -3896,10 +3896,8 @@ namespace Google.Apis.Pubsub.v1.Data
     }
 
     /// <summary>
-    /// Configuration for a Bigtable subscription. The Pub/Sub message will be written to a Bigtable row as follows: -
-    /// row key: subscription name, message ID hash, and message ID delimited by `#`. - columns: message bytes written
-    /// to a single column family `data` with an empty-string column qualifier. - cell timestamp: the message publish
-    /// timestamp.
+    /// Configuration for a Bigtable subscription, which will write a Pub/Sub message to a Bigtable row. See the
+    /// ColumnFamilyMapping documentation below for details on how the row keys and columns will be written.
     /// </summary>
     public class BigtableConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3909,6 +3907,13 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appProfileId")]
         public virtual string AppProfileId { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration that allows writing row keys and/or columns based on fields in the input message.
+        /// The input message format must be JSON if this field is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnFamilyMapping")]
+        public virtual ColumnFamilyMapping ColumnFamilyMapping { get; set; }
 
         /// <summary>
         /// Optional. The service account to use to write to Bigtable. The subscription creator or updater that
@@ -4181,6 +4186,40 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for writing a Pub/Sub message to a Bigtable row with a user-defined key and writing to column
+    /// families. If this field is set: - The subscription messages must be formatted as JSON. - The row key mapping is
+    /// configured in the `key_definition` section. - The top-level fields will be written either: - By default, they
+    /// will be written to the `data` column family with the field name as the column qualifier. - But if the field name
+    /// matches an existing column family (except for the default `data` column), then that field will be written to
+    /// that column family, either as a scalar or its next level nested fields if it's a JSON object. - The cell
+    /// timestamp will be the message publish timestamp. If the field is not set, the default behavior is to write: -
+    /// row key: subscription name, message ID hash, and message ID delimited by `#`. - columns: message bytes written
+    /// to a single column family `data` with an empty-string column qualifier. - cell timestamp: the message publish
+    /// timestamp.
+    /// </summary>
+    public class ColumnFamilyMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set, the row key is constructed from the given key fields and delimiter. All key fields must be
+        /// present in the message; otherwise, the message remains in the subscription backlog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delimitedKey")]
+        public virtual DelimitedKey DelimitedKey { get; set; }
+
+        /// <summary>
+        /// Optional. If set, the row key is constructed from the field names of the table's structured row key
+        /// ({$universe.dns_names.final_documentation_domain}/bigtable/docs/manage-row-key-schemas). Note that if the
+        /// field is nullable in the structured row key, then it need not be present in the message; null will be used
+        /// instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowKeySchema")]
+        public virtual RowKeySchema RowKeySchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for CommitSchema method.</summary>
     public class CommitSchemaRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4324,6 +4363,27 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDeliveryAttempts")]
         public virtual System.Nullable<int> MaxDeliveryAttempts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Row key definition based on fields from the message.</summary>
+    public class DelimitedKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Byte sequence used to delimit concatenated fields. Must be specified if multiple key fields are
+        /// used. The delimiter must contain at least 1 character and at most 50 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delimiter")]
+        public virtual string Delimiter { get; set; }
+
+        /// <summary>
+        /// Optional. The key fields to construct from the row key. The fields must be present in the message as a
+        /// top-level field, i.e. JSON path expressions will not traverse into nested objects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyFields")]
+        public virtual System.Collections.Generic.IList<string> KeyFields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5166,6 +5226,18 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Row key definition that reads the input message fields based on the field names of the table's structured row
+    /// key ({$universe.dns_names.final_documentation_domain}/bigtable/docs/manage-row-key-schemas). Note that if the
+    /// field is nullable in the structured row key, then it need not be present in the message; null will be used
+    /// instead.
+    /// </summary>
+    public class RowKeySchema : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
