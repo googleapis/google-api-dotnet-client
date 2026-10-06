@@ -3189,9 +3189,9 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual DelimitedKey DelimitedKey { get; set; }
 
         /// <summary>
-        /// Optional. If set, the row key is constructed from the field names of the table's structured row key
-        /// (https://docs.cloud.google.com/bigtable/docs/manage-row-key-schemas). Note that if the field is nullable in
-        /// the structured row key, then it need not be present in the message; null will be used instead.
+        /// Optional. If set, the row key is constructed from the field names of the table's [structured row
+        /// key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas). Note that if the field is nullable in
+        /// the structured row key, then it need not be present in the message; `null` will be used instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowKeySchema")]
         public virtual RowKeySchema RowKeySchema { get; set; }
@@ -3782,9 +3782,8 @@ namespace Google.Apis.AnalyticsHub.v1.Data
 
         /// <summary>
         /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
-        /// "123/environment": "production", "123/costCenter": "marketing" See
-        /// https://{$universe.dns_names.final_documentation_domain}/pubsub/docs/tags for more information on using tags
-        /// with Pub/Sub resources.
+        /// "123/environment": "production", "123/costCenter": "marketing" See [Create and manage
+        /// tags](https://cloud.google.com/pubsub/docs/tags) for more information on using tags with Pub/Sub resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
@@ -4742,9 +4741,9 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     }
 
     /// <summary>
-    /// Row key definition that reads the input message fields based on the field names of the table's structured row
-    /// key (https://docs.cloud.google.com/bigtable/docs/manage-row-key-schemas). Note that if the field is nullable in
-    /// the structured row key, then it need not be present in the message; null will be used instead.
+    /// Row key definition that reads the input message fields based on the field names of the table's [structured row
+    /// key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas). Note that if the field is nullable in the
+    /// structured row key, then it need not be present in the message; `null` will be used instead.
     /// </summary>
     public class RowKeySchema : Google.Apis.Requests.IDirectResponseSchema
     {
