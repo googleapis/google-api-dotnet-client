@@ -12719,6 +12719,14 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
         public virtual string ChannelId { get; set; }
 
+        /// <summary>
+        /// Output only. The URL of the image or animated GIF attached to the comment, if any. This property is only
+        /// present when a comment contains an image or GIF. The URL is served as a signed link with a six-hour time to
+        /// live (TTL) and expires six hours after retrieval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
+        public virtual string ImageUrl { get; set; }
+
         /// <summary>The total number of likes this comment has received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likeCount")]
         public virtual System.Nullable<long> LikeCount { get; set; }
