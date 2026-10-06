@@ -1,11 +1,13 @@
 {
   "Google.Apis.Solar.v1.BuildingInsightsResource+FindClosestRequest.AdditionalInsightsEnum": [
     "ADDITIONAL_INSIGHTS_UNSPECIFIED",
-    "DETECTED_ARRAYS"
+    "DETECTED_ARRAYS",
+    "ROOF_GEOMETRY"
   ],
   "Google.Apis.Solar.v1.BuildingInsightsResource+FindClosestRequest.ExperimentsEnum": [
     "EXPERIMENT_UNSPECIFIED",
-    "EXPANDED_COVERAGE"
+    "EXPANDED_COVERAGE",
+    "ROOF_GEOMETRY_INSIGHTS"
   ],
   "Google.Apis.Solar.v1.BuildingInsightsResource+FindClosestRequest.RequiredQualityEnum": [
     "IMAGERY_QUALITY_UNSPECIFIED",
@@ -16,7 +18,8 @@
   ],
   "Google.Apis.Solar.v1.DataLayersResource+GetRequest.ExperimentsEnum": [
     "EXPERIMENT_UNSPECIFIED",
-    "EXPANDED_COVERAGE"
+    "EXPANDED_COVERAGE",
+    "ROOF_GEOMETRY_INSIGHTS"
   ],
   "Google.Apis.Solar.v1.DataLayersResource+GetRequest.RequiredQualityEnum": [
     "IMAGERY_QUALITY_UNSPECIFIED",
