@@ -1872,6 +1872,77 @@ namespace Google.Apis.FirebaseDataConnect.v1beta
                     }
 
                     /// <summary>
+                    /// Executes SQL migration steps against the active database schema. This operation compares
+                    /// submitted migration steps against the schema migration ledger (`firebasesql.schema_migrations`),
+                    /// executes unapplied DDL, and records applied steps. It does NOT persist the GraphQL schema to the
+                    /// control plane.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Resource name of the target schema:
+                    /// projects/{project}/locations/{location}/services/{service}/schemas/{schema} Note: Only
+                    /// `schemas/main` is supported (singleton schema per service).
+                    /// </param>
+                    public virtual MigrateRequest Migrate(Google.Apis.FirebaseDataConnect.v1beta.Data.MigrateSchemaRequest body, string name)
+                    {
+                        return new MigrateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Executes SQL migration steps against the active database schema. This operation compares
+                    /// submitted migration steps against the schema migration ledger (`firebasesql.schema_migrations`),
+                    /// executes unapplied DDL, and records applied steps. It does NOT persist the GraphQL schema to the
+                    /// control plane.
+                    /// </summary>
+                    public class MigrateRequest : FirebaseDataConnectBaseServiceRequest<Google.Apis.FirebaseDataConnect.v1beta.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Migrate request.</summary>
+                        public MigrateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDataConnect.v1beta.Data.MigrateSchemaRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the target schema:
+                        /// projects/{project}/locations/{location}/services/{service}/schemas/{schema} Note: Only
+                        /// `schemas/main` is supported (singleton schema per service).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.FirebaseDataConnect.v1beta.Data.MigrateSchemaRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "migrate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+name}:migrate";
+
+                        /// <summary>Initializes Migrate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+/schemas/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Updates the parameters of a single Schema, and creates a new SchemaRevision with the updated
                     /// Schema.
                     /// </summary>
@@ -3865,6 +3936,70 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `MigrateSchema`. Next tag: 7</summary>
+    public class MigrateSchemaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Execution mode controlling DDL execution and ledger recording. Defaults to EXECUTE_AND_RECORD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionMode")]
+        public virtual string ExecutionMode { get; set; }
+
+        /// <summary>
+        /// Required. Ordered migration steps from `./sql/migrations/` (or a single ad-hoc step). Backend compares
+        /// submitted versions against `firebasesql.schema_migrations`: already-applied steps are verified for SQL
+        /// immutability and skipped, while unapplied steps (`version &amp;gt; MAX(applied_version)`) are executed. All
+        /// unapplied transactional steps in a single request execute atomically within one database transaction (BEGIN
+        /// ... COMMIT): either every unapplied step commits and is recorded in the ledger, or the entire request rolls
+        /// back. An unapplied step containing CREATE INDEX CONCURRENTLY or DROP INDEX CONCURRENTLY cannot be mixed with
+        /// other unapplied steps and must be the sole unapplied step executed in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationSteps")]
+        public virtual System.Collections.Generic.IList<MigrationStep> MigrationSteps { get; set; }
+
+        /// <summary>
+        /// Optional. When true, runs preflight validation (syntax, applied-step immutability, sequence ordering,
+        /// CONCURRENTLY isolation, and SAVEPOINT catalog checks) without committing mutations to the database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An individual unit of migration work. Next tag: 4</summary>
+    public class MigrationStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Descriptive migration label (e.g. "create_accounts_table"). If omitted, defaults to "adhoc".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Raw multi-statement SQL script. The backend splits it into individual statements before execution;
+        /// callers do not pre-split. Required whenever the request executes or records DDL, which is every publicly
+        /// available execution mode; omitting it returns INVALID_ARGUMENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sql")]
+        public virtual string Sql { get; set; }
+
+        /// <summary>
+        /// Optional. Monotonic 14-digit UTC timestamp (YYYYMMDDHHMMSS), matching the timestamp prefix of the
+        /// developer's migration filename. Constrained to `^[0-9]{14}$`. - When specified (file migrations): If
+        /// `version` is already recorded in `firebasesql.schema_migrations`, the backend verifies that `sql` matches
+        /// the recorded statements and skips execution. If `version` is unapplied, the backend validates `version
+        /// &amp;gt; MAX(applied_version)` and records the value unchanged, so the ledger row and the on-disk filename
+        /// stay identical. - When omitted (Console/ad-hoc): Backend auto-generates a 14-digit UTC timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
