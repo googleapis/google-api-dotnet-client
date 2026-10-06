@@ -11752,6 +11752,14 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. If set to true, conflicting rollouts will be paused, to allow this rollout to progress through the
+        /// sequence. Conflicting rollouts running on the first stage will be canceled, to allow this rollout to be
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prioritized")]
+        public virtual System.Nullable<bool> Prioritized { get; set; }
+
+        /// <summary>
         /// Optional. Immutable. The full, unique resource name of the rollout sequence that initiatied this Rollout. In
         /// the format of `projects/{project}/locations/global/rolloutSequences/{rollout_sequence}`.
         /// </summary>
@@ -12827,6 +12835,14 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchOnly")]
         public virtual System.Nullable<bool> PatchOnly { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, conflicting rollouts will be paused, to allow this rollout to progress through the
+        /// sequence. Conflicting rollouts running on the first stage will be canceled, to allow this rollout to be
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prioritized")]
+        public virtual System.Nullable<bool> Prioritized { get; set; }
 
         /// <summary>Optional. Overrides the soak duration for all stages of the rollout.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("soakDurationOverrideAllStages")]
