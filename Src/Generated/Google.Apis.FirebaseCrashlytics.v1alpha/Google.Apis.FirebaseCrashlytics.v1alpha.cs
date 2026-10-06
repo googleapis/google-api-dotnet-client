@@ -783,9 +783,8 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     /// double-quoted, for example `custom_keys."app state" = "background"`. OR across different keys,
                     /// repeating a key within an AND, NOT, and comparators other than `=` and `:` are rejected with
                     /// INVALID_ARGUMENT. Wildcards are not supported in values; use `custom_keys.:*` to match events
-                    /// that set a key to any value. Only supported for Android and iOS. This filter expression applies
-                    /// in addition to the `filter` field above. The syntax is a subset of AIP-160
-                    /// (https://google.aip.dev/160).
+                    /// that set a key to any value. This filter expression applies in addition to the `filter` field
+                    /// above. The syntax is a subset of AIP-160 (https://google.aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FilterExpression { get; set; }
@@ -1806,6 +1805,37 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     }
 
                     /// <summary>
+                    /// Optional. Controls whether metrics are raw observed values (mobile and web) or extrapolated
+                    /// values (web only). If omitted, defaults to OBSERVED.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("metricsMode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<MetricsModeEnum> MetricsMode { get; set; }
+
+                    /// <summary>
+                    /// Optional. Controls whether metrics are raw observed values (mobile and web) or extrapolated
+                    /// values (web only). If omitted, defaults to OBSERVED.
+                    /// </summary>
+                    public enum MetricsModeEnum
+                    {
+                        /// <summary>Unknown.</summary>
+                        [Google.Apis.Util.StringValueAttribute("METRICS_MODE_UNSPECIFIED")]
+                        METRICSMODEUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Raw counts of the events, sessions, and users that were actually collected.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("METRICS_MODE_OBSERVED")]
+                        METRICSMODEOBSERVED = 1,
+
+                        /// <summary>
+                        /// Web only. Estimated event counts based on the per-session sampling rate recorded on each
+                        /// event.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("METRICS_MODE_EXTRAPOLATED")]
+                        METRICSMODEEXTRAPOLATED = 2,
+                    }
+
+                    /// <summary>
                     /// Optional. The maximum number of result groups to return. If omitted, defaults to 25.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1955,6 +1985,14 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                         RequestParameters.Add("granularity", new Google.Apis.Discovery.Parameter
                         {
                             Name = "granularity",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("metricsMode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "metricsMode",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
