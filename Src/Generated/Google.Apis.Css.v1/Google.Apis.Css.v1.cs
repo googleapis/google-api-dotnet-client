@@ -1564,17 +1564,11 @@ namespace Google.Apis.Css.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("material")]
         public virtual string Material { get; set; }
 
-        /// <summary>
-        /// Maximum rating score of the product. Required if `rating` is provided. This field is for an upcoming feature
-        /// and is not yet used.
-        /// </summary>
+        /// <summary>Maximum rating score of the product. Required if `rating` is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRating")]
         public virtual System.Nullable<long> MaxRating { get; set; }
 
-        /// <summary>
-        /// Minimum rating score of the product. Required if `rating` is provided. This field is for an upcoming feature
-        /// and is not yet used.
-        /// </summary>
+        /// <summary>Minimum rating score of the product. Required if `rating` is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minRating")]
         public virtual System.Nullable<long> MinRating { get; set; }
 
@@ -1646,16 +1640,12 @@ namespace Google.Apis.Css.v1.Data
         /// <summary>
         /// Average rating score of the product. The value must be within the range of [`min_rating`, `max_rating`],
         /// inclusive. When displayed on the product page, this rating is normalized to a scale of [1, 5] with one
-        /// decimal place. If provided, `review_count`, `min_rating`, and `max_rating` are also required. This field is
-        /// for an upcoming feature and is not yet used.
+        /// decimal place. If provided, `review_count`, `min_rating`, and `max_rating` are also required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
         public virtual System.Nullable<double> Rating { get; set; }
 
-        /// <summary>
-        /// Number of reviews of the product. Required if `rating` is provided. This field is for an upcoming feature
-        /// and is not yet used.
-        /// </summary>
+        /// <summary>Number of reviews of the product. Required if `rating` is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewCount")]
         public virtual System.Nullable<long> ReviewCount { get; set; }
 
