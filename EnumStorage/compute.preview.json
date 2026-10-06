@@ -1,0 +1,73 @@
+{
+  "Google.Apis.Compute.preview.ComputeBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Compute.preview.ComputeBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Compute.preview.ForwardingRulesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Compute.preview.GlobalForwardingRulesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Compute.preview.InstancesResource+ResetRequest.ResetModeEnum": [
+    "HARD_RESET",
+    "POWER_CYCLE",
+    "RESET_MODE_UNSPECIFIED",
+    "SOFT_RESET"
+  ],
+  "Google.Apis.Compute.preview.InstancesResource+UpdateRequest.MinimalActionEnum": [
+    "INVALID",
+    "NO_EFFECT",
+    "REFRESH",
+    "RESTART"
+  ],
+  "Google.Apis.Compute.preview.InstancesResource+UpdateRequest.MostDisruptiveAllowedActionEnum": [
+    "INVALID",
+    "NO_EFFECT",
+    "REFRESH",
+    "RESTART"
+  ],
+  "Google.Apis.Compute.preview.NetworksResource+ListPeeringRoutesRequest.DirectionEnum": [
+    "INCOMING",
+    "OUTGOING"
+  ],
+  "Google.Apis.Compute.preview.ReservationBlocksResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "BLOCK_VIEW_UNSPECIFIED",
+    "FULL"
+  ],
+  "Google.Apis.Compute.preview.ReservationSubBlocksResource+GetRequest.ViewEnum": [
+    "SUB_BLOCK_VIEW_BASIC",
+    "SUB_BLOCK_VIEW_FULL",
+    "SUB_BLOCK_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.preview.RoutersResource+ListBgpRoutesRequest.AddressFamilyEnum": [
+    "IPV4",
+    "IPV6",
+    "UNSPECIFIED_IP_VERSION"
+  ],
+  "Google.Apis.Compute.preview.RoutersResource+ListBgpRoutesRequest.RouteTypeEnum": [
+    "ADVERTISED",
+    "LEARNED",
+    "UNSPECIFIED_ROUTE_TYPE"
+  ],
+  "Google.Apis.Compute.preview.SubnetworksResource+AggregatedListRequest.ViewsEnum": [
+    "DEFAULT",
+    "WITH_UTILIZATION"
+  ],
+  "Google.Apis.Compute.preview.SubnetworksResource+GetRequest.ViewsEnum": [
+    "DEFAULT",
+    "WITH_UTILIZATION"
+  ],
+  "Google.Apis.Compute.preview.SubnetworksResource+ListRequest.ViewsEnum": [
+    "DEFAULT",
+    "WITH_UTILIZATION"
+  ]
+}
