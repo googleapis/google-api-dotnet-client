@@ -8883,6 +8883,111 @@ namespace Google.Apis.Storage.v1
                 });
             }
         }
+
+        /// <summary>Retrieves a specific object context with its extended data for a given object.</summary>
+        /// <param name="contextKey">Key identifying the object context to retrieve.</param>
+        /// <param name="bucket">Name of the bucket in which the object resides.</param>
+        /// <param name="storageObject">
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+        /// </param>
+        public virtual ViewFullContextRequest ViewFullContext(string contextKey, string bucket, string storageObject)
+        {
+            return new ViewFullContextRequest(this.service, contextKey, bucket, storageObject);
+        }
+
+        /// <summary>Retrieves a specific object context with its extended data for a given object.</summary>
+        public class ViewFullContextRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectFullContext>
+        {
+            /// <summary>Constructs a new ViewFullContext request.</summary>
+            public ViewFullContextRequest(Google.Apis.Services.IClientService service, string contextKey, string bucket, string storageObject) : base(service)
+            {
+                ContextKey = contextKey;
+                Bucket = bucket;
+                Object = storageObject;
+                InitParameters();
+            }
+
+            /// <summary>Key identifying the object context to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("contextKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ContextKey { get; private set; }
+
+            /// <summary>Name of the bucket in which the object resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Object { get; private set; }
+
+            /// <summary>
+            /// If present, selects a specific revision of this object (as opposed to the latest version, the default).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> Generation { get; set; }
+
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "viewFullContext";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/o/{object}/viewFullContext";
+
+            /// <summary>Initializes ViewFullContext parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("contextKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "contextKey",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "operations" collection of methods.</summary>
@@ -11164,11 +11269,57 @@ namespace Google.Apis.Storage.v1.Data
             }
 
             /// <summary>
+            /// The bucket's hard delete pause configuration. If set, soft-deleted objects in the bucket will not be
+            /// permanently deleted until the hard delete pause is disabled.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("hardDeletePause")]
+            public virtual HardDeletePauseData HardDeletePause { get; set; }
+
+            /// <summary>
             /// The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be
             /// permanently deleted.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("retentionDurationSeconds")]
             public virtual System.Nullable<long> RetentionDurationSeconds { get; set; }
+
+            /// <summary>
+            /// The bucket's hard delete pause configuration. If set, soft-deleted objects in the bucket will not be
+            /// permanently deleted until the hard delete pause is disabled.
+            /// </summary>
+            public class HardDeletePauseData
+            {
+                /// <summary>
+                /// Server-determined value that indicates the time from which the hard delete pause became effective.
+                /// This value is in RFC 3339 format.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
+                public virtual string EffectiveTimeRaw { get; set; }
+
+                /// <summary>
+                /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EffectiveTimeRaw"/>.
+                /// </summary>
+                [Newtonsoft.Json.JsonIgnoreAttribute]
+                public virtual System.DateTimeOffset? EffectiveTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(EffectiveTimeRaw);
+                    set => EffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+                }
+
+                /// <summary>
+                /// <seealso cref="System.DateTime"/> representation of <see cref="EffectiveTimeRaw"/>.
+                /// </summary>
+                [Newtonsoft.Json.JsonIgnoreAttribute]
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EffectiveTimeDateTimeOffset instead.")]
+                public virtual System.DateTime? EffectiveTime
+                {
+                    get => Google.Apis.Util.Utilities.GetDateTimeFromString(EffectiveTimeRaw);
+                    set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                }
+
+                /// <summary>Whether hard deletions are paused.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+                public virtual System.Nullable<bool> Enabled { get; set; }
+            }
         }
 
         /// <summary>The bucket's versioning configuration.</summary>
@@ -12712,6 +12863,77 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string ExtendedDataTypeUrl { get; set; }
 
         /// <summary>The time at which the object context was last updated in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? UpdateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The value of the object context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A full representation of an object context.</summary>
+    public class ObjectFullContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the object context was created. This value is in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The extended data of the object context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedData")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ExtendedData { get; set; }
+
+        /// <summary>The key of the object context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// The kind of item this is. For ObjectFullContext, this is always storage#objectFullContext.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The type of the object context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The time at which the object context was last updated. This value is in RFC 3339 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw { get; set; }
 
