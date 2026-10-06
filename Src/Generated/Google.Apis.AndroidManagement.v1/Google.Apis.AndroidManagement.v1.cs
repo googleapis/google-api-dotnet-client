@@ -2902,13 +2902,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class AdvancedSecurityOverrides : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Controls Common Criteria Mode—security standards defined in the Common Criteria for Information Technology
-        /// Security Evaluation (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode increases
-        /// certain security components on a device, see CommonCriteriaMode for details.Warning: Common Criteria Mode
-        /// enforces a strict security model typically only required for IT products used in national security systems
-        /// and other highly sensitive organizations. Standard device use may be affected. Only enabled if required. If
-        /// Common Criteria Mode is turned off after being enabled previously, all user-configured Wi-Fi networks may be
-        /// lost and any enterprise-configured Wi-Fi networks that require user input may need to be reconfigured.
+        /// Optional. Controls Common Criteria Mode—security standards defined in the Common Criteria for Information
+        /// Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC). Enabling Common Criteria Mode
+        /// increases certain security components on a device, see CommonCriteriaMode for details.Warning: Common
+        /// Criteria Mode enforces a strict security model typically only required for IT products used in national
+        /// security systems and other highly sensitive organizations. Standard device use may be affected. Only enabled
+        /// if required. If Common Criteria Mode is turned off after being enabled previously, all user-configured Wi-Fi
+        /// networks may be lost and any enterprise-configured Wi-Fi networks that require user input may need to be
+        /// reconfigured.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonCriteriaMode")]
         public virtual string CommonCriteriaMode { get; set; }
@@ -2921,7 +2922,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ContentProtectionPolicy { get; set; }
 
         /// <summary>
-        /// Controls access to developer settings: developer options and safe boot. Replaces safeBootDisabled
+        /// Optional. Controls access to developer settings: developer options and safe boot. Replaces safeBootDisabled
         /// (deprecated) and debuggingFeaturesAllowed (deprecated). On personally-owned devices with a work profile,
         /// setting this policy will not disable safe boot. In this case, a NonComplianceDetail with MANAGEMENT_MODE is
         /// reported.
@@ -2930,8 +2931,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string DeveloperSettings { get; set; }
 
         /// <summary>
-        /// Whether Google Play Protect verification (https://support.google.com/accounts/answer/2812853) is enforced.
-        /// Replaces ensureVerifyAppsEnabled (deprecated).
+        /// Optional. Whether Google Play Protect verification (https://support.google.com/accounts/answer/2812853) is
+        /// enforced. Replaces ensureVerifyAppsEnabled (deprecated).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePlayProtectVerifyApps")]
         public virtual string GooglePlayProtectVerifyApps { get; set; }
@@ -2946,7 +2947,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string MtePolicy { get; set; }
 
         /// <summary>
-        /// Personal apps that can read work profile notifications using a NotificationListenerService
+        /// Optional. Personal apps that can read work profile notifications using a NotificationListenerService
         /// (https://developer.android.com/reference/android/service/notification/NotificationListenerService). By
         /// default, no personal apps (aside from system apps) can read work notifications. Each value in the list must
         /// be a package name.
@@ -2955,7 +2956,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<string> PersonalAppsThatCanReadWorkNotifications { get; set; }
 
         /// <summary>
-        /// The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces
+        /// Optional. The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces
         /// install_unknown_sources_allowed (deprecated).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("untrustedAppsPolicy")]
@@ -7292,7 +7293,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adjustVolumeDisabled")]
         public virtual System.Nullable<bool> AdjustVolumeDisabled { get; set; }
 
-        /// <summary>Advanced security settings. In most cases, setting these is not needed.</summary>
+        /// <summary>Optional. Advanced security settings. In most cases, setting these is not needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSecurityOverrides")]
         public virtual AdvancedSecurityOverrides AdvancedSecurityOverrides { get; set; }
 
@@ -7825,7 +7826,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unmuteMicrophoneDisabled")]
         public virtual System.Nullable<bool> UnmuteMicrophoneDisabled { get; set; }
 
-        /// <summary>Configuration of device activity logging.</summary>
+        /// <summary>Optional. Configuration of device activity logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageLog")]
         public virtual UsageLog UsageLog { get; set; }
 
@@ -8897,15 +8898,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class UsageLog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specifies which log types are enabled. Note that users will receive on-device messaging when usage logging
-        /// is enabled.
+        /// Optional. Specifies which log types are enabled. Note that users will receive on-device messaging when usage
+        /// logging is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledLogTypes")]
         public virtual System.Collections.Generic.IList<string> EnabledLogTypes { get; set; }
 
         /// <summary>
-        /// Specifies which of the enabled log types can be uploaded over mobile data. By default logs are queued for
-        /// upload when the device connects to WiFi.
+        /// Optional. Specifies which of the enabled log types can be uploaded over mobile data. By default logs are
+        /// queued for upload when the device connects to WiFi.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadOnCellularAllowed")]
         public virtual System.Collections.Generic.IList<string> UploadOnCellularAllowed { get; set; }
