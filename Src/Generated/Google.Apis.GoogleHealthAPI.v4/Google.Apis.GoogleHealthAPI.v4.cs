@@ -3516,8 +3516,8 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
-        /// Optional. The `next_page_token` from a previous request, if any. All other request fields need to be the
-        /// same as in the initial request when the page token is specified.
+        /// Optional. The next_page_token from a previous request, if any. All other request fields need to be the same
+        /// as in the initial request when the page token is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
@@ -3545,6 +3545,13 @@ namespace Google.Apis.GoogleHealthAPI.v4.Data
     /// <summary>Response containing the list of rolled up data points.</summary>
     public class DailyRollUpDataPointsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
         /// <summary>Values for each aggregation time window.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollupDataPoints")]
         public virtual System.Collections.Generic.IList<DailyRollupDataPoint> RollupDataPoints { get; set; }
