@@ -124,7 +124,7 @@ namespace Google.Apis.WorkspaceEvents.v1
             public static string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// See, compose, send, update, and delete messages as well as their message content; add, see, and delete
+            /// See, compose, send, update, and delete messages, their content, and attached cards; add, see, and delete
             /// reactions to messages.
             /// </summary>
             public static string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
@@ -251,7 +251,7 @@ namespace Google.Apis.WorkspaceEvents.v1
             public const string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// See, compose, send, update, and delete messages as well as their message content; add, see, and delete
+            /// See, compose, send, update, and delete messages, their content, and attached cards; add, see, and delete
             /// reactions to messages.
             /// </summary>
             public const string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
