@@ -11133,6 +11133,81 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
+                    /// Executes and materializes a cohort definition from a FHIR store. This method returns an
+                    /// Operation that can be used to track the status of the cohort execution by calling GetOperation.
+                    /// Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see
+                    /// [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ExecuteCohortResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to query, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual ExecuteCohortRequest ExecuteCohort(Google.Apis.CloudHealthcare.v1beta1.Data.ExecuteCohortRequest body, string name)
+                    {
+                        return new ExecuteCohortRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Executes and materializes a cohort definition from a FHIR store. This method returns an
+                    /// Operation that can be used to track the status of the cohort execution by calling GetOperation.
+                    /// Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see
+                    /// [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ExecuteCohortResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    public class ExecuteCohortRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new ExecuteCohort request.</summary>
+                        public ExecuteCohortRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ExecuteCohortRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to query, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.ExecuteCohortRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "executeCohort";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:executeCohort";
+
+                        /// <summary>Initializes ExecuteCohort parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Explains all the permitted/denied actor, purpose and environment for a given resource. FHIR
                     /// Consent is not supported in DSTU2 or R5.
                     /// </summary>
@@ -15581,9 +15656,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string Until { get; set; }
 
         /// <summary>
-        /// Optional. If set to true, the request will only perform a dry run. By default (once the behavior change is
-        /// fully rolled out), this will default to true. During the transition period, the default depends on the
-        /// Mendel flag status for the project.
+        /// Optional. If set to `true`, the request will only perform a dry run. By default this will default to
+        /// `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -16847,6 +16921,99 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Request to execute a cohort definition from a FHIR store based on provided queries and sending the resulting
+    /// subset of data to a specified sink.
+    /// </summary>
+    public class ExecuteCohortRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string __atRaw;
+
+        private object __at;
+
+        /// <summary>
+        /// Optional. If provided, the queried resources will represent the state of the FHIR store at the given past
+        /// timestamp. Runs the operation against the state of the store at this timestamp. State of the store is
+        /// represented by the resource versions that were the current versions during the time specified or the
+        /// resources that have not been updated since. Only works if the store has history enabled. Although users
+        /// should be able to use this field to reproduce previous runs of the operation and get consistent results,
+        /// there are a few cases where the past state of the store can be altered, thus resulting in no guarantee of
+        /// reproducibility. For example, resource versions can be deleted using the purge method, or modified using
+        /// ImportResourcesHistory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_at")]
+        public virtual string AtRaw
+        {
+            get => __atRaw;
+            set
+            {
+                __at = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                __atRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AtDateTimeOffset instead.")]
+        public virtual object At
+        {
+            get => __at;
+            set
+            {
+                __atRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                __at = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AtDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AtRaw);
+            set => AtRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Return resources that match the specified FHIRPath expressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirpathQuery")]
+        public virtual FHIRPathQuery FhirpathQuery { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage output destination. The Healthcare Service Agent account requires the
+        /// `roles/storage.objectAdmin` role on the Cloud Storage location. The exported outputs are organized by FHIR
+        /// resource types. The server creates one or more objects per resource type depending on the volume of the
+        /// resources exported. When there is only one object per resource type, the object name is in the form of
+        /// `{operation_id}_{resource_type}`. When there are multiple objects for a given resource type, the object
+        /// names are in the form of `{operation_id}_{resource_type}-{index}-of-{total}`. Each object contains newline
+        /// delimited JSON, and each line is a FHIR resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudHealthcareV1beta1FhirGcsDestination GcsDestination { get; set; }
+
+        /// <summary>Optional. If true, the request will be validated but no cohort execution will be run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response when ExecuteCohort operation finishes querying all resources and sends them to a sink destination. This
+    /// structure will be included in the response when the operation finishes successfully.
+    /// </summary>
+    public class ExecuteCohortResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the queried FHIR store, in the format
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirStore")]
+        public virtual string FhirStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The enforcing consent's metadata.</summary>
     public class ExplainDataAccessConsentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17280,6 +17447,56 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A FHIRPath expression.</summary>
+    public class Expression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. FHIRPath expression used for evaluation against FHIR resources. Must be in the format
+        /// `[/"Resource"/"DomainResource"].[expression]` Expressions are applied per single FHIR resource, so they
+        /// can't span multiple base resource types. For example, expressions like `Patient.union(Encounter)` are
+        /// invalid. For expressions involving more than one resource or resource type, consider using the FHIRPath
+        /// `resolve()` method. Expressions are only allowed to evaluate to a boolean type or a single or collection of
+        /// [FHIR.Resource](https://hl7.org/fhir/resource.html) types. Expressions evaluating to boolean would include
+        /// the base resource in the result if the expression evaluates to `true`. Expressions evaluating to one or more
+        /// FHIR.Resource types will include those resources in the result, e.g. `CareTeam.member.resolve()`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirpathExpression")]
+        public virtual string FhirpathExpression { get; set; }
+
+        /// <summary>
+        /// Optional. Expressions with the same label will be grouped together under the same directory when exporting
+        /// to Cloud Storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set of FHIRPath expressions that are used to filter the FHIR resources. These expressions do not maintain
+    /// referential integrity on the resulting resources. Users are responsible for making sure the expressions are
+    /// written in a way to ensure that if desired.
+    /// </summary>
+    public class FHIRPathQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. FHIRPath engine version number, for example "1.0". Will use the latest version if not specified.
+        /// For more details about the supported versions, see
+        /// https://cloud.google.com/healthcare-api/private/docs/how-tos/fhir-execute-cohort#fhirpath-engine-versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineVersion")]
+        public virtual string EngineVersion { get; set; }
+
+        /// <summary>Required. List of FHIRPath expressions used for filtering the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
+        public virtual System.Collections.Generic.IList<Expression> Expressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
