@@ -690,7 +690,7 @@ namespace Google.Apis.ParameterManager.v1
                     /// <summary>Updates a single ParameterVersion.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Identifier. [Output only] The resource name of the ParameterVersion in the format
+                    /// Identifier. The resource name of the ParameterVersion in the format
                     /// `projects/*/locations/*/parameters/*/versions/*`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ParameterManager.v1.Data.ParameterVersion body, string name)
@@ -710,7 +710,7 @@ namespace Google.Apis.ParameterManager.v1
                         }
 
                         /// <summary>
-                        /// Identifier. [Output only] The resource name of the ParameterVersion in the format
+                        /// Identifier. The resource name of the ParameterVersion in the format
                         /// `projects/*/locations/*/parameters/*/versions/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1144,8 +1144,7 @@ namespace Google.Apis.ParameterManager.v1
                 /// <summary>Updates a single Parameter.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. [Output only] The resource name of the Parameter in the format
-                /// `projects/*/locations/*/parameters/*`.
+                /// Identifier. The resource name of the Parameter in the format `projects/*/locations/*/parameters/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ParameterManager.v1.Data.Parameter body, string name)
                 {
@@ -1164,7 +1163,7 @@ namespace Google.Apis.ParameterManager.v1
                     }
 
                     /// <summary>
-                    /// Identifier. [Output only] The resource name of the Parameter in the format
+                    /// Identifier. The resource name of the Parameter in the format
                     /// `projects/*/locations/*/parameters/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2505,7 +2504,7 @@ namespace Google.Apis.ParameterManager.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. Create time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -2555,13 +2554,12 @@ namespace Google.Apis.ParameterManager.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Identifier. [Output only] The resource name of the Parameter in the format
-        /// `projects/*/locations/*/parameters/*`.
+        /// Identifier. The resource name of the Parameter in the format `projects/*/locations/*/parameters/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. [Output-only] policy member strings of a Google Cloud resource.</summary>
+        /// <summary>Output only. Policy member strings of a Google Cloud resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyMember")]
         public virtual ResourcePolicyMember PolicyMember { get; set; }
 
@@ -2581,7 +2579,7 @@ namespace Google.Apis.ParameterManager.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. Update time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -2621,7 +2619,7 @@ namespace Google.Apis.ParameterManager.v1.Data
     /// <summary>Message describing ParameterVersion resource</summary>
     public class ParameterVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Output only. [Output only] The source of the checksum.</summary>
+        /// <summary>Optional. Output only. The source of the checksum.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checksumSource")]
         public virtual string ChecksumSource { get; set; }
 
@@ -2629,7 +2627,7 @@ namespace Google.Apis.ParameterManager.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create time stamp</summary>
+        /// <summary>Output only. Create time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -2672,15 +2670,15 @@ namespace Google.Apis.ParameterManager.v1.Data
         public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>
-        /// Optional. Output only. [Output only] The resource name of the KMS key version used to encrypt the
-        /// ParameterVersion payload. This field is populated only if the Parameter resource has customer managed
-        /// encryption key (CMEK) configured.
+        /// Optional. Output only. The resource name of the KMS key version used to encrypt the ParameterVersion
+        /// payload. This field is populated only if the Parameter resource has customer managed encryption key (CMEK)
+        /// configured.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
         public virtual string KmsKeyVersion { get; set; }
 
         /// <summary>
-        /// Identifier. [Output only] The resource name of the ParameterVersion in the format
+        /// Identifier. The resource name of the ParameterVersion in the format
         /// `projects/*/locations/*/parameters/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2697,7 +2695,7 @@ namespace Google.Apis.ParameterManager.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update time stamp</summary>
+        /// <summary>Output only. Update time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -2742,8 +2740,8 @@ namespace Google.Apis.ParameterManager.v1.Data
         public virtual string Data { get; set; }
 
         /// <summary>
-        /// Optional. [Optional] The integrity checksum of the payload. If provided, the server will verify that the
-        /// checksum matches the payload. If not provided, the server will generate the checksum.
+        /// Optional. The integrity checksum of the payload. If provided, the server will verify that the checksum
+        /// matches the payload. If not provided, the server will generate the checksum.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataCrc32c")]
         public virtual System.Nullable<long> DataCrc32c { get; set; }
@@ -2752,12 +2750,11 @@ namespace Google.Apis.ParameterManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing RenderParameterVersionResponse resource</summary>
+    /// <summary>Message describing response of the `RenderParameterVersion` method</summary>
     public class RenderParameterVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Resource identifier of a ParameterVersion in the format
-        /// `projects/*/locations/*/parameters/*/versions/*`.
+        /// Resource identifier of a ParameterVersion in the format `projects/*/locations/*/parameters/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterVersion")]
         public virtual string ParameterVersion { get; set; }
@@ -2767,9 +2764,9 @@ namespace Google.Apis.ParameterManager.v1.Data
         public virtual ParameterVersionPayload Payload { get; set; }
 
         /// <summary>
-        /// Output only. Server generated rendered version of the user provided payload data (ParameterVersionPayload)
-        /// which has substitutions of all (if any) references to a SecretManager SecretVersion resources. This
-        /// substitution only works for a Parameter which is in JSON or YAML format.
+        /// Server generated rendered version of the user provided payload data (ParameterVersionPayload) which has
+        /// substitutions of all (if any) references to a SecretManager SecretVersion resources. This substitution only
+        /// works for a Parameter which is in JSON or YAML format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderedPayload")]
         public virtual string RenderedPayload { get; set; }
@@ -2778,11 +2775,11 @@ namespace Google.Apis.ParameterManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing RenderTemplateVersionResponse resource</summary>
+    /// <summary>Message describing response for `RenderTemplateVersion` method</summary>
     public class RenderTemplateVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The resource name of the ParameterVersion used to render the template version in the format
+        /// The resource name of the ParameterVersion used to render the template version in the format
         /// `projects/*/locations/*/parameters/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterVersion")]
@@ -2793,13 +2790,13 @@ namespace Google.Apis.ParameterManager.v1.Data
         public virtual TemplateVersionPayload Payload { get; set; }
 
         /// <summary>
-        /// Output only. Server generated rendered version of the user provided payload data (TemplateVersionPayload)
-        /// which has all the variables resolved using the provided parameter version.
+        /// Server generated rendered version of the user provided payload data (TemplateVersionPayload) which has all
+        /// the variables resolved using the provided parameter version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderedPayload")]
         public virtual string RenderedPayload { get; set; }
 
-        /// <summary>Output only. Format of the template version.</summary>
+        /// <summary>Format of the template version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateFormat")]
         public virtual string TemplateFormat { get; set; }
 
