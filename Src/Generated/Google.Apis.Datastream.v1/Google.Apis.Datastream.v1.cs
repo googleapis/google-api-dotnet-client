@@ -6660,6 +6660,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>Configuration to use Change Tables CDC read method.</summary>
     public class SqlServerChangeTables : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. DDL configuration for change tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlConfig")]
+        public virtual SqlServerDdlConfig DdlConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6698,6 +6702,29 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Column scale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scale")]
         public virtual System.Nullable<int> Scale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DDL configuration for change tables.</summary>
+    public class SqlServerDdlConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, Datastream will automatically create a new capture instance when DDL is detected
+        /// on a table.The customer will be responsible for deleting it so that the next set of DDLs can be handled. The
+        /// default is false and it means that DDL's will not be handled .
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCreateNewCaptureInstanceOnDdl")]
+        public virtual System.Nullable<bool> AutoCreateNewCaptureInstanceOnDdl { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, Datastream will automatically delete the old capture instance after creating a new
+        /// one to support a DDL change. The default is false and means that the customer has to delete the old capture
+        /// instance manually.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoDeleteOldCaptureInstance")]
+        public virtual System.Nullable<bool> AutoDeleteOldCaptureInstance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
