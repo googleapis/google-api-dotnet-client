@@ -4411,11 +4411,7 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("helpCenterUrl")]
         public virtual string HelpCenterUrl { get; set; }
 
-        /// <summary>
-        /// Whether or not the policy topic is missing a certificate. Some policy topics require a certificate to
-        /// unblock serving in some regions. For more information about creative certification, refer to:
-        /// https://support.google.com/authorizedbuyers/answer/7450776
-        /// </summary>
+        /// <summary>Whether or not the policy topic is missing a certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missingCertificate")]
         public virtual System.Nullable<bool> MissingCertificate { get; set; }
 
