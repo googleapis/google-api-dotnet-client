@@ -2878,6 +2878,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oneTimeRecurrenceDetails")]
         public virtual SubscriptionLineItemOneTimeRecurrenceDetails OneTimeRecurrenceDetails { get; set; }
 
+        /// <summary>Optional. Output only. The plan type of the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planType")]
+        public virtual string PlanType { get; set; }
+
         /// <summary>
         /// Required. Product resource name that identifies the product associated with this line item. The format is
         /// 'partners/{partner_id}/products/{product_id}'.
