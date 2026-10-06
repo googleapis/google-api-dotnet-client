@@ -122,6 +122,9 @@ namespace Google.Apis.Calendar.v3
             /// <summary>See and download any calendar you can access using your Google Calendar</summary>
             public static string CalendarReadonly = "https://www.googleapis.com/auth/calendar.readonly";
 
+            /// <summary>View and edit your Calendar settings</summary>
+            public static string CalendarSettings = "https://www.googleapis.com/auth/calendar.settings";
+
             /// <summary>View your Calendar settings</summary>
             public static string CalendarSettingsReadonly = "https://www.googleapis.com/auth/calendar.settings.readonly";
         }
@@ -183,6 +186,9 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>See and download any calendar you can access using your Google Calendar</summary>
             public const string CalendarReadonly = "https://www.googleapis.com/auth/calendar.readonly";
+
+            /// <summary>View and edit your Calendar settings</summary>
+            public const string CalendarSettings = "https://www.googleapis.com/auth/calendar.settings";
 
             /// <summary>View your Calendar settings</summary>
             public const string CalendarSettingsReadonly = "https://www.googleapis.com/auth/calendar.settings.readonly";
