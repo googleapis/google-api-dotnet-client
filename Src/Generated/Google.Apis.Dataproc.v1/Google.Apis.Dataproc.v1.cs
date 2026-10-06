@@ -12678,6 +12678,10 @@ namespace Google.Apis.Dataproc.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. The event log path for the application attempt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventLogPath")]
+        public virtual string EventLogPath { get; set; }
+
         private string _lastUpdatedRaw;
 
         private object _lastUpdated;
@@ -14820,6 +14824,13 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Optional. Controls how instances within this Cluster are allowed to exist in multiple Zones within the
+        /// Region. Only one of zone_uri or multi_zone_config must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiZoneConfig")]
+        public virtual MultiZoneConfig MultiZoneConfig { get; set; }
+
+        /// <summary>
         /// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with
         /// subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project
         /// is used, if it exists. Cannot be a Custom Subnet Network (see Using Subnetworks
@@ -16811,6 +16822,19 @@ namespace Google.Apis.Dataproc.v1.Data
     }
 
     /// <summary>
+    /// Configuration for multi-zonal clusters that can create instances across multiple Zones within the Region.
+    /// </summary>
+    public class MultiZoneConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The distribution shape of the nodes in the multi-zonal cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetShape")]
+        public virtual string TargetShape { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE
     /// cluster.
     /// </summary>
@@ -18554,11 +18578,9 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual RuntimeInfo RuntimeInfo { get; set; }
 
         /// <summary>
-        /// Optional. The session template used by the session.Only resource names, including project ID and location,
-        /// are valid.Example: *
-        /// https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]
-        /// * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in
-        /// the same project and Dataproc region as the session.
+        /// Optional. The session template used by the session.Resource names and short template IDs are valid.
+        /// Examples: * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] *
+        /// [template_id]The template must be in the same project and Dataproc region as the session.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionTemplate")]
         public virtual string SessionTemplate { get; set; }
@@ -21520,6 +21542,111 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stagingBucket")]
         public virtual string StagingBucket { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata describing the VirtualCluster operation.</summary>
+    public class VirtualClusterOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Short description of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _doneTimeRaw;
+
+        private object _doneTime;
+
+        /// <summary>Output only. The time when the operation finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doneTime")]
+        public virtual string DoneTimeRaw
+        {
+            get => _doneTimeRaw;
+            set
+            {
+                _doneTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _doneTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DoneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DoneTimeDateTimeOffset instead.")]
+        public virtual object DoneTime
+        {
+            get => _doneTime;
+            set
+            {
+                _doneTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _doneTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DoneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DoneTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DoneTimeRaw);
+            set => DoneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Labels associated with the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The operation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; }
+
+        /// <summary>Output only. Name of the virtual cluster for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualCluster")]
+        public virtual string VirtualCluster { get; set; }
+
+        /// <summary>Output only. VirtualCluster UUID for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualClusterUuid")]
+        public virtual string VirtualClusterUuid { get; set; }
+
+        /// <summary>Output only. Warnings encountered during operation execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
