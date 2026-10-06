@@ -7559,7 +7559,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneEndpointsConfig")]
         public virtual ControlPlaneEndpointsConfig ControlPlaneEndpointsConfig { get; set; }
 
-        /// <summary>Configuration for the fine-grained cost management feature.</summary>
+        /// <summary>Configuration for the fine-grained cost allocation feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costManagementConfig")]
         public virtual CostManagementConfig CostManagementConfig { get; set; }
 
@@ -8156,7 +8156,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredControlPlaneEndpointsConfig")]
         public virtual ControlPlaneEndpointsConfig DesiredControlPlaneEndpointsConfig { get; set; }
 
-        /// <summary>The desired configuration for the fine-grained cost management feature.</summary>
+        /// <summary>The desired configuration for the fine-grained cost allocation feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredCostManagementConfig")]
         public virtual CostManagementConfig DesiredCostManagementConfig { get; set; }
 
@@ -8744,7 +8744,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for fine-grained cost management feature.</summary>
+    /// <summary>Configuration for fine-grained cost allocation feature.</summary>
     public class CostManagementConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the feature is enabled or not.</summary>
