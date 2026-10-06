@@ -18,6 +18,16 @@
     "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC",
     "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL"
   ],
+  "Google.Apis.Assuredworkloads.v1beta1.OrganizationsResource+LocationsResource+WorkloadsResource+ViolationsResource+GetRequest.ViewEnum": [
+    "VIOLATION_VIEW_UNSPECIFIED",
+    "VIOLATION_VIEW_ASSURED_WORKLOADS",
+    "VIOLATION_VIEW_DATA_BOUNDARY"
+  ],
+  "Google.Apis.Assuredworkloads.v1beta1.OrganizationsResource+LocationsResource+WorkloadsResource+ViolationsResource+ListRequest.ViewEnum": [
+    "VIOLATION_VIEW_UNSPECIFIED",
+    "VIOLATION_VIEW_ASSURED_WORKLOADS",
+    "VIOLATION_VIEW_DATA_BOUNDARY"
+  ],
   "Google.Apis.Assuredworkloads.v1beta1.ProjectsResource+LocationsResource+DbFrameworkComplianceSummariesResource+ListRequest.ViewEnum": [
     "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_UNSPECIFIED",
     "FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC",

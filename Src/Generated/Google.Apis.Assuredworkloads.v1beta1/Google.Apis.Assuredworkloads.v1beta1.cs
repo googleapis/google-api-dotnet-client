@@ -2156,6 +2156,34 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`) for fetching
+                        /// violations.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`) for fetching
+                        /// violations.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Defaults to the ASSURED_WORKLOADS view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("VIOLATION_VIEW_UNSPECIFIED")]
+                            VIOLATIONVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Includes the basic metadata about the violation.</summary>
+                            [Google.Apis.Util.StringValueAttribute("VIOLATION_VIEW_ASSURED_WORKLOADS")]
+                            VIOLATIONVIEWASSUREDWORKLOADS = 1,
+
+                            /// <summary>
+                            /// Includes all information about the violation, including details about the data boundary.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("VIOLATION_VIEW_DATA_BOUNDARY")]
+                            VIOLATIONVIEWDATABOUNDARY = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -2176,6 +2204,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+/violations/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -2299,6 +2335,34 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// Optional. Specifies the violation view(AssuredWorkloads or DataBoundary) for fetching
+                        /// violations.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. Specifies the violation view(AssuredWorkloads or DataBoundary) for fetching
+                        /// violations.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Defaults to the ASSURED_WORKLOADS view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("VIOLATION_VIEW_UNSPECIFIED")]
+                            VIOLATIONVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Includes the basic metadata about the violation.</summary>
+                            [Google.Apis.Util.StringValueAttribute("VIOLATION_VIEW_ASSURED_WORKLOADS")]
+                            VIOLATIONVIEWASSUREDWORKLOADS = 1,
+
+                            /// <summary>
+                            /// Includes all information about the violation, including details about the data boundary.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("VIOLATION_VIEW_DATA_BOUNDARY")]
+                            VIOLATIONVIEWDATABOUNDARY = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -2363,6 +2427,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3746,6 +3818,12 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
         public virtual string NonCompliantOrgPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`) for acknowledging violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("view")]
+        public virtual string View { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5179,6 +5257,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         }
 
         /// <summary>
+        /// Output only. List of compliance frameworks that are affected by this violation. This field is only populated
+        /// when using `VIOLATION_VIEW_DATA_BOUNDARY`. e.g. "FedRAMP High", "NIST 800-53".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedFrameworks")]
+        public virtual System.Collections.Generic.IList<string> AffectedFrameworks { get; set; }
+
+        /// <summary>
         /// Optional. Output only. Violation Id of the org-policy violation due to which the resource violation is
         /// caused. Empty for org-policy violations.
         /// </summary>
@@ -5237,6 +5322,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string Category { get; set; }
 
         /// <summary>
+        /// Optional. Output only. The number of resource violations for particular org policy violation. This will be 0
+        /// in case of resource violation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childResourceViolationCount")]
+        public virtual System.Nullable<int> ChildResourceViolationCount { get; set; }
+
+        /// <summary>
         /// Output only. Description for the Violation. e.g. OrgPolicy gcp.resourceLocations has non compliant value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -5285,6 +5377,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>Output only. Compliance violation remediation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ViolationRemediation Remediation { get; set; }
+
+        /// <summary>Output only. Contains the remediation instructions for the violation in markdown format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediationMarkdown")]
+        public virtual string RemediationMarkdown { get; set; }
 
         private string _resolveTimeRaw;
 
