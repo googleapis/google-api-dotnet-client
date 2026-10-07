@@ -1679,6 +1679,21 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Auth type for the Looker instance.</summary>
+    public class AuthType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether google auth is enabled on the Looker instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAuthEnabled")]
+        public virtual System.Nullable<bool> GoogleAuthEnabled { get; set; }
+
+        /// <summary>Optional. Whether Workforce auth is enabled on the Looker instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforceAuthEnabled")]
+        public virtual System.Nullable<bool> WorkforceAuthEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2076,6 +2091,10 @@ namespace Google.Apis.Looker.v1.Data
         /// <summary>Looker Instance Admin settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminSettings")]
         public virtual AdminSettings AdminSettings { get; set; }
+
+        /// <summary>Optional. Auth type for the Looker instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authType")]
+        public virtual AuthType AuthType { get; set; }
 
         /// <summary>Optional. Indicates whether catalog integration is disabled for the Looker instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catalogIntegrationOptOut")]
