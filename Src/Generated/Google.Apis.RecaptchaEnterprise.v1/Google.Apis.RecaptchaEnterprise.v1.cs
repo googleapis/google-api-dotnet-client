@@ -2261,11 +2261,11 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// Optional. Enumerated string value that indicates the identity of the bot, formatted in kebab-case. Current
         /// example values include the following: * google-agent - AI_AGENT * browser-base - AI_AGENT * chat-gpt -
         /// AI_AGENT * aws-bedrock - AI_AGENT * cybaa-bot - AI_AGENT * cloudflare - AI_AGENT * payhawk - AI_AGENT *
-        /// duck-duck-go - SEARCH_INDEXER * mediaboard - CONTENT_SCRAPER * marker-io - AI_AGENT * broadcom - AI_AGENT *
-        /// anchor-browser - AI_AGENT * shopify - AI_AGENT * stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-sh
-        /// - AI_AGENT * zvelo - SEARCH_INDEXER Ensure that your applications can handle identifier values not
-        /// explicitly listed here. Deprecated values might take some time to stop showing up in responses. New values
-        /// can be pushed so this list should be taken as non exhaustive.
+        /// duck-duck-go - SEARCH_INDEXER * mediaboard - CONTENT_SCRAPER * marker-io - AI_AGENT * anchor-browser -
+        /// AI_AGENT * shopify - AI_AGENT * stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-sh - AI_AGENT *
+        /// zvelo - SEARCH_INDEXER Ensure that your applications can handle identifier values not explicitly listed
+        /// here. Deprecated values might take some time to stop showing up in responses. New values can be pushed so
+        /// this list should be taken as non exhaustive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3674,8 +3674,15 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string AndroidPackageName { get; set; }
 
         /// <summary>
+        /// Output only. Information collected by the reCAPTCHA Enterprise client-side integration when the token is
+        /// generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientProperties")]
+        public virtual GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties ClientProperties { get; set; }
+
+        /// <summary>
         /// Output only. Indicates a failure collecting reCAPTCHA signals at token generation. This might be a transient
-        /// condition, or persistent for a user’s environment.
+        /// condition, or persistent for a user's environment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientSignalsFailed")]
         public virtual System.Nullable<bool> ClientSignalsFailed { get; set; }
@@ -3735,6 +3742,30 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valid")]
         public virtual System.Nullable<bool> Valid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information collected by the reCAPTCHA Enterprise client-side integration when the token is generated.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1TokenPropertiesClientProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The `User-Agent` header string observed by reCAPTCHA during token generation. This string is
+        /// truncated to a maximum length of 1000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; }
+
+        /// <summary>
+        /// Output only. The user's IP address at token generation. This can be either an IPv4 address (e.g.,
+        /// `192.0.2.1`) or an IPv6 address in canonical format per RFC 5952 section 4 (e.g., `2001:db8::1`).
+        /// IPv4-mapped IPv6 addresses are canonicalized to standard IPv4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIpAddress")]
+        public virtual string UserIpAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
