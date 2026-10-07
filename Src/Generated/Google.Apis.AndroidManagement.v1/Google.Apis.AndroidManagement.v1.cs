@@ -7572,7 +7572,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("microphoneAccess")]
         public virtual string MicrophoneAccess { get; set; }
 
-        /// <summary>The minimum allowed Android API level.</summary>
+        /// <summary>
+        /// The minimum allowed Android API level. A NonComplianceDetail with OS_NOT_PERMITTED is reported if the
+        /// Android API level of the device is lower than this value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumApiLevel")]
         public virtual System.Nullable<int> MinimumApiLevel { get; set; }
 
