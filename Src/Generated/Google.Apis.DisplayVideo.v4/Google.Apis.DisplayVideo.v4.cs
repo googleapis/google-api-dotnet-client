@@ -26180,7 +26180,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
-        /// <summary>Required. The YouTube video of the ad.</summary>
+        /// <summary>Required. Immutable. The YouTube video of the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("video")]
         public virtual YoutubeVideoDetails Video { get; set; }
 
@@ -27993,9 +27993,8 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class DigitalContentLabelAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The display name of the digital content label rating tier to be EXCLUDED. **Starting on *October
-        /// 1, 2026*, this field will only accept the value `CONTENT_RATING_TIER_UNRATED`. All other values will be
-        /// deprecated and no longer be accepted.**
+        /// Required. The display name of the digital content label rating tier to be EXCLUDED. This field only accepts
+        /// the value `CONTENT_RATING_TIER_UNRATED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedContentRatingTier")]
         public virtual string ExcludedContentRatingTier { get; set; }
@@ -30323,7 +30322,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warningMessages")]
         public virtual System.Collections.Generic.IList<string> WarningMessages { get; set; }
 
-        /// <summary>Output only. Settings specific to YouTube and Partners line items.</summary>
+        /// <summary>Optional. Settings specific to YouTube and Partners line items.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeAndPartnersSettings")]
         public virtual YoutubeAndPartnersSettings YoutubeAndPartnersSettings { get; set; }
 
@@ -32888,9 +32887,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
     public class SensitiveCategoryAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. An enum for the DV360 Sensitive category content classified to be EXCLUDED. **Starting on *October
-        /// 1, 2026*, this field will only accept `SENSITIVE_CATEGORY_EMBEDDED_VIDEO` or
-        /// `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`. All other values will be deprecated and no longer be accepted.**
+        /// Required. An enum for the Display &amp;amp; Video 360 Sensitive category content classified to be EXCLUDED.
+        /// This field only accepts the following values: * `SENSITIVE_CATEGORY_EMBEDDED_VIDEO` *
+        /// `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedSensitiveCategory")]
         public virtual string ExcludedSensitiveCategory { get; set; }
@@ -32905,7 +32904,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// </summary>
     public class SensitiveCategoryTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. An enum for the DV360 Sensitive category content classifier.</summary>
+        /// <summary>
+        /// Output only. An enum for the Display &amp;amp; Video 360 Sensitive category content classifier.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategory")]
         public virtual string SensitiveCategory { get; set; }
 
@@ -33059,14 +33060,14 @@ namespace Google.Apis.DisplayVideo.v4.Data
 
         /// <summary>
         /// The unit of time in which the target frequency will be applied. The following time unit is applicable: *
-        /// `TIME_UNIT_WEEKS`
+        /// `TIME_UNIT_WEEKS` * `TIME_UNIT_MONTHS`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
         public virtual string TimeUnit { get; set; }
 
         /// <summary>
         /// The number of time_unit the target frequency will last. The following restrictions apply based on the value
-        /// of time_unit: * `TIME_UNIT_WEEKS` - must be 1
+        /// of time_unit: * `TIME_UNIT_WEEKS` - must be 1 * `TIME_UNIT_MONTHS` - must be 1
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnitCount")]
         public virtual System.Nullable<int> TimeUnitCount { get; set; }
