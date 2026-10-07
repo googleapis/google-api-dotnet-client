@@ -3716,6 +3716,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationInterval")]
         public virtual string AggregationInterval { get; set; }
 
+        /// <summary>Optional. Configures whether connection logging is enabled for VPC Flow Logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionLogging")]
+        public virtual string ConnectionLogging { get; set; }
+
         /// <summary>
         /// Determines whether to include cross project annotations in the logs. This field is available only for
         /// organization configurations. If not specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED.
@@ -6025,6 +6029,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Optional. The aggregation interval for the logs. Default value is INTERVAL_5_SEC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationInterval")]
         public virtual string AggregationInterval { get; set; }
+
+        /// <summary>Optional. Configures whether connection logging is enabled for VPC Flow Logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionLogging")]
+        public virtual string ConnectionLogging { get; set; }
 
         private string _createTimeRaw;
 
