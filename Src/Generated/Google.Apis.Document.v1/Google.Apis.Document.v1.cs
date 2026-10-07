@@ -4150,6 +4150,17 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for grounding extractions.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3GroundingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of grounding to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingType")]
+        public virtual string GroundingType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for human review labeling config.</summary>
     public class GoogleCloudDocumentaiUiv1beta3HumanReviewLabelingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4441,6 +4452,13 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Output only. Denotes that this `ProcessorVersion` is managed by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
         public virtual System.Nullable<bool> GoogleManaged { get; set; }
+
+        /// <summary>
+        /// Output only. The grounding settings of the processor version. This can only be set using
+        /// TrainProcessorVersionRequest to override the default grounding settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSettings")]
+        public virtual GoogleCloudDocumentaiUiv1beta3GroundingSettings GroundingSettings { get; set; }
 
         /// <summary>Output only. The KMS key name used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
@@ -9754,6 +9772,17 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for grounding extractions.</summary>
+    public class GoogleCloudDocumentaiV1beta3GroundingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of grounding to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingType")]
+        public virtual string GroundingType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The status of human review on a processed document.</summary>
     public class GoogleCloudDocumentaiV1beta3HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10032,6 +10061,13 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Output only. Denotes that this `ProcessorVersion` is managed by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
         public virtual System.Nullable<bool> GoogleManaged { get; set; }
+
+        /// <summary>
+        /// Output only. The grounding settings of the processor version. This can only be set using
+        /// TrainProcessorVersionRequest to override the default grounding settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSettings")]
+        public virtual GoogleCloudDocumentaiV1beta3GroundingSettings GroundingSettings { get; set; }
 
         /// <summary>Output only. The KMS key name used for encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
