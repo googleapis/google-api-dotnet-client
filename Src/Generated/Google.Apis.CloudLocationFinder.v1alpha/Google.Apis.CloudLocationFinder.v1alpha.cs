@@ -396,7 +396,8 @@ namespace Google.Apis.CloudLocationFinder.v1alpha
 
                     /// <summary>
                     /// Optional. The maximum number of cloud locations to return per page. The service might return
-                    /// fewer cloud locations than this value. If unspecified, server will pick an appropriate default.
+                    /// fewer cloud locations than this value. If unspecified, at most 500 cloud locations will be
+                    /// returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -487,7 +488,8 @@ namespace Google.Apis.CloudLocationFinder.v1alpha
 
                     /// <summary>
                     /// Optional. The maximum number of cloud locations to return. The service might return fewer cloud
-                    /// locations than this value. If unspecified, server will pick an appropriate default.
+                    /// locations than this value. If unspecified, at most 500 cloud locations will be returned. The
+                    /// maximum value is 1000; values above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
