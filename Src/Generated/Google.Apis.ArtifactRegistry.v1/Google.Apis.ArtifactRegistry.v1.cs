@@ -7549,7 +7549,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+        /// An https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -7579,7 +7579,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+        /// An https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -7592,7 +7592,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+        /// An https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -7605,7 +7605,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+        /// An https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -7618,7 +7618,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+        /// An https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -7631,7 +7631,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+        /// An https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
