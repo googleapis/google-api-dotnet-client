@@ -565,6 +565,501 @@ namespace Google.Apis.AgentRegistry.v1
                 public AiApplicationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Agents = new AgentsResource(service);
+                    Endpoints = new EndpointsResource(service);
+                    McpServers = new McpServersResource(service);
+                }
+
+                /// <summary>Gets the Agents resource.</summary>
+                public virtual AgentsResource Agents { get; }
+
+                /// <summary>The "agents" collection of methods.</summary>
+                public class AgentsResource
+                {
+                    private const string Resource = "agents";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AgentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets details of a single Agent under an AI Application.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the resource. Format:
+                    /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/agents/{agent}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single Agent under an AI Application.</summary>
+                    public class GetRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.Agent>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the resource. Format:
+                        /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/agents/{agent}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/aiApplications/[^/]+/agents/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Agents under an AI Application.</summary>
+                    /// <param name="parent">
+                    /// Required. Parent value (AI Application) for ListAiApplicationAgentsRequest. Format:
+                    /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists Agents under an AI Application.</summary>
+                    public class ListRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.ListAiApplicationAgentsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value (AI Application) for ListAiApplicationAgentsRequest. Format:
+                        /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/agents";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/aiApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Endpoints resource.</summary>
+                public virtual EndpointsResource Endpoints { get; }
+
+                /// <summary>The "endpoints" collection of methods.</summary>
+                public class EndpointsResource
+                {
+                    private const string Resource = "endpoints";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public EndpointsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets details of a single Endpoint under an AI Application.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the resource. Format:
+                    /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/endpoints/{endpoint}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single Endpoint under an AI Application.</summary>
+                    public class GetRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.Endpoint>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the resource. Format:
+                        /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/endpoints/{endpoint}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/aiApplications/[^/]+/endpoints/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Endpoints under an AI Application.</summary>
+                    /// <param name="parent">
+                    /// Required. Parent value (AI Application) for ListAiApplicationEndpointsRequest. Format:
+                    /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists Endpoints under an AI Application.</summary>
+                    public class ListRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.ListAiApplicationEndpointsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value (AI Application) for ListAiApplicationEndpointsRequest. Format:
+                        /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/endpoints";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/aiApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the McpServers resource.</summary>
+                public virtual McpServersResource McpServers { get; }
+
+                /// <summary>The "mcpServers" collection of methods.</summary>
+                public class McpServersResource
+                {
+                    private const string Resource = "mcpServers";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public McpServersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets details of a single McpServer under an AI Application.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the resource. Format:
+                    /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/mcpServers/{mcp_server}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single McpServer under an AI Application.</summary>
+                    public class GetRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.McpServer>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the resource. Format:
+                        /// `projects/{project}/locations/{location}/aiApplications/{ai_application}/mcpServers/{mcp_server}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/aiApplications/[^/]+/mcpServers/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists McpServers under an AI Application.</summary>
+                    /// <param name="parent">
+                    /// Required. Parent value (AI Application) for ListAiApplicationMcpServersRequest. Format:
+                    /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists McpServers under an AI Application.</summary>
+                    public class ListRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.ListAiApplicationMcpServersResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Parent value (AI Application) for ListAiApplicationMcpServersRequest. Format:
+                        /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/mcpServers";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/aiApplications/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets details of a single AI Application.</summary>
+                /// <param name="name">
+                /// Required. Target AI Application resource name. Format:
+                /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single AI Application.</summary>
+                public class GetRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.AiApplication>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Target AI Application resource name. Format:
+                    /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/aiApplications/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>
@@ -639,6 +1134,107 @@ namespace Google.Apis.AgentRegistry.v1
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists AI Applications in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent project and location to query. Format: `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists AI Applications in a given project and location.</summary>
+                public class ListRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1.Data.ListAiApplicationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent project and location to query. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/aiApplications";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2793,9 +3389,123 @@ namespace Google.Apis.AgentRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IDictionary<string, object> Content { get; set; }
 
-        /// <summary>Required. The type of the agent spec content.</summary>
+        /// <summary>Required. Immutable. The type of the agent spec content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an AI Application.</summary>
+    public class AiApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Properties of an underlying cloud resource that can comprise an AI Application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationProperties")]
+        public virtual ApplicationProperties ApplicationProperties { get; set; }
+
+        /// <summary>Optional. Consumer provided attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual Attributes Attributes { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. User-defined description of the AI Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. User-defined name for the AI Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the AI Application. Format:
+        /// `projects/{project}/locations/{location}/aiApplications/{ai_application}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current state of the AI Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Universally unique identifier (UUID4) for the AI Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2834,6 +3544,48 @@ namespace Google.Apis.AgentRegistry.v1.Data
         /// <summary>Output only. A human-readable title for the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional system properties of an Application.</summary>
+    public class ApplicationProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Additional metadata specific to the App Hub application. The key is a string that identifies
+        /// the type of metadata and the value is the metadata contents specific to that type. Key format:
+        /// `apphub.googleapis.com/{metadataType}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, ExtendedMetadata> ExtendedMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Consumer provided attributes.</summary>
+    public class Attributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Business team that ensures user needs are met and value is delivered</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessOwners")]
+        public virtual System.Collections.Generic.IList<ContactInfo> BusinessOwners { get; set; }
+
+        /// <summary>Optional. User-defined criticality information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criticality")]
+        public virtual Criticality Criticality { get; set; }
+
+        /// <summary>Optional. Developer team that owns development and coding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerOwners")]
+        public virtual System.Collections.Generic.IList<ContactInfo> DeveloperOwners { get; set; }
+
+        /// <summary>Optional. User-defined environment information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual Environment Environment { get; set; }
+
+        /// <summary>Optional. Operator team that ensures runtime and operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorOwners")]
+        public virtual System.Collections.Generic.IList<ContactInfo> OperatorOwners { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2927,7 +3679,7 @@ namespace Google.Apis.AgentRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The target Agent of the Binding.</summary>
+        /// <summary>Optional. The source Agent of the Binding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
 
@@ -2991,6 +3743,32 @@ namespace Google.Apis.AgentRegistry.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, object> Content { get; set; }
 
         /// <summary>Output only. The type of agent card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contact information of stakeholders.</summary>
+    public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Contact's name. Can have a maximum length of 63 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. Email address of the contacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Criticality of the Application, Service, or Workload</summary>
+    public class Criticality : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Criticality Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3128,7 +3906,18 @@ namespace Google.Apis.AgentRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IDictionary<string, object> Content { get; set; }
 
-        /// <summary>Required. The type of the endpoint spec content.</summary>
+        /// <summary>Required. Immutable. The type of the endpoint spec content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Environment of the Application, Service, or Workload</summary>
+    public class Environment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Environment Type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3175,6 +3964,17 @@ namespace Google.Apis.AgentRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional metadata for a Service or Workload.</summary>
+    public class ExtendedMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The metadata contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataStruct")]
+        public virtual System.Collections.Generic.IDictionary<string, object> MetadataStruct { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3475,6 +4275,70 @@ namespace Google.Apis.AgentRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to listing Agents under an AI Application.</summary>
+    public class ListAiApplicationAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agents")]
+        public virtual System.Collections.Generic.IList<Agent> Agents { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing Endpoints under an AI Application.</summary>
+    public class ListAiApplicationEndpointsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing McpServers under an AI Application.</summary>
+    public class ListAiApplicationMcpServersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of McpServers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcpServers")]
+        public virtual System.Collections.Generic.IList<McpServer> McpServers { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing AiApplications.</summary>
+    public class ListAiApplicationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of AiApplications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiApplications")]
+        public virtual System.Collections.Generic.IList<AiApplication> AiApplications { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for response to listing Bindings</summary>
     public class ListBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3741,7 +4605,7 @@ namespace Google.Apis.AgentRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IDictionary<string, object> Content { get; set; }
 
-        /// <summary>Required. The type of the MCP Server spec content.</summary>
+        /// <summary>Required. Immutable. The type of the MCP Server spec content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3946,11 +4810,11 @@ namespace Google.Apis.AgentRegistry.v1.Data
         /// No | Yes | No | Included | | skills | No | Yes | No | Included | | skills.id | No | Yes | No | Included | |
         /// skills.name | No | Yes | No | Included | | skills.description | No | Yes | No | Included | | skills.tags |
         /// No | Yes | No | Included | | skills.examples | No | Yes | No | Included | Examples: *
-        /// `agentId="urn:agent:projects-123:projects:123:locations:us-central1:reasoningEngines:1234"` to find the
-        /// agent with the specified agent ID. * `name:important` to find agents whose name contains `important` as a
-        /// word. * `displayName:works*` to find agents whose display name contains words that start with `works`. *
-        /// `skills.tags:test` to find agents whose skills tags contain `test`. * `planner OR booking` to find agents
-        /// whose metadata contains the words `planner` or `booking`.
+        /// `agentId="urn:agent:projects-123:projects:123:locations:us-central1:aiplatform:reasoningEngines:1234"` to
+        /// find the agent with the specified agent ID. * `name:important` to find agents whose name contains
+        /// `important` as a word. * `displayName:works*` to find agents whose display name contains words that start
+        /// with `works`. * `skills.tags:test` to find agents whose skills tags contain `test`. * `planner OR booking`
+        /// to find agents whose metadata contains the words `planner` or `booking`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchString")]
         public virtual string SearchString { get; set; }
