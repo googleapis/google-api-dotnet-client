@@ -3227,10 +3227,6 @@ namespace Google.Apis.DisplayVideo.v2
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY = 30,
 
-                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE = 31,
-
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                             TARGETINGTYPELANGUAGE = 32,
@@ -3648,10 +3644,6 @@ namespace Google.Apis.DisplayVideo.v2
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY = 30,
-
-                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -4075,10 +4067,6 @@ namespace Google.Apis.DisplayVideo.v2
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY = 30,
 
-                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE = 31,
-
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                             TARGETINGTYPELANGUAGE = 32,
@@ -4498,10 +4486,6 @@ namespace Google.Apis.DisplayVideo.v2
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY = 30,
-
-                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -7791,10 +7775,6 @@ namespace Google.Apis.DisplayVideo.v2
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY = 30,
 
-                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE = 31,
-
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                         TARGETINGTYPELANGUAGE = 32,
@@ -8121,10 +8101,6 @@ namespace Google.Apis.DisplayVideo.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY = 30,
-
-                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -8466,10 +8442,6 @@ namespace Google.Apis.DisplayVideo.v2
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY = 30,
 
-                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE = 31,
-
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                         TARGETINGTYPELANGUAGE = 32,
@@ -8807,10 +8779,6 @@ namespace Google.Apis.DisplayVideo.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY = 30,
-
-                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -9477,10 +9445,6 @@ namespace Google.Apis.DisplayVideo.v2
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY = 30,
 
-                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE = 31,
-
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                             TARGETINGTYPELANGUAGE = 32,
@@ -9848,10 +9812,6 @@ namespace Google.Apis.DisplayVideo.v2
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                             TARGETINGTYPECATEGORY = 30,
-
-                            /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -15401,10 +15361,6 @@ namespace Google.Apis.DisplayVideo.v2
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY = 30,
 
-                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE = 31,
-
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                         TARGETINGTYPELANGUAGE = 32,
@@ -15728,10 +15684,6 @@ namespace Google.Apis.DisplayVideo.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY = 30,
-
-                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -16064,10 +16016,6 @@ namespace Google.Apis.DisplayVideo.v2
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY = 30,
 
-                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE = 31,
-
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                         TARGETINGTYPELANGUAGE = 32,
@@ -16396,10 +16344,6 @@ namespace Google.Apis.DisplayVideo.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                         TARGETINGTYPECATEGORY = 30,
-
-                        /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -17182,10 +17126,6 @@ namespace Google.Apis.DisplayVideo.v2
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                     TARGETINGTYPECATEGORY = 30,
 
-                    /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                    TARGETINGTYPEINVENTORYSOURCE = 31,
-
                     /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
                     TARGETINGTYPELANGUAGE = 32,
@@ -17529,10 +17469,6 @@ namespace Google.Apis.DisplayVideo.v2
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                     TARGETINGTYPECATEGORY = 30,
-
-                    /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                    TARGETINGTYPEINVENTORYSOURCE = 31,
 
                     /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -17909,10 +17845,6 @@ namespace Google.Apis.DisplayVideo.v2
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
                     TARGETINGTYPECATEGORY = 30,
-
-                    /// <summary>Purchase impressions from specific deals and auction packages.</summary>
-                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                    TARGETINGTYPEINVENTORYSOURCE = 31,
 
                     /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
@@ -19215,7 +19147,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
         /// <summary>
         /// Inventory source details. This field will be populated when the targeting_type is
-        /// `TARGETING_TYPE_INVENTORY_SOURCE`.
+        /// `TARGETING_TYPE_INVENTORY_SOURCE` or `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceDetails")]
         public virtual InventorySourceAssignedTargetingOptionDetails InventorySourceDetails { get; set; }
@@ -23272,7 +23204,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
 
     /// <summary>
     /// Targeting details for inventory source. This will be populated in the details field of an
-    /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE`.
+    /// AssignedTargetingOption when targeting_type is one of `TARGETING_TYPE_INVENTORY_SOURCE` or
+    /// `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`.
     /// </summary>
     public class InventorySourceAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
