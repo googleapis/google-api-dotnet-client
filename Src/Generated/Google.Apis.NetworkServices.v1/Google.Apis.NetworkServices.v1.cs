@@ -10822,9 +10822,9 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. A list of match conditions to match against the incoming request. The extension will be invoked if
-        /// at least one condition matches the request, or if no match conditions are specified. Limited to 5
-        /// conditions.
+        /// Optional. A list of match conditions to evaluate against the incoming request. The extension is invoked if
+        /// the request matches at least one condition, or if no match conditions are specified. A request matches a
+        /// condition only if it matches every field that is set in that condition. Limited to 5 conditions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchConditions")]
         public virtual System.Collections.Generic.IList<ExtensionBindingMatchCondition> MatchConditions { get; set; }
@@ -10837,30 +10837,30 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. Priority of the extension binding. Lower numbers indicate higher priority. Priority of extension
-        /// bindings are used to determine the order in which extension bindings are applied to a request.
+        /// Optional. Priority of the extension binding. Lower numbers indicate higher priority. The priority determines
+        /// the order in which extension bindings are applied to a request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>
         /// Required. The name of the extension that this binding should attach to target resources. Format: For
-        /// Google-provided extensions, specify the service endpoint (see [Model Armor
-        /// integration](https://docs.cloud.google.com/model-armor/integrations))
+        /// Google-provided extensions, specify the service endpoint, for example
+        /// `modelarmor.us-central1.rep.googleapis.com`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerExtension")]
         public virtual string ProducerExtension { get; set; }
 
         /// <summary>
-        /// Optional. Additional metadata that should be passed to the attached extension with each request.
+        /// Optional. Additional metadata that should be passed to the attached extension with each request. This field
+        /// is subject to the following limitations: * The total size of the metadata must be less than 1 KiB. * The
+        /// total number of keys must be less than 16. * The length of each key must be less than 64 characters. * The
+        /// length of each value must be less than 1024 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> ProducerMetadata { get; set; }
 
-        /// <summary>
-        /// Required. Specifies a target to which this `ExtensionBinding` should be attached. The target can be either a
-        /// single resource or a scope of resources.
-        /// </summary>
+        /// <summary>Required. Specifies a target to which this `ExtensionBinding` should be attached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual ExtensionBindingTarget Target { get; set; }
 
@@ -10935,36 +10935,36 @@ namespace Google.Apis.NetworkServices.v1.Data
     public class ExtensionBindingMatchConditionStringMatch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The input string must have the substring specified here. Note: empty contains match is not
-        /// allowed, please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def``
+        /// Optional. The input string must contain the substring specified here. An empty substring is not allowed.
+        /// Examples: * `abc` matches the value `xyz.abc.def`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contains")]
         public virtual string Contains { get; set; }
 
         /// <summary>
-        /// Optional. The input string must match exactly the string specified here. Examples: * ``abc`` only matches
-        /// the value ``abc``.
+        /// Optional. The input string must match exactly the string specified here. Examples: * `abc` only matches the
+        /// value `abc`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exact")]
         public virtual string Exact { get; set; }
 
         /// <summary>
-        /// Optional. If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For
-        /// example, the matcher ``data`` will match both input string ``Data`` and ``data`` if set to true.
+        /// Optional. If true, the `exact`, `prefix`, `suffix`, or `contains` match is case insensitive. For example,
+        /// the matcher `data` matches both `Data` and `data` when set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
         public virtual System.Nullable<bool> IgnoreCase { get; set; }
 
         /// <summary>
-        /// Optional. The input string must have the prefix specified here. Note: empty prefix is not allowed. Examples:
-        /// * ``abc`` matches the value ``abc.xyz``
+        /// Optional. The input string must have the prefix specified here. An empty prefix is not allowed. Examples: *
+        /// `abc` matches the value `abc.xyz`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
         public virtual string Prefix { get; set; }
 
         /// <summary>
-        /// Optional. The input string must have the suffix specified here. Note: empty prefix is not allowed, please
-        /// use regex instead. Examples: * ``abc`` matches the value ``xyz.abc``
+        /// Optional. The input string must have the suffix specified here. An empty suffix is not allowed. Examples: *
+        /// `abc` matches the value `xyz.abc`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
         public virtual string Suffix { get; set; }
@@ -10977,9 +10977,10 @@ namespace Google.Apis.NetworkServices.v1.Data
     public class ExtensionBindingMatchConditionTo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Describes properties of destination of a request. Within a destination, the match follows AND
-        /// semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY
-        /// header matches and ANY method matches. At least one of destination or not_destination must be specified.
+        /// Optional. Describes properties of the destination of a request. A request matches the destination only if it
+        /// matches every field that is set. Fields that are not set are always considered a match. For example, if only
+        /// `hosts` and `paths` are set, a request matches when any host matches and any path matches. At least one of
+        /// `destination` or `not_destination` must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual ExtensionBindingMatchConditionToDestination Destination { get; set; }
@@ -11037,8 +11038,9 @@ namespace Google.Apis.NetworkServices.v1.Data
     public class ExtensionBindingMatchConditionToDestinationHeaderSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A list of headers to match against in http header. If multiple header matches are provided, they
-        /// will be evaluated as an AND, i.e. all header matches must match for the request to match.
+        /// Required. A list of HTTP headers to match against. If multiple header matches are provided, they are
+        /// evaluated as an AND, meaning that all header matches must match for the request to match. Limited to 10
+        /// headers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<ExtensionBindingMatchConditionHeaderMatch> Headers { get; set; }
@@ -11051,8 +11053,9 @@ namespace Google.Apis.NetworkServices.v1.Data
     public class ExtensionBindingTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The reference to the target resource, to which this binding should attach. Exactly one of
-        /// `resources` or `scope` must be set.
+        /// Optional. The references to the target resources to which this binding should attach. Exactly one of
+        /// `resources` or `scope` must be set. For AI Application resources, specify the full resource name in the
+        /// format: `projects/{project}/locations/{location}/applications/{application}`. Limited to 1 resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
@@ -11071,12 +11074,17 @@ namespace Google.Apis.NetworkServices.v1.Data
     /// <summary>Specifies the scope of resources to which this binding should attach.</summary>
     public class ExtensionBindingTargetScope : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Parent resource name specification, in the format: `projects/{project_number}`.</summary>
+        /// <summary>
+        /// Required. The parent resource that defines the scope, in the format `projects/{project_number}`. When the
+        /// scope is a project, the binding applies to the resources that meet all of the following conditions: * The
+        /// resource belongs to the specified project. * The resource is in the same location as the `ExtensionBinding`.
+        /// * The resource type is listed in `resource_types`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// Required. Type of the resource to which the binding should attach. Limited to 1 resource type.
+        /// Required. The types of resources to which the binding should attach. Limited to 1 resource type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
