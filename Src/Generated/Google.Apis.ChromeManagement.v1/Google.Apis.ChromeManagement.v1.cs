@@ -328,7 +328,9 @@ namespace Google.Apis.ChromeManagement.v1
             this.service = service;
             Apps = new AppsResource(service);
             CertificateProvisioningProcesses = new CertificateProvisioningProcessesResource(service);
+            ChromeBrowsers = new ChromeBrowsersResource(service);
             ConnectorConfigs = new ConnectorConfigsResource(service);
+            EnrollmentTokens = new EnrollmentTokensResource(service);
             Enterprise = new EnterpriseResource(service);
             Profiles = new ProfilesResource(service);
             Reports = new ReportsResource(service);
@@ -1294,6 +1296,365 @@ namespace Google.Apis.ChromeManagement.v1
             }
         }
 
+        /// <summary>Gets the ChromeBrowsers resource.</summary>
+        public virtual ChromeBrowsersResource ChromeBrowsers { get; }
+
+        /// <summary>The "chromeBrowsers" collection of methods.</summary>
+        public class ChromeBrowsersResource
+        {
+            private const string Resource = "chromeBrowsers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ChromeBrowsersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Deletes the data collected from a Chrome browser profile.</summary>
+            /// <param name="name">
+            /// Required. Format: customers/{customer_id}/chromeBrowsers/{browser_permanent_id}
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes the data collected from a Chrome browser profile.</summary>
+            public class DeleteRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: customers/{customer_id}/chromeBrowsers/{browser_permanent_id}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/chromeBrowsers/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves a single Chrome Browser identified by its customer ID and resource ID.</summary>
+            /// <param name="name">
+            /// Required. Format: customers/{customer_id}/chromeBrowsers/{browser_permanent_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves a single Chrome Browser identified by its customer ID and resource ID.</summary>
+            public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowser>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: customers/{customer_id}/chromeBrowsers/{browser_permanent_id}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/chromeBrowsers/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves all Chrome Browsers of a customer (paginated).</summary>
+            /// <param name="parent">Required. Format: customers/{customer_id}</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Retrieves all Chrome Browsers of a customer (paginated).</summary>
+            public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ListChromeBrowsersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: customers/{customer_id}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The filter used to filter browsers. The following fields can be used in the filter: *
+                /// `browser_permanent_id` * `last_policy_fetch_time` * `os_platform` * `os_architecture` * `os_version`
+                /// * `machine_name` * `annotated_location` * `annotated_user` * `annotated_asset_id` * `annotated_note`
+                /// * `org_unit_path` * `org_unit_id` * `last_registration_time` * `os_platform_version` *
+                /// `browser_version` * `last_status_report_time` * `extension_count` * `policy_count` *
+                /// `last_device_user` * `last_activity_time` * `device_id_collision` The following functions can be
+                /// used in the filter: * `in_group(string)`: Filters browsers that belong to the specified Cloud
+                /// Identity group resource name (e.g. `in_group("groups/{group_id}")`). Any of the above fields or
+                /// functions can be used to specify a filter, and filtering by multiple fields or functions is
+                /// supported with AND operator. String type, Integer type fields and enum type fields support `=` and
+                /// `:` operators. The timestamp type fields support `=`, `&amp;lt;=` and `&amp;gt;=` operators.
+                /// Timestamps expect an RFC-3339 formatted string (e.g. 2012-04-21T11:30:00-04:00). Wildcard `*` is
+                /// only supported for `machine_name`, `annotated_asset_id`, and `browser_version`. In addition, global
+                /// string literal filtering without a field name is supported: a single term (e.g., `ABC`) matches if
+                /// any indexed string field contains `ABC`, and multiple terms joined by `AND` or whitespace (e.g.,
+                /// `machine AND 73` or `machine 73`) match browsers where every term appears in at least one indexed
+                /// string field (whereas a single quoted phrase like `"machine 73"` matches the contiguous phrase
+                /// within a single field).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. The fields used to specify the ordering of the results. The supported fields are: *
+                /// `browser_permanent_id` * `last_sync` * `annotated_user` * `annotated_location` *
+                /// `annotated_asset_id` * `annotated_notes` * `org_unit_path` * `os_version` * `enrollment_date` *
+                /// `extension_count` * `policy_count` * `last_signed_in_user` * `machine_name` *
+                /// `browser_version_channel` * `os_platform_version` * `last_activity_time` * `browser_version` By
+                /// default, sorting is in ascending order, to specify descending order for a field, a suffix ` desc`
+                /// should be added to the field name. The default ordering is the descending order of
+                /// `last_status_report_time`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Optional. Maximum number of results to return. Maximum and default are 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Token to specify next page in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/chromeBrowsers";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Moves managed Chrome Browsers to a new Organizational Unit (OU). If there is an error while moving any
+            /// of the browsers, none of the browsers will be moved.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Format: customers/{customer_id}</param>
+            public virtual MoveRequest Move(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest body, string parent)
+            {
+                return new MoveRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Moves managed Chrome Browsers to a new Organizational Unit (OU). If there is an error while moving any
+            /// of the browsers, none of the browsers will be moved.
+            /// </summary>
+            public class MoveRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse>
+            {
+                /// <summary>Constructs a new Move request.</summary>
+                public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: customers/{customer_id}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "move";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/chromeBrowsers:move";
+
+                /// <summary>Initializes Move parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Updates annotation information for a Chrome Browser.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. Format: customers/{customer_id}/chromeBrowsers/{browser_permanent_id}
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowser body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates annotation information for a Chrome Browser.</summary>
+            public class PatchRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowser>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowser body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Identifier. Format: customers/{customer_id}/chromeBrowsers/{browser_permanent_id}</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The update mask that can be used to specify which fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ChromeBrowser Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/chromeBrowsers/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the ConnectorConfigs resource.</summary>
         public virtual ConnectorConfigsResource ConnectorConfigs { get; }
 
@@ -1609,6 +1970,306 @@ namespace Google.Apis.ChromeManagement.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the EnrollmentTokens resource.</summary>
+        public virtual EnrollmentTokensResource EnrollmentTokens { get; }
+
+        /// <summary>The "enrollmentTokens" collection of methods.</summary>
+        public class EnrollmentTokensResource
+        {
+            private const string Resource = "enrollmentTokens";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public EnrollmentTokensResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a new enrollment token for a browser device. Creation fails if there is already an active token
+            /// for this customer under the same org unit.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource where this enrollment token will be created. Format: customers/{customer}
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnrollmentToken body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a new enrollment token for a browser device. Creation fails if there is already an active token
+            /// for this customer under the same org unit.
+            /// </summary>
+            public class CreateRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnrollmentToken>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnrollmentToken body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource where this enrollment token will be created. Format:
+                /// customers/{customer}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The ID to use for the enrollment token, which will become the final component of the
+                /// enrollment token's resource name. This value must be local-unique under the customer and is
+                /// optional. If not provided, it will be auto-generated. If provided, it must be 1-63 characters long
+                /// and match the regular expression `[a-zA-Z0-9._-]+`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("enrollmentTokenId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string EnrollmentTokenId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnrollmentToken Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/enrollmentTokens";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("enrollmentTokenId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enrollmentTokenId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Gets a browser device enrollment token.</summary>
+            /// <param name="name">
+            /// Required. The name of the enrollment token to retrieve. Format:
+            /// customers/{customer}/enrollmentTokens/{token_permanent_id}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets a browser device enrollment token.</summary>
+            public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnrollmentToken>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the enrollment token to retrieve. Format:
+                /// customers/{customer}/enrollmentTokens/{token_permanent_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/enrollmentTokens/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all browser device enrollment tokens.</summary>
+            /// <param name="parent">
+            /// Required. The parent resource where this enrollment token will be created. Format: customers/{customer}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists all browser device enrollment tokens.</summary>
+            public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource where this enrollment token will be created. Format:
+                /// customers/{customer}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Filter to apply to list results. The following fields can be used in the filter: *
+                /// device_type (currently only 'CHROME_BROWSER' is supported) * token_state (supported values:
+                /// 'ACTIVE', 'EXPIRED', 'REVOKED') * org_unit_path The full path of the org unit, such as
+                /// /Montreal/Sales. * org_unit_id The obfuscated id of the org unit, not the full path.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Optional. Maximum number of results to return. Maximum and default are 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Token to specify next page in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/enrollmentTokens";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Revokes a browser device enrollment token.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the enrollment token to revoke. Format:
+            /// customers/{customer}/enrollmentTokens/{token_permanent_id}
+            /// </param>
+            public virtual RevokeRequest Revoke(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest body, string name)
+            {
+                return new RevokeRequest(this.service, body, name);
+            }
+
+            /// <summary>Revokes a browser device enrollment token.</summary>
+            public class RevokeRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1EnrollmentToken>
+            {
+                /// <summary>Constructs a new Revoke request.</summary>
+                public RevokeRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the enrollment token to revoke. Format:
+                /// customers/{customer}/enrollmentTokens/{token_permanent_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "revoke";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:revoke";
+
+                /// <summary>Initializes Revoke parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+/enrollmentTokens/[^/]+$",
                     });
                 }
             }
@@ -10424,6 +11085,170 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A specific installation of Chrome on a device with managed Chrome browsers.</summary>
+    public class GoogleChromeManagementVersionsV1Browser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Browser version installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserVersion")]
+        public virtual string BrowserVersion { get; set; }
+
+        /// <summary>Output only. The channel of the browser installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
+        /// <summary>Output only. The path to the Chrome.exe executable for this browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executablePath")]
+        public virtual string ExecutablePath { get; set; }
+
+        private string _lastPolicyFetchTimeRaw;
+
+        private object _lastPolicyFetchTime;
+
+        /// <summary>
+        /// Output only. The time when the last request to fetch policies succeeded on this Chrome browser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastPolicyFetchTime")]
+        public virtual string LastPolicyFetchTimeRaw
+        {
+            get => _lastPolicyFetchTimeRaw;
+            set
+            {
+                _lastPolicyFetchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastPolicyFetchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastPolicyFetchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastPolicyFetchTimeDateTimeOffset instead.")]
+        public virtual object LastPolicyFetchTime
+        {
+            get => _lastPolicyFetchTime;
+            set
+            {
+                _lastPolicyFetchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastPolicyFetchTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastPolicyFetchTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastPolicyFetchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastPolicyFetchTimeRaw);
+            set => LastPolicyFetchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastStatusReportTimeRaw;
+
+        private object _lastStatusReportTime;
+
+        /// <summary>Output only. The time when the last report was received from this Chrome browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastStatusReportTime")]
+        public virtual string LastStatusReportTimeRaw
+        {
+            get => _lastStatusReportTimeRaw;
+            set
+            {
+                _lastStatusReportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastStatusReportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastStatusReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastStatusReportTimeDateTimeOffset instead.")]
+        public virtual object LastStatusReportTime
+        {
+            get => _lastStatusReportTime;
+            set
+            {
+                _lastStatusReportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastStatusReportTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastStatusReportTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastStatusReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStatusReportTimeRaw);
+            set => LastStatusReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Pending version of a browser is installed. This field is only set when the current active
+        /// browser has a different version as in "browser_version".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingInstallVersion")]
+        public virtual string PendingInstallVersion { get; set; }
+
+        /// <summary>Output only. List of all plugins installed on this Chrome browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plugins")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1Plugin> Plugins { get; set; }
+
+        /// <summary>Output only. The list of profiles for this browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1Profile> Profiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Chrome browser user.</summary>
+    public class GoogleChromeManagementVersionsV1BrowserUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastStatusReportTimeRaw;
+
+        private object _lastStatusReportTime;
+
+        /// <summary>Output only. The time when this user info last reported a status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastStatusReportTime")]
+        public virtual string LastStatusReportTimeRaw
+        {
+            get => _lastStatusReportTimeRaw;
+            set
+            {
+                _lastStatusReportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastStatusReportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastStatusReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastStatusReportTimeDateTimeOffset instead.")]
+        public virtual object LastStatusReportTime
+        {
+            get => _lastStatusReportTime;
+            set
+            {
+                _lastStatusReportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastStatusReportTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastStatusReportTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastStatusReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStatusReportTimeRaw);
+            set => LastStatusReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The user name of the user that signed into chrome.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userName")]
+        public virtual string UserName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A certificate provisioning process.</summary>
     public class GoogleChromeManagementVersionsV1CertificateProvisioningProcess : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10561,6 +11386,322 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>The state of the insights feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insightsState")]
         public virtual string InsightsState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A device with managed Chrome Browsers.</summary>
+    public class GoogleChromeManagementVersionsV1ChromeBrowser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Asset identifier as annotated by the administrator or specified during enrollment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatedAssetId")]
+        public virtual string AnnotatedAssetId { get; set; }
+
+        /// <summary>Optional. Address or location of the device as annotated by the administrator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatedLocation")]
+        public virtual string AnnotatedLocation { get; set; }
+
+        /// <summary>Optional. Notes about this device as annotated by the administrator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatedNotes")]
+        public virtual string AnnotatedNotes { get; set; }
+
+        /// <summary>Optional. User of the device as annotated by the administrator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotatedUser")]
+        public virtual string AnnotatedUser { get; set; }
+
+        /// <summary>Output only. The attestation credential used for Device Trust Connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationCredential")]
+        public virtual GoogleChromeManagementVersionsV1AttestationCredential AttestationCredential { get; set; }
+
+        /// <summary>Output only. Unique identifier of Chrome Browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserPermanentId")]
+        public virtual string BrowserPermanentId { get; set; }
+
+        /// <summary>Output only. List of all browser versions installed on this device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserVersions")]
+        public virtual System.Collections.Generic.IList<string> BrowserVersions { get; set; }
+
+        /// <summary>Output only. List of Chrome browsers installed on this device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browsers")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1Browser> Browsers { get; set; }
+
+        /// <summary>Output only. The history of identifiers reported to this device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifiersHistory")]
+        public virtual GoogleChromeManagementVersionsV1DeviceIdentifiersHistory DeviceIdentifiersHistory { get; set; }
+
+        /// <summary>
+        /// Output only. The number of distinct extensions installed on all the Chrome browsers of this device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionCount")]
+        public virtual System.Nullable<long> ExtensionCount { get; set; }
+
+        private string _lastActivityTimeRaw;
+
+        private object _lastActivityTime;
+
+        /// <summary>
+        /// Output only. The time of the last activity on the device device either from reporting, policy fetching or
+        /// registration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastActivityTime")]
+        public virtual string LastActivityTimeRaw
+        {
+            get => _lastActivityTimeRaw;
+            set
+            {
+                _lastActivityTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastActivityTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastActivityTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastActivityTimeDateTimeOffset instead.")]
+        public virtual object LastActivityTime
+        {
+            get => _lastActivityTime;
+            set
+            {
+                _lastActivityTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastActivityTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastActivityTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastActivityTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastActivityTimeRaw);
+            set => LastActivityTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The last user who logged into a Chrome browser on this device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastDeviceUser")]
+        public virtual string LastDeviceUser { get; set; }
+
+        /// <summary>Output only. List of recent browser users, in descending order by last report time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastDeviceUsers")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1BrowserUser> LastDeviceUsers { get; set; }
+
+        private string _lastPolicyFetchTimeRaw;
+
+        private object _lastPolicyFetchTime;
+
+        /// <summary>Output only. The time the last policy fetch succeeded on this device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastPolicyFetchTime")]
+        public virtual string LastPolicyFetchTimeRaw
+        {
+            get => _lastPolicyFetchTimeRaw;
+            set
+            {
+                _lastPolicyFetchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastPolicyFetchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastPolicyFetchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastPolicyFetchTimeDateTimeOffset instead.")]
+        public virtual object LastPolicyFetchTime
+        {
+            get => _lastPolicyFetchTime;
+            set
+            {
+                _lastPolicyFetchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastPolicyFetchTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastPolicyFetchTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastPolicyFetchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastPolicyFetchTimeRaw);
+            set => LastPolicyFetchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastRegistrationTimeRaw;
+
+        private object _lastRegistrationTime;
+
+        /// <summary>Output only. The time the device last tried to register.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRegistrationTime")]
+        public virtual string LastRegistrationTimeRaw
+        {
+            get => _lastRegistrationTimeRaw;
+            set
+            {
+                _lastRegistrationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRegistrationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRegistrationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRegistrationTimeDateTimeOffset instead.")]
+        public virtual object LastRegistrationTime
+        {
+            get => _lastRegistrationTime;
+            set
+            {
+                _lastRegistrationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRegistrationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRegistrationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRegistrationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRegistrationTimeRaw);
+            set => LastRegistrationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastStatusReportTimeRaw;
+
+        private object _lastStatusReportTime;
+
+        /// <summary>Output only. The time the device last sent a status report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastStatusReportTime")]
+        public virtual string LastStatusReportTimeRaw
+        {
+            get => _lastStatusReportTimeRaw;
+            set
+            {
+                _lastStatusReportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastStatusReportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastStatusReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastStatusReportTimeDateTimeOffset instead.")]
+        public virtual object LastStatusReportTime
+        {
+            get => _lastStatusReportTime;
+            set
+            {
+                _lastStatusReportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastStatusReportTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastStatusReportTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastStatusReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStatusReportTimeRaw);
+            set => LastStatusReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The list of all device level policies set for extensions installed in Chrome on this device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineExtensionPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1ExtensionPolicy> MachineExtensionPolicies { get; set; }
+
+        /// <summary>Output only. Machine name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineName")]
+        public virtual string MachineName { get; set; }
+
+        /// <summary>
+        /// Output only. The list of all device level policies set for Chrome browsers on this device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machinePolicies")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1Policy> MachinePolicies { get; set; }
+
+        /// <summary>Identifier. Format: customers/{customer_id}/chromeBrowsers/{browser_permanent_id}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _omahaRecentFetchTimeRaw;
+
+        private object _omahaRecentFetchTime;
+
+        /// <summary>
+        /// Output only. Recent policy fetch activity by Omaha. Not necessarily the last fetch since this field is only
+        /// updated daily.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("omahaRecentFetchTime")]
+        public virtual string OmahaRecentFetchTimeRaw
+        {
+            get => _omahaRecentFetchTimeRaw;
+            set
+            {
+                _omahaRecentFetchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _omahaRecentFetchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="OmahaRecentFetchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OmahaRecentFetchTimeDateTimeOffset instead.")]
+        public virtual object OmahaRecentFetchTime
+        {
+            get => _omahaRecentFetchTime;
+            set
+            {
+                _omahaRecentFetchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _omahaRecentFetchTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="OmahaRecentFetchTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OmahaRecentFetchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OmahaRecentFetchTimeRaw);
+            set => OmahaRecentFetchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The obfuscated organizational unit ID of the browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        /// <summary>Output only. Device CPU architecture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osArchitecture")]
+        public virtual string OsArchitecture { get; set; }
+
+        /// <summary>Output only. Device Os platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPlatform")]
+        public virtual string OsPlatform { get; set; }
+
+        /// <summary>Output only. Device Os platform and version combined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPlatformVersion")]
+        public virtual string OsPlatformVersion { get; set; }
+
+        /// <summary>Output only. Device Os Version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The number of distinct policies set on all the Chrome browsers of this device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyCount")]
+        public virtual System.Nullable<long> PolicyCount { get; set; }
+
+        /// <summary>Output only. The device's serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>
+        /// Output only. The initial device id sent by the first Chrome browser that enrolled this device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualDeviceId")]
+        public virtual string VirtualDeviceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11339,6 +12480,176 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Collection of device identifiers.</summary>
+    public class GoogleChromeManagementVersionsV1DeviceIdentifiers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The device's host name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostName")]
+        public virtual string HostName { get; set; }
+
+        /// <summary>Output only. The name of the machine associated with the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineName")]
+        public virtual string MachineName { get; set; }
+
+        /// <summary>Output only. The device's serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>History of device identifiers reported from a device.</summary>
+    public class GoogleChromeManagementVersionsV1DeviceIdentifiersHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The device id is potentially being used by multiple devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdCollision")]
+        public virtual System.Nullable<bool> DeviceIdCollision { get; set; }
+
+        private string _lastDeviceIdCollisionDetectionTimeRaw;
+
+        private object _lastDeviceIdCollisionDetectionTime;
+
+        /// <summary>Output only. The last time we detected the device id collision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastDeviceIdCollisionDetectionTime")]
+        public virtual string LastDeviceIdCollisionDetectionTimeRaw
+        {
+            get => _lastDeviceIdCollisionDetectionTimeRaw;
+            set
+            {
+                _lastDeviceIdCollisionDetectionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastDeviceIdCollisionDetectionTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="LastDeviceIdCollisionDetectionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastDeviceIdCollisionDetectionTimeDateTimeOffset instead.")]
+        public virtual object LastDeviceIdCollisionDetectionTime
+        {
+            get => _lastDeviceIdCollisionDetectionTime;
+            set
+            {
+                _lastDeviceIdCollisionDetectionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastDeviceIdCollisionDetectionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="LastDeviceIdCollisionDetectionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastDeviceIdCollisionDetectionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastDeviceIdCollisionDetectionTimeRaw);
+            set => LastDeviceIdCollisionDetectionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. List of device identifiers sent by this device. In descending order by last_activity_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("records")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1DeviceIdentifiersRecord> Records { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Record of the device identifiers and when they were reported.</summary>
+    public class GoogleChromeManagementVersionsV1DeviceIdentifiersRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _firstRecordTimeRaw;
+
+        private object _firstRecordTime;
+
+        /// <summary>Output only. The first time these identifiers were reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstRecordTime")]
+        public virtual string FirstRecordTimeRaw
+        {
+            get => _firstRecordTimeRaw;
+            set
+            {
+                _firstRecordTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstRecordTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstRecordTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstRecordTimeDateTimeOffset instead.")]
+        public virtual object FirstRecordTime
+        {
+            get => _firstRecordTime;
+            set
+            {
+                _firstRecordTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstRecordTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstRecordTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstRecordTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstRecordTimeRaw);
+            set => FirstRecordTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Device identifiers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identifiers")]
+        public virtual GoogleChromeManagementVersionsV1DeviceIdentifiers Identifiers { get; set; }
+
+        private string _lastActivityTimeRaw;
+
+        private object _lastActivityTime;
+
+        /// <summary>
+        /// Output only. The time of the last activity of these identifiers either from reporting, policy fetching or
+        /// registration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastActivityTime")]
+        public virtual string LastActivityTimeRaw
+        {
+            get => _lastActivityTimeRaw;
+            set
+            {
+                _lastActivityTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastActivityTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastActivityTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastActivityTimeDateTimeOffset instead.")]
+        public virtual object LastActivityTime
+        {
+            get => _lastActivityTime;
+            set
+            {
+                _lastActivityTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastActivityTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastActivityTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastActivityTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastActivityTimeRaw);
+            set => LastActivityTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information of a device that runs a Chrome browser profile.</summary>
     public class GoogleChromeManagementVersionsV1DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11448,6 +12759,229 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Enrollment token for a chrome device.</summary>
+    public class GoogleChromeManagementVersionsV1EnrollmentToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time of the token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The id of the user who created the token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorId")]
+        public virtual string CreatorId { get; set; }
+
+        /// <summary>Output only. The obfuscated ID of the customer to whom this token is associated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the enrollment token. Format:
+        /// customers/{customer}/enrollmentTokens/{token_permanent_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Obfuscated ID of the organization unit this token is associated with. If not set, the token is
+        /// created for the root organization unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
+        public virtual string OrgUnitId { get; set; }
+
+        private string _revokeTimeRaw;
+
+        private object _revokeTime;
+
+        /// <summary>Output only. The revocation time of the token, null if the token is not revoked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revokeTime")]
+        public virtual string RevokeTimeRaw
+        {
+            get => _revokeTimeRaw;
+            set
+            {
+                _revokeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _revokeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RevokeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RevokeTimeDateTimeOffset instead.")]
+        public virtual object RevokeTime
+        {
+            get => _revokeTime;
+            set
+            {
+                _revokeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _revokeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RevokeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RevokeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RevokeTimeRaw);
+            set => RevokeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The id of the user who revoked the token, null if the token is not revoked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revokerId")]
+        public virtual string RevokerId { get; set; }
+
+        /// <summary>Output only. The state of the token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The value of the token stored on the device and used to identify it to the management service
+        /// handling the enrollment request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>
+        /// Output only. Unique identifier of the enrollment token used to access information on tokens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenPermanentId")]
+        public virtual string TokenPermanentId { get; set; }
+
+        /// <summary>
+        /// Optional. The device type this token is used for. If not set, defaults to
+        /// `ENROLLMENT_TOKEN_TYPE_CHROME_BROWSER`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenType")]
+        public virtual string TokenType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about extensions installed on profile reported on an installed Chrome on a device with managed
+    /// chrome browsers.
+    /// </summary>
+    public class GoogleChromeManagementVersionsV1Extension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The type of the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>Output only. If the extension is controlled by a browser policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuredAppPolicy")]
+        public virtual string ConfiguredAppPolicy { get; set; }
+
+        /// <summary>Output only. The localized description of this extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Whether the extension is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Output only. The id of the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionId")]
+        public virtual string ExtensionId { get; set; }
+
+        /// <summary>Output only. The localized name of this extension as reported by Chrome.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionName")]
+        public virtual string ExtensionName { get; set; }
+
+        /// <summary>Output only. The URL of the homepage for this extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homepageUri")]
+        public virtual string HomepageUri { get; set; }
+
+        /// <summary>Output only. The list of icons available for this extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icons")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1ExtensionIcon> Icons { get; set; }
+
+        /// <summary>Output only. The way the extension was installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installType")]
+        public virtual string InstallType { get; set; }
+
+        /// <summary>Output only. The manifest version of this extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifestVersion")]
+        public virtual System.Nullable<int> ManifestVersion { get; set; }
+
+        /// <summary>Output only. The list of permissions required for this extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>Output only. The version of the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An icon of a Chrome browser extension.</summary>
+    public class GoogleChromeManagementVersionsV1ExtensionIcon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The size of the extension icon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<int> Size { get; set; }
+
+        /// <summary>Output only. The URL to the extension icon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reported policies applied to an extension installed on a Chrome profile.</summary>
+    public class GoogleChromeManagementVersionsV1ExtensionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The id of the extension the policies are applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionId")]
+        public virtual string ExtensionId { get; set; }
+
+        /// <summary>Output only. The name of the extension the policies are applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionName")]
+        public virtual string ExtensionName { get; set; }
+
+        /// <summary>Output only. List of policies applied to this extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1Policy> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a generic Certificate Authority Connection.</summary>
     public class GoogleChromeManagementVersionsV1GenericCaConnection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11540,6 +13074,21 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to ListChromeBrowsers method.</summary>
+    public class GoogleChromeManagementVersionsV1ListChromeBrowsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Chrome Browser device objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeBrowsers")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1ChromeBrowser> ChromeBrowsers { get; set; }
+
+        /// <summary>Token used to access next page of this result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to ListConnectorConfigs method.</summary>
     public class GoogleChromeManagementVersionsV1ListConnectorConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11550,6 +13099,23 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>
         /// The page token used to retrieve the next page of the listing request. If the token is empty, there are no
         /// more pages to retrieve.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response that contains a list of tokens.</summary>
+    public class GoogleChromeManagementVersionsV1ListEnrollmentTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Chrome device enrollment tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentTokens")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1EnrollmentToken> EnrollmentTokens { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -11572,6 +13138,31 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("microsoftTenantId")]
         public virtual string MicrosoftTenantId { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to MoveChromeBrowsers method.</summary>
+    public class GoogleChromeManagementVersionsV1MoveChromeBrowsersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. ID of the destination organizational unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationOrgUnitId")]
+        public virtual string DestinationOrgUnitId { get; set; }
+
+        /// <summary>
+        /// Required. List of resource IDs of Chrome Browser Devices to move. A maximum of 600 browsers may be moved per
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceIds")]
+        public virtual System.Collections.Generic.IList<string> ResourceIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to MoveChromeBrowsers method.</summary>
+    public class GoogleChromeManagementVersionsV1MoveChromeBrowsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11619,6 +13210,216 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Required. The reporting settings for the Palo Alto Networks config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
         public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about a Chrome browser plugin installed on a reported Chrome installation on a device with managed
+    /// Chrome browsers.
+    /// </summary>
+    public class GoogleChromeManagementVersionsV1Plugin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The description of the installed plugin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The filename of the installed plugin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>Output only. The name of the installed plugin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pluginName")]
+        public virtual string PluginName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The applied policy reported by a managed Chrome browser. The policy can be applied at various scopes (machine,
+    /// profile, extension).
+    /// </summary>
+    public class GoogleChromeManagementVersionsV1Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A localized string with all the errors reported when trying to apply this policy, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>Output only. The name of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyName")]
+        public virtual string PolicyName { get; set; }
+
+        /// <summary>Output only. The source of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Output only. The value of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A profile reported on an installation of Chrome on a device with managed chrome browsers.</summary>
+    public class GoogleChromeManagementVersionsV1Profile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The email of the user signed in to this profile, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeSignedInUserEmail")]
+        public virtual string ChromeSignedInUserEmail { get; set; }
+
+        /// <summary>Output only. The list of extensions with applied extension policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1ExtensionPolicy> ExtensionPolicies { get; set; }
+
+        /// <summary>Output only. The list of extensions installed for this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1Extension> Extensions { get; set; }
+
+        /// <summary>Output only. A unique ID for this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        private string _lastPolicyFetchTimeRaw;
+
+        private object _lastPolicyFetchTime;
+
+        /// <summary>Output only. The time when the last request to fetch policies succeeded for this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastPolicyFetchTime")]
+        public virtual string LastPolicyFetchTimeRaw
+        {
+            get => _lastPolicyFetchTimeRaw;
+            set
+            {
+                _lastPolicyFetchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastPolicyFetchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastPolicyFetchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastPolicyFetchTimeDateTimeOffset instead.")]
+        public virtual object LastPolicyFetchTime
+        {
+            get => _lastPolicyFetchTime;
+            set
+            {
+                _lastPolicyFetchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastPolicyFetchTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastPolicyFetchTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastPolicyFetchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastPolicyFetchTimeRaw);
+            set => LastPolicyFetchTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _lastStatusReportTimeRaw;
+
+        private object _lastStatusReportTime;
+
+        /// <summary>Output only. The time when the last report was received from this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastStatusReportTime")]
+        public virtual string LastStatusReportTimeRaw
+        {
+            get => _lastStatusReportTimeRaw;
+            set
+            {
+                _lastStatusReportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastStatusReportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastStatusReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastStatusReportTimeDateTimeOffset instead.")]
+        public virtual object LastStatusReportTime
+        {
+            get => _lastStatusReportTime;
+            set
+            {
+                _lastStatusReportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastStatusReportTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastStatusReportTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastStatusReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastStatusReportTimeRaw);
+            set => LastStatusReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The name given to this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
+        public virtual string ProfileName { get; set; }
+
+        /// <summary>Output only. The number of safe browsing warnings that were shown on this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeBrowsingWarnings")]
+        public virtual System.Nullable<long> SafeBrowsingWarnings { get; set; }
+
+        /// <summary>
+        /// Output only. The number of safe browsing warnings that were clicked through on this profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeBrowsingWarningsClickThroughs")]
+        public virtual System.Nullable<long> SafeBrowsingWarningsClickThroughs { get; set; }
+
+        private string _safeBrowsingWarningsResetTimeRaw;
+
+        private object _safeBrowsingWarningsResetTime;
+
+        /// <summary>Output only. The last time the safe browsing warning info was reset to 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeBrowsingWarningsResetTime")]
+        public virtual string SafeBrowsingWarningsResetTimeRaw
+        {
+            get => _safeBrowsingWarningsResetTimeRaw;
+            set
+            {
+                _safeBrowsingWarningsResetTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _safeBrowsingWarningsResetTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="SafeBrowsingWarningsResetTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SafeBrowsingWarningsResetTimeDateTimeOffset instead.")]
+        public virtual object SafeBrowsingWarningsResetTime
+        {
+            get => _safeBrowsingWarningsResetTime;
+            set
+            {
+                _safeBrowsingWarningsResetTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _safeBrowsingWarningsResetTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SafeBrowsingWarningsResetTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SafeBrowsingWarningsResetTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SafeBrowsingWarningsResetTimeRaw);
+            set => SafeBrowsingWarningsResetTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The list of Chrome browser policies applied to this profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementVersionsV1Policy> UserPolicies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11884,6 +13685,13 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabledOptInEvents")]
         public virtual System.Collections.Generic.IList<string> EnabledOptInEvents { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to revoke a token.</summary>
+    public class GoogleChromeManagementVersionsV1RevokeEnrollmentTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
