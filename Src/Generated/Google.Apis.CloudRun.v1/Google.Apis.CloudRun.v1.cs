@@ -9225,6 +9225,45 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Aggregated/summary metrics over the entire build lifecycle.</summary>
+    public class GoogleDevtoolsCloudbuildV1BuildResourceUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The average CPU utilization ratio across all vCPUs over the duration of the build, expressed as
+        /// a fraction in the range [0.0, 1.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageCpuUtilization")]
+        public virtual System.Nullable<float> AverageCpuUtilization { get; set; }
+
+        /// <summary>
+        /// Output only. The average memory utilization ratio over the duration of the build, expressed as a fraction in
+        /// the range [0.0, 1.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageMemoryUtilization")]
+        public virtual System.Nullable<float> AverageMemoryUtilization { get; set; }
+
+        /// <summary>
+        /// Output only. The highest CPU utilization ratio across all vCPUs observed over the duration of the build,
+        /// expressed as a fraction in the range [0.0, 1.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peakCpuUtilization")]
+        public virtual System.Nullable<float> PeakCpuUtilization { get; set; }
+
+        /// <summary>
+        /// Output only. The highest memory utilization ratio observed over the duration of the build, expressed as a
+        /// fraction in the range [0.0, 1.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peakMemoryUtilization")]
+        public virtual System.Nullable<float> PeakMemoryUtilization { get; set; }
+
+        /// <summary>Output only. Total CPU execution time consumed across all cores during build execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCpuDuration")]
+        public virtual object TotalCpuDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A step in the build pipeline.</summary>
     public class GoogleDevtoolsCloudbuildV1BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9533,7 +9572,10 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Represents a generic artifact as a build dependency.</summary>
     public class GoogleDevtoolsCloudbuildV1GenericArtifactDependency : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Where the artifact files should be placed on the worker.</summary>
+        /// <summary>
+        /// Optional. Where the artifact files should be placed on the worker. Required when specified in
+        /// `Build.dependencies`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destPath")]
         public virtual string DestPath { get; set; }
 
@@ -10001,6 +10043,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Python artifacts uploaded to Artifact Registry at the end of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonPackages")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedPythonPackage> PythonPackages { get; set; }
+
+        /// <summary>Output only. Aggregated metrics for the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUsage")]
+        public virtual GoogleDevtoolsCloudbuildV1BuildResourceUsage ResourceUsage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
