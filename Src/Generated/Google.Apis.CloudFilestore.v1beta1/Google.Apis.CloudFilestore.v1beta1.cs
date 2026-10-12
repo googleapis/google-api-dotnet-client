@@ -2704,6 +2704,69 @@ namespace Google.Apis.CloudFilestore.v1beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Creates a volume in a volume pool from an existing data source (such as a Filestore backup).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource where this volume will be created. Format:
+                    /// projects/{project}/locations/{location}/volumePools/{volume_pool}
+                    /// </param>
+                    public virtual CreateFromSourceRequest CreateFromSource(Google.Apis.CloudFilestore.v1beta1.Data.CreateFromSourceRequest body, string parent)
+                    {
+                        return new CreateFromSourceRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a volume in a volume pool from an existing data source (such as a Filestore backup).
+                    /// </summary>
+                    public class CreateFromSourceRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new CreateFromSource request.</summary>
+                        public CreateFromSourceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.CreateFromSourceRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource where this volume will be created. Format:
+                        /// projects/{project}/locations/{location}/volumePools/{volume_pool}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.CreateFromSourceRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "createFromSource";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/volumes:createFromSource";
+
+                        /// <summary>Initializes CreateFromSource parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Deletes a volume.</summary>
                     /// <param name="name">
                     /// Required. The volume resource name, in the format
@@ -2741,6 +2804,151 @@ namespace Google.Apis.CloudFilestore.v1beta1
                         public override string RestPath => "v1beta1/{+name}";
 
                         /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+/volumes/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Creates a volume directly on the CLH, bypassing CCFE. This is a temporary PoC that will be used
+                    /// for testing and removed.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent volume pool path, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                    /// </param>
+                    public virtual DirectCreateRequest DirectCreate(Google.Apis.CloudFilestore.v1beta1.Data.Volume body, string parent)
+                    {
+                        return new DirectCreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a volume directly on the CLH, bypassing CCFE. This is a temporary PoC that will be used
+                    /// for testing and removed.
+                    /// </summary>
+                    public class DirectCreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Volume>
+                    {
+                        /// <summary>Constructs a new DirectCreate request.</summary>
+                        public DirectCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Volume body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent volume pool path, in the format
+                        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the volume. The ID must be unique within the specified volume
+                        /// pool.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string VolumeId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.Volume Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "directCreate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/volumes:directCreate";
+
+                        /// <summary>Initializes DirectCreate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+$",
+                            });
+                            RequestParameters.Add("volumeId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "volumeId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a volume directly on the CLH, bypassing CCFE. This is a temporary PoC that will be used
+                    /// for testing and removed.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The volume resource name, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                    /// </param>
+                    public virtual DirectDeleteRequest DirectDelete(Google.Apis.CloudFilestore.v1beta1.Data.DeleteVolumeRequest body, string name)
+                    {
+                        return new DirectDeleteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a volume directly on the CLH, bypassing CCFE. This is a temporary PoC that will be used
+                    /// for testing and removed.
+                    /// </summary>
+                    public class DirectDeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new DirectDelete request.</summary>
+                        public DirectDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.DeleteVolumeRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The volume resource name, in the format
+                        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.DeleteVolumeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "directDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:directDelete";
+
+                        /// <summary>Initializes DirectDelete parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -2906,6 +3114,138 @@ namespace Google.Apis.CloudFilestore.v1beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the settings of a specific volume.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The resource name of the volume, in the format
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1beta1.Data.Volume body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the settings of a specific volume.</summary>
+                    public class PatchRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Volume>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Volume body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The resource name of the volume, in the format
+                        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. Mask of fields to update. At least one path must be supplied in this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.Volume Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+/volumes/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Unfreezes a volume.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the volume to unfreeze. Format:
+                    /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                    /// </param>
+                    public virtual UnfreezeRequest Unfreeze(Google.Apis.CloudFilestore.v1beta1.Data.UnfreezeVolumeRequest body, string name)
+                    {
+                        return new UnfreezeRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Unfreezes a volume.</summary>
+                    public class UnfreezeRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Unfreeze request.</summary>
+                        public UnfreezeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.UnfreezeVolumeRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the volume to unfreeze. Format:
+                        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.UnfreezeVolumeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "unfreeze";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:unfreeze";
+
+                        /// <summary>Initializes Unfreeze parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/volumePools/[^/]+/volumes/[^/]+$",
                             });
                         }
                     }
@@ -3612,6 +3952,34 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for creating a volume from an existing data source (such as a backup).</summary>
+    public class CreateFromSourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the backup to create from. Format:
+        /// projects/{project}/locations/{location}/backups/{backup}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>Optional. IP ACLs defining permissions/ACLs to apply to the newly created volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAcls")]
+        public virtual System.Collections.Generic.IList<NfsExportOptions> IpAcls { get; set; }
+
+        /// <summary>Optional. The limit for how much data can be written to this volume, in MiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quota")]
+        public virtual System.Nullable<long> Quota { get; set; }
+
+        /// <summary>
+        /// Required. Unique identifier for the volume which also appears in the volumes resource name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
+        public virtual string VolumeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Time window specified for daily operations.</summary>
     public class DailyCycle : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3652,6 +4020,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DeleteVolumeRequest deletes a volume.</summary>
+    public class DeleteVolumeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5740,6 +6115,21 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for unfreezing a volume.</summary>
+    public class UnfreezeVolumeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. IP ACLs defining permissions/ACLs to apply to the unfrozen volume</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAcls")]
+        public virtual System.Collections.Generic.IList<NfsExportOptions> IpAcls { get; set; }
+
+        /// <summary>Optional. The limit for how much data can be written to this volume, in MiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quota")]
+        public virtual System.Nullable<long> Quota { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Maintenance policy applicable to instance updates.</summary>
     public class UpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5809,6 +6199,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Optional. User-defined permissions protecting mount points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAcls")]
+        public virtual System.Collections.Generic.IList<NfsExportOptions> IpAcls { get; set; }
+
         /// <summary>Optional. Resource labels to represent user provided metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -5824,6 +6218,18 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. The maximum size of the volume in mebibytes (MiB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMib")]
+        public virtual System.Nullable<long> QuotaMib { get; set; }
+
+        /// <summary>
+        /// Optional. The state of the volume. This field is caller-settable via `UpdateVolume` to transition a volume
+        /// from `HOT` to `COLD` (freezing the volume). In `CreateVolume`, this field is output-only and initialized to
+        /// `HOT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5831,6 +6237,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>VolumePool representation of a Cloud Filestore volume pool.</summary>
     public class VolumePool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The number of active volumes. Default: 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeVolumeCount")]
+        public virtual System.Nullable<int> ActiveVolumeCount { get; set; }
+
         /// <summary>Optional. The number of IOPs provisioned per active volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeVolumeIops")]
         public virtual System.Nullable<int> ActiveVolumeIops { get; set; }
@@ -5872,7 +6282,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The default quota per volume in MiB. Default: 1024 MiB.</summary>
+        /// <summary>
+        /// Optional. The default quota per volume in MiB. Must be between 100 MiB and 102400 MiB (100 GiB). Default:
+        /// 1024 MiB.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultVolumeQuotaMib")]
         public virtual System.Nullable<int> DefaultVolumeQuotaMib { get; set; }
 
@@ -5897,6 +6310,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Output only. The state of the volume pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>Output only. System-assigned unique identifier for the volume pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
