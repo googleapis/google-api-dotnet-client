@@ -2872,6 +2872,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
 
         /// <summary>
+        /// Optional. Indicates if this boost config is eligible for automatic failover when the service cannot
+        /// provision the default VM type. Defaults to `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAutomaticFailover")]
+        public virtual System.Nullable<bool> EnableAutomaticFailover { get; set; }
+
+        /// <summary>
         /// Optional. Whether to enable nested virtualization on boosted Cloud Workstations VMs running using this boost
         /// configuration. Defaults to false. Nested virtualization lets you run virtual machine (VM) instances inside
         /// your workstation. Before enabling nested virtualization, consider the following important considerations.
