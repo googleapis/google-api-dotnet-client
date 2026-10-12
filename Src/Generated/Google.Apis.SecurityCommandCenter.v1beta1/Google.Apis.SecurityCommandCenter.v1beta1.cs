@@ -4074,6 +4074,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionNotificationsEnabled")]
+        public virtual System.Nullable<bool> DeletionNotificationsEnabled { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4537,6 +4540,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
     public class GoogleCloudSecuritycenterV1NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedFinding")]
+        public virtual System.Nullable<bool> DeletedFinding { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("finding")]
         public virtual Finding Finding { get; set; }
 
@@ -5791,6 +5797,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionNotificationsEnabled")]
+        public virtual System.Nullable<bool> DeletionNotificationsEnabled { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -8329,6 +8338,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
     public class GoogleCloudSecuritycenterV2NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedFinding")]
+        public virtual System.Nullable<bool> DeletedFinding { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("finding")]
         public virtual GoogleCloudSecuritycenterV2Finding Finding { get; set; }
 
