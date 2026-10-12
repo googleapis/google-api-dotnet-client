@@ -6214,7 +6214,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set
-    /// kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK.
+    /// kioskCustomLauncherEnabled to true or specify an app in the policy with the KIOSK role.
     /// </summary>
     public class KioskCustomization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7545,7 +7545,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Optional. Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set
-        /// kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK.
+        /// kioskCustomLauncherEnabled to true or specify an app in the policy with the KIOSK role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kioskCustomization")]
         public virtual KioskCustomization KioskCustomization { get; set; }
