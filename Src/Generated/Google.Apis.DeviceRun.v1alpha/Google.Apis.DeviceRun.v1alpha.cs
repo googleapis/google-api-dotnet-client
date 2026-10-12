@@ -779,6 +779,92 @@ namespace Google.Apis.DeviceRun.v1alpha
                 }
 
                 /// <summary>
+                /// Retrieves multiple automation sessions in a single batch request. Sessions are returned in the same
+                /// order as the `names` in the request. If any of the requested sessions does not exist, the whole
+                /// request fails with `NOT_FOUND` and no sessions are returned. When calling this method over HTTP/REST
+                /// with a large number of `names`, the request URL may exceed the maximum URL length (about 16 KB) and
+                /// be rejected. In that case, send a `POST` request to the same URL with the `X-HTTP-Method-Override:
+                /// GET` header and pass the request parameters in a JSON (`application/json`) or form-encoded
+                /// (`application/x-www-form-urlencoded`) body. See
+                /// https://cloud.google.com/apis/docs/http#long_request_urls.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent resource shared by all sessions being retrieved. Format:
+                /// `projects/{project}/locations/{location}`. The `parent` field in the `BatchGetSessionsRequest`
+                /// message must match the `parent` of all `Session` resource names in `names`.
+                /// </param>
+                public virtual BatchGetRequest BatchGet(string parent)
+                {
+                    return new BatchGetRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Retrieves multiple automation sessions in a single batch request. Sessions are returned in the same
+                /// order as the `names` in the request. If any of the requested sessions does not exist, the whole
+                /// request fails with `NOT_FOUND` and no sessions are returned. When calling this method over HTTP/REST
+                /// with a large number of `names`, the request URL may exceed the maximum URL length (about 16 KB) and
+                /// be rejected. In that case, send a `POST` request to the same URL with the `X-HTTP-Method-Override:
+                /// GET` header and pass the request parameters in a JSON (`application/json`) or form-encoded
+                /// (`application/x-www-form-urlencoded`) body. See
+                /// https://cloud.google.com/apis/docs/http#long_request_urls.
+                /// </summary>
+                public class BatchGetRequest : DeviceRunBaseServiceRequest<Google.Apis.DeviceRun.v1alpha.Data.BatchGetSessionsResponse>
+                {
+                    /// <summary>Constructs a new BatchGet request.</summary>
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource shared by all sessions being retrieved. Format:
+                    /// `projects/{project}/locations/{location}`. The `parent` field in the `BatchGetSessionsRequest`
+                    /// message must match the `parent` of all `Session` resource names in `names`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The names of the sessions to retrieve. A maximum of 500 sessions can be retrieved in a
+                    /// batch. Format: `projects/{project}/locations/{location}/sessions/{session}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchGet";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/sessions:batchGet";
+
+                    /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "names",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Cancels an in-progress automation session. This RPC returns immediately and cancellation proceeds
                 /// asynchronously. If the session is already finished, this RPC will have no effect.
                 /// </summary>
@@ -1992,6 +2078,17 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localeCode")]
         public virtual string LocaleCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response including the requested sessions.</summary>
+    public class BatchGetSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested sessions, in the same order as the `names` in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessions")]
+        public virtual System.Collections.Generic.IList<Session> Sessions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
