@@ -1836,7 +1836,8 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     }
 
                     /// <summary>
-                    /// Optional. The maximum number of result groups to return. If omitted, defaults to 25.
+                    /// Optional. The maximum number of result groups to return. The maximum value is 100; values above
+                    /// 100 will be coerced to 100. If omitted, defaults to 25.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
