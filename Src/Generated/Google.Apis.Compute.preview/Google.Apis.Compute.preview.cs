@@ -39,6 +39,7 @@ namespace Google.Apis.Compute.preview
             AcceleratorTypes = new AcceleratorTypesResource(this);
             Addresses = new AddressesResource(this);
             Advice = new AdviceResource(this);
+            AliasNetworkEndpoints = new AliasNetworkEndpointsResource(this);
             Autoscalers = new AutoscalersResource(this);
             BackendBuckets = new BackendBucketsResource(this);
             BackendServices = new BackendServicesResource(this);
@@ -258,6 +259,9 @@ namespace Google.Apis.Compute.preview
 
         /// <summary>Gets the Advice resource.</summary>
         public virtual AdviceResource Advice { get; }
+
+        /// <summary>Gets the AliasNetworkEndpoints resource.</summary>
+        public virtual AliasNetworkEndpointsResource AliasNetworkEndpoints { get; }
 
         /// <summary>Gets the Autoscalers resource.</summary>
         public virtual AutoscalersResource Autoscalers { get; }
@@ -3258,6 +3262,436 @@ namespace Google.Apis.Compute.preview
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
+    /// <summary>The "aliasNetworkEndpoints" collection of methods.</summary>
+    public class AliasNetworkEndpointsResource
+    {
+        private const string Resource = "aliasNetworkEndpoints";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AliasNetworkEndpointsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Deletes the specified AliasNetworkEndpoint.</summary>
+        /// <param name="project">Required. Project ID for this request.</param>
+        /// <param name="zone">Required. Name of the zone scoping this request.</param>
+        /// <param name="aliasNetworkEndpoint">Required. Name of the AliasNetworkEndpoint resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string zone, string aliasNetworkEndpoint)
+        {
+            return new DeleteRequest(this.service, project, zone, aliasNetworkEndpoint);
+        }
+
+        /// <summary>Deletes the specified AliasNetworkEndpoint.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string zone, string aliasNetworkEndpoint) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                AliasNetworkEndpoint = aliasNetworkEndpoint;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Name of the zone scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Required. Name of the AliasNetworkEndpoint resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("aliasNetworkEndpoint", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AliasNetworkEndpoint { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/aliasNetworkEndpoints/{aliasNetworkEndpoint}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("aliasNetworkEndpoint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "aliasNetworkEndpoint",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Returns the specified AliasNetworkEndpoint resource.</summary>
+        /// <param name="project">Required. Project ID for this request.</param>
+        /// <param name="zone">Required. Name of the zone scoping this request.</param>
+        /// <param name="aliasNetworkEndpoint">Required. Name of the AliasNetworkEndpoint resource to return.</param>
+        public virtual GetRequest Get(string project, string zone, string aliasNetworkEndpoint)
+        {
+            return new GetRequest(this.service, project, zone, aliasNetworkEndpoint);
+        }
+
+        /// <summary>Returns the specified AliasNetworkEndpoint resource.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.AliasNetworkEndpoint>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string zone, string aliasNetworkEndpoint) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                AliasNetworkEndpoint = aliasNetworkEndpoint;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Name of the zone scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Required. Name of the AliasNetworkEndpoint resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("aliasNetworkEndpoint", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AliasNetworkEndpoint { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/aliasNetworkEndpoints/{aliasNetworkEndpoint}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("aliasNetworkEndpoint", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "aliasNetworkEndpoint",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>
+        /// Creates an AliasNetworkEndpoint in the specified project and zone using the data included in the request.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Required. Project ID for this request.</param>
+        /// <param name="zone">Required. Name of the zone scoping this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.preview.Data.AliasNetworkEndpoint body, string project, string zone)
+        {
+            return new InsertRequest(this.service, body, project, zone);
+        }
+
+        /// <summary>
+        /// Creates an AliasNetworkEndpoint in the specified project and zone using the data included in the request.
+        /// </summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.AliasNetworkEndpoint body, string project, string zone) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Name of the zone scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.AliasNetworkEndpoint Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/aliasNetworkEndpoints";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves a list of AliasNetworkEndpoints available to the specified project.</summary>
+        /// <param name="project">Required. Project ID for this request.</param>
+        /// <param name="zone">Required. Name of the zone of this request.</param>
+        public virtual ListRequest List(string project, string zone)
+        {
+            return new ListRequest(this.service, project, zone);
+        }
+
+        /// <summary>Retrieves a list of AliasNetworkEndpoints available to the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.AliasNetworkEndpointList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string zone) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Name of the zone of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/aliasNetworkEndpoints";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
 
@@ -113774,6 +114208,18 @@ namespace Google.Apis.Compute.preview.Data
         public virtual System.Nullable<int> ExternalIpv6PrefixLength { get; set; }
 
         /// <summary>
+        /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix (PDP) for BYOIP. The PDP
+        /// must support enhanced IPv4 allocations.  Use one of the following formats to specify a PDP when allocating
+        /// an external IPv4 address using BYOIP.        -     Full resource URL, as
+        /// inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+        ///  -     Partial URL, as in                        -
+        /// projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name           -
+        /// regions/region/publicDelegatedPrefixes/pdp-name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCollection")]
+        public virtual string IpCollection { get; set; }
+
+        /// <summary>
         /// Output only. [Output Only] Type of the resource. Alwayscompute#accessConfig for access configs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -113936,6 +114382,13 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Optional. The URL of the network attachment that this address comes from in the following format:
+        /// projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
         /// This signifies the networking tier used for configuring this address and can only take the following values:
         /// PREMIUM orSTANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always
         /// Premium Tier; regional external IP addresses can be either Standard or Premium Tier.  If this field is not
@@ -113980,6 +114433,14 @@ namespace Google.Apis.Compute.preview.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// Optional. Producer Service's Service class ID for the region of this address. Can only be used with
+        /// network_attachment. It is not possible to use on its own; however, network_attachment can be used without
+        /// service_class_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClassId")]
+        public virtual string ServiceClassId { get; set; }
 
         /// <summary>
         /// Output only. [Output Only] The status of the address, which can be one ofRESERVING, RESERVED, or IN_USE. An
@@ -114297,6 +114758,224 @@ namespace Google.Apis.Compute.preview.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkRangeName")]
         public virtual string SubnetworkRangeName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an Alias Network Endpoint resource. To be used for GKE pod-native endpoints in Andromeda.
+    /// </summary>
+    public class AliasNetworkEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The map of network aliases allocated for the AliasNetworkEndpoint. This map is keyed with
+        /// user-provided alias names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
+        public virtual System.Collections.Generic.IDictionary<string, AliasNetworkEndpointAlias> Aliases { get; set; }
+
+        /// <summary>
+        /// Optional. The annotations map for the AliasNetworkEndpoint. Keys and values must follow Kubernetes limits.
+        /// Keys must be a maximum of 253 characters. Keys should be dot-namespaced, following the Kubernetes annotation
+        /// key format: `([DNS subdomain]/)?[RFC 1123 name]`. Values must be a maximum of 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Output only. [Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; }
+
+        /// <summary>
+        /// Optional. An optional description of this resource. Provide this field when you create the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The host that the alias network endpoint is bound to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual AliasNetworkEndpointHost Host { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>Optional. The labels map for the AliasNetworkEndpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the resource. Provided by the client when the resource is created. The name must be 1-63
+        /// characters long, and comply with RFC1035.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The security tag inheritance setting for the AliasNetworkEndpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityTagInheritance")]
+        public virtual string SecurityTagInheritance { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. [Output Only] Current status of the alias network endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual AliasNetworkEndpointStatus Status { get; set; }
+
+        /// <summary>Required. The URL of the subnetwork that this alias network endpoint belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>Output only. [Output Only] Update timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for an IP alias.</summary>
+    public class AliasNetworkEndpointAlias : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output Only] The actual IP address allocated by the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveIpAddress")]
+        public virtual string EffectiveIpAddress { get; set; }
+
+        /// <summary>Output only. [Output Only] The actual secondary range used for allocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveSubnetworkRangeName")]
+        public virtual string EffectiveSubnetworkRangeName { get; set; }
+
+        /// <summary>
+        /// Input only. The IP address of the network endpoint. If specified, the server performs a validation check for
+        /// uniqueness. If the field is omitted, the system automatically allocates an IP and populates the
+        /// effective_ip_address field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>Required. The IP version of the IP. It is IPv4 or IPv6.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipVersion")]
+        public virtual string IpVersion { get; set; }
+
+        /// <summary>
+        /// Input only. Defines candidate secondary ranges for allocating the alias IPs. If it is empty, the IP would be
+        /// allocated from the primary range of the subnetwork. This field is INPUT_ONLY and used only during resource
+        /// creation, hence a repeated field is acceptable as per AIP-2825. It is not mutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkRangeNames")]
+        public virtual System.Collections.Generic.IList<string> SubnetworkRangeNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the host instance.</summary>
+    public class AliasNetworkEndpointHost : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The URL to the instance that this alias network endpoint is bound to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for AliasNetworkEndpoints.List.</summary>
+    public class AliasNetworkEndpointList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ETag of the resource list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of AliasNetworkEndpoint resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<AliasNetworkEndpoint> Items { get; set; }
+
+        /// <summary>
+        /// [Output Only] This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. [Output Only] Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
+    }
+
+    /// <summary>Represents the current status of the AliasNetworkEndpoint.</summary>
+    public class AliasNetworkEndpointStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. [Output Only] The URL of the network that this alias network endpoint belongs to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. [Output Only] The state of the alias network endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -125698,6 +126377,13 @@ namespace Google.Apis.Compute.preview.Data
         public virtual HaControllerNetworkingAutoConfiguration NetworkingAutoConfiguration { get; set; }
 
         /// <summary>
+        /// Input only. Additional parameters passed with the request, but not persisted as part of the resource. Both
+        /// `params: null` and `params: {}` are treated identically as a no-op.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual HaControllerParams Params__ { get; set; }
+
+        /// <summary>
         /// Output only. [Output Only] URL of the region where the resource resides. You must specify this field as part
         /// of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
@@ -125723,6 +126409,27 @@ namespace Google.Apis.Compute.preview.Data
         /// <summary>Map of zone configurations Key: name of the zone Value: ZoneConfiguration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneConfigurations")]
         public virtual System.Collections.Generic.IDictionary<string, HaControllerZoneConfiguration> ZoneConfigurations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The network interface configuration of the VM instance.</summary>
+    public class HaControllerInstanceNetworkInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional IPv6 address to assign to the instance's network interface. If omitted, an ephemeral IP
+        /// may be assigned depending on the instance's network interface stack type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
+        public virtual string Ipv6Address { get; set; }
+
+        /// <summary>
+        /// Optional. Optional IPv4 address to assign to the instance's network interface. If omitted, an ephemeral IP
+        /// may be assigned depending on the instance's network interface stack type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkIP")]
+        public virtual string NetworkIP { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -125760,6 +126467,20 @@ namespace Google.Apis.Compute.preview.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
         public virtual string StackType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional HA Controller params.</summary>
+    public class HaControllerParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies whether to automatically migrate all disks of an instance from zonal to regional before attempting
+        /// to create the HaController.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrateDisksToRegional")]
+        public virtual System.Nullable<bool> MigrateDisksToRegional { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -126155,6 +126876,21 @@ namespace Google.Apis.Compute.preview.Data
     /// <summary>Config for a zone that the HaController may use for running the VM instance.</summary>
     public class HaControllerZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The network interface configuration of a VM instance in this zone, keyed by the name of the
+        /// network interface. A VM network interface uses the nicN naming format, where N is a value between 0 and 7.
+        /// The default interface is nic0. Use this field to choose the internal IP addresses of the VM instance in this
+        /// zone instead of letting Compute Engine assign them automatically.               - Each key must be a name of
+        /// a network interface that exists on       the VM instance. Otherwise, the request fails.       - Network
+        /// interfaces that are omitted are assigned an ephemeral       internal IP address.       - Every zone must
+        /// configure the same network interfaces and the       same IP address families.       - For the zone that
+        /// currently holds the VM instance, this field       is populated automatically, and any addresses you specify
+        /// must       match the instance's current addresses.       - Only internal IP addresses are supported, and
+        /// this field can       only be set when the HA Controller is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceNetworkInterfaces")]
+        public virtual System.Collections.Generic.IDictionary<string, HaControllerInstanceNetworkInterface> InstanceNetworkInterfaces { get; set; }
+
         /// <summary>
         /// A set of node affinity configurations. Refer toConfiguring node affinity for more information. Overrides
         /// reservationAffinity.
@@ -140180,6 +140916,13 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Optional. The URL of the network attachment that this resource belongs
+        /// to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
         /// Type of network endpoints in this network endpoint group. Can be one ofGCE_VM_IP,
         /// GCE_VM_IP_PORT,NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT,INTERNET_IP_PORT,
         /// SERVERLESS,PRIVATE_SERVICE_CONNECT, GCE_VM_IP_PORTMAP.
@@ -140208,6 +140951,13 @@ namespace Google.Apis.Compute.preview.Data
         /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// Optional. The service class ID associated with this resource. Can only be used with network_attachment. It
+        /// is not possible to use on its own; however, network_attachment can be used without service_class_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClassId")]
+        public virtual string ServiceClassId { get; set; }
 
         /// <summary>Output only. [Output only] Number of network endpoints in the network endpoint group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
@@ -149680,6 +150430,13 @@ namespace Google.Apis.Compute.preview.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulShutdownTimestamp")]
         public virtual string GracefulShutdownTimestamp { get; set; }
 
+        /// <summary>
+        /// Output only. Protection tier for the workload which specifies the workload expectations in the event of
+        /// infrastructure failures at data center (e.g. power and/or cooling failures).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionTier")]
+        public virtual string ProtectionTier { get; set; }
+
         /// <summary>Time in future when the instance will be terminated inRFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminationTimestamp")]
         public virtual string TerminationTimestamp { get; set; }
@@ -152680,6 +153437,13 @@ namespace Google.Apis.Compute.preview.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptionNoticeDuration")]
         public virtual Duration PreemptionNoticeDuration { get; set; }
+
+        /// <summary>
+        /// Protection tier for the workload which specifies the workload expectations in the event of infrastructure
+        /// failures at data center (e.g. power and/or cooling failures).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionTier")]
+        public virtual string ProtectionTier { get; set; }
 
         /// <summary>Specifies the provisioning model of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
