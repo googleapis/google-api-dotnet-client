@@ -8052,7 +8052,8 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual HardwareKeyMetadata HardwareKeyMetadata { get; set; }
 
         /// <summary>
-        /// Metadata for a private key instance managed by an external key access control list service.
+        /// Metadata for a private key instance managed by an external key access control list service. The maximum size
+        /// of the KACLS data field is 8 KiB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kaclsKeyMetadata")]
         public virtual KaclsKeyMetadata KaclsKeyMetadata { get; set; }
@@ -8358,18 +8359,17 @@ namespace Google.Apis.Gmail.v1.Data
     }
 
     /// <summary>
-    /// Metadata for private keys managed by an external key access control list service. For details about managing key
-    /// access, see [Google Workspace CSE API Reference](https://developers.google.com/workspace/cse/reference).
+    /// Metadata for a cryptographic key managed by an external key access control list service. For details about
+    /// managing key access, see [Google Workspace CSE API
+    /// Reference](https://developers.google.com/workspace/cse/reference).
     /// </summary>
     public class KaclsKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Opaque data generated and used by the key access control list service. Maximum size: 8 KiB.
-        /// </summary>
+        /// <summary>Opaque data generated and used by the key access control list service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kaclsData")]
         public virtual string KaclsData { get; set; }
 
-        /// <summary>The URI of the key access control list service that manages the private key.</summary>
+        /// <summary>The URI of the key access control list service that manages the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kaclsUri")]
         public virtual string KaclsUri { get; set; }
 
