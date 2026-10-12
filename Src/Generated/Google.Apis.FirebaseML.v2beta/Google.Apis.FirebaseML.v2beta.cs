@@ -925,6 +925,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1Content Content { get; set; }
 
         /// <summary>
+        /// Output only. An optional opaque continuation token returned when `finish_reason` is `CONTINUATION`. Clients
+        /// can pass this token in a subsequent `GenerateContentRequest` to continue generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuationToken")]
+        public virtual string ContinuationToken { get; set; }
+
+        /// <summary>
         /// Output only. Describes the reason the model stopped generating tokens in more detail. This field is returned
         /// only when `finish_reason` is set.
         /// </summary>
@@ -1558,6 +1565,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> Contents { get; set; }
+
+        /// <summary>
+        /// Optional. An opaque continuation token used to resume generation from a previous `GenerateContent` or
+        /// `StreamGenerateContent` response that stopped with `finish_reason` set to `CONTINUATION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuationToken")]
+        public virtual string ContinuationToken { get; set; }
 
         /// <summary>Optional. Generation config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
@@ -3522,27 +3536,28 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Tool to support computer use.</summary>
+    /// <summary>A tool that enables the model to interact directly with a computer environment.</summary>
     public class GoogleCloudAiplatformV1beta1ToolComputerUse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Disabled safety policies for computer use.</summary>
+        /// <summary>Optional. A list of safety policies to disable for the computer use tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledSafetyPolicies")]
         public virtual System.Collections.Generic.IList<string> DisabledSafetyPolicies { get; set; }
 
-        /// <summary>Optional. Enables the prompt injection detection check on computer-use request.</summary>
+        /// <summary>
+        /// Optional. Whether to enable the prompt injection detection check on the computer use request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePromptInjectionDetection")]
         public virtual System.Nullable<bool> EnablePromptInjectionDetection { get; set; }
 
-        /// <summary>Required. The environment being operated.</summary>
+        /// <summary>Required. The target environment where the computer use tool operates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
         /// <summary>
-        /// Optional. By default, [predefined
+        /// Optional. A list of predefined functions to explicitly exclude from the model call. By default, [predefined
         /// functions](https://cloud.google.com/vertex-ai/generative-ai/docs/computer-use#supported-actions) are
-        /// included in the final model call. Some of them can be explicitly excluded from being automatically included.
-        /// This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the
-        /// definitions / instructions of predefined functions.
+        /// included. Excluding functions allows for a more restricted action space or custom definitions for predefined
+        /// functions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedPredefinedFunctions")]
         public virtual System.Collections.Generic.IList<string> ExcludedPredefinedFunctions { get; set; }
