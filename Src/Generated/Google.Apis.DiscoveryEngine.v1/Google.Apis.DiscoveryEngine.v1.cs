@@ -31907,6 +31907,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
 
+        /// <summary>
+        /// Optional. The full resource name of the Sobi task if the conversation was handled by a long-running agent
+        /// task. Format: projects/{project}/locations/{location}/tasks/{task_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskName")]
+        public virtual string TaskName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -39946,6 +39953,16 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The `model_id` a client must send when the end-user picks the "Auto" entry (the empty
+        /// `model_id`). Populated only for surfaces known to have no true "Auto" mode, where leaving the model unset
+        /// would fall back to a platform default rather than a backend-chosen model. Empty on every other surface,
+        /// where "Auto" is resolved server-side, and when none of the surface's ranked models is available. When set,
+        /// it is always one of the non-empty `model_id`s present in `resolved_models`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoModelId")]
+        public virtual string AutoModelId { get; set; }
+
         /// <summary>
         /// Output only. The `model_id` of the model that should be selected by default in the model selector when the
         /// end-user has not made an explicit choice. The value is always one of the `model_id`s present in
