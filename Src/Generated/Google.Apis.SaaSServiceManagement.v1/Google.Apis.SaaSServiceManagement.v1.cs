@@ -4283,13 +4283,13 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
 
     /// <summary>
     /// Blueprints are OCI Images that contain all of the artifacts needed to provision a unit. Metadata such as, type
-    /// of the engine used to actuate the blueprint (e.g. terraform, helm etc) and version will come from the image
+    /// of the engine used to actuate the blueprint (Terraform, for example) and version will come from the image
     /// manifest. If the hostname is omitted, it will be assumed to be the regional path to Artifact Registry (eg.
     /// us-east1-docker.pkg.dev).
     /// </summary>
     public class Blueprint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Type of the engine used to actuate the blueprint. e.g. terraform, helm etc.</summary>
+        /// <summary>Output only. Type of the engine used to actuate the blueprint. (Terraform, for example)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engine")]
         public virtual string Engine { get; set; }
 
@@ -4743,7 +4743,7 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
 
     /// <summary>
     /// A new version to be propagated and deployed to units. This includes pointers to packaged blueprints for
-    /// actuation (e.g Helm or Terraform configuration packages) via artifact registry.
+    /// actuation via Artifact Registry.
     /// </summary>
     public class Release : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5399,7 +5399,7 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual string Uid { get; set; }
 
         /// <summary>
-        /// Optional. CEL(https://github.com/google/cel-spec) formatted filter string against Unit. The filter will be
+        /// Optional. [CEL](https://github.com/google/cel-spec) formatted filter string against Unit. The filter will be
         /// applied to determine the eligible unit population. This filter can only reduce, but not expand the scope of
         /// the rollout.
         /// </summary>
@@ -5950,8 +5950,7 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
 
     /// <summary>
     /// A unit of deployment that has its lifecycle via a CRUD API using an actuation engine under the hood (e.g. based
-    /// on Terraform, Helm or a custom implementation provided by a service producer). A building block of a SaaS
-    /// Tenant.
+    /// on Terraform, or a custom implementation provided by a service producer). A building block of a SaaS Tenant.
     /// </summary>
     public class Unit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6067,8 +6066,8 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
 
         /// <summary>
         /// Optional. Output only. Set of key/value pairs corresponding to output variables from execution of actuation
-        /// templates. The variables are declared in actuation configs (e.g in helm chart or terraform) and the values
-        /// are fetched and returned by the actuation engine upon completion of execution.
+        /// templates. The variables are declared in actuation configs (in Terraform for example) and the values are
+        /// fetched and returned by the actuation engine upon completion of execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputVariables")]
         public virtual System.Collections.Generic.IList<UnitVariable> OutputVariables { get; set; }
@@ -6360,6 +6359,46 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultRelease")]
         public virtual string DefaultRelease { get; set; }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the resource was marked for deletion (deletion is an asynchronous
+        /// operation).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>
         /// Optional. Immutable. List of other unit kinds that this release will depend on. Dependencies will be
