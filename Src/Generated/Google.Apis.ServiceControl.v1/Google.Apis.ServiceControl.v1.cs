@@ -643,6 +643,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationInfo")]
         public virtual System.Collections.Generic.IList<AuthorizationInfo> AuthorizationInfo { get; set; }
 
+        /// <summary>Information set when the caller is an agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerAgent")]
+        public virtual CallerAgent CallerAgent { get; set; }
+
         /// <summary>
         /// Other service-specific data about the request, response, and other information associated with the current
         /// audited event.
@@ -937,6 +941,17 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual Resource ResourceAttributes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information set when the caller is an agent.</summary>
+    public class CallerAgent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of authority for the caller agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authority")]
+        public virtual string Authority { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
