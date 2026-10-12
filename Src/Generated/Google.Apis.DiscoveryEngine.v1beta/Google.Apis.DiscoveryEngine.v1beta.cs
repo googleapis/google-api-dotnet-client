@@ -49728,6 +49728,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
 
+        /// <summary>
+        /// Optional. The full resource name of the Sobi task if the conversation was handled by a long-running agent
+        /// task. Format: projects/{project}/locations/{location}/tasks/{task_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskName")]
+        public virtual string TaskName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
