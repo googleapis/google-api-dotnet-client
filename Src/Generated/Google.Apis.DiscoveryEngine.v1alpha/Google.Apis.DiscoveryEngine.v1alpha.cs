@@ -10597,6 +10597,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 this.service = service;
                                 Files = new FilesResource(service);
                                 Operations = new OperationsResource(service);
+                                ToolCalls = new ToolCallsResource(service);
                             }
 
                             /// <summary>Gets the Files resource.</summary>
@@ -10745,6 +10746,94 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                             DefaultValue = null,
                                             Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+/operations/[^/]+$",
                                         });
+                                    }
+                                }
+                            }
+
+                            /// <summary>Gets the ToolCalls resource.</summary>
+                            public virtual ToolCallsResource ToolCalls { get; }
+
+                            /// <summary>The "toolCalls" collection of methods.</summary>
+                            public class ToolCallsResource
+                            {
+                                private const string Resource = "toolCalls";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public ToolCallsResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                    Operations = new OperationsResource(service);
+                                }
+
+                                /// <summary>Gets the Operations resource.</summary>
+                                public virtual OperationsResource Operations { get; }
+
+                                /// <summary>The "operations" collection of methods.</summary>
+                                public class OperationsResource
+                                {
+                                    private const string Resource = "operations";
+
+                                    /// <summary>The service which this resource belongs to.</summary>
+                                    private readonly Google.Apis.Services.IClientService service;
+
+                                    /// <summary>Constructs a new resource.</summary>
+                                    public OperationsResource(Google.Apis.Services.IClientService service)
+                                    {
+                                        this.service = service;
+                                    }
+
+                                    /// <summary>
+                                    /// Gets the latest state of a long-running operation. Clients can use this method
+                                    /// to poll the operation result at intervals as recommended by the API service.
+                                    /// </summary>
+                                    /// <param name="name">The name of the operation resource.</param>
+                                    public virtual GetRequest Get(string name)
+                                    {
+                                        return new GetRequest(this.service, name);
+                                    }
+
+                                    /// <summary>
+                                    /// Gets the latest state of a long-running operation. Clients can use this method
+                                    /// to poll the operation result at intervals as recommended by the API service.
+                                    /// </summary>
+                                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                                    {
+                                        /// <summary>Constructs a new Get request.</summary>
+                                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                        {
+                                            Name = name;
+                                            InitParameters();
+                                        }
+
+                                        /// <summary>The name of the operation resource.</summary>
+                                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                        public virtual string Name { get; private set; }
+
+                                        /// <summary>Gets the method name.</summary>
+                                        public override string MethodName => "get";
+
+                                        /// <summary>Gets the HTTP method.</summary>
+                                        public override string HttpMethod => "GET";
+
+                                        /// <summary>Gets the REST path.</summary>
+                                        public override string RestPath => "v1alpha/{+name}";
+
+                                        /// <summary>Initializes Get parameter list.</summary>
+                                        protected override void InitParameters()
+                                        {
+                                            base.InitParameters();
+                                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                            {
+                                                Name = "name",
+                                                IsRequired = true,
+                                                ParameterType = "path",
+                                                DefaultValue = null,
+                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+/toolCalls/[^/]+/operations/[^/]+$",
+                                            });
+                                        }
                                     }
                                 }
                             }
@@ -49657,6 +49746,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
 
+        /// <summary>
+        /// Optional. The full resource name of the Sobi task if the conversation was handled by a long-running agent
+        /// task. Format: projects/{project}/locations/{location}/tasks/{task_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskName")]
+        public virtual string TaskName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -61293,6 +61389,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaWidgetConfigUiSettingsModelConfigInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The `model_id` a client must send when the end-user picks the "Auto" entry (the empty
+        /// `model_id`). Populated only for surfaces known to have no true "Auto" mode, where leaving the model unset
+        /// would fall back to a platform default rather than a backend-chosen model. Empty on every other surface,
+        /// where "Auto" is resolved server-side, and when none of the surface's ranked models is available. When set,
+        /// it is always one of the non-empty `model_id`s present in `resolved_models`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoModelId")]
+        public virtual string AutoModelId { get; set; }
+
         /// <summary>
         /// Output only. The `model_id` of the model that should be selected by default in the model selector when the
         /// end-user has not made an explicit choice. The value is always one of the `model_id`s present in
