@@ -8068,8 +8068,7 @@ namespace Google.Apis.Dataform.v1.Data
     public class InvocationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Configuration for end user authentication. Note that this should not be set when `service_account`
-        /// is used.
+        /// Optional. Configuration for end user authentication. Do not set if `service_account` is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endUserAuthConfig")]
         public virtual EndUserAuthenticationConfig EndUserAuthConfig { get; set; }
