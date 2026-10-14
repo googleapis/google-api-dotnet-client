@@ -3962,6 +3962,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for autoscaling.</summary>
+    public class AutoScalingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy for the MIG autoscaler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
+
+        /// <summary>Optional list of schedules for the MIG autoscaler. If not set, no schedules are created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedules")]
+        public virtual System.Collections.Generic.IList<Schedule> Schedules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Message describing the user-specified automated backup policy. All fields in the automated backup policy are
     /// optional. Defaults for each field are provided if they are not set.
@@ -5244,6 +5259,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CPU utilization policy for the autoscaler.</summary>
+    public class CpuUtilization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Target CPU utilization as a float between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilizationTarget")]
+        public virtual System.Nullable<float> UtilizationTarget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Options for exporting data in CSV format.</summary>
     public class CsvExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5913,8 +5939,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual PscInstanceInfo PscInstanceInfo { get; set; }
 
         /// <summary>
-        /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
-        /// This is the connection endpoint for an end-user application.
+        /// Output only. The public IP address for the Instance. This is available ONLY when `enable_public_ip` is set
+        /// or when you have upgraded from an Express Instance that has public DNS enabled. This field is not available
+        /// for Express Instances. This is the connection endpoint for an end-user application.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
         public virtual string PublicIpAddress { get; set; }
@@ -6616,6 +6643,32 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Policy for the autoscaler.</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The period of time in seconds after a new node is created before the autoscaler will incorporate its
+        /// resource usage (e.g. CPU utilization) into the autoscaling recommendation algorithm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coolDownPeriodSec")]
+        public virtual System.Nullable<long> CoolDownPeriodSec { get; set; }
+
+        /// <summary>CPU utilization policy for the autoscaler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
+        public virtual CpuUtilization CpuUtilization { get; set; }
+
+        /// <summary>If true, autoscaling is enabled for the instance. If not set, the default value is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Maximum number of nodes for the autoscaler.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]
+        public virtual System.Nullable<long> MaxNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration for the primary cluster. It has the list of clusters that are replicating from this cluster. This
     /// should be set if and only if the cluster is of type PRIMARY.
@@ -6944,6 +6997,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     /// <summary>Configuration for a read pool instance.</summary>
     public class ReadPoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Autoscaling configuration for the read pool instance. If not set, the read pool instance will not
+        /// be autoscaled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoScalingConfig")]
+        public virtual AutoScalingConfig AutoScalingConfig { get; set; }
+
         /// <summary>Read capacity, i.e. number of nodes in a read pool instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -7064,6 +7124,47 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Required. ID of the requesting object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
         public virtual string ClusterId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A schedule for the autoscaler.</summary>
+    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cron expression for the triggering the schedule. See
+        /// https://cloud.google.com/compute/docs/autoscaler/scaling-schedules#cron_expressions for the syntax.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cronExpression")]
+        public virtual string CronExpression { get; set; }
+
+        /// <summary>Description of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>If true, the schedule is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Duration of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationSec")]
+        public virtual System.Nullable<long> DurationSec { get; set; }
+
+        /// <summary>Minimum number of nodes in while the schedule is active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
+        public virtual System.Nullable<long> MinNodeCount { get; set; }
+
+        /// <summary>Name of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The location-based IANA time zone for interpreting the schedule's start time. If no time zone is provided,
+        /// UTC is used by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
