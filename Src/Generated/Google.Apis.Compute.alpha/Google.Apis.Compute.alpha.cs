@@ -98,7 +98,6 @@ namespace Google.Apis.Compute.alpha
             NodeGroups = new NodeGroupsResource(this);
             NodeTemplates = new NodeTemplatesResource(this);
             NodeTypes = new NodeTypesResource(this);
-            OrgVmExtensionPolicies = new OrgVmExtensionPoliciesResource(this);
             OrganizationGlobalVmExtensionPolicies = new OrganizationGlobalVmExtensionPoliciesResource(this);
             OrganizationRolloutPlans = new OrganizationRolloutPlansResource(this);
             OrganizationRollouts = new OrganizationRolloutsResource(this);
@@ -457,9 +456,6 @@ namespace Google.Apis.Compute.alpha
 
         /// <summary>Gets the NodeTypes resource.</summary>
         public virtual NodeTypesResource NodeTypes { get; }
-
-        /// <summary>Gets the OrgVmExtensionPolicies resource.</summary>
-        public virtual OrgVmExtensionPoliciesResource OrgVmExtensionPolicies { get; }
 
         /// <summary>Gets the OrganizationGlobalVmExtensionPolicies resource.</summary>
         public virtual OrganizationGlobalVmExtensionPoliciesResource OrganizationGlobalVmExtensionPolicies { get; }
@@ -59039,114 +59035,6 @@ namespace Google.Apis.Compute.alpha
         }
     }
 
-    /// <summary>The "orgVmExtensionPolicies" collection of methods.</summary>
-    public class OrgVmExtensionPoliciesResource
-    {
-        private const string Resource = "orgVmExtensionPolicies";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public OrgVmExtensionPoliciesResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Deletes a specified zone VM extension policy within an organization.</summary>
-        /// <param name="organization">Organization ID for this request.</param>
-        /// <param name="zone">Name of the zone for this request.</param>
-        /// <param name="vmExtensionPolicy">Name of the zone VM extension policy to delete.</param>
-        public virtual DeleteRequest Delete(string organization, string zone, string vmExtensionPolicy)
-        {
-            return new DeleteRequest(this.service, organization, zone, vmExtensionPolicy);
-        }
-
-        /// <summary>Deletes a specified zone VM extension policy within an organization.</summary>
-        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
-        {
-            /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string organization, string zone, string vmExtensionPolicy) : base(service)
-            {
-                Organization = organization;
-                Zone = zone;
-                VmExtensionPolicy = vmExtensionPolicy;
-                InitParameters();
-            }
-
-            /// <summary>Organization ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Organization { get; private set; }
-
-            /// <summary>Name of the zone for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>Name of the zone VM extension policy to delete.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("vmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string VmExtensionPolicy { get; private set; }
-
-            /// <summary>
-            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
-            /// request, the server will know to ignore the request if it has already been completed.  For example,
-            /// consider a situation where you make an initial request and the request times out. If you make the
-            /// request again with the same request ID, the server can check if original operation with the same request
-            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
-            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
-            /// is not supported (00000000-0000-0000-0000-000000000000).
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestId { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "delete";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "DELETE";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{+organization}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}";
-
-            /// <summary>Initializes Delete parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "organization",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"organizations/[0-9]{0,20}",
-                });
-                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "zone",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                });
-                RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "vmExtensionPolicy",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "requestId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-    }
-
     /// <summary>The "organizationGlobalVmExtensionPolicies" collection of methods.</summary>
     public class OrganizationGlobalVmExtensionPoliciesResource
     {
@@ -62711,6 +62599,99 @@ namespace Google.Apis.Compute.alpha
         public OrganizationZoneVmExtensionPoliciesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+        }
+
+        /// <summary>Deletes a specified zone VM extension policy within an organization.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="vmExtensionPolicy">Name of the zone VM extension policy to delete.</param>
+        public virtual DeleteRequest Delete(string organization, string zone, string vmExtensionPolicy)
+        {
+            return new DeleteRequest(this.service, organization, zone, vmExtensionPolicy);
+        }
+
+        /// <summary>Deletes a specified zone VM extension policy within an organization.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string organization, string zone, string vmExtensionPolicy) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                VmExtensionPolicy = vmExtensionPolicy;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the zone VM extension policy to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "vmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
 
         /// <summary>Retrieves details of a specific zone VM extension policy within an organization.</summary>
