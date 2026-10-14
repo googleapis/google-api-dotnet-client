@@ -4708,8 +4708,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. The edition of the cluster this backup was created from. Any restored cluster created from this
-        /// backup will have the same edition.
+        /// Output only. Deprecated: Use `express_config` instead. Output only. The edition of the cluster this backup
+        /// was created from. Any restored cluster created from this backup will have the same edition.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
@@ -4776,6 +4776,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpiryTimeRaw);
             set => ExpiryTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. The Express configuration of the cluster this backup was created from. Any restored cluster
+        /// created from this backup will have the same Express configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressConfig")]
+        public virtual ExpressConfig ExpressConfig { get; set; }
 
         /// <summary>Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -5353,7 +5360,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Edition of the cluster. If left unspecified, the cluster behaves as `EDITION_ALLOYDB`.
+        /// Optional. Deprecated: Use `express_config` instead. Edition of the cluster. If left unspecified, the cluster
+        /// behaves as `EDITION_ALLOYDB`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
@@ -6761,8 +6769,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual PscInstanceInfo PscInstanceInfo { get; set; }
 
         /// <summary>
-        /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
-        /// This is the connection endpoint for an end-user application.
+        /// Output only. The public IP address for the Instance. This is available ONLY when `enable_public_ip` is set
+        /// or when you have upgraded from an Express Instance that has public DNS enabled. This field is not available
+        /// for Express Instances. This is the connection endpoint for an end-user application.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
         public virtual string PublicIpAddress { get; set; }
@@ -7888,8 +7897,8 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     public class ReadPoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Autoscaling configuration for the read pool instance. If not set, the read pool instance will not be
-        /// autoscaled.
+        /// Optional. Autoscaling configuration for the read pool instance. If not set, the read pool instance will not
+        /// be autoscaled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoScalingConfig")]
         public virtual AutoScalingConfig AutoScalingConfig { get; set; }
