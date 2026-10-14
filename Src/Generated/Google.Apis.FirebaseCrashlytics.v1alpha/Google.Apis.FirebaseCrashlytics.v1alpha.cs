@@ -2350,6 +2350,21 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Developer-provided custom key-value pair metadata.</summary>
+    public class CustomAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Custom attribute key name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Output only. Custom attribute value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Response message for the DeleteUserCrashReports method. All crash reports associated with the specified user
     /// will be deleted typically within 24 hours of receiving the crash report.
@@ -3515,6 +3530,10 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha.Data
         /// <summary>Browser metrics group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browser")]
         public virtual Browser Browser { get; set; }
+
+        /// <summary>Custom attribute metrics group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customAttribute")]
+        public virtual CustomAttribute CustomAttribute { get; set; }
 
         /// <summary>Device metrics group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
