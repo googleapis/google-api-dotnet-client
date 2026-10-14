@@ -3379,6 +3379,83 @@ namespace Google.Apis.Dataform.v1beta1
                         }
                     }
 
+                    /// <summary>Fetches a Workspace's history of commits.</summary>
+                    /// <param name="name">Required. The workspace's name.</param>
+                    public virtual FetchHistoryRequest FetchHistory(string name)
+                    {
+                        return new FetchHistoryRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetches a Workspace's history of commits.</summary>
+                    public class FetchHistoryRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.FetchWorkspaceHistoryResponse>
+                    {
+                        /// <summary>Constructs a new FetchHistory request.</summary>
+                        public FetchHistoryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The workspace's name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of commits to return. The server may return fewer items than
+                        /// requested. If unspecified, the server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Page token received from a previous `FetchWorkspaceHistory` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `FetchWorkspaceHistory`, with the exception of `page_size`, must match the call that
+                        /// provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchHistory";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:fetchHistory";
+
+                        /// <summary>Initializes FetchHistory parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/workspaces/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Fetches a single Workspace.</summary>
                     /// <param name="name">Required. The workspace's name.</param>
                     public virtual GetRequest Get(string name)
@@ -8131,6 +8208,28 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`FetchWorkspaceHistory` response message.</summary>
+    public class FetchWorkspaceHistoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of commit logs, ordered by 'git log' default order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commits")]
+        public virtual System.Collections.Generic.IList<CommitLogEntry> Commits { get; set; }
+
+        /// <summary>
+        /// Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Whether this response reaches the shallow boundary of the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reachesShallowBoundary")]
+        public virtual System.Nullable<bool> ReachesShallowBoundary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a single file operation to the repository.</summary>
     public class FileOperation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8380,6 +8479,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
     public class GitRemoteSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Resource name for the Account Connector used for personal authentication. Must be in the format
+        /// `projects/*/locations/*/accountConnectors/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountConnector")]
+        public virtual string AccountConnector { get; set; }
+
+        /// <summary>
         /// Optional. The name of the Secret Manager secret version to use as an authentication token for Git
         /// operations. Must be in the format `projects/*/secrets/*/versions/*`.
         /// </summary>
@@ -8612,8 +8718,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
     public class InvocationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Configuration for end user authentication. Note that this should not be set when `service_account`
-        /// is used.
+        /// Optional. Configuration for end user authentication. Do not set if `service_account` is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endUserAuthConfig")]
         public virtual EndUserAuthenticationConfig EndUserAuthConfig { get; set; }
