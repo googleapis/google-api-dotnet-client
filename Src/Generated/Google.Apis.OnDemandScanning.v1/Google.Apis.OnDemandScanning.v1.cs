@@ -2665,9 +2665,28 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An attribute attached to a layer by a plugin.</summary>
+    public class LayerAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the plugin that generated this attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plugin")]
+        public virtual string Plugin { get; set; }
+
+        /// <summary>The value of the attribute, with a meaning defined by the plugin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about the layer a package was found in.</summary>
     public class LayerDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Attributes attached to this layer by plugins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<LayerAttribute> Attributes { get; set; }
+
         /// <summary>The base images the layer is found within.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseImages")]
         public virtual System.Collections.Generic.IList<BaseImage> BaseImages { get; set; }
