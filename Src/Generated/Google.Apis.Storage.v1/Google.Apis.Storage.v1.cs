@@ -37,7 +37,6 @@ namespace Google.Apis.Storage.v1
             AnywhereCaches = new AnywhereCachesResource(this);
             BucketAccessControls = new BucketAccessControlsResource(this);
             Buckets = new BucketsResource(this);
-            Channels = new ChannelsResource(this);
             DefaultObjectAccessControls = new DefaultObjectAccessControlsResource(this);
             Folders = new FoldersResource(this);
             ManagedFolders = new ManagedFoldersResource(this);
@@ -115,9 +114,6 @@ namespace Google.Apis.Storage.v1
 
         /// <summary>Gets the Buckets resource.</summary>
         public virtual BucketsResource Buckets { get; }
-
-        /// <summary>Gets the Channels resource.</summary>
-        public virtual ChannelsResource Channels { get; }
 
         /// <summary>Gets the DefaultObjectAccessControls resource.</summary>
         public virtual DefaultObjectAccessControlsResource DefaultObjectAccessControls { get; }
@@ -2663,60 +2659,6 @@ namespace Google.Apis.Storage.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
-            }
-        }
-    }
-
-    /// <summary>The "channels" collection of methods.</summary>
-    public class ChannelsResource
-    {
-        private const string Resource = "channels";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public ChannelsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Stop watching resources through this channel</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual StopRequest Stop(Google.Apis.Storage.v1.Data.Channel body)
-        {
-            return new StopRequest(this.service, body);
-        }
-
-        /// <summary>Stop watching resources through this channel</summary>
-        public class StopRequest : StorageBaseServiceRequest<string>
-        {
-            /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Channel body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Storage.v1.Data.Channel Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "stop";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "channels/stop";
-
-            /// <summary>Initializes Stop parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
             }
         }
     }
@@ -11635,63 +11577,6 @@ namespace Google.Apis.Storage.v1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(SoftDeletedBeforeTimeRaw);
             set => SoftDeletedBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An notification channel used to watch for resource changes.</summary>
-    public class Channel : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The address where notifications are delivered for this channel.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; }
-
-        /// <summary>
-        /// Date and time of notification channel expiration, expressed as a Unix timestamp, in milliseconds. Optional.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expiration")]
-        public virtual System.Nullable<long> Expiration { get; set; }
-
-        /// <summary>A UUID or similar unique string that identifies this channel.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// Identifies this as a notification channel used to watch for changes to a resource, which is "api#channel".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>Additional parameters controlling delivery channel behavior. Optional.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("params")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
-
-        /// <summary>A Boolean value to indicate whether payload is wanted. Optional.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Nullable<bool> Payload { get; set; }
-
-        /// <summary>
-        /// An opaque ID that identifies the resource being watched on this channel. Stable across different API
-        /// versions.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; }
-
-        /// <summary>A version-specific identifier for the watched resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; }
-
-        /// <summary>
-        /// An arbitrary string delivered to the target address with each notification delivered over this channel.
-        /// Optional.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; }
-
-        /// <summary>The type of delivery mechanism used for this channel.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
