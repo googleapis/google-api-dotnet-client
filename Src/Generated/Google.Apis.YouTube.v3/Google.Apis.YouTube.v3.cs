@@ -4632,14 +4632,14 @@ namespace Google.Apis.YouTube.v3
             this.service = service;
         }
 
-        /// <summary>Deletes a chat message.</summary>
+        /// <summary>Deletes a chat message. A call to this method has a quota cost of 20 units.</summary>
         /// <param name="id"><c>null</c></param>
         public virtual DeleteRequest Delete(string id)
         {
             return new DeleteRequest(this.service, id);
         }
 
-        /// <summary>Deletes a chat message.</summary>
+        /// <summary>Deletes a chat message. A call to this method has a quota cost of 20 units.</summary>
         public class DeleteRequest : YouTubeBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4676,18 +4676,22 @@ namespace Google.Apis.YouTube.v3
             }
         }
 
-        /// <summary>Inserts a new resource into this collection.</summary>
+        /// <summary>
+        /// Inserts a new resource into this collection. A call to this method has a quota cost of 20 units.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="part">
-        /// The *part* parameter serves two purposes. It identifies the properties that the write operation will set as
-        /// well as the properties that the API response will include. Set the parameter value to snippet.
+        /// The `part` parameter serves two purposes. It identifies the properties that the write operation sets as well
+        /// as the properties that the API response includes. Set the parameter value to `snippet`.
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.LiveChatMessage body, Google.Apis.Util.Repeatable<string> part)
         {
             return new InsertRequest(this.service, body, part);
         }
 
-        /// <summary>Inserts a new resource into this collection.</summary>
+        /// <summary>
+        /// Inserts a new resource into this collection. A call to this method has a quota cost of 20 units.
+        /// </summary>
         public class InsertRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.LiveChatMessage>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4699,8 +4703,8 @@ namespace Google.Apis.YouTube.v3
             }
 
             /// <summary>
-            /// The *part* parameter serves two purposes. It identifies the properties that the write operation will set
-            /// as well as the properties that the API response will include. Set the parameter value to snippet.
+            /// The `part` parameter serves two purposes. It identifies the properties that the write operation sets as
+            /// well as the properties that the API response includes. Set the parameter value to `snippet`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
@@ -4735,18 +4739,22 @@ namespace Google.Apis.YouTube.v3
             }
         }
 
-        /// <summary>Retrieves a list of resources, possibly filtered.</summary>
-        /// <param name="liveChatId">The id of the live chat for which comments should be returned.</param>
+        /// <summary>
+        /// Retrieves a list of resources, possibly filtered. A call to this method has a quota cost of 5 units.
+        /// </summary>
+        /// <param name="liveChatId">The ID of the live chat for which messages should be returned.</param>
         /// <param name="part">
-        /// The *part* parameter specifies the liveChatComment resource parts that the API response will include.
-        /// Supported values are id, snippet, and authorDetails.
+        /// The `part` parameter specifies the `liveChatMessage` resource parts that the API response includes.
+        /// Supported values are `id`, `snippet`, and `authorDetails`.
         /// </param>
         public virtual ListRequest List(string liveChatId, Google.Apis.Util.Repeatable<string> part)
         {
             return new ListRequest(this.service, liveChatId, part);
         }
 
-        /// <summary>Retrieves a list of resources, possibly filtered.</summary>
+        /// <summary>
+        /// Retrieves a list of resources, possibly filtered. A call to this method has a quota cost of 5 units.
+        /// </summary>
         public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.LiveChatMessageListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4757,13 +4765,13 @@ namespace Google.Apis.YouTube.v3
                 InitParameters();
             }
 
-            /// <summary>The id of the live chat for which comments should be returned.</summary>
+            /// <summary>The ID of the live chat for which messages should be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("liveChatId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LiveChatId { get; private set; }
 
             /// <summary>
-            /// The *part* parameter specifies the liveChatComment resource parts that the API response will include.
-            /// Supported values are id, snippet, and authorDetails.
+            /// The `part` parameter specifies the `liveChatMessage` resource parts that the API response includes.
+            /// Supported values are `id`, `snippet`, and `authorDetails`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
@@ -4773,15 +4781,15 @@ namespace Google.Apis.YouTube.v3
             public virtual string Hl { get; set; }
 
             /// <summary>
-            /// The *maxResults* parameter specifies the maximum number of items that should be returned in the result
+            /// The `maxResults` parameter specifies the maximum number of items that should be returned in the result
             /// set. Not used in the streaming RPC.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>
-            /// The *pageToken* parameter identifies a specific page in the result set that should be returned. In an
-            /// API response, the nextPageToken property identify other pages that could be retrieved.
+            /// The `pageToken` parameter identifies a specific page in the result set that should be returned. In an
+            /// API response, the `nextPageToken` property identifies other pages that could be retrieved.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -4854,13 +4862,13 @@ namespace Google.Apis.YouTube.v3
             }
         }
 
-        /// <summary>Transition a durable chat event.</summary>
+        /// <summary>Transitions a durable chat event. A call to this method has a quota cost of 20 units.</summary>
         public virtual TransitionRequest Transition()
         {
             return new TransitionRequest(this.service);
         }
 
-        /// <summary>Transition a durable chat event.</summary>
+        /// <summary>Transitions a durable chat event. A call to this method has a quota cost of 20 units.</summary>
         public class TransitionRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.LiveChatMessage>
         {
             /// <summary>Constructs a new Transition request.</summary>
@@ -4869,7 +4877,7 @@ namespace Google.Apis.YouTube.v3
                 InitParameters();
             }
 
-            /// <summary>The ID that uniquely identify the chat message event to transition.</summary>
+            /// <summary>The ID that uniquely identifies the chat message event to transition.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Id { get; set; }
 
@@ -10954,13 +10962,19 @@ namespace Google.Apis.YouTube.v3
                         this.service = service;
                     }
 
-                    /// <summary>Allows a user to load live chat through a server-streamed RPC.</summary>
+                    /// <summary>
+                    /// Allows a user to load live chat through a server-streamed RPC. A call to this method has a quota
+                    /// cost of 5 units.
+                    /// </summary>
                     public virtual StreamRequest Stream()
                     {
                         return new StreamRequest(this.service);
                     }
 
-                    /// <summary>Allows a user to load live chat through a server-streamed RPC.</summary>
+                    /// <summary>
+                    /// Allows a user to load live chat through a server-streamed RPC. A call to this method has a quota
+                    /// cost of 5 units.
+                    /// </summary>
                     public class StreamRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.LiveChatMessageListResponse>
                     {
                         /// <summary>Constructs a new Stream request.</summary>
@@ -10975,28 +10989,28 @@ namespace Google.Apis.YouTube.v3
                         [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Hl { get; set; }
 
-                        /// <summary>The id of the live chat for which comments should be returned.</summary>
+                        /// <summary>The ID of the live chat for which messages should be returned.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("liveChatId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LiveChatId { get; set; }
 
                         /// <summary>
-                        /// The *maxResults* parameter specifies the maximum number of items that should be returned in
+                        /// The `maxResults` parameter specifies the maximum number of items that should be returned in
                         /// the result set. Not used in the streaming RPC.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<long> MaxResults { get; set; }
 
                         /// <summary>
-                        /// The *pageToken* parameter identifies a specific page in the result set that should be
-                        /// returned. In an API response, the nextPageToken property identify other pages that could be
-                        /// retrieved.
+                        /// The `pageToken` parameter identifies a specific page in the result set that should be
+                        /// returned. In an API response, the `nextPageToken` property identifies other pages that could
+                        /// be retrieved.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
                         /// <summary>
-                        /// The *part* parameter specifies the liveChatComment resource parts that the API response will
-                        /// include. Supported values are id, snippet, and authorDetails.
+                        /// The `part` parameter specifies the `liveChatMessage` resource parts that the API response
+                        /// includes. Supported values are `id`, `snippet`, and `authorDetails`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
@@ -14408,7 +14422,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details about the gift event, this is only set if the type is 'giftEvent'.</summary>
+    /// <summary>Details about the gift event, this is only set if the type is `giftEvent`.</summary>
     public class LiveChatGiftDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alternative text to be used for accessibility.</summary>
@@ -14451,7 +14465,7 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>
         /// The ID of the membership gifting message that is related to this gift membership. This ID will always refer
-        /// to a message whose type is 'membershipGiftingEvent'.
+        /// to a message whose type is `membershipGiftingEvent`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedMembershipGiftingMessageId")]
         public virtual string AssociatedMembershipGiftingMessageId { get; set; }
@@ -14611,7 +14625,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual System.Collections.Generic.IList<LiveChatMessage> Items { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "youtube#liveChatMessageListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string `"youtube#liveChatMessageListResponse"`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14651,7 +14665,7 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
         public virtual TokenPagination TokenPagination { get; set; }
 
-        /// <summary>The visitorId identifies the visitor.</summary>
+        /// <summary>Identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
         public virtual string VisitorId { get; set; }
     }
@@ -14688,17 +14702,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayMessage")]
         public virtual string DisplayMessage { get; set; }
 
-        /// <summary>Details about the funding event, this is only set if the type is 'fanFundingEvent'.</summary>
+        /// <summary>Details about the funding event, this is only set if the type is `fanFundingEvent`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fanFundingEventDetails")]
         public virtual LiveChatFanFundingEventDetails FanFundingEventDetails { get; set; }
 
-        /// <summary>Details about the gift event, this is only set if the type is 'giftEvent'.</summary>
+        /// <summary>Details about the gift event, this is only set if the type is `giftEvent`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("giftDetails")]
         public virtual LiveChatGiftDetails GiftDetails { get; set; }
 
         /// <summary>
         /// Details about the Gift Membership Received event, this is only set if the type is
-        /// 'giftMembershipReceivedEvent'.
+        /// `giftMembershipReceivedEvent`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("giftMembershipReceivedDetails")]
         public virtual LiveChatGiftMembershipReceivedDetails GiftMembershipReceivedDetails { get; set; }
@@ -14711,13 +14725,13 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string LiveChatId { get; set; }
 
         /// <summary>
-        /// Details about the Member Milestone Chat event, this is only set if the type is 'memberMilestoneChatEvent'.
+        /// Details about the Member Milestone Chat event, this is only set if the type is `memberMilestoneChatEvent`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberMilestoneChatDetails")]
         public virtual LiveChatMemberMilestoneChatDetails MemberMilestoneChatDetails { get; set; }
 
         /// <summary>
-        /// Details about the Membership Gifting event, this is only set if the type is 'membershipGiftingEvent'.
+        /// Details about the Membership Gifting event, this is only set if the type is `membershipGiftingEvent`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipGiftingDetails")]
         public virtual LiveChatMembershipGiftingDetails MembershipGiftingDetails { get; set; }
@@ -14729,13 +14743,13 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual LiveChatMessageRetractedDetails MessageRetractedDetails { get; set; }
 
         /// <summary>
-        /// Details about the New Member Announcement event, this is only set if the type is 'newSponsorEvent'. Please
-        /// note that "member" is the new term for "sponsor".
+        /// Details about the New Member Announcement event, this is only set if the type is `newSponsorEvent`. The term
+        /// "member" replaces "sponsor".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newSponsorDetails")]
         public virtual LiveChatNewSponsorDetails NewSponsorDetails { get; set; }
 
-        /// <summary>Details about the poll event, this is only set if the type is 'pollEvent'.</summary>
+        /// <summary>Details about the poll event, this is only set if the type is `pollEvent`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pollDetails")]
         public virtual LiveChatPollDetails PollDetails { get; set; }
 
@@ -14760,17 +14774,17 @@ namespace Google.Apis.YouTube.v3.Data
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>Details about the Super Chat event, this is only set if the type is 'superChatEvent'.</summary>
+        /// <summary>Details about the Super Chat event, this is only set if the type is `superChatEvent`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superChatDetails")]
         public virtual LiveChatSuperChatDetails SuperChatDetails { get; set; }
 
         /// <summary>
-        /// Details about the Super Sticker event, this is only set if the type is 'superStickerEvent'.
+        /// Details about the Super Sticker event, this is only set if the type is `superStickerEvent`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superStickerDetails")]
         public virtual LiveChatSuperStickerDetails SuperStickerDetails { get; set; }
 
-        /// <summary>Details about the text message, this is only set if the type is 'textMessageEvent'.</summary>
+        /// <summary>Details about the text message, this is only set if the type is `textMessageEvent`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textMessageDetails")]
         public virtual LiveChatTextMessageDetails TextMessageDetails { get; set; }
 
@@ -14945,7 +14959,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string Currency { get; set; }
 
         /// <summary>
-        /// The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1.
+        /// The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is `1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual System.Nullable<long> Tier { get; set; }
@@ -14977,7 +14991,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual SuperStickerMetadata SuperStickerMetadata { get; set; }
 
         /// <summary>
-        /// The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is 1.
+        /// The tier in which the amount belongs. Lower amounts belong to lower tiers. The lowest tier is `1`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual System.Nullable<long> Tier { get; set; }
@@ -14998,7 +15012,7 @@ namespace Google.Apis.YouTube.v3.Data
 
     public class LiveChatUserBannedMessageDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The duration of the ban. This property is only present if the banType is temporary.</summary>
+        /// <summary>The duration of the ban. This property is only present if the `banType` is `temporary`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("banDurationSeconds")]
         public virtual System.Nullable<ulong> BanDurationSeconds { get; set; }
 
@@ -18021,8 +18035,8 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual System.Nullable<bool> Embeddable { get; set; }
 
         /// <summary>
-        /// This value explains why a video failed to upload. This property is only present if the uploadStatus property
-        /// indicates that the upload failed.
+        /// This value explains why a video failed to upload. This property is only present if the `uploadStatus`
+        /// property indicates that the upload failed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
         public virtual string FailureReason { get; set; }
@@ -18034,7 +18048,13 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("madeForKids")]
         public virtual System.Nullable<bool> MadeForKids { get; set; }
 
-        /// <summary>The video's privacy status.</summary>
+        /// <summary>
+        /// The video's privacy status. In a `videos.insert` request, if you don't specify a value for this property,
+        /// the uploaded video's privacy status defaults to `public`. Certain uploads might default to `private` based
+        /// on creator account settings, as explained in the [YouTube Help
+        /// Center](https://support.google.com/youtube/answer/157177). Videos uploaded from unverified API projects are
+        /// not restricted to private viewing mode.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
         public virtual string PrivacyStatus { get; set; }
 
@@ -18072,7 +18092,7 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>
         /// This value explains why YouTube rejected an uploaded video. This property is only present if the
-        /// uploadStatus property indicates that the upload was rejected.
+        /// `uploadStatus` property indicates that the upload was rejected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rejectionReason")]
         public virtual string RejectionReason { get; set; }
