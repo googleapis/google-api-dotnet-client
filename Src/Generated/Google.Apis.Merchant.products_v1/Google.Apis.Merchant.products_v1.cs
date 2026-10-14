@@ -2587,7 +2587,7 @@ namespace Google.Apis.Merchant.products_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("virtualModelLink")]
         public virtual string VirtualModelLink { get; set; }
 
-        /// <summary>The [warranty](https://support.google.com/merchants/answer/15957626) of the product.</summary>
+        /// <summary>The [`warranty`](https://support.google.com/merchants/answer/18562485) of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warranty")]
         public virtual Warranty Warranty { get; set; }
 
@@ -3608,7 +3608,7 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The warranty of the vehicle.</summary>
+    /// <summary>The warranty of the product.</summary>
     public class Warranty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
