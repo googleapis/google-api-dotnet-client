@@ -24954,6 +24954,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("disableInterimInputTranscripts")]
+        public virtual System.Nullable<bool> DisableInterimInputTranscripts { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("disableNoSpeechRecognizedEvent")]
         public virtual System.Nullable<bool> DisableNoSpeechRecognizedEvent { get; set; }
 
@@ -27216,6 +27219,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("disableInterimInputTranscripts")]
+        public virtual System.Nullable<bool> DisableInterimInputTranscripts { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordInfo")]
         public virtual System.Nullable<bool> EnableWordInfo { get; set; }
 
@@ -27251,9 +27257,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSpeechSensitivity")]
         public virtual string EndOfSpeechSensitivity { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
-        public virtual string ModelId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("prefixPaddingMs")]
         public virtual System.Nullable<int> PrefixPaddingMs { get; set; }
