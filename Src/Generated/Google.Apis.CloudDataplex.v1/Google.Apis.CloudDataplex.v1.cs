@@ -7503,6 +7503,65 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
+                /// <summary>Batch changes metadata within an EntryGroup.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the EntryGroup on which the batch change applies. Format:
+                /// projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}
+                /// </param>
+                public virtual BatchChangeMetadataRequest BatchChangeMetadata(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1BatchChangeMetadataRequest body, string name)
+                {
+                    return new BatchChangeMetadataRequest(this.service, body, name);
+                }
+
+                /// <summary>Batch changes metadata within an EntryGroup.</summary>
+                public class BatchChangeMetadataRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new BatchChangeMetadata request.</summary>
+                    public BatchChangeMetadataRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1BatchChangeMetadataRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the EntryGroup on which the batch change applies. Format:
+                    /// projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1BatchChangeMetadataRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchChangeMetadata";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:batchChangeMetadata";
+
+                    /// <summary>Initializes BatchChangeMetadata parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Creates an EntryGroup.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -7975,6 +8034,71 @@ namespace Google.Apis.CloudDataplex.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Submits a catalog change request for multiple resources within an EntryGroup. This method creates a
+                /// ChangeRequest resource that must be reviewed and approved before the proposed changes are applied.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the Entry Group on which the change applies. Format:
+                /// projects/{project}/locations/{location}/entryGroups/{entry_group}
+                /// </param>
+                public virtual RequestBatchMetadataChangeRequest RequestBatchMetadataChange(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RequestBatchMetadataChangeRequest body, string name)
+                {
+                    return new RequestBatchMetadataChangeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Submits a catalog change request for multiple resources within an EntryGroup. This method creates a
+                /// ChangeRequest resource that must be reviewed and approved before the proposed changes are applied.
+                /// </summary>
+                public class RequestBatchMetadataChangeRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RequestBatchMetadataChangeResponse>
+                {
+                    /// <summary>Constructs a new RequestBatchMetadataChange request.</summary>
+                    public RequestBatchMetadataChangeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RequestBatchMetadataChangeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Entry Group on which the change applies. Format:
+                    /// projects/{project}/locations/{location}/entryGroups/{entry_group}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1RequestBatchMetadataChangeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "requestBatchMetadataChange";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:requestBatchMetadataChange";
+
+                    /// <summary>Initializes RequestBatchMetadataChange parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$",
                         });
                     }
                 }
@@ -17372,8 +17496,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. You can use String Type annotations to specify special meaning to string fields. The following
-        /// values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified
-        /// URL link. resource: A service qualified resource reference.
+        /// values are supported: richText: The field must be interpreted as a rich text field. markdown: The field must
+        /// be interpreted as a markdown field. url: A fully qualified URL link. resource: A service qualified resource
+        /// reference.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringType")]
         public virtual string StringType { get; set; }
@@ -17955,6 +18080,151 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Request message for batch changing metadata. Requires permission to perform the underlying change, depending on
+    /// the type and content of the change. Per operation, required permissions are: - for CreateEntry:
+    /// dataplex.entries.create - for UpdateEntry: dataplex.entries.update - for DeleteEntry: dataplex.entries.delete -
+    /// for CreateEntryLink: dataplex.entryLinks.create - for UpdateEntryLink: dataplex.entryLinks.update - for
+    /// DeleteEntryLink: dataplex.entryLinks.deleteAnd per used type permissions are: - for EntryType:
+    /// dataplex.entryTypes.use or dataplex.entryGroups.useEntry for reusable built-in types, - for AspectType:
+    /// dataplex.aspectTypes.use or dataplex.entryGroups.useAspect for reusable built-in types and - for EntryLinkType:
+    /// dataplex.entryLinkTypes.use or dataplex.entryGroups.useEntryLink for reusable built-in types.
+    /// </summary>
+    public class GoogleCloudDataplexV1BatchChangeMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The list of changes to apply. Only a single change per resource is supported. Maximum number of
+        /// changes supported is 250.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1BatchChangeMetadataRequestChange> Changes { get; set; }
+
+        /// <summary>Optional. Text description of the batch change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual GoogleCloudDataplexV1BatchChangeMetadataRequestDescription Description { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the EntryGroup on which the batch change applies. Format:
+        /// projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed description of an individual change.</summary>
+    public class GoogleCloudDataplexV1BatchChangeMetadataRequestChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Payload for creating an EntryLink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createEntryLinkRequest")]
+        public virtual GoogleCloudDataplexV1CreateEntryLinkRequest CreateEntryLinkRequest { get; set; }
+
+        /// <summary>Payload for creating an Entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createEntryRequest")]
+        public virtual GoogleCloudDataplexV1CreateEntryRequest CreateEntryRequest { get; set; }
+
+        /// <summary>Payload for deleting an EntryLink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteEntryLinkRequest")]
+        public virtual GoogleCloudDataplexV1DeleteEntryLinkRequest DeleteEntryLinkRequest { get; set; }
+
+        /// <summary>Payload for deleting an Entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteEntryRequest")]
+        public virtual GoogleCloudDataplexV1DeleteEntryRequest DeleteEntryRequest { get; set; }
+
+        /// <summary>Payload for updating an EntryLink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateEntryLinkRequest")]
+        public virtual GoogleCloudDataplexV1UpdateEntryLinkRequest UpdateEntryLinkRequest { get; set; }
+
+        /// <summary>Payload for updating an Entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateEntryRequest")]
+        public virtual GoogleCloudDataplexV1UpdateEntryRequest UpdateEntryRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Description of the batch change.</summary>
+    public class GoogleCloudDataplexV1BatchChangeMetadataRequestDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The text description content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Optional. The job that created the batch change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("job")]
+        public virtual GoogleCloudDataplexV1BatchChangeMetadataRequestDescriptionJob Job { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Description of the job that created the batch change.</summary>
+    public class GoogleCloudDataplexV1BatchChangeMetadataRequestDescriptionJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the job that created the batch change. For example:
+        /// projects/{project_number}/locations/{location_id}/enrichmentTasks/{enrichment_task_id}/runs/{enrichment_run_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _runTimeRaw;
+
+        private object _runTime;
+
+        /// <summary>Optional. The start time of the job run that created the batch change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
+        public virtual string RunTimeRaw
+        {
+            get => _runTimeRaw;
+            set
+            {
+                _runTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _runTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RunTimeDateTimeOffset instead.")]
+        public virtual object RunTime
+        {
+            get => _runTime;
+            set
+            {
+                _runTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _runTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RunTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RunTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RunTimeRaw);
+            set => RunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchChangeMetadata.</summary>
+    public class GoogleCloudDataplexV1BatchChangeMetadataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A map of failed requests for a batch change, where the key is the 0-based index of the failed request in the
+        /// batch and the value is the error status. If all operations succeeded, this map is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedRequests")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleRpcStatus> FailedRequests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Payload associated with Business Glossary related log events.</summary>
     public class GoogleCloudDataplexV1BusinessGlossaryEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18012,6 +18282,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Output only. The email address of the user who created the ChangeRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual string Author { get; set; }
+
+        /// <summary>Payload for executing a batch of catalog changes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchChangeMetadataRequest")]
+        public virtual GoogleCloudDataplexV1BatchChangeMetadataRequest BatchChangeMetadataRequest { get; set; }
+
+        /// <summary>Output only. Result of applying a batch change metadata request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchChangeMetadataResponse")]
+        public virtual GoogleCloudDataplexV1BatchChangeMetadataResponse BatchChangeMetadataResponse { get; set; }
 
         /// <summary>
         /// Output only. The type of change represented by the change_payload. This field is derived from the populated
@@ -22337,6 +22615,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>An Entry Group represents a logical grouping of one or more Entries.</summary>
     public class GoogleCloudDataplexV1EntryGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Specifies the configuration for requesting changes in the metadata belonging to the Entry Group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeRequestConfig")]
+        public virtual GoogleCloudDataplexV1EntryGroupChangeRequestConfig ChangeRequestConfig { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -22450,6 +22734,23 @@ namespace Google.Apis.CloudDataplex.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>
+    /// Specifies the configuration for requesting changes in the metadata belonging to the Entry Group.
+    /// </summary>
+    public class GoogleCloudDataplexV1EntryGroupChangeRequestConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the email addresses of users who are potential approvers and are notified when a change
+        /// request is created for the metadata belonging to the Entry Group. The maximum number of emails allowed is
+        /// 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approverEmails")]
+        public virtual System.Collections.Generic.IList<string> ApproverEmails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>EntryLink represents a link between two Entries.</summary>
@@ -25301,6 +25602,42 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for submitting a set of catalog changes proposals.</summary>
+    public class GoogleCloudDataplexV1RequestBatchMetadataChangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The detailed specification of the proposed changes. This payload is intended to be embedded as the
+        /// change_payload in the resulting ChangeRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changePayload")]
+        public virtual GoogleCloudDataplexV1BatchChangeMetadataRequest ChangePayload { get; set; }
+
+        /// <summary>Optional. Justification for the metadata change request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual string Justification { get; set; }
+
+        /// <summary>Optional. User-defined labels for the metadata change request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message containing the reference to the created change request.</summary>
+    public class GoogleCloudDataplexV1RequestBatchMetadataChangeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the created ChangeRequest. Format:
+        /// projects/{project}/locations/{location}/changeRequests/{change_request}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeRequest")]
+        public virtual string ChangeRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for requesting access to a Data Product.</summary>
     public class GoogleCloudDataplexV1RequestDataProductAccessRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26292,6 +26629,29 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cron")]
         public virtual string Cron { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdateEntryLink method.</summary>
+    public class GoogleCloudDataplexV1UpdateEntryLinkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set to true and the entry link doesn't exist, the service will create it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMissing")]
+        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+        /// <summary>
+        /// Optional. The map keys of the Aspects which the service should modify. It should be the aspect type
+        /// reference in the format {project_id_or_number}.{location_id}.{aspect_type_id}.If this field is left empty,
+        /// the service treats it as specifying exactly those Aspects present in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectKeys")]
+        public virtual System.Collections.Generic.IList<string> AspectKeys { get; set; }
+
+        /// <summary>Required. Entry Link resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryLink")]
+        public virtual GoogleCloudDataplexV1EntryLink EntryLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
