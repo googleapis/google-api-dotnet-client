@@ -4987,6 +4987,10 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>Optional. Input only. The GraphQL source files like `dataconnect.yaml` and `*.gql`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graphqlSource")]
+        public virtual Source GraphqlSource { get; set; }
+
         /// <summary>Optional. Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -5009,13 +5013,22 @@ namespace Google.Apis.FirebaseDataConnect.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. The list of schemas in this service.</summary>
+        /// <summary>Optional. The list of schemas in this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
         public virtual System.Collections.Generic.IList<Schema> Schemas { get; set; }
 
-        /// <summary>Optional. Input only. The source files for service, schemas, and connectors.</summary>
+        /// <summary>
+        /// Optional. Input only. Deprecated: Use `sql_source` or `graphql_source` instead. The source files for
+        /// service, schemas, and connectors.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The SQL source files like `*.sql` for deploying a PostgREST service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlSource")]
+        public virtual Source SqlSource { get; set; }
 
         /// <summary>Output only. System-assigned, unique identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
