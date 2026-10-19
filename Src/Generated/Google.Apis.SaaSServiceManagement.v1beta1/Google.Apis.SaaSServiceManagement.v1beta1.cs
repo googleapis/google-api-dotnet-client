@@ -7608,7 +7608,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("component")]
         public virtual string Component { get; set; }
 
-        /// <summary>Reference to the Composite ApplicationTemplate.</summary>
+        /// <summary>Optional. Reference to the Composite ApplicationTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compositeRef")]
         public virtual CompositeRef CompositeRef { get; set; }
 
@@ -7799,11 +7799,19 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IList<string> Attributes { get; set; }
 
+        /// <summary>Optional. The ID of an allocation to use as the default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAllocation")]
+        public virtual string DefaultAllocation { get; set; }
+
         /// <summary>
         /// Optional. Deprecated: Use `base_target` instead. Default variant or allocation of the flag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTarget")]
         public virtual string DefaultTarget { get; set; }
+
+        /// <summary>Optional. The name of a variant to use as the default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultVariant")]
+        public virtual string DefaultVariant { get; set; }
 
         /// <summary>
         /// Optional. Evaluation rules define the logic for evaluating the flag against a given context. The rules are
@@ -7881,8 +7889,8 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
 
         /// <summary>
         /// Optional. Specification of how the flag value should be evaluated. If a bool flag is created without an
-        /// evaluation_spec specified, two default variants, "Enabled" (with bool_value = true) and "Disabled" (with
-        /// bool_value = false), are created by default, and "Disabled" is set as the default_target.
+        /// evaluation_spec specified, two default variants, "Enabled" (with boolean_value = true) and "Disabled" (with
+        /// boolean_value = false), are created by default, and "Disabled" is set as the default_variant.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationSpec")]
         public virtual EvaluationSpec EvaluationSpec { get; set; }
@@ -9318,8 +9326,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
 
         /// <summary>
         /// Optional. Immutable. Name of the FlagRelease to be rolled out to the target Units. Release and FlagRelease
-        /// are mutually exclusive. Note: `release` comment needs to be adjusted to mention that "Release and
-        /// FlagRelease are mutually exclusive" when visibility restriction will be lifted.
+        /// are mutually exclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flagRelease")]
         public virtual string FlagRelease { get; set; }
@@ -9768,9 +9775,9 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// Reference to composite ApplicationTemplate. When specified, the template components will be imported into
-        /// their equivalent UnitKind, Release and Blueprint resources. Deleted references will not delete imported
-        /// resources. Should only be specified on source regions, and be unspecified on replica regions.
+        /// Optional. Reference to composite ApplicationTemplate. When specified, the template components will be
+        /// imported into their equivalent UnitKind, Release and Blueprint resources. Deleted references will not delete
+        /// imported resources. Should only be specified on source regions, and be unspecified on replica regions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplate")]
         public virtual CompositeRef ApplicationTemplate { get; set; }
