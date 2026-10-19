@@ -1937,11 +1937,11 @@ namespace Google.Apis.CloudTasks.v2
             }
 
             /// <summary>
-            /// Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks lcoation.
-            /// By default there is no kms_key configured.
+            /// Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks location.
+            /// By default there is no `kms_key` configured.
             /// </summary>
             /// <param name="name">
-            /// Required. The config. For example: projects/PROJECT_ID/locations/LOCATION_ID/CmekConfig`
+            /// Required. The config. For example: `projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
             /// </param>
             public virtual GetCmekConfigRequest GetCmekConfig(string name)
             {
@@ -1949,8 +1949,8 @@ namespace Google.Apis.CloudTasks.v2
             }
 
             /// <summary>
-            /// Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks lcoation.
-            /// By default there is no kms_key configured.
+            /// Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks location.
+            /// By default there is no `kms_key` configured.
             /// </summary>
             public class GetCmekConfigRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2.Data.CmekConfig>
             {
@@ -1962,7 +1962,7 @@ namespace Google.Apis.CloudTasks.v2
                 }
 
                 /// <summary>
-                /// Required. The config. For example: projects/PROJECT_ID/locations/LOCATION_ID/CmekConfig`
+                /// Required. The config. For example: `projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2121,7 +2121,7 @@ namespace Google.Apis.CloudTasks.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Output only. The config resource name which includes the project and location and must end in
-            /// 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+            /// 'cmekConfig', in the format `projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
             /// </param>
             public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.CloudTasks.v2.Data.CmekConfig body, string name)
             {
@@ -2145,7 +2145,7 @@ namespace Google.Apis.CloudTasks.v2
 
                 /// <summary>
                 /// Output only. The config resource name which includes the project and location and must end in
-                /// 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+                /// 'cmekConfig', in the format `projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2488,7 +2488,7 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// <summary>
         /// Required. The list of requests to create tasks. The queue specified in parent field of each
         /// CreateTaskRequest will be the same. This validation happens on the client side as well as in the handler.
-        /// BatchCreateTasksRequest.parent will also be the same value as the individual CreateTaskRequest.parent . The
+        /// BatchCreateTasksRequest.parent will also be the same value as the individual `CreateTaskRequest.parent`. The
         /// maximum number of requests is 100.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
@@ -2632,7 +2632,7 @@ namespace Google.Apis.CloudTasks.v2.Data
 
         /// <summary>
         /// Output only. The config resource name which includes the project and location and must end in 'cmekConfig',
-        /// in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+        /// in the format `projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2918,10 +2918,10 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-CloudTasks-",
         /// can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from
         /// HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by
-        /// Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For
-        /// example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value
-        /// is set to "application/json"`. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can
-        /// have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the
+        /// Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,
+        /// `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set
+        /// to `"application/json"`. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can have
+        /// multiple values (according to RFC2616) can be specified using comma-separated values. The size of the
         /// headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue. Do
         /// not put business sensitive or personally identifying data in the HTTP Header Override Configuration or other
         /// similar fields in accordance with Section 12 (Resource Fields) of the [Service Specific
