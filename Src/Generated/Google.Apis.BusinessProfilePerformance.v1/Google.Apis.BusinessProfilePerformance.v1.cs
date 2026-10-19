@@ -587,6 +587,12 @@ namespace Google.Apis.BusinessProfilePerformance.v1
                 [Google.Apis.Util.StringValueAttribute("WEBSITE_CLICKS")]
                 WEBSITECLICKS = 8,
 
+                /// <summary>
+                /// The number of times the business profile messaging (e.g. Whatsapp) button was clicked.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("MESSAGING_CLICKS")]
+                MESSAGINGCLICKS = 12,
+
                 /// <summary>The number of bookings made from the business profile via Reserve with Google.</summary>
                 [Google.Apis.Util.StringValueAttribute("BUSINESS_BOOKINGS")]
                 BUSINESSBOOKINGS = 9,
@@ -806,6 +812,12 @@ namespace Google.Apis.BusinessProfilePerformance.v1
                 /// <summary>The number of times the business profile website was clicked.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEBSITE_CLICKS")]
                 WEBSITECLICKS = 8,
+
+                /// <summary>
+                /// The number of times the business profile messaging (e.g. Whatsapp) button was clicked.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("MESSAGING_CLICKS")]
+                MESSAGINGCLICKS = 12,
 
                 /// <summary>The number of bookings made from the business profile via Reserve with Google.</summary>
                 [Google.Apis.Util.StringValueAttribute("BUSINESS_BOOKINGS")]
