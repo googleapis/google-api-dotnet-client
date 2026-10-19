@@ -3184,10 +3184,6 @@ namespace Google.Apis.DisplayVideo.v2
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
-                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
-
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                             TARGETINGTYPEENVIRONMENT = 23,
@@ -3601,10 +3597,6 @@ namespace Google.Apis.DisplayVideo.v2
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -4024,10 +4016,6 @@ namespace Google.Apis.DisplayVideo.v2
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
-                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
-
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                             TARGETINGTYPEENVIRONMENT = 23,
@@ -4443,10 +4431,6 @@ namespace Google.Apis.DisplayVideo.v2
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -7732,10 +7716,6 @@ namespace Google.Apis.DisplayVideo.v2
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
-                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
-
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                         TARGETINGTYPEENVIRONMENT = 23,
@@ -8058,10 +8038,6 @@ namespace Google.Apis.DisplayVideo.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -8399,10 +8375,6 @@ namespace Google.Apis.DisplayVideo.v2
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
-                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
-
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                         TARGETINGTYPEENVIRONMENT = 23,
@@ -8736,10 +8708,6 @@ namespace Google.Apis.DisplayVideo.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -9402,10 +9370,6 @@ namespace Google.Apis.DisplayVideo.v2
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
-                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
-
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                             TARGETINGTYPEENVIRONMENT = 23,
@@ -9769,10 +9733,6 @@ namespace Google.Apis.DisplayVideo.v2
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                             TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                            /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -15318,10 +15278,6 @@ namespace Google.Apis.DisplayVideo.v2
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
-                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
-
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                         TARGETINGTYPEENVIRONMENT = 23,
@@ -15641,10 +15597,6 @@ namespace Google.Apis.DisplayVideo.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -15973,10 +15925,6 @@ namespace Google.Apis.DisplayVideo.v2
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
-                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
-
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                         TARGETINGTYPEENVIRONMENT = 23,
@@ -16301,10 +16249,6 @@ namespace Google.Apis.DisplayVideo.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                         TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                        /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -17085,10 +17029,6 @@ namespace Google.Apis.DisplayVideo.v2
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                     TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
-                    /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
-
                     /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
                     TARGETINGTYPEENVIRONMENT = 23,
@@ -17428,10 +17368,6 @@ namespace Google.Apis.DisplayVideo.v2
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                     TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                    /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                     /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -17804,10 +17740,6 @@ namespace Google.Apis.DisplayVideo.v2
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
                     TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
-
-                    /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
-                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                     /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
@@ -19402,7 +19334,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; }
 
-        /// <summary>The URL address loaded in the background for tracking purposes.</summary>
+        /// <summary>
+        /// The URL address loaded in the background for tracking purposes. In v4 and earlier, this field represents the
+        /// tracking URL specified by the user manually. This can be found at userSpecifiedTrackingUrl in v5.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
@@ -20674,7 +20609,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Common attributes for in-stream, non-skippable and bumper ads.</summary>
     public class CommonInStreamAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The text on the call-to-action button.</summary>
+        /// <summary>Optional. The text on the call-to-action button. Must be set if actionHeadline is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionButtonLabel")]
         public virtual string ActionButtonLabel { get; set; }
 
@@ -20694,7 +20629,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; }
 
-        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
+        /// <summary>
+        /// Output only. The URL address loaded in the background for tracking purposes. In v4 and earlier, this field
+        /// represents the tracking URL specified by the user manually. This can be found at userSpecifiedTrackingUrl in
+        /// v5.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
@@ -26542,7 +26481,9 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Details for a video performance ad.</summary>
     public class VideoPerformanceAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The list of text assets shown on the call-to-action button.</summary>
+        /// <summary>
+        /// Optional. The list of text assets shown on the call-to-action button. Must be set if headlines is set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionButtonLabels")]
         public virtual System.Collections.Generic.IList<string> ActionButtonLabels { get; set; }
 
@@ -26554,7 +26495,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
-        /// <summary>Optional. The list of descriptions shown on the call-to-action banner.</summary>
+        /// <summary>
+        /// Optional. The list of descriptions shown on the call-to-action banner. Must be set unless the parent line
+        /// item's lineItemType is `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this field cannot
+        /// be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
         public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
 
@@ -26562,7 +26507,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb1")]
         public virtual string DisplayUrlBreadcrumb1 { get; set; }
 
-        /// <summary>Optional. The second piece after the domain in the display URL.</summary>
+        /// <summary>
+        /// Optional. The second piece after the domain in the display URL. Can only be set if displayUrlBreadcrumb1 is
+        /// also set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb2")]
         public virtual string DisplayUrlBreadcrumb2 { get; set; }
 
@@ -26578,11 +26526,19 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
-        /// <summary>Optional. The list of long headlines shown on the call-to-action banner.</summary>
+        /// <summary>
+        /// Optional. The list of long headlines shown on the call-to-action banner. Must be set unless the parent line
+        /// item's lineItemType is `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this field cannot
+        /// be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
         public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
 
-        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
+        /// <summary>
+        /// Output only. The URL address loaded in the background for tracking purposes. In v4 and earlier, this field
+        /// represents the tracking URL specified by the user manually. This can be found at userSpecifiedTrackingUrl in
+        /// v5.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
