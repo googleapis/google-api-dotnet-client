@@ -8832,6 +8832,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<long> CurrentDiskSize { get; set; }
 
         /// <summary>
+        /// Optional. State of the Database Center integration for this instance. When unspecified, Database Center
+        /// integration is enabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseCenterIntegration")]
+        public virtual string DatabaseCenterIntegration { get; set; }
+
+        /// <summary>
         /// Optional. If true, instance metadata is sent to the Database Center. If false, instance metadata is not sent
         /// to the Database Center.
         /// </summary>
@@ -9044,6 +9051,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The user settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settings")]
         public virtual Settings Settings { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Determines whether the precheck step is skipped during a major version upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipPrecheck")]
+        public virtual System.Nullable<bool> SkipPrecheck { get; set; }
 
         /// <summary>The SQL network architecture for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlNetworkArchitecture")]
@@ -9465,7 +9478,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoIamAuthn")]
         public virtual System.Nullable<bool> AutoIamAuthn { get; set; }
 
-        /// <summary>Optional. Name of the database on which the statement will be executed.</summary>
+        /// <summary>
+        /// Optional. Name of the database on which the statement will be executed. For Postgres and SQL Server it's
+        /// required, for MySQL it's optional.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
@@ -11954,6 +11970,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>Optional. The maximum allowed runtime for the precheck operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRuntime")]
+        public virtual object MaxRuntime { get; set; }
+
         /// <summary>Output only. The responses from the precheck operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preCheckResponse")]
         public virtual System.Collections.Generic.IList<PreCheckResponse> PreCheckResponse { get; set; }
@@ -13913,6 +13933,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>Captured workload for an instance.</summary>
     public class WorkloadCapture : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The base backup ID associated with the workload capture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
+        public virtual string BackupId { get; set; }
+
         private string _endTimeRaw;
 
         private object _endTime;
