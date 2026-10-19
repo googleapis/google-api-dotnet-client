@@ -4634,13 +4634,6 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
-        /// <summary>
-        /// Output only. The URI of the worker pool that the revision belongs to. The format is:
-        /// projects/{project}/locations/{location}/workerPools/{workerPool}. Mutually exclusive with service_uri.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workerPoolUri")]
-        public virtual string WorkerPoolUri { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
