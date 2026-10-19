@@ -1409,6 +1409,20 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for the `CreateSemanticTagBinding` long-running operation.</summary>
+    public class CreateSemanticTagBindingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime operation information for creating a `SemanticTagValue`.</summary>
+    public class CreateSemanticTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime operation information for creating a TagValue.</summary>
     public class CreateTagBindingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1472,6 +1486,20 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
     /// A status object which is used as the `metadata` field for the Operation returned by `DeleteProject`.
     /// </summary>
     public class DeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the `DeleteSemanticTagBinding` long-running operation.</summary>
+    public class DeleteSemanticTagBindingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime operation information for deleting a `SemanticTagValue`.</summary>
+    public class DeleteSemanticTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
