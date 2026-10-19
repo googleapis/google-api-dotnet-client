@@ -1131,31 +1131,28 @@ namespace Google.Apis.DeviceRun.v1alpha
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. The view of the session to return. If not set, the default BASIC view will be
-                    /// returned.
+                    /// Optional. The view of the session to return. If not set, the `FULL` view will be returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
                     /// <summary>
-                    /// Optional. The view of the session to return. If not set, the default BASIC view will be
-                    /// returned.
+                    /// Optional. The view of the session to return. If not set, the `FULL` view will be returned.
                     /// </summary>
                     public enum ViewEnum
                     {
-                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        /// <summary>The default / unset value. The API will default to the FULL view.</summary>
                         [Google.Apis.Util.StringValueAttribute("SESSION_VIEW_UNSPECIFIED")]
                         SESSIONVIEWUNSPECIFIED = 0,
 
                         /// <summary>
                         /// Include basic view of the session but not the full contents. Only the
-                        /// uid/display_name/status/result of the session and its jobs/executions will be included. This
-                        /// is the default value (for GetSession).
+                        /// uid/display_name/status/result of the session and its jobs/executions will be included.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("SESSION_VIEW_BASIC")]
                         SESSIONVIEWBASIC = 1,
 
-                        /// <summary>Include everything.</summary>
+                        /// <summary>Include everything. This is the default value.</summary>
                         [Google.Apis.Util.StringValueAttribute("SESSION_VIEW_FULL")]
                         SESSIONVIEWFULL = 2,
                     }
@@ -1255,29 +1252,28 @@ namespace Google.Apis.DeviceRun.v1alpha
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// Optional. The view of the sessions to return. If not set, the `BASIC` view will be returned.
+                    /// Optional. The view of the sessions to return. If not set, the `FULL` view will be returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
                     /// <summary>
-                    /// Optional. The view of the sessions to return. If not set, the `BASIC` view will be returned.
+                    /// Optional. The view of the sessions to return. If not set, the `FULL` view will be returned.
                     /// </summary>
                     public enum ViewEnum
                     {
-                        /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                        /// <summary>The default / unset value. The API will default to the FULL view.</summary>
                         [Google.Apis.Util.StringValueAttribute("SESSION_VIEW_UNSPECIFIED")]
                         SESSIONVIEWUNSPECIFIED = 0,
 
                         /// <summary>
                         /// Include basic view of the session but not the full contents. Only the
-                        /// uid/display_name/status/result of the session and its jobs/executions will be included. This
-                        /// is the default value (for GetSession).
+                        /// uid/display_name/status/result of the session and its jobs/executions will be included.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("SESSION_VIEW_BASIC")]
                         SESSIONVIEWBASIC = 1,
 
-                        /// <summary>Include everything.</summary>
+                        /// <summary>Include everything. This is the default value.</summary>
                         [Google.Apis.Util.StringValueAttribute("SESSION_VIEW_FULL")]
                         SESSIONVIEWFULL = 2,
                     }
@@ -1709,8 +1705,8 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
     public class AndroidBugreportDeviceAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Whether to deliver the bugreport when the test passes. If false, the bugreport is skipped on pass
-        /// to save time (default behavior). If true, the bugreport is always delivered.
+        /// Optional. Whether to deliver the bugreport when the test passes. If `false`, the bugreport is skipped on
+        /// pass to save time (default behavior). If `true`, the bugreport is always delivered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectOnPass")]
         public virtual System.Nullable<bool> CollectOnPass { get; set; }
@@ -1726,8 +1722,8 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
     public class AndroidDumpsysDeviceAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Whether to deliver the dumpsys when the test passes. If false, the dumpsys is skipped on pass to
-        /// save time (default behavior). If true, the dumpsys is always delivered.
+        /// Optional. Whether to deliver the dumpsys when the test passes. If `false`, the dumpsys is skipped on pass to
+        /// save time (default behavior). If `true`, the dumpsys is always delivered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectOnPass")]
         public virtual System.Nullable<bool> CollectOnPass { get; set; }
@@ -2059,7 +2055,7 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
     public class AndroidRecordVideoDeviceAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Whether to discard and not upload the recording when the test passes. Default is false.
+        /// Optional. Whether to discard and not upload the recording when the test passes. Default is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discardOnPass")]
         public virtual System.Nullable<bool> DiscardOnPass { get; set; }
@@ -2552,7 +2548,7 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iosPushFiles")]
         public virtual IosPushFilesDeviceAction IosPushFiles { get; set; }
 
-        /// <summary>Records a video of the iOS device screen during the run.</summary>
+        /// <summary>Records videos of the iOS device screen, one per UI test case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosRecordVideo")]
         public virtual IosRecordVideoDeviceAction IosRecordVideo { get; set; }
 
@@ -2923,14 +2919,15 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
     }
 
     /// <summary>
-    /// Records a video of the iOS device screen during the run. The video will be written to a file named `video.mp4`
-    /// in the execution output directory.
+    /// Records videos of the iOS device screen, one per UI test case. Each video covers only the execution of its test
+    /// case, and will be written to `testcases/{test_class}/{test_method}/video.mp4` in the execution output directory.
+    /// No video is recorded for unit tests, or on devices running a version earlier than iOS 17.
     /// </summary>
     public class IosRecordVideoDeviceAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Whether to discard the video if the test passes. If not specified, the default is false (always
-        /// keep the video).
+        /// Optional. Whether to discard the video of a test case when it passes. If not specified, the default is
+        /// `false` (videos of all test cases are kept).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discardOnPass")]
         public virtual System.Nullable<bool> DiscardOnPass { get; set; }
@@ -2988,6 +2985,10 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
         /// <summary>Output only. Human-readable explanation of the issue in English.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>Output only. Additional metadata about the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Output only. The reason of the issue. This is a constant value that identifies the proximate cause of the
@@ -3467,6 +3468,43 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
     /// </summary>
     public class Session : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the session was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Identifier. The resource name of the session. Format:
         /// `projects/{project}/locations/{location}/sessions/{session}`.
