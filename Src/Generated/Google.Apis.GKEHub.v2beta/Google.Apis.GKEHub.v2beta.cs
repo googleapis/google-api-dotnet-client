@@ -1452,8 +1452,8 @@ namespace Google.Apis.GKEHub.v2beta.Data
         public virtual System.Nullable<bool> PreventDrift { get; set; }
 
         /// <summary>
-        /// Optional. Specifies whether the Config Sync repo is in `hierarchical` or `unstructured` mode. Defaults to
-        /// `hierarchical`. See
+        /// Optional. Specifies whether the Config Sync repo is in `hierarchy` or `unstructured` mode. Defaults to
+        /// `hierarchy`. See
         /// https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs for an
         /// explanation.
         /// </summary>
@@ -1716,13 +1716,17 @@ namespace Google.Apis.GKEHub.v2beta.Data
     {
         /// <summary>
         /// Optional. The Google Cloud Service Account Email used for auth when secret_type is `gcpserviceaccount`.
+        /// Annotates the `RootSync` or `RepoSync` controller's Kubernetes Service Account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// Optional. URL for the HTTPS proxy to be used when communicating with the Git repo. Only specify when
-        /// secret_type is `cookiefile`, `token`, or `none`.
+        /// Optional. URL for the HTTPS proxy to be used when communicating with the Git repo. Defines an HTTPS_PROXY
+        /// environment variable and only accepts `https` or unadorned URLs. For example,
+        /// `https://proxy.internal.business.co:443` or `proxy.internal.business.co:443`. If using an unadorned URL,
+        /// make sure the communication between your proxy server and Git host is secure. Rejects `http://` URLs. Only
+        /// specify when secret_type is `cookiefile`, `token`, or `none`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpsProxy")]
         public virtual string HttpsProxy { get; set; }
@@ -1749,7 +1753,10 @@ namespace Google.Apis.GKEHub.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
         public virtual string SyncRepo { get; set; }
 
-        /// <summary>Optional. Git revision (tag or hash) to check out. Default HEAD.</summary>
+        /// <summary>
+        /// Optional. Git revision (tag or hash) or branch to sync from. Default `HEAD`. If not `HEAD`, takes precedence
+        /// over `sync_branch` field. When using a hash, must be a full hash, and not an abbreviated form.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncRev")]
         public virtual string SyncRev { get; set; }
 
@@ -1860,6 +1867,7 @@ namespace Google.Apis.GKEHub.v2beta.Data
     {
         /// <summary>
         /// Optional. The Google Cloud Service Account Email used for auth when secret_type is `gcpserviceaccount`.
+        /// Annotates the `RootSync` or `RepoSync` controller's Kubernetes Service Account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
