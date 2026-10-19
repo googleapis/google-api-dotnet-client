@@ -3185,6 +3185,14 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual System.Collections.Generic.IList<AccessConfig> AccessConfigs { get; set; }
 
         /// <summary>
+        /// Optional. An internal IP address associated with this instance. Specify an unused static internal IP address
+        /// available to the subnet this instance is in, or leave this field undefined to use an IP from the subnet's
+        /// ephemeral range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual string InternalIp { get; set; }
+
+        /// <summary>
         /// Optional. The name of the VPC that this VM instance is in. Format:
         /// `projects/{project_id}/global/networks/{network_id}`
         /// </summary>
@@ -3821,6 +3829,13 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageDescription")]
         public virtual string ImageDescription { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the specific Compute Engine VM image the instance is currently running (for example,
+        /// "workbench-instances-2603-20260918-2130-rc0").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageId")]
+        public virtual string ImageId { get; set; }
 
         /// <summary>Optional. Use VM image name to find the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
