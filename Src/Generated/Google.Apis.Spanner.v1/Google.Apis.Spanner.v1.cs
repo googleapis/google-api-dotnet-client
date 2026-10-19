@@ -11879,6 +11879,13 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Optional. Tag keys/values directly bound to this resource. For example: "123/environment": "prod",
+        /// "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
