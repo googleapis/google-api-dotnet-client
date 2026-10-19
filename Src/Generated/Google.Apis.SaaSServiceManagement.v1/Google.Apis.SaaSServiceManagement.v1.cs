@@ -4281,6 +4281,27 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AppParams contains the parameters for creating an AppHub Application.</summary>
+    public class AppParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Grouping used to construct the name of the AppHub Application. Multiple UnitKinds can specify the
+        /// same group to use the same Application across their respective units. Corresponds to the app_boundary_id in
+        /// the ADC composite ApplicationTemplate. Defaults to UnitKind.name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>
+        /// Optional. Corresponds to the scope in the ADC composite ApplicationTemplate. Defaults to TYPE_REGIONAL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual Scope Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Blueprints are OCI Images that contain all of the artifacts needed to provision a unit. Metadata such as, type
     /// of the engine used to actuate the blueprint (Terraform, for example) and version will come from the image
@@ -4302,6 +4323,53 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// <summary>Output only. Version metadata if present on the blueprint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ComponentRef represents a reference to a component resource.</summary>
+    public class ComponentRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the component in composite.Components</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("component")]
+        public virtual string Component { get; set; }
+
+        /// <summary>Optional. Reference to the Composite ApplicationTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeRef")]
+        public virtual CompositeRef CompositeRef { get; set; }
+
+        /// <summary>
+        /// Optional. Revision of the component. If the component does not have a revision, this field will be
+        /// explicitly set to the revision of the composite ApplicationTemplate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CompositeRef represents a reference to a composite resource.</summary>
+    public class CompositeRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Reference to the ApplicationTemplate resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplate")]
+        public virtual string ApplicationTemplate { get; set; }
+
+        /// <summary>
+        /// Optional. Revision of the ApplicationTemplate to use. Changes to revision will trigger manual
+        /// resynchronization. If empty, ApplicationTemplate will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>
+        /// Output only. Reference to on-going AppTemplate import and replication operation (i.e. the operation_id for
+        /// the long-running operation). This field is opaque for external usage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncOperation")]
+        public virtual string SyncOperation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4404,17 +4472,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedPercentage")]
         public virtual System.Nullable<int> AllowedPercentage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>FlagUpdate is a UnitOperation that pushes new flag values to Units.</summary>
-    public class FlagUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Flag release being applied by UnitOperation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flagRelease")]
-        public virtual string FlagRelease { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4755,6 +4812,10 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>Output only. Reference to component and revision in a composite ApplicationTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplateComponent")]
+        public virtual ComponentRef ApplicationTemplateComponent { get; set; }
+
         /// <summary>
         /// Optional. Blueprints are OCI Images that contain all of the artifacts needed to provision a unit.
         /// </summary>
@@ -5067,14 +5128,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
-
-        /// <summary>
-        /// Optional. Immutable. Name of the FlagRelease to be rolled out to the target Units. Release and FlagRelease
-        /// are mutually exclusive. Note: `release` comment needs to be adjusted to mention that "Release and
-        /// FlagRelease are mutually exclusive" when visibility restriction will be lifted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flagRelease")]
-        public virtual string FlagRelease { get; set; }
 
         /// <summary>
         /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
@@ -5520,6 +5573,21 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
+        /// Optional. Reference to composite ApplicationTemplate. When specified, the template components will be
+        /// imported into their equivalent UnitKind, Release and Blueprint resources. Deleted references will not delete
+        /// imported resources. Should only be specified on source regions, and be unspecified on replica regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplate")]
+        public virtual CompositeRef ApplicationTemplate { get; set; }
+
+        /// <summary>
+        /// Output only. Name of repository in Artifact Registry for system-generated Blueprints, eg. Blueprints of
+        /// imported ApplicationTemplates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blueprintRepo")]
+        public virtual string BlueprintRepo { get; set; }
+
+        /// <summary>
         /// Output only. A set of conditions which indicate the various conditions this resource can have.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
@@ -5761,6 +5829,17 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Scope of an application.</summary>
+    public class Scope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Scope Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -5963,6 +6042,13 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
+        /// Optional. Reference to the AppHub Application this unit belongs to. All resources deployed in this Unit will
+        /// be associated with the specified Application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual string Application { get; set; }
+
+        /// <summary>
         /// Optional. Output only. A set of conditions which indicate the various conditions this resource can have.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
@@ -6022,10 +6108,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
-
-        /// <summary>Optional. Output only. Flag revisions used by this Unit.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flagRevisions")]
-        public virtual System.Collections.Generic.IList<string> FlagRevisions { get; set; }
 
         /// <summary>Optional. Output only. Indicates the current input variables deployed by the unit</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputVariables")]
@@ -6303,6 +6385,14 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>Optional. AppParams contains the parameters for creating an AppHub Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appParams")]
+        public virtual AppParams AppParams { get; set; }
+
+        /// <summary>Optional. Reference to component and revision in a composite ApplicationTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationTemplateComponent")]
+        public virtual ComponentRef ApplicationTemplateComponent { get; set; }
+
         /// <summary>
         /// Optional. Output only. BoundaryType describes the type of boundary the Unit Kind represents.
         /// </summary>
@@ -6345,13 +6435,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>
-        /// Optional. Default revisions of flags for this UnitKind. Newly created units will use the flag
-        /// default_flag_revisions present at the time of creation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultFlagRevisions")]
-        public virtual System.Collections.Generic.IList<string> DefaultFlagRevisions { get; set; }
 
         /// <summary>
         /// Optional. A reference to the Release object to use as default for creating new units of this UnitKind
@@ -6628,10 +6711,6 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
-
-        /// <summary>Optional. Flag update operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flagUpdate")]
-        public virtual FlagUpdate FlagUpdate { get; set; }
 
         /// <summary>
         /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
