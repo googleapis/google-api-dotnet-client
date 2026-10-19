@@ -1440,13 +1440,13 @@ namespace Google.Apis.ChromeManagement.v1
                 /// functions can be used to specify a filter, and filtering by multiple fields or functions is
                 /// supported with AND operator. String type, Integer type fields and enum type fields support `=` and
                 /// `:` operators. The timestamp type fields support `=`, `&amp;lt;=` and `&amp;gt;=` operators.
-                /// Timestamps expect an RFC-3339 formatted string (e.g. 2012-04-21T11:30:00-04:00). Wildcard `*` is
-                /// only supported for `machine_name`, `annotated_asset_id`, and `browser_version`. In addition, global
-                /// string literal filtering without a field name is supported: a single term (e.g., `ABC`) matches if
-                /// any indexed string field contains `ABC`, and multiple terms joined by `AND` or whitespace (e.g.,
-                /// `machine AND 73` or `machine 73`) match browsers where every term appears in at least one indexed
-                /// string field (whereas a single quoted phrase like `"machine 73"` matches the contiguous phrase
-                /// within a single field).
+                /// Timestamps expect an RFC-3339 formatted string enclosed in double quotes (e.g.,
+                /// `"2012-04-21T11:30:00-04:00"`). Wildcard `*` is only supported for `machine_name`,
+                /// `annotated_asset_id`, and `browser_version`. In addition, global string literal filtering without a
+                /// field name is supported: a single term (e.g., `ABC`) matches if any indexed string field contains
+                /// `ABC`, and multiple terms joined by `AND` or whitespace (e.g., `machine AND 73` or `machine 73`)
+                /// match browsers where every term appears in at least one indexed string field (whereas a single
+                /// quoted phrase like `"machine 73"` matches the contiguous phrase within a single field).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
