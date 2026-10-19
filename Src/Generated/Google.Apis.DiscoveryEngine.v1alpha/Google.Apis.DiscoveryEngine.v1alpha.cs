@@ -630,6 +630,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 Evaluations = new EvaluationsResource(service);
                 GroundingConfigs = new GroundingConfigsResource(service);
                 IdentityMappingStores = new IdentityMappingStoresResource(service);
+                KnowledgeSpaces = new KnowledgeSpacesResource(service);
                 LicenseConfigs = new LicenseConfigsResource(service);
                 Notebooks = new NotebooksResource(service);
                 Operations = new OperationsResource(service);
@@ -10347,7 +10348,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         this.service = service;
                         Analytics = new AnalyticsResource(service);
                         Assistants = new AssistantsResource(service);
-                        CollaborativeProjects = new CollaborativeProjectsResource(service);
                         CompletionConfig = new CompletionConfigResource(service);
                         Controls = new ControlsResource(service);
                         Conversations = new ConversationsResource(service);
@@ -10597,7 +10597,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 this.service = service;
                                 Files = new FilesResource(service);
                                 Operations = new OperationsResource(service);
-                                ToolCalls = new ToolCallsResource(service);
                             }
 
                             /// <summary>Gets the Files resource.</summary>
@@ -10746,94 +10745,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                             DefaultValue = null,
                                             Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+/operations/[^/]+$",
                                         });
-                                    }
-                                }
-                            }
-
-                            /// <summary>Gets the ToolCalls resource.</summary>
-                            public virtual ToolCallsResource ToolCalls { get; }
-
-                            /// <summary>The "toolCalls" collection of methods.</summary>
-                            public class ToolCallsResource
-                            {
-                                private const string Resource = "toolCalls";
-
-                                /// <summary>The service which this resource belongs to.</summary>
-                                private readonly Google.Apis.Services.IClientService service;
-
-                                /// <summary>Constructs a new resource.</summary>
-                                public ToolCallsResource(Google.Apis.Services.IClientService service)
-                                {
-                                    this.service = service;
-                                    Operations = new OperationsResource(service);
-                                }
-
-                                /// <summary>Gets the Operations resource.</summary>
-                                public virtual OperationsResource Operations { get; }
-
-                                /// <summary>The "operations" collection of methods.</summary>
-                                public class OperationsResource
-                                {
-                                    private const string Resource = "operations";
-
-                                    /// <summary>The service which this resource belongs to.</summary>
-                                    private readonly Google.Apis.Services.IClientService service;
-
-                                    /// <summary>Constructs a new resource.</summary>
-                                    public OperationsResource(Google.Apis.Services.IClientService service)
-                                    {
-                                        this.service = service;
-                                    }
-
-                                    /// <summary>
-                                    /// Gets the latest state of a long-running operation. Clients can use this method
-                                    /// to poll the operation result at intervals as recommended by the API service.
-                                    /// </summary>
-                                    /// <param name="name">The name of the operation resource.</param>
-                                    public virtual GetRequest Get(string name)
-                                    {
-                                        return new GetRequest(this.service, name);
-                                    }
-
-                                    /// <summary>
-                                    /// Gets the latest state of a long-running operation. Clients can use this method
-                                    /// to poll the operation result at intervals as recommended by the API service.
-                                    /// </summary>
-                                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
-                                    {
-                                        /// <summary>Constructs a new Get request.</summary>
-                                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                                        {
-                                            Name = name;
-                                            InitParameters();
-                                        }
-
-                                        /// <summary>The name of the operation resource.</summary>
-                                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                        public virtual string Name { get; private set; }
-
-                                        /// <summary>Gets the method name.</summary>
-                                        public override string MethodName => "get";
-
-                                        /// <summary>Gets the HTTP method.</summary>
-                                        public override string HttpMethod => "GET";
-
-                                        /// <summary>Gets the REST path.</summary>
-                                        public override string RestPath => "v1alpha/{+name}";
-
-                                        /// <summary>Initializes Get parameter list.</summary>
-                                        protected override void InitParameters()
-                                        {
-                                            base.InitParameters();
-                                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                            {
-                                                Name = "name",
-                                                IsRequired = true,
-                                                ParameterType = "path",
-                                                DefaultValue = null,
-                                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+/agents/[^/]+/toolCalls/[^/]+/operations/[^/]+$",
-                                            });
-                                        }
                                     }
                                 }
                             }
@@ -11966,113 +11877,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/assistants/[^/]+$",
                                 });
-                            }
-                        }
-                    }
-
-                    /// <summary>Gets the CollaborativeProjects resource.</summary>
-                    public virtual CollaborativeProjectsResource CollaborativeProjects { get; }
-
-                    /// <summary>The "collaborativeProjects" collection of methods.</summary>
-                    public class CollaborativeProjectsResource
-                    {
-                        private const string Resource = "collaborativeProjects";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public CollaborativeProjectsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                            KnowledgeSpaces = new KnowledgeSpacesResource(service);
-                        }
-
-                        /// <summary>Gets the KnowledgeSpaces resource.</summary>
-                        public virtual KnowledgeSpacesResource KnowledgeSpaces { get; }
-
-                        /// <summary>The "knowledgeSpaces" collection of methods.</summary>
-                        public class KnowledgeSpacesResource
-                        {
-                            private const string Resource = "knowledgeSpaces";
-
-                            /// <summary>The service which this resource belongs to.</summary>
-                            private readonly Google.Apis.Services.IClientService service;
-
-                            /// <summary>Constructs a new resource.</summary>
-                            public KnowledgeSpacesResource(Google.Apis.Services.IClientService service)
-                            {
-                                this.service = service;
-                                Operations = new OperationsResource(service);
-                            }
-
-                            /// <summary>Gets the Operations resource.</summary>
-                            public virtual OperationsResource Operations { get; }
-
-                            /// <summary>The "operations" collection of methods.</summary>
-                            public class OperationsResource
-                            {
-                                private const string Resource = "operations";
-
-                                /// <summary>The service which this resource belongs to.</summary>
-                                private readonly Google.Apis.Services.IClientService service;
-
-                                /// <summary>Constructs a new resource.</summary>
-                                public OperationsResource(Google.Apis.Services.IClientService service)
-                                {
-                                    this.service = service;
-                                }
-
-                                /// <summary>
-                                /// Gets the latest state of a long-running operation. Clients can use this method to
-                                /// poll the operation result at intervals as recommended by the API service.
-                                /// </summary>
-                                /// <param name="name">The name of the operation resource.</param>
-                                public virtual GetRequest Get(string name)
-                                {
-                                    return new GetRequest(this.service, name);
-                                }
-
-                                /// <summary>
-                                /// Gets the latest state of a long-running operation. Clients can use this method to
-                                /// poll the operation result at intervals as recommended by the API service.
-                                /// </summary>
-                                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
-                                {
-                                    /// <summary>Constructs a new Get request.</summary>
-                                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                                    {
-                                        Name = name;
-                                        InitParameters();
-                                    }
-
-                                    /// <summary>The name of the operation resource.</summary>
-                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                    public virtual string Name { get; private set; }
-
-                                    /// <summary>Gets the method name.</summary>
-                                    public override string MethodName => "get";
-
-                                    /// <summary>Gets the HTTP method.</summary>
-                                    public override string HttpMethod => "GET";
-
-                                    /// <summary>Gets the REST path.</summary>
-                                    public override string RestPath => "v1alpha/{+name}";
-
-                                    /// <summary>Initializes Get parameter list.</summary>
-                                    protected override void InitParameters()
-                                    {
-                                        base.InitParameters();
-                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                        {
-                                            Name = "name",
-                                            IsRequired = true,
-                                            ParameterType = "path",
-                                            DefaultValue = null,
-                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/collaborativeProjects/[^/]+/knowledgeSpaces/[^/]+/operations/[^/]+$",
-                                        });
-                                    }
-                                }
                             }
                         }
                     }
@@ -25975,6 +25779,94 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
+            /// <summary>Gets the KnowledgeSpaces resource.</summary>
+            public virtual KnowledgeSpacesResource KnowledgeSpaces { get; }
+
+            /// <summary>The "knowledgeSpaces" collection of methods.</summary>
+            public class KnowledgeSpacesResource
+            {
+                private const string Resource = "knowledgeSpaces";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public KnowledgeSpacesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/knowledgeSpaces/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
+
             /// <summary>Gets the LicenseConfigs resource.</summary>
             public virtual LicenseConfigsResource LicenseConfigs { get; }
 
@@ -33994,6 +33886,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Restricts this data store to the given notebooks. When empty, the data store covers every notebook
+        /// the querying user can access, which is the existing behaviour. Each entry is a full notebook resource name,
+        /// such as `projects/*/locations/*/notebooks/*`. Scoping is enforced on results as well as requested upstream,
+        /// so a notebook outside this list cannot appear in a search response through this data store even if the
+        /// backend returns one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooks")]
+        public virtual System.Collections.Generic.IList<string> Notebooks { get; set; }
+
+        /// <summary>
         /// Required. Search config name. Format: projects/*/locations/global/notebookLmSearchConfigs/*
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
@@ -35226,7 +35128,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
         /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications`
+        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -42345,6 +42247,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Nullable<bool> PkceVerificationEnabled { get; set; }
 
         /// <summary>
+        /// Optional. Set only when the OAuth provider publishes no public endpoint, in which case a token exchange has
+        /// to be routed over the private network the instance is on instead of over public egress. Leaving it unset
+        /// keeps the exchange on public egress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateNetworkConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2PrivateNetworkConfig PrivateNetworkConfig { get; set; }
+
+        /// <summary>
         /// Optional. The scopes to request. Example: `https://www.googleapis.com/auth/calendar.events` If omitted, no
         /// additional scopes are requested beyond those required by the authorization uri. If set, it will overwrite
         /// the scopes in the authorization uri when acquiring user authorization.
@@ -42355,6 +42265,22 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The HTTP endpoint that exchanges a client authorization for an access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenUri")]
         public virtual string TokenUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Identifies the instance hosting an OAuth provider that is reachable only over a private network.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAuthorizationServerSideOAuth2PrivateNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Resource name of the instance hosting the OAuth provider. For Looker, the Looker instance, in the
+        /// form `projects/{project}/locations/{location}/instances/{instance}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceResource")]
+        public virtual string InstanceResource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46802,6 +46728,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Restricts this data store to the given notebooks. When empty, the data store covers every notebook
+        /// the querying user can access, which is the existing behaviour. Each entry is a full notebook resource name,
+        /// such as `projects/*/locations/*/notebooks/*`. Scoping is enforced on results as well as requested upstream,
+        /// so a notebook outside this list cannot appear in a search response through this data store even if the
+        /// backend returns one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooks")]
+        public virtual System.Collections.Generic.IList<string> Notebooks { get; set; }
+
+        /// <summary>
         /// Required. Search config name. Format: projects/*/locations/global/notebookLmSearchConfigs/*
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
@@ -48620,7 +48556,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
         /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications`
+        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -49747,11 +49683,26 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string Session { get; set; }
 
         /// <summary>
+        /// Optional. The `TaskServerEvent.seq_num` of the step that opened the rated agent task reply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepSeqNum")]
+        public virtual System.Nullable<long> StepSeqNum { get; set; }
+
+        /// <summary>
         /// Optional. The full resource name of the Sobi task if the conversation was handled by a long-running agent
-        /// task. Format: projects/{project}/locations/{location}/tasks/{task_id}
+        /// task. Format (canonical, or the short alias the Task API also accepts):
+        /// projects/{project}/locations/{location}/agents/{agent}/tasks/{task}
+        /// projects/{project}/locations/{location}/tasks/{task}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskName")]
         public virtual string TaskName { get; set; }
+
+        /// <summary>
+        /// Optional. The runtime trajectory id of the rated agent task turn, as set on `TaskServerEvent.trajectory_id`.
+        /// Shared by all steps of the turn.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trajectoryId")]
+        public virtual string TrajectoryId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49913,6 +49864,26 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metatagName")]
         public virtual string MetatagName { get; set; }
+
+        /// <summary>
+        /// Optional. If partial_matchable_option is PARTIAL_MATCHABLE_OPTION_ENABLED, field values are partial
+        /// matchable. If partial_matchable_option is unset, the server behavior defaults to
+        /// PARTIAL_MATCHABLE_OPTION_DISABLED for fields that support setting partial matchable options. For those
+        /// fields that do not support setting partial matchable options, the server will skip partial matchable option
+        /// setting, and setting partial_matchable_option for those fields will throw `INVALID_ARGUMENT` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialMatchableOption")]
+        public virtual string PartialMatchableOption { get; set; }
+
+        /// <summary>
+        /// Optional. If prefix_matchable_option is PREFIX_MATCHABLE_OPTION_ENABLED, field values are prefix matchable.
+        /// If prefix_matchable_option is unset, the server behavior defaults to PREFIX_MATCHABLE_OPTION_DISABLED for
+        /// fields that support setting prefix matchable options. For those fields that do not support setting prefix
+        /// matchable options, the server will skip prefix matchable option setting, and setting prefix_matchable_option
+        /// for those fields will throw `INVALID_ARGUMENT` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixMatchableOption")]
+        public virtual string PrefixMatchableOption { get; set; }
 
         /// <summary>
         /// If recs_filterable_option is FILTERABLE_ENABLED, field values are filterable by filter expression in
@@ -55760,7 +55731,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// Specifications that define the specific DataStores to be searched, along with configurations for those data
         /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
-        /// the specs directly under SearchRequest should be used.
+        /// the specs directly under SearchRequest should be used. On an engine with multiple data stores, this field is
+        /// optional. If it's empty, all of the engine's data stores are searched (blended search). Unless it specifies
+        /// exactly one data store, some request fields, such as `order_by` and `query_expansion_spec`, aren't supported
+        /// and return an `INVALID_ARGUMENT` error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
@@ -61248,7 +61222,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
         /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications`
+        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -63200,6 +63174,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Restricts this data store to the given notebooks. When empty, the data store covers every notebook
+        /// the querying user can access, which is the existing behaviour. Each entry is a full notebook resource name,
+        /// such as `projects/*/locations/*/notebooks/*`. Scoping is enforced on results as well as requested upstream,
+        /// so a notebook outside this list cannot appear in a search response through this data store even if the
+        /// backend returns one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebooks")]
+        public virtual System.Collections.Generic.IList<string> Notebooks { get; set; }
+
+        /// <summary>
         /// Required. Search config name. Format: projects/*/locations/global/notebookLmSearchConfigs/*
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
@@ -64237,7 +64221,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
         /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
         /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications`
+        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -66924,7 +66908,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// Specifications that define the specific DataStores to be searched, along with configurations for those data
         /// stores. This is only considered for Engines with multiple data stores. For engines with a single data store,
-        /// the specs directly under SearchRequest should be used.
+        /// the specs directly under SearchRequest should be used. On an engine with multiple data stores, this field is
+        /// optional. If it's empty, all of the engine's data stores are searched (blended search). Unless it specifies
+        /// exactly one data store, some request fields, such as `order_by` and `query_expansion_spec`, aren't supported
+        /// and return an `INVALID_ARGUMENT` error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
