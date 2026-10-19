@@ -1007,7 +1007,7 @@ namespace Google.Apis.DisplayVideo.v4
                 this.service = service;
             }
 
-            /// <summary>Creates an ad group ad. This method is only supported for Demand Gen ads.</summary>
+            /// <summary>Creates an ad group ad.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v4.Data.AdGroupAd body, long advertiserId)
@@ -1015,7 +1015,7 @@ namespace Google.Apis.DisplayVideo.v4
                 return new CreateRequest(this.service, body, advertiserId);
             }
 
-            /// <summary>Creates an ad group ad. This method is only supported for Demand Gen ads.</summary>
+            /// <summary>Creates an ad group ad.</summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdGroupAd>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1060,17 +1060,15 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Deletes an ad group ad. This method is only supported for Demand Gen ads.</summary>
+            /// <summary>Deletes an ad group ad.</summary>
             /// <param name="advertiserId">Required. The ID of the advertiser the ad belongs to.</param>
-            /// <param name="adGroupAdId">
-            /// Required. The ID of the ad to delete. Only Demand Gen ads are supported.
-            /// </param>
+            /// <param name="adGroupAdId">Required. The ID of the ad to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long adGroupAdId)
             {
                 return new DeleteRequest(this.service, advertiserId, adGroupAdId);
             }
 
-            /// <summary>Deletes an ad group ad. This method is only supported for Demand Gen ads.</summary>
+            /// <summary>Deletes an ad group ad.</summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1085,7 +1083,7 @@ namespace Google.Apis.DisplayVideo.v4
                 [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdvertiserId { get; private set; }
 
-                /// <summary>Required. The ID of the ad to delete. Only Demand Gen ads are supported.</summary>
+                /// <summary>Required. The ID of the ad to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("adGroupAdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long AdGroupAdId { get; private set; }
 
@@ -1296,7 +1294,7 @@ namespace Google.Apis.DisplayVideo.v4
                 }
             }
 
-            /// <summary>Updates an ad group ad. This method is only supported for Demand Gen ads.</summary>
+            /// <summary>Updates an ad group ad.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
             /// <param name="adGroupAdId">Output only. The unique ID of the ad. Assigned by the system.</param>
@@ -1305,7 +1303,7 @@ namespace Google.Apis.DisplayVideo.v4
                 return new PatchRequest(this.service, body, advertiserId, adGroupAdId);
             }
 
-            /// <summary>Updates an ad group ad. This method is only supported for Demand Gen ads.</summary>
+            /// <summary>Updates an ad group ad.</summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v4.Data.AdGroupAd>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -22684,7 +22682,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single ad group associated with a line item.</summary>
+    /// <summary>LINT: LEGACY_NAMES A single ad group associated with a line item.</summary>
     public class AdGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Immutable. The format of the ads in the ad group.</summary>
@@ -22749,7 +22747,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT: LEGACY_NAMES A single ad associated with an ad group.</summary>
+    /// <summary>A single ad associated with an ad group.</summary>
     public class AdGroupAd : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique ID of the ad. Assigned by the system.</summary>
@@ -22787,8 +22785,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
         public virtual BumperAd BumperAd { get; set; }
 
         /// <summary>
-        /// Optional. The DCM tracking ad info. Only valid for Demand Gen ads. To remove the DCM tracking ad info,
-        /// please leave this field empty.
+        /// Optional. The DCM tracking ad info. To remove the DCM tracking ad info, please leave this field empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dcmTrackingInfo")]
         public virtual DcmTrackingInfo DcmTrackingInfo { get; set; }
@@ -24749,7 +24746,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; }
 
-        /// <summary>The URL address loaded in the background for tracking purposes.</summary>
+        /// <summary>
+        /// The URL address loaded in the background for tracking purposes. In v4 and earlier, this field represents the
+        /// tracking URL specified by the user manually. This can be found at userSpecifiedTrackingUrl in v5.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
@@ -26156,7 +26156,7 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Common attributes for in-stream, non-skippable and bumper ads.</summary>
     public class CommonInStreamAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The text on the call-to-action button.</summary>
+        /// <summary>Optional. The text on the call-to-action button. Must be set if actionHeadline is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionButtonLabel")]
         public virtual string ActionButtonLabel { get; set; }
 
@@ -26176,7 +26176,11 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrl")]
         public virtual string FinalUrl { get; set; }
 
-        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
+        /// <summary>
+        /// Output only. The URL address loaded in the background for tracking purposes. In v4 and earlier, this field
+        /// represents the tracking URL specified by the user manually. This can be found at userSpecifiedTrackingUrl in
+        /// v5.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
@@ -33879,7 +33883,9 @@ namespace Google.Apis.DisplayVideo.v4.Data
     /// <summary>Details for a video performance ad.</summary>
     public class VideoPerformanceAd : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The list of text assets shown on the call-to-action button.</summary>
+        /// <summary>
+        /// Optional. The list of text assets shown on the call-to-action button. Must be set if headlines is set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionButtonLabels")]
         public virtual System.Collections.Generic.IList<string> ActionButtonLabels { get; set; }
 
@@ -33891,7 +33897,11 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customParameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomParameters { get; set; }
 
-        /// <summary>Optional. The list of descriptions shown on the call-to-action banner.</summary>
+        /// <summary>
+        /// Optional. The list of descriptions shown on the call-to-action banner. Must be set unless the parent line
+        /// item's lineItemType is `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this field cannot
+        /// be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
         public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
 
@@ -33899,7 +33909,10 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb1")]
         public virtual string DisplayUrlBreadcrumb1 { get; set; }
 
-        /// <summary>Optional. The second piece after the domain in the display URL.</summary>
+        /// <summary>
+        /// Optional. The second piece after the domain in the display URL. Can only be set if displayUrlBreadcrumb1 is
+        /// also set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrlBreadcrumb2")]
         public virtual string DisplayUrlBreadcrumb2 { get; set; }
 
@@ -33915,11 +33928,19 @@ namespace Google.Apis.DisplayVideo.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
-        /// <summary>Optional. The list of long headlines shown on the call-to-action banner.</summary>
+        /// <summary>
+        /// Optional. The list of long headlines shown on the call-to-action banner. Must be set unless the parent line
+        /// item's lineItemType is `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_NON_SKIPPABLE`, in which case this field cannot
+        /// be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
         public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
 
-        /// <summary>Output only. The URL address loaded in the background for tracking purposes.</summary>
+        /// <summary>
+        /// Output only. The URL address loaded in the background for tracking purposes. In v4 and earlier, this field
+        /// represents the tracking URL specified by the user manually. This can be found at userSpecifiedTrackingUrl in
+        /// v5.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]
         public virtual string TrackingUrl { get; set; }
 
