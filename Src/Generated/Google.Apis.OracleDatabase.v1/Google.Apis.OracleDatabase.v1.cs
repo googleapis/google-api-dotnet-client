@@ -2106,6 +2106,102 @@ namespace Google.Apis.OracleDatabase.v1
                         });
                     }
                 }
+
+                /// <summary>Updates the parameters of a single Exadata Infrastructure.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the Exadata Infrastructure resource with the format:
+                /// projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.CloudExadataInfrastructure body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Exadata Infrastructure.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.CloudExadataInfrastructure body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the Exadata Infrastructure resource with the format:
+                    /// projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Exadata resource by
+                    /// the update. The fields specified in the `update_mask` are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
+                    /// then the service treats this as an implied field mask equivalent to all fields that are
+                    /// populated (have a non-empty value). To clear or unset a field, the field must be explicitly
+                    /// specified in the `update_mask`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.CloudExadataInfrastructure Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cloudExadataInfrastructures/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the CloudVmClusters resource.</summary>
@@ -2530,6 +2626,100 @@ namespace Google.Apis.OracleDatabase.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single Vm Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the VM Cluster resource with the format:
+                /// projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.CloudVmCluster body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single Vm Cluster.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.CloudVmCluster body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the VM Cluster resource with the format:
+                    /// projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in the VM Cluster should be updated. A field specified
+                    /// in the mask is overwritten. If a mask isn't provided, the service treats this as an implied
+                    /// field mask equivalent to all fields that are populated (have a non-empty value). To clear or
+                    /// unset a field, the field must be explicitly specified in the `update_mask`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.CloudVmCluster Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cloudVmClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3361,6 +3551,99 @@ namespace Google.Apis.OracleDatabase.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the `labels` of a single DbSystem.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the DbSystem resource in the following format:
+                /// projects/{project}/locations/{region}/dbSystems/{db_system}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.DbSystem body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the `labels` of a single DbSystem.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.DbSystem body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the DbSystem resource in the following format:
+                    /// projects/{project}/locations/{region}/dbSystems/{db_system}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in the DbSystem should be updated. A field specified in
+                    /// the mask is updated. If a mask isn't provided, the service treats this as an implied field mask
+                    /// equivalent to all fields that are populated (have a non-empty value).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.DbSystem Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dbSystems/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4514,6 +4797,100 @@ namespace Google.Apis.OracleDatabase.v1
                         });
                     }
                 }
+
+                /// <summary>Updates the `labels` of a single ExascaleDbStorageVault.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the ExascaleDbStorageVault. Format:
+                /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.ExascaleDbStorageVault body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the `labels` of a single ExascaleDbStorageVault.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.ExascaleDbStorageVault body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the ExascaleDbStorageVault. Format:
+                    /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in the ExascaleDbStorageVault should be updated. A
+                    /// field specified in the mask is updated. If a mask isn't provided, the service treats this as an
+                    /// implied field mask equivalent to all fields that are populated (have a non-empty value). To
+                    /// clear or unset a field, the field must be explicitly specified in the `update_mask`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.ExascaleDbStorageVault Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exascaleDbStorageVaults/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the GiVersions resource.</summary>
@@ -5099,6 +5476,100 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Updates the `labels` of a single GoldengateConnectionAssignment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the GoldengateConnectionAssignment resource in the following format:
+                /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionAssignment body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the `labels` of a single GoldengateConnectionAssignment.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionAssignment body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the GoldengateConnectionAssignment resource in the following format:
+                    /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in the GoldengateConnectionAssignment should be
+                    /// updated. A field specified in the mask is updated. If a mask isn't provided, the service treats
+                    /// this as an implied field mask equivalent to all fields that are populated (have a non-empty
+                    /// value). To clear or unset a field, the field must be explicitly specified in the `update_mask`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.GoldengateConnectionAssignment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnectionAssignments/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Tests a single GoldengateConnectionAssignment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -5601,6 +6072,100 @@ namespace Google.Apis.OracleDatabase.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the `labels` of a single GoldengateConnection.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the GoldengateConnection resource in the following format:
+                /// projects/{project}/locations/{region}/goldengateConnections/{goldengate_connection}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.GoldengateConnection body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the `labels` of a single GoldengateConnection.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.GoldengateConnection body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the GoldengateConnection resource in the following format:
+                    /// projects/{project}/locations/{region}/goldengateConnections/{goldengate_connection}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in the GoldengateConnection should be updated. A field
+                    /// specified in the mask is updated. If a mask isn't provided, the service treats this as an
+                    /// implied field mask equivalent to all fields that are populated (have a non-empty value). To
+                    /// clear or unset a field, the field must be explicitly specified in the `update_mask`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.GoldengateConnection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateConnections/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6283,6 +6848,100 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Updates the `labels` of a single GoldengateDeployment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the GoldengateDeployment resource in the following format:
+                /// projects/{project}/locations/{region}/goldengateDeployments/{goldengate_deployment}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.GoldengateDeployment body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the `labels` of a single GoldengateDeployment.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.GoldengateDeployment body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the GoldengateDeployment resource in the following format:
+                    /// projects/{project}/locations/{region}/goldengateDeployments/{goldengate_deployment}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in the GoldengateDeployment should be updated. A field
+                    /// specified in the mask is updated. If a mask isn't provided, the service treats this as an
+                    /// implied field mask equivalent to all fields that are populated (have a non-empty value). To
+                    /// clear or unset a field, the field must be explicitly specified in the `update_mask`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.GoldengateDeployment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/goldengateDeployments/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Starts a single GoldengateDeployment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -6744,6 +7403,100 @@ namespace Google.Apis.OracleDatabase.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the `labels` of a single ODB Subnet.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The name of the OdbSubnet resource in the following format:
+                    /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.OdbSubnet body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the `labels` of a single ODB Subnet.</summary>
+                    public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.OdbSubnet body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The name of the OdbSubnet resource in the following format:
+                        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                        /// requests. If you make a request with the same request ID and the original request is still
+                        /// in progress or completed, the server ignores the second request. This prevents clients from
+                        /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                        /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Optional. A mask specifying which fields in the OdbSubnet should be updated. A field
+                        /// specified in the mask is updated. If a mask isn't provided, the service treats this as an
+                        /// implied field mask equivalent to all fields that are populated (have a non-empty value). To
+                        /// clear or unset a field, the field must be explicitly specified in the `update_mask`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.OracleDatabase.v1.Data.OdbSubnet Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/odbNetworks/[^/]+/odbSubnets/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -7769,16 +8522,16 @@ namespace Google.Apis.OracleDatabase.v1.Data
     public class AutonomousDatabase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Immutable. The password for the default ADMIN user. Note: Only one of
+        /// Optional. Input only. Immutable. The password for the default ADMIN user. Note: Only one of
         /// `admin_password_secret_version` or `admin_password` can be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
         public virtual string AdminPassword { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. The resource name of a secret version in Secret Manager which contains the database
-        /// admin user's password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
-        /// `admin_password_secret_version` or `admin_password` can be populated.
+        /// Optional. Input only. Immutable. The resource name of a secret version in Secret Manager which contains the
+        /// database admin user's password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only
+        /// one of `admin_password_secret_version` or `admin_password` can be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminPasswordSecretVersion")]
         public virtual string AdminPasswordSecretVersion { get; set; }
@@ -9072,7 +9825,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. User friendly name for this resource.</summary>
+        /// <summary>Optional. Immutable. User friendly name for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -9083,8 +9836,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string EntitlementId { get; set; }
 
         /// <summary>
-        /// Optional. The GCP Oracle zone where Oracle Exadata Infrastructure is hosted. Example: us-east4-b-r2. If not
-        /// specified, the system will pick a zone based on availability.
+        /// Optional. Immutable. The GCP Oracle zone where Oracle Exadata Infrastructure is hosted. Example:
+        /// us-east4-b-r2. If not specified, the system will pick a zone based on availability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
@@ -9100,7 +9853,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Various properties of the infra.</summary>
+        /// <summary>Optional. Immutable. Various properties of the infra.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual CloudExadataInfrastructureProperties Properties { get; set; }
 
@@ -9343,17 +10096,17 @@ namespace Google.Apis.OracleDatabase.v1.Data
     public class CloudVmCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The name of the backup OdbSubnet associated with the VM Cluster. Format:
+        /// Optional. Immutable. The name of the backup OdbSubnet associated with the VM Cluster. Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupOdbSubnet")]
         public virtual string BackupOdbSubnet { get; set; }
 
-        /// <summary>Optional. CIDR range of the backup subnet.</summary>
+        /// <summary>Optional. Immutable. CIDR range of the backup subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupSubnetCidr")]
         public virtual string BackupSubnetCidr { get; set; }
 
-        /// <summary>Optional. Network settings. CIDR to use for cluster IP allocation.</summary>
+        /// <summary>Optional. Immutable. Network settings. CIDR to use for cluster IP allocation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidr")]
         public virtual string Cidr { get; set; }
 
@@ -9394,20 +10147,20 @@ namespace Google.Apis.OracleDatabase.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. User friendly name for this resource.</summary>
+        /// <summary>Optional. Immutable. User friendly name for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Required. The name of the Exadata Infrastructure resource on which VM cluster resource is created, in the
-        /// following format:
+        /// Required. Immutable. The name of the Exadata Infrastructure resource on which VM cluster resource is
+        /// created, in the following format:
         /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exadataInfrastructure")]
         public virtual string ExadataInfrastructure { get; set; }
 
         /// <summary>
-        /// Optional. The name of ExascaleDbStorageVault associated with the VM Cluster. Format:
+        /// Optional. Immutable. The name of ExascaleDbStorageVault associated with the VM Cluster. Format:
         /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exascaleDbStorageVault")]
@@ -9439,13 +10192,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. The name of the VPC network. Format: projects/{project}/global/networks/{network}
+        /// Optional. Immutable. The name of the VPC network. Format: projects/{project}/global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Optional. The name of the OdbNetwork associated with the VM Cluster. Format:
+        /// Optional. Immutable. The name of the OdbNetwork associated with the VM Cluster. Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network} It is optional but if specified, this
         /// should match the parent ODBNetwork of the odb_subnet and backup_odb_subnet.
         /// </summary>
@@ -9453,13 +10206,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string OdbNetwork { get; set; }
 
         /// <summary>
-        /// Optional. The name of the OdbSubnet associated with the VM Cluster for IP allocation. Format:
+        /// Optional. Immutable. The name of the OdbSubnet associated with the VM Cluster for IP allocation. Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
         public virtual string OdbSubnet { get; set; }
 
-        /// <summary>Optional. Various properties of the VM Cluster.</summary>
+        /// <summary>Optional. Immutable. Various properties of the VM Cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual CloudVmClusterProperties Properties { get; set; }
 
@@ -9728,15 +10481,15 @@ namespace Google.Apis.OracleDatabase.v1.Data
     public class Database : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The password for the default ADMIN user. Note: Only one of `admin_password_secret_version` or
-        /// `admin_password` can be populated.
+        /// Optional. Input only. The password for the default ADMIN user. Note: Only one of
+        /// `admin_password_secret_version` or `admin_password` can be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
         public virtual string AdminPassword { get; set; }
 
         /// <summary>
-        /// Optional. The resource name of a secret version in Secret Manager which contains the database admin user's
-        /// password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the database
+        /// admin user's password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
         /// `admin_password_secret_version` or `admin_password` can be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminPasswordSecretVersion")]
@@ -9844,15 +10597,15 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual DatabaseProperties Properties { get; set; }
 
         /// <summary>
-        /// Optional. The TDE wallet password for the database. Note: Only one of `tde_wallet_password_secret_version`
-        /// or `tde_wallet_password` can be populated.
+        /// Optional. Input only. The TDE wallet password for the database. Note: Only one of
+        /// `tde_wallet_password_secret_version` or `tde_wallet_password` can be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tdeWalletPassword")]
         public virtual string TdeWalletPassword { get; set; }
 
         /// <summary>
-        /// Optional. The resource name of a secret version in Secret Manager which contains the TDE wallet password for
-        /// the database. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
+        /// Optional. Input only. The resource name of a secret version in Secret Manager which contains the TDE wallet
+        /// password for the database. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of
         /// `tde_wallet_password_secret_version` or `tde_wallet_password` can be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tdeWalletPasswordSecretVersion")]
@@ -10259,7 +11012,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         }
 
         /// <summary>
-        /// Required. The display name for the System db. The name does not have to be unique within your project.
+        /// Required. Immutable. The display name for the System db. The name does not have to be unique within your
+        /// project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -10269,8 +11023,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string EntitlementId { get; set; }
 
         /// <summary>
-        /// Optional. The GCP Oracle zone where Oracle DbSystem is hosted. Example: us-east4-b-r2. If not specified, the
-        /// system will pick a zone based on availability.
+        /// Optional. Immutable. The GCP Oracle zone where Oracle DbSystem is hosted. Example: us-east4-b-r2. If not
+        /// specified, the system will pick a zone based on availability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
@@ -10291,7 +11045,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string OciUrl { get; set; }
 
         /// <summary>
-        /// Optional. The name of the OdbNetwork associated with the DbSystem. Format:
+        /// Optional. Immutable. The name of the OdbNetwork associated with the DbSystem. Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network} It is optional but if specified, this
         /// should match the parent ODBNetwork of the OdbSubnet.
         /// </summary>
@@ -10299,13 +11053,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string OdbNetwork { get; set; }
 
         /// <summary>
-        /// Required. The name of the OdbSubnet associated with the DbSystem for IP allocation. Format:
+        /// Required. Immutable. The name of the OdbSubnet associated with the DbSystem for IP allocation. Format:
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
         public virtual string OdbSubnet { get; set; }
 
-        /// <summary>Optional. The properties of the DbSystem.</summary>
+        /// <summary>Optional. Immutable. The properties of the DbSystem.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual DbSystemProperties Properties { get; set; }
 
@@ -11119,8 +11873,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         }
 
         /// <summary>
-        /// Required. The display name for the ExascaleDbStorageVault. The name does not have to be unique within your
-        /// project. The name must be 1-255 characters long and can only contain alphanumeric characters.
+        /// Required. Immutable. The display name for the ExascaleDbStorageVault. The name does not have to be unique
+        /// within your project. The name must be 1-255 characters long and can only contain alphanumeric characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -11132,16 +11886,16 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string EntitlementId { get; set; }
 
         /// <summary>
-        /// Optional. The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created, in the
-        /// following format:
+        /// Optional. Immutable. The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is
+        /// created, in the following format:
         /// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exadataInfrastructure")]
         public virtual string ExadataInfrastructure { get; set; }
 
         /// <summary>
-        /// Optional. The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted. Example: us-east4-b-r2. If not
-        /// specified, the system will pick a zone based on availability.
+        /// Optional. Immutable. The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted. Example:
+        /// us-east4-b-r2. If not specified, the system will pick a zone based on availability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
@@ -11157,7 +11911,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The properties of the ExascaleDbStorageVault.</summary>
+        /// <summary>Required. Immutable. The properties of the ExascaleDbStorageVault.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual ExascaleDbStorageVaultProperties Properties { get; set; }
 
@@ -11617,8 +12371,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string EntitlementId { get; set; }
 
         /// <summary>
-        /// Optional. The GCP Oracle zone where Oracle GoldengateConnection is hosted. Example: us-east4-b-r2. If not
-        /// specified, the system will pick a zone based on availability.
+        /// Optional. Immutable. The GCP Oracle zone where Oracle GoldengateConnection is hosted. Example:
+        /// us-east4-b-r2. If not specified, the system will pick a zone based on availability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
@@ -11639,7 +12393,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string OciUrl { get; set; }
 
         /// <summary>
-        /// Optional. The name of the OdbNetwork associated with the GoldengateConnection. The format is
+        /// Optional. Immutable. The name of the OdbNetwork associated with the GoldengateConnection. The format is
         /// projects/{project}/locations/{location}/odbNetworks/{odb_network}. It is optional but if specified, this
         /// should match the parent ODBNetwork of the OdbSubnet.
         /// </summary>
@@ -11647,13 +12401,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string OdbNetwork { get; set; }
 
         /// <summary>
-        /// Optional. The name of the OdbSubnet associated with the GoldengateConnection for IP allocation. Format:
-        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        /// Optional. Immutable. The name of the OdbSubnet associated with the GoldengateConnection for IP allocation.
+        /// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
         public virtual string OdbSubnet { get; set; }
 
-        /// <summary>Required. The properties of the GoldengateConnection.</summary>
+        /// <summary>Required. Immutable. The properties of the GoldengateConnection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoldengateConnectionProperties Properties { get; set; }
 
@@ -11701,7 +12455,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. The display name for the GoldengateConnectionAssignment.</summary>
+        /// <summary>Optional. Immutable. The display name for the GoldengateConnectionAssignment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -11720,7 +12474,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The properties of the GoldengateConnectionAssignment.</summary>
+        /// <summary>Required. Immutable. The properties of the GoldengateConnectionAssignment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoldengateConnectionAssignmentProperties Properties { get; set; }
 
@@ -12140,7 +12894,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The display name for the GoldengateDeployment.</summary>
+        /// <summary>Required. Immutable. The display name for the GoldengateDeployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -12151,8 +12905,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string EntitlementId { get; set; }
 
         /// <summary>
-        /// Optional. The GCP Oracle zone where Oracle GoldengateDeployment is hosted. Example: us-east4-b-r2. If not
-        /// specified, the system will pick a zone based on availability.
+        /// Optional. Immutable. The GCP Oracle zone where Oracle GoldengateDeployment is hosted. Example:
+        /// us-east4-b-r2. If not specified, the system will pick a zone based on availability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
@@ -12172,17 +12926,17 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ociUrl")]
         public virtual string OciUrl { get; set; }
 
-        /// <summary>Optional. The name of the OdbNetwork associated with the GoldengateDeployment.</summary>
+        /// <summary>Optional. Immutable. The name of the OdbNetwork associated with the GoldengateDeployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("odbNetwork")]
         public virtual string OdbNetwork { get; set; }
 
         /// <summary>
-        /// Required. The name of the OdbSubnet associated with the GoldengateDeployment for IP allocation.
+        /// Required. Immutable. The name of the OdbSubnet associated with the GoldengateDeployment for IP allocation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("odbSubnet")]
         public virtual string OdbSubnet { get; set; }
 
-        /// <summary>Required. The properties of the GoldengateDeployment.</summary>
+        /// <summary>Required. Immutable. The properties of the GoldengateDeployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoldengateDeploymentProperties Properties { get; set; }
 
@@ -13808,7 +14562,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// <summary>The Ogg data of the GoldengateDeployment.</summary>
     public class GoldengateOggDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Goldengate deployment console password in plain text.</summary>
+        /// <summary>Optional. Input only. The Goldengate deployment console password in plain text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminPassword")]
         public virtual string AdminPassword { get; set; }
 
@@ -15167,7 +15921,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// <summary>Represents OdbSubnet resource.</summary>
     public class OdbSubnet : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The CIDR range of the subnet.</summary>
+        /// <summary>Required. Immutable. The CIDR range of the subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrRange")]
         public virtual string CidrRange { get; set; }
 
@@ -15219,7 +15973,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Purpose of the subnet.</summary>
+        /// <summary>Required. Immutable. Purpose of the subnet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
         public virtual string Purpose { get; set; }
 
