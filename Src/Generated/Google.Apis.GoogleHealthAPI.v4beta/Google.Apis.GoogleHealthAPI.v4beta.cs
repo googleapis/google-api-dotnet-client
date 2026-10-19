@@ -3747,10 +3747,6 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sedentaryPeriod")]
         public virtual SedentaryPeriodRollupValue SedentaryPeriod { get; set; }
 
-        /// <summary>Returned by default when rolling up data points from the `skin-temperature` data type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("skinTemperature")]
-        public virtual SkinTemperatureRollupValue SkinTemperature { get; set; }
-
         /// <summary>
         /// Returned by default when rolling up data points from the `steps` data type, or when requested explicitly
         /// using the `steps` rollup type identifier.
@@ -4032,10 +4028,6 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
         /// <summary>Optional. Data for points in the `sedentary-period` interval data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sedentaryPeriod")]
         public virtual SedentaryPeriod SedentaryPeriod { get; set; }
-
-        /// <summary>Optional. Data for points in the `skin-temperature` sample data type collection.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("skinTemperature")]
-        public virtual SkinTemperature SkinTemperature { get; set; }
 
         /// <summary>Optional. Data for points in the `skin-temperature-sensors` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skinTemperatureSensors")]
@@ -6410,10 +6402,6 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sedentaryPeriod")]
         public virtual SedentaryPeriod SedentaryPeriod { get; set; }
 
-        /// <summary>Data for points in the `skin-temperature` sample data type collection.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("skinTemperature")]
-        public virtual SkinTemperature SkinTemperature { get; set; }
-
         /// <summary>Data for points in the `skin-temperature-sensors` sample data type collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skinTemperatureSensors")]
         public virtual SkinTemperatureSensors SkinTemperatureSensors { get; set; }
@@ -6736,10 +6724,6 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sedentaryPeriod")]
         public virtual SedentaryPeriodRollupValue SedentaryPeriod { get; set; }
-
-        /// <summary>Returned by default when rolling up data points from the `skin-temperature` data type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("skinTemperature")]
-        public virtual SkinTemperatureRollupValue SkinTemperature { get; set; }
 
         private string _startTimeRaw;
 
@@ -7131,63 +7115,6 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
         /// <summary>Optional. The measurement unit defined in the user's account settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weightUnit")]
         public virtual string WeightUnit { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Skin temperature measurement.</summary>
-    public class SkinTemperature : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The baseline skin temperature in Celsius. Must be in the range `[0, 100]`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baselineTemperatureCelsius")]
-        public virtual System.Nullable<double> BaselineTemperatureCelsius { get; set; }
-
-        /// <summary>Optional. Metadata for the skin temperature measurement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual SkinTemperatureMetadata Metadata { get; set; }
-
-        /// <summary>Required. The time at which skin temperature was measured.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
-        public virtual ObservationSampleTime SampleTime { get; set; }
-
-        /// <summary>Required. The skin temperature in Celsius. Must be in the range `[0, 100]`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsius")]
-        public virtual System.Nullable<double> TemperatureCelsius { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for the skin temperature measurement.</summary>
-    public class SkinTemperatureMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The location of the skin temperature measurement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("measurementLocation")]
-        public virtual string MeasurementLocation { get; set; }
-
-        /// <summary>Optional. The motion state of the skin temperature measurement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("measurementState")]
-        public virtual string MeasurementState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the result of the rollup of the skin temperature data type.</summary>
-    public class SkinTemperatureRollupValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Average skin temperature in Celsius.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsiusAvg")]
-        public virtual System.Nullable<double> TemperatureCelsiusAvg { get; set; }
-
-        /// <summary>Maximum skin temperature in Celsius.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsiusMax")]
-        public virtual System.Nullable<double> TemperatureCelsiusMax { get; set; }
-
-        /// <summary>Minimum skin temperature in Celsius.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("temperatureCelsiusMin")]
-        public virtual System.Nullable<double> TemperatureCelsiusMin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
