@@ -3971,6 +3971,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual System.Nullable<long> Quota { get; set; }
 
         /// <summary>
+        /// Optional. A unique ID used to identify the request, so retries are idempotent. Must be a valid UUID4; the
+        /// zero UUID (`00000000-0000-0000-0000-000000000000`) is not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
         /// Required. Unique identifier for the volume which also appears in the volumes resource name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
@@ -5794,9 +5801,11 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     public class RestoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Example: If you want to restore `/mnt/share/dir1/file.txt`, the path pattern must be
-        /// `/dir1/file.txt`. If you want to restore `/mnt/share/dir1/`, the path pattern must be `/dir1`. Currently
-        /// only single path is supported, Glob patterns are not supported.
+        /// Optional. A collection of paths/patterns to restore from the backup. If empty, a full restore is performed.
+        /// A valid path is relative to the file share's mount point and must not include a trailing slash. The path
+        /// must start with a leading `/`. Example: If you want to restore `/mnt/share/dir1/file.txt`, the path pattern
+        /// must be `/dir1/file.txt`. If you want to restore `/mnt/share/dir1/`, the path pattern must be `/dir1`.
+        /// Currently only single path is supported, Glob patterns are not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathPatterns")]
         public virtual System.Collections.Generic.IList<string> PathPatterns { get; set; }
@@ -6125,6 +6134,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>Optional. The limit for how much data can be written to this volume, in MiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quota")]
         public virtual System.Nullable<long> Quota { get; set; }
+
+        /// <summary>
+        /// Optional. A unique ID used to identify the request, so retries are idempotent. Must be a valid UUID4; the
+        /// zero UUID (`00000000-0000-0000-0000-000000000000`) is not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
