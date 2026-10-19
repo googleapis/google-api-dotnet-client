@@ -18297,6 +18297,13 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ClientValidationMode { get; set; }
 
         /// <summary>
+        /// A list of validation relaxations to apply when `client_validation_mode` is set to
+        /// ALLOW_VALIDATION_RELAXATIONS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientValidationRelaxations")]
+        public virtual System.Collections.Generic.IList<string> ClientValidationRelaxations { get; set; }
+
+        /// <summary>
         /// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain
         /// validation will be performed against certificates configured in the given TrustConfig. Allowed only if the
         /// policy is to be used with Application Load Balancers.
