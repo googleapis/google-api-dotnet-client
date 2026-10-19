@@ -3380,7 +3380,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string Delimiter { get; set; }
 
         /// <summary>
-        /// Optional. The key fields to construct from the row key. The fields must be present in the message as a
+        /// Required. The key fields to construct from the row key. The fields must be present in the message as a
         /// top-level field, i.e. JSON path expressions will not traverse into nested objects.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyFields")]
