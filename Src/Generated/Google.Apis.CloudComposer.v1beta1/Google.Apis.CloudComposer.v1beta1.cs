@@ -3306,6 +3306,56 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The image version an environment can be rolled back to.</summary>
+    public class ImageVersionRollbackTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The image version the environment can be rolled back to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
+        public virtual string ImageVersion { get; set; }
+
+        private string _lastActiveTimeRaw;
+
+        private object _lastActiveTime;
+
+        /// <summary>Output only. The last time when the environment was running this image version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastActiveTime")]
+        public virtual string LastActiveTimeRaw
+        {
+            get => _lastActiveTimeRaw;
+            set
+            {
+                _lastActiveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastActiveTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastActiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastActiveTimeDateTimeOffset instead.")]
+        public virtual object LastActiveTime
+        {
+            get => _lastActiveTime;
+            set
+            {
+                _lastActiveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastActiveTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastActiveTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastActiveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastActiveTimeRaw);
+            set => LastActiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains information about a single line from logs.</summary>
     public class Line : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4200,6 +4250,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The list of image versions the environment can be rolled back to, sorted by last_active_time in
+        /// descending order (most recent first). This field is supported for Cloud Composer environments in versions
+        /// composer-3-airflow-*.*.*-build.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageVersionRollbackTargets")]
+        public virtual System.Collections.Generic.IList<ImageVersionRollbackTarget> ImageVersionRollbackTargets { get; set; }
 
         /// <summary>
         /// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the
