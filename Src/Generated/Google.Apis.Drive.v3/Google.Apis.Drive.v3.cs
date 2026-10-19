@@ -7685,7 +7685,7 @@ namespace Google.Apis.Drive.v3.Data
 
         private object _completeTime;
 
-        /// <summary>Output only. The time the approval was completed.</summary>
+        /// <summary>The time the approval was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
         public virtual string CompleteTimeRaw
         {
@@ -7722,7 +7722,7 @@ namespace Google.Apis.Drive.v3.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time the approval was created.</summary>
+        /// <summary>The time the approval was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -7792,7 +7792,7 @@ namespace Google.Apis.Drive.v3.Data
             set => DueTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The behavior of the approval when the file content changes.</summary>
+        /// <summary>The behavior of the approval when the file content changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileContentChangeBehavior")]
         public virtual string FileContentChangeBehavior { get; set; }
 
@@ -7808,7 +7808,7 @@ namespace Google.Apis.Drive.v3.Data
 
         private object _modifyTime;
 
-        /// <summary>Output only. The most recent time the approval was modified.</summary>
+        /// <summary>The most recent time the approval was modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifyTime")]
         public virtual string ModifyTimeRaw
         {
@@ -7845,7 +7845,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reviewerResponses")]
         public virtual System.Collections.Generic.IList<ReviewerResponse> ReviewerResponses { get; set; }
 
-        /// <summary>Output only. The status of the approval at the time this resource was requested.</summary>
+        /// <summary>The status of the approval at the time this resource was requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
