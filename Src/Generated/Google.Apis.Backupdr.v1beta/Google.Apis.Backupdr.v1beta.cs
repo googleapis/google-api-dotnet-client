@@ -7985,6 +7985,10 @@ namespace Google.Apis.Backupdr.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. NetApp Volume specific backup properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("netappVolumeBackupProperties")]
+        public virtual NetAppVolumeBackupProperties NetappVolumeBackupProperties { get; set; }
+
         /// <summary>Output only. source resource size in bytes at the time of the backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceSizeBytes")]
         public virtual System.Nullable<long> ResourceSizeBytes { get; set; }
@@ -8877,6 +8881,10 @@ namespace Google.Apis.Backupdr.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. NetApp volume backup plan association properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("netappVolumeBackupPlanAssociationProperties")]
+        public virtual NetAppVolumeBackupPlanAssociationProperties NetappVolumeBackupPlanAssociationProperties { get; set; }
 
         /// <summary>
         /// Required. Immutable. Resource name of workload on which the backup plan is applied. The format can either be
@@ -10395,6 +10403,13 @@ namespace Google.Apis.Backupdr.v1beta.Data
         public virtual string Location { get; set; }
 
         /// <summary>
+        /// Output only. NetAppVolumeDataSourceProperties has a subset of NetApp Volume properties that are useful at
+        /// the Datasource level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("netappVolumeDatasourceProperties")]
+        public virtual NetAppVolumeDataSourceProperties NetappVolumeDatasourceProperties { get; set; }
+
+        /// <summary>
         /// The type of the Google Cloud resource. Use the Unified Resource Type, eg. compute.googleapis.com/Instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -10429,6 +10444,10 @@ namespace Google.Apis.Backupdr.v1beta.Data
         /// <summary>Output only. The location of the Google Cloud resource. Ex: //"global"/"unspecified"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
+
+        /// <summary>Output only. The properties of the NetApp volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("netappVolumeProperties")]
+        public virtual NetAppVolumeDataSourceReferenceProperties NetappVolumeProperties { get; set; }
 
         /// <summary>Output only. The type of the Google Cloud resource. Ex: compute.googleapis.com/Instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -12309,6 +12328,168 @@ namespace Google.Apis.Backupdr.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Entry> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// NetAppVolumeBackupPlanAssociationProperties represents NetApp Volume backup plan association properties in
+    /// BackupPlanAssociation. .
+    /// </summary>
+    public class NetAppVolumeBackupPlanAssociationProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _sourceResourceCreateTimeRaw;
+
+        private object _sourceResourceCreateTime;
+
+        /// <summary>Output only. The creation timestamp of the source resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceCreateTime")]
+        public virtual string SourceResourceCreateTimeRaw
+        {
+            get => _sourceResourceCreateTimeRaw;
+            set
+            {
+                _sourceResourceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _sourceResourceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SourceResourceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SourceResourceCreateTimeDateTimeOffset instead.")]
+        public virtual object SourceResourceCreateTime
+        {
+            get => _sourceResourceCreateTime;
+            set
+            {
+                _sourceResourceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _sourceResourceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SourceResourceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SourceResourceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SourceResourceCreateTimeRaw);
+            set => SourceResourceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NetAppVolumeBackupProperties represents NetApp Volume backup properties in Backup. .</summary>
+    public class NetAppVolumeBackupProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The source volume of the Backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResource")]
+        public virtual string SourceResource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NetAppVolumeDataSourceProperties represents NetApp Volume properties stored in DataSource. .</summary>
+    public class NetAppVolumeDataSourceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The source volume represented by this DataSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResource")]
+        public virtual string SourceResource { get; set; }
+
+        private string _sourceResourceCreateTimeRaw;
+
+        private object _sourceResourceCreateTime;
+
+        /// <summary>Output only. The volume creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceCreateTime")]
+        public virtual string SourceResourceCreateTimeRaw
+        {
+            get => _sourceResourceCreateTimeRaw;
+            set
+            {
+                _sourceResourceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _sourceResourceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SourceResourceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SourceResourceCreateTimeDateTimeOffset instead.")]
+        public virtual object SourceResourceCreateTime
+        {
+            get => _sourceResourceCreateTime;
+            set
+            {
+                _sourceResourceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _sourceResourceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SourceResourceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SourceResourceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SourceResourceCreateTimeRaw);
+            set => SourceResourceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// NetAppVolumeDataSourceReferenceProperties represents NetApp Volume properties stored in DataSourceReference. .
+    /// </summary>
+    public class NetAppVolumeDataSourceReferenceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The source volume represented by this DataSourceReference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResource")]
+        public virtual string SourceResource { get; set; }
+
+        private string _sourceResourceCreateTimeRaw;
+
+        private object _sourceResourceCreateTime;
+
+        /// <summary>Output only. The volume creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceCreateTime")]
+        public virtual string SourceResourceCreateTimeRaw
+        {
+            get => _sourceResourceCreateTimeRaw;
+            set
+            {
+                _sourceResourceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _sourceResourceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SourceResourceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SourceResourceCreateTimeDateTimeOffset instead.")]
+        public virtual object SourceResourceCreateTime
+        {
+            get => _sourceResourceCreateTime;
+            set
+            {
+                _sourceResourceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _sourceResourceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SourceResourceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SourceResourceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SourceResourceCreateTimeRaw);
+            set => SourceResourceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
