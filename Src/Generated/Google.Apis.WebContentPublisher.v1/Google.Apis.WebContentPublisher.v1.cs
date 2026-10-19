@@ -720,6 +720,76 @@ namespace Google.Apis.WebContentPublisher.v1
                 }
             }
 
+            /// <summary>
+            /// Retrieves the catalog of predefined survey questions and answer choices available for a publication.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The resource name of the survey question catalog to retrieve. Format:
+            /// `organizations/{organization}/publications/{publication}/surveyQuestionCatalog`.
+            /// </param>
+            public virtual GetSurveyQuestionCatalogRequest GetSurveyQuestionCatalog(string name)
+            {
+                return new GetSurveyQuestionCatalogRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the catalog of predefined survey questions and answer choices available for a publication.
+            /// </summary>
+            public class GetSurveyQuestionCatalogRequest : WebContentPublisherBaseServiceRequest<Google.Apis.WebContentPublisher.v1.Data.SurveyQuestionCatalog>
+            {
+                /// <summary>Constructs a new GetSurveyQuestionCatalog request.</summary>
+                public GetSurveyQuestionCatalogRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the survey question catalog to retrieve. Format:
+                /// `organizations/{organization}/publications/{publication}/surveyQuestionCatalog`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The BCP-47 language code (e.g., "en-US", "es-419") to override the publication's
+                /// configured primary language.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LanguageCode { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSurveyQuestionCatalog";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetSurveyQuestionCatalog parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/publications/[^/]+/surveyQuestionCatalog$",
+                    });
+                    RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Lists publications.</summary>
             /// <param name="parent">
             /// Required. The parent organization whose publications to list, or "organizations/-" for all organizations
@@ -1049,6 +1119,29 @@ namespace Google.Apis.WebContentPublisher.v1
 }
 namespace Google.Apis.WebContentPublisher.v1.Data
 {
+    /// <summary>A predefined answer choice template for a catalog question.</summary>
+    public class AnswerChoiceTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Category of the answer based on the IAB Audience Taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Output only. Text label used for aggregating responses by category in analytics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryLabel")]
+        public virtual string CategoryLabel { get; set; }
+
+        /// <summary>Output only. Localized answer choice text displayed to readers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
+        public virtual string DisplayText { get; set; }
+
+        /// <summary>Output only. Unique identifier of the answer choice within the question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for CheckFreeAccess</summary>
     public class CheckFreeAccessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1099,9 +1192,47 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Optional. Configuration specific to survey CTAs. Only populated if type is `SURVEY`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("surveyConfig")]
+        public virtual SurveyConfig SurveyConfig { get; set; }
+
         /// <summary>Required. The type of this CTA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An answer choice for a custom survey question.</summary>
+    public class CustomAnswerChoice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The display text of the answer choice shown to readers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
+        public virtual string DisplayText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A custom question defined by the publisher.</summary>
+    public class CustomQuestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Ordered list of answer choices for the custom question (2-5 items).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerChoices")]
+        public virtual System.Collections.Generic.IList<CustomAnswerChoice> AnswerChoices { get; set; }
+
+        /// <summary>Optional. Reporting category label sent to Google Analytics (up to 100 characters).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryLabel")]
+        public virtual string CategoryLabel { get; set; }
+
+        /// <summary>Required. The question prompt displayed to readers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
+        public virtual string DisplayText { get; set; }
+
+        /// <summary>Output only. Server-assigned unique identifier for the custom question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1205,6 +1336,24 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A preset question referencing a template in the survey question catalog.</summary>
+    public class PresetQuestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Selected answer choice IDs from the question template. Required (2-5 unique IDs) when the catalog
+        /// question is `CONFIGURABLE_CHOICES`, and must be omitted for `FIXED_CHOICES`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AnswerIds { get; set; }
+
+        /// <summary>Required. ID of the question template from `SurveyQuestionCatalog`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionId")]
+        public virtual System.Nullable<int> QuestionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a publisher's publication in Reader Revenue Manager.</summary>
     public class Publication : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1287,6 +1436,37 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A predefined question template in the survey question catalog.</summary>
+    public class QuestionTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Possible answer choices for this question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerChoices")]
+        public virtual System.Collections.Generic.IList<AnswerChoiceTemplate> AnswerChoices { get; set; }
+
+        /// <summary>Output only. Category of the question based on the IAB Audience Taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Output only. Text label used for aggregating responses by category in analytics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryLabel")]
+        public virtual string CategoryLabel { get; set; }
+
+        /// <summary>Output only. The type of answer choice configuration for this question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationType")]
+        public virtual string ConfigurationType { get; set; }
+
+        /// <summary>Output only. Localized question text displayed to readers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
+        public virtual string DisplayText { get; set; }
+
+        /// <summary>Output only. Unique identifier of the question template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<int> Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration and status of the Reader Revenue Manager (RRM) product for a publication.</summary>
     public class RrmProduct : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1331,6 +1511,64 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         /// <summary>Optional. The Google Cloud Project number associated with the publication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectNumber")]
         public virtual System.Nullable<long> GcpProjectNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for survey calls-to-action (CTAs).</summary>
+    public class SurveyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Header prompt shown to readers. If omitted, the server populates the default prompt localized to
+        /// the parent publication's configured primary language.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMessage")]
+        public virtual string CustomMessage { get; set; }
+
+        /// <summary>
+        /// Optional. Ordered list of questions presented in the survey (1-3 items when `ACTIVE`; 0-3 when `DRAFT`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questions")]
+        public virtual System.Collections.Generic.IList<SurveyQuestion> Questions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single question within a survey, which can be either a preset question from the catalog or a custom
+    /// publisher-defined question.
+    /// </summary>
+    public class SurveyQuestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A custom question defined by the publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customQuestion")]
+        public virtual CustomQuestion CustomQuestion { get; set; }
+
+        /// <summary>Optional. A question selected from the preset question catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presetQuestion")]
+        public virtual PresetQuestion PresetQuestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the catalog of predefined survey questions and localized answer choices available for a publication.
+    /// </summary>
+    public class SurveyQuestionCatalog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The resource name of the survey question catalog. Format:
+        /// `organizations/{organization}/publications/{publication}/surveyQuestionCatalog`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The list of available predefined question templates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questions")]
+        public virtual System.Collections.Generic.IList<QuestionTemplate> Questions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
