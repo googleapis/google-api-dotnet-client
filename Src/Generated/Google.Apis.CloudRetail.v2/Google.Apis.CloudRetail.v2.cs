@@ -9300,13 +9300,15 @@ namespace Google.Apis.CloudRetail.v2.Data
         private object _expireTime;
 
         /// <summary>
-        /// Note that this field is applied in the following ways: * If the Product is already expired when it is
-        /// uploaded, this product is not indexed for search. * If the Product is not expired when it is uploaded, only
-        /// the Type.PRIMARY's and Type.COLLECTION's expireTime is respected, and Type.VARIANT's expireTime is not used.
-        /// In general, we suggest the users to delete the stale products explicitly, instead of using this field to
-        /// determine staleness. expire_time must be later than available_time and publish_time, otherwise an
-        /// INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property
-        /// [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is
+        /// not available for SearchService.Search after expire_time. However, the product can still be retrieved by
+        /// ProductService.GetProduct and ProductService.ListProducts. Note that this field is applied in the following
+        /// ways: * If the Product is already expired when it is uploaded, this product is not indexed for search. * If
+        /// the Product is not expired when it is uploaded, only the Type.PRIMARY's and Type.COLLECTION's expireTime is
+        /// respected, and Type.VARIANT's expireTime is not used. In general, we suggest the users to delete the stale
+        /// products explicitly, instead of using this field to determine staleness. expire_time must be later than
+        /// available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties:
+        /// Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
