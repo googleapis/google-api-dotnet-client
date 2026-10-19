@@ -13678,6 +13678,17 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
         public virtual InstanceGroupConfig MasterConfig { get; set; }
 
+        /// <summary>
+        /// Optional. The High Obtainability (HO) config settings for the cluster's master instances.In High
+        /// Obtainability (HO) mode, flexible configs are the single source of truth for desired cluster configuration
+        /// across node groups: * For single-node clusters: master_flexible_config must be specified, and no worker
+        /// configs should be set. * For multi-node (standard) clusters: both master_flexible_config and
+        /// worker_flexible_config must be specified. Mixing standard and flexible configs across node groups is not
+        /// allowed.Only one of master_config or master_flexible_config can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterFlexibleConfig")]
+        public virtual FlexibleInstanceGroupConfig MasterFlexibleConfig { get; set; }
+
         /// <summary>Optional. Metastore configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metastoreConfig")]
         public virtual MetastoreConfig MetastoreConfig { get; set; }
@@ -13685,6 +13696,17 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. The Compute Engine config settings for a cluster's secondary worker instances</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
         public virtual InstanceGroupConfig SecondaryWorkerConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The High Obtainability (HO) config settings for a cluster's secondary worker instances.In High
+        /// Obtainability (HO) mode, flexible configs are the single source of truth for desired cluster configuration.
+        /// num_instances represents the desired capacity of the secondary worker group and is mutable via cluster
+        /// updates and autoscaling.Only one of secondary_worker_config or secondary_worker_flexible_config can be
+        /// set.In High Obtainability (HO) mode, secondary workers are optional. If secondary workers are used in an HO
+        /// cluster, they must be configured using secondary_worker_flexible_config (not secondary_worker_config).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerFlexibleConfig")]
+        public virtual FlexibleInstanceGroupConfig SecondaryWorkerFlexibleConfig { get; set; }
 
         /// <summary>Optional. Security settings for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityConfig")]
@@ -13709,6 +13731,18 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. The Compute Engine config settings for the cluster's worker instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual InstanceGroupConfig WorkerConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The High Obtainability (HO) config settings for the cluster's worker instances.In High
+        /// Obtainability (HO) mode, flexible configs are the single source of truth for desired cluster configuration.
+        /// num_instances represents the desired capacity of the worker group and is mutable via cluster updates and
+        /// autoscaling.Only one of worker_config or worker_flexible_config can be set.In High Obtainability (HO) mode,
+        /// for multi-node (standard) clusters, both master_flexible_config and worker_flexible_config must be
+        /// specified. Mixing standard and flexible configs across node groups is not allowed. Single-node clusters do
+        /// not specify worker configs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerFlexibleConfig")]
+        public virtual FlexibleInstanceGroupConfig WorkerFlexibleConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14728,6 +14762,45 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. Fallback to Spark reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackReason")]
         public virtual string FallbackReasonValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The configuration for High Obtainability (HO) flexible instance groups. Flexible instance group configs serve as
+    /// the single source of truth for desired state.
+    /// </summary>
+    public class FlexibleInstanceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The boot disk size in GB. This is a create-time specification and is not currently mutable via
+        /// update masks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
+        public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Optional. The number of vCPUs per instance. Must be a power of 2 (2, 4, 8, 16, 32). This is a create-time
+        /// specification and is not currently mutable via update masks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
+        public virtual System.Nullable<int> CoreCount { get; set; }
+
+        /// <summary>
+        /// Optional. The hardware class of the instances. This is a create-time specification and is not currently
+        /// mutable via update masks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardwareClass")]
+        public virtual string HardwareClass { get; set; }
+
+        /// <summary>
+        /// Optional. The number of VM instances requested.For master instances, this must be 1. For worker and
+        /// secondary worker instances, this represents the desired capacity of the group and is mutable via cluster
+        /// update operations and autoscaling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numInstances")]
+        public virtual System.Nullable<int> NumInstances { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18861,6 +18934,12 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. Brief description of the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. User-friendly display name for the session template. Can be up to 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Optional. Environment configuration for session execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentConfig")]
