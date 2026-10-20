@@ -776,15 +776,16 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     /// <summary>
                     /// Optional. Filters events by custom keys
                     /// (https://firebase.google.com/docs/crashlytics/customize-crash-reports#add-keys). Supported
-                    /// forms: * Equality: `custom_keys.level = "vip"` or `custom_keys.level:"vip"` * Presence:
-                    /// `custom_keys.level:*` * OR across values of one key: `custom_keys.level = "vip" OR
-                    /// custom_keys.level = "enterprise"` * AND across different keys: `custom_keys.level = "vip" AND
-                    /// custom_keys.region = "us"` Keys are case-sensitive. Keys and values containing spaces must be
-                    /// double-quoted, for example `custom_keys."app state" = "background"`. OR across different keys,
-                    /// repeating a key within an AND, NOT, and comparators other than `=` and `:` are rejected with
-                    /// INVALID_ARGUMENT. Wildcards are not supported in values; use `custom_keys.:*` to match events
-                    /// that set a key to any value. This filter expression applies in addition to the `filter` field
-                    /// above. The syntax is a subset of AIP-160 (https://google.aip.dev/160).
+                    /// forms: * Equality: `custom_keys.level = "vip"` * Has: `custom_keys.level:"vip"` (matches the
+                    /// same events as equality) * Presence: `custom_keys.level:*` * OR across values of one key:
+                    /// `custom_keys.level = "vip" OR custom_keys.level = "enterprise"` * AND across different keys:
+                    /// `custom_keys.level = "vip" AND custom_keys.region = "us"` Keys are case-sensitive. Keys and
+                    /// values containing spaces must be double-quoted, for example `custom_keys."app state" =
+                    /// "background"`. OR across different keys, repeating a key within an AND, NOT, and comparators
+                    /// other than `=` and `:` are rejected with INVALID_ARGUMENT. Wildcards are not supported in
+                    /// values; use `custom_keys.:*` to match events that set a key to any value. This filter expression
+                    /// applies in addition to the `filter` field above. The syntax is a subset of AIP-160
+                    /// (https://google.aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FilterExpression { get; set; }
@@ -1775,6 +1776,24 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     public virtual Google.Apis.Util.Repeatable<string> FilterVersionDisplayNames { get; set; }
 
                     /// <summary>
+                    /// Optional. Filters the events counted in the report by custom keys. Not all reports support this
+                    /// filter. It is currently only supported for web apps, for the `webMetrics`, `topBrowsers`,
+                    /// `topOperatingSystems`, `topVersions`, and `topCustomKeys` reports. Requests for other apps or
+                    /// reports that set this field are rejected with INVALID_ARGUMENT. Supported forms: * Equality:
+                    /// `custom_keys.level = "vip"` * Has: `custom_keys.level:"vip"` (matches the same events as
+                    /// equality) * Presence: `custom_keys.level:*` * OR across values of one key: `custom_keys.level =
+                    /// "vip" OR custom_keys.level = "enterprise"` * AND across different keys: `custom_keys.level =
+                    /// "vip" AND custom_keys.region = "us"` Keys are case-sensitive. Keys and values containing spaces
+                    /// must be double-quoted, for example `custom_keys."app state" = "background"`. OR across different
+                    /// keys, repeating a key within an AND, NOT, and comparators other than `=` and `:` are rejected
+                    /// with INVALID_ARGUMENT. Wildcards are not supported in values; use `custom_keys.:*` to match
+                    /// events that set a key to any value. This filter expression applies in addition to the `filter`
+                    /// field above. The syntax is a subset of AIP-160 (https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FilterExpression { get; set; }
+
+                    /// <summary>
                     /// Optional. The report response will contain one data point per time grain. If omitted, the report
                     /// will contain a single data point for the complete interval.
                     /// </summary>
@@ -2004,6 +2023,14 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                         RequestParameters.Add("filter.version.displayNames", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter.version.displayNames",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filterExpression", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterExpression",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
