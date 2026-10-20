@@ -1064,6 +1064,10 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
         public virtual Scope3FlightSegment Flight { get; set; }
 
+        /// <summary>Optional. The model version under which the emissions were computed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual ModelVersion ModelVersion { get; set; }
+
         /// <summary>Optional. The source of the emissions data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
