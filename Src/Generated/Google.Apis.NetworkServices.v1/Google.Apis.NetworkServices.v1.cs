@@ -9739,7 +9739,7 @@ namespace Google.Apis.NetworkServices.v1.Data
     public class AgentConnectivityTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Immutable. The path of the access. Maps roughly to ingress/egress, though we keep CLIENT_TO_AGENT
+        /// Optional. Immutable. The path of the access. Maps roughly to ingress/egress, though we keep CLIENT_TO_AGENT
         /// and AGENT_TO_ANYWHERE as carryovers from Agent Gateway's original resource model. The path is immutable once
         /// set. Exactly one path can be set.
         /// </summary>
@@ -9795,7 +9795,7 @@ namespace Google.Apis.NetworkServices.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The deployment model for the gateway.</summary>
+        /// <summary>Optional. The deployment model for the gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
         public virtual string DeploymentModel { get; set; }
 
