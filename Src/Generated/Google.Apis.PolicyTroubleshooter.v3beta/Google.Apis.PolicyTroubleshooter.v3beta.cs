@@ -1901,7 +1901,7 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         /// workload pool, service account, and agent identity. Allowed string must be one of: -
         /// `iam.googleapis.com/WorkspaceIdentity` - `iam.googleapis.com/WorkforcePoolIdentity` -
         /// `iam.googleapis.com/WorkloadPoolIdentity` - `iam.googleapis.com/ServiceAccount` -
-        /// `iam.googleapis.com/AgentPoolIdentity` (available in Preview)
+        /// `iam.googleapis.com/AgentPoolIdentity`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual GoogleTypeExpr Condition { get; set; }
