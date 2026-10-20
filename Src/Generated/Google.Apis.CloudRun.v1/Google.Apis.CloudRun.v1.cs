@@ -9173,6 +9173,14 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
 
+        /// <summary>
+        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
+        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region. This
+        /// field must be empty for the Build to be eligible to be paired with a pre-provisioned worker VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
+        public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
+
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
         public virtual string RequestedVerifyOption { get; set; }
