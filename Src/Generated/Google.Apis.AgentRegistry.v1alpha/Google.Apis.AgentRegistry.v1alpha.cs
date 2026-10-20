@@ -6488,6 +6488,63 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Requesting a deep search of Skills.</summary>
+    public class SearchSkillsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Use this field to specify additional filter criteria on search results. Filter expressions can be
+        /// used to restrict results based upon filterable fields, where equality operators can be used. See
+        /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details.
+        /// Allowed operators: `=`, `&amp;lt;`, `&amp;gt;`, `NOT`, `AND`, `OR`, and `()`. | Field | `=` | `&amp;lt;`,
+        /// `&amp;gt;` | |--------------|-----|----------| | state | Yes | No | | targetState | Yes | No | | createTime
+        /// | Yes | Yes | | updateTime | Yes | Yes | Examples: * `state=ACTIVE` to restrict results to skills in the
+        /// `ACTIVE` state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of search results to return per page. The page size is capped at `100`, even if
+        /// a larger value is specified. A negative value will result in an `INVALID_ARGUMENT` error. If unspecified or
+        /// set to `0`, a default value of `20` will be used. The server may return fewer results than requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. If present, retrieve the next batch of results from the preceding call to this method.
+        /// `page_token` must be the value of `next_page_token` from the previous response. The values of all other
+        /// method parameters, must be identical to those in the previous call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. Search criteria used to select the Skills to return. If no search criteria is specified then all
+        /// accessible Skills will be returned. Search expressions can be used to restrict results based upon searchable
+        /// fields, where the operators can be used along with the suffix wildcard symbol `*`. See
+        /// [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details.
+        /// Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` |
+        /// Keyword Search | |---------------------------|-----|-----|-----|----------------| | skillId | Yes | Yes |
+        /// Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | |
+        /// description | No | Yes | No | Included | | frontmatter.name | No | Yes | No | Included | |
+        /// frontmatter.description | No | Yes | No | Included | | frontmatter.compatibility | No | Yes | No | Included
+        /// | | frontmatter.license | No | Yes | No | Included | Examples: *
+        /// `skillId="urn:skill:projects-1234:locations:global:private-important-skill"` to find the skill with the
+        /// specified skill ID. * `name:important` to find skills whose name contains `important` as a word. *
+        /// `displayName:works*` to find skills whose display name contains words that start with `works`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchString")]
+        public virtual string SearchString { get; set; }
+
+        /// <summary>Optional. The type of search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchType")]
+        public virtual string SearchType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response listing searched Skills.</summary>
     public class SearchSkillsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
