@@ -2183,6 +2183,124 @@ namespace Google.Apis.Classroom.v1
                     }
 
                     /// <summary>
+                    /// Returns a list of student submissions that the requester is permitted to view. This method
+                    /// returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
+                    /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+                    /// </summary>
+                    /// <param name="courseId">Required. Identifier of the course.</param>
+                    /// <param name="itemId">
+                    /// Required. Identifier of the `CourseWork` under which the attachment is attached.
+                    /// </param>
+                    /// <param name="attachmentId">Required. Identifier of the add-on attachment.</param>
+                    public virtual ListRequest List(string courseId, string itemId, string attachmentId)
+                    {
+                        return new ListRequest(this.service, courseId, itemId, attachmentId);
+                    }
+
+                    /// <summary>
+                    /// Returns a list of student submissions that the requester is permitted to view. This method
+                    /// returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT`
+                    /// if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+                    /// </summary>
+                    public class ListRequest : ClassroomBaseServiceRequest<Google.Apis.Classroom.v1.Data.ListAddOnAttachmentStudentSubmissionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string courseId, string itemId, string attachmentId) : base(service)
+                        {
+                            CourseId = courseId;
+                            ItemId = itemId;
+                            AttachmentId = attachmentId;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Identifier of the course.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string CourseId { get; private set; }
+
+                        /// <summary>
+                        /// Required. Identifier of the `CourseWork` under which the attachment is attached.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("itemId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ItemId { get; private set; }
+
+                        /// <summary>Required. Identifier of the add-on attachment.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string AttachmentId { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of submissions to return. Zero or unspecified indicates that the
+                        /// server may assign a maximum. The server may return fewer than the specified number of
+                        /// results.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListAddOnAttachmentStudentSubmissions`
+                        /// call. Provide this to retrieve the subsequent page. When paginating, all other parameters
+                        /// provided to `ListAddOnAttachmentStudentSubmissions` must match the call that provided the
+                        /// page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("courseId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "courseId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("itemId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "itemId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("attachmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "attachmentId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Updates data associated with an add-on attachment submission. Requires the add-on to have been
                     /// the original creator of the attachment and the attachment to have a positive `max_points` value
                     /// set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. *
@@ -12835,6 +12953,24 @@ namespace Google.Apis.Classroom.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response when listing student submissions for an add-on attachment.</summary>
+    public class ListAddOnAttachmentStudentSubmissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Add-on attachment student submissions that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addOnAttachmentStudentSubmissions")]
+        public virtual System.Collections.Generic.IList<AddOnAttachmentStudentSubmission> AddOnAttachmentStudentSubmissions { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
