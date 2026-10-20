@@ -1593,6 +1593,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudAiplatformV1beta1ModelArmorConfig ModelArmorConfig { get; set; }
 
+        /// <summary>Optional. Configuration for persisting output assets to external storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig OutputConfig { get; set; }
+
         /// <summary>
         /// Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates.
         /// </summary>
@@ -1617,6 +1621,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tools")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Tool> Tools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for persisting output assets to external storage.</summary>
+    public class GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Cloud Storage URI prefix or directory where generated media assets should be written (e.g.
+        /// `gs://my-bucket/prefix/`). Supported URI schemes: `gs://`. When set, media bytes are written directly to
+        /// this location and returned as `FileData` with a `file_uri` instead of raw inline bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
+        public virtual string OutputUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
