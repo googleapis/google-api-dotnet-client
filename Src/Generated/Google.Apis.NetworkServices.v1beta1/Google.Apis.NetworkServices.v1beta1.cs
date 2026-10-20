@@ -311,6 +311,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 ServiceBindings = new ServiceBindingsResource(service);
                 ServiceLbPolicies = new ServiceLbPoliciesResource(service);
                 TcpRoutes = new TcpRoutesResource(service);
+                TelemetryPolicies = new TelemetryPoliciesResource(service);
                 TlsRoutes = new TlsRoutesResource(service);
                 WasmPlugins = new WasmPluginsResource(service);
             }
@@ -7792,6 +7793,391 @@ namespace Google.Apis.NetworkServices.v1beta1
                 }
             }
 
+            /// <summary>Gets the TelemetryPolicies resource.</summary>
+            public virtual TelemetryPoliciesResource TelemetryPolicies { get; }
+
+            /// <summary>The "telemetryPolicies" collection of methods.</summary>
+            public class TelemetryPoliciesResource
+            {
+                private const string Resource = "telemetryPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TelemetryPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new TelemetryPolicy in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this policy will be created. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1beta1.Data.TelemetryPolicy body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new TelemetryPolicy in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.TelemetryPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this policy will be created. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the telemetry policy, which will become the final component of the
+                    /// telemetry policy's resource name. This value must be 4-63 characters long, and match the regular
+                    /// expression `[a-z]([-a-z0-9]{2,61}[a-z0-9])`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("telemetryPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TelemetryPolicyId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.TelemetryPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/telemetryPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("telemetryPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "telemetryPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single TelemetryPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the TelemetryPolicy to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/telemetryPolicies/{telemetry_policy}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single TelemetryPolicy.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TelemetryPolicy to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/telemetryPolicies/{telemetry_policy}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The etag of the TelemetryPolicy. If this is provided, it must match the server's etag.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/telemetryPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single TelemetryPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the TelemetryPolicy to get. Must be in the format
+                /// `projects/{project}/locations/{location}/telemetryPolicies/{telemetry_policy}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single TelemetryPolicy.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.TelemetryPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the TelemetryPolicy to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/telemetryPolicies/{telemetry_policy}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/telemetryPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists TelemetryPolicies in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the TelemetryPolicies should be listed, specified in
+                /// the format `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists TelemetryPolicies in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListTelemetryPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the TelemetryPolicies should be listed, specified
+                    /// in the format `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of policies to return. The service may return fewer than this
+                    /// value. If unspecified, at most 50 policies will be returned. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListTelemetryPolicies` call. Provide this to
+                    /// retrieve the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/telemetryPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single TelemetryPolicy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Represents the resource name of the policy. Format:
+                /// `projects/{project}/locations/{location}/telemetryPolicies/{telemetry_policy}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.TelemetryPolicy body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single TelemetryPolicy.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.TelemetryPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Represents the resource name of the policy. Format:
+                    /// `projects/{project}/locations/{location}/telemetryPolicies/{telemetry_policy}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, and the telemetry policy is not found, a new telemetry policy will be
+                    /// created. In this situation, `update_mask` is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the TelemetryPolicy
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the `update_mask` is
+                    /// not provided, the service will treat it as an implied field mask equivalent to all fields
+                    /// provided in the request message. This means that only the fields populated in the
+                    /// `telemetry_policy` field will be updated. The special value `*` can be used to indicate full
+                    /// replacement.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.TelemetryPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/telemetryPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the TlsRoutes resource.</summary>
             public virtual TlsRoutesResource TlsRoutes { get; }
 
@@ -8993,7 +9379,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     public class AgentConnectivityTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Immutable. The path of the access. Maps roughly to ingress/egress, though we keep CLIENT_TO_AGENT
+        /// Optional. Immutable. The path of the access. Maps roughly to ingress/egress, though we keep CLIENT_TO_AGENT
         /// and AGENT_TO_ANYWHERE as carryovers from Agent Gateway's original resource model. The path is immutable once
         /// set. Exactly one path can be set.
         /// </summary>
@@ -9049,7 +9435,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The deployment model for the gateway.</summary>
+        /// <summary>Optional. The deployment model for the gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
         public virtual string DeploymentModel { get; set; }
 
@@ -12894,6 +13280,31 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response returned by the ListTelemetryPolicies method.</summary>
+    public class ListTelemetryPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of TelemetryPolicy resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telemetryPolicies")]
+        public virtual System.Collections.Generic.IList<TelemetryPolicy> TelemetryPolicies { get; set; }
+
+        /// <summary>
+        /// Unreachable resources. Populated when the request attempts to list all resources across all supported
+        /// locations, while some locations are temporarily unavailable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response returned by the ListTlsRoutes method.</summary>
     public class ListTlsRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13204,6 +13615,20 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelValue")]
         public virtual string LabelValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for metrics collection.</summary>
+    public class MetricsConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates whether metrics are enabled or disabled. Set to true to explicitly enable, or false to
+        /// explicitly disable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14040,6 +14465,198 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Provides a configuration for telemetry.</summary>
+    public class TelemetryPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. User-provided annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Indicates the timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>
+        /// Output only. The time when this resource was soft-deleted. Only populated if the resource is in the process
+        /// of being deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Provides a human-readable name for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Provides a mechanism for optimistic concurrency control. If this is provided, it must match the server's
+        /// etag. If the provided etag does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the TelemetryPolicy resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the top-level configuration block within the telemetry policy that contains all the
+        /// settings for how metrics will be applied to the target resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricsConfiguration")]
+        public virtual MetricsConfiguration MetricsConfiguration { get; set; }
+
+        /// <summary>
+        /// Identifier. Represents the resource name of the policy. Format:
+        /// `projects/{project}/locations/{location}/telemetryPolicies/{telemetry_policy}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. If true, the service is currently reconciling the resource to the desired state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>Required. Specifies the set of targets to which this telemetry policy applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telemetryTarget")]
+        public virtual TelemetryTarget TelemetryTarget { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the top-level configuration block within the telemetry policy that contains all the
+        /// settings for how tracing will be applied to the target resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracingConfiguration")]
+        public virtual TracingConfiguration TracingConfiguration { get; set; }
+
+        /// <summary>Output only. Specifies the server-assigned unique identifier for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Indicates the timestamp when the resource was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>Specifies the set of targets to which the TelemetryPolicy should be applied.</summary>
+    public class TelemetryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Lists references to the resources that are targeted by the policy. Types of resources supported: -
+        /// `run.googleapis.com/` - `compute.googleapis.com/` - `networkservices.googleapis.com/` The format must be the
+        /// full resource name of a supported resource. Examples:
+        /// `//run.googleapis.com/projects/{project}/locations/{location}/services/{service}`
+        /// `//compute.googleapis.com/projects/my-project/global/forwardingRules/my-fr-1`
+        /// `//compute.googleapis.com/projects/my-project/regions/us-central1/forwardingRules/my-fr-1`
+        /// `//networkservices.googleapis.com/projects/my-project/locations/us-central1/gateways/my-secure-web-proxy-gateway`
+        /// `//networkservices.googleapis.com/projects/my-project/locations/us-east1/agentGateways/my-agent-gateway`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>TlsRoute defines how traffic should be routed based on SNI and other matching L3 attributes.</summary>
     public class TlsRoute : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14251,6 +14868,85 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matches")]
         public virtual System.Collections.Generic.IList<TlsRouteRouteMatch> Matches { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for tracing collection.</summary>
+    public class TracingConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Provides key-value pairs for adding context to spans. Supports literalValue (static) and
+        /// fromHeaderValue (dynamic extraction).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customSpanAttributes")]
+        public virtual System.Collections.Generic.IList<TracingConfigurationCustomSpanAttribute> CustomSpanAttributes { get; set; }
+
+        /// <summary>Optional. Configures honoring a sampled bit in downstream traceparentID headers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentBasedSampling")]
+        public virtual TracingConfigurationParentBasedSampling ParentBasedSampling { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the tracing sampling rate. The sampling rate is a float number in the interval [0, 1].
+        /// The sampling rate is applied to all requests to the targeted resources. The default value is 0.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplingRate")]
+        public virtual System.Nullable<float> SamplingRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Key-value pairs for adding context to spans. Supports literal_value (static) and from_header_value (dynamic
+    /// extraction). Note: literal_value and from_header_value are mutually exclusive, but at least one of them must be
+    /// set.
+    /// </summary>
+    public class TracingConfigurationCustomSpanAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Defines the key for a custom attribute that is added to the trace spans generated by the Google
+        /// Cloud Load Balancer (GCLB).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
+        public virtual string AttributeName { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies an incoming request header name from which the value for the custom span attribute
+        /// should be dynamically extracted. Note: the value of the header might be changed during the request
+        /// processing; in this case the resulting value will be stored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromHeaderValue")]
+        public virtual string FromHeaderValue { get; set; }
+
+        /// <summary>
+        /// Optional. Assigns a static, constant value to the custom trace span attribute defined by the corresponding
+        /// attribute_name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("literalValue")]
+        public virtual string LiteralValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configures honoring a sampled bit in downstream traceparentID headers.</summary>
+    public class TracingConfigurationParentBasedSampling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Provides a master switch to respect a sampled bit in incoming traceparentID headers. Default is
+        /// false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the sampling rate to use when the sampled bit is set in the incoming traceparentID
+        /// header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplingRate")]
+        public virtual System.Nullable<float> SamplingRate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
