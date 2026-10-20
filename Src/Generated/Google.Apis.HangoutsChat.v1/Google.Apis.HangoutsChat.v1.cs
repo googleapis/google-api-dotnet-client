@@ -3492,6 +3492,81 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
+            /// Replaces the cards included in a message. A Chat app can only replace cards on a human-created message
+            /// if the message already contains cards, and the cards were created by the app. If the app replaces the
+            /// cards with an empty list, the cards are removed. After removing the cards, the app cannot add cards back
+            /// to the message. Requires [app
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.bot`
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the message. Format: `spaces/{space}/messages/{message}`
+            /// </param>
+            public virtual ReplaceCardsRequest ReplaceCards(Google.Apis.HangoutsChat.v1.Data.ReplaceMessageCardsRequest body, string name)
+            {
+                return new ReplaceCardsRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Replaces the cards included in a message. A Chat app can only replace cards on a human-created message
+            /// if the message already contains cards, and the cards were created by the app. If the app replaces the
+            /// cards with an empty list, the cards are removed. After removing the cards, the app cannot add cards back
+            /// to the message. Requires [app
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.bot`
+            /// </summary>
+            public class ReplaceCardsRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ReplaceMessageCardsResponse>
+            {
+                /// <summary>Constructs a new ReplaceCards request.</summary>
+                public ReplaceCardsRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.ReplaceMessageCardsRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the message. Format: `spaces/{space}/messages/{message}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.ReplaceMessageCardsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "replaceCards";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:replaceCards";
+
+                /// <summary>Initializes ReplaceCards parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/messages/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Searches for messages in Google Chat that the calling user has access to. Returns a list of messages
             /// matching the search criteria. To search across all spaces the user has access to, set `parent` to
             /// `spaces/-`. Using any other value for `parent` results in an `INVALID_ARGUMENT` error. The returned
@@ -7223,6 +7298,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardId")]
         public virtual string CardId { get; set; }
+
+        /// <summary>Output only. The app that owns the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerUser")]
+        public virtual User OwnerUser { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11589,6 +11668,28 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reaction")]
         public virtual Reaction Reaction { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ReplaceMessageCards API method.</summary>
+    public class ReplaceMessageCardsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An array of [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards) to
+        /// be included in the message. These cards will replace the existing cards of the message. If empty, the
+        /// original cards included in the message will be cleared.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardsV2")]
+        public virtual System.Collections.Generic.IList<CardWithId> CardsV2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ReplaceMessageCards API.</summary>
+    public class ReplaceMessageCardsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
