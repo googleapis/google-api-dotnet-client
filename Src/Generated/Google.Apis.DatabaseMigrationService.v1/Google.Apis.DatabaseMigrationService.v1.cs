@@ -9986,6 +9986,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'PromoteMigrationJob' request.</summary>
     public class PromoteMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, the promote operation will perform a failback promote from destination back to source
+        /// (only supported when the migration job is in FAILBACK phase).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failback")]
+        public virtual System.Nullable<bool> Failback { get; set; }
+
         /// <summary>Optional. The object filter to apply to the migration job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFilter")]
         public virtual MigrationJobObjectsConfig ObjectsFilter { get; set; }
@@ -11106,8 +11113,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
         /// <summary>
         /// Optional. SSL flags used for establishing SSL connection to the source database. Only source specific flags
-        /// are supported. An object containing a list of "key": "value" pairs. Example: {
-        /// "server_certificate_hostname": "server.com"}.
+        /// are supported. An object containing a list of "key": "value" pairs. Examples: { "server_certificate_dn":
+        /// "CN=server.com,OU=RDS,O=Amazon.com,C=US"} or { "server_certificate_hostname": "server.com"}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslFlags")]
         public virtual System.Collections.Generic.IDictionary<string, string> SslFlags { get; set; }
