@@ -2152,9 +2152,9 @@ namespace Google.Apis.ChromeManagement.v1
 
                 /// <summary>
                 /// Optional. Filter to apply to list results. The following fields can be used in the filter: *
-                /// device_type (currently only 'CHROME_BROWSER' is supported) * token_state (supported values:
-                /// 'ACTIVE', 'EXPIRED', 'REVOKED') * org_unit_path The full path of the org unit, such as
-                /// /Montreal/Sales. * org_unit_id The obfuscated id of the org unit, not the full path.
+                /// `device_type` (currently only `"CHROME_BROWSER"` is supported) * `token_state` (supported values:
+                /// `"ACTIVE"`, `"EXPIRED"`, `"REVOKED"`) * `org_unit_path` The full path of the org unit, such as
+                /// `/Montreal/Sales`. * `org_unit_id` The obfuscated id of the org unit, not the full path.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
