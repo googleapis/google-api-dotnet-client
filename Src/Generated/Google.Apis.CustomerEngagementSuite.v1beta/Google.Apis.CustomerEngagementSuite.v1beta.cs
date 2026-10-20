@@ -1064,7 +1064,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     }
 
                     /// <summary>
-                    /// Runs the Chat AI assistant agent for the specified assistant session in a streaming fashion.
+                    /// Runs Arc, the AI assistant, for the specified assistant session in a streaming fashion.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -1077,7 +1077,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     }
 
                     /// <summary>
-                    /// Runs the Chat AI assistant agent for the specified assistant session in a streaming fashion.
+                    /// Runs Arc, the AI assistant, for the specified assistant session in a streaming fashion.
                     /// </summary>
                     public class StreamChatAiAssistantRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.StreamChatAiAssistantResponse>
                     {
@@ -7305,7 +7305,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     }
                 }
 
-                /// <summary>Runs the Chat AI assistant agent for the specified assistant session.</summary>
+                /// <summary>Runs Arc, the AI assistant, for the specified assistant session.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="app">
                 /// Required. The app to run assistant for. Format: `projects/{project}/locations/{location}/apps/{app}`
@@ -7315,7 +7315,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                     return new ChatAiAssistantRequest(this.service, body, app);
                 }
 
-                /// <summary>Runs the Chat AI assistant agent for the specified assistant session.</summary>
+                /// <summary>Runs Arc, the AI assistant, for the specified assistant session.</summary>
                 public class ChatAiAssistantRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.ChatAiAssistantResponse>
                 {
                     /// <summary>Constructs a new ChatAiAssistant request.</summary>
@@ -7658,10 +7658,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                 }
 
                 /// <summary>
-                /// Generates personalized onboarding suggestions for the AI assistant zero state: classifies the
-                /// requesting user (new / exploring / returning) from their assistant-session history in the app and
-                /// returns suggestion chips (resume a session, continue work, or start something new) to render before
-                /// any message is sent.
+                /// Generates personalized onboarding suggestions for the Arc zero state: classifies the requesting user
+                /// (new / exploring / returning) from their assistant-session history in the app and returns suggestion
+                /// chips (resume a session, continue work, or start something new) to render before any message is
+                /// sent.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -7674,10 +7674,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta
                 }
 
                 /// <summary>
-                /// Generates personalized onboarding suggestions for the AI assistant zero state: classifies the
-                /// requesting user (new / exploring / returning) from their assistant-session history in the app and
-                /// returns suggestion chips (resume a session, continue work, or start something new) to render before
-                /// any message is sent.
+                /// Generates personalized onboarding suggestions for the Arc zero state: classifies the requesting user
+                /// (new / exploring / returning) from their assistant-session history in the app and returns suggestion
+                /// chips (resume a session, continue work, or start something new) to render before any message is
+                /// sent.
                 /// </summary>
                 public class GenerateOnboardingSuggestionsRequest : CustomerEngagementSuiteBaseServiceRequest<Google.Apis.CustomerEngagementSuite.v1beta.Data.GenerateOnboardingSuggestionsResponse>
                 {
@@ -10746,7 +10746,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single personalized onboarding suggestion chip for the AI assistant's zero state.</summary>
+    /// <summary>A single personalized onboarding suggestion chip for Arc's zero state.</summary>
     public class AssistantSuggestion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Rule-table candidate type in kebab-case (e.g. "resume-pending-review"), for metrics.</summary>
@@ -16101,6 +16101,15 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
         public virtual string MatchType { get; set; }
 
+        /// <summary>
+        /// Optional. Entries of the sensitive words list that this guardrail allows. Only valid when match_type is
+        /// SENSITIVE_WORDS. Each value must equal a list entry (case-insensitive, surrounding whitespace ignored);
+        /// other values have no effect. Applies to this guardrail only. At most 1000 entries of up to 256 characters
+        /// each.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveWordsExemptions")]
+        public virtual System.Collections.Generic.IList<string> SensitiveWordsExemptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16143,7 +16152,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyScope")]
         public virtual string PolicyScope { get; set; }
 
-        /// <summary>Required. Policy prompt.</summary>
+        /// <summary>
+        /// Required. Policy prompt. Supports session variable placeholders (`{var}`) as well as
+        /// `{agent_system_instruction}` to inject the agent's resolved system instructions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prompt")]
         public virtual string Prompt { get; set; }
 
@@ -16582,7 +16594,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string DefaultLanguageCode { get; set; }
 
         /// <summary>
-        /// Optional. Enables multilingual support. If true, agents in the app will use pre-built instructions to
+        /// Optional. Enables multilingual support. If `true`, agents in the app will use pre-built instructions to
         /// improve handling of multilingual input.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableMultilingualSupport")]
@@ -18138,6 +18150,16 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual RedactionConfig RedactionConfig { get; set; }
 
         /// <summary>
+        /// Optional. Whether the app has to say what may be recorded before anything is kept. When true, a session
+        /// starts with recording off and stays off until the client sends SessionInput.recording_control, which then
+        /// decides every turn from that point on. This covers audio recording as well as conversation history, BigQuery
+        /// export and Cloud Logging. When `false`, the default, the settings above decide on their own and the client
+        /// does not have to send anything.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredRecordingConsent")]
+        public virtual System.Nullable<bool> RequiredRecordingConsent { get; set; }
+
+        /// <summary>
         /// Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio
         /// copy when audio redaction is enabled, typically for auditing or monitoring purposes.
         /// </summary>
@@ -19024,7 +19046,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string DeidentifyTemplate { get; set; }
 
         /// <summary>
-        /// Optional. If true, redaction will be applied in various logging scenarios, including conversation history,
+        /// Optional. If `true`, redaction will be applied in various logging scenarios, including conversation history,
         /// Cloud Logging and audio recording.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRedaction")]
@@ -19866,9 +19888,12 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string Deployment { get; set; }
 
         /// <summary>
-        /// Optional. Whether to enable streaming text outputs from the model. By default, text outputs from the model
-        /// are collected before sending to the client. NOTE: This is only supported for text (non-voice) sessions via
-        /// StreamRunSession or BidiRunSession.
+        /// Optional. Whether to stream text output from the model to the client incrementally as it is generated.
+        /// Defaults to `false`. * When disabled, the model's text output is buffered, and each text output sent to the
+        /// client is a complete sentence. Clients can render each text output on a new line. * When enabled, each text
+        /// output may contain only part of a sentence. Clients should concatenate consecutive text outputs to render
+        /// the complete response. NOTE: This is only supported for text (non-voice) sessions using StreamRunSession or
+        /// BidiRunSession.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTextStreaming")]
         public virtual System.Nullable<bool> EnableTextStreaming { get; set; }
@@ -19892,6 +19917,17 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historicalContexts")]
         public virtual System.Collections.Generic.IList<Message> HistoricalContexts { get; set; }
+
+        /// <summary>Optional. Whether to include LLM thought summaries in the session outputs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeLlmThoughtSummary")]
+        public virtual System.Nullable<bool> IncludeLlmThoughtSummary { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to include intermediate processing update to the client. If enabled, the update will be
+        /// sent back in SessionOutput.progress.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeProgressUpdate")]
+        public virtual System.Nullable<bool> IncludeProgressUpdate { get; set; }
 
         /// <summary>Optional. Configuration for processing the input audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputAudioConfig")]
@@ -19985,6 +20021,20 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Optional. Image data from the end user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual Image Image { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the conversation may be recorded and logged from here on. Use this when the app, rather
+        /// than the agent, decides what may be kept: for example when the end user has to consent to being recorded
+        /// before anything about the call can be stored. The value stays in effect until the client sends a different
+        /// one, so it only needs to be sent when the answer changes. Whatever is in effect when a turn completes
+        /// decides that turn, both whether its audio reaches the recording bucket and whether its transcript reaches
+        /// conversation history, BigQuery and Cloud Logging. It covers the agent's side of the turn as well as the end
+        /// user's. Turns that complete before the client first sends this are recorded according to the app's logging
+        /// settings, as though the field did not exist. If more than one input in the same request sets it, the last
+        /// one wins.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordingControl")]
+        public virtual string RecordingControl { get; set; }
 
         /// <summary>Optional. Text data from the end user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
