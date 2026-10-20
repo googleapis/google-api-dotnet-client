@@ -13424,6 +13424,10 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Optional. The vendor type of the third-party identity provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vendorType")]
+        public virtual string VendorType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
