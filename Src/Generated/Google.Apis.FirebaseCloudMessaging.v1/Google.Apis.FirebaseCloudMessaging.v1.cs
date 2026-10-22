@@ -783,7 +783,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
 }
 namespace Google.Apis.FirebaseCloudMessaging.v1.Data
 {
-    /// <summary>A Background Sync message that is sent to an Android device.</summary>
+    /// <summary>A Background Sync message that is sent to Android devices.</summary>
     public class AndroidBackgroundSyncMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -876,7 +876,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     /// </summary>
     public class AndroidConfigV2 : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Non-urgent background sync message to send to android devices.</summary>
+        /// <summary>
+        /// Optional. Non-urgent background sync message to send to Android devices. Delivery of these messages may be
+        /// delayed or batched to optimize for battery.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundSync")]
         public virtual AndroidBackgroundSyncMessage BackgroundSync { get; set; }
 
@@ -915,7 +918,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
         public virtual AndroidFcmOptions FcmOptions { get; set; }
 
-        /// <summary>Optional. User-facing notification to send to android devices.</summary>
+        /// <summary>
+        /// Optional. User-facing notification to send to Android devices. These messages are delivered immediately and
+        /// are not delayed by battery optimizations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteNotification")]
         public virtual AndroidRemoteNotification RemoteNotification { get; set; }
 
@@ -1351,7 +1357,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual System.Nullable<int> Id { get; set; }
 
         /// <summary>
-        /// Contains the URL of an image that is going to be displayed in a notification. If present, it will override
+        /// An HTTPS URL of an image to display in the notification. If present, it overrides
         /// google.firebase.fcm.v1.Notification.image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
@@ -1474,7 +1480,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Remote Notification message that is sent to an Android device.</summary>
+    /// <summary>A Remote Notification message that is sent to Android devices.</summary>
     public class AndroidRemoteNotification : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
