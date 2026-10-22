@@ -1011,6 +1011,30 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Dynamic JSON trait state payload conforming to `json_trait_schema.md`. Used for Category 2 (vendor Matter
+    /// clusters) and Category 3 (non-Matter capabilities) traits across all wire and internal paths, and for Category 1
+    /// traits on external JSON-only wire paths (e.g., `Query` with `JSON_TRAIT_ONLY`).
+    /// </summary>
+    public class JsonTrait : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Trait attribute map conforming to the trait's registered JSON Schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
+
+        /// <summary>
+        /// Required. Canonical symbolic trait ID per `json_trait_schema.md`: - Standard Matter (Cat 1): `matter.`
+        /// (e.g., `matter.thermostat`) - Google / vendor Matter (Cat 1/2): `matter..` (e.g., `matter.google.`,
+        /// `matter.eve.utility`) - Non-Matter (Cat 3, any provider incl. Google): `ghp..` (e.g., `ghp.acme.warranty`,
+        /// `ghp.google.`)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class MediaUrlsStruct : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>URL for a dash manifest for playback</summary>
@@ -1509,6 +1533,10 @@ namespace Google.Apis.HomeGraphService.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
             set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Contains the dynamic JSON trait payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonTrait")]
+        public virtual JsonTrait JsonTrait { get; set; }
 
         private string _providerUpdateTimeRaw;
 
