@@ -5011,8 +5011,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string BluetoothSharing { get; set; }
 
         /// <summary>
-        /// Controls Wi-Fi configuring privileges. Based on the option set, user will have either full or limited or no
-        /// control in configuring Wi-Fi networks.
+        /// Optional. Controls Wi-Fi configuring privileges. Based on the option set, user will have either full or
+        /// limited or no control in configuring Wi-Fi networks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configureWifi")]
         public virtual string ConfigureWifi { get; set; }
@@ -5031,21 +5031,22 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual PrivateDnsSettings PrivateDnsSettings { get; set; }
 
         /// <summary>
-        /// Controls tethering settings. Based on the value set, the user is partially or fully disallowed from using
-        /// different forms of tethering.
+        /// Optional. Controls tethering settings. Based on the value set, the user is partially or fully disallowed
+        /// from using different forms of tethering.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tetheringSettings")]
         public virtual string TetheringSettings { get; set; }
 
         /// <summary>
-        /// Controls what files and/or data can be transferred via USB. Supported only on company-owned devices.
+        /// Optional. Controls what files and/or data can be transferred via USB. Supported only on company-owned
+        /// devices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbDataAccess")]
         public virtual string UsbDataAccess { get; set; }
 
         /// <summary>
-        /// Controls configuring and using Wi-Fi direct settings. Supported on company-owned devices running Android 13
-        /// and above.
+        /// Optional. Controls configuring and using Wi-Fi direct settings. Supported on company-owned devices running
+        /// Android 13 and above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiDirectSettings")]
         public virtual string WifiDirectSettings { get; set; }
@@ -5055,8 +5056,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual WifiRoamingPolicy WifiRoamingPolicy { get; set; }
 
         /// <summary>
-        /// Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks
-        /// can be configured on the device. Supported on company-owned devices running Android 13 and above.
+        /// Optional. Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which
+        /// networks can be configured on the device. Supported on company-owned devices running Android 13 and above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiSsidPolicy")]
         public virtual WifiSsidPolicy WifiSsidPolicy { get; set; }
@@ -7464,13 +7465,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string DefaultPermissionPolicy { get; set; }
 
         /// <summary>
-        /// Covers controls for device connectivity such as Wi-Fi, USB data access, keyboard/mouse connections, and
-        /// more.
+        /// Optional. Covers controls for device connectivity such as Wi-Fi, USB data access, keyboard/mouse
+        /// connections, and more.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceConnectivityManagement")]
         public virtual DeviceConnectivityManagement DeviceConnectivityManagement { get; set; }
 
-        /// <summary>The device owner information to be shown on the lock screen.</summary>
+        /// <summary>Optional. The device owner information to be shown on the lock screen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceOwnerLockScreenInfo")]
         public virtual UserFacingMessage DeviceOwnerLockScreenInfo { get; set; }
 
@@ -7802,7 +7803,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// update window will automatically apply to Play app updates as well.Note: Google Play system updates
         /// (https://source.android.com/docs/core/ota/modular-system) (also called Mainline updates) are automatically
         /// downloaded and require a device reboot to be installed. Refer to the mainline section in Manage system
-        /// updates (https://developer.android.com/work/dpc/system-updates#mainline) for further details.
+        /// updates (https://developer.android.com/work/dpc/system-updates#mainline) for further details.If this policy
+        /// is set, it takes precedence over unifiedUpdatePolicy for OEM OS updates. For more information, see
+        /// unifiedUpdatePolicy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemUpdate")]
         public virtual SystemUpdate SystemUpdate { get; set; }
@@ -9320,7 +9323,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// </summary>
     public class WifiSsidPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of the Wi-Fi SSID policy to be applied.</summary>
+        /// <summary>Optional. Type of the Wi-Fi SSID policy to be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiSsidPolicyType")]
         public virtual string WifiSsidPolicyType { get; set; }
 
