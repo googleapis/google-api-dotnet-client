@@ -18682,9 +18682,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual Price DefaultPrice { get; set; }
 
         /// <summary>
-        /// Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their subscribers
-        /// a grace period when the payment for the new recurrence period is declined. Acceptable values are P0D (zero
-        /// days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days).
+        /// Deprecated: Subscriptions are no longer supported in the InAppProducts API. Use the Subscriptions API
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gracePeriod")]
         public virtual string GracePeriod { get; set; }
@@ -18724,19 +18723,22 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string Status { get; set; }
 
         /// <summary>
-        /// Subscription period, specified in ISO 8601 format. Acceptable values are P1W (one week), P1M (one month),
-        /// P3M (three months), P6M (six months), and P1Y (one year).
+        /// Deprecated: Subscriptions are no longer supported in the InAppProducts API. Use the Subscriptions API
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionPeriod")]
         public virtual string SubscriptionPeriod { get; set; }
 
-        /// <summary>Details about taxes and legal compliance. Only applicable to subscription products.</summary>
+        /// <summary>
+        /// Deprecated: Subscriptions are no longer supported in the InAppProducts API. Use the Subscriptions API
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionTaxesAndComplianceSettings")]
         public virtual SubscriptionTaxAndComplianceSettings SubscriptionTaxesAndComplianceSettings { get; set; }
 
         /// <summary>
-        /// Trial period, specified in ISO 8601 format. Acceptable values are anything between P7D (seven days) and
-        /// P999D (999 days).
+        /// Deprecated: Subscriptions are no longer supported in the InAppProducts API. Use the Subscriptions API
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trialPeriod")]
         public virtual string TrialPeriod { get; set; }
@@ -18748,7 +18750,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Store listing of a single in-app product.</summary>
     public class InAppProductListing : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Localized entitlement benefits for a subscription.</summary>
+        /// <summary>
+        /// Deprecated: Subscriptions are no longer supported in the InAppProducts API. Use the Subscriptions API
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("benefits")]
         public virtual System.Collections.Generic.IList<string> Benefits { get; set; }
 
