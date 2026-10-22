@@ -114,7 +114,6 @@
     "Google.Apis.OSConfig.v1alpha": "Google.Cloud.OsConfig.V1Alpha",
     "Google.Apis.PolicySimulator.v1": "Google.Cloud.PolicySimulator.V1",
     "Google.Apis.PolicyTroubleshooter.v1": "Google.Cloud.PolicyTroubleshooter.V1",
-    "Google.Apis.RapidMigrationAssessment.v1": "Google.Cloud.RapidMigrationAssessment.V1",
     "Google.Apis.RecaptchaEnterprise.v1": "Google.Cloud.RecaptchaEnterprise.V1",
     "Google.Apis.Recommender.v1": "Google.Cloud.Recommender.V1",
     "Google.Apis.ResourceSettings.v1": "Google.Cloud.ResourceSettings.V1",
