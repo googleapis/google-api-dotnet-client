@@ -3085,6 +3085,16 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>Configuration options for Cluster HTTP Gateway.</summary>
     public class GatewayConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Specifies VM ports that can be accessed using the standard `$HOSTNAME:$PORT` format in addition to
+        /// the service's default `$PORT-$HOSTNAME` format. See [Access HTTP Servers Running on Workstations]
+        /// (https://docs.cloud.google.com/workstations/docs/access-http-servers-running-on-workstations). Note: This
+        /// only controls the routing URL format. Network-level access is still controlled by `allowed_ports` on
+        /// WorkstationConfig. All `allowed_ports` remain accessible via the default `$PORT-$HOSTNAME` format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directAccessPorts")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DirectAccessPorts { get; set; }
+
         /// <summary>Optional. Whether HTTP/2 is enabled for this workstation cluster. Defaults to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("http2Enabled")]
         public virtual System.Nullable<bool> Http2Enabled { get; set; }
