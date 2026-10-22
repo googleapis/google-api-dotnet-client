@@ -22497,6 +22497,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
         public virtual string ParticipantRole { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("responseMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2ResponseMessage> ResponseMessages { get; set; }
+
         private string _sendTimeRaw;
 
         private object _sendTime;
@@ -22621,6 +22624,90 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2ResponseMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
+        public virtual GoogleCloudDialogflowV2ResponseMessageEndInteraction EndInteraction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("liveAgentHandoff")]
+        public virtual GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff LiveAgentHandoff { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mixedAudio")]
+        public virtual GoogleCloudDialogflowV2ResponseMessageMixedAudio MixedAudio { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("telephonyTransferCall")]
+        public virtual GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall TelephonyTransferCall { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudDialogflowV2ResponseMessageText Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2ResponseMessageEndInteraction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2ResponseMessageLiveAgentHandoff : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2ResponseMessageMixedAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("segments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment> Segments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2ResponseMessageMixedAudioSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual string Audio { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2ResponseMessageTelephonyTransferCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sipUri")]
+        public virtual string SipUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDialogflowV2ResponseMessageText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2SearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("renderedContent")]
@@ -22661,6 +22748,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("queryTextSentiment")]
         public virtual GoogleCloudDialogflowV2Sentiment QueryTextSentiment { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24143,6 +24233,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("confirmationRequirement")]
         public virtual string ConfirmationRequirement { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterOverrides")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ParameterOverride> ParameterOverrides { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("proactiveEnabled")]
+        public virtual System.Nullable<bool> ProactiveEnabled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("reactiveEnabled")]
+        public virtual System.Nullable<bool> ReactiveEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28267,6 +28366,21 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDialogflowV2beta1ParameterOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("contextReferenceKey")]
+        public virtual string ContextReferenceKey { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterName")]
+        public virtual string ParameterName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudDialogflowV2beta1Participant : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("agentDesktopSource")]
@@ -28922,6 +29036,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("queryTextSentiment")]
         public virtual GoogleCloudDialogflowV2beta1Sentiment QueryTextSentiment { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30569,6 +30686,15 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterOverrides")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ParameterOverride> ParameterOverrides { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("proactiveEnabled")]
+        public virtual System.Nullable<bool> ProactiveEnabled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("reactiveEnabled")]
+        public virtual System.Nullable<bool> ReactiveEnabled { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("toolset")]
         public virtual string Toolset { get; set; }
