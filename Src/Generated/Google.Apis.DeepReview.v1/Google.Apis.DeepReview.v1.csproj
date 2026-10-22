@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DeepReview.v1 Client Library</Title>
-    <Version>1.77.0.4306</Version>
+    <Version>1.77.0.4310</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2026 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Deepreview v1.
 
       Product documentation is available at:
-      https://research.google/
+      https://research.google/deepreview
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.DeepReview.v1/latest/api/Google.Apis.DeepReview.v1.html
