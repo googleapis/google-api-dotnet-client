@@ -37,6 +37,7 @@ namespace Google.Apis.DeepReview.v1
             Documents = new DocumentsResource(this);
             Media = new MediaResource(this);
             Operations = new OperationsResource(this);
+            V1 = new V1Resource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://deepreview.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://deepreview.googleapis.com/batch");
         }
@@ -85,6 +86,9 @@ namespace Google.Apis.DeepReview.v1
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
+
+        /// <summary>Gets the V1 resource.</summary>
+        public virtual V1Resource V1 { get; }
     }
 
     /// <summary>A base abstract class for DeepReview requests.</summary>
@@ -1438,6 +1442,70 @@ namespace Google.Apis.DeepReview.v1
             }
         }
     }
+
+    /// <summary>The "v1" collection of methods.</summary>
+    public class V1Resource
+    {
+        private const string Resource = "v1";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public V1Resource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves the review quota limits and sliding-window usage for the authenticated caller.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the singleton user quota to retrieve. Format: `userQuota`
+        /// </param>
+        public virtual GetUserQuotaRequest GetUserQuota(string name)
+        {
+            return new GetUserQuotaRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves the review quota limits and sliding-window usage for the authenticated caller.</summary>
+        public class GetUserQuotaRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.UserQuota>
+        {
+            /// <summary>Constructs a new GetUserQuota request.</summary>
+            public GetUserQuotaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the singleton user quota to retrieve. Format: `userQuota`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getUserQuota";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetUserQuota parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^userQuota$",
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.DeepReview.v1.Data
 {
@@ -2291,6 +2359,80 @@ namespace Google.Apis.DeepReview.v1.Data
         /// <summary>Output only. Characters immediately following `exact` for disambiguation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
         public virtual string Suffix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Singleton resource representing the authenticated caller's review quota limits and sliding-window usage.
+    /// </summary>
+    public class UserQuota : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether a custom per-user quota override is active for this user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLimitEnabled")]
+        public virtual System.Nullable<bool> CustomLimitEnabled { get; set; }
+
+        /// <summary>Output only. Maximum free-tier reviews allowed per rolling 7-day window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReviewCountPerWeek")]
+        public virtual System.Nullable<int> MaxReviewCountPerWeek { get; set; }
+
+        /// <summary>Identifier. Resource name of the singleton user quota (`userQuota`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _nextAvailableTimeRaw;
+
+        private object _nextAvailableTime;
+
+        /// <summary>
+        /// Output only. Timestamp when the next review quota slot becomes available if `remaining_review_count` is 0;
+        /// unset when quota is currently available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextAvailableTime")]
+        public virtual string NextAvailableTimeRaw
+        {
+            get => _nextAvailableTimeRaw;
+            set
+            {
+                _nextAvailableTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextAvailableTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextAvailableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextAvailableTimeDateTimeOffset instead.")]
+        public virtual object NextAvailableTime
+        {
+            get => _nextAvailableTime;
+            set
+            {
+                _nextAvailableTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextAvailableTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextAvailableTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextAvailableTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextAvailableTimeRaw);
+            set => NextAvailableTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Remaining free-tier reviews available in the current rolling 7-day window (`max(0,
+        /// max_review_count_per_week - used_review_count)`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remainingReviewCount")]
+        public virtual System.Nullable<int> RemainingReviewCount { get; set; }
+
+        /// <summary>Output only. Number of free-tier reviews used in the past 7 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedReviewCount")]
+        public virtual System.Nullable<int> UsedReviewCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
