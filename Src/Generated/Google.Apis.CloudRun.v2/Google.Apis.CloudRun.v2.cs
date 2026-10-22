@@ -5070,6 +5070,21 @@ namespace Google.Apis.CloudRun.v2
 }
 namespace Google.Apis.CloudRun.v2.Data
 {
+    /// <summary>Configuration for Ambient Networking.</summary>
+    public class GoogleCloudRunV2AmbientNetworking : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ambient networking scope of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ambientScope")]
+        public virtual string AmbientScope { get; set; }
+
+        /// <summary>Optional. Whether ambient networking is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings for Binary Authorization feature.</summary>
     public class GoogleCloudRunV2BinaryAuthorization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7378,6 +7393,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// </summary>
     public class GoogleCloudRunV2Revision : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The ambient networking configuration for this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ambientNetworking")]
+        public virtual GoogleCloudRunV2AmbientNetworking AmbientNetworking { get; set; }
+
         /// <summary>
         /// Output only. Unstructured key value map that may be set by external tools to store and arbitrary metadata.
         /// They are not queryable and should be preserved when modifying objects.
@@ -7757,6 +7776,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>RevisionTemplate describes the data a revision should have when created from a template.</summary>
     public class GoogleCloudRunV2RevisionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The ambient networking configuration for this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ambientNetworking")]
+        public virtual GoogleCloudRunV2AmbientNetworking AmbientNetworking { get; set; }
+
         /// <summary>
         /// Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They
         /// are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support
@@ -10361,6 +10384,14 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. Option to specify the Pub/Sub topic to receive build status updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
+
+        /// <summary>
+        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
+        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region. This
+        /// field must be empty for the Build to be eligible to be paired with a pre-provisioned worker VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
+        public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
 
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
