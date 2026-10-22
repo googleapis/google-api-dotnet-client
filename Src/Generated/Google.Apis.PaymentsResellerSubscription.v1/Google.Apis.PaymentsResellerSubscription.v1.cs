@@ -1595,7 +1595,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// </summary>
     public class EntitleSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The line items to be entitled. If unspecified, all line items will be entitled.</summary>
+        /// <summary>
+        /// Optional. Deprecated: This field is no longer supported. All line items are entitled automatically.
+        /// Optional. The line items to be entitled. If unspecified, all line items will be entitled.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemEntitlementDetails")]
         public virtual System.Collections.Generic.IList<EntitleSubscriptionRequestLineItemEntitlementDetails> LineItemEntitlementDetails { get; set; }
 
