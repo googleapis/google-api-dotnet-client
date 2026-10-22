@@ -1671,7 +1671,7 @@ namespace Google.Apis.Looker.v1.Data
     /// <summary>Looker instance Admin settings fields.</summary>
     public class AdminSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Email domain allowlist for the instance.</summary>
+        /// <summary>Optional. Email domain allowlist for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedEmailDomains")]
         public virtual System.Collections.Generic.IList<string> AllowedEmailDomains { get; set; }
 
@@ -1822,11 +1822,11 @@ namespace Google.Apis.Looker.v1.Data
     /// <summary>Custom domain information.</summary>
     public class CustomDomain : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Domain name.</summary>
+        /// <summary>Optional. Domain name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
-        /// <summary>Domain state.</summary>
+        /// <summary>Output only. Domain state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -1896,7 +1896,7 @@ namespace Google.Apis.Looker.v1.Data
     /// <summary>Encryption configuration (i.e. CMEK).</summary>
     public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the CMEK key in KMS (input parameter).</summary>
+        /// <summary>Optional. Immutable. Name of the CMEK key in KMS (input parameter).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
@@ -1967,6 +1967,14 @@ namespace Google.Apis.Looker.v1.Data
         /// <summary>Overall export metrics, timing, and component telemetry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportMetrics")]
         public virtual ExportMetrics ExportMetrics { get; set; }
+
+        /// <summary>
+        /// A string of digits representing the number of microseconds since the Unix epoch when the export was created.
+        /// Used to identify the cloned source Elite System Activity (ESA) BigQuery dataset for O2C direct dataset
+        /// migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportTime")]
+        public virtual string ExportTime { get; set; }
 
         /// <summary>
         /// List of files created as part of export artifact (excluding the metadata). The paths are relative to the
@@ -2088,7 +2096,7 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratedSecurityPatchEnabled")]
         public virtual System.Nullable<bool> AcceleratedSecurityPatchEnabled { get; set; }
 
-        /// <summary>Looker Instance Admin settings.</summary>
+        /// <summary>Optional. Looker Instance Admin settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminSettings")]
         public virtual AdminSettings AdminSettings { get; set; }
 
@@ -2105,9 +2113,9 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ClassType { get; set; }
 
         /// <summary>
-        /// Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the
-        /// consumer network may be in a different GCP project than the consumer project that is hosting the Looker
-        /// Instance.
+        /// Optional. Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note
+        /// that the consumer network may be in a different GCP project than the consumer project that is hosting the
+        /// Looker Instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerNetwork")]
         public virtual string ConsumerNetwork { get; set; }
@@ -2157,11 +2165,11 @@ namespace Google.Apis.Looker.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Custom domain configuration for the instance.</summary>
+        /// <summary>Optional. Custom domain configuration for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customDomain")]
         public virtual CustomDomain CustomDomain { get; set; }
 
-        /// <summary>Maintenance denial period for this instance.</summary>
+        /// <summary>Optional. Maintenance denial period for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriod")]
         public virtual DenyMaintenancePeriod DenyMaintenancePeriod { get; set; }
 
@@ -2169,7 +2177,9 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("egressPublicIp")]
         public virtual string EgressPublicIp { get; set; }
 
-        /// <summary>Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.</summary>
+        /// <summary>
+        /// Optional. Encryption configuration (CMEK). Only set if CMEK has been enabled on the instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
 
@@ -2209,11 +2219,11 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lookerVersion")]
         public virtual string LookerVersion { get; set; }
 
-        /// <summary>Maintenance schedule for this instance.</summary>
+        /// <summary>Output only. Maintenance schedule for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
         public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
 
-        /// <summary>Maintenance window for this instance.</summary>
+        /// <summary>Optional. Maintenance window for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
 
@@ -2221,7 +2231,7 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Looker instance OAuth login settings.</summary>
+        /// <summary>Optional. Looker instance OAuth login settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
         public virtual OAuthConfig OauthConfig { get; set; }
 
@@ -2229,11 +2239,14 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("periodicExportConfig")]
         public virtual PeriodicExportConfig PeriodicExportConfig { get; set; }
 
-        /// <summary>Platform edition.</summary>
+        /// <summary>
+        /// Optional. Platform edition. Marked as OPTIONAL for backward compatibility, though it is required during
+        /// instance creation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platformEdition")]
         public virtual string PlatformEdition { get; set; }
 
-        /// <summary>Whether private IP is enabled on the Looker instance.</summary>
+        /// <summary>Optional. Whether private IP is enabled on the Looker instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpEnabled")]
         public virtual System.Nullable<bool> PrivateIpEnabled { get; set; }
 
@@ -2248,7 +2261,7 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
         public virtual System.Nullable<bool> PscEnabled { get; set; }
 
-        /// <summary>Whether public IP is enabled on the Looker instance.</summary>
+        /// <summary>Optional. Whether public IP is enabled on the Looker instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIpEnabled")]
         public virtual System.Nullable<bool> PublicIpEnabled { get; set; }
 
@@ -2257,8 +2270,8 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ReleaseChannel { get; set; }
 
         /// <summary>
-        /// Name of a reserved IP address range within the Instance.consumer_network, to be used for private services
-        /// access connection. May or may not be specified in a create request.
+        /// Optional. Name of a reserved IP address range within the Instance.consumer_network, to be used for private
+        /// services access connection. May or may not be specified in a create request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedRange")]
         public virtual string ReservedRange { get; set; }
