@@ -632,6 +632,8 @@ namespace Google.Apis.Backupdr.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AppliedAutoProtectionPolicies = new AppliedAutoProtectionPoliciesResource(service);
+                AutoProtectionPolicies = new AutoProtectionPoliciesResource(service);
                 BackupPlanAssociations = new BackupPlanAssociationsResource(service);
                 BackupPlans = new BackupPlansResource(service);
                 BackupVaults = new BackupVaultsResource(service);
@@ -641,6 +643,1024 @@ namespace Google.Apis.Backupdr.v1
                 ResourceBackupConfigs = new ResourceBackupConfigsResource(service);
                 ServiceConfig = new ServiceConfigResource(service);
                 Trial = new TrialResource(service);
+            }
+
+            /// <summary>Gets the AppliedAutoProtectionPolicies resource.</summary>
+            public virtual AppliedAutoProtectionPoliciesResource AppliedAutoProtectionPolicies { get; }
+
+            /// <summary>The "appliedAutoProtectionPolicies" collection of methods.</summary>
+            public class AppliedAutoProtectionPoliciesResource
+            {
+                private const string Resource = "appliedAutoProtectionPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AppliedAutoProtectionPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists AppliedAutoProtectionPolicies in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location for which to retrieve the list of applied policies. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists AppliedAutoProtectionPolicies in a given project and location.</summary>
+                public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListAppliedAutoProtectionPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location for which to retrieve the list of applied policies. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. A filter expression that filters resources listed in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. An expression that sorts the results in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of applied policies to return in a single page. The maximum value
+                    /// is 1000; values above 1000 will be coerced to 1000. If unspecified or set to 0, a default page
+                    /// size of 500 will be used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListAppliedAutoProtectionPolicies` call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/appliedAutoProtectionPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the AutoProtectionPolicies resource.</summary>
+            public virtual AutoProtectionPoliciesResource AutoProtectionPolicies { get; }
+
+            /// <summary>The "autoProtectionPolicies" collection of methods.</summary>
+            public class AutoProtectionPoliciesResource
+            {
+                private const string Resource = "autoProtectionPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AutoProtectionPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Bindings = new BindingsResource(service);
+                }
+
+                /// <summary>Gets the Bindings resource.</summary>
+                public virtual BindingsResource Bindings { get; }
+
+                /// <summary>The "bindings" collection of methods.</summary>
+                public class BindingsResource
+                {
+                    private const string Resource = "bindings";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public BindingsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        MatchingResources = new MatchingResourcesResource(service);
+                    }
+
+                    /// <summary>Gets the MatchingResources resource.</summary>
+                    public virtual MatchingResourcesResource MatchingResources { get; }
+
+                    /// <summary>The "matchingResources" collection of methods.</summary>
+                    public class MatchingResourcesResource
+                    {
+                        private const string Resource = "matchingResources";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public MatchingResourcesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets details of a single Binding Matching Resource.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the matching resource to retrieve. Format:
+                        /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}/matchingResources/{matching_resource}
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets details of a single Binding Matching Resource.</summary>
+                        public class GetRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.BindingMatchingResource>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the matching resource to retrieve. Format:
+                            /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}/matchingResources/{matching_resource}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+/bindings/[^/]+/matchingResources/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists Binding Matching Resources for a given AutoProtectionPolicyBinding.</summary>
+                        /// <param name="parent">
+                        /// Required. The project, location, auto protection policy and binding for which to retrieve
+                        /// `BindingMatchingResources` information. Format:
+                        /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}`.
+                        /// In Google Cloud Backup and DR, locations map to Google Cloud regions, for example
+                        /// **us-central1**.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists Binding Matching Resources for a given AutoProtectionPolicyBinding.</summary>
+                        public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListBindingMatchingResourcesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The project, location, auto protection policy and binding for which to
+                            /// retrieve `BindingMatchingResources` information. Format:
+                            /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}`.
+                            /// In Google Cloud Backup and DR, locations map to Google Cloud regions, for example
+                            /// **us-central1**.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Optional. Field match expression used to filter the results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Optional. Field by which to sort the results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of `BindingMatchingResources` to return in a single
+                            /// response. The default page size is 100 and maximum page size is 200. Note that the
+                            /// response may include a partial list and a caller should only rely on the response's
+                            /// next_page_token to determine if there are more instances left to be queried.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. The value of next_page_token received from a previous
+                            /// `ListBindingMatchingResources` call. Provide this to retrieve the subsequent page in a
+                            /// multi-page list of results. When paginating, all other parameters provided to
+                            /// `ListBindingMatchingResources` must match the call that provided the page token.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/matchingResources";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+/bindings/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Creates a new AutoProtectionPolicyBinding in a given project and location.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource where this binding will be created. Format:
+                    /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Backupdr.v1.Data.AutoProtectionPolicyBinding body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new AutoProtectionPolicyBinding in a given project and location.</summary>
+                    public class CreateRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.AutoProtectionPolicyBinding body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource where this binding will be created. Format:
+                        /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the binding. This will become the final component of the
+                        /// binding's resource name.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("autoProtectionPolicyBindingId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AutoProtectionPolicyBindingId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.AutoProtectionPolicyBinding Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/bindings";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+$",
+                            });
+                            RequestParameters.Add("autoProtectionPolicyBindingId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "autoProtectionPolicyBindingId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the auto protection policy binding read from the CCFE tables.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the binding to retrieve. Format:
+                    /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Returns the auto protection policy binding read from the CCFE tables.</summary>
+                    public class GetRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.AutoProtectionPolicyBinding>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the binding to retrieve. Format:
+                        /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+/bindings/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Initiates delete for AutoProtectionPolicy Binding</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the binding to delete. Format:
+                    /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}
+                    /// </param>
+                    public virtual InitiateDeleteRequest InitiateDelete(Google.Apis.Backupdr.v1.Data.InitiateDeleteAutoProtectionPolicyBindingRequest body, string name)
+                    {
+                        return new InitiateDeleteRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Initiates delete for AutoProtectionPolicy Binding</summary>
+                    public class InitiateDeleteRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new InitiateDelete request.</summary>
+                        public InitiateDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.InitiateDeleteAutoProtectionPolicyBindingRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the binding to delete. Format:
+                        /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.InitiateDeleteAutoProtectionPolicyBindingRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "initiateDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:initiateDelete";
+
+                        /// <summary>Initializes InitiateDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+/bindings/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the auto protection policy bindings read from the CCFE tables.</summary>
+                    /// <param name="parent">
+                    /// Required. The project and location for which to retrieve the list of policies. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Returns the auto protection policy bindings read from the CCFE tables.</summary>
+                    public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListAutoProtectionPolicyBindingsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The project and location for which to retrieve the list of policies. Format:
+                        /// projects/{project}/locations/{location}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A filter expression that filters resources listed in the response. The following
+                        /// fields are filterable:
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. An expression that sorts the results in the response. The following fields are
+                        /// sortable:
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of policies to return in a single page is 500. If unspecified,
+                        /// a server-default value will be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListAutoProtectionPolicies` call. Provide
+                        /// this to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/bindings";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new AutoProtectionPolicy in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this policy will be created. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new AutoProtectionPolicy in a given project and location.</summary>
+                public class CreateRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this policy will be created. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the policy. This will become the final component of the policy's
+                    /// resource name.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("autoProtectionPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AutoProtectionPolicyId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/autoProtectionPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("autoProtectionPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "autoProtectionPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single AutoProtectionPolicy.</summary>
+                /// <param name="name">
+                /// Required. The name of the policy to delete. Format:
+                /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single AutoProtectionPolicy.</summary>
+                public class DeleteRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the policy to delete. Format:
+                    /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The current etag of the autoprotectionpolicy. If an etag is provided and does not match the
+                    /// current etag of the connection, deletion will be blocked.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single AutoProtectionPolicy.</summary>
+                /// <param name="name">
+                /// Required. The name of the policy to retrieve. Format:
+                /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single AutoProtectionPolicy.</summary>
+                public class GetRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the policy to retrieve. Format:
+                    /// projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists AutoProtectionPolicies for a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location for which to retrieve the list of policies. Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists AutoProtectionPolicies for a given project and location.</summary>
+                public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListAutoProtectionPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location for which to retrieve the list of policies. Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that filters resources listed in the response. The following
+                    /// fields are filterable:
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. An expression that sorts the results in the response. The following fields are
+                    /// sortable:
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of policies to return in a single page. If unspecified, a
+                    /// server-default value will be used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListAutoProtectionPolicies` call. Provide this
+                    /// to retrieve the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/autoProtectionPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single AutoProtectionPolicy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the AutoProtectionPolicy. Format:
+                /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single AutoProtectionPolicy.</summary>
+                public class PatchRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the AutoProtectionPolicy. Format:
+                    /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the AutoProtectionPolicy
+                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the BackupPlanAssociations resource.</summary>
@@ -785,6 +1805,15 @@ namespace Google.Apis.Backupdr.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. This field is exclusively used by Backup and DR's auto-protection feature. The
+                    /// resource name of the `AutoProtectionPolicyBinding` that triggered the deletion of this
+                    /// association. Format:
+                    /// `projects/{project}/locations/{location}/autoProtectionPolicies/{policy}/bindings/{binding}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("autoProtectionPolicyBinding", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AutoProtectionPolicyBinding { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
@@ -817,6 +1846,14 @@ namespace Google.Apis.Backupdr.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/backupPlanAssociations/[^/]+$",
+                        });
+                        RequestParameters.Add("autoProtectionPolicyBinding", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "autoProtectionPolicyBinding",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -6189,6 +7226,126 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// AppliedAutoProtectionPolicy is a read-only view of AutoProtectionPolicy and AutoProtectionPolicyBinding
+    /// resources that apply to a given workload project.
+    /// </summary>
+    public class AppliedAutoProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The set of backup plan configurations, mirroring the backup_plan_details from the source
+        /// AutoProtectionPolicy. Each element specifies a backup plan for a given resource type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanDetails")]
+        public virtual System.Collections.Generic.IList<BackupPlanDetail> BackupPlanDetails { get; set; }
+
+        /// <summary>Output only. The summary of the last policy application when the job has run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingEvaluationSummary")]
+        public virtual BindingEvaluationSummary BindingEvaluationSummary { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp indicating when the binding was last created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The criteria resources must meet for this rule to apply. From AutoProtectionPolicy.criteria.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
+        public virtual Criteria Criteria { get; set; }
+
+        /// <summary>
+        /// Identifier. Canonical resource name. Format:
+        /// projects/{workload-project-number}/locations/{location}/appliedAutoProtectionPolicies/{id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The full resource name of the AutoProtectionPolicyBinding that applies the source policy to a
+        /// scope including this workload project. e.g.,
+        /// projects/{admin-project}/locations/{location}/autoProtectionPolicies/{policy_id}/autoProtectionPolicyBindings/{binding_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBinding")]
+        public virtual string SourceBinding { get; set; }
+
+        /// <summary>Output only. The status of the applied auto protection policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp indicating when the binding was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An instance-attached disk resource.</summary>
     public class AttachedDisk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6328,6 +7485,275 @@ namespace Google.Apis.Backupdr.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AutoProtectionDetails contains the protection details of a resource from the current binding's perspective.
+    /// </summary>
+    public class AutoProtectionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Resource name of backup plan association linked to the resource, if any. Format:
+        /// projects/{project}/locations/{location}/backupPlanAssociations/{backupPlanAssociationId}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanAssociation")]
+        public virtual string BackupPlanAssociation { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the datasource linked to the resource, if any. Format:
+        /// projects/{project}/locations/{location}/backupVaults/{backupVaultId}/dataSources/{dataSourceId}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>Output only. Error during last sync for protection/unprotection, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Output only. Protection state of the resource from the current binding's perspective. Output only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An AutoprotectionPolicy is a policy resource designed to automate backup management, moving from manual
+    /// per-resource protection to a bulk approach. The policy dynamically discovers and applies a specified backup plan
+    /// to all eligible resources that match its defined scope and criteria.
+    /// </summary>
+    public class AutoProtectionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The backup plan details for matching resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanDetails")]
+        public virtual System.Collections.Generic.IList<BackupPlanDetail> BackupPlanDetails { get; set; }
+
+        /// <summary>Output only. Summary of total count of different containers covered through this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingSummary")]
+        public virtual BindingSummary BindingSummary { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the policy was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The criteria for matching resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
+        public virtual Criteria Criteria { get; set; }
+
+        /// <summary>Optional. A description of the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The etag for the policy. If this is provided on update, it must match the server's etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the AutoProtectionPolicy. Format:
+        /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Summary of last policy evaluation when job was run per workload type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyEvaluationSummary")]
+        public virtual PolicyEvaluationSummary PolicyEvaluationSummary { get; set; }
+
+        /// <summary>Output only. The current state of the AutoProtectionPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the policy was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// An AutoProtectionPolicyBinding (APPA) acts as the bridge between an AutoProtectionPolicy and the scope (Project)
+    /// where the policy should be applied.
+    /// </summary>
+    public class AutoProtectionPolicyBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Summaries of the last policy application when the job has run, with one entry per resource type
+        /// specified in the AutoProtectionPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingEvaluationSummary")]
+        public virtual BindingEvaluationSummary BindingEvaluationSummary { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the binding was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A description of the binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. The etag for the binding. If this is provided on update, it must match the server's
+        /// etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the AutoProtectionPolicyBinding. Format:
+        /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Resource Id of target container on which policy will be applied. Format:
+        /// projects/{project_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>Output only. The current state of the AutoProtectionPolicyBinding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the binding was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>Message describing a Backup object.</summary>
@@ -7370,6 +8796,13 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual AlloyDBClusterBackupPlanAssociationProperties AlloydbClusterBackupPlanAssociationProperties { get; set; }
 
         /// <summary>
+        /// Output only. The resource name of the `AutoProtectionPolicyBinding` that manages this association, if any.
+        /// Format: `projects/{project}/locations/{location}/autoProtectionPolicies/{policy}/bindings/{binding}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoProtectionPolicyBinding")]
+        public virtual string AutoProtectionPolicyBinding { get; set; }
+
+        /// <summary>
         /// Required. Resource name of backup plan which needs to be applied on workload. Format:
         /// projects/{project}/locations/{location}/backupPlans/{backupPlanId}
         /// </summary>
@@ -7509,6 +8942,28 @@ namespace Google.Apis.Backupdr.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BackupPlanDetail defines configuration of protection.</summary>
+    public class BackupPlanDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the BackupPlan to apply to resources that match the policy's criteria. This
+        /// backup plan must be in the same location as AutoProtectionPolicy. Format:
+        /// projects/{project}/locations/{location}/backupPlans/{backupPlanId}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
+        public virtual string BackupPlan { get; set; }
+
+        /// <summary>
+        /// Required. The type of resource that this policy will automatically protect. Allowed values are,
+        /// `compute.googleapis.com/Instance` and `compute.googleapis.com/Disk` are supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7897,6 +9352,109 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BindingEvaluationSummary contains the summary of the last run of job that applies policy to matching resources
+    /// for a given binding.
+    /// </summary>
+    public class BindingEvaluationSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of matching resources whose protection failed during job run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedResourceCount")]
+        public virtual System.Nullable<long> FailedResourceCount { get; set; }
+
+        /// <summary>Output only. The number of resources that currently match the policy's criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingResourceCount")]
+        public virtual System.Nullable<long> MatchingResourceCount { get; set; }
+
+        /// <summary>Output only. The number of matching resources that are successfully protected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedResourceCount")]
+        public virtual System.Nullable<long> ProtectedResourceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BindingMatchingResource contains the details of a resource that matches the criteria of a binding.
+    /// </summary>
+    public class BindingMatchingResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The auto protection details of the resource from the current binding's perspective.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoProtectionDetails")]
+        public virtual AutoProtectionDetails AutoProtectionDetails { get; set; }
+
+        private string _lastEvaluationTimeRaw;
+
+        private object _lastEvaluationTime;
+
+        /// <summary>Output only. The timestamp when the resource was last evaluated for protection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEvaluationTime")]
+        public virtual string LastEvaluationTimeRaw
+        {
+            get => _lastEvaluationTimeRaw;
+            set
+            {
+                _lastEvaluationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastEvaluationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastEvaluationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastEvaluationTimeDateTimeOffset instead.")]
+        public virtual object LastEvaluationTime
+        {
+            get => _lastEvaluationTime;
+            set
+            {
+                _lastEvaluationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastEvaluationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastEvaluationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastEvaluationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastEvaluationTimeRaw);
+            set => LastEvaluationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The resource name of the `BindingMatchingResource`. Format:
+        /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}/matchingResources/{matching_resource}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Resource name of the workload that matches the criteria of the binding. The format can
+        /// be either a relative resource name (e.g., `projects/my-project/zones/us-central1-a/instances/my-instance`)
+        /// or a schemeless full resource name (e.g.,
+        /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BindingSummary contains count of different containers covered through this policy.</summary>
+    public class BindingSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Total count of Projects protected with this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectCount")]
+        public virtual System.Nullable<long> ProjectCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8537,6 +10095,19 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Optional. Defines whether the instance should have confidential compute enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Criteria specifies a set of criteria for matching resources.</summary>
+    public class Criteria : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of matching conditions that a resource must meet to be protected by the policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingConditions")]
+        public virtual System.Collections.Generic.IList<MatchingCondition> MatchingConditions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9921,6 +11492,13 @@ namespace Google.Apis.Backupdr.v1.Data
     /// </summary>
     public class GcpBackupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The resource name of the `AutoProtectionPolicyBinding` that manages this datasource, if any.
+        /// Format: `projects/{project}/locations/{location}/autoProtectionPolicies/{policy}/bindings/{binding}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoProtectionPolicyBinding")]
+        public virtual string AutoProtectionPolicyBinding { get; set; }
+
         /// <summary>The name of the backup plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
         public virtual string BackupPlan { get; set; }
@@ -10197,12 +11775,41 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for initiating delete of an AutoProtectionPolicyBinding.</summary>
+    public class InitiateDeleteAutoProtectionPolicyBindingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Additional instance params.</summary>
     public class InstanceParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Resource manager tags to be bound to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>KeyValuePair defines a key-value pair for matching resource labels.</summary>
+    public class KeyValuePair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The key of the label to match. This must be in the format `{label_key}`. The key must match the
+        /// regex Format:`\p{Ll}\p{Lo}{0,62}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Required. The values of the label to match. There will be explicit “OR” between values of array. Each value
+        /// must be in the format `{label_value}`. The value must match the regex Format:
+        /// `[\\p{Ll}\\p{Lo}\\p{N}_-]{1,63}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10227,6 +11834,71 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListAppliedAutoProtectionPolicies.</summary>
+    public class ListAppliedAutoProtectionPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of the AppliedAutoProtectionPolicy resources found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedAutoProtectionPolicies")]
+        public virtual System.Collections.Generic.IList<AppliedAutoProtectionPolicy> AppliedAutoProtectionPolicies { get; set; }
+
+        /// <summary>A token that can be sent as `page_token` to retrieve the next page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unordered list. Locations that could not be reached. For example, "projects/my-project/locations/us-east1"].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListAutoProtectionPolicies.</summary>
+    public class ListAutoProtectionPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of the AutoProtectionPolicy resources found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoProtectionPolicies")]
+        public virtual System.Collections.Generic.IList<AutoProtectionPolicy> AutoProtectionPolicies { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListAutoProtectionPolicyBindings.</summary>
+    public class ListAutoProtectionPolicyBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of the AutoProtectionPolicyBindings resources found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoProtectionPolicyBindings")]
+        public virtual System.Collections.Generic.IList<AutoProtectionPolicyBinding> AutoProtectionPolicyBindings { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10353,6 +12025,24 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for getting a list of `BindingMatchingResources`.</summary>
+    public class ListBindingMatchingResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of `BindingMatchingResources` in the project,location for the specified binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingResources")]
+        public virtual System.Collections.Generic.IList<BindingMatchingResource> MatchingResources { get; set; }
+
+        /// <summary>
+        /// A token which may be sent as page_token in a subsequent `ListBindingMatchingResources` call to retrieve the
+        /// next page of results. If this field is omitted or empty, then there are no more results to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10688,6 +12378,20 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>Output only. The ManagementServer AGM/RD WebUI URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webUi")]
         public virtual string WebUi { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MatchingCondition specifies a set of conditions for matching resources.</summary>
+    public class MatchingCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A condition that matches resources based on their labels. For MVP, this is limited to a single
+        /// label match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelCondition")]
+        public virtual KeyValuePair LabelCondition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11142,6 +12846,27 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// PolicyEvaluationSummary contains the summary of the last run of job that applies policy to matching resources.
+    /// </summary>
+    public class PolicyEvaluationSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of matching resources whose protection failed during job run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedResourceCount")]
+        public virtual System.Nullable<long> FailedResourceCount { get; set; }
+
+        /// <summary>Output only. The number of resources that currently match the policy's criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingResourceCount")]
+        public virtual System.Nullable<long> MatchingResourceCount { get; set; }
+
+        /// <summary>Output only. The number of matching resources that are successfully protected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectedResourceCount")]
+        public virtual System.Nullable<long> ProtectedResourceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>RegionDiskTargetEnvironment represents the target environment for the disk.</summary>
