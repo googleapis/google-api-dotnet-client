@@ -419,8 +419,392 @@ namespace Google.Apis.CloudResourceManager.v3
         public FoldersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Boundaries = new BoundariesResource(service);
             Capabilities = new CapabilitiesResource(service);
             CapabilityConfigs = new CapabilityConfigsResource(service);
+        }
+
+        /// <summary>Gets the Boundaries resource.</summary>
+        public virtual BoundariesResource Boundaries { get; }
+
+        /// <summary>The "boundaries" collection of methods.</summary>
+        public class BoundariesResource
+        {
+            private const string Resource = "boundaries";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BoundariesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a Boundary under a parent Folder or Organization. Creating a Boundary triggers the creation of a
+            /// Management Project if one is not supplied.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource under which the Boundary will be created. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.Boundary body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a Boundary under a parent Folder or Organization. Creating a Boundary triggers the creation of a
+            /// Management Project if one is not supplied.
+            /// </summary>
+            public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Boundary body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource under which the Boundary will be created. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. The user-assigned ID for the Boundary, which will become the final component of the
+                /// Boundary's resource name. Must be unique within the parent resource. It must be 6 to 30 lowercase
+                /// ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited.
+                /// Example: `my-boundary-123`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("boundaryId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string BoundaryId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.Boundary Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/boundaries";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("boundaryId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "boundaryId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes the Boundary identified by the specified `name` (for example,
+            /// `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the Boundary to delete. Format:
+            /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+            /// `folders/{folder_id}/boundaries/{boundary_id}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Deletes the Boundary identified by the specified `name` (for example,
+            /// `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Boundary to delete. Format:
+                /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+                /// `folders/{folder_id}/boundaries/{boundary_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/boundaries/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves the Boundary identified by the specified `name` (for example,
+            /// `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the Boundary to retrieve. Format:
+            /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+            /// `folders/{folder_id}/boundaries/{boundary_id}` Example: `folders/123456789/boundaries/my-boundary`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the Boundary identified by the specified `name` (for example,
+            /// `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Boundary>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Boundary to retrieve. Format:
+                /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+                /// `folders/{folder_id}/boundaries/{boundary_id}` Example: `folders/123456789/boundaries/my-boundary`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/boundaries/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists Boundaries that are direct children of the specified organization or folder resource.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the parent resource whose Boundaries are being listed. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists Boundaries that are direct children of the specified organization or folder resource.
+            /// </summary>
+            public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListBoundariesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the parent resource whose Boundaries are being listed. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of Boundaries to return in the response. The service may return fewer
+                /// Boundaries than requested. If unspecified, at most 100 Boundaries will be returned. The maximum
+                /// value is 100; values above 100 will be coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A pagination token received from a previous call to `ListBoundaries` that indicates from
+                /// where listing should continue. Provide this to retrieve the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/boundaries";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the `display_name` and `resource_filter.tag_filter.tag_value` of the Boundary identified by the
+            /// specified `name` (for example, `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The unique resource name of the Boundary. Format: -
+            /// `organizations/{organization_id}/boundaries/{boundary_id}` -
+            /// `folders/{folder_id}/boundaries/{boundary_id}` Example: `folders/123456789/boundaries/my-boundary`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.Boundary body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the `display_name` and `resource_filter.tag_filter.tag_value` of the Boundary identified by the
+            /// specified `name` (for example, `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Boundary body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The unique resource name of the Boundary. Format: -
+                /// `organizations/{organization_id}/boundaries/{boundary_id}` -
+                /// `folders/{folder_id}/boundaries/{boundary_id}` Example: `folders/123456789/boundaries/my-boundary`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The list of fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.Boundary Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+/boundaries/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Capabilities resource.</summary>
@@ -1144,6 +1528,64 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
+        /// Retrieves the BoundaryConfig identified by the specified `name` (for example,
+        /// `folders/123456789/boundaryConfig`).
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the BoundaryConfig to retrieve. Format: `organizations/{organization}/boundaryConfig`
+        /// or `folders/{folder}/boundaryConfig` Example: `folders/123456789/boundaryConfig`
+        /// </param>
+        public virtual GetBoundaryConfigRequest GetBoundaryConfig(string name)
+        {
+            return new GetBoundaryConfigRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Retrieves the BoundaryConfig identified by the specified `name` (for example,
+        /// `folders/123456789/boundaryConfig`).
+        /// </summary>
+        public class GetBoundaryConfigRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.BoundaryConfig>
+        {
+            /// <summary>Constructs a new GetBoundaryConfig request.</summary>
+            public GetBoundaryConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the BoundaryConfig to retrieve. Format:
+            /// `organizations/{organization}/boundaryConfig` or `folders/{folder}/boundaryConfig` Example:
+            /// `folders/123456789/boundaryConfig`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getBoundaryConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes GetBoundaryConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/boundaryConfig$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource
         /// exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller
         /// must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
@@ -1775,6 +2217,85 @@ namespace Google.Apis.CloudResourceManager.v3
                 });
             }
         }
+
+        /// <summary>
+        /// Updates the BoundaryConfig identified by the specified `name` (for example,
+        /// `folders/123456789/boundaryConfig`).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. The unique resource name of the BoundaryConfig. Format: -
+        /// `organizations/{organization}/boundaryConfig` - `folders/{folder}/boundaryConfig` Example:
+        /// `folders/123456789/boundaryConfig`
+        /// </param>
+        public virtual UpdateBoundaryConfigRequest UpdateBoundaryConfig(Google.Apis.CloudResourceManager.v3.Data.BoundaryConfig body, string name)
+        {
+            return new UpdateBoundaryConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the BoundaryConfig identified by the specified `name` (for example,
+        /// `folders/123456789/boundaryConfig`).
+        /// </summary>
+        public class UpdateBoundaryConfigRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateBoundaryConfig request.</summary>
+            public UpdateBoundaryConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.BoundaryConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. The unique resource name of the BoundaryConfig. Format: -
+            /// `organizations/{organization}/boundaryConfig` - `folders/{folder}/boundaryConfig` Example:
+            /// `folders/123456789/boundaryConfig`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. The list of fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.BoundaryConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateBoundaryConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes UpdateBoundaryConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/boundaryConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "liens" collection of methods.</summary>
@@ -2350,7 +2871,391 @@ namespace Google.Apis.CloudResourceManager.v3
         public OrganizationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Boundaries = new BoundariesResource(service);
             CapabilityConfigs = new CapabilityConfigsResource(service);
+        }
+
+        /// <summary>Gets the Boundaries resource.</summary>
+        public virtual BoundariesResource Boundaries { get; }
+
+        /// <summary>The "boundaries" collection of methods.</summary>
+        public class BoundariesResource
+        {
+            private const string Resource = "boundaries";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BoundariesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a Boundary under a parent Folder or Organization. Creating a Boundary triggers the creation of a
+            /// Management Project if one is not supplied.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource under which the Boundary will be created. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.Boundary body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a Boundary under a parent Folder or Organization. Creating a Boundary triggers the creation of a
+            /// Management Project if one is not supplied.
+            /// </summary>
+            public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Boundary body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource under which the Boundary will be created. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. The user-assigned ID for the Boundary, which will become the final component of the
+                /// Boundary's resource name. Must be unique within the parent resource. It must be 6 to 30 lowercase
+                /// ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited.
+                /// Example: `my-boundary-123`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("boundaryId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string BoundaryId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.Boundary Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/boundaries";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("boundaryId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "boundaryId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes the Boundary identified by the specified `name` (for example,
+            /// `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the Boundary to delete. Format:
+            /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+            /// `folders/{folder_id}/boundaries/{boundary_id}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Deletes the Boundary identified by the specified `name` (for example,
+            /// `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Boundary to delete. Format:
+                /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+                /// `folders/{folder_id}/boundaries/{boundary_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/boundaries/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Retrieves the Boundary identified by the specified `name` (for example,
+            /// `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the Boundary to retrieve. Format:
+            /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+            /// `folders/{folder_id}/boundaries/{boundary_id}` Example: `folders/123456789/boundaries/my-boundary`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Retrieves the Boundary identified by the specified `name` (for example,
+            /// `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Boundary>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the Boundary to retrieve. Format:
+                /// `organizations/{organization_id}/boundaries/{boundary_id}` or
+                /// `folders/{folder_id}/boundaries/{boundary_id}` Example: `folders/123456789/boundaries/my-boundary`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/boundaries/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists Boundaries that are direct children of the specified organization or folder resource.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the parent resource whose Boundaries are being listed. Format:
+            /// `organizations/{organization_id}` or `folders/{folder_id}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists Boundaries that are direct children of the specified organization or folder resource.
+            /// </summary>
+            public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListBoundariesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the parent resource whose Boundaries are being listed. Format:
+                /// `organizations/{organization_id}` or `folders/{folder_id}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of Boundaries to return in the response. The service may return fewer
+                /// Boundaries than requested. If unspecified, at most 100 Boundaries will be returned. The maximum
+                /// value is 100; values above 100 will be coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A pagination token received from a previous call to `ListBoundaries` that indicates from
+                /// where listing should continue. Provide this to retrieve the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}/boundaries";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the `display_name` and `resource_filter.tag_filter.tag_value` of the Boundary identified by the
+            /// specified `name` (for example, `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The unique resource name of the Boundary. Format: -
+            /// `organizations/{organization_id}/boundaries/{boundary_id}` -
+            /// `folders/{folder_id}/boundaries/{boundary_id}` Example: `folders/123456789/boundaries/my-boundary`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.Boundary body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the `display_name` and `resource_filter.tag_filter.tag_value` of the Boundary identified by the
+            /// specified `name` (for example, `folders/123456789/boundaries/my-boundary`).
+            /// </summary>
+            public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Boundary body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The unique resource name of the Boundary. Format: -
+                /// `organizations/{organization_id}/boundaries/{boundary_id}` -
+                /// `folders/{folder_id}/boundaries/{boundary_id}` Example: `folders/123456789/boundaries/my-boundary`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. The list of fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudResourceManager.v3.Data.Boundary Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/boundaries/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the CapabilityConfigs resource.</summary>
@@ -2798,6 +3703,64 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
+        /// Retrieves the BoundaryConfig identified by the specified `name` (for example,
+        /// `folders/123456789/boundaryConfig`).
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the BoundaryConfig to retrieve. Format: `organizations/{organization}/boundaryConfig`
+        /// or `folders/{folder}/boundaryConfig` Example: `folders/123456789/boundaryConfig`
+        /// </param>
+        public virtual GetBoundaryConfigRequest GetBoundaryConfig(string name)
+        {
+            return new GetBoundaryConfigRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Retrieves the BoundaryConfig identified by the specified `name` (for example,
+        /// `folders/123456789/boundaryConfig`).
+        /// </summary>
+        public class GetBoundaryConfigRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.BoundaryConfig>
+        {
+            /// <summary>Constructs a new GetBoundaryConfig request.</summary>
+            public GetBoundaryConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the BoundaryConfig to retrieve. Format:
+            /// `organizations/{organization}/boundaryConfig` or `folders/{folder}/boundaryConfig` Example:
+            /// `folders/123456789/boundaryConfig`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getBoundaryConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes GetBoundaryConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/boundaryConfig$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Gets the access control policy for an organization resource. The policy may be empty if no such policy or
         /// resource exists. The `resource` field should be the organization's resource name, for example:
         /// "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy`
@@ -3091,6 +4054,85 @@ namespace Google.Apis.CloudResourceManager.v3
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^organizations/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the BoundaryConfig identified by the specified `name` (for example,
+        /// `folders/123456789/boundaryConfig`).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. The unique resource name of the BoundaryConfig. Format: -
+        /// `organizations/{organization}/boundaryConfig` - `folders/{folder}/boundaryConfig` Example:
+        /// `folders/123456789/boundaryConfig`
+        /// </param>
+        public virtual UpdateBoundaryConfigRequest UpdateBoundaryConfig(Google.Apis.CloudResourceManager.v3.Data.BoundaryConfig body, string name)
+        {
+            return new UpdateBoundaryConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the BoundaryConfig identified by the specified `name` (for example,
+        /// `folders/123456789/boundaryConfig`).
+        /// </summary>
+        public class UpdateBoundaryConfigRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateBoundaryConfig request.</summary>
+            public UpdateBoundaryConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.BoundaryConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. The unique resource name of the BoundaryConfig. Format: -
+            /// `organizations/{organization}/boundaryConfig` - `folders/{folder}/boundaryConfig` Example:
+            /// `folders/123456789/boundaryConfig`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. The list of fields to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.BoundaryConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateBoundaryConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes UpdateBoundaryConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+/boundaryConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -6220,6 +7262,194 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A Boundary is a collection of projects defined by a filtering criteria on an organization or a folder.
+    /// </summary>
+    public class Boundary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The creation time of the Boundary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Human-readable display name of the Boundary. When present it must be between 4 to 30 characters.
+        /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space,
+        /// and exclamation point. Example: `My Production Boundary`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
+        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. The Management Project of the CapabilityConfig this Boundary is associated with. Will be empty
+        /// if the Boundary is not associated with any CapabilityConfig. Format: `projects/{project_number}` Example:
+        /// `projects/123456789012`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementProject")]
+        public virtual string ManagementProject { get; set; }
+
+        /// <summary>
+        /// Identifier. The unique resource name of the Boundary. Format: -
+        /// `organizations/{organization_id}/boundaries/{boundary_id}` - `folders/{folder_id}/boundaries/{boundary_id}`
+        /// Example: `folders/123456789/boundaries/my-boundary`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The filter defining the criteria for descendant projects to be included in the Boundary.
+        /// Descendant projects are dynamically included in the Boundary based on this filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFilter")]
+        public virtual ResourceFilter ResourceFilter { get; set; }
+
+        /// <summary>Output only. The lifecycle state of the Boundary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time this Boundary was modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// A BoundaryConfig defines the common configurations regarding Boundaries defined under a parent CRM node (Folder
+    /// or Organization), such as the partitioning tag key.
+    /// </summary>
+    public class BoundaryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update
+        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The unique resource name of the BoundaryConfig. Format: -
+        /// `organizations/{organization}/boundaryConfig` - `folders/{folder}/boundaryConfig` Example:
+        /// `folders/123456789/boundaryConfig`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The namespaced name of the tag key. Format: `{parent_id}/{tag_key_short_name}` Example:
+        /// `123456789012/env` (where 123456789012 is the organization ID).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagKey")]
+        public virtual string TagKey { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent time this BoundaryConfig was modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>Representation of a Capability.</summary>
     public class Capability : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7112,6 +8342,30 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
+    /// A page of the response received from the ListBoundaries method. A paginated response where more pages are
+    /// available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next page.
+    /// NOTE: A response may contain fewer elements than the request `page_size` and still have a `next_page_token`.
+    /// </summary>
+    public class ListBoundariesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Boundaries under the parent. This list can be paginated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundaries")]
+        public virtual System.Collections.Generic.IList<Boundary> Boundaries { get; set; }
+
+        /// <summary>
+        /// Pagination token. If the result set is too large to fit in a single response, this token is returned. It
+        /// encodes the position of the current result cursor. Feeding this value into a new list request with the
+        /// `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is
+        /// no next page and the list returned is the last page in the result set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A page of the response received from the ListCapabilityConfigs method. A paginated response where more pages are
     /// available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next page.
     /// NOTE: A response may contain fewer elements than the request `page_size` and still have a `next_page_token`.
@@ -7867,6 +9121,17 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Filter to define the criteria for including projects in the Boundary.</summary>
+    public class ResourceFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A tag based filter. A project must match it to be included.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagFilter")]
+        public virtual TagFilter TagFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for searching folders.</summary>
     public class SearchFoldersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8052,6 +9317,28 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+    }
+
+    /// <summary>Matches projects based on a specific tag key and a specific tag value.</summary>
+    public class TagFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The namespaced name of the tag key. Format: `{parent_id}/{tag_key_short_name}` Example:
+        /// `123456789012/env` (where 123456789012 is the organization ID).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagKey")]
+        public virtual string TagKey { get; set; }
+
+        /// <summary>
+        /// Required. The allowed value for the tag key. A project matches this tag filter if its effective tag value
+        /// for the given `tag_key` matches this value. Format: short name of the tag value. Example: `production` or
+        /// `staging`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValue")]
+        public virtual string TagValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
