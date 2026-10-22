@@ -1326,6 +1326,13 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMode")]
         public virtual string EvaluationMode { get; set; }
 
+        /// <summary>
+        /// Optional. The resource names of the attestors that must attest to a container image, in the format
+        /// `projects/*/attestors/*`. Each attestor must exist before a policy can reference it. To add an attestor to a
+        /// policy the principal issuing the policy change request must be able to read the attestor resource. Note:
+        /// this field must be non-empty when the evaluation_mode field specifies REQUIRE_ATTESTATION, otherwise it must
+        /// be empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireAttestationsBy")]
         public virtual System.Collections.Generic.IList<string> RequireAttestationsBy { get; set; }
 
@@ -1755,9 +1762,11 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
         public virtual System.Collections.Generic.IList<AdmissionWhitelistPattern> AdmissionWhitelistPatterns { get; set; }
 
         /// <summary>
-        /// Optional. Per-cluster admission rules. Cluster spec format: `location.clusterId`. There can be at most one
-        /// admission rule per cluster spec. A `location` is either a compute zone (e.g. us-central1-a) or a region
-        /// (e.g. us-central1). For `clusterId` syntax restrictions see
+        /// Optional. A valid Policy has only one of the following rule maps non-empty, i.e. only one of
+        /// cluster_admission_rules, kubernetes_service_account_admission_rules or
+        /// istio_service_identity_admission_rules can be non-empty. Per-cluster admission rules. Cluster spec format:
+        /// `location.clusterId`. There can be at most one admission rule per cluster spec. A `location` is either a
+        /// compute zone (e.g. us-central1-a) or a region (e.g. us-central1). For `clusterId` syntax restrictions see
         /// https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterAdmissionRules")]
