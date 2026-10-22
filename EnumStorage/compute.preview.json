@@ -26,13 +26,15 @@
     "INVALID",
     "NO_EFFECT",
     "REFRESH",
-    "RESTART"
+    "RESTART",
+    "RESTART_IN_PLACE"
   ],
   "Google.Apis.Compute.preview.InstancesResource+UpdateRequest.MostDisruptiveAllowedActionEnum": [
     "INVALID",
     "NO_EFFECT",
     "REFRESH",
-    "RESTART"
+    "RESTART",
+    "RESTART_IN_PLACE"
   ],
   "Google.Apis.Compute.preview.NetworksResource+ListPeeringRoutesRequest.DirectionEnum": [
     "INCOMING",
