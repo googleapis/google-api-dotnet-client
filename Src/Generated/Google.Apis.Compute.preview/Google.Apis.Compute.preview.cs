@@ -49,9 +49,12 @@ namespace Google.Apis.Compute.preview
             ExternalVpnGateways = new ExternalVpnGatewaysResource(this);
             FirewallPolicies = new FirewallPoliciesResource(this);
             Firewalls = new FirewallsResource(this);
+            FolderGlobalVmExtensionPolicies = new FolderGlobalVmExtensionPoliciesResource(this);
+            FolderZoneVmExtensionPolicies = new FolderZoneVmExtensionPoliciesResource(this);
             ForwardingRules = new ForwardingRulesResource(this);
             FutureReservations = new FutureReservationsResource(this);
             GlobalAddresses = new GlobalAddressesResource(this);
+            GlobalFolderOperations = new GlobalFolderOperationsResource(this);
             GlobalForwardingRules = new GlobalForwardingRulesResource(this);
             GlobalFrontendSettings = new GlobalFrontendSettingsResource(this);
             GlobalNetworkEndpointGroups = new GlobalNetworkEndpointGroupsResource(this);
@@ -95,7 +98,9 @@ namespace Google.Apis.Compute.preview
             NodeGroups = new NodeGroupsResource(this);
             NodeTemplates = new NodeTemplatesResource(this);
             NodeTypes = new NodeTypesResource(this);
+            OrganizationGlobalVmExtensionPolicies = new OrganizationGlobalVmExtensionPoliciesResource(this);
             OrganizationSecurityPolicies = new OrganizationSecurityPoliciesResource(this);
+            OrganizationZoneVmExtensionPolicies = new OrganizationZoneVmExtensionPoliciesResource(this);
             PacketMirrorings = new PacketMirroringsResource(this);
             PreviewFeatures = new PreviewFeaturesResource(this);
             ProjectViews = new ProjectViewsResource(this);
@@ -166,7 +171,9 @@ namespace Google.Apis.Compute.preview
             VpnGateways = new VpnGatewaysResource(this);
             VpnTunnels = new VpnTunnelsResource(this);
             WireGroups = new WireGroupsResource(this);
+            ZoneFolderOperations = new ZoneFolderOperationsResource(this);
             ZoneOperations = new ZoneOperationsResource(this);
+            ZoneOrganizationOperations = new ZoneOrganizationOperationsResource(this);
             ZoneVmExtensionPolicies = new ZoneVmExtensionPoliciesResource(this);
             Zones = new ZonesResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://compute.googleapis.com/compute/v1/");
@@ -290,6 +297,12 @@ namespace Google.Apis.Compute.preview
         /// <summary>Gets the Firewalls resource.</summary>
         public virtual FirewallsResource Firewalls { get; }
 
+        /// <summary>Gets the FolderGlobalVmExtensionPolicies resource.</summary>
+        public virtual FolderGlobalVmExtensionPoliciesResource FolderGlobalVmExtensionPolicies { get; }
+
+        /// <summary>Gets the FolderZoneVmExtensionPolicies resource.</summary>
+        public virtual FolderZoneVmExtensionPoliciesResource FolderZoneVmExtensionPolicies { get; }
+
         /// <summary>Gets the ForwardingRules resource.</summary>
         public virtual ForwardingRulesResource ForwardingRules { get; }
 
@@ -298,6 +311,9 @@ namespace Google.Apis.Compute.preview
 
         /// <summary>Gets the GlobalAddresses resource.</summary>
         public virtual GlobalAddressesResource GlobalAddresses { get; }
+
+        /// <summary>Gets the GlobalFolderOperations resource.</summary>
+        public virtual GlobalFolderOperationsResource GlobalFolderOperations { get; }
 
         /// <summary>Gets the GlobalForwardingRules resource.</summary>
         public virtual GlobalForwardingRulesResource GlobalForwardingRules { get; }
@@ -428,8 +444,14 @@ namespace Google.Apis.Compute.preview
         /// <summary>Gets the NodeTypes resource.</summary>
         public virtual NodeTypesResource NodeTypes { get; }
 
+        /// <summary>Gets the OrganizationGlobalVmExtensionPolicies resource.</summary>
+        public virtual OrganizationGlobalVmExtensionPoliciesResource OrganizationGlobalVmExtensionPolicies { get; }
+
         /// <summary>Gets the OrganizationSecurityPolicies resource.</summary>
         public virtual OrganizationSecurityPoliciesResource OrganizationSecurityPolicies { get; }
+
+        /// <summary>Gets the OrganizationZoneVmExtensionPolicies resource.</summary>
+        public virtual OrganizationZoneVmExtensionPoliciesResource OrganizationZoneVmExtensionPolicies { get; }
 
         /// <summary>Gets the PacketMirrorings resource.</summary>
         public virtual PacketMirroringsResource PacketMirrorings { get; }
@@ -641,8 +663,14 @@ namespace Google.Apis.Compute.preview
         /// <summary>Gets the WireGroups resource.</summary>
         public virtual WireGroupsResource WireGroups { get; }
 
+        /// <summary>Gets the ZoneFolderOperations resource.</summary>
+        public virtual ZoneFolderOperationsResource ZoneFolderOperations { get; }
+
         /// <summary>Gets the ZoneOperations resource.</summary>
         public virtual ZoneOperationsResource ZoneOperations { get; }
+
+        /// <summary>Gets the ZoneOrganizationOperations resource.</summary>
+        public virtual ZoneOrganizationOperationsResource ZoneOrganizationOperations { get; }
 
         /// <summary>Gets the ZoneVmExtensionPolicies resource.</summary>
         public virtual ZoneVmExtensionPoliciesResource ZoneVmExtensionPolicies { get; }
@@ -13402,6 +13430,1662 @@ namespace Google.Apis.Compute.preview
         }
     }
 
+    /// <summary>The "folderGlobalVmExtensionPolicies" collection of methods.</summary>
+    public class FolderGlobalVmExtensionPoliciesResource
+    {
+        private const string Resource = "folderGlobalVmExtensionPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FolderGlobalVmExtensionPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Retrieves the list of all folder level VM Extension Policy resources available to the specified folder.  To
+        /// prevent failure, it's recommended that you set the `returnPartialSuccess` parameter to `true`.
+        /// </summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string folder)
+        {
+            return new AggregatedListRequest(this.service, folder);
+        }
+
+        /// <summary>
+        /// Retrieves the list of all folder level VM Extension Policy resources available to the specified folder.  To
+        /// prevent failure, it's recommended that you set the `returnPartialSuccess` parameter to `true`.
+        /// </summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.FolderVmExtensionPolicyAggregatedListResponse>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string folder) : base(service)
+            {
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Indicates whether every visible scope for each scope type (zone, region, global) should be included in
+            /// the response. For new resource types added after this field, the flag has no effect as new resource
+            /// types will always include every visible scope for each scope type in response. For resource types which
+            /// predate this field, if this flag is omitted or false, only scopes of the scope types where the resource
+            /// type is expected to be found will be included.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeAllScopes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// The Shared VPC service project id or service project number for which aggregated list request is invoked
+            /// for subnetworks list-usable api.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceProjectNumber", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ServiceProjectNumber { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "aggregatedList";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/aggregated/vmExtensionPolicies";
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeAllScopes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeAllScopes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceProjectNumber",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>
+        /// Purge scoped resources (zonal policies) from a folder level global VM extension policy, and then delete the
+        /// global VM extension policy. Purge of the scoped resources is a pre-condition of the global VM extension
+        /// policy deletion. The deletion of the global VM extension policy happens after the purge rollout is done, so
+        /// it's not a part of the LRO. It's an automatic process that triggers in the backend.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="globalVmExtensionPolicy">
+        /// Name of the global VM extension policy to purge scoped resources for.
+        /// </param>
+        public virtual DeleteRequest Delete(Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicyRolloutOperationRolloutInput body, string folder, string globalVmExtensionPolicy)
+        {
+            return new DeleteRequest(this.service, body, folder, globalVmExtensionPolicy);
+        }
+
+        /// <summary>
+        /// Purge scoped resources (zonal policies) from a folder level global VM extension policy, and then delete the
+        /// global VM extension policy. Purge of the scoped resources is a pre-condition of the global VM extension
+        /// policy deletion. The deletion of the global VM extension policy happens after the purge rollout is done, so
+        /// it's not a part of the LRO. It's an automatic process that triggers in the backend.
+        /// </summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicyRolloutOperationRolloutInput body, string folder, string globalVmExtensionPolicy) : base(service)
+            {
+                Folder = folder;
+                GlobalVmExtensionPolicy = globalVmExtensionPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the global VM extension policy to purge scoped resources for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("globalVmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GlobalVmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicyRolloutOperationRolloutInput Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/vmExtensionPolicies/{globalVmExtensionPolicy}/delete";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("globalVmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "globalVmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Gets details of a folder level GlobalVmExtensionPolicy.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="globalVmExtensionPolicy">Name of the GlobalVmExtensionPolicy resource to return.</param>
+        public virtual GetRequest Get(string folder, string globalVmExtensionPolicy)
+        {
+            return new GetRequest(this.service, folder, globalVmExtensionPolicy);
+        }
+
+        /// <summary>Gets details of a folder level GlobalVmExtensionPolicy.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string folder, string globalVmExtensionPolicy) : base(service)
+            {
+                Folder = folder;
+                GlobalVmExtensionPolicy = globalVmExtensionPolicy;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the GlobalVmExtensionPolicy resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("globalVmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GlobalVmExtensionPolicy { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/vmExtensionPolicies/{globalVmExtensionPolicy}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("globalVmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "globalVmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves details of a specific VM extension.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
+        public virtual GetVmExtensionRequest GetVmExtension(string folder, string extensionName)
+        {
+            return new GetVmExtensionRequest(this.service, folder, extensionName);
+        }
+
+        /// <summary>Retrieves details of a specific VM extension.</summary>
+        public class GetVmExtensionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalVmExtension>
+        {
+            /// <summary>Constructs a new GetVmExtension request.</summary>
+            public GetVmExtensionRequest(Google.Apis.Services.IClientService service, string folder, string extensionName) : base(service)
+            {
+                Folder = folder;
+                ExtensionName = extensionName;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Required. Name of the VM extension for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExtensionName { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVmExtension";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/vmExtensions/{extensionName}";
+
+            /// <summary>Initializes GetVmExtension parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("extensionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "extensionName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Creates a new folder level GlobalVmExtensionPolicy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="folder">Folder ID for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy body, string folder)
+        {
+            return new InsertRequest(this.service, body, folder);
+        }
+
+        /// <summary>Creates a new folder level GlobalVmExtensionPolicy.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy body, string folder) : base(service)
+            {
+                Folder = folder;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/vmExtensionPolicies";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists folder level GlobalVmExtensionPolicies.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        public virtual ListRequest List(string folder)
+        {
+            return new ListRequest(this.service, folder);
+        }
+
+        /// <summary>Lists folder level GlobalVmExtensionPolicies.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicyList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string folder) : base(service)
+            {
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/vmExtensionPolicies";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists all VM extensions within a folder. This is a read-only API.</summary>
+        /// <param name="folder">Required. Folder ID for this request.</param>
+        public virtual ListVmExtensionsRequest ListVmExtensions(string folder)
+        {
+            return new ListVmExtensionsRequest(this.service, folder);
+        }
+
+        /// <summary>Lists all VM extensions within a folder. This is a read-only API.</summary>
+        public class ListVmExtensionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalListVmExtensionsResponse>
+        {
+            /// <summary>Constructs a new ListVmExtensions request.</summary>
+            public ListVmExtensionsRequest(Google.Apis.Services.IClientService service, string folder) : base(service)
+            {
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Required. Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listVmExtensions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/vmExtensions";
+
+            /// <summary>Initializes ListVmExtensions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Updates a folder level GlobalVmExtensionPolicy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="globalVmExtensionPolicy">Name of the global VM extension policy to update.</param>
+        public virtual UpdateRequest Update(Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy body, string folder, string globalVmExtensionPolicy)
+        {
+            return new UpdateRequest(this.service, body, folder, globalVmExtensionPolicy);
+        }
+
+        /// <summary>Updates a folder level GlobalVmExtensionPolicy.</summary>
+        public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy body, string folder, string globalVmExtensionPolicy) : base(service)
+            {
+                Folder = folder;
+                GlobalVmExtensionPolicy = globalVmExtensionPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the global VM extension policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("globalVmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GlobalVmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/vmExtensionPolicies/{globalVmExtensionPolicy}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("globalVmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "globalVmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
+    /// <summary>The "folderZoneVmExtensionPolicies" collection of methods.</summary>
+    public class FolderZoneVmExtensionPoliciesResource
+    {
+        private const string Resource = "folderZoneVmExtensionPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FolderZoneVmExtensionPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Deletes a specified zone VM extension policy within a folder.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="vmExtensionPolicy">Name of the zone VM extension policy to delete.</param>
+        public virtual DeleteRequest Delete(string folder, string zone, string vmExtensionPolicy)
+        {
+            return new DeleteRequest(this.service, folder, zone, vmExtensionPolicy);
+        }
+
+        /// <summary>Deletes a specified zone VM extension policy within a folder.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string folder, string zone, string vmExtensionPolicy) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                VmExtensionPolicy = vmExtensionPolicy;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the zone VM extension policy to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "vmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves details of a specific zone VM extension policy within a folder.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="vmExtensionPolicy">Name of the VM extension policy resource to return.</param>
+        public virtual GetRequest Get(string folder, string zone, string vmExtensionPolicy)
+        {
+            return new GetRequest(this.service, folder, zone, vmExtensionPolicy);
+        }
+
+        /// <summary>Retrieves details of a specific zone VM extension policy within a folder.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.VmExtensionPolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string folder, string zone, string vmExtensionPolicy) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                VmExtensionPolicy = vmExtensionPolicy;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the VM extension policy resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VmExtensionPolicy { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "vmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves details of a specific VM extension within a folder.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
+        public virtual GetVmExtensionRequest GetVmExtension(string folder, string zone, string extensionName)
+        {
+            return new GetVmExtensionRequest(this.service, folder, zone, extensionName);
+        }
+
+        /// <summary>Retrieves details of a specific VM extension within a folder.</summary>
+        public class GetVmExtensionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.VmExtension>
+        {
+            /// <summary>Constructs a new GetVmExtension request.</summary>
+            public GetVmExtensionRequest(Google.Apis.Services.IClientService service, string folder, string zone, string extensionName) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                ExtensionName = extensionName;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Required. Name of the VM extension for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExtensionName { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVmExtension";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/vmExtensions/{extensionName}";
+
+            /// <summary>Initializes GetVmExtension parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("extensionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "extensionName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Creates a new zone-level VM extension policy within a folder.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.preview.Data.VmExtensionPolicy body, string folder, string zone)
+        {
+            return new InsertRequest(this.service, body, folder, zone);
+        }
+
+        /// <summary>Creates a new zone-level VM extension policy within a folder.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.VmExtensionPolicy body, string folder, string zone) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.VmExtensionPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/vmExtensionPolicies";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists all VM extension policies within a specific zone for a folder.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        public virtual ListRequest List(string folder, string zone)
+        {
+            return new ListRequest(this.service, folder, zone);
+        }
+
+        /// <summary>Lists all VM extension policies within a specific zone for a folder.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.VmExtensionPolicyList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string folder, string zone) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/vmExtensionPolicies";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists all VM extensions within a specific zone for a folder. This is a read-only API.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        public virtual ListVmExtensionsRequest ListVmExtensions(string folder, string zone)
+        {
+            return new ListVmExtensionsRequest(this.service, folder, zone);
+        }
+
+        /// <summary>Lists all VM extensions within a specific zone for a folder. This is a read-only API.</summary>
+        public class ListVmExtensionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.ListVmExtensionsResponse>
+        {
+            /// <summary>Constructs a new ListVmExtensions request.</summary>
+            public ListVmExtensionsRequest(Google.Apis.Services.IClientService service, string folder, string zone) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listVmExtensions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/vmExtensions";
+
+            /// <summary>Initializes ListVmExtensions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Modifies an existing zone VM extension policy within a folder.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="vmExtensionPolicy">Name of the zone VM extension policy to update.</param>
+        public virtual UpdateRequest Update(Google.Apis.Compute.preview.Data.VmExtensionPolicy body, string folder, string zone, string vmExtensionPolicy)
+        {
+            return new UpdateRequest(this.service, body, folder, zone, vmExtensionPolicy);
+        }
+
+        /// <summary>Modifies an existing zone VM extension policy within a folder.</summary>
+        public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.VmExtensionPolicy body, string folder, string zone, string vmExtensionPolicy) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                VmExtensionPolicy = vmExtensionPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the zone VM extension policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.VmExtensionPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "vmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
     /// <summary>The "forwardingRules" collection of methods.</summary>
     public class ForwardingRulesResource
     {
@@ -15836,6 +17520,228 @@ namespace Google.Apis.Compute.preview
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
+    /// <summary>The "globalFolderOperations" collection of methods.</summary>
+    public class GlobalFolderOperationsResource
+    {
+        private const string Resource = "globalFolderOperations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public GlobalFolderOperationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves the specified Operations resource.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="operation">Name of the Operations resource to return.</param>
+        public virtual GetRequest Get(string folder, string operation)
+        {
+            return new GetRequest(this.service, folder, operation);
+        }
+
+        /// <summary>Retrieves the specified Operations resource.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string folder, string operation) : base(service)
+            {
+                Folder = folder;
+                Operation = operation;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the Operations resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Operation { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/operations/{operation}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("operation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operation",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves a list of Operation resources contained within the specified folder.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        public virtual ListRequest List(string folder)
+        {
+            return new ListRequest(this.service, folder);
+        }
+
+        /// <summary>Retrieves a list of Operation resources contained within the specified folder.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.OperationList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string folder) : base(service)
+            {
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/operations";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
 
@@ -19104,6 +21010,68 @@ namespace Google.Apis.Compute.preview
             public override string ApiVersion => "2026-10-01-preview";
         }
 
+        /// <summary>Retrieves details of a specific VM extension.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
+        public virtual GetVmExtensionRequest GetVmExtension(string project, string extensionName)
+        {
+            return new GetVmExtensionRequest(this.service, project, extensionName);
+        }
+
+        /// <summary>Retrieves details of a specific VM extension.</summary>
+        public class GetVmExtensionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalVmExtension>
+        {
+            /// <summary>Constructs a new GetVmExtension request.</summary>
+            public GetVmExtensionRequest(Google.Apis.Services.IClientService service, string project, string extensionName) : base(service)
+            {
+                Project = project;
+                ExtensionName = extensionName;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Required. Name of the VM extension for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExtensionName { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVmExtension";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/vmExtensions/{extensionName}";
+
+            /// <summary>Initializes GetVmExtension parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("extensionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "extensionName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
         /// <summary>Creates a new project level GlobalVmExtensionPolicy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -19276,6 +21244,151 @@ namespace Google.Apis.Compute.preview
             public override string RestPath => "projects/{project}/global/vmExtensionPolicies";
 
             /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists all VM extensions within a specific zone for a project. This is a read-only API.</summary>
+        /// <param name="project">Required. Project ID for this request.</param>
+        public virtual ListVmExtensionsRequest ListVmExtensions(string project)
+        {
+            return new ListVmExtensionsRequest(this.service, project);
+        }
+
+        /// <summary>Lists all VM extensions within a specific zone for a project. This is a read-only API.</summary>
+        public class ListVmExtensionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalListVmExtensionsResponse>
+        {
+            /// <summary>Constructs a new ListVmExtensions request.</summary>
+            public ListVmExtensionsRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listVmExtensions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/vmExtensions";
+
+            /// <summary>Initializes ListVmExtensions parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -35285,136 +37398,6 @@ namespace Google.Apis.Compute.preview
         }
 
         /// <summary>
-        /// Initiates diagnostic troubleshooting on the specified instance. This operation cannot be cancelled.
-        /// </summary>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">The name of the zone for this request.</param>
-        /// <param name="instance">Name of the instance scoping this request.</param>
-        public virtual TroubleshootRequest Troubleshoot(string project, string zone, string instance)
-        {
-            return new TroubleshootRequest(this.service, project, zone, instance);
-        }
-
-        /// <summary>
-        /// Initiates diagnostic troubleshooting on the specified instance. This operation cannot be cancelled.
-        /// </summary>
-        public class TroubleshootRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
-        {
-            /// <summary>Constructs a new Troubleshoot request.</summary>
-            public TroubleshootRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance) : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                Instance = instance;
-                InitParameters();
-            }
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>The name of the zone for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>Name of the instance scoping this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Instance { get; private set; }
-
-            /// <summary>
-            /// Input only. Timestamp representing the end of the troubleshooting window in RFC3339 text format. If
-            /// omitted, defaults to 'now'.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("params.endTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ParamsEndTime { get; set; }
-
-            /// <summary>
-            /// Input only. Timestamp representing the beginning of the troubleshooting window in RFC3339 text format.
-            /// If omitted, defaults to the last 12 hours.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("params.startTime", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ParamsStartTime { get; set; }
-
-            /// <summary>
-            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
-            /// request, the server will know to ignore the request if it has already been completed.  For example,
-            /// consider a situation where you make an initial request and the request times out. If you make the
-            /// request again with the same request ID, the server can check if original operation with the same request
-            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
-            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
-            /// is not supported (00000000-0000-0000-0000-000000000000).
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestId { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "troubleshoot";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "projects/{project}/zones/{zone}/instances/{instance}/troubleshoot";
-
-            /// <summary>Initializes Troubleshoot parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "project",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                });
-                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "zone",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-                });
-                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "instance",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-                });
-                RequestParameters.Add("params.endTime", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "params.endTime",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("params.startTime", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "params.startTime",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "requestId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-
-            /// <inheritdoc/>
-            public override string ApiVersion => "2026-10-01-preview";
-        }
-
-        /// <summary>
         /// Updates an instance only if the necessary resources are available. This method can update only a specific
         /// set of instance properties. See Updating a running instance for a list of updatable instance properties.
         /// </summary>
@@ -35491,6 +37474,12 @@ namespace Google.Apis.Compute.preview
                 /// <summary>The instance will restart, potentially on a different host.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESTART")]
                 RESTART = 3,
+
+                /// <summary>
+                /// The instance will restart on the same host. Data on all local SSDs will be preserved.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("RESTART_IN_PLACE")]
+                RESTARTINPLACE = 4,
             }
 
             /// <summary>
@@ -35523,6 +37512,12 @@ namespace Google.Apis.Compute.preview
                 /// <summary>The instance will restart, potentially on a different host.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESTART")]
                 RESTART = 3,
+
+                /// <summary>
+                /// The instance will restart on the same host. Data on all local SSDs will be preserved.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("RESTART_IN_PLACE")]
+                RESTARTINPLACE = 4,
             }
 
             /// <summary>
@@ -50142,6 +52137,102 @@ namespace Google.Apis.Compute.preview
         }
 
         /// <summary>
+        /// Updates the network profile of the specified network. Currently only the following operations are supported:
+        ///   - Removing a Regionally Bound Network Profile
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network resource to update the network profile for.</param>
+        public virtual UpdateNetworkProfileRequest UpdateNetworkProfile(Google.Apis.Compute.preview.Data.NetworksUpdateNetworkProfileRequest body, string project, string network)
+        {
+            return new UpdateNetworkProfileRequest(this.service, body, project, network);
+        }
+
+        /// <summary>
+        /// Updates the network profile of the specified network. Currently only the following operations are supported:
+        ///   - Removing a Regionally Bound Network Profile
+        /// </summary>
+        public class UpdateNetworkProfileRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateNetworkProfile request.</summary>
+            public UpdateNetworkProfileRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.NetworksUpdateNetworkProfileRequest body, string project, string network) : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network resource to update the network profile for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.NetworksUpdateNetworkProfileRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateNetworkProfile";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/networks/{network}/updateNetworkProfile";
+
+            /// <summary>Initializes UpdateNetworkProfile parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("network", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "network",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>
         /// Updates the specified network peering with the data included in the request. You can only modify the
         /// NetworkPeering.export_custom_routes field and the NetworkPeering.import_custom_routes field.
         /// </summary>
@@ -53265,6 +55356,889 @@ namespace Google.Apis.Compute.preview
         }
     }
 
+    /// <summary>The "organizationGlobalVmExtensionPolicies" collection of methods.</summary>
+    public class OrganizationGlobalVmExtensionPoliciesResource
+    {
+        private const string Resource = "organizationGlobalVmExtensionPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationGlobalVmExtensionPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Retrieves the list of all organization level VM Extension Policy resources available to the specified
+        /// organization.  To prevent failure, it's recommended that you set the `returnPartialSuccess` parameter to
+        /// `true`.
+        /// </summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        public virtual AggregatedListRequest AggregatedList(string organization)
+        {
+            return new AggregatedListRequest(this.service, organization);
+        }
+
+        /// <summary>
+        /// Retrieves the list of all organization level VM Extension Policy resources available to the specified
+        /// organization.  To prevent failure, it's recommended that you set the `returnPartialSuccess` parameter to
+        /// `true`.
+        /// </summary>
+        public class AggregatedListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.OrganizationVmExtensionPolicyAggregatedListResponse>
+        {
+            /// <summary>Constructs a new AggregatedList request.</summary>
+            public AggregatedListRequest(Google.Apis.Services.IClientService service, string organization) : base(service)
+            {
+                Organization = organization;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Indicates whether every visible scope for each scope type (zone, region, global) should be included in
+            /// the response. For new resource types added after this field, the flag has no effect as new resource
+            /// types will always include every visible scope for each scope type in response. For resource types which
+            /// predate this field, if this flag is omitted or false, only scopes of the scope types where the resource
+            /// type is expected to be found will be included.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeAllScopes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeAllScopes { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// The Shared VPC service project id or service project number for which aggregated list request is invoked
+            /// for subnetworks list-usable api.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("serviceProjectNumber", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> ServiceProjectNumber { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "aggregatedList";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/aggregated/vmExtensionPolicies";
+
+            /// <summary>Initializes AggregatedList parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeAllScopes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeAllScopes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("serviceProjectNumber", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "serviceProjectNumber",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>
+        /// Purge scoped resources (zonal policies) from an organization level global VM extension policy, and then
+        /// delete the global VM extension policy. Purge of the scoped resources is a pre-condition of the global VM
+        /// extension policy deletion. The deletion of the global VM extension policy happens after the purge rollout is
+        /// done, so it's not a part of the LRO. It's an automatic process that triggers in the backend.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="globalVmExtensionPolicy">
+        /// Name of the global VM extension policy to purge scoped resources for.
+        /// </param>
+        public virtual DeleteRequest Delete(Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicyRolloutOperationRolloutInput body, string organization, string globalVmExtensionPolicy)
+        {
+            return new DeleteRequest(this.service, body, organization, globalVmExtensionPolicy);
+        }
+
+        /// <summary>
+        /// Purge scoped resources (zonal policies) from an organization level global VM extension policy, and then
+        /// delete the global VM extension policy. Purge of the scoped resources is a pre-condition of the global VM
+        /// extension policy deletion. The deletion of the global VM extension policy happens after the purge rollout is
+        /// done, so it's not a part of the LRO. It's an automatic process that triggers in the backend.
+        /// </summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicyRolloutOperationRolloutInput body, string organization, string globalVmExtensionPolicy) : base(service)
+            {
+                Organization = organization;
+                GlobalVmExtensionPolicy = globalVmExtensionPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the global VM extension policy to purge scoped resources for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("globalVmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GlobalVmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicyRolloutOperationRolloutInput Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/vmExtensionPolicies/{globalVmExtensionPolicy}/delete";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("globalVmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "globalVmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Gets details of an organization level GlobalVmExtensionPolicy.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="globalVmExtensionPolicy">Name of the GlobalVmExtensionPolicy resource to return.</param>
+        public virtual GetRequest Get(string organization, string globalVmExtensionPolicy)
+        {
+            return new GetRequest(this.service, organization, globalVmExtensionPolicy);
+        }
+
+        /// <summary>Gets details of an organization level GlobalVmExtensionPolicy.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string organization, string globalVmExtensionPolicy) : base(service)
+            {
+                Organization = organization;
+                GlobalVmExtensionPolicy = globalVmExtensionPolicy;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the GlobalVmExtensionPolicy resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("globalVmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GlobalVmExtensionPolicy { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/vmExtensionPolicies/{globalVmExtensionPolicy}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("globalVmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "globalVmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves details of a specific VM extension.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
+        public virtual GetVmExtensionRequest GetVmExtension(string organization, string extensionName)
+        {
+            return new GetVmExtensionRequest(this.service, organization, extensionName);
+        }
+
+        /// <summary>Retrieves details of a specific VM extension.</summary>
+        public class GetVmExtensionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalVmExtension>
+        {
+            /// <summary>Constructs a new GetVmExtension request.</summary>
+            public GetVmExtensionRequest(Google.Apis.Services.IClientService service, string organization, string extensionName) : base(service)
+            {
+                Organization = organization;
+                ExtensionName = extensionName;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Required. Name of the VM extension for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExtensionName { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVmExtension";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/vmExtensions/{extensionName}";
+
+            /// <summary>Initializes GetVmExtension parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("extensionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "extensionName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Creates a new organization level GlobalVmExtensionPolicy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="organization">Organization ID for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy body, string organization)
+        {
+            return new InsertRequest(this.service, body, organization);
+        }
+
+        /// <summary>Creates a new organization level GlobalVmExtensionPolicy.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy body, string organization) : base(service)
+            {
+                Organization = organization;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/vmExtensionPolicies";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists organization level GlobalVmExtensionPolicies.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        public virtual ListRequest List(string organization)
+        {
+            return new ListRequest(this.service, organization);
+        }
+
+        /// <summary>Lists organization level GlobalVmExtensionPolicies.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicyList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string organization) : base(service)
+            {
+                Organization = organization;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/vmExtensionPolicies";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists all VM extensions within an organization. This is a read-only API.</summary>
+        /// <param name="organization">Required. Organization ID for this request.</param>
+        public virtual ListVmExtensionsRequest ListVmExtensions(string organization)
+        {
+            return new ListVmExtensionsRequest(this.service, organization);
+        }
+
+        /// <summary>Lists all VM extensions within an organization. This is a read-only API.</summary>
+        public class ListVmExtensionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.GlobalListVmExtensionsResponse>
+        {
+            /// <summary>Constructs a new ListVmExtensions request.</summary>
+            public ListVmExtensionsRequest(Google.Apis.Services.IClientService service, string organization) : base(service)
+            {
+                Organization = organization;
+                InitParameters();
+            }
+
+            /// <summary>Required. Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listVmExtensions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/vmExtensions";
+
+            /// <summary>Initializes ListVmExtensions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Updates an organization level GlobalVmExtensionPolicy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="globalVmExtensionPolicy">Name of the global VM extension policy to update.</param>
+        public virtual UpdateRequest Update(Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy body, string organization, string globalVmExtensionPolicy)
+        {
+            return new UpdateRequest(this.service, body, organization, globalVmExtensionPolicy);
+        }
+
+        /// <summary>Updates an organization level GlobalVmExtensionPolicy.</summary>
+        public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy body, string organization, string globalVmExtensionPolicy) : base(service)
+            {
+                Organization = organization;
+                GlobalVmExtensionPolicy = globalVmExtensionPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the global VM extension policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("globalVmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GlobalVmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.GlobalVmExtensionPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/global/vmExtensionPolicies/{globalVmExtensionPolicy}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("globalVmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "globalVmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
     /// <summary>The "organizationSecurityPolicies" collection of methods.</summary>
     public class OrganizationSecurityPoliciesResource
     {
@@ -54682,6 +57656,785 @@ namespace Google.Apis.Compute.preview
                     Name = "priority",
                     IsRequired = false,
                     ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
+    /// <summary>The "organizationZoneVmExtensionPolicies" collection of methods.</summary>
+    public class OrganizationZoneVmExtensionPoliciesResource
+    {
+        private const string Resource = "organizationZoneVmExtensionPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationZoneVmExtensionPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Deletes a specified zone VM extension policy within an organization.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="vmExtensionPolicy">Name of the zone VM extension policy to delete.</param>
+        public virtual DeleteRequest Delete(string organization, string zone, string vmExtensionPolicy)
+        {
+            return new DeleteRequest(this.service, organization, zone, vmExtensionPolicy);
+        }
+
+        /// <summary>Deletes a specified zone VM extension policy within an organization.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string organization, string zone, string vmExtensionPolicy) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                VmExtensionPolicy = vmExtensionPolicy;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the zone VM extension policy to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "vmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves details of a specific zone VM extension policy within an organization.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="vmExtensionPolicy">Name of the VM extension policy resource to return.</param>
+        public virtual GetRequest Get(string organization, string zone, string vmExtensionPolicy)
+        {
+            return new GetRequest(this.service, organization, zone, vmExtensionPolicy);
+        }
+
+        /// <summary>Retrieves details of a specific zone VM extension policy within an organization.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.VmExtensionPolicy>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string organization, string zone, string vmExtensionPolicy) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                VmExtensionPolicy = vmExtensionPolicy;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the VM extension policy resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VmExtensionPolicy { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "vmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves details of a specific VM extension within an organization.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
+        public virtual GetVmExtensionRequest GetVmExtension(string organization, string zone, string extensionName)
+        {
+            return new GetVmExtensionRequest(this.service, organization, zone, extensionName);
+        }
+
+        /// <summary>Retrieves details of a specific VM extension within an organization.</summary>
+        public class GetVmExtensionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.VmExtension>
+        {
+            /// <summary>Constructs a new GetVmExtension request.</summary>
+            public GetVmExtensionRequest(Google.Apis.Services.IClientService service, string organization, string zone, string extensionName) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                ExtensionName = extensionName;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Required. Name of the VM extension for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExtensionName { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVmExtension";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/vmExtensions/{extensionName}";
+
+            /// <summary>Initializes GetVmExtension parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("extensionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "extensionName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Creates a new zone-level VM extension policy within an organization.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.preview.Data.VmExtensionPolicy body, string organization, string zone)
+        {
+            return new InsertRequest(this.service, body, organization, zone);
+        }
+
+        /// <summary>Creates a new zone-level VM extension policy within an organization.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.VmExtensionPolicy body, string organization, string zone) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.VmExtensionPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/vmExtensionPolicies";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists all VM extension policies within a specific zone for an organization.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        public virtual ListRequest List(string organization, string zone)
+        {
+            return new ListRequest(this.service, organization, zone);
+        }
+
+        /// <summary>Lists all VM extension policies within a specific zone for an organization.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.VmExtensionPolicyList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string organization, string zone) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/vmExtensionPolicies";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>
+        /// Lists all VM extensions within a specific zone for an organization. This is a read-only API.
+        /// </summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        public virtual ListVmExtensionsRequest ListVmExtensions(string organization, string zone)
+        {
+            return new ListVmExtensionsRequest(this.service, organization, zone);
+        }
+
+        /// <summary>
+        /// Lists all VM extensions within a specific zone for an organization. This is a read-only API.
+        /// </summary>
+        public class ListVmExtensionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.ListVmExtensionsResponse>
+        {
+            /// <summary>Constructs a new ListVmExtensions request.</summary>
+            public ListVmExtensionsRequest(Google.Apis.Services.IClientService service, string organization, string zone) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listVmExtensions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/vmExtensions";
+
+            /// <summary>Initializes ListVmExtensions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Modifies an existing zone VM extension policy within an organization.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="vmExtensionPolicy">Name of the zone VM extension policy to update.</param>
+        public virtual UpdateRequest Update(Google.Apis.Compute.preview.Data.VmExtensionPolicy body, string organization, string zone, string vmExtensionPolicy)
+        {
+            return new UpdateRequest(this.service, body, organization, zone, vmExtensionPolicy);
+        }
+
+        /// <summary>Modifies an existing zone VM extension policy within an organization.</summary>
+        public class UpdateRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.VmExtensionPolicy body, string organization, string zone, string vmExtensionPolicy) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                VmExtensionPolicy = vmExtensionPolicy;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the zone VM extension policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("vmExtensionPolicy", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string VmExtensionPolicy { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.VmExtensionPolicy Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "vmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -81236,6 +84989,68 @@ namespace Google.Apis.Compute.preview
             public override string ApiVersion => "2026-10-01-preview";
         }
 
+        /// <summary>Returns the public encryption key used to encrypt the TLS private key before upload.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping this request.</param>
+        public virtual FetchEncryptionKeyRequest FetchEncryptionKey(string project, string region)
+        {
+            return new FetchEncryptionKeyRequest(this.service, project, region);
+        }
+
+        /// <summary>Returns the public encryption key used to encrypt the TLS private key before upload.</summary>
+        public class FetchEncryptionKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.SslCertificatesFetchEncryptionKeyResponse>
+        {
+            /// <summary>Constructs a new FetchEncryptionKey request.</summary>
+            public FetchEncryptionKeyRequest(Google.Apis.Services.IClientService service, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "fetchEncryptionKey";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/sslCertificates/encryptionKey";
+
+            /// <summary>Initializes FetchEncryptionKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
         /// <summary>
         /// Returns the specified SslCertificate resource in the specified region. Get a list of available SSL
         /// certificates by making a list() request.
@@ -97774,6 +101589,54 @@ namespace Google.Apis.Compute.preview
             public override string ApiVersion => "2026-10-01-preview";
         }
 
+        /// <summary>Returns the public encryption key used to encrypt the TLS private key before upload.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual FetchEncryptionKeyRequest FetchEncryptionKey(string project)
+        {
+            return new FetchEncryptionKeyRequest(this.service, project);
+        }
+
+        /// <summary>Returns the public encryption key used to encrypt the TLS private key before upload.</summary>
+        public class FetchEncryptionKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.SslCertificatesFetchEncryptionKeyResponse>
+        {
+            /// <summary>Constructs a new FetchEncryptionKey request.</summary>
+            public FetchEncryptionKeyRequest(Google.Apis.Services.IClientService service, string project) : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "fetchEncryptionKey";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/sslCertificates/encryptionKey";
+
+            /// <summary>Initializes FetchEncryptionKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
         /// <summary>Returns the specified SslCertificate resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslCertificate">Name of the SslCertificate resource to return.</param>
@@ -112353,6 +116216,256 @@ namespace Google.Apis.Compute.preview
         }
     }
 
+    /// <summary>The "zoneFolderOperations" collection of methods.</summary>
+    public class ZoneFolderOperationsResource
+    {
+        private const string Resource = "zoneFolderOperations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ZoneFolderOperationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves the specified Operations resource.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="operation">Name of the Operations resource to return.</param>
+        public virtual GetRequest Get(string folder, string zone, string operation)
+        {
+            return new GetRequest(this.service, folder, zone, operation);
+        }
+
+        /// <summary>Retrieves the specified Operations resource.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string folder, string zone, string operation) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                Operation = operation;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the Operations resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Operation { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/operations/{operation}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("operation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operation",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves a list of Operation resources contained within the specified folder.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="zone">Name of the zone for request.</param>
+        public virtual ListRequest List(string folder, string zone)
+        {
+            return new ListRequest(this.service, folder, zone);
+        }
+
+        /// <summary>Retrieves a list of Operation resources contained within the specified folder.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.OperationList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string folder, string zone) : base(service)
+            {
+                Folder = folder;
+                Zone = zone;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the zone for request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/zones/{zone}/operations";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
     /// <summary>The "zoneOperations" collection of methods.</summary>
     public class ZoneOperationsResource
     {
@@ -112771,6 +116884,258 @@ namespace Google.Apis.Compute.preview
         }
     }
 
+    /// <summary>The "zoneOrganizationOperations" collection of methods.</summary>
+    public class ZoneOrganizationOperationsResource
+    {
+        private const string Resource = "zoneOrganizationOperations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ZoneOrganizationOperationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves the specified Operations resource.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="operation">
+        /// Name of the Operations resource to return. Parent is derived from this field.
+        /// </param>
+        public virtual GetRequest Get(string organization, string zone, string operation)
+        {
+            return new GetRequest(this.service, organization, zone, operation);
+        }
+
+        /// <summary>Retrieves the specified Operations resource.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string organization, string zone, string operation) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                Operation = operation;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the Operations resource to return. Parent is derived from this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Operation { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/operations/{operation}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"organizations/[0-9]{0,20}",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("operation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operation",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves a list of Operation resources contained within the specified organization.</summary>
+        /// <param name="organization">Organization ID for this request.</param>
+        /// <param name="zone">Name of the zone for request.</param>
+        public virtual ListRequest List(string organization, string zone)
+        {
+            return new ListRequest(this.service, organization, zone);
+        }
+
+        /// <summary>Retrieves a list of Operation resources contained within the specified organization.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.OperationList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string organization, string zone) : base(service)
+            {
+                Organization = organization;
+                Zone = zone;
+                InitParameters();
+            }
+
+            /// <summary>Organization ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("organization", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Organization { get; private set; }
+
+            /// <summary>Name of the zone for request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+organization}/zones/{zone}/operations";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("organization", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "organization",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
     /// <summary>The "zoneVmExtensionPolicies" collection of methods.</summary>
     public class ZoneVmExtensionPoliciesResource
     {
@@ -112946,6 +117311,82 @@ namespace Google.Apis.Compute.preview
                 RequestParameters.Add("vmExtensionPolicy", new Google.Apis.Discovery.Parameter
                 {
                     Name = "vmExtensionPolicy",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Retrieves details of a specific VM extension within a project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        /// <param name="extensionName">Required. Name of the VM extension for this request.</param>
+        public virtual GetVmExtensionRequest GetVmExtension(string project, string zone, string extensionName)
+        {
+            return new GetVmExtensionRequest(this.service, project, zone, extensionName);
+        }
+
+        /// <summary>Retrieves details of a specific VM extension within a project.</summary>
+        public class GetVmExtensionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.VmExtension>
+        {
+            /// <summary>Constructs a new GetVmExtension request.</summary>
+            public GetVmExtensionRequest(Google.Apis.Services.IClientService service, string project, string zone, string extensionName) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                ExtensionName = extensionName;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Required. Name of the VM extension for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("extensionName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ExtensionName { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getVmExtension";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/vmExtensions/{extensionName}";
+
+            /// <summary>Initializes GetVmExtension parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("extensionName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "extensionName",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -113149,6 +117590,165 @@ namespace Google.Apis.Compute.preview
             public override string RestPath => "projects/{project}/zones/{zone}/vmExtensionPolicies";
 
             /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("zone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "zone",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists all VM extensions within a specific zone for a project. This is a read-only API.</summary>
+        /// <param name="project">Required. Project ID for this request.</param>
+        /// <param name="zone">Name of the zone for this request.</param>
+        public virtual ListVmExtensionsRequest ListVmExtensions(string project, string zone)
+        {
+            return new ListVmExtensionsRequest(this.service, project, zone);
+        }
+
+        /// <summary>Lists all VM extensions within a specific zone for a project. This is a read-only API.</summary>
+        public class ListVmExtensionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.ListVmExtensionsResponse>
+        {
+            /// <summary>Constructs a new ListVmExtensions request.</summary>
+            public ListVmExtensionsRequest(Google.Apis.Services.IClientService service, string project, string zone) : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listVmExtensions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/zones/{zone}/vmExtensions";
+
+            /// <summary>Initializes ListVmExtensions parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -117858,34 +122458,36 @@ namespace Google.Apis.Compute.preview.Data
         /// The VM    hosting the network endpoint that should become the new leader sends    either a Gratuitous ARP
         /// (GARP) packet (IPv4) or an ICMPv6 Router    Advertisement(RA) packet (IPv6).  Google Cloud immediately but
         ///  temporarily associates the forwarding rule IP address with that VM, and    both new and in-flight packets
-        /// are quickly delivered to that VM.    Note the important properties of the Fast IP Move functionality:
-        /// - The GARP/RA-initiated re-routing stays active for approximately 20    minutes. After triggering fast
-        /// failover, you must also    appropriately set the haPolicy.leader.    -  The new leader instance should
-        /// continue to send GARP/RA packets    periodically every 10 seconds until at least 10 minutes after updating
-        ///  the haPolicy.leader (but stop immediately if it is no longer the leader).    - After triggering a fast
-        /// failover, we recommend that you wait at least    3 seconds before sending another GARP/RA packet from a
-        /// different VM    instance to avoid race conditions.    - Don't send GARP/RA packets from different VM
-        /// instances at the same time. If multiple instances continue to send    GARP/RA packets, traffic might be
-        /// routed to different destinations in an    alternating order. This condition ceases when a single instance
-        /// issues a GARP/RA packet.    - The GARP/RA request always takes priority over the leader API.    Using the
-        /// haPolicy.leader API to change the leader to a different    instance will have no effect until the GARP/RA
-        /// request becomes    inactive.    - The GARP/RA packets should follow the GARP/RA    Packet Specifications..
-        ///  -  When multiple forwarding rules refer to a regional backend service,    you need only send a GARP or RA
-        /// packet for a single forwarding rule    virtual IP. The virtual IPs for all forwarding rules targeting the
-        /// same    backend service will also be moved to the sender of the GARP or RA    packet.     The following are
-        /// the Fast IP Move limitations (that is, when fastIPMove is not DISABLED):        - Multiple forwarding rules
-        /// cannot use the same IP address if one of    them refers to a regional backend service with fastIPMove.    -
-        /// The regional backend service must set the network field, and all    NEGs must belong to that network.
-        /// However, individual    NEGs can belong to different subnetworks of that network.     - The maximum number of
-        /// network endpoints across all backends of a    backend service with fastIPMove is 32.    - The maximum number
-        /// of backend services with fastIPMove that can have    the same network endpoint attached to one of its
-        /// backends is 64.    - The maximum number of backend services with fastIPMove in a VPC in a    region is 64.
-        ///  - The network endpoints that are attached to a backend of a backend    service with fastIPMove cannot
-        /// resolve to Gen3+ machines for IPv6.    - Traffic directed to the leader by a static route next hop will not
-        /// be    redirected to a new leader by fast failover. Such traffic will only be    redirected once an
-        /// haPolicy.leader update has taken effect. Only traffic    to the forwarding rule's virtual IP will be
-        /// redirected to a new leader by    fast failover.   haPolicy.fastIPMove can be set only at backend service
-        /// creation time. Once set, it cannot be updated.  By default, fastIpMove is set to DISABLED.
+        /// are quickly delivered to that VM.    - HA_CONTROLLER: The Backend Service is managed by a High Availability
+        ///   Controller. Failover and leader election are exclusively managed by the    HA Controller service.    Note
+        /// the important properties of the Fast IP Move functionality:        - The GARP/RA-initiated re-routing stays
+        /// active for approximately 20    minutes. After triggering fast failover, you must also    appropriately set
+        /// the haPolicy.leader.    -  The new leader instance should continue to send GARP/RA packets    periodically
+        /// every 10 seconds until at least 10 minutes after updating    the haPolicy.leader (but stop immediately if it
+        /// is no longer the leader).    - After triggering a fast failover, we recommend that you wait at least    3
+        /// seconds before sending another GARP/RA packet from a different VM    instance to avoid race conditions.    -
+        /// Don't send GARP/RA packets from different VM    instances at the same time. If multiple instances continue
+        /// to send    GARP/RA packets, traffic might be routed to different destinations in an    alternating order.
+        /// This condition ceases when a single instance    issues a GARP/RA packet.    - The GARP/RA request always
+        /// takes priority over the leader API.    Using the haPolicy.leader API to change the leader to a different
+        /// instance will have no effect until the GARP/RA request becomes    inactive.    - The GARP/RA packets should
+        /// follow the GARP/RA    Packet Specifications..    -  When multiple forwarding rules refer to a regional
+        /// backend service,    you need only send a GARP or RA packet for a single forwarding rule    virtual IP. The
+        /// virtual IPs for all forwarding rules targeting the same    backend service will also be moved to the sender
+        /// of the GARP or RA    packet.     The following are the Fast IP Move limitations (that is, when fastIPMove is
+        /// not DISABLED):        - Multiple forwarding rules cannot use the same IP address if one of    them refers to
+        /// a regional backend service with fastIPMove.    - The regional backend service must set the network field,
+        /// and all    NEGs must belong to that network. However, individual    NEGs can belong to different subnetworks
+        /// of that network.     - The maximum number of network endpoints across all backends of a    backend service
+        /// with fastIPMove is 32.    - The maximum number of backend services with fastIPMove that can have    the same
+        /// network endpoint attached to one of its backends is 64.    - The maximum number of backend services with
+        /// fastIPMove in a VPC in a    region is 64.    - The network endpoints that are attached to a backend of a
+        /// backend    service with fastIPMove cannot resolve to Gen3+ machines for IPv6.    - Traffic directed to the
+        /// leader by a static route next hop will not be    redirected to a new leader by fast failover. Such traffic
+        /// will only be    redirected once an haPolicy.leader update has taken effect. Only traffic    to the
+        /// forwarding rule's virtual IP will be redirected to a new leader by    fast failover.   haPolicy.fastIPMove
+        /// can be set only at backend service creation time. Once set, it cannot be updated.  By default, fastIpMove is
+        /// set to DISABLED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fastIPMove")]
         public virtual string FastIPMove { get; set; }
@@ -118843,7 +123445,12 @@ namespace Google.Apis.Compute.preview.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
-        /// <summary>A flexible specification of machine type of instances to create.</summary>
+        /// <summary>
+        /// A specification of alternative machine types to use when creating instances. A single bulkInsert request can
+        /// create instances with multiple different machine types based on capacity and quota availability. This field
+        /// is supported only for regional bulkInsert requests. For more information, see About instance flexibility for
+        /// VMs created in bulk.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFlexibilityPolicy")]
         public virtual InstanceFlexibilityPolicy InstanceFlexibilityPolicy { get; set; }
 
@@ -119003,7 +123610,9 @@ namespace Google.Apis.Compute.preview.Data
         public virtual System.Collections.Generic.IList<string> CacheTags { get; set; }
 
         /// <summary>
-        /// If set, this invalidation rule will only apply to requests with a Host header matching host.
+        /// If set, this invalidation rule will only apply to requests with a Host header matching host. This field also
+        /// accepts wildcards (*) to replace the leftmost (or first) label of a hostname. For example, *.example.com
+        /// will match www.example.com, but not sub1.dev.example.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
@@ -119332,6 +123941,13 @@ namespace Google.Apis.Compute.preview.Data
         /// <summary>Instance properties for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceProperties")]
         public virtual CapacityAdviceRequestInstanceProperties InstanceProperties { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Client-provided UUID correlating multiple capacity advice requests belonging to a
+        /// single logical client-side fanout session.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
 
         /// <summary>The number of VM instances to request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
@@ -123729,6 +128345,91 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string ETag { get; set; }
     }
 
+    public class FolderVmExtensionPolicyAggregatedListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of VmExtensionPoliciesScopedList resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string, VmExtensionPoliciesScopedList> Items { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Type of resource. Alwayscompute#FolderVmExtensionPolicyAggregatedList for lists
+        /// of VmExtensionPolicies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// [Output Only] This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. [Output Only] Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
+    }
+
     /// <summary>
     /// Represents a Forwarding Rule resource.  Forwarding rule resources in Google Cloud can be either regional or
     /// global in scope:  * [Global](https://cloud.google.com/compute/docs/reference/rest/v1/globalForwardingRules) *
@@ -125567,6 +130268,94 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GlobalListVmExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Fingerprint of this resource. A hash of the contents stored in this object. This field is used
+        /// in optimistic locking. This field will be ignored when inserting a VmExtensionPolicy. An up-to-date
+        /// fingerprint must be provided in order to update the VmExtensionPolicy.  To see the latest value of the
+        /// fingerprint, make a get() request to retrieve a VmExtensionPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Output only. A list of VM extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GlobalVmExtension> Items { get; set; }
+
+        /// <summary>Output only. Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>Output only. Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>Output only. Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
+    }
+
     public class GlobalNetworkEndpointGroupsAttachEndpointsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of network endpoints to be attached.</summary>
@@ -125654,6 +130443,40 @@ namespace Google.Apis.Compute.preview.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+    }
+
+    public class GlobalVmExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output Only] Creation timestamp inRFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; }
+
+        /// <summary>Output only. [Output Only] An optional textual description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>Output only. [Output Only] Type of the resource. Alwayscompute#globalVmExtension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<string> Versions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Message describing GlobalVmExtensionPolicy object.</summary>
@@ -130761,9 +135584,7 @@ namespace Google.Apis.Compute.preview.Data
     public class InstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specification of alternative, flexible instance subsets. One of them will be selected to create the
-        /// instances based on various criteria, like: - ranks, - location policy, - current capacity, - available
-        /// reservations (you can specify affinity in InstanceProperties), - SWAN/GOOSE limitations. Key is an
+        /// Specifies named instance selections that define properties for instances created in bulk. Key is an
         /// arbitrary, unique RFC1035 string that identifies the instance selection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceSelections")]
@@ -138588,6 +143409,94 @@ namespace Google.Apis.Compute.preview.Data
         }
     }
 
+    public class ListVmExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Fingerprint of this resource. A hash of the contents stored in this object. This field is used
+        /// in optimistic locking. This field will be ignored when inserting a VmExtensionPolicy. An up-to-date
+        /// fingerprint must be provided in order to update the VmExtensionPolicy.  To see the latest value of the
+        /// fingerprint, make a get() request to retrieve a VmExtensionPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Output only. A list of VM extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<VmExtension> Items { get; set; }
+
+        /// <summary>Output only. Type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>Output only. Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>Output only. Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
+    }
+
     public class LocalDisk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies the number of such disks.</summary>
@@ -142512,6 +147421,25 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string ETag { get; set; }
     }
 
+    public class NetworksUpdateNetworkProfileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, clear the network profile from the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearNetworkProfile")]
+        public virtual System.Nullable<bool> ClearNetworkProfile { get; set; }
+
+        /// <summary>
+        /// A full or partial URL of the new network profile to apply to this network. For example, the following are
+        /// valid URLs:         -
+        /// https://www.googleapis.com/compute/{api_version}/projects/{project_id}/global/networkProfiles/{network_profile_name}
+        ///    - projects/{project_id}/global/networkProfiles/{network_profile_name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkProfile")]
+        public virtual string NetworkProfile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class NetworksUpdatePeeringRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("networkPeering")]
@@ -144074,6 +149002,10 @@ namespace Google.Apis.Compute.preview.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>[Output Only] Extended details about the operation's execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual OperationDetails Details { get; set; }
+
         /// <summary>
         /// [Output Only] The time that this operation was completed. This value is inRFC3339 text format.
         /// </summary>
@@ -144421,6 +149353,20 @@ namespace Google.Apis.Compute.preview.Data
         }
     }
 
+    public class OperationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Machine readable data from the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
+
+        /// <summary>Human or AI readable details on execution of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains a list of Operation resources.</summary>
     public class OperationList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -144580,6 +149526,91 @@ namespace Google.Apis.Compute.preview.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    public class OrganizationVmExtensionPolicyAggregatedListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of VmExtensionPoliciesScopedList resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IDictionary<string, VmExtensionPoliciesScopedList> Items { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Type of resource. Alwayscompute#OrganizationVmExtensionPolicyAggregatedList for
+        /// lists of VmExtensionPolicies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// [Output Only] This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. [Output Only] Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
     }
 
     /// <summary>
@@ -149462,6 +154493,13 @@ namespace Google.Apis.Compute.preview.Data
         [Newtonsoft.Json.JsonPropertyAttribute("behavior")]
         public virtual string Behavior { get; set; }
 
+        /// <summary>
+        /// The identifier of the specific faulty sub-component (e.g., NVSwitch ID). Optional. If not specified, all
+        /// switches in the sub-block are targeted for triage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
+        public virtual string ComponentId { get; set; }
+
         /// <summary>The description of the fault experienced with the subBlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -153450,7 +158488,8 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string ProvisioningModel { get; set; }
 
         /// <summary>
-        /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for
+        /// Defines whether GCE ACPI G2 Soft Off signal should be skipped during shutdown operation of VM.  Default is
+        /// false, meaning there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for
         /// Standard VMs and 30 seconds for Spot VMs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipGuestOsShutdown")]
@@ -156398,6 +161437,20 @@ namespace Google.Apis.Compute.preview.Data
         /// <summary>A write-only private key in PEM format. Only insert requests will include this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
         public virtual string PrivateKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response for `SslCertificatesService.FetchEncryptionKey` and `RegionSslCertificatesService.FetchEncryptionKey`
+    /// methods.
+    /// </summary>
+    public class SslCertificatesFetchEncryptionKeyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Tink public keyset serialized in JSON format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyset")]
+        public virtual string PublicKeyset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -159632,6 +164685,13 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource
+        /// payload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual TargetInstanceParams Params__ { get; set; }
+
+        /// <summary>
         /// [Output Only] The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPolicy")]
@@ -159813,6 +164873,25 @@ namespace Google.Apis.Compute.preview.Data
         }
     }
 
+    /// <summary>Additional target instance parameters.</summary>
+    public class TargetInstanceParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Tag keys/values directly bound to this resource. Tag keys and values have the same definition as resource
+        /// manager tags. The field is allowed for INSERT only. The keys/values to set on the resource should be
+        /// specified in either ID { : } or Namespaced format { : }. For example the following are valid inputs: *
+        /// {"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"} * {"123/environment" : "production",
+        /// "345/abc" : "xyz"} Note: * Invalid combinations of ID &amp;amp; namespaced format are not supported. For
+        /// instance: {"123/environment" : "tagValues/444"} is invalid. * Inconsistent format is not supported. For
+        /// instance:   {"tagKeys/333" : "tagValues/444", "123/env" : "prod"} is invalid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class TargetInstancesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of target instances contained in this scope.</summary>
@@ -159948,6 +165027,13 @@ namespace Google.Apis.Compute.preview.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource
+        /// payload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual TargetPoolParams Params__ { get; set; }
 
         /// <summary>Output only. [Output Only] URL of the region where the target pool resides.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
@@ -160155,6 +165241,25 @@ namespace Google.Apis.Compute.preview.Data
                 public virtual string Value { get; set; }
             }
         }
+    }
+
+    /// <summary>Additional target pool parameters.</summary>
+    public class TargetPoolParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Tag keys/values directly bound to this resource. Tag keys and values have the same definition as resource
+        /// manager tags. The field is allowed for INSERT only. The keys/values to set on the resource should be
+        /// specified in either ID { : } or Namespaced format { : }. For example the following are valid inputs: *
+        /// {"tagKeys/333" : "tagValues/444", "tagKeys/123" : "tagValues/456"} * {"123/environment" : "production",
+        /// "345/abc" : "xyz"} Note: * Invalid combinations of ID &amp;amp; namespaced format are not supported. For
+        /// instance: {"123/environment" : "tagValues/444"} is invalid. * Inconsistent format is not supported. For
+        /// instance:   {"tagKeys/333" : "tagValues/444", "123/env" : "prod"} is invalid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceManagerTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceManagerTags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     public class TargetPoolsAddHealthCheckRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -162237,6 +167342,21 @@ namespace Google.Apis.Compute.preview.Data
         }
     }
 
+    /// <summary>A VM extension that can be installed on a VM.</summary>
+    public class VmExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the vm extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The latest 10 versions of the vm extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<string> Versions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class VmExtensionPoliciesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of VmExtensionPolicy resources contained in this scope.</summary>
@@ -163187,6 +168307,18 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string PeerIp { get; set; }
 
         /// <summary>
+        /// User specified list of PQC key exchange mechanisms (KEMs) to use for the phase 1 of the IKE protocol.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pqcPhase1")]
+        public virtual VpnTunnelPqc PqcPhase1 { get; set; }
+
+        /// <summary>
+        /// User specified list of PQC key exchange mechanisms (KEMs) to use for the phase 2 of the IKE protocol.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pqcPhase2")]
+        public virtual VpnTunnelPqc PqcPhase2 { get; set; }
+
+        /// <summary>
         /// [Output Only] URL of the region where the VPN tunnel resides. You must specify this field as part of the
         /// HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
@@ -163258,6 +168390,34 @@ namespace Google.Apis.Compute.preview.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnGatewayInterface")]
         public virtual System.Nullable<int> VpnGatewayInterface { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User specified list of PQC key exchanges.</summary>
+    public class VpnTunnelAdditionalKeyExchanges : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ke1s")]
+        public virtual System.Collections.Generic.IList<string> Ke1s { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ke2s")]
+        public virtual System.Collections.Generic.IList<string> Ke2s { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ke3s")]
+        public virtual System.Collections.Generic.IList<string> Ke3s { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ke4s")]
+        public virtual System.Collections.Generic.IList<string> Ke4s { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ke5s")]
+        public virtual System.Collections.Generic.IList<string> Ke5s { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ke6s")]
+        public virtual System.Collections.Generic.IList<string> Ke6s { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ke7s")]
+        public virtual System.Collections.Generic.IList<string> Ke7s { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -163347,9 +168507,11 @@ namespace Google.Apis.Compute.preview.Data
 
     public class VpnTunnelCipherSuite : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cipher algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase1")]
         public virtual VpnTunnelPhase1Algorithms Phase1 { get; set; }
 
+        /// <summary>Cipher algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase2")]
         public virtual VpnTunnelPhase2Algorithms Phase2 { get; set; }
 
@@ -163456,15 +168618,19 @@ namespace Google.Apis.Compute.preview.Data
 
     public class VpnTunnelPhase1Algorithms : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Diffie-Hellman groups for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dh")]
         public virtual System.Collections.Generic.IList<string> Dh { get; set; }
 
+        /// <summary>Encryption algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual System.Collections.Generic.IList<string> Encryption { get; set; }
 
+        /// <summary>Integrity algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrity")]
         public virtual System.Collections.Generic.IList<string> Integrity { get; set; }
 
+        /// <summary>Pseudo-random functions (PRF) for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prf")]
         public virtual System.Collections.Generic.IList<string> Prf { get; set; }
 
@@ -163474,14 +168640,29 @@ namespace Google.Apis.Compute.preview.Data
 
     public class VpnTunnelPhase2Algorithms : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Encryption algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual System.Collections.Generic.IList<string> Encryption { get; set; }
 
+        /// <summary>Integrity algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrity")]
         public virtual System.Collections.Generic.IList<string> Integrity { get; set; }
 
+        /// <summary>Perfect Forward Secrecy (PFS) groups for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pfs")]
         public virtual System.Collections.Generic.IList<string> Pfs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class VpnTunnelPqc : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("keys")]
+        public virtual VpnTunnelAdditionalKeyExchanges Keys { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -163954,6 +169135,9 @@ namespace Google.Apis.Compute.preview.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("identityCertificateEnabled")]
         public virtual System.Nullable<bool> IdentityCertificateEnabled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("identityType")]
+        public virtual string IdentityType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
