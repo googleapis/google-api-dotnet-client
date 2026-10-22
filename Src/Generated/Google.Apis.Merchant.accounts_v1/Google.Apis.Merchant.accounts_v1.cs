@@ -1578,7 +1578,13 @@ namespace Google.Apis.Merchant.accounts_v1
                 }
             }
 
-            /// <summary>Unclaims a store's homepage. Executing this method requires admin access.</summary>
+            /// <summary>
+            /// Unclaims a store's homepage. Executing this method requires admin access. This method only removes a
+            /// claim made directly on the account. If the account inherits the claim from its advanced account (for
+            /// example, from an advanced account that is exempted from claiming), the homepage stays claimed: the
+            /// method returns a successful response and `claimed` remains `true`. If the account itself is exempted
+            /// from claiming, the method returns a `FAILED_PRECONDITION` error.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The name of the homepage to unclaim. Format: `accounts/{account}/homepage`
@@ -1588,7 +1594,13 @@ namespace Google.Apis.Merchant.accounts_v1
                 return new UnclaimRequest(this.service, body, name);
             }
 
-            /// <summary>Unclaims a store's homepage. Executing this method requires admin access.</summary>
+            /// <summary>
+            /// Unclaims a store's homepage. Executing this method requires admin access. This method only removes a
+            /// claim made directly on the account. If the account inherits the claim from its advanced account (for
+            /// example, from an advanced account that is exempted from claiming), the homepage stays claimed: the
+            /// method returns a successful response and `claimed` remains `true`. If the account itself is exempted
+            /// from claiming, the method returns a `FAILED_PRECONDITION` error.
+            /// </summary>
             public class UnclaimRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.Homepage>
             {
                 /// <summary>Constructs a new Unclaim request.</summary>
@@ -7026,7 +7038,10 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     public class Homepage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Whether the homepage is claimed. See https://support.google.com/merchants/answer/176793.
+        /// Output only. Whether the homepage is claimed. See [About online store URL
+        /// verification](https://support.google.com/merchants/answer/176793). This field is also `true` if the account
+        /// inherits the claim from its advanced account, or if the account is exempted from claiming, even when the
+        /// homepage isn't claimed directly on the account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimed")]
         public virtual System.Nullable<bool> Claimed { get; set; }
