@@ -7376,40 +7376,38 @@ namespace Google.Apis.SQLAdmin.v1
             }
         }
 
-        /// <summary>Stops executing a captured workload on the separate Cloud SQL instance.</summary>
+        /// <summary>Stops an active workload replay on the target Cloud SQL replay instance.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="project">Required. Project ID of the project that contains the instance.</param>
-        /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
-        /// <param name="workloadId">Required. The ID of the workload to replay.</param>
-        public virtual StopReplayRequest StopReplay(Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopReplayRequest body, string project, string instance, string workloadId)
+        /// <param name="project">Required. Project ID of the project that contains the target replay instance.</param>
+        /// <param name="instance">
+        /// Required. Cloud SQL instance ID of the target replay instance. This does not include the project ID.
+        /// </param>
+        public virtual StopReplayRequest StopReplay(Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopReplayRequest body, string project, string instance)
         {
-            return new StopReplayRequest(this.service, body, project, instance, workloadId);
+            return new StopReplayRequest(this.service, body, project, instance);
         }
 
-        /// <summary>Stops executing a captured workload on the separate Cloud SQL instance.</summary>
+        /// <summary>Stops an active workload replay on the target Cloud SQL replay instance.</summary>
         public class StopReplayRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
         {
             /// <summary>Constructs a new StopReplay request.</summary>
-            public StopReplayRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopReplayRequest body, string project, string instance, string workloadId) : base(service)
+            public StopReplayRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopReplayRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
-                WorkloadId = workloadId;
                 Body = body;
                 InitParameters();
             }
 
-            /// <summary>Required. Project ID of the project that contains the instance.</summary>
+            /// <summary>Required. Project ID of the project that contains the target replay instance.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Required. Cloud SQL instance ID. This does not include the project ID.</summary>
+            /// <summary>
+            /// Required. Cloud SQL instance ID of the target replay instance. This does not include the project ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
-
-            /// <summary>Required. The ID of the workload to replay.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("workloadId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string WorkloadId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopReplayRequest Body { get; set; }
@@ -7424,7 +7422,7 @@ namespace Google.Apis.SQLAdmin.v1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/projects/{project}/instances/{instance}/workloadCaptures/{workloadId}:stopReplay";
+            public override string RestPath => "v1/projects/{project}/instances/{instance}/workloadCaptures:stopReplay";
 
             /// <summary>Initializes StopReplay parameter list.</summary>
             protected override void InitParameters()
@@ -7441,14 +7439,6 @@ namespace Google.Apis.SQLAdmin.v1
                 RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
                 {
                     Name = "instance",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("workloadId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "workloadId",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -13254,10 +13244,12 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to stop executing a captured workload on a replay instance.</summary>
+    /// <summary>Request to stop an active workload replay on a target Cloud SQL replay instance.</summary>
     public class SqlWorkloadCapturesStopReplayRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Contains details about the stop workload replay operation.</summary>
+        /// <summary>
+        /// Optional. Contains details about the stop workload replay operation. If omitted, default values are used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopWorkloadReplayContext")]
         public virtual StopWorkloadReplayContext StopWorkloadReplayContext { get; set; }
 
@@ -13584,28 +13576,11 @@ namespace Google.Apis.SQLAdmin.v1.Data
     }
 
     /// <summary>
-    /// The context for the `StopWorkloadReplay` operation, which contains details about stopping the execution of a
-    /// captured workload (recorded read and write SQL queries) on a replay instance.
+    /// The context for the `StopWorkloadReplay` operation, which represents an operation that stops an active workload
+    /// replay on a target Cloud SQL replay instance.
     /// </summary>
     public class StopWorkloadReplayContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The name of the Cloud SQL instance where the captured workload (SQL queries) is being executed,
-        /// excluding the project ID (for example, `my-replay-instance`). The instance name must start with a lowercase
-        /// letter and contain only lowercase letters, numbers, and hyphens. The combined length of
-        /// `project-ID:instance-name` must be 98 characters or less.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replayInstance")]
-        public virtual string ReplayInstance { get; set; }
-
-        /// <summary>
-        /// Output only. The ID of the workload to stop executing on the replay instance. Each workload capture
-        /// generates a unique ID in the format `workload-` (for example, `workload-1786046400`). Use this ID to stop
-        /// executing the recorded SQL queries.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workloadId")]
-        public virtual string WorkloadId { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
