@@ -40007,6 +40007,12 @@ namespace Google.Apis.Compute.alpha
                 /// <summary>The instance will restart, potentially on a different host.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESTART")]
                 RESTART = 3,
+
+                /// <summary>
+                /// The instance will restart on the same host. Data on all local SSDs will be preserved.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("RESTART_IN_PLACE")]
+                RESTARTINPLACE = 4,
             }
 
             /// <summary>
@@ -40039,6 +40045,12 @@ namespace Google.Apis.Compute.alpha
                 /// <summary>The instance will restart, potentially on a different host.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESTART")]
                 RESTART = 3,
+
+                /// <summary>
+                /// The instance will restart on the same host. Data on all local SSDs will be preserved.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("RESTART_IN_PLACE")]
+                RESTARTINPLACE = 4,
             }
 
             /// <summary>
@@ -131689,7 +131701,10 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Map of management interfaces. Keys must be valid RFC1035 names and at most 63 characters long.
+        /// Map of management interfaces. Keys must be valid RFC1035 names and at most 63 characters long. For
+        /// TYPE_NVLINK_SWITCH_MONITORING interfaces, keys must match the pattern "gnmi-nvswitch-[0-8]" (e.g.,
+        /// "gnmi-nvswitch-0" through "gnmi-nvswitch-8"). For TYPE_NVLINK_SWITCH_DEBUG interfaces, keys must match the
+        /// pattern "gnoi-nvswitch-[0-8]" (e.g., "gnoi-nvswitch-0" through "gnoi-nvswitch-8").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementInterfaces")]
         public virtual System.Collections.Generic.IDictionary<string, ManagementInterface> ManagementInterfaces { get; set; }
@@ -135977,34 +135992,36 @@ namespace Google.Apis.Compute.alpha.Data
         /// The VM    hosting the network endpoint that should become the new leader sends    either a Gratuitous ARP
         /// (GARP) packet (IPv4) or an ICMPv6 Router    Advertisement(RA) packet (IPv6).  Google Cloud immediately but
         ///  temporarily associates the forwarding rule IP address with that VM, and    both new and in-flight packets
-        /// are quickly delivered to that VM.    Note the important properties of the Fast IP Move functionality:
-        /// - The GARP/RA-initiated re-routing stays active for approximately 20    minutes. After triggering fast
-        /// failover, you must also    appropriately set the haPolicy.leader.    -  The new leader instance should
-        /// continue to send GARP/RA packets    periodically every 10 seconds until at least 10 minutes after updating
-        ///  the haPolicy.leader (but stop immediately if it is no longer the leader).    - After triggering a fast
-        /// failover, we recommend that you wait at least    3 seconds before sending another GARP/RA packet from a
-        /// different VM    instance to avoid race conditions.    - Don't send GARP/RA packets from different VM
-        /// instances at the same time. If multiple instances continue to send    GARP/RA packets, traffic might be
-        /// routed to different destinations in an    alternating order. This condition ceases when a single instance
-        /// issues a GARP/RA packet.    - The GARP/RA request always takes priority over the leader API.    Using the
-        /// haPolicy.leader API to change the leader to a different    instance will have no effect until the GARP/RA
-        /// request becomes    inactive.    - The GARP/RA packets should follow the GARP/RA    Packet Specifications..
-        ///  -  When multiple forwarding rules refer to a regional backend service,    you need only send a GARP or RA
-        /// packet for a single forwarding rule    virtual IP. The virtual IPs for all forwarding rules targeting the
-        /// same    backend service will also be moved to the sender of the GARP or RA    packet.     The following are
-        /// the Fast IP Move limitations (that is, when fastIPMove is not DISABLED):        - Multiple forwarding rules
-        /// cannot use the same IP address if one of    them refers to a regional backend service with fastIPMove.    -
-        /// The regional backend service must set the network field, and all    NEGs must belong to that network.
-        /// However, individual    NEGs can belong to different subnetworks of that network.     - The maximum number of
-        /// network endpoints across all backends of a    backend service with fastIPMove is 32.    - The maximum number
-        /// of backend services with fastIPMove that can have    the same network endpoint attached to one of its
-        /// backends is 64.    - The maximum number of backend services with fastIPMove in a VPC in a    region is 64.
-        ///  - The network endpoints that are attached to a backend of a backend    service with fastIPMove cannot
-        /// resolve to Gen3+ machines for IPv6.    - Traffic directed to the leader by a static route next hop will not
-        /// be    redirected to a new leader by fast failover. Such traffic will only be    redirected once an
-        /// haPolicy.leader update has taken effect. Only traffic    to the forwarding rule's virtual IP will be
-        /// redirected to a new leader by    fast failover.   haPolicy.fastIPMove can be set only at backend service
-        /// creation time. Once set, it cannot be updated.  By default, fastIpMove is set to DISABLED.
+        /// are quickly delivered to that VM.    - HA_CONTROLLER: The Backend Service is managed by a High Availability
+        ///   Controller. Failover and leader election are exclusively managed by the    HA Controller service.    Note
+        /// the important properties of the Fast IP Move functionality:        - The GARP/RA-initiated re-routing stays
+        /// active for approximately 20    minutes. After triggering fast failover, you must also    appropriately set
+        /// the haPolicy.leader.    -  The new leader instance should continue to send GARP/RA packets    periodically
+        /// every 10 seconds until at least 10 minutes after updating    the haPolicy.leader (but stop immediately if it
+        /// is no longer the leader).    - After triggering a fast failover, we recommend that you wait at least    3
+        /// seconds before sending another GARP/RA packet from a different VM    instance to avoid race conditions.    -
+        /// Don't send GARP/RA packets from different VM    instances at the same time. If multiple instances continue
+        /// to send    GARP/RA packets, traffic might be routed to different destinations in an    alternating order.
+        /// This condition ceases when a single instance    issues a GARP/RA packet.    - The GARP/RA request always
+        /// takes priority over the leader API.    Using the haPolicy.leader API to change the leader to a different
+        /// instance will have no effect until the GARP/RA request becomes    inactive.    - The GARP/RA packets should
+        /// follow the GARP/RA    Packet Specifications..    -  When multiple forwarding rules refer to a regional
+        /// backend service,    you need only send a GARP or RA packet for a single forwarding rule    virtual IP. The
+        /// virtual IPs for all forwarding rules targeting the same    backend service will also be moved to the sender
+        /// of the GARP or RA    packet.     The following are the Fast IP Move limitations (that is, when fastIPMove is
+        /// not DISABLED):        - Multiple forwarding rules cannot use the same IP address if one of    them refers to
+        /// a regional backend service with fastIPMove.    - The regional backend service must set the network field,
+        /// and all    NEGs must belong to that network. However, individual    NEGs can belong to different subnetworks
+        /// of that network.     - The maximum number of network endpoints across all backends of a    backend service
+        /// with fastIPMove is 32.    - The maximum number of backend services with fastIPMove that can have    the same
+        /// network endpoint attached to one of its backends is 64.    - The maximum number of backend services with
+        /// fastIPMove in a VPC in a    region is 64.    - The network endpoints that are attached to a backend of a
+        /// backend    service with fastIPMove cannot resolve to Gen3+ machines for IPv6.    - Traffic directed to the
+        /// leader by a static route next hop will not be    redirected to a new leader by fast failover. Such traffic
+        /// will only be    redirected once an haPolicy.leader update has taken effect. Only traffic    to the
+        /// forwarding rule's virtual IP will be redirected to a new leader by    fast failover.   haPolicy.fastIPMove
+        /// can be set only at backend service creation time. Once set, it cannot be updated.  By default, fastIpMove is
+        /// set to DISABLED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fastIPMove")]
         public virtual string FastIPMove { get; set; }
@@ -137021,7 +137038,12 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
-        /// <summary>A flexible specification of machine type of instances to create.</summary>
+        /// <summary>
+        /// A specification of alternative machine types to use when creating instances. A single bulkInsert request can
+        /// create instances with multiple different machine types based on capacity and quota availability. This field
+        /// is supported only for regional bulkInsert requests. For more information, see About instance flexibility for
+        /// VMs created in bulk.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFlexibilityPolicy")]
         public virtual InstanceFlexibilityPolicy InstanceFlexibilityPolicy { get; set; }
 
@@ -137197,7 +137219,9 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ContentType { get; set; }
 
         /// <summary>
-        /// If set, this invalidation rule will only apply to requests with a Host header matching host.
+        /// If set, this invalidation rule will only apply to requests with a Host header matching host. This field also
+        /// accepts wildcards (*) to replace the leftmost (or first) label of a hostname. For example, *.example.com
+        /// will match www.example.com, but not sub1.dev.example.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
@@ -150540,9 +150564,7 @@ namespace Google.Apis.Compute.alpha.Data
     public class InstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specification of alternative, flexible instance subsets. One of them will be selected to create the
-        /// instances based on various criteria, like: - ranks, - location policy, - current capacity, - available
-        /// reservations (you can specify affinity in InstanceProperties), - SWAN/GOOSE limitations. Key is an
+        /// Specifies named instance selections that define properties for instances created in bulk. Key is an
         /// arbitrary, unique RFC1035 string that identifies the instance selection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceSelections")]
@@ -177850,7 +177872,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual Duration ShutdownTimeout { get; set; }
 
         /// <summary>
-        /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for
+        /// Defines whether GCE ACPI G2 Soft Off signal should be skipped during shutdown operation of VM.  Default is
+        /// false, meaning there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for
         /// Standard VMs and 30 seconds for Spot VMs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipGuestOsShutdown")]
@@ -189127,9 +189150,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class VpnTunnelCipherSuite : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cipher algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase1")]
         public virtual VpnTunnelPhase1Algorithms Phase1 { get; set; }
 
+        /// <summary>Cipher algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase2")]
         public virtual VpnTunnelPhase2Algorithms Phase2 { get; set; }
 
@@ -189236,15 +189261,19 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class VpnTunnelPhase1Algorithms : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Diffie-Hellman groups for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dh")]
         public virtual System.Collections.Generic.IList<string> Dh { get; set; }
 
+        /// <summary>Encryption algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual System.Collections.Generic.IList<string> Encryption { get; set; }
 
+        /// <summary>Integrity algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrity")]
         public virtual System.Collections.Generic.IList<string> Integrity { get; set; }
 
+        /// <summary>Pseudo-random functions (PRF) for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prf")]
         public virtual System.Collections.Generic.IList<string> Prf { get; set; }
 
@@ -189254,12 +189283,15 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class VpnTunnelPhase2Algorithms : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Encryption algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual System.Collections.Generic.IList<string> Encryption { get; set; }
 
+        /// <summary>Integrity algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrity")]
         public virtual System.Collections.Generic.IList<string> Integrity { get; set; }
 
+        /// <summary>Perfect Forward Secrecy (PFS) groups for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pfs")]
         public virtual System.Collections.Generic.IList<string> Pfs { get; set; }
 
