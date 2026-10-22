@@ -1218,6 +1218,87 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1beta
                 });
             }
         }
+
+        /// <summary>
+        /// Searches for media planner accounts matching the given DSP seat ID. For curators, this will return all
+        /// matching media planners that have accepted curator terms.
+        /// </summary>
+        public virtual SearchRequest Search()
+        {
+            return new SearchRequest(this.service);
+        }
+
+        /// <summary>
+        /// Searches for media planner accounts matching the given DSP seat ID. For curators, this will return all
+        /// matching media planners that have accepted curator terms.
+        /// </summary>
+        public class SearchRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1beta.Data.SearchMediaPlannersResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The DSP seat ID to search for. The DSP seat ID is provided by the media planner.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("dspSeatId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DspSeatId { get; set; }
+
+            /// <summary>
+            /// Optional. The maximum number of media planners to return. If unspecified, at most 100 media planners
+            /// will be returned. The maximum value is 500; values above 500 will be coerced to 500.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A token identifying a page of results the server should return. This value is received from a
+            /// previous `SearchMediaPlanners` call in `SearchMediaPlannersResponse.nextPageToken`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "search";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/mediaPlanners:search";
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("dspSeatId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "dspSeatId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.AuthorizedBuyersMarketplace.v1beta.Data
@@ -1956,6 +2037,24 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plcmtTargeting")]
         public virtual VideoPlcmtTargeting PlcmtTargeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response containing media planner account information from a search.</summary>
+    public class SearchMediaPlannersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of media planners matching the search criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaPlanners")]
+        public virtual System.Collections.Generic.IList<MediaPlanner> MediaPlanners { get; set; }
+
+        /// <summary>
+        /// A token which can be passed to a subsequent call to the `SearchMediaPlanners` method to retrieve the next
+        /// page of results in SearchMediaPlannersRequest.pageToken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
