@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -163,7 +163,7 @@ namespace Google.Apis.Auth.Tests
             : base(clock)
         { }
 
-        protected async override Task<string> FetchCertificatesAsync(string certificatesLocation)
+        protected async override Task<string> FetchCertificatesAsync(string certificatesLocation, SignedTokenVerificationOptions options, System.Threading.CancellationToken cancellationToken)
         {
             await Task.Delay(100);
             return certificatesLocation switch
