@@ -121,6 +121,22 @@ namespace Google.Apis.Auth.Tests
         }
 
         [Fact]
+        public async Task ValidateAsync_WithCustomHttpClientFactory()
+        {
+            var factory = new CountingHttpClientFactory(FakeCertificateCache.GoogleCertsJson);
+            var settings = new GoogleJsonWebSignature.ValidationSettings
+            {
+                Clock = new MockClock(FakeCertificateCache.ValidJwtGoogleSigned),
+                HttpClientFactory = factory,
+                ForceGoogleCertRefresh = true
+            };
+
+            var payload = await GoogleJsonWebSignature.ValidateAsync(FakeCertificateCache.JwtGoogleSigned, settings);
+            Assert.NotNull(payload);
+            Assert.Equal(1, factory.Calls);
+        }
+
+        [Fact]
         public async Task Validate_BadJwt()
         {
             // The date is irrelevant here since we are not passing any actual valid token for verification.
