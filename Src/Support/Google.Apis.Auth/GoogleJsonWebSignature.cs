@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2017 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Http;
 using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
@@ -76,6 +77,7 @@ namespace Google.Apis.Auth
                 IssuedAtClockTolerance = other.IssuedAtClockTolerance;
                 ExpirationTimeClockTolerance = other.ExpirationTimeClockTolerance;
                 CertificateCache = other.CertificateCache;
+                HttpClientFactory = other.HttpClientFactory;
             }
 
             /// <summary>
@@ -113,6 +115,12 @@ namespace Google.Apis.Auth
             public TimeSpan ExpirationTimeClockTolerance { get; set; } = TimeSpan.FromSeconds(0);
 
             /// <summary>
+            /// The <see cref="IHttpClientFactory"/> to use when fetching certificates for signature verification.
+            /// May be null, in which case a default HTTP client will be used.
+            /// </summary>
+            public IHttpClientFactory HttpClientFactory { get; set; }
+
+            /// <summary>
             /// CertificateCache for testing purposes.
             /// If null, the default CertificateCache
             /// <see cref="SignedTokenVerification.s_certificateCache"/> will
@@ -132,6 +140,7 @@ namespace Google.Apis.Auth
                     IssuedAtClockTolerance = IssuedAtClockTolerance,
                     ExpiryClockTolerance = ExpirationTimeClockTolerance,
                     CertificateCache = CertificateCache,
+                    HttpClientFactory = HttpClientFactory,
                 };
                 options.Clock = Clock ?? options.Clock;
 

@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2017 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Http;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
 using System;
@@ -45,11 +46,26 @@ namespace Google.Apis.Auth.Tests
             };
 
         [Fact]
-        public void ValidationSettingsToSignedTokenVerificationOptions()
+        public void ValidationSettings_Defaults()
+        {
+            var settings = new GoogleJsonWebSignature.ValidationSettings();
+            Assert.Null(settings.Audience);
+            Assert.Null(settings.HostedDomain);
+            Assert.Null(settings.Clock);
+            Assert.False(settings.ForceGoogleCertRefresh);
+            Assert.Equal(TimeSpan.FromSeconds(30), settings.IssuedAtClockTolerance);
+            Assert.Equal(TimeSpan.FromSeconds(0), settings.ExpirationTimeClockTolerance);
+            Assert.Null(settings.CertificateCache);
+            Assert.Null(settings.HttpClientFactory);
+        }
+
+        [Fact]
+        public void ValidationSettings_Clone()
         {
             MockClock clock = new MockClock(DateTime.UtcNow);
             FakeCertificateCache cache = new FakeCertificateCache();
-            var options = new GoogleJsonWebSignature.ValidationSettings
+            HttpClientFactory factory = new HttpClientFactory();
+            var settings = new GoogleJsonWebSignature.ValidationSettings
             {
                 Clock = clock,
                 Audience = new[] { "audience" },
@@ -57,8 +73,41 @@ namespace Google.Apis.Auth.Tests
                 IssuedAtClockTolerance = TimeSpan.FromSeconds(5),
                 ExpirationTimeClockTolerance = TimeSpan.FromSeconds(10),
                 CertificateCache = cache,
-                ForceGoogleCertRefresh = true
-            }.ToVerificationOptions();
+                ForceGoogleCertRefresh = true,
+                HttpClientFactory = factory
+            };
+
+            var clone = settings.Clone();
+
+            Assert.Same(settings.Clock, clone.Clock);
+            Assert.Equal(settings.Audience, clone.Audience);
+            Assert.NotSame(settings.Audience, clone.Audience);
+            Assert.Equal(settings.HostedDomain, clone.HostedDomain);
+            Assert.Equal(settings.IssuedAtClockTolerance, clone.IssuedAtClockTolerance);
+            Assert.Equal(settings.ExpirationTimeClockTolerance, clone.ExpirationTimeClockTolerance);
+            Assert.Same(settings.CertificateCache, clone.CertificateCache);
+            Assert.Equal(settings.ForceGoogleCertRefresh, clone.ForceGoogleCertRefresh);
+            Assert.Same(settings.HttpClientFactory, clone.HttpClientFactory);
+        }
+
+        [Fact]
+        public void ValidationSettingsToSignedTokenVerificationOptions()
+        {
+            MockClock clock = new MockClock(DateTime.UtcNow);
+            FakeCertificateCache cache = new FakeCertificateCache();
+            HttpClientFactory factory = new HttpClientFactory();
+            var settings = new GoogleJsonWebSignature.ValidationSettings
+            {
+                Clock = clock,
+                Audience = new[] { "audience" },
+                HostedDomain = "hosted_domain",
+                IssuedAtClockTolerance = TimeSpan.FromSeconds(5),
+                ExpirationTimeClockTolerance = TimeSpan.FromSeconds(10),
+                CertificateCache = cache,
+                ForceGoogleCertRefresh = true,
+                HttpClientFactory = factory
+            };
+            var options = settings.ToVerificationOptions();
 
             Assert.Same(clock, options.Clock);
             Assert.Single(options.TrustedAudiences, "audience");
@@ -68,6 +117,7 @@ namespace Google.Apis.Auth.Tests
             Assert.True(options.ForceCertificateRefresh);
             Assert.Equal(GoogleAuthConsts.JsonWebKeySetUrl, options.CertificatesUrl);
             Assert.Equal(GoogleJsonWebSignature.ValidJwtIssuers.Count(), options.TrustedIssuers.Count);
+            Assert.Same(factory, options.HttpClientFactory);
         }
 
         [Fact]
