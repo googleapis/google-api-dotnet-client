@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Http;
 using Google.Apis.Util;
 using Newtonsoft.Json.Linq;
 using System;
@@ -184,7 +185,7 @@ namespace Google.Apis.Auth
             await options.CertificateCache.GetCertificatesAsync(
                 options.CertificatesUrl ?? defaultCertificateLocation,
                 certificateFactory,
-                options.ForceCertificateRefresh,
+                options,
                 cancellationToken).ConfigureAwait(false);
 
         // Abstract base class for testing purposes.
@@ -211,19 +212,24 @@ namespace Google.Apis.Auth
             protected CertificateCacheBase(IClock clock) =>
                 _clock = clock ?? SystemClock.Default;
 
-            public async Task<IEnumerable<AsymmetricAlgorithm>> GetCertificatesAsync(string certificatesLocation, Func<JToken, AsymmetricAlgorithm> certificateFactory, bool forceCertificateRefresh, CancellationToken cancellationToken)
+            public async Task<IEnumerable<AsymmetricAlgorithm>> GetCertificatesAsync(
+                string certificatesLocation,
+                Func<JToken, AsymmetricAlgorithm> certificateFactory,
+                SignedTokenVerificationOptions options,
+                CancellationToken cancellationToken)
             {
                 certificatesLocation.ThrowIfNullOrEmpty(nameof(certificatesLocation));
                 certificateFactory.ThrowIfNull(nameof(certificateFactory));
+                options.ThrowIfNull(nameof(options));
 
                 await _cacheLock.WaitAsync(cancellationToken).ConfigureAwait(false);
                 try
                 {
-                    if (forceCertificateRefresh ||
+                    if (options.ForceCertificateRefresh ||
                         !_cache.TryGetValue(certificatesLocation, out CachedCertificates cachedCerts) ||
                         cachedCerts.Expired(_clock.UtcNow))
                     {
-                        string certificatesJson = await FetchCertificatesAsync(certificatesLocation).ConfigureAwait(false);
+                        string certificatesJson = await FetchCertificatesAsync(certificatesLocation, options, cancellationToken).ConfigureAwait(false);
                         IEnumerable<JToken> jwks = JToken.Parse(certificatesJson)["keys"]?.AsEnumerable() 
                             ?? throw new ArgumentException($"Only JWK formatted keys are currently supported. No 'keys' element was found in {certificatesLocation}");
                         if (!jwks.Any())
@@ -242,7 +248,8 @@ namespace Google.Apis.Auth
             }
 
             // Abstract for testing purposes.
-            protected abstract Task<string> FetchCertificatesAsync(string certificatesLocation);
+            protected abstract Task<string> FetchCertificatesAsync(
+                string certificatesLocation, SignedTokenVerificationOptions options, CancellationToken cancellationToken);
 
             internal struct CachedCertificates
             {
@@ -264,10 +271,13 @@ namespace Google.Apis.Auth
             public CertificateCache() : base(SystemClock.Default)
             { }
 
-            protected override async Task<string> FetchCertificatesAsync(string certificatesLocation)
+            protected override async Task<string> FetchCertificatesAsync(
+                string certificatesLocation, SignedTokenVerificationOptions options, CancellationToken cancellationToken)
             {
-                using var httpClient = new HttpClient();
-                return await httpClient.GetStringAsync(certificatesLocation).ConfigureAwait(false);
+                using var httpClient = options?.HttpClientFactory?.CreateHttpClient(new CreateHttpClientArgs()) ?? new HttpClient();
+                using var response = await httpClient.GetAsync(certificatesLocation, cancellationToken).ConfigureAwait(false);
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
         }
     }

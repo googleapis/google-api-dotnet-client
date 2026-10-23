@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
 using Newtonsoft.Json;
@@ -27,6 +28,24 @@ namespace Google.Apis.Auth.Tests
 {
     public class JsonWebSignatureTests
     {
+        [Fact]
+        public async Task VerifySignedTokenAsync_WithCustomHttpClientFactory()
+        {
+            var factory = new CountingHttpClientFactory(FakeCertificateCache.GoogleCertsJson);
+            var options = new SignedTokenVerificationOptions
+            {
+                Clock = new MockClock(FakeCertificateCache.ValidJwtGoogleSigned),
+                HttpClientFactory = factory,
+                CertificatesUrl = GoogleAuthConsts.JsonWebKeySetUrl,
+                ForceCertificateRefresh = true
+            };
+            options.TrustedIssuers.Add("https://accounts.google.com");
+
+            var payload = await JsonWebSignature.VerifySignedTokenAsync(FakeCertificateCache.JwtGoogleSigned, options);
+            Assert.NotNull(payload);
+            Assert.Equal(1, factory.Calls);
+        }
+
         private SignedTokenVerificationOptions BuildOptions(
             IClock clock = null, string[] trustedIssuers = null, string[] trustedAudiences = null, TimeSpan? clockTolerance = null)
         {

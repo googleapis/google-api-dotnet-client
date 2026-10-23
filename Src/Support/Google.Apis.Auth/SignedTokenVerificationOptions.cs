@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Http;
 using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,7 @@ namespace Google.Apis.Auth
             ExpiryClockTolerance = other.ExpiryClockTolerance;
             CertificateCache = other.CertificateCache;
             Clock = other.Clock;
+            HttpClientFactory = other.HttpClientFactory;
         }
 
         /// <summary>
@@ -81,6 +83,12 @@ namespace Google.Apis.Auth
         /// May be null, in which case the token issuer won't be verified.
         /// </summary>
         public IList<string> TrustedIssuers { get; } = new List<string>();
+
+        /// <summary>
+        /// The <see cref="IHttpClientFactory"/> to use when fetching certificates for signature verification.
+        /// May be null, in which case a default HTTP client will be used.
+        /// </summary>
+        public IHttpClientFactory HttpClientFactory { get; set; }
 
         /// <summary>
         /// Forces certificate refresh.
