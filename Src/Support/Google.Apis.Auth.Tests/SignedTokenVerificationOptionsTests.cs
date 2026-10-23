@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Http;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
 using System;
@@ -30,6 +31,7 @@ namespace Google.Apis.Auth.Tests
 
             Assert.Null(options.CertificatesUrl);
             Assert.Null(options.CertificateCache);
+            Assert.Null(options.HttpClientFactory);
             Assert.Empty(options.TrustedAudiences);
             Assert.Empty(options.TrustedIssuers);
             Assert.False(options.ForceCertificateRefresh);
@@ -53,6 +55,7 @@ namespace Google.Apis.Auth.Tests
                 ExpiryClockTolerance = TimeSpan.FromSeconds(10),
                 CertificateCache = new FakeCertificateCache(),
                 Clock = new MockClock(DateTime.UtcNow),
+                HttpClientFactory = new HttpClientFactory(),
                 TrustedAudiences = { "audience" },
                 TrustedIssuers = { "issuers" }
             };
@@ -67,6 +70,7 @@ namespace Google.Apis.Auth.Tests
             Assert.Equal(TimeSpan.FromSeconds(10), options2.ExpiryClockTolerance);
             Assert.IsType<FakeCertificateCache>(options2.CertificateCache);
             Assert.IsType<MockClock>(options2.Clock);
+            Assert.Same(options1.HttpClientFactory, options2.HttpClientFactory);
         }
 
         [Fact]
@@ -80,6 +84,7 @@ namespace Google.Apis.Auth.Tests
                 ExpiryClockTolerance = TimeSpan.FromSeconds(10),
                 CertificateCache = new FakeCertificateCache(),
                 Clock = new MockClock(DateTime.UtcNow),
+                HttpClientFactory = new HttpClientFactory(),
                 TrustedAudiences = { "audience" },
                 TrustedIssuers = { "issuers" }
             };
@@ -92,6 +97,7 @@ namespace Google.Apis.Auth.Tests
             options1.ExpiryClockTolerance = TimeSpan.Zero;
             options1.CertificateCache = new FakeCertificateCache();
             options1.Clock = new MockClock(DateTime.UtcNow);
+            options1.HttpClientFactory = new HttpClientFactory();
             options1.TrustedAudiences.Add("another");
             options1.TrustedIssuers.Add("another");
 
@@ -103,6 +109,7 @@ namespace Google.Apis.Auth.Tests
             Assert.Equal(TimeSpan.FromSeconds(10), options2.ExpiryClockTolerance);
             Assert.NotSame(options1.CertificateCache, options2.CertificateCache);
             Assert.NotSame(options1.Clock, options2.Clock);
+            Assert.NotSame(options1.HttpClientFactory, options2.HttpClientFactory);
         }
     }
 }
