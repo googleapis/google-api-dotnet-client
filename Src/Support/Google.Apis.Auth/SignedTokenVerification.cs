@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Http;
 using Google.Apis.Util;
 using Newtonsoft.Json.Linq;
 using System;
@@ -273,7 +274,7 @@ namespace Google.Apis.Auth
             protected override async Task<string> FetchCertificatesAsync(
                 string certificatesLocation, SignedTokenVerificationOptions options, CancellationToken cancellationToken)
             {
-                using var httpClient = new HttpClient();
+                using var httpClient = options?.HttpClientFactory?.CreateHttpClient(new CreateHttpClientArgs()) ?? new HttpClient();
                 using var response = await httpClient.GetAsync(certificatesLocation, cancellationToken).ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync().ConfigureAwait(false);

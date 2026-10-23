@@ -19,6 +19,7 @@ using Google.Apis.Tests.Mocks;
 using System;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using static Google.Apis.Auth.SignedTokenVerification;
 using Xunit;
 
 namespace Google.Apis.Auth.Tests
@@ -82,6 +83,32 @@ namespace Google.Apis.Auth.Tests
             Assert.NotNull(secondCall);
             // Still they are different because we forced refreshed the cache.
             Assert.NotSame(firstCall, secondCall);
+        }
+
+        [Fact]
+        public async Task CertificateCache_UsesHttpClientFactory()
+        {
+            var factory = new CountingHttpClientFactory(FakeCertificateCache.GoogleCertsJson);
+            var certCache = new CertificateCache();
+            var options = new SignedTokenVerificationOptions
+            {
+                HttpClientFactory = factory
+            };
+
+            var firstCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, FromKeyToRsa, options, default);
+            Assert.NotEmpty(firstCall);
+            Assert.Equal(1, factory.Calls);
+
+            // Second call: should use cache, not call factory again
+            var secondCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, FromKeyToRsa, options, default);
+            Assert.Same(firstCall, secondCall);
+            Assert.Equal(1, factory.Calls);
+
+            // Force refresh: should call factory again
+            options.ForceCertificateRefresh = true;
+            var thirdCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, FromKeyToRsa, options, default);
+            Assert.NotEmpty(thirdCall);
+            Assert.Equal(2, factory.Calls);
         }
     }
 }
