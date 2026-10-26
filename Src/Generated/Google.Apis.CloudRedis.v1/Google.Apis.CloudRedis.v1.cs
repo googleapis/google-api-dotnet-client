@@ -5326,11 +5326,17 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>Time window specified for weekly operations.</summary>
     public class ClusterWeeklyMaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Allows to define schedule that runs specified day of the week.</summary>
+        /// <summary>
+        /// Optional. The day of the week for the maintenance window. This field is required. You can't use
+        /// `DAY_OF_WEEK_UNSPECIFIED`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual string Day { get; set; }
 
-        /// <summary>Optional. Start time of the window in UTC.</summary>
+        /// <summary>
+        /// Optional. The start time of the maintenance window in UTC. When you specify a maintenance window,
+        /// `start_time` is required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
 
@@ -8820,6 +8826,10 @@ namespace Google.Apis.CloudRedis.v1.Data
     /// <summary>Zone distribution config for allocation of cluster resources.</summary>
     public class ZoneDistributionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The exact list of zones where the cluster currently has active VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeZones")]
+        public virtual System.Collections.Generic.IList<string> ActiveZones { get; set; }
+
         /// <summary>Optional. The mode of zone distribution. Defaults to MULTI_ZONE, when not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
