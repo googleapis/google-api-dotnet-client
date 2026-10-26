@@ -5143,6 +5143,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Certificate Authority (CA) information for the cluster.</summary>
+    public class CertificateAuthorityInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The PEM-encoded root CA certificate of the cluster. Save this to a file (conventionally
+        /// `root.crt`) and point the PostgreSQL client at it to authenticate by connecting with `sslmode=verify-full`
+        /// or `sslmode=verify-ca`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootCaCert")]
+        public virtual string RootCaCert { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Client connection configuration</summary>
     public class ClientConnectionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5229,6 +5244,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Output only. Output only information about BackupDR protection for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupdrInfo")]
         public virtual BackupDrInfo BackupdrInfo { get; set; }
+
+        /// <summary>Output only. Certificate Authority (CA) information for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAuthorityInfo")]
+        public virtual CertificateAuthorityInfo CertificateAuthorityInfo { get; set; }
 
         /// <summary>Output only. Cluster created from CloudSQL snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudsqlBackupRunSource")]
@@ -6715,6 +6734,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual InstanceNetworkConfig NetworkConfig { get; set; }
 
+        /// <summary>Output only. Instance-level network information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInfo")]
+        public virtual InstanceNetworkInfo NetworkInfo { get; set; }
+
         /// <summary>
         /// Output only. List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
         /// </summary>
@@ -6880,6 +6903,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Optional. Whether Public DNS is enabled for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicDnsEnabled")]
+        public virtual System.Nullable<bool> PublicDnsEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output-only metadata related to instance-level network information.</summary>
+    public class InstanceNetworkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The DNS name of the instance for public connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicDnsName")]
+        public virtual string PublicDnsName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
