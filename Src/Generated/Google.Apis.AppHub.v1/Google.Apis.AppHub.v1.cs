@@ -3560,6 +3560,14 @@ namespace Google.Apis.AppHub.v1.Data
     /// </summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Properties of an underlying cloud resource that can comprise an Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationProperties")]
+        public virtual ApplicationProperties ApplicationProperties { get; set; }
+
+        /// <summary>Output only. Application type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
+        public virtual ApplicationType ApplicationType { get; set; }
+
         /// <summary>Optional. Consumer provided attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
@@ -3671,6 +3679,32 @@ namespace Google.Apis.AppHub.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional system properties of an Application.</summary>
+    public class ApplicationProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Additional metadata specific to the App Hub application. The key is a string that identifies
+        /// the type of metadata and the value is the metadata contents specific to that type. Key format:
+        /// `apphub.googleapis.com/{metadataType}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, ExtendedMetadata> ExtendedMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Application type.</summary>
+    public class ApplicationType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
