@@ -2258,6 +2258,67 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     }
                 }
             }
+
+            /// <summary>
+            /// Creates a Cloud Monitoring AlertPolicy for the requested Crashlytics Web alert type and returns the
+            /// created resource reference.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The firebase application. Format: "projects/{project}/apps/{app_id}".
+            /// </param>
+            public virtual GenerateAlertPolicyRequest GenerateAlertPolicy(Google.Apis.FirebaseCrashlytics.v1alpha.Data.GenerateAlertPolicyRequest body, string name)
+            {
+                return new GenerateAlertPolicyRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Creates a Cloud Monitoring AlertPolicy for the requested Crashlytics Web alert type and returns the
+            /// created resource reference.
+            /// </summary>
+            public class GenerateAlertPolicyRequest : FirebaseCrashlyticsBaseServiceRequest<Google.Apis.FirebaseCrashlytics.v1alpha.Data.GenerateAlertPolicyResponse>
+            {
+                /// <summary>Constructs a new GenerateAlertPolicy request.</summary>
+                public GenerateAlertPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseCrashlytics.v1alpha.Data.GenerateAlertPolicyRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The firebase application. Format: "projects/{project}/apps/{app_id}".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseCrashlytics.v1alpha.Data.GenerateAlertPolicyRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateAlertPolicy";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}:generateAlertPolicy";
+
+                /// <summary>Initializes GenerateAlertPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
         }
     }
 }
@@ -2913,6 +2974,35 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symbol")]
         public virtual string Symbol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the GenerateAlertPolicy method.</summary>
+    public class GenerateAlertPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of alert to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertType")]
+        public virtual string AlertType { get; set; }
+
+        /// <summary>Optional. Language to use for the alert policy. Defaults to USER_PREFERENCE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the GenerateAlertPolicy method.</summary>
+    public class GenerateAlertPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The created Cloud Monitoring AlertPolicy resource name. Format:
+        /// "projects/{project}/alertPolicies/{alert_policy_id}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
+        public virtual string AlertPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
