@@ -1584,6 +1584,72 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                private object _createTimeRangeEndTime;
+
+                /// <summary>
+                /// String representation of <see cref="CreateTimeRangeEndTimeDateTimeOffset"/>, formatted for inclusion
+                /// in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("createTimeRange.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CreateTimeRangeEndTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="CreateTimeRangeEndTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeRangeEndTimeDateTimeOffset instead.")]
+                public virtual object CreateTimeRangeEndTime
+                {
+                    get => _createTimeRangeEndTime;
+                    set
+                    {
+                        CreateTimeRangeEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _createTimeRangeEndTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? CreateTimeRangeEndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRangeEndTimeRaw);
+                    set
+                    {
+                        CreateTimeRangeEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _createTimeRangeEndTime = value;
+                    }
+                }
+
+                private object _createTimeRangeStartTime;
+
+                /// <summary>
+                /// String representation of <see cref="CreateTimeRangeStartTimeDateTimeOffset"/>, formatted for
+                /// inclusion in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("createTimeRange.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CreateTimeRangeStartTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="CreateTimeRangeStartTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeRangeStartTimeDateTimeOffset instead.")]
+                public virtual object CreateTimeRangeStartTime
+                {
+                    get => _createTimeRangeStartTime;
+                    set
+                    {
+                        CreateTimeRangeStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _createTimeRangeStartTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? CreateTimeRangeStartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRangeStartTimeRaw);
+                    set
+                    {
+                        CreateTimeRangeStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _createTimeRangeStartTime = value;
+                    }
+                }
+
                 /// <summary>The kind of filter to use.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<FilterEnum> Filter { get; set; }
@@ -1646,6 +1712,72 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("regionalFanoutRequested", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RegionalFanoutRequested { get; set; }
 
+                private object _terminationTimeRangeEndTime;
+
+                /// <summary>
+                /// String representation of <see cref="TerminationTimeRangeEndTimeDateTimeOffset"/>, formatted for
+                /// inclusion in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("terminationTimeRange.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TerminationTimeRangeEndTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="TerminationTimeRangeEndTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminationTimeRangeEndTimeDateTimeOffset instead.")]
+                public virtual object TerminationTimeRangeEndTime
+                {
+                    get => _terminationTimeRangeEndTime;
+                    set
+                    {
+                        TerminationTimeRangeEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _terminationTimeRangeEndTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? TerminationTimeRangeEndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminationTimeRangeEndTimeRaw);
+                    set
+                    {
+                        TerminationTimeRangeEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _terminationTimeRangeEndTime = value;
+                    }
+                }
+
+                private object _terminationTimeRangeStartTime;
+
+                /// <summary>
+                /// String representation of <see cref="TerminationTimeRangeStartTimeDateTimeOffset"/>, formatted for
+                /// inclusion in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("terminationTimeRange.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TerminationTimeRangeStartTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="TerminationTimeRangeStartTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminationTimeRangeStartTimeDateTimeOffset instead.")]
+                public virtual object TerminationTimeRangeStartTime
+                {
+                    get => _terminationTimeRangeStartTime;
+                    set
+                    {
+                        TerminationTimeRangeStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _terminationTimeRangeStartTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? TerminationTimeRangeStartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminationTimeRangeStartTimeRaw);
+                    set
+                    {
+                        TerminationTimeRangeStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _terminationTimeRangeStartTime = value;
+                    }
+                }
+
                 /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1704,6 +1836,22 @@ namespace Google.Apis.Dataflow.v1b3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("createTimeRange.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createTimeRange.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("createTimeRange.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createTimeRange.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -1747,6 +1895,22 @@ namespace Google.Apis.Dataflow.v1b3
                     RequestParameters.Add("regionalFanoutRequested", new Google.Apis.Discovery.Parameter
                     {
                         Name = "regionalFanoutRequested",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("terminationTimeRange.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "terminationTimeRange.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("terminationTimeRange.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "terminationTimeRange.startTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2197,6 +2361,72 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                private object _createTimeRangeEndTime;
+
+                /// <summary>
+                /// String representation of <see cref="CreateTimeRangeEndTimeDateTimeOffset"/>, formatted for inclusion
+                /// in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("createTimeRange.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CreateTimeRangeEndTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="CreateTimeRangeEndTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeRangeEndTimeDateTimeOffset instead.")]
+                public virtual object CreateTimeRangeEndTime
+                {
+                    get => _createTimeRangeEndTime;
+                    set
+                    {
+                        CreateTimeRangeEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _createTimeRangeEndTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? CreateTimeRangeEndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRangeEndTimeRaw);
+                    set
+                    {
+                        CreateTimeRangeEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _createTimeRangeEndTime = value;
+                    }
+                }
+
+                private object _createTimeRangeStartTime;
+
+                /// <summary>
+                /// String representation of <see cref="CreateTimeRangeStartTimeDateTimeOffset"/>, formatted for
+                /// inclusion in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("createTimeRange.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CreateTimeRangeStartTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="CreateTimeRangeStartTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeRangeStartTimeDateTimeOffset instead.")]
+                public virtual object CreateTimeRangeStartTime
+                {
+                    get => _createTimeRangeStartTime;
+                    set
+                    {
+                        CreateTimeRangeStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _createTimeRangeStartTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? CreateTimeRangeStartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRangeStartTimeRaw);
+                    set
+                    {
+                        CreateTimeRangeStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _createTimeRangeStartTime = value;
+                    }
+                }
+
                 /// <summary>The kind of filter to use.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<FilterEnum> Filter { get; set; }
@@ -2259,6 +2489,72 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("regionalFanoutRequested", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> RegionalFanoutRequested { get; set; }
 
+                private object _terminationTimeRangeEndTime;
+
+                /// <summary>
+                /// String representation of <see cref="TerminationTimeRangeEndTimeDateTimeOffset"/>, formatted for
+                /// inclusion in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("terminationTimeRange.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TerminationTimeRangeEndTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="TerminationTimeRangeEndTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminationTimeRangeEndTimeDateTimeOffset instead.")]
+                public virtual object TerminationTimeRangeEndTime
+                {
+                    get => _terminationTimeRangeEndTime;
+                    set
+                    {
+                        TerminationTimeRangeEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _terminationTimeRangeEndTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? TerminationTimeRangeEndTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminationTimeRangeEndTimeRaw);
+                    set
+                    {
+                        TerminationTimeRangeEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _terminationTimeRangeEndTime = value;
+                    }
+                }
+
+                private object _terminationTimeRangeStartTime;
+
+                /// <summary>
+                /// String representation of <see cref="TerminationTimeRangeStartTimeDateTimeOffset"/>, formatted for
+                /// inclusion in the HTTP request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("terminationTimeRange.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TerminationTimeRangeStartTimeRaw { get; private set; }
+
+                /// <summary>
+                /// <seealso cref="object"/> representation of <see cref="TerminationTimeRangeStartTimeRaw"/>.
+                /// </summary>
+                [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminationTimeRangeStartTimeDateTimeOffset instead.")]
+                public virtual object TerminationTimeRangeStartTime
+                {
+                    get => _terminationTimeRangeStartTime;
+                    set
+                    {
+                        TerminationTimeRangeStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                        _terminationTimeRangeStartTime = value;
+                    }
+                }
+
+                public virtual System.DateTimeOffset? TerminationTimeRangeStartTimeDateTimeOffset
+                {
+                    get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminationTimeRangeStartTimeRaw);
+                    set
+                    {
+                        TerminationTimeRangeStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                        _terminationTimeRangeStartTime = value;
+                    }
+                }
+
                 /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -2317,6 +2613,22 @@ namespace Google.Apis.Dataflow.v1b3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                    RequestParameters.Add("createTimeRange.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createTimeRange.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("createTimeRange.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createTimeRange.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -2360,6 +2672,22 @@ namespace Google.Apis.Dataflow.v1b3
                     RequestParameters.Add("regionalFanoutRequested", new Google.Apis.Discovery.Parameter
                     {
                         Name = "regionalFanoutRequested",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("terminationTimeRange.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "terminationTimeRange.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("terminationTimeRange.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "terminationTimeRange.startTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4663,6 +4991,72 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Location { get; private set; }
 
+                    private object _createTimeRangeEndTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="CreateTimeRangeEndTimeDateTimeOffset"/>, formatted for
+                    /// inclusion in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("createTimeRange.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CreateTimeRangeEndTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="CreateTimeRangeEndTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeRangeEndTimeDateTimeOffset instead.")]
+                    public virtual object CreateTimeRangeEndTime
+                    {
+                        get => _createTimeRangeEndTime;
+                        set
+                        {
+                            CreateTimeRangeEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _createTimeRangeEndTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? CreateTimeRangeEndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRangeEndTimeRaw);
+                        set
+                        {
+                            CreateTimeRangeEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _createTimeRangeEndTime = value;
+                        }
+                    }
+
+                    private object _createTimeRangeStartTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="CreateTimeRangeStartTimeDateTimeOffset"/>, formatted for
+                    /// inclusion in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("createTimeRange.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CreateTimeRangeStartTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="CreateTimeRangeStartTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeRangeStartTimeDateTimeOffset instead.")]
+                    public virtual object CreateTimeRangeStartTime
+                    {
+                        get => _createTimeRangeStartTime;
+                        set
+                        {
+                            CreateTimeRangeStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _createTimeRangeStartTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? CreateTimeRangeStartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRangeStartTimeRaw);
+                        set
+                        {
+                            CreateTimeRangeStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _createTimeRangeStartTime = value;
+                        }
+                    }
+
                     /// <summary>The kind of filter to use.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<FilterEnum> Filter { get; set; }
@@ -4717,6 +5111,72 @@ namespace Google.Apis.Dataflow.v1b3
                     /// <summary>Optional.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("regionalFanoutRequested", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> RegionalFanoutRequested { get; set; }
+
+                    private object _terminationTimeRangeEndTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="TerminationTimeRangeEndTimeDateTimeOffset"/>, formatted for
+                    /// inclusion in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("terminationTimeRange.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TerminationTimeRangeEndTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="TerminationTimeRangeEndTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminationTimeRangeEndTimeDateTimeOffset instead.")]
+                    public virtual object TerminationTimeRangeEndTime
+                    {
+                        get => _terminationTimeRangeEndTime;
+                        set
+                        {
+                            TerminationTimeRangeEndTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _terminationTimeRangeEndTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? TerminationTimeRangeEndTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminationTimeRangeEndTimeRaw);
+                        set
+                        {
+                            TerminationTimeRangeEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _terminationTimeRangeEndTime = value;
+                        }
+                    }
+
+                    private object _terminationTimeRangeStartTime;
+
+                    /// <summary>
+                    /// String representation of <see cref="TerminationTimeRangeStartTimeDateTimeOffset"/>, formatted
+                    /// for inclusion in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("terminationTimeRange.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string TerminationTimeRangeStartTimeRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="TerminationTimeRangeStartTimeRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminationTimeRangeStartTimeDateTimeOffset instead.")]
+                    public virtual object TerminationTimeRangeStartTime
+                    {
+                        get => _terminationTimeRangeStartTime;
+                        set
+                        {
+                            TerminationTimeRangeStartTimeRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _terminationTimeRangeStartTime = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? TerminationTimeRangeStartTimeDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TerminationTimeRangeStartTimeRaw);
+                        set
+                        {
+                            TerminationTimeRangeStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _terminationTimeRangeStartTime = value;
+                        }
+                    }
 
                     /// <summary>
                     /// Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.
@@ -4789,6 +5249,22 @@ namespace Google.Apis.Dataflow.v1b3
                             DefaultValue = null,
                             Pattern = null,
                         });
+                        RequestParameters.Add("createTimeRange.endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "createTimeRange.endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("createTimeRange.startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "createTimeRange.startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -4824,6 +5300,22 @@ namespace Google.Apis.Dataflow.v1b3
                         RequestParameters.Add("regionalFanoutRequested", new Google.Apis.Discovery.Parameter
                         {
                             Name = "regionalFanoutRequested",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("terminationTimeRange.endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "terminationTimeRange.endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("terminationTimeRange.startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "terminationTimeRange.startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
