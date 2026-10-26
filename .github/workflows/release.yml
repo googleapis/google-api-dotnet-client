@@ -1,0 +1,70 @@
+name: Release Google APIs .NET Client and Auth NuGet via OSS Exit Gate
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@c200f3691d83b41bf9bbd8638997a462592937ed
+        with:
+          workload_identity_provider: 'projects/305452601764/locations/global/workloadIdentityPools/builders/providers/github'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@e427ad8a34f8676edf47cf7d7925499adf3eb74f
+
+      - name: Stage NuGet packages to OSS Exit Gate and upload manifests
+        run: |
+          shopt -s nullglob
+          has_auth=0
+          has_client=0
+          for nupkg in NuPkgs/Support/*.nupkg NuPkgs/Generated/*.nupkg; do
+            [[ "$nupkg" == *.symbols.nupkg ]] && continue
+            base="$(basename "$nupkg" .nupkg)"
+            ver="$(echo "$base" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.-]+)?$')"
+            pkg_id="${base%.$ver}"
+            pkg_lower="$(echo "$pkg_id" | tr '[:upper:]' '[:lower:]')"
+            if [[ "$pkg_lower" == "google.apis.auth.aspnetcore" || "$pkg_lower" == "google.apis.auth.mvc" ]]; then
+              repo="google-api-dotnet-auth--nuget"
+              has_auth=1
+            else
+              repo="google-api-dotnet-client--nuget"
+              has_client=1
+            fi
+            gcloud artifacts generic upload \
+              --project=oss-exit-gate-prod \
+              --location=us \
+              --repository="${repo}" \
+              --package="${pkg_lower}" \
+              --version="${ver}" \
+              --source="${nupkg}"
+          done
+          echo '{"publish_all": true}' > manifest.json
+          if [[ "$has_auth" -eq 1 ]]; then
+            gcloud storage cp manifest.json \
+              "gs://oss-exit-gate-prod-projects-bucket/google-api-dotnet-auth/nuget/manifests/manifest-${{ github.run_id }}-${{ github.run_attempt }}.json"
+          fi
+          if [[ "$has_client" -eq 1 ]]; then
+            gcloud storage cp manifest.json \
+              "gs://oss-exit-gate-prod-projects-bucket/google-api-dotnet-client/nuget/manifests/manifest-${{ github.run_id }}-${{ github.run_attempt }}.json"
+          fi
