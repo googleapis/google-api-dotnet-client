@@ -2047,6 +2047,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
             set => CollectionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Platform identifiers of the message, thread and channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("communicationContext")]
+        public virtual CommunicationContext CommunicationContext { get; set; }
+
         /// <summary>Output only. The content of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -2349,6 +2353,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         /// <summary>Optional. URL of the communication channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelUrl")]
         public virtual string ChannelUrl { get; set; }
+
+        /// <summary>Optional. Message or post identifier on the originating platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
 
         /// <summary>Optional. Service from the collection event origin (e.g. forum or chat service name).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
