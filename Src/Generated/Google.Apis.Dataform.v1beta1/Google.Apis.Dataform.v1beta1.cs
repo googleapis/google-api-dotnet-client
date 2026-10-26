@@ -1399,6 +1399,69 @@ namespace Google.Apis.Dataform.v1beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Creates a new CompilationResult in a given project and location asynchronously.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The repository in which to create the compilation result. Must be in the format
+                    /// `projects/*/locations/*/repositories/*`.
+                    /// </param>
+                    public virtual CreateLongRunningRequest CreateLongRunning(Google.Apis.Dataform.v1beta1.Data.CompilationResult body, string parent)
+                    {
+                        return new CreateLongRunningRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a new CompilationResult in a given project and location asynchronously.
+                    /// </summary>
+                    public class CreateLongRunningRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new CreateLongRunning request.</summary>
+                        public CreateLongRunningRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.CompilationResult body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The repository in which to create the compilation result. Must be in the format
+                        /// `projects/*/locations/*/repositories/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataform.v1beta1.Data.CompilationResult Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "createLongRunning";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/compilationResults:createLongRunning";
+
+                        /// <summary>Initializes CreateLongRunning parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Fetches a single CompilationResult.</summary>
                     /// <param name="name">Required. The compilation result's name.</param>
                     public virtual GetRequest Get(string name)
