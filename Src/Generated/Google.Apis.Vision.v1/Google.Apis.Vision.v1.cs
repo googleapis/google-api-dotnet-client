@@ -3949,7 +3949,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>A face annotation object contains the results of face detection.</summary>
     public class FaceAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Anger likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("angerLikelihood")]
         public virtual string AngerLikelihood { get; set; }
 
@@ -3983,7 +3983,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headwearLikelihood")]
         public virtual string HeadwearLikelihood { get; set; }
 
-        /// <summary>Joy likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joyLikelihood")]
         public virtual string JoyLikelihood { get; set; }
 
@@ -4009,11 +4009,11 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rollAngle")]
         public virtual System.Nullable<float> RollAngle { get; set; }
 
-        /// <summary>Sorrow likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sorrowLikelihood")]
         public virtual string SorrowLikelihood { get; set; }
 
-        /// <summary>Surprise likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surpriseLikelihood")]
         public virtual string SurpriseLikelihood { get; set; }
 
@@ -4404,7 +4404,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>A face annotation object contains the results of face detection.</summary>
     public class GoogleCloudVisionV1p1beta1FaceAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Anger likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("angerLikelihood")]
         public virtual string AngerLikelihood { get; set; }
 
@@ -4438,7 +4438,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headwearLikelihood")]
         public virtual string HeadwearLikelihood { get; set; }
 
-        /// <summary>Joy likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joyLikelihood")]
         public virtual string JoyLikelihood { get; set; }
 
@@ -4464,11 +4464,11 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rollAngle")]
         public virtual System.Nullable<float> RollAngle { get; set; }
 
-        /// <summary>Sorrow likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sorrowLikelihood")]
         public virtual string SorrowLikelihood { get; set; }
 
-        /// <summary>Surprise likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surpriseLikelihood")]
         public virtual string SurpriseLikelihood { get; set; }
 
@@ -5665,7 +5665,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>A face annotation object contains the results of face detection.</summary>
     public class GoogleCloudVisionV1p2beta1FaceAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Anger likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("angerLikelihood")]
         public virtual string AngerLikelihood { get; set; }
 
@@ -5699,7 +5699,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headwearLikelihood")]
         public virtual string HeadwearLikelihood { get; set; }
 
-        /// <summary>Joy likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joyLikelihood")]
         public virtual string JoyLikelihood { get; set; }
 
@@ -5725,11 +5725,11 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rollAngle")]
         public virtual System.Nullable<float> RollAngle { get; set; }
 
-        /// <summary>Sorrow likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sorrowLikelihood")]
         public virtual string SorrowLikelihood { get; set; }
 
-        /// <summary>Surprise likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surpriseLikelihood")]
         public virtual string SurpriseLikelihood { get; set; }
 
@@ -7016,7 +7016,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>A face annotation object contains the results of face detection.</summary>
     public class GoogleCloudVisionV1p3beta1FaceAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Anger likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("angerLikelihood")]
         public virtual string AngerLikelihood { get; set; }
 
@@ -7050,7 +7050,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headwearLikelihood")]
         public virtual string HeadwearLikelihood { get; set; }
 
-        /// <summary>Joy likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joyLikelihood")]
         public virtual string JoyLikelihood { get; set; }
 
@@ -7076,11 +7076,11 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rollAngle")]
         public virtual System.Nullable<float> RollAngle { get; set; }
 
-        /// <summary>Sorrow likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sorrowLikelihood")]
         public virtual string SorrowLikelihood { get; set; }
 
-        /// <summary>Surprise likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surpriseLikelihood")]
         public virtual string SurpriseLikelihood { get; set; }
 
@@ -8465,7 +8465,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>A face annotation object contains the results of face detection.</summary>
     public class GoogleCloudVisionV1p4beta1FaceAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Anger likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("angerLikelihood")]
         public virtual string AngerLikelihood { get; set; }
 
@@ -8499,7 +8499,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headwearLikelihood")]
         public virtual string HeadwearLikelihood { get; set; }
 
-        /// <summary>Joy likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("joyLikelihood")]
         public virtual string JoyLikelihood { get; set; }
 
@@ -8533,11 +8533,11 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rollAngle")]
         public virtual System.Nullable<float> RollAngle { get; set; }
 
-        /// <summary>Sorrow likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sorrowLikelihood")]
         public virtual string SorrowLikelihood { get; set; }
 
-        /// <summary>Surprise likelihood.</summary>
+        /// <summary>Deprecated: No longer populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surpriseLikelihood")]
         public virtual string SurpriseLikelihood { get; set; }
 
