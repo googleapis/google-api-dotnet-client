@@ -16573,7 +16573,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appSubcategory")]
         public virtual string AppSubcategory { get; set; }
 
-        /// <summary>The token used for delivery of the app with the Google Play Inline Install API.</summary>
+        /// <summary>
+        /// The token used for delivery of the app with the Google Play Inline Install API. The token is unique per Play
+        /// app and per third-party app store combination and has a limited validity period of 7 days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryToken")]
         public virtual string DeliveryToken { get; set; }
 
@@ -20112,11 +20115,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string RegionCode { get; set; }
 
         /// <summary>
-        /// The fraction of the purchase option price that the user pays for this offer. For example, if the purchase
-        /// option price for this region is $12, then a 50% discount would correspond to a price of $6. The discount
-        /// must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will
-        /// be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if
-        /// the discounted price ends up being smaller than the minimum price allowed in this region.
+        /// The percentage discount subtracted from the purchase option price, specified as a fraction strictly larger
+        /// than `0` and strictly smaller than `1`. For example, a value of `0.8` represents an 80% discount, meaning
+        /// that if the purchase option price is $100, the offer price will be $20. The resulting price will be rounded
+        /// to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the
+        /// discounted price ends up being smaller than the minimum price allowed in this region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDiscount")]
         public virtual System.Nullable<double> RelativeDiscount { get; set; }
@@ -20708,11 +20711,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class OtherRegionsSubscriptionOfferPhaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The absolute amount of money subtracted from the base plan price prorated over the phase duration that the
-        /// user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1
-        /// year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2.
-        /// The resulting price may not be smaller than the minimum price allowed for any new locations Play may launch
-        /// in.
+        /// The absolute amount of money subtracted from the base plan price prorated over the phase duration. For
+        /// example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount
+        /// for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be
+        /// smaller than the minimum price allowed for any new locations Play may launch in.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("absoluteDiscounts")]
         public virtual OtherRegionsSubscriptionOfferPhasePrices AbsoluteDiscounts { get; set; }
@@ -20729,13 +20731,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual OtherRegionsSubscriptionOfferPhasePrices OtherRegionsPrices { get; set; }
 
         /// <summary>
-        /// The fraction of the base plan price prorated over the phase duration that the user pays for this offer
-        /// phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50%
-        /// discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be
-        /// specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be
-        /// rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if
-        /// the discounted price ends up being smaller than the minimum price allowed in any new locations Play may
-        /// launch in.
+        /// The percentage discount subtracted from the base plan price prorated over the phase duration, specified as a
+        /// fraction strictly larger than `0` and strictly smaller than `1`. For example, a value of `0.8` represents an
+        /// 80% discount, meaning that if the prorated base plan price is $100, the offer price will be $20. The
+        /// resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is
+        /// considered invalid if the discounted price ends up being smaller than the minimum price allowed in any new
+        /// locations Play may launch in.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDiscount")]
         public virtual System.Nullable<double> RelativeDiscount { get; set; }
@@ -22085,10 +22086,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class RegionalSubscriptionOfferPhaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The absolute amount of money subtracted from the base plan price prorated over the phase duration that the
-        /// user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1
-        /// year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2.
-        /// The resulting price may not be smaller than the minimum price allowed for this region.
+        /// The absolute amount of money subtracted from the base plan price prorated over the phase duration. For
+        /// example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount
+        /// for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be
+        /// smaller than the minimum price allowed for this region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("absoluteDiscount")]
         public virtual Money AbsoluteDiscount { get; set; }
@@ -22109,12 +22110,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string RegionCode { get; set; }
 
         /// <summary>
-        /// The fraction of the base plan price prorated over the phase duration that the user pays for this offer
-        /// phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50%
-        /// discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be
-        /// specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be
-        /// rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if
-        /// the discounted price ends up being smaller than the minimum price allowed in this region.
+        /// The percentage discount subtracted from the base plan price prorated over the phase duration, specified as a
+        /// fraction strictly larger than `0` and strictly smaller than `1`. For example, a value of `0.8` represents an
+        /// 80% discount, meaning that if the prorated base plan price is $100, the offer price will be $20. The
+        /// resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is
+        /// considered invalid if the discounted price ends up being smaller than the minimum price allowed in this
+        /// region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDiscount")]
         public virtual System.Nullable<double> RelativeDiscount { get; set; }
