@@ -47,7 +47,6 @@
     "Google.Apis.ApigeeRegistry.v1": "Google.Cloud.ApigeeRegistry.V1",
     "Google.Apis.Appengine.v1": "Google.Cloud.AppEngine.V1",
     "Google.Apis.AppHub.v1": "Google.Cloud.AppHub.V1",
-    "Google.Apis.Area120Tables.v1alpha1": "Google.Area120.Tables.V1Alpha1",
     "Google.Apis.ArtifactRegistry.v1": "Google.Cloud.ArtifactRegistry.V1",
     "Google.Apis.ArtifactRegistry.v1beta2": "Google.Cloud.ArtifactRegistry.V1Beta2",
     "Google.Apis.Assuredworkloads.v1": "Google.Cloud.AssuredWorkloads.V1",
