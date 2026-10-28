@@ -7369,6 +7369,57 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
+    /// Citations are inline references that can provide users more detailed information about the inline reference.
+    /// Corresponding inline citations should be present in the message text in a markup format of `{text}`. Citations
+    /// are only supported when the message's `markup_syntax` is set to `MARKDOWN`. Unreferenced citations in
+    /// `Elements.citations` (those without a matching `` tag in the message text) are ignored and do not cause the
+    /// message to be rejected.
+    /// </summary>
+    public class Citation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of sources that are relevant to the citation. Sources are displayed in the citation hover
+        /// card.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedSources")]
+        public virtual System.Collections.Generic.IList<CitedSource> CitedSources { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the citation. This ID is defined by the app creating the citation and must match the
+        /// `data-id` attribute of the `` tag in the message text. Must contain only ASCII letters and numbers, and less
+        /// than 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to a source of information.</summary>
+    public class CitedSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional information to show alongside the snippet in the form of a footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footer")]
+        public virtual Footer Footer { get; set; }
+
+        /// <summary>Optional. Snippet containing information directly from the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual Snippet Snippet { get; set; }
+
+        /// <summary>Required. The plaintext title of the `CitedSource`. Does not support markdown format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Required. The URI pointing to the resource referenced by this `CitedSource`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and
     /// from color representations in various languages over compactness. For example, the fields of this representation
     /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
@@ -7998,6 +8049,48 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Elements are additional message components, including inline `citations` (where each citation is associated with
+    /// a specific portion of the message text) and `cited_sources` (which are general references used to generate the
+    /// response and are not directly linked to specific segments of the text). Both `citations` and `cited_sources` can
+    /// be provided as input when creating or updating a message and are populated on output when reading a message.
+    /// </summary>
+    public class Elements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of inline citations referenced within the message text (via `` tags) that render as
+        /// interactive hover cards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<Citation> Citations { get; set; }
+
+        /// <summary>
+        /// Optional. A list of sources to be displayed under the message as footer links. These are not referenced
+        /// inline. For inline references, use `citations`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedSources")]
+        public virtual System.Collections.Generic.IList<CitedSource> CitedSources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object encapsulating different ways of representing an image. Currently supported representations: * An image
+    /// fetched from a URI. Additional representations might be supported in the future.
+    /// </summary>
+    public class ElementsImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The URI of the image. Must be a publicly accessible URI so that Chat can fetch and display it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An emoji that is used as a reaction to a message.</summary>
     public class Emoji : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8054,6 +8147,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>List of spaces in the requested (or first) page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaces")]
         public virtual System.Collections.Generic.IList<Space> Spaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A footer for a source, used for attribution.</summary>
+    public class Footer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The plaintext to display in the footer. Does not support markdown format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11046,6 +11150,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deletionMetadata")]
         public virtual DeletionMetadata DeletionMetadata { get; set; }
 
+        /// <summary>
+        /// Optional. Additional message components, including inline `citations` (where each citation is associated
+        /// with a specific portion of the message text) and `cited_sources` (which are general references used to
+        /// generate the response and are not directly linked to specific segments of the text). On input, provide
+        /// `elements` when creating or updating a message. On output, both `citations` and `cited_sources` are
+        /// populated when reading a message that contains them. Callers can read structured citation metadata from
+        /// `elements`, while `formatted_text` also includes inline citation tags or source links depending on
+        /// `markup_syntax`. These differ from `annotations`, which are output-only and offer supplementary information
+        /// tied to message fragments or the entire message text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual Elements Elements { get; set; }
+
         /// <summary>Output only. The list of emoji reaction summaries on the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emojiReactionSummaries")]
         public virtual System.Collections.Generic.IList<EmojiReactionSummary> EmojiReactionSummaries { get; set; }
@@ -12078,6 +12195,26 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The type of slash command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A snippet object representing an excerpt from a larger corpus.</summary>
+    public class Snippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Image preview of the snippet provided as an input when creating the citation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagePreview")]
+        public virtual ElementsImage ImagePreview { get; set; }
+
+        /// <summary>
+        /// Optional. A short plaintext excerpt directly from the corpus that is rendered in the citation hover card or
+        /// source preview. When footer sources are automatically populated from inline `citations` (because
+        /// `Elements.cited_sources` is not set), snippets are omitted from the deduplicated footer sources. Does not
+        /// support markdown format, and must not exceed 1,000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
