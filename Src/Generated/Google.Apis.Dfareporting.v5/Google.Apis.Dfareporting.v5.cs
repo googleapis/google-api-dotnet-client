@@ -20857,6 +20857,41 @@ namespace Google.Apis.Dfareporting.v5.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Additional assets for a creative.</summary>
+    public class AdditionalAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Call to actions for the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callToActions")]
+        public virtual System.Collections.Generic.IList<string> CallToActions { get; set; }
+
+        /// <summary>Optional. Cover images for the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coverImages")]
+        public virtual System.Collections.Generic.IList<CreativeAsset> CoverImages { get; set; }
+
+        /// <summary>Optional. Descriptions for the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
+        public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
+
+        /// <summary>Optional. Display URL for the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
+        public virtual string DisplayUrl { get; set; }
+
+        /// <summary>Optional. Headlines for the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headlines")]
+        public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
+
+        /// <summary>Optional. Long descriptions for the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longDescriptions")]
+        public virtual System.Collections.Generic.IList<string> LongDescriptions { get; set; }
+
+        /// <summary>Optional. Long headlines for the creative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longHeadlines")]
+        public virtual System.Collections.Generic.IList<string> LongHeadlines { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Ad List Response</summary>
     public class AdsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22614,6 +22649,13 @@ namespace Google.Apis.Dfareporting.v5.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adTagKeys")]
         public virtual System.Collections.Generic.IList<string> AdTagKeys { get; set; }
+
+        /// <summary>
+        /// Optional. Additional asset for the creative. This field captures additional assets that are associated with
+        /// the creative and used in the context of the social/native and YouTube platforms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAsset")]
+        public virtual AdditionalAsset AdditionalAsset { get; set; }
 
         /// <summary>
         /// Additional sizes associated with a responsive creative. When inserting or updating a creative either the
