@@ -2055,7 +2055,7 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         public virtual string PrincipalSet { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name that's used for access policy bindings. Examples: * Organization:
+        /// Immutable. The full resource name that's used for Unified Access Policy bindings. Examples: * Organization:
         /// `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID` * Folder:
         /// `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID` * Project: *
         /// `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER` *
