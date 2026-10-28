@@ -5620,6 +5620,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Extra capabilities for a role.</summary>
+    public class ExtraCapabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Controls whether the companion app can perform local device wipe
+        /// (https://developers.google.com/android/management/sdk-local-commands) using AMAPI SDK
+        /// (https://developers.google.com/android/management/sdk-integration).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localDeviceWipeCommand")]
+        public virtual string LocalDeviceWipeCommand { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A file was downloaded from the device.</summary>
     public class FilePulledEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8251,6 +8266,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Role an app can have.</summary>
     public class Role : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Extra capabilities configured specifically for this role. Not all role types support or utilize
+        /// extra capabilities.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraCapabilities")]
+        public virtual ExtraCapabilities ExtraCapabilities { get; set; }
+
         /// <summary>Required. The type of the role an app can have.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleType")]
         public virtual string RoleType { get; set; }
