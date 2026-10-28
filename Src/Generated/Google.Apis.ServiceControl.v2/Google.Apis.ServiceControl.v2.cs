@@ -875,6 +875,14 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
 
+        /// <summary>
+        /// The agent identifier of the caller agent. This is a globally unique, immutable name in Uniform Resource Name
+        /// (URN) format. Example:
+        /// 'urn:agent:projects-123456789:projects:123456789:locations:us-central1:aiplatform:reasoningEngines:987654321'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
