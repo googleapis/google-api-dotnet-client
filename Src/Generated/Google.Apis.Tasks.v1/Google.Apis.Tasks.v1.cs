@@ -282,9 +282,10 @@ namespace Google.Apis.Tasks.v1
 
         /// <summary>
         /// Deletes the authenticated user's specified task list. If the list contains assigned tasks, both the assigned
-        /// tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted.
+        /// tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted. The user's default
+        /// task list cannot be deleted.
         /// </summary>
-        /// <param name="tasklist">Task list identifier.</param>
+        /// <param name="tasklist">Task list identifier. The default task list cannot be deleted.</param>
         public virtual DeleteRequest Delete(string tasklist)
         {
             return new DeleteRequest(this.service, tasklist);
@@ -292,7 +293,8 @@ namespace Google.Apis.Tasks.v1
 
         /// <summary>
         /// Deletes the authenticated user's specified task list. If the list contains assigned tasks, both the assigned
-        /// tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted.
+        /// tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted. The user's default
+        /// task list cannot be deleted.
         /// </summary>
         public class DeleteRequest : TasksBaseServiceRequest<string>
         {
@@ -303,7 +305,7 @@ namespace Google.Apis.Tasks.v1
                 InitParameters();
             }
 
-            /// <summary>Task list identifier.</summary>
+            /// <summary>Task list identifier. The default task list cannot be deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("tasklist", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Tasklist { get; private set; }
 
@@ -332,7 +334,9 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>Returns the authenticated user's specified task list.</summary>
-        /// <param name="tasklist">Task list identifier.</param>
+        /// <param name="tasklist">
+        /// Task list identifier. Use "@default" to get the authenticated user's default task list.
+        /// </param>
         public virtual GetRequest Get(string tasklist)
         {
             return new GetRequest(this.service, tasklist);
@@ -348,7 +352,9 @@ namespace Google.Apis.Tasks.v1
                 InitParameters();
             }
 
-            /// <summary>Task list identifier.</summary>
+            /// <summary>
+            /// Task list identifier. Use "@default" to get the authenticated user's default task list.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("tasklist", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Tasklist { get; private set; }
 
@@ -441,12 +447,12 @@ namespace Google.Apis.Tasks.v1
             }
 
             /// <summary>
-            /// Maximum number of task lists returned on one page. Optional. The default is 1000 (max allowed: 1000).
+            /// Optional. Maximum number of task lists returned on one page. The default is 1000 (max allowed: 1000).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Token specifying the result page to return. Optional.</summary>
+            /// <summary>Optional. Token specifying the result page to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -816,16 +822,25 @@ namespace Google.Apis.Tasks.v1
             public virtual string Tasklist { get; private set; }
 
             /// <summary>
-            /// Parent task identifier. If the task is created at the top level, this parameter is omitted. An assigned
-            /// task cannot be a parent task, nor can it have a parent. Setting the parent to an assigned task results
-            /// in failure of the request. Optional.
+            /// Optional. Flag indicating whether the task is created as 'hidden', as if it had been completed and then
+            /// cleared from the task list (see the "clear" method). Hidden tasks are not returned by default when
+            /// retrieving all tasks for a task list (see showHidden). Only completed tasks can be created as hidden,
+            /// and they can not be nested or positioned, so parent and previous must be empty.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("hidden", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Hidden { get; set; }
+
+            /// <summary>
+            /// Optional. Parent task identifier. If the task is created at the top level, this parameter is omitted. An
+            /// assigned task cannot be a parent task, nor can it have a parent. Setting the parent to an assigned task
+            /// results in failure of the request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
 
             /// <summary>
-            /// Previous sibling task identifier. If the task is created at the first position among its siblings, this
-            /// parameter is omitted. Optional.
+            /// Optional. Previous sibling task identifier. If the task is created at the first position among its
+            /// siblings, this parameter is omitted.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("previous", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Previous { get; set; }
@@ -854,6 +869,14 @@ namespace Google.Apis.Tasks.v1
                     Name = "tasklist",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("hidden", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "hidden",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -904,72 +927,72 @@ namespace Google.Apis.Tasks.v1
             public virtual string Tasklist { get; private set; }
 
             /// <summary>
-            /// Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional. The default
+            /// Optional. Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. The default
             /// is not to filter by completion date.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("completedMax", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CompletedMax { get; set; }
 
             /// <summary>
-            /// Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional. The default
+            /// Optional. Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. The default
             /// is not to filter by completion date.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("completedMin", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CompletedMin { get; set; }
 
             /// <summary>
-            /// Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional. The default is not
+            /// Optional. Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. The default is not
             /// to filter by due date.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dueMax", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DueMax { get; set; }
 
             /// <summary>
-            /// Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional. The default is not
+            /// Optional. Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. The default is not
             /// to filter by due date.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("dueMin", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DueMin { get; set; }
 
             /// <summary>
-            /// Maximum number of tasks returned on one page. Optional. The default is 20 (max allowed: 100).
+            /// Optional. Maximum number of tasks returned on one page. The default is 20 (max allowed: 100).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Token specifying the result page to return. Optional.</summary>
+            /// <summary>Optional. Token specifying the result page to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Optional. Flag indicating whether tasks assigned to the current user are returned in the result.
-            /// Optional. The default is False.
+            /// Optional. Flag indicating whether tasks assigned to the current user are returned in the result. The
+            /// default is False.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showAssigned", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowAssigned { get; set; }
 
             /// <summary>
-            /// Flag indicating whether completed tasks are returned in the result. Note that showHidden must also be
-            /// True to show tasks completed in first party clients, such as the web UI and Google's mobile apps.
-            /// Optional. The default is True.
+            /// Optional. Flag indicating whether completed tasks are returned in the result. Note that showHidden must
+            /// also be True to show tasks completed in first party clients, such as the web UI and Google's mobile
+            /// apps. The default is True.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showCompleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowCompleted { get; set; }
 
             /// <summary>
-            /// Flag indicating whether deleted tasks are returned in the result. Optional. The default is False.
+            /// Optional. Flag indicating whether deleted tasks are returned in the result. The default is False.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
             /// <summary>
-            /// Flag indicating whether hidden tasks are returned in the result. Optional. The default is False.
+            /// Optional. Flag indicating whether hidden tasks are returned in the result. The default is False.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showHidden", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowHidden { get; set; }
 
             /// <summary>
-            /// Lower bound for a task's last modification time (as a RFC 3339 timestamp) to filter by. Optional. The
+            /// Optional. Lower bound for a task's last modification time (as a RFC 3339 timestamp) to filter by. The
             /// default is not to filter by last modification time.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updatedMin", Google.Apis.Util.RequestParameterType.Query)]
@@ -1534,7 +1557,10 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Task list identifier.</summary>
+        /// <summary>
+        /// Task list identifier. In requests, the authenticated user's default task list can also be referred to as
+        /// "@default".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
