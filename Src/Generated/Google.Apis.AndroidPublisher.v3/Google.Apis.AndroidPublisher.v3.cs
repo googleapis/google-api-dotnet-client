@@ -8674,7 +8674,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <param name="body">The body of the request.</param>
                     /// <param name="packageName">
                     /// Required. The parent app (package name) of the offers to delete. Must be equal to the
-                    /// package_name field on all the OneTimeProductOffer resources.
+                    /// package_name field on all the requests.
                     /// </param>
                     /// <param name="productId">
                     /// Required. The product ID of the parent one-time product, if all offers to delete belong to the
@@ -8682,7 +8682,7 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// </param>
                     /// <param name="purchaseOptionId">
                     /// Required. The parent purchase option (ID) for which the offers should be deleted. May be
-                    /// specified as '-' to update offers from multiple purchase options.
+                    /// specified as '-' to delete offers from multiple purchase options.
                     /// </param>
                     public virtual BatchDeleteRequest BatchDelete(Google.Apis.AndroidPublisher.v3.Data.BatchDeleteOneTimeProductOffersRequest body, string packageName, string productId, string purchaseOptionId)
                     {
@@ -8704,7 +8704,7 @@ namespace Google.Apis.AndroidPublisher.v3
 
                         /// <summary>
                         /// Required. The parent app (package name) of the offers to delete. Must be equal to the
-                        /// package_name field on all the OneTimeProductOffer resources.
+                        /// package_name field on all the requests.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string PackageName { get; private set; }
@@ -8718,7 +8718,7 @@ namespace Google.Apis.AndroidPublisher.v3
 
                         /// <summary>
                         /// Required. The parent purchase option (ID) for which the offers should be deleted. May be
-                        /// specified as '-' to update offers from multiple purchase options.
+                        /// specified as '-' to delete offers from multiple purchase options.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string PurchaseOptionId { get; private set; }
@@ -8772,16 +8772,16 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// <summary>Reads one or more one-time product offers.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="packageName">
-                    /// Required. The parent app (package name) of the updated offers. Must be equal to the package_name
-                    /// field on all the updated OneTimeProductOffer resources.
+                    /// Required. The parent app (package name) of the offers to retrieve. Must be equal to the
+                    /// package_name field on all the requests.
                     /// </param>
                     /// <param name="productId">
-                    /// Required. The product ID of the parent one-time product, if all updated offers belong to the
-                    /// same product. If this request spans multiple one-time products, set this field to "-".
+                    /// Required. The product ID of the parent one-time product, if all offers belong to the same
+                    /// product. If this request spans multiple one-time products, set this field to "-".
                     /// </param>
                     /// <param name="purchaseOptionId">
-                    /// Required. The parent purchase option (ID) for which the offers should be updated. May be
-                    /// specified as '-' to update offers from multiple purchase options.
+                    /// Required. The parent purchase option (ID) for which the offers should be retrieved. May be
+                    /// specified as '-' to retrieve offers from multiple purchase options.
                     /// </param>
                     public virtual BatchGetRequest BatchGet(Google.Apis.AndroidPublisher.v3.Data.BatchGetOneTimeProductOffersRequest body, string packageName, string productId, string purchaseOptionId)
                     {
@@ -8802,22 +8802,22 @@ namespace Google.Apis.AndroidPublisher.v3
                         }
 
                         /// <summary>
-                        /// Required. The parent app (package name) of the updated offers. Must be equal to the
-                        /// package_name field on all the updated OneTimeProductOffer resources.
+                        /// Required. The parent app (package name) of the offers to retrieve. Must be equal to the
+                        /// package_name field on all the requests.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string PackageName { get; private set; }
 
                         /// <summary>
-                        /// Required. The product ID of the parent one-time product, if all updated offers belong to the
-                        /// same product. If this request spans multiple one-time products, set this field to "-".
+                        /// Required. The product ID of the parent one-time product, if all offers belong to the same
+                        /// product. If this request spans multiple one-time products, set this field to "-".
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProductId { get; private set; }
 
                         /// <summary>
-                        /// Required. The parent purchase option (ID) for which the offers should be updated. May be
-                        /// specified as '-' to update offers from multiple purchase options.
+                        /// Required. The parent purchase option (ID) for which the offers should be retrieved. May be
+                        /// specified as '-' to retrieve offers from multiple purchase options.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("purchaseOptionId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string PurchaseOptionId { get; private set; }
@@ -9330,9 +9330,9 @@ namespace Google.Apis.AndroidPublisher.v3
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. A page token, received from a previous `ListOneTimeProductsOffers` call. Provide
+                        /// Optional. A page token, received from a previous `ListOneTimeProductOffers` call. Provide
                         /// this to retrieve the subsequent page. When paginating, product_id, package_name and
-                        /// purchase_option_id provided to `ListOneTimeProductsOffersRequest` must match the call that
+                        /// purchase_option_id provided to `ListOneTimeProductOffersRequest` must match the call that
                         /// provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -9566,7 +9566,7 @@ namespace Google.Apis.AndroidPublisher.v3
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">
             /// Required. The parent app (package name) for which the one-time products should be deleted. Must be equal
-            /// to the package_name field on all the OneTimeProduct resources.
+            /// to the package_name field on all the requests.
             /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.AndroidPublisher.v3.Data.BatchDeleteOneTimeProductsRequest body, string packageName)
             {
@@ -9586,7 +9586,7 @@ namespace Google.Apis.AndroidPublisher.v3
 
                 /// <summary>
                 /// Required. The parent app (package name) for which the one-time products should be deleted. Must be
-                /// equal to the package_name field on all the OneTimeProduct resources.
+                /// equal to the package_name field on all the requests.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -9623,8 +9623,7 @@ namespace Google.Apis.AndroidPublisher.v3
 
             /// <summary>Reads one or more one-time products.</summary>
             /// <param name="packageName">
-            /// Required. The parent app (package name) for which the products should be retrieved. Must be equal to the
-            /// package_name field on all requests.
+            /// Required. The parent app (package name) for which the products should be retrieved.
             /// </param>
             public virtual BatchGetRequest BatchGet(string packageName)
             {
@@ -9642,8 +9641,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
 
                 /// <summary>
-                /// Required. The parent app (package name) for which the products should be retrieved. Must be equal to
-                /// the package_name field on all requests.
+                /// Required. The parent app (package name) for which the products should be retrieved.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PackageName { get; private set; }
@@ -15989,7 +15987,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class BatchDeleteOneTimeProductOffersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A list of update requests of up to 100 elements. All requests must correspond to different offers.
+        /// Required. A list of delete requests of up to 100 elements. All requests must correspond to different offers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<DeleteOneTimeProductOfferRequest> Requests { get; set; }
@@ -16042,7 +16040,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Response message for the BatchGetOneTimeProductOffers endpoint.</summary>
     public class BatchGetOneTimeProductOffersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of updated one-time product offers, in the same order as the request.</summary>
+        /// <summary>The list of requested one-time product offers, in the same order as the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oneTimeProductOffers")]
         public virtual System.Collections.Generic.IList<OneTimeProductOffer> OneTimeProductOffers { get; set; }
 
@@ -24003,7 +24001,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>
         /// Deactivates an offer. Once deactivated, the offer is no longer available to users. This state transition is
-        /// specific to discounted offers.
+        /// specific to discounted and game reward offers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deactivateOneTimeProductOfferRequest")]
         public virtual DeactivateOneTimeProductOfferRequest DeactivateOneTimeProductOfferRequest { get; set; }
