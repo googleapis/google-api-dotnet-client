@@ -64,6 +64,12 @@ namespace Google.Apis.DeepReview.v1
         public class Scope
         {
             /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
+            public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>
             /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
             public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
@@ -72,6 +78,12 @@ namespace Google.Apis.DeepReview.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Deep Review API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
+            public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
             /// <summary>
             /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
@@ -609,6 +621,69 @@ namespace Google.Apis.DeepReview.v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Estimates what a review of a document would cost on the caller's Gemini API key. The estimate comes from
+        /// what past reviews with the same model and depth cost, adjusted to this document's size and repriced at the
+        /// Gemini API's current list prices. It covers one review attempt that runs to completion, and doesn't include
+        /// retries after errors.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="document">Required. The document to review. Format: `documents/{document}`</param>
+        public virtual EstimateReviewCostRequest EstimateReviewCost(Google.Apis.DeepReview.v1.Data.EstimateReviewCostRequest body, string document)
+        {
+            return new EstimateReviewCostRequest(this.service, body, document);
+        }
+
+        /// <summary>
+        /// Estimates what a review of a document would cost on the caller's Gemini API key. The estimate comes from
+        /// what past reviews with the same model and depth cost, adjusted to this document's size and repriced at the
+        /// Gemini API's current list prices. It covers one review attempt that runs to completion, and doesn't include
+        /// retries after errors.
+        /// </summary>
+        public class EstimateReviewCostRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.EstimateReviewCostResponse>
+        {
+            /// <summary>Constructs a new EstimateReviewCost request.</summary>
+            public EstimateReviewCostRequest(Google.Apis.Services.IClientService service, Google.Apis.DeepReview.v1.Data.EstimateReviewCostRequest body, string document) : base(service)
+            {
+                Document = document;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The document to review. Format: `documents/{document}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("document", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Document { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DeepReview.v1.Data.EstimateReviewCostRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "estimateReviewCost";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+document}:estimateReviewCost";
+
+            /// <summary>Initializes EstimateReviewCost parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("document", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "document",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^documents/[^/]+$",
                 });
             }
         }
@@ -1894,6 +1969,46 @@ namespace Google.Apis.DeepReview.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for estimating what a review would cost.</summary>
+    public class EstimateReviewCostRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The review to estimate, as it would be passed to `CreateReview`. Only its `run_config` is read,
+        /// and `run_config.gemini_api_key` is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("review")]
+        public virtual Review Review { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for estimating what a review would cost. When the cost can't be estimated, for example because
+    /// too few past reviews used the same model and depth, the costs are unset and `past_review_count` is 0.
+    /// </summary>
+    public class EstimateReviewCostResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The 95th percentile of what comparable past reviews would cost for this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highCost")]
+        public virtual Money HighCost { get; set; }
+
+        /// <summary>The 20th percentile of what comparable past reviews would cost for this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowCost")]
+        public virtual Money LowCost { get; set; }
+
+        /// <summary>The median of what comparable past reviews would cost for this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medianCost")]
+        public virtual Money MedianCost { get; set; }
+
+        /// <summary>Number of past reviews the estimate is based on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pastReviewCount")]
+        public virtual System.Nullable<int> PastReviewCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Per-field comparison result between extracted and retrieved metadata.</summary>
     public class FieldComparison : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1978,6 +2093,32 @@ namespace Google.Apis.DeepReview.v1.Data
         /// <summary>The list of Review resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
         public virtual System.Collections.Generic.IList<Review> Reviews { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The three-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
