@@ -328,6 +328,7 @@ namespace Google.Apis.AgentRegistry.v1alpha
                 AiApplications = new AiApplicationsResource(service);
                 Bindings = new BindingsResource(service);
                 Endpoints = new EndpointsResource(service);
+                Findings = new FindingsResource(service);
                 McpServers = new McpServersResource(service);
                 Operations = new OperationsResource(service);
                 Publishers = new PublishersResource(service);
@@ -2069,6 +2070,176 @@ namespace Google.Apis.AgentRegistry.v1alpha
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Findings resource.</summary>
+            public virtual FindingsResource Findings { get; }
+
+            /// <summary>The "findings" collection of methods.</summary>
+            public class FindingsResource
+            {
+                private const string Resource = "findings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FindingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single Finding.</summary>
+                /// <param name="name">
+                /// Required. The name of the Finding to retrieve. Format:
+                /// `projects/{project}/locations/{location}/findings/{finding}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single Finding.</summary>
+                public class GetRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.Finding>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Finding to retrieve. Format:
+                    /// `projects/{project}/locations/{location}/findings/{finding}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/findings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Findings in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListFindingsRequest. Format: `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Findings in a given project and location.</summary>
+                public class ListRequest : AgentRegistryBaseServiceRequest<Google.Apis.AgentRegistry.v1alpha.Data.ListFindingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for ListFindingsRequest. Format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/findings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5448,6 +5619,137 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>File location of the finding.</summary>
+    public class File : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Line number (1-based), or 0 if whole File / unknown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<long> LineNumber { get; set; }
+
+        /// <summary>Optional. Relative path of the file containing the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a security Finding.</summary>
+    public class Finding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Category of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Detailed description of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>Optional. File associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<File> Files { get; set; }
+
+        /// <summary>Optional. Class of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
+        public virtual string FindingClass { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name of the Finding. Format:
+        /// `projects/{project}/locations/{location}/findings/{finding}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The resource that the finding is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Optional. Severity of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Output only. Universally unique identifier (UUID4) for the Finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Structured metadata attributes extracted from the package's local SKILL.md frontmatter.</summary>
     public class Frontmatter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5865,6 +6167,21 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; }
 
         /// <summary>A token identifying a page of results the server should return. Used in page_token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing Findings.</summary>
+    public class ListFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findings")]
+        public virtual System.Collections.Generic.IList<Finding> Findings { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -6367,6 +6684,73 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Scan result of the skill revision.</summary>
+    public class ScanResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The error message if the scan failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Output only. The finding resource names for the skill revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findings")]
+        public virtual System.Collections.Generic.IList<string> Findings { get; set; }
+
+        /// <summary>Output only. The state of the vulnerability check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanState")]
+        public virtual string ScanState { get; set; }
+
+        private string _scanTimeRaw;
+
+        private object _scanTime;
+
+        /// <summary>Output only. The time when the scan was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanTime")]
+        public virtual string ScanTimeRaw
+        {
+            get => _scanTimeRaw;
+            set
+            {
+                _scanTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scanTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScanTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScanTimeDateTimeOffset instead.")]
+        public virtual object ScanTime
+        {
+            get => _scanTime;
+            set
+            {
+                _scanTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scanTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScanTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScanTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScanTimeRaw);
+            set => ScanTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for scanning of the skill.</summary>
+    public class ScanningConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The security scanning policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for searching Agents</summary>
     public class SearchAgentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6782,6 +7166,10 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual string Publisher { get; set; }
 
+        /// <summary>Optional. Optional. Scanning configuration for the skill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanningConfig")]
+        public virtual ScanningConfig ScanningConfig { get; set; }
+
         /// <summary>
         /// Output only. A stable, globally unique logical identifier for the skill. It is securely constructed by the
         /// backend by combining the associated `publisher`'s verified namespace and the skill's resource ID to enforce
@@ -6906,6 +7294,10 @@ namespace Google.Apis.AgentRegistry.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Scan result of the skill revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanResult")]
+        public virtual ScanResult ScanResult { get; set; }
 
         /// <summary>Output only. Cryptographic SHA-256 integrity and deduplication digest of the payload zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256Hash")]
