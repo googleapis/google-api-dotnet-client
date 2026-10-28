@@ -10615,30 +10615,11 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string Backup { get; set; }
 
         /// <summary>
-        /// Optional. Properties of the table to be restored. Only the fields specified in update_mask will be used to
-        /// set the restored table's properties.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual Table Table { get; set; }
-
-        /// <summary>
         /// Required. The id of the table to create and restore to. This table must not already exist. The `table_id`
         /// appended to `parent` forms the full table name of the form `projects//instances//tables/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
-
-        /// <summary>
-        /// Optional. The list of fields to set on the new table. A mask specifying which fields (e.g.
-        /// `deletion_protection`) in the `table` field should be set. This mask is relative to the `table` field, not
-        /// to the request message. The wildcard (*) path is currently not supported. Currently RestoreTable only
-        /// supports the following fields for modification: * `deletion_protection`: Defaults to `false` if not set. *
-        /// `automated_backup_policy`: Defaults to no automated backup policy if not set. Output-only fields in the mask
-        /// will be ignored. If any other field not listed above is included in `update_mask`, it will result in an
-        /// INVALID_ARGUMENT error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
