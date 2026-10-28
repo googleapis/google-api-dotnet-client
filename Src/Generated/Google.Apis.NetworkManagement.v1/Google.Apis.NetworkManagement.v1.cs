@@ -2339,6 +2339,35 @@ namespace Google.Apis.NetworkManagement.v1
                         [Google.Apis.Util.RequestParameterAttribute("_password", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Password { get; set; }
 
+                        /// <summary>Optional. The deployment type for Cloud Monitoring Points.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("cloudDeploymentType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<CloudDeploymentTypeEnum> CloudDeploymentType { get; set; }
+
+                        /// <summary>Optional. The deployment type for Cloud Monitoring Points.</summary>
+                        public enum CloudDeploymentTypeEnum
+                        {
+                            /// <summary>
+                            /// Default value. If unspecified, defaults to `TERRAFORM` for `GCE_VM`, `BICEP` for
+                            /// `AZURE_VM`, and `CLOUD_FORMATION` for `AWS_EC2`.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("CLOUD_DEPLOYMENT_TYPE_UNSPECIFIED")]
+                            CLOUDDEPLOYMENTTYPEUNSPECIFIED = 0,
+
+                            /// <summary>Deploys using Terraform.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TERRAFORM")]
+                            TERRAFORM = 1,
+
+                            /// <summary>
+                            /// Deploys using AWS Cloud Formation. Supported only for `AWS_EC2` deployments.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("CLOUD_FORMATION")]
+                            CLOUDFORMATION = 2,
+
+                            /// <summary>Deploys using Azure Bicep. Supported only for `AZURE_VM` deployments.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BICEP")]
+                            BICEP = 3,
+                        }
+
                         /// <summary>Required. The hostname of the MonitoringPoint, e.g. "test-vm"</summary>
                         [Google.Apis.Util.RequestParameterAttribute("hostname", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Hostname { get; set; }
@@ -2472,6 +2501,14 @@ namespace Google.Apis.NetworkManagement.v1
                             RequestParameters.Add("_password", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "_password",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("cloudDeploymentType", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "cloudDeploymentType",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
