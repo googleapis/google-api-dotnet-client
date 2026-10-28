@@ -8,6 +8,12 @@
     "1",
     "2"
   ],
+  "Google.Apis.NetworkManagement.v1.ProjectsResource+LocationsResource+NetworkMonitoringProvidersResource+MonitoringPointsResource+DownloadInstallScriptRequest.CloudDeploymentTypeEnum": [
+    "CLOUD_DEPLOYMENT_TYPE_UNSPECIFIED",
+    "TERRAFORM",
+    "CLOUD_FORMATION",
+    "BICEP"
+  ],
   "Google.Apis.NetworkManagement.v1.ProjectsResource+LocationsResource+NetworkMonitoringProvidersResource+MonitoringPointsResource+DownloadInstallScriptRequest.MonitoringPointTypeEnum": [
     "MONITORING_POINT_TYPE_UNSPECIFIED",
     "CONTAINER",
