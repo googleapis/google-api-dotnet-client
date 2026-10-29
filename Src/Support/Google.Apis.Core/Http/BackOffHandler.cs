@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2013 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ namespace Google.Apis.Http
 {
     /// <summary>
     /// A thread-safe back-off handler which handles an abnormal HTTP response or an exception with 
-    /// <see cref="Google.Apis.Util.IBackOff"/>.
+    /// <see cref="Google.Apis.Util.IBackOff"/> or the HTTP <c>Retry-After</c> header.
     /// </summary>
     public class BackOffHandler : IHttpUnsuccessfulResponseHandler, IHttpExceptionHandler
     {
@@ -40,8 +40,9 @@ namespace Google.Apis.Http
 
             /// <summary>
             /// Gets or sets the maximum time span to wait. If the back-off instance returns a greater time span than
-            /// this value, this handler returns <c>false</c> to both <c>HandleExceptionAsync</c> and 
-            /// <c>HandleResponseAsync</c>. Default value is 16 seconds per a retry request.
+            /// this value, or if the Retry-After header indicates a delay greater than this value, this handler returns
+            /// <c>false</c> to both <c>HandleExceptionAsync</c> and <c>HandleResponseAsync</c>. Default value is 16 seconds
+            /// per a retry request.
             /// </summary>
             public TimeSpan MaxTimeSpan { get; set; }
 
@@ -56,6 +57,17 @@ namespace Google.Apis.Http
             /// exception. The default is <see cref="DefaultHandleExceptionFunc"/>. 
             /// </summary>
             public Func<Exception, bool> HandleExceptionFunc { get; set; }
+
+            /// <summary>
+            /// Gets or sets the clock used by this back-off handler. If unset, <see cref="SystemClock.Default"/> will be used.
+            /// </summary>
+            public IClock Clock { get; set; }
+
+            /// <summary>
+            /// Gets or sets whether the handler should inspect and respect the HTTP <c>Retry-After</c> header
+            /// on abnormal responses. Default value is <c>false</c>.
+            /// </summary>
+            public bool RespectRetryAfterHeader { get; set; }
 
             /// <summary>Default function which handles server errors (503).</summary>
             public static readonly Func<HttpResponseMessage, bool> DefaultHandleUnsuccessfulResponseFunc =
@@ -84,8 +96,9 @@ namespace Google.Apis.Http
         public IBackOff BackOff { get; private set; }
 
         /// <summary>
-        /// Gets the maximum time span to wait. If the back-off instance returns a greater time span, the handle method
-        /// returns <c>false</c>. Default value is 16 seconds per a retry request.
+        /// Gets the maximum time span to wait. If the back-off instance returns a greater time span than this value,
+        /// or if the Retry-After header indicates a delay greater than this value, the handle method returns <c>false</c>.
+        /// Default value is 16 seconds per a retry request.
         /// </summary>
         public TimeSpan MaxTimeSpan { get; private set; }
 
@@ -101,6 +114,16 @@ namespace Google.Apis.Http
         /// </summary>
         public Func<Exception, bool> HandleExceptionFunc { get; private set; }
 
+        /// <summary>
+        /// Gets whether the handler should inspect and respect the HTTP <c>Retry-After</c> header on abnormal responses.
+        /// </summary>
+        public bool RespectRetryAfterHeader { get; private set; }
+
+        /// <summary>
+        /// Gets the strategy used to extract Retry-After delays.
+        /// </summary>
+        internal IRetryAfterBackOff RetryAfterBackOff { get; private set; }
+
         /// <summary>Constructs a new back-off handler with the given back-off.</summary>
         /// <param name="backOff">The back-off policy.</param>
         public BackOffHandler(IBackOff backOff)
@@ -115,6 +138,11 @@ namespace Google.Apis.Http
             MaxTimeSpan = initializer.MaxTimeSpan;
             HandleExceptionFunc = initializer.HandleExceptionFunc;
             HandleUnsuccessfulResponseFunc = initializer.HandleUnsuccessfulResponseFunc;
+            RespectRetryAfterHeader = initializer.RespectRetryAfterHeader;
+            if (RespectRetryAfterHeader)
+            {
+                RetryAfterBackOff = new RetryAfterBackOff(initializer.Clock ?? SystemClock.Default);
+            }
         }
 
         #region IHttpUnsuccessfulResponseHandler
@@ -125,7 +153,7 @@ namespace Google.Apis.Http
             // if the func returns true try to handle this current failed try
             if (HandleUnsuccessfulResponseFunc != null && HandleUnsuccessfulResponseFunc(args.Response))
             {
-                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken)
+                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.Response, args.CancellationToken)
                     .ConfigureAwait(false);
             }
             return false;
@@ -141,7 +169,7 @@ namespace Google.Apis.Http
             // if the func returns true try to handle this current failed try
             if (HandleExceptionFunc != null && HandleExceptionFunc(args.Exception))
             {
-                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken)
+                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, null, args.CancellationToken)
                     .ConfigureAwait(false);
             }
             return false;
@@ -152,10 +180,10 @@ namespace Google.Apis.Http
         /// <summary>
         /// Handles back-off. In case the request doesn't support retry or the back-off time span is greater than the
         /// maximum time span allowed for a request, the handler returns <c>false</c>. Otherwise the current thread 
-        /// will block for x milliseconds (x is defined by the <see cref="BackOff"/> instance), and this handler 
-        /// returns <c>true</c>.
+        /// will block for x milliseconds (x is defined by the Retry-After header or the <see cref="BackOff"/> instance), 
+        /// and this handler returns <c>true</c>.
         /// </summary>
-        private async Task<bool> HandleAsync(bool supportsRetry, int currentFailedTry,
+        private async Task<bool> HandleAsync(bool supportsRetry, int currentFailedTry, HttpResponseMessage response,
             CancellationToken cancellationToken)
         {
             if (!supportsRetry || BackOff.MaxNumOfRetries < currentFailedTry)
@@ -163,7 +191,16 @@ namespace Google.Apis.Http
                 return false;
             }
 
-            TimeSpan ts = BackOff.GetNextBackOff(currentFailedTry);
+            TimeSpan ts;
+            if (RespectRetryAfterHeader && RetryAfterBackOff != null && response != null && RetryAfterBackOff.GetRetryAfterDelay(response) is TimeSpan delay)
+            {
+                ts = delay;
+            }
+            else
+            {
+                ts = BackOff.GetNextBackOff(currentFailedTry);
+            }
+
             if (ts > MaxTimeSpan || ts < TimeSpan.Zero)
             {
                 return false;
