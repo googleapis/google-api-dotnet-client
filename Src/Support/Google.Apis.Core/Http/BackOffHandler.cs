@@ -70,6 +70,14 @@ namespace Google.Apis.Http
             public static readonly Func<Exception, bool> DefaultHandleExceptionFunc =
                 (ex) => !(ex is TaskCanceledException || ex is OperationCanceledException);
 
+            /// <summary>
+            /// Gets or sets a value indicating whether the handler should honor the Retry-After header
+            /// from the response if present. When true and a valid Retry-After header is returned, the
+            /// handler waits for the duration specified in the header instead of the exponential back-off time,
+            /// as long as the duration does not exceed <see cref="MaxTimeSpan"/>. Default value is <c>false</c>.
+            /// </summary>
+            public bool HonorRetryAfter { get; set; }
+
             /// <summary>Constructs a new initializer by the given back-off.</summary>
             public Initializer(IBackOff backOff)
             {
@@ -77,6 +85,7 @@ namespace Google.Apis.Http
                 HandleExceptionFunc = DefaultHandleExceptionFunc;
                 HandleUnsuccessfulResponseFunc = DefaultHandleUnsuccessfulResponseFunc;
                 MaxTimeSpan = TimeSpan.FromSeconds(16);
+                HonorRetryAfter = false;
             }
         }
 
@@ -101,6 +110,11 @@ namespace Google.Apis.Http
         /// </summary>
         public Func<Exception, bool> HandleExceptionFunc { get; private set; }
 
+        /// <summary>
+        /// Gets a value indicating whether the handler should honor the Retry-After header from the response if present.
+        /// </summary>
+        public bool HonorRetryAfter { get; private set; }
+
         /// <summary>Constructs a new back-off handler with the given back-off.</summary>
         /// <param name="backOff">The back-off policy.</param>
         public BackOffHandler(IBackOff backOff)
@@ -115,6 +129,7 @@ namespace Google.Apis.Http
             MaxTimeSpan = initializer.MaxTimeSpan;
             HandleExceptionFunc = initializer.HandleExceptionFunc;
             HandleUnsuccessfulResponseFunc = initializer.HandleUnsuccessfulResponseFunc;
+            HonorRetryAfter = initializer.HonorRetryAfter;
         }
 
         #region IHttpUnsuccessfulResponseHandler
@@ -125,7 +140,20 @@ namespace Google.Apis.Http
             // if the func returns true try to handle this current failed try
             if (HandleUnsuccessfulResponseFunc != null && HandleUnsuccessfulResponseFunc(args.Response))
             {
-                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken)
+                TimeSpan? retryAfter = null;
+                if (HonorRetryAfter && args.Response?.Headers?.RetryAfter != null)
+                {
+                    if (args.Response.Headers.RetryAfter.Delta.HasValue)
+                    {
+                        retryAfter = args.Response.Headers.RetryAfter.Delta.Value;
+                    }
+                    else if (args.Response.Headers.RetryAfter.Date.HasValue)
+                    {
+                        TimeSpan diff = args.Response.Headers.RetryAfter.Date.Value - DateTimeOffset.UtcNow;
+                        retryAfter = diff > TimeSpan.Zero ? diff : TimeSpan.Zero;
+                    }
+                }
+                return await HandleAsync(args.SupportsRetry, args.CurrentFailedTry, args.CancellationToken, retryAfter)
                     .ConfigureAwait(false);
             }
             return false;
@@ -156,14 +184,14 @@ namespace Google.Apis.Http
         /// returns <c>true</c>.
         /// </summary>
         private async Task<bool> HandleAsync(bool supportsRetry, int currentFailedTry,
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken, TimeSpan? overrideWait = null)
         {
             if (!supportsRetry || BackOff.MaxNumOfRetries < currentFailedTry)
             {
                 return false;
             }
 
-            TimeSpan ts = BackOff.GetNextBackOff(currentFailedTry);
+            TimeSpan ts = overrideWait ?? BackOff.GetNextBackOff(currentFailedTry);
             if (ts > MaxTimeSpan || ts < TimeSpan.Zero)
             {
                 return false;
