@@ -12408,7 +12408,7 @@ namespace Google.Apis.Iam.v1.Data
 
         /// <summary>
         /// Optional limit on the number of roles to include in the response. The default is 300, and the maximum is
-        /// 2,000.
+        /// 3,000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
