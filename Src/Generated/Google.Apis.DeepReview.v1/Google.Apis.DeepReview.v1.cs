@@ -316,18 +316,25 @@ namespace Google.Apis.DeepReview.v1
                 this.service = service;
             }
 
-            /// <summary>Creates and initiates an asynchronous multi-agent review for a document.</summary>
+            /// <summary>
+            /// Creates and initiates an asynchronous multi-agent review for a document. Returns a
+            /// google.longrunning.Operation. When the operation completes, the `response` field contains a `Review` and
+            /// the `metadata` field contains `CreateReviewMetadata`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The parent Document resource name where this review will be created. Format:
-            /// `documents/{document}`
+            /// Required. The parent Document resource name where this review will be created.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DeepReview.v1.Data.Review body, string parent)
             {
                 return new CreateRequest(this.service, body, parent);
             }
 
-            /// <summary>Creates and initiates an asynchronous multi-agent review for a document.</summary>
+            /// <summary>
+            /// Creates and initiates an asynchronous multi-agent review for a document. Returns a
+            /// google.longrunning.Operation. When the operation completes, the `response` field contains a `Review` and
+            /// the `metadata` field contains `CreateReviewMetadata`.
+            /// </summary>
             public class CreateRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -338,10 +345,7 @@ namespace Google.Apis.DeepReview.v1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Required. The parent Document resource name where this review will be created. Format:
-                /// `documents/{document}`
-                /// </summary>
+                /// <summary>Required. The parent Document resource name where this review will be created.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -405,9 +409,7 @@ namespace Google.Apis.DeepReview.v1
             }
 
             /// <summary>Retrieves a specific review execution result.</summary>
-            /// <param name="name">
-            /// Required. The resource name of the review to retrieve. Format: `documents/{document}/reviews/{review}`
-            /// </param>
+            /// <param name="name">Required. The resource name of the review to retrieve.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(this.service, name);
@@ -423,10 +425,7 @@ namespace Google.Apis.DeepReview.v1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Required. The resource name of the review to retrieve. Format:
-                /// `documents/{document}/reviews/{review}`
-                /// </summary>
+                /// <summary>Required. The resource name of the review to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -455,7 +454,7 @@ namespace Google.Apis.DeepReview.v1
             }
 
             /// <summary>Lists all review execution runs for a document.</summary>
-            /// <param name="parent">Required. The parent Document resource name. Format: `documents/{document}`</param>
+            /// <param name="parent">Required. The parent Document resource name.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
@@ -471,22 +470,28 @@ namespace Google.Apis.DeepReview.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The parent Document resource name. Format: `documents/{document}`</summary>
+                /// <summary>Required. The parent Document resource name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Supported AIP-160 filter expressions.</summary>
+                /// <summary>
+                /// Optional. Custom filter expressions are not currently supported; non-empty values return
+                /// INVALID_ARGUMENT.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Optional. Supported AIP-132 order_by field.</summary>
+                /// <summary>
+                /// Optional. Custom order_by expressions are not currently supported; non-empty values return
+                /// INVALID_ARGUMENT.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
                 /// Optional. The maximum number of reviews to return in a single page. The server may return fewer than
-                /// this value. If unspecified, at most 50 reviews will be returned. The maximum value is 1000; values
-                /// above 1000 will be coerced to 1000.
+                /// this value. If unspecified, at most 50 reviews will be returned. The maximum value is 100; values
+                /// above 100 will be coerced to 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -552,16 +557,20 @@ namespace Google.Apis.DeepReview.v1
             }
         }
 
-        /// <summary>Deletes a document and all associated reviews and stored blobs.</summary>
-        /// <param name="name">
-        /// Required. The resource name of the document to delete. Format: `documents/{document}`
-        /// </param>
+        /// <summary>
+        /// Deletes a document and its stored content. If `force` is set to `true`, any associated reviews are also
+        /// deleted.
+        /// </summary>
+        /// <param name="name">Required. The resource name of the document to delete.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(this.service, name);
         }
 
-        /// <summary>Deletes a document and all associated reviews and stored blobs.</summary>
+        /// <summary>
+        /// Deletes a document and its stored content. If `force` is set to `true`, any associated reviews are also
+        /// deleted.
+        /// </summary>
         public class DeleteRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -571,16 +580,17 @@ namespace Google.Apis.DeepReview.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The resource name of the document to delete. Format: `documents/{document}`</summary>
+            /// <summary>Required. The resource name of the document to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Optional. If set to true, and the document is not found, the request succeeds.</summary>
+            /// <summary>Optional. If set to `true`, and the document is not found, the request succeeds.</summary>
             [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AllowMissing { get; set; }
 
             /// <summary>
-            /// Optional. If set to true, any child resources (e.g. review resources) are also deleted.
+            /// Optional. If set to `true`, any child resources (e.g. review resources) are also deleted. If `false` and
+            /// the document has existing reviews, the request fails with `FAILED_PRECONDITION`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Force { get; set; }
@@ -627,12 +637,12 @@ namespace Google.Apis.DeepReview.v1
 
         /// <summary>
         /// Estimates what a review of a document would cost on the caller's Gemini API key. The estimate comes from
-        /// what past reviews with the same model and depth cost, adjusted to this document's size and repriced at the
-        /// Gemini API's current list prices. It covers one review attempt that runs to completion, and doesn't include
-        /// retries after errors.
+        /// what past reviews with the same model, depth, and thinking level cost, adjusted to this document's size and
+        /// repriced at the Gemini API's current list prices. It covers one review attempt that runs to completion, and
+        /// doesn't include retries after errors.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="document">Required. The document to review. Format: `documents/{document}`</param>
+        /// <param name="document">Required. The document to review.</param>
         public virtual EstimateReviewCostRequest EstimateReviewCost(Google.Apis.DeepReview.v1.Data.EstimateReviewCostRequest body, string document)
         {
             return new EstimateReviewCostRequest(this.service, body, document);
@@ -640,9 +650,9 @@ namespace Google.Apis.DeepReview.v1
 
         /// <summary>
         /// Estimates what a review of a document would cost on the caller's Gemini API key. The estimate comes from
-        /// what past reviews with the same model and depth cost, adjusted to this document's size and repriced at the
-        /// Gemini API's current list prices. It covers one review attempt that runs to completion, and doesn't include
-        /// retries after errors.
+        /// what past reviews with the same model, depth, and thinking level cost, adjusted to this document's size and
+        /// repriced at the Gemini API's current list prices. It covers one review attempt that runs to completion, and
+        /// doesn't include retries after errors.
         /// </summary>
         public class EstimateReviewCostRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.EstimateReviewCostResponse>
         {
@@ -654,7 +664,7 @@ namespace Google.Apis.DeepReview.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The document to review. Format: `documents/{document}`</summary>
+            /// <summary>Required. The document to review.</summary>
             [Google.Apis.Util.RequestParameterAttribute("document", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Document { get; private set; }
 
@@ -688,16 +698,20 @@ namespace Google.Apis.DeepReview.v1
             }
         }
 
-        /// <summary>Retrieves document metadata and review history.</summary>
-        /// <param name="name">
-        /// Required. The resource name of the document to retrieve. Format: `documents/{document}`
-        /// </param>
+        /// <summary>
+        /// Retrieves document metadata. The returned document includes its `latest_review_summary` when a review
+        /// exists.
+        /// </summary>
+        /// <param name="name">Required. The resource name of the document to retrieve.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(this.service, name);
         }
 
-        /// <summary>Retrieves document metadata and review history.</summary>
+        /// <summary>
+        /// Retrieves document metadata. The returned document includes its `latest_review_summary` when a review
+        /// exists.
+        /// </summary>
         public class GetRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.Document>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -707,9 +721,7 @@ namespace Google.Apis.DeepReview.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// Required. The resource name of the document to retrieve. Format: `documents/{document}`
-            /// </summary>
+            /// <summary>Required. The resource name of the document to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -737,13 +749,19 @@ namespace Google.Apis.DeepReview.v1
             }
         }
 
-        /// <summary>Lists documents for the authenticated caller with cursor pagination.</summary>
+        /// <summary>
+        /// Lists documents for the authenticated caller with cursor pagination. Each returned document includes its
+        /// `latest_review_summary` when a review exists.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>Lists documents for the authenticated caller with cursor pagination.</summary>
+        /// <summary>
+        /// Lists documents for the authenticated caller with cursor pagination. Each returned document includes its
+        /// `latest_review_summary` when a review exists.
+        /// </summary>
         public class ListRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.ListDocumentsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -752,18 +770,24 @@ namespace Google.Apis.DeepReview.v1
                 InitParameters();
             }
 
-            /// <summary>Optional. Supported AIP-160 filter expressions (e.g., `display_name = "..."`).</summary>
+            /// <summary>
+            /// Optional. Custom filter expressions are not currently supported; non-empty values return
+            /// INVALID_ARGUMENT.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Optional. Supported AIP-132 order_by field.</summary>
+            /// <summary>
+            /// Optional. Custom order_by expressions are not currently supported; non-empty values return
+            /// INVALID_ARGUMENT.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
             /// <summary>
             /// Optional. The maximum number of documents to return in a single page. The server may return fewer than
-            /// this value. If unspecified, at most 50 documents will be returned. The maximum value is 1000; values
-            /// above 1000 will be coerced to 1000.
+            /// this value. If unspecified, at most 50 documents will be returned. The maximum value is 100; values
+            /// above 100 will be coerced to 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -836,18 +860,18 @@ namespace Google.Apis.DeepReview.v1
         }
 
         /// <summary>
-        /// Downloads the original document content (PDF binary) via Scotty media streaming (AIP-136 custom method).
+        /// Downloads the original document content (PDF binary) using media streaming. Pass `alt=media` as a query
+        /// parameter to stream the binary PDF bytes. Without `alt=media`, a JSON response is returned.
         /// </summary>
-        /// <param name="name">
-        /// Required. The resource name of the document to download. Format: `documents/{document}`
-        /// </param>
+        /// <param name="name">Required. The resource name of the document to download.</param>
         public virtual DownloadRequest Download(string name)
         {
             return new DownloadRequest(this.service, name);
         }
 
         /// <summary>
-        /// Downloads the original document content (PDF binary) via Scotty media streaming (AIP-136 custom method).
+        /// Downloads the original document content (PDF binary) using media streaming. Pass `alt=media` as a query
+        /// parameter to stream the binary PDF bytes. Without `alt=media`, a JSON response is returned.
         /// </summary>
         public class DownloadRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.DownloadDocumentResponse>
         {
@@ -859,9 +883,7 @@ namespace Google.Apis.DeepReview.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// Required. The resource name of the document to download. Format: `documents/{document}`
-            /// </summary>
+            /// <summary>Required. The resource name of the document to download.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -974,14 +996,18 @@ namespace Google.Apis.DeepReview.v1
             }
         }
 
-        /// <summary>Creates a new Document resource and ingests the manuscript via Scotty or Google Drive.</summary>
+        /// <summary>
+        /// Creates a new Document resource and ingests the manuscript using media upload or Google Drive.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual UploadRequest Upload(Google.Apis.DeepReview.v1.Data.Document body)
         {
             return new UploadRequest(this.service, body);
         }
 
-        /// <summary>Creates a new Document resource and ingests the manuscript via Scotty or Google Drive.</summary>
+        /// <summary>
+        /// Creates a new Document resource and ingests the manuscript using media upload or Google Drive.
+        /// </summary>
         public class UploadRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.Document>
         {
             /// <summary>Constructs a new Upload request.</summary>
@@ -1042,7 +1068,9 @@ namespace Google.Apis.DeepReview.v1
             }
         }
 
-        /// <summary>Creates a new Document resource and ingests the manuscript via Scotty or Google Drive.</summary>
+        /// <summary>
+        /// Creates a new Document resource and ingests the manuscript using media upload or Google Drive.
+        /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
@@ -1291,231 +1319,6 @@ namespace Google.Apis.DeepReview.v1
                 }
             }
         }
-
-        /// <summary>
-        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
-        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
-        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the operation resource to be cancelled.</param>
-        public virtual CancelRequest Cancel(Google.Apis.DeepReview.v1.Data.CancelOperationRequest body, string name)
-        {
-            return new CancelRequest(this.service, body, name);
-        }
-
-        /// <summary>
-        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
-        /// operation, but success is not guaranteed. If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
-        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-        /// </summary>
-        public class CancelRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DeepReview.v1.Data.CancelOperationRequest body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>The name of the operation resource to be cancelled.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeepReview.v1.Data.CancelOperationRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "cancel";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/{+name}:cancel";
-
-            /// <summary>Initializes Cancel parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^operations/.*$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
-        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.
-        /// </summary>
-        /// <param name="name">The name of the operation resource to be deleted.</param>
-        public virtual DeleteRequest Delete(string name)
-        {
-            return new DeleteRequest(this.service, name);
-        }
-
-        /// <summary>
-        /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
-        /// operation result. It does not cancel the operation. If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.
-        /// </summary>
-        public class DeleteRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>The name of the operation resource to be deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "delete";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "DELETE";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/{+name}";
-
-            /// <summary>Initializes Delete parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^operations/.*$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
-        /// it returns `UNIMPLEMENTED`.
-        /// </summary>
-        /// <param name="name">The name of the operation's parent resource.</param>
-        public virtual ListRequest List(string name)
-        {
-            return new ListRequest(this.service, name);
-        }
-
-        /// <summary>
-        /// Lists operations that match the specified filter in the request. If the server doesn't support this method,
-        /// it returns `UNIMPLEMENTED`.
-        /// </summary>
-        public class ListRequest : DeepReviewBaseServiceRequest<Google.Apis.DeepReview.v1.Data.ListOperationsResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>The name of the operation's parent resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>
-            /// When set to `true`, operations that are reachable are returned as normal, and those that are unreachable
-            /// are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading
-            /// across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is
-            /// not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented
-            /// otherwise in service or product specific documentation.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("returnPartialSuccess", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ReturnPartialSuccess { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "list";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/{+name}";
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^operations$",
-                });
-                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageSize",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("returnPartialSuccess", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "returnPartialSuccess",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
     }
 
     /// <summary>The "v1" collection of methods.</summary>
@@ -1533,9 +1336,7 @@ namespace Google.Apis.DeepReview.v1
         }
 
         /// <summary>Retrieves the review quota limits and sliding-window usage for the authenticated caller.</summary>
-        /// <param name="name">
-        /// Required. The resource name of the singleton user quota to retrieve. Format: `userQuota`
-        /// </param>
+        /// <param name="name">Required. The resource name of the singleton user quota to retrieve.</param>
         public virtual GetUserQuotaRequest GetUserQuota(string name)
         {
             return new GetUserQuotaRequest(this.service, name);
@@ -1551,9 +1352,7 @@ namespace Google.Apis.DeepReview.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// Required. The resource name of the singleton user quota to retrieve. Format: `userQuota`
-            /// </summary>
+            /// <summary>Required. The resource name of the singleton user quota to retrieve.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1633,13 +1432,6 @@ namespace Google.Apis.DeepReview.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
         public virtual string GivenName { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request message for Operations.CancelOperation.</summary>
-    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1820,10 +1612,19 @@ namespace Google.Apis.DeepReview.v1.Data
         public virtual System.Nullable<bool> GeminiApiKeySet { get; set; }
 
         /// <summary>
-        /// Optional. The Gemini model name/version to use (e.g., "gemini-1.5-pro", "gemini-2.0-flash").
+        /// Optional. The Gemini model identifier to use for the review. If omitted, the server uses its default model.
+        /// Unsupported values return INVALID_ARGUMENT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>
+        /// Optional. Reasoning effort level for model calls in the review pipeline. Defaults to `THINKING_LEVEL_MEDIUM`
+        /// when omitted or `THINKING_LEVEL_UNSPECIFIED`. Non-`THINKING_LEVEL_MEDIUM` thinking levels require
+        /// `gemini_api_key` when calling `CreateReview`; otherwise `CreateReview` returns `INVALID_ARGUMENT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thinkingLevel")]
+        public virtual string ThinkingLevel { get; set; }
 
         /// <summary>Optional. Review execution topology profile to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topology")]
@@ -1841,8 +1642,8 @@ namespace Google.Apis.DeepReview.v1.Data
     }
 
     /// <summary>
-    /// Document Resource Model representing an uploaded document for review. Documents are immutable post-creation; to
-    /// review a new version, create a new Document.
+    /// A document uploaded for automated review. Documents are immutable post-creation; to review a new version, create
+    /// a new Document.
     /// </summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1891,7 +1692,10 @@ namespace Google.Apis.DeepReview.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveSource")]
         public virtual DriveSource DriveSource { get; set; }
 
-        /// <summary>Output only. Summary of the most recent review run for this document, if any.</summary>
+        /// <summary>
+        /// Output only. Summary of the most recent review run for this document, if any. Populated by `GetDocument` and
+        /// `ListDocuments`; unset on the document returned by `CreateDocument`, which has no reviews yet.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestReviewSummary")]
         public virtual ReviewSummary LatestReviewSummary { get; set; }
 
@@ -1903,7 +1707,7 @@ namespace Google.Apis.DeepReview.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Polymorphic location targeting either a PDF page region/quote or text lines.</summary>
+    /// <summary>A location targeting either a PDF page region/quote or text lines in the document.</summary>
     public class DocumentLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Location within a rendered PDF document.</summary>
@@ -1918,7 +1722,7 @@ namespace Google.Apis.DeepReview.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for downloading a Document's raw content via Scotty media.</summary>
+    /// <summary>Response message for downloading a Document's raw content using media download.</summary>
     public class DownloadDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1949,7 +1753,8 @@ namespace Google.Apis.DeepReview.v1.Data
         public virtual System.Nullable<bool> ResourceKeySet { get; set; }
 
         /// <summary>
-        /// Optional. Input only. Immutable. Specific revision ID to import (defaults to latest head revision).
+        /// Optional. Input only. Immutable. Importing a specific revision is not currently supported; non-empty values
+        /// return INVALID_ARGUMENT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
@@ -1974,7 +1779,7 @@ namespace Google.Apis.DeepReview.v1.Data
     {
         /// <summary>
         /// Required. The review to estimate, as it would be passed to `CreateReview`. Only its `run_config` is read,
-        /// and `run_config.gemini_api_key` is ignored.
+        /// and `gemini_api_key` is ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("review")]
         public virtual Review Review { get; set; }
@@ -1985,7 +1790,8 @@ namespace Google.Apis.DeepReview.v1.Data
 
     /// <summary>
     /// Response message for estimating what a review would cost. When the cost can't be estimated, for example because
-    /// too few past reviews used the same model and depth, the costs are unset and `past_review_count` is 0.
+    /// too few past reviews used the same model, depth, and thinking level, the costs are unset and `past_review_count`
+    /// is 0.
     /// </summary>
     public class EstimateReviewCostResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2055,29 +1861,6 @@ namespace Google.Apis.DeepReview.v1.Data
         /// <summary>A token to retrieve the next page of results, or empty if no further pages exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response message for Operations.ListOperations.</summary>
-    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The standard List next-page token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>A list of operations that matches the specified filter in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
-
-        /// <summary>
-        /// Unordered list. Unreachable resources. Populated when the request sets
-        /// `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to
-        /// list all resources across all supported locations.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2237,7 +2020,7 @@ namespace Google.Apis.DeepReview.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Review Sub-Resource Model representing an evaluation run of a document.</summary>
+    /// <summary>An evaluation run of a document.</summary>
     public class Review : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -2415,7 +2198,7 @@ namespace Google.Apis.DeepReview.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. Resource name of the Review. Format: `documents/{document}/reviews/{review}`</summary>
+        /// <summary>Output only. Resource name of the Review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("review")]
         public virtual string Review { get; set; }
 
@@ -2484,8 +2267,8 @@ namespace Google.Apis.DeepReview.v1.Data
     }
 
     /// <summary>
-    /// W3C Web Annotation TextQuoteSelector for resilient text anchoring
-    /// (https://www.w3.org/TR/annotation-model/#text-quote-selector).
+    /// W3C Web Annotation TextQuoteSelector for resilient text anchoring (see
+    /// https://www.w3.org/TR/annotation-model/#text-quote-selector for details).
     /// </summary>
     public class TextQuoteSelector : Google.Apis.Requests.IDirectResponseSchema
     {
