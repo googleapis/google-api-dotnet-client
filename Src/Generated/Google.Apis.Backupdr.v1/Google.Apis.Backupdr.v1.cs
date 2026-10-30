@@ -1019,10 +1019,21 @@ namespace Google.Apis.Backupdr.v1
 
                         /// <summary>
                         /// Required. The ID to use for the binding. This will become the final component of the
-                        /// binding's resource name.
+                        /// binding's resource name. This value must start with a lowercase letter followed by up to 62
+                        /// lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("autoProtectionPolicyBindingId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string AutoProtectionPolicyBindingId { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes since the first
+                        /// request. The request ID must be a valid UUID with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Backupdr.v1.Data.AutoProtectionPolicyBinding Body { get; set; }
@@ -1054,6 +1065,14 @@ namespace Google.Apis.Backupdr.v1
                             RequestParameters.Add("autoProtectionPolicyBindingId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "autoProtectionPolicyBindingId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1315,10 +1334,21 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The ID to use for the policy. This will become the final component of the policy's
-                    /// resource name.
+                    /// resource name. This value must start with a lowercase letter followed by up to 62 lowercase
+                    /// letters, numbers, or hyphens, and cannot end with a hyphen.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("autoProtectionPolicyId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string AutoProtectionPolicyId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. The
+                    /// request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy Body { get; set; }
@@ -1350,6 +1380,14 @@ namespace Google.Apis.Backupdr.v1
                         RequestParameters.Add("autoProtectionPolicyId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "autoProtectionPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1392,6 +1430,16 @@ namespace Google.Apis.Backupdr.v1
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. The
+                    /// request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -1416,6 +1464,14 @@ namespace Google.Apis.Backupdr.v1
                         RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
                         {
                             Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1589,7 +1645,7 @@ namespace Google.Apis.Backupdr.v1
                 /// <summary>Updates the parameters of a single AutoProtectionPolicy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Identifier. The resource name of the AutoProtectionPolicy. Format:
+                /// Output only. Identifier. The resource name of the AutoProtectionPolicy. Format:
                 /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.AutoProtectionPolicy body, string name)
@@ -1609,11 +1665,21 @@ namespace Google.Apis.Backupdr.v1
                     }
 
                     /// <summary>
-                    /// Identifier. The resource name of the AutoProtectionPolicy. Format:
+                    /// Output only. Identifier. The resource name of the AutoProtectionPolicy. Format:
                     /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. The
+                    /// request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
 
                     /// <summary>
                     /// Optional. Field mask is used to specify the fields to be overwritten in the AutoProtectionPolicy
@@ -1650,6 +1716,14 @@ namespace Google.Apis.Backupdr.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/autoProtectionPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -7576,7 +7650,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("criteria")]
         public virtual Criteria Criteria { get; set; }
 
-        /// <summary>Optional. A description of the policy.</summary>
+        /// <summary>Optional. A description of the policy. The description must be at most 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -7587,7 +7661,7 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the AutoProtectionPolicy. Format:
+        /// Output only. Identifier. The resource name of the AutoProtectionPolicy. Format:
         /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7689,7 +7763,7 @@ namespace Google.Apis.Backupdr.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. A description of the binding.</summary>
+        /// <summary>Optional. A description of the binding. The description must be at most 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -7701,7 +7775,7 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Identifier. The resource name of the AutoProtectionPolicyBinding. Format:
+        /// Output only. Identifier. The resource name of the AutoProtectionPolicyBinding. Format:
         /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -11778,8 +11852,21 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>Request message for initiating delete of an AutoProtectionPolicyBinding.</summary>
     public class InitiateDeleteAutoProtectionPolicyBindingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
+        /// <summary>
+        /// Optional. The current etag of the AutoProtectionPolicyBinding. If an etag is provided and does not match the
+        /// current etag of the binding, deletion will be blocked and an ABORTED error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes since the first request. The request ID must be a valid UUID with the
+        /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
     }
 
     /// <summary>Additional instance params.</summary>
