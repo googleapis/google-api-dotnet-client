@@ -16153,6 +16153,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>The study arm ID associated with the conversation. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyArmId")]
+        public virtual string StudyArmId { get; set; }
+
+        /// <summary>The study ID associated with the conversation. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyId")]
+        public virtual string StudyId { get; set; }
+
         /// <summary>
         /// A user-specified string representing the agent's team. Deprecated in favor of the `teams` field.
         /// </summary>
@@ -25210,6 +25218,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>The study arm ID associated with the conversation. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyArmId")]
+        public virtual string StudyArmId { get; set; }
+
+        /// <summary>The study ID associated with the conversation. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyId")]
+        public virtual string StudyId { get; set; }
+
         /// <summary>
         /// A user-specified string representing the agent's team. Deprecated in favor of the `teams` field.
         /// </summary>
@@ -31894,6 +31910,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The agent's location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
+
+        /// <summary>The study arm ID associated with the conversation. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyArmId")]
+        public virtual string StudyArmId { get; set; }
+
+        /// <summary>The study ID associated with the conversation. Only applicable to automated agents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("studyId")]
+        public virtual string StudyId { get; set; }
 
         /// <summary>
         /// A user-specified string representing the agent's team. Deprecated in favor of the `teams` field.
