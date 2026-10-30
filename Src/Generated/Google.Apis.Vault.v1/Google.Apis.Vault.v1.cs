@@ -2828,7 +2828,7 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveQuery")]
         public virtual HeldDriveQuery DriveQuery { get; set; }
 
-        /// <summary>Service-specific options for Gemini holds. If set, **CorpusType** must be **GEMINI**.</summary>
+        /// <summary>Service-specific options for Gemini app holds. If set, **CorpusType** must be **GEMINI**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiQuery")]
         public virtual HeldGeminiQuery GeminiQuery { get; set; }
 
@@ -3199,7 +3199,11 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
         public virtual DriveExportOptions DriveOptions { get; set; }
 
-        /// <summary>Option available for Gemini export.</summary>
+        /// <summary>Option available for Gemini in Workspace export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiInWorkspaceOptions")]
+        public virtual GeminiInWorkspaceExportOptions GeminiInWorkspaceOptions { get; set; }
+
+        /// <summary>Option available for Gemini app export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiOptions")]
         public virtual GeminiExportOptions GeminiOptions { get; set; }
 
@@ -3246,7 +3250,7 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The options for Gemini exports.</summary>
+    /// <summary>The options for Gemini app exports.</summary>
     public class GeminiExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The file format for exported messages.</summary>
@@ -3257,7 +3261,25 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Additional options for Gemini search</summary>
+    /// <summary>The options for Gemini in Workspace exports.</summary>
+    public class GeminiInWorkspaceExportOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file format for exported messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
+        public virtual string ExportFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional options for Gemini in Workspace search</summary>
+    public class GeminiInWorkspaceOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional options for Gemini app search</summary>
     public class GeminiOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3430,7 +3452,7 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Options for Gemini holds.</summary>
+    /// <summary>Options for Gemini app holds.</summary>
     public class HeldGeminiQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -4126,7 +4148,11 @@ namespace Google.Apis.Vault.v1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Set Gemini search-specific options.</summary>
+        /// <summary>Set Gemini in Workspace search-specific options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiInWorkspaceOptions")]
+        public virtual GeminiInWorkspaceOptions GeminiInWorkspaceOptions { get; set; }
+
+        /// <summary>Set Gemini app search-specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiOptions")]
         public virtual GeminiOptions GeminiOptions { get; set; }
 
