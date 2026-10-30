@@ -7015,6 +7015,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Determines how to proceed with the update.</summary>
+    public class Outcome : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Determines how to proceed with the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcomeType")]
+        public virtual string OutcomeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A list of package names.</summary>
     public class PackageNameList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7833,6 +7844,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> TetheringConfigDisabled { get; set; }
 
         /// <summary>
+        /// Optional. The Unified Update Control policy, for controlling updates of software components on the device.
+        /// Supported only on company-owned devices.The targets OS_UPDATE_WITH_API_LEVEL_CHANGE and
+        /// OS_UPDATE_WITHOUT_API_LEVEL_CHANGE are supported only on devices where the OEM has integrated with Unified
+        /// Update Controls, and are ignored otherwise. If systemUpdate is set, then that policy takes precedence and
+        /// the targets OS_UPDATE_WITH_API_LEVEL_CHANGE and OS_UPDATE_WITHOUT_API_LEVEL_CHANGE are ignored here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unifiedUpdatePolicy")]
+        public virtual UnifiedUpdatePolicy UnifiedUpdatePolicy { get; set; }
+
+        /// <summary>
         /// Whether user uninstallation of applications is disabled. This prevents apps from being uninstalled, even
         /// those removed using applications
         /// </summary>
@@ -8004,6 +8025,73 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Event type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A predicate is something that can be evaluated on a device at any point of time, to return true or false. This
+    /// is the conjunction (logical AND) of all the individual conditions defined here. An empty Predicate always
+    /// evaluates to true.
+    /// </summary>
+    public class Predicate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A lower bound on the current date, in the device time zone. If not set, always evaluates to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateLowerBound")]
+        public virtual Date DateLowerBound { get; set; }
+
+        /// <summary>
+        /// Optional. An upper bound on the current date, in the device time zone. If not set, always evaluates to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateUpperBound")]
+        public virtual Date DateUpperBound { get; set; }
+
+        /// <summary>
+        /// Optional. Evaluates to true if this list is empty or if the current day of the week in the device's local
+        /// time is in this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
+        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; }
+
+        /// <summary>
+        /// Optional. A lower bound on the current time of the day, evaluated as hh:00:00 in the device time zone. Must
+        /// specify only the hour (0-23). The policy will be rejected if minutes, seconds, or nanos are set. If not set,
+        /// always evaluates to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOfDayLowerBound")]
+        public virtual TimeOfDay TimeOfDayLowerBound { get; set; }
+
+        /// <summary>
+        /// Optional. An upper bound on the current time of the day, evaluated as hh:00:00 in the device time zone. Must
+        /// specify only the hour (0-23). The policy will be rejected if minutes, seconds, or nanos are set. If not set,
+        /// always evaluates to true.The window closes at the specified hour (for example, a lower bound of 14 and an
+        /// upper bound of 15 covers 14:00 to 15:00). When both bounds are set in the same rule, timeOfDayUpperBound
+        /// must be strictly greater than timeOfDayLowerBound for the window to match; if timeOfDayUpperBound is less
+        /// than or equal to timeOfDayLowerBound, the predicate evaluates to false. Setting timeOfDayUpperBound to 0
+        /// (00:00) evaluates to false for the entire day. To extend a window to the end of the day (24:00), omit
+        /// timeOfDayUpperBound. To define an overnight window spanning midnight, use two rules: an evening rule with
+        /// only timeOfDayLowerBound set and a morning rule with only timeOfDayUpperBound set (targeting the following
+        /// day if daysOfWeek is set).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOfDayUpperBound")]
+        public virtual TimeOfDay TimeOfDayUpperBound { get; set; }
+
+        /// <summary>
+        /// Optional. A lower bound on the amount of time for which the update (that is, the specific build or version)
+        /// has been available to the device. This must be a multiple of 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAgeLowerBound")]
+        public virtual object UpdateAgeLowerBound { get; set; }
+
+        /// <summary>
+        /// Optional. An upper bound on the amount of time for which the update has been available. If not set or set to
+        /// zero, always evaluates to true. This must be a multiple of 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAgeUpperBound")]
+        public virtual object UpdateAgeUpperBound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8281,6 +8369,48 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A rule as a part of the Unified Update Control policy. See rules for how this is used.</summary>
+    public class Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. An EMM-defined identifier for this rule, of length at most 64 characters. This must not be empty.
+        /// Within a UnifiedUpdatePolicy, different rules must have different ids.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Determines how to proceed with the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
+        public virtual Outcome Outcome { get; set; }
+
+        /// <summary>
+        /// Optional. The predicate of the rule, which can evaluate to true or false. See rules for how this is used. If
+        /// not set, the predicate always evaluates to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predicate")]
+        public virtual Predicate Predicate { get; set; }
+
+        /// <summary>
+        /// Optional. The stages at which the rule is evaluated. If this list is empty, the rule is evaluated at all
+        /// stages. Specifying stages is supported only for OS_UPDATE_WITHOUT_API_LEVEL_CHANGE and
+        /// OS_UPDATE_WITH_API_LEVEL_CHANGE. For SINGLE_APP, GOOGLE_SYSTEM_SERVICES, and GOOGLE_PLAY_SYSTEM_UPDATE, this
+        /// field is ignored and the rule is evaluated at all stages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<string> Stages { get; set; }
+
+        /// <summary>
+        /// Required. Targets that this rule applies to. This can have multiple targets here for convenience, and that
+        /// is equivalent to having multiple rules in sequence each having one target, in the same order in which
+        /// targets are listed here. This list must not be empty and must not have duplicates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<Target> Targets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Controls for the screen brightness settings.</summary>
     public class ScreenBrightnessSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8475,6 +8605,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of an app on Google System services.</summary>
+    public class SingleApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The package name of the app. This can only be an app which is a part of GOOGLE_SYSTEM_SERVICES.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8863,6 +9006,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A software component that can be updated.</summary>
+    public class Target : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of an app on Google System services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleApp")]
+        public virtual SingleApp SingleApp { get; set; }
+
+        /// <summary>Required. The type of software component that can be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
+        public virtual string TargetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Telephony information associated with a given SIM card on the device. This is supported for all SIM cards on
     /// fully managed devices on Android 6 and above. In addition, this is supported for admin-added eSIMs on all
@@ -8914,6 +9072,61 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>A short header which appears above the HTML content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual UserFacingMessage Header { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and google.protobuf.Timestamp.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+        /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>
+        /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+        /// 999,999,999.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An
+        /// API may allow the value 60 if it allows leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Unified Update Control policy, for controlling updates of software components on the device (see Target).
+    /// Supported only on company-owned devices.
+    /// </summary>
+    public class UnifiedUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When the policy is evaluated for a given target, all rules which refer to that target are
+        /// evaluated in sequence. The first rule for which the predicate evaluates to true is considered, and its
+        /// outcome is used. If no rule matches, the default update behavior applies. In other words, this behaves like
+        /// a chained if-else statement.However, if an update has been available for more than a certain amount of time,
+        /// any outcome of BLOCK is automatically changed to the default update behavior. At most 100 rules are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
