@@ -1023,7 +1023,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified accelerator type.</summary>
@@ -1099,7 +1099,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of accelerator types that are available to the specified project.</summary>
@@ -1258,7 +1258,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -1457,7 +1457,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified address resource.</summary>
@@ -1553,7 +1553,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified address resource.</summary>
@@ -1629,7 +1629,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -1723,7 +1723,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of addresses contained within the specified region.</summary>
@@ -1882,7 +1882,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Moves the specified address resource.</summary>
@@ -1986,7 +1986,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -2094,7 +2094,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -2178,7 +2178,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -2271,7 +2271,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -2347,7 +2347,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets the capacity history.</summary>
@@ -2417,7 +2417,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -2616,7 +2616,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified autoscaler.</summary>
@@ -2712,7 +2712,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified autoscaler resource.</summary>
@@ -2788,7 +2788,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
@@ -2878,7 +2878,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of autoscalers contained within the specified zone.</summary>
@@ -3037,7 +3037,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -3145,7 +3145,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -3229,7 +3229,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
@@ -3331,7 +3331,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -3442,7 +3442,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -3626,7 +3626,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified BackendBucket resource.</summary>
@@ -3708,7 +3708,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a key for validating requests with signed URLs for this backend bucket.</summary>
@@ -3810,7 +3810,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified BackendBucket resource.</summary>
@@ -3872,7 +3872,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -3950,7 +3950,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -4030,7 +4030,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of BackendBucket resources available to the specified project.</summary>
@@ -4175,7 +4175,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of all usable backend buckets in the specified project.</summary>
@@ -4320,7 +4320,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -4416,7 +4416,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the edge security policy for the specified backend bucket.</summary>
@@ -4512,7 +4512,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -4582,7 +4582,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -4652,7 +4652,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates the specified BackendBucket resource with the data included in the request.</summary>
@@ -4742,7 +4742,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -4853,7 +4853,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -5037,7 +5037,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified BackendService resource.</summary>
@@ -5119,7 +5119,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a key for validating requests with signed URLs for this backend service.</summary>
@@ -5221,7 +5221,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified BackendService resource.</summary>
@@ -5283,7 +5283,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns effective security policies applied to this backend service.</summary>
@@ -5345,7 +5345,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -5422,7 +5422,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -5500,7 +5500,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -5582,7 +5582,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of BackendService resources available to the specified project.</summary>
@@ -5727,7 +5727,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -5880,7 +5880,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -5978,7 +5978,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the edge security policy for the specified backend service.</summary>
@@ -6074,7 +6074,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -6144,7 +6144,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -6246,7 +6246,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -6316,7 +6316,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -6412,7 +6412,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -6509,7 +6509,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified cross-site network in the given scope.</summary>
@@ -6571,7 +6571,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -6665,7 +6665,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the cross-site networks for a project in the given scope.</summary>
@@ -6810,7 +6810,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -6930,7 +6930,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -7129,7 +7129,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified disk type.</summary>
@@ -7205,7 +7205,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of disk types available to the specified project.</summary>
@@ -7364,7 +7364,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -7489,7 +7489,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -7673,7 +7673,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Bulk create a set of disks.</summary>
@@ -7763,7 +7763,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -7869,7 +7869,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -7996,7 +7996,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -8100,7 +8100,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified persistent disk.</summary>
@@ -8176,7 +8176,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -8268,7 +8268,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -8380,7 +8380,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of persistent disks contained within the specified zone.</summary>
@@ -8539,7 +8539,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes resource policies from a disk.</summary>
@@ -8643,7 +8643,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Resizes the specified persistent disk. You can only increase the size of the disk.</summary>
@@ -8747,7 +8747,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -8831,7 +8831,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -8939,7 +8939,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Starts asynchronous replication. Must be invoked on the primary disk.</summary>
@@ -9043,7 +9043,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -9143,7 +9143,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -9245,7 +9245,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -9329,7 +9329,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -9462,7 +9462,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -9570,7 +9570,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -9667,7 +9667,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -9735,7 +9735,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -9815,7 +9815,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of ExternalVpnGateway available to the specified project.</summary>
@@ -9960,7 +9960,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -10036,7 +10036,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -10106,7 +10106,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -10212,7 +10212,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Inserts a rule into a firewall policy.</summary>
@@ -10288,7 +10288,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Copies rules to the specified firewall policy.</summary>
@@ -10368,7 +10368,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified policy.</summary>
@@ -10436,7 +10436,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified firewall policy.</summary>
@@ -10484,7 +10484,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets an association with the specified name.</summary>
@@ -10544,7 +10544,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -10608,7 +10608,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets a rule of the specified priority.</summary>
@@ -10668,7 +10668,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
@@ -10745,7 +10745,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -10895,7 +10895,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists associations of a specified target, i.e., organization or folder.</summary>
@@ -10956,7 +10956,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Moves the specified firewall policy.</summary>
@@ -11039,7 +11039,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches the specified policy with the data included in the request.</summary>
@@ -11115,7 +11115,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches a rule of the specified priority.</summary>
@@ -11203,7 +11203,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes an association for the specified firewall policy.</summary>
@@ -11283,7 +11283,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a rule of the specified priority.</summary>
@@ -11363,7 +11363,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -11419,7 +11419,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -11475,7 +11475,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -11572,7 +11572,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified firewall.</summary>
@@ -11634,7 +11634,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a firewall rule in the specified project using the data included in the request.</summary>
@@ -11710,7 +11710,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of firewall rules available to the specified project.</summary>
@@ -11855,7 +11855,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -11951,7 +11951,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -12021,7 +12021,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -12119,7 +12119,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -12318,7 +12318,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified ForwardingRule resource.</summary>
@@ -12414,7 +12414,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified ForwardingRule resource.</summary>
@@ -12512,7 +12512,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -12608,7 +12608,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -12771,7 +12771,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -12883,7 +12883,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -12993,7 +12993,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -13101,7 +13101,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -13300,7 +13300,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Cancel the specified future reservation.</summary>
@@ -13398,7 +13398,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified future reservation.</summary>
@@ -13496,7 +13496,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves information about the specified future reservation.</summary>
@@ -13574,7 +13574,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new Future Reservation.</summary>
@@ -13664,7 +13664,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -13827,7 +13827,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates the specified future reservation.</summary>
@@ -13943,7 +13943,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -14040,7 +14040,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified address resource.</summary>
@@ -14102,7 +14102,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -14182,7 +14182,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of global addresses.</summary>
@@ -14327,7 +14327,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Moves the specified address resource from one project to another project.</summary>
@@ -14417,7 +14417,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -14491,7 +14491,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -14561,7 +14561,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -14658,7 +14658,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -14748,7 +14748,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -14828,7 +14828,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of GlobalForwardingRule resources available to the specified project.</summary>
@@ -14973,7 +14973,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -15071,7 +15071,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -15147,7 +15147,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -15243,7 +15243,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -15306,7 +15306,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates the Global Frontend Billing Bundle Settings for a project.</summary>
@@ -15386,7 +15386,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -15497,7 +15497,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -15587,7 +15587,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Detach the network endpoint from the specified network endpoint group.</summary>
@@ -15683,7 +15683,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified network endpoint group.</summary>
@@ -15747,7 +15747,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -15835,7 +15835,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of network endpoint groups that are located in the specified project.</summary>
@@ -15980,7 +15980,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the network endpoints in the specified network endpoint group.</summary>
@@ -16145,7 +16145,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -16344,7 +16344,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified Operations resource.</summary>
@@ -16406,7 +16406,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the specified Operations resource.</summary>
@@ -16468,7 +16468,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of Operation resources contained within the specified project.</summary>
@@ -16613,7 +16613,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -16693,7 +16693,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -16768,7 +16768,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -16834,7 +16834,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of Operation resources contained within the specified organization.</summary>
@@ -16977,7 +16977,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -17074,7 +17074,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified global PublicDelegatedPrefix resource.</summary>
@@ -17136,7 +17136,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -17218,7 +17218,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the global PublicDelegatedPrefixes for a project.</summary>
@@ -17363,7 +17363,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -17459,7 +17459,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -17658,7 +17658,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -17760,7 +17760,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets details of a global VM extension policy.</summary>
@@ -17822,7 +17822,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new project level GlobalVmExtensionPolicy.</summary>
@@ -17898,7 +17898,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists global VM extension policies.</summary>
@@ -18043,7 +18043,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates a global VM extension policy.</summary>
@@ -18133,7 +18133,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -18332,7 +18332,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified HealthCheck resource.</summary>
@@ -18414,7 +18414,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified HealthCheck resource.</summary>
@@ -18476,7 +18476,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -18556,7 +18556,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of HealthCheck resources available to the specified project.</summary>
@@ -18701,7 +18701,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -18797,7 +18797,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -18867,7 +18867,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -18961,7 +18961,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -19076,7 +19076,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Allows customers to get SBOM versions of a host.</summary>
@@ -19195,7 +19195,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of hosts.</summary>
@@ -19378,7 +19378,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -19475,7 +19475,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified HttpHealthCheck resource.</summary>
@@ -19537,7 +19537,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -19617,7 +19617,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of HttpHealthCheck resources available to the specified project.</summary>
@@ -19762,7 +19762,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -19858,7 +19858,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -19928,7 +19928,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -20022,7 +20022,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -20119,7 +20119,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified HttpsHealthCheck resource.</summary>
@@ -20181,7 +20181,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -20261,7 +20261,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of HttpsHealthCheck resources available to the specified project.</summary>
@@ -20406,7 +20406,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -20502,7 +20502,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -20572,7 +20572,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -20666,7 +20666,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -20763,7 +20763,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -20854,7 +20854,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns a list of global ImageView resources, with a regional context.</summary>
@@ -21013,7 +21013,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -21110,7 +21110,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -21206,7 +21206,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified image.</summary>
@@ -21268,7 +21268,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -21342,7 +21342,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -21420,7 +21420,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates an image in the specified project using the data included in the request.</summary>
@@ -21508,7 +21508,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -21663,7 +21663,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -21759,7 +21759,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -21829,7 +21829,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -21903,7 +21903,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -21973,7 +21973,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -22118,7 +22118,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -22246,7 +22246,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns all of the details about the specified resize request.</summary>
@@ -22348,7 +22348,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -22468,7 +22468,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of resize requests that are contained in the managed instance group.</summary>
@@ -22647,7 +22647,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -22784,7 +22784,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -22968,7 +22968,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -23064,7 +23064,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -23183,7 +23183,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -23299,7 +23299,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -23435,7 +23435,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes selected per-instance configurations for the managed instance group.</summary>
@@ -23525,7 +23525,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns all of the details about the specified managed instance group.</summary>
@@ -23601,7 +23601,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -23705,7 +23705,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -23868,7 +23868,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -24057,7 +24057,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -24244,7 +24244,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -24429,7 +24429,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -24549,7 +24549,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -24665,7 +24665,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -24800,7 +24800,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -24939,7 +24939,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -25063,7 +25063,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -25175,7 +25175,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -25291,7 +25291,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -25415,7 +25415,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -25561,7 +25561,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -25693,7 +25693,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -25809,7 +25809,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -25934,7 +25934,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -26118,7 +26118,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -26220,7 +26220,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -26304,7 +26304,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -26398,7 +26398,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -26563,7 +26563,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -26756,7 +26756,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -26870,7 +26870,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the named ports for the specified instance group.</summary>
@@ -26974,7 +26974,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -27058,7 +27058,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -27135,7 +27135,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patch Instance settings</summary>
@@ -27237,7 +27237,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -27436,7 +27436,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -27524,7 +27524,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified instance template.</summary>
@@ -27586,7 +27586,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -27664,7 +27664,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -27748,7 +27748,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of instance templates that are contained within the specified project.</summary>
@@ -27893,7 +27893,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -27963,7 +27963,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -28033,7 +28033,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -28166,7 +28166,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Adds one dynamic network interface to an active instance.</summary>
@@ -28276,7 +28276,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -28386,7 +28386,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -28574,7 +28574,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -28701,7 +28701,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -28797,7 +28797,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified Instance resource. For more information, seeDeleting an instance.</summary>
@@ -28905,7 +28905,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes an access config from an instance's network interface.</summary>
@@ -29029,7 +29029,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -29155,7 +29155,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Detaches a disk from an instance.</summary>
@@ -29271,7 +29271,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified Instance resource.</summary>
@@ -29347,7 +29347,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns effective firewalls applied to an interface of the instance.</summary>
@@ -29437,7 +29437,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified guest attributes entry.</summary>
@@ -29537,7 +29537,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -29629,7 +29629,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the screenshot from the specified instance.</summary>
@@ -29705,7 +29705,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the last 1 MB of serial port output from the specified instance.</summary>
@@ -29816,7 +29816,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the Shielded Instance Identity of an instance</summary>
@@ -29892,7 +29892,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -30021,7 +30021,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of instances contained within the specified zone.</summary>
@@ -30180,7 +30180,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -30367,7 +30367,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Perform a manual maintenance on the instance.</summary>
@@ -30463,7 +30463,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes resource policies from an instance.</summary>
@@ -30567,7 +30567,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Mark the host as faulty and try to restart the instance on a new host.</summary>
@@ -30671,7 +30671,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -30773,7 +30773,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Resumes an instance that was suspended using theinstances().suspend method.</summary>
@@ -30869,7 +30869,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sends diagnostic interrupt to the instance.</summary>
@@ -30945,7 +30945,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets deletion protection on the instance.</summary>
@@ -31053,7 +31053,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the auto-delete flag for a disk attached to an instance.</summary>
@@ -31183,7 +31183,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -31267,7 +31267,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -31375,7 +31375,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -31483,7 +31483,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -31591,7 +31591,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets metadata for the specified instance to the data included in the request.</summary>
@@ -31695,7 +31695,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -31805,7 +31805,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets name of an instance.</summary>
@@ -31909,7 +31909,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -32023,7 +32023,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -32139,7 +32139,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -32249,7 +32249,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -32359,7 +32359,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets network tags for the specified instance to the data included in the request.</summary>
@@ -32463,7 +32463,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -32577,7 +32577,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -32679,7 +32679,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -32789,7 +32789,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -32923,7 +32923,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -33047,7 +33047,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -33131,7 +33131,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -33335,7 +33335,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -33461,7 +33461,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -33571,7 +33571,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -33699,7 +33699,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -33809,7 +33809,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -33920,7 +33920,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>returns the specified InstantSnapshotGroup resource in the specified zone.</summary>
@@ -33996,7 +33996,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -34088,7 +34088,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>inserts a Zonal InstantSnapshotGroup resource</summary>
@@ -34190,7 +34190,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>retrieves the list of InstantSnapshotGroup resources contained within the specified zone.</summary>
@@ -34349,7 +34349,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -34433,7 +34433,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -34517,7 +34517,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -34716,7 +34716,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -34822,7 +34822,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified InstantSnapshot resource in the specified zone.</summary>
@@ -34898,7 +34898,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -34990,7 +34990,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates an instant snapshot in the specified zone.</summary>
@@ -35080,7 +35080,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of InstantSnapshot resources contained within the specified zone.</summary>
@@ -35239,7 +35239,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -35323,7 +35323,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -35433,7 +35433,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -35517,7 +35517,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -35616,7 +35616,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified InterconnectAttachmentGroup resource in the given scope.</summary>
@@ -35680,7 +35680,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -35758,7 +35758,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -35824,7 +35824,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -35906,7 +35906,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the InterconnectAttachmentGroups for a project in the given scope.</summary>
@@ -36051,7 +36051,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -36159,7 +36159,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -36229,7 +36229,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -36299,7 +36299,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -36498,7 +36498,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified interconnect attachment.</summary>
@@ -36594,7 +36594,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified interconnect attachment.</summary>
@@ -36670,7 +36670,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -36776,7 +36776,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of interconnect attachments contained within the specified region.</summary>
@@ -36935,7 +36935,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -37045,7 +37045,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -37155,7 +37155,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -37240,7 +37240,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified InterconnectGroup in the given scope</summary>
@@ -37322,7 +37322,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified InterconnectGroup resource in the given scope.</summary>
@@ -37384,7 +37384,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -37462,7 +37462,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the interconnectStatuses for the specified InterconnectGroup.</summary>
@@ -37524,7 +37524,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -37606,7 +37606,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the InterconnectGroups for a project in the given scope.</summary>
@@ -37751,7 +37751,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -37859,7 +37859,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -37929,7 +37929,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -37999,7 +37999,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -38082,7 +38082,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of interconnect locations available to the specified project.</summary>
@@ -38227,7 +38227,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -38310,7 +38310,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of interconnect remote locations available to the specified project.</summary>
@@ -38455,7 +38455,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -38552,7 +38552,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -38618,7 +38618,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -38690,7 +38690,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the interconnectMacsecConfig for the specified Interconnect.</summary>
@@ -38752,7 +38752,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates an Interconnect in the specified project using the data included in the request.</summary>
@@ -38828,7 +38828,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of Interconnects available to the specified project.</summary>
@@ -38973,7 +38973,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -39069,7 +39069,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -39143,7 +39143,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets name of an interconnect.</summary>
@@ -39233,7 +39233,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -39318,7 +39318,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -39398,7 +39398,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -39474,7 +39474,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -39550,7 +39550,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -39653,7 +39653,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -39721,7 +39721,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -39801,7 +39801,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -39883,7 +39883,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -40040,7 +40040,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -40116,7 +40116,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -40192,7 +40192,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -40300,7 +40300,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -40401,7 +40401,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified machine image.</summary>
@@ -40463,7 +40463,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -40541,7 +40541,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -40637,7 +40637,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of machine images that are contained within the specified project.</summary>
@@ -40782,7 +40782,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -40852,7 +40852,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -40926,7 +40926,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -40996,7 +40996,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -41195,7 +41195,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified machine type.</summary>
@@ -41271,7 +41271,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of machine types available to the specified project.</summary>
@@ -41430,7 +41430,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -41507,7 +41507,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of all the managed rulesets available.</summary>
@@ -41652,7 +41652,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -41851,7 +41851,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified NetworkAttachment in the given scope</summary>
@@ -41947,7 +41947,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified NetworkAttachment resource in the given scope.</summary>
@@ -42023,7 +42023,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -42115,7 +42115,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -42211,7 +42211,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the NetworkAttachments for a project in the given scope.</summary>
@@ -42370,7 +42370,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -42480,7 +42480,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -42564,7 +42564,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -42648,7 +42648,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -42847,7 +42847,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified service.</summary>
@@ -42943,7 +42943,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets a specified NetworkEdgeSecurityService.</summary>
@@ -43019,7 +43019,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new service in the specified project using the data included in the request.</summary>
@@ -43121,7 +43121,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches the specified policy with the data included in the request.</summary>
@@ -43248,7 +43248,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -43447,7 +43447,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Attach a list of network endpoints to the specified network endpoint group.</summary>
@@ -43561,7 +43561,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -43671,7 +43671,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Detach a list of network endpoints from the specified network endpoint group.</summary>
@@ -43785,7 +43785,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified network endpoint group.</summary>
@@ -43867,7 +43867,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -43973,7 +43973,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -44140,7 +44140,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the network endpoints in the specified network endpoint group.</summary>
@@ -44331,7 +44331,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -44415,7 +44415,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -44535,7 +44535,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Inserts a packet mirroring rule into a firewall policy.</summary>
@@ -44655,7 +44655,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Inserts a rule into a firewall policy.</summary>
@@ -44775,7 +44775,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -44961,7 +44961,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Copies rules to the specified firewall policy.</summary>
@@ -45055,7 +45055,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified policy.</summary>
@@ -45137,7 +45137,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified network firewall policy.</summary>
@@ -45199,7 +45199,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets an association with the specified name.</summary>
@@ -45273,7 +45273,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -45351,7 +45351,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets a packet mirroring rule of the specified priority.</summary>
@@ -45425,7 +45425,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets a rule of the specified priority.</summary>
@@ -45499,7 +45499,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
@@ -45575,7 +45575,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists all the policies that have been configured for the specified project.</summary>
@@ -45720,7 +45720,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches the specified policy with the data included in the request.</summary>
@@ -45810,7 +45810,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches a packet mirroring rule of the specified priority.</summary>
@@ -45912,7 +45912,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches a rule of the specified priority.</summary>
@@ -46014,7 +46014,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes an association for the specified firewall policy.</summary>
@@ -46108,7 +46108,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a packet mirroring rule of the specified priority.</summary>
@@ -46202,7 +46202,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a rule of the specified priority.</summary>
@@ -46296,7 +46296,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -46366,7 +46366,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -46436,7 +46436,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -46513,7 +46513,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of network profiles available to the specified project.</summary>
@@ -46658,7 +46658,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -46763,7 +46763,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -46859,7 +46859,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified network.</summary>
@@ -46941,7 +46941,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified network.</summary>
@@ -47003,7 +47003,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the effective firewalls on a given network.</summary>
@@ -47065,7 +47065,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a network in the specified project using the data included in the request.</summary>
@@ -47141,7 +47141,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of networks available to the specified project.</summary>
@@ -47286,7 +47286,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the peering routes exchanged over peering connection.</summary>
@@ -47496,7 +47496,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -47590,7 +47590,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes a peering from the specified network.</summary>
@@ -47680,7 +47680,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -47776,7 +47776,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Switches the network mode from auto subnet mode to custom subnet mode.</summary>
@@ -47858,7 +47858,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -47954,7 +47954,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -48073,7 +48073,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -48257,7 +48257,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified NodeGroup resource.</summary>
@@ -48353,7 +48353,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes specified nodes from the node group.</summary>
@@ -48457,7 +48457,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -48539,7 +48539,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -48631,7 +48631,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -48739,7 +48739,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -48904,7 +48904,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists nodes in the node group.</summary>
@@ -49077,7 +49077,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates the specified node group.</summary>
@@ -49181,7 +49181,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Perform maintenance on a subset of nodes in the node group.</summary>
@@ -49285,7 +49285,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -49369,7 +49369,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates the node template of the node group.</summary>
@@ -49473,7 +49473,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Simulates maintenance event on specified nodes from the node group.</summary>
@@ -49579,7 +49579,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -49663,7 +49663,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -49862,7 +49862,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified NodeTemplate resource.</summary>
@@ -49958,7 +49958,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified node template.</summary>
@@ -50034,7 +50034,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -50126,7 +50126,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -50220,7 +50220,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of node templates available to the specified project.</summary>
@@ -50379,7 +50379,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -50463,7 +50463,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -50547,7 +50547,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -50746,7 +50746,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified node type.</summary>
@@ -50822,7 +50822,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of node types available to the specified project.</summary>
@@ -50981,7 +50981,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -51099,7 +51099,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51183,7 +51183,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51271,7 +51271,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51347,7 +51347,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51403,7 +51403,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51471,7 +51471,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51539,7 +51539,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51624,7 +51624,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51775,7 +51775,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -51829,7 +51829,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets the current list of preconfigured Web Application Firewall (WAF) expressions.</summary>
@@ -51972,7 +51972,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -52060,7 +52060,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -52144,7 +52144,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -52240,7 +52240,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -52328,7 +52328,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -52416,7 +52416,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -52615,7 +52615,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified PacketMirroring resource.</summary>
@@ -52711,7 +52711,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified PacketMirroring resource.</summary>
@@ -52787,7 +52787,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -52883,7 +52883,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -53046,7 +53046,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -53156,7 +53156,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -53240,7 +53240,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -53317,7 +53317,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the details of the given PreviewFeature.</summary>
@@ -53462,7 +53462,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -53556,7 +53556,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -53645,7 +53645,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -53728,7 +53728,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -53808,7 +53808,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Enable this project as a shared VPC host project.</summary>
@@ -53876,7 +53876,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -53958,7 +53958,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -54018,7 +54018,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -54070,7 +54070,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets service resources (a.k.a service project) associated with this host project.</summary>
@@ -54215,7 +54215,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists all shared VPC host projects visible to the user in an organization.</summary>
@@ -54368,7 +54368,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -54460,7 +54460,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -54548,7 +54548,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -54630,7 +54630,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -54710,7 +54710,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -54792,7 +54792,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -54874,7 +54874,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -54973,7 +54973,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified PublicAdvertisedPrefix</summary>
@@ -55055,7 +55055,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified PublicAdvertisedPrefix resource.</summary>
@@ -55117,7 +55117,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -55199,7 +55199,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the PublicAdvertisedPrefixes for a project.</summary>
@@ -55344,7 +55344,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -55440,7 +55440,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Withdraws the specified PublicAdvertisedPrefix</summary>
@@ -55524,7 +55524,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -55723,7 +55723,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Announces the specified PublicDelegatedPrefix in the given region.</summary>
@@ -55825,7 +55825,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified PublicDelegatedPrefix in the given region.</summary>
@@ -55921,7 +55921,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified PublicDelegatedPrefix resource in the given region.</summary>
@@ -55997,7 +55997,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -56093,7 +56093,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the PublicDelegatedPrefixes for a project in the given region.</summary>
@@ -56252,7 +56252,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -56362,7 +56362,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Withdraws the specified PublicDelegatedPrefix in the given region.</summary>
@@ -56464,7 +56464,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -56575,7 +56575,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified autoscaler.</summary>
@@ -56651,7 +56651,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates an autoscaler in the specified project using the data included in the request.</summary>
@@ -56741,7 +56741,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of autoscalers contained within the specified region.</summary>
@@ -56900,7 +56900,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -57008,7 +57008,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -57092,7 +57092,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request.</summary>
@@ -57194,7 +57194,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -57305,7 +57305,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified regional BackendBucket resource.</summary>
@@ -57381,7 +57381,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -57473,7 +57473,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -57569,7 +57569,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -57732,7 +57732,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -57899,7 +57899,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -58009,7 +58009,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -58093,7 +58093,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -58177,7 +58177,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -58288,7 +58288,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified regional BackendService resource.</summary>
@@ -58364,7 +58364,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets the most recent health check results for this regional BackendService.</summary>
@@ -58447,7 +58447,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -58539,7 +58539,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -58635,7 +58635,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -58800,7 +58800,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -58971,7 +58971,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -59083,7 +59083,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -59167,7 +59167,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -59283,7 +59283,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -59367,7 +59367,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -59477,7 +59477,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -59676,7 +59676,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified commitment resource.</summary>
@@ -59752,7 +59752,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a commitment in the specified project using the data included in the request.</summary>
@@ -59842,7 +59842,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of commitments contained within the specified region.</summary>
@@ -60001,7 +60001,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -60134,7 +60134,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -60333,7 +60333,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified CompositeHealthCheck in the given region</summary>
@@ -60429,7 +60429,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified CompositeHealthCheck resource in the given region.</summary>
@@ -60505,7 +60505,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets the most recent health check results for this regional CompositeHealthCheck.</summary>
@@ -60581,7 +60581,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -60677,7 +60677,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the CompositeHealthChecks for a project in the given region.</summary>
@@ -60836,7 +60836,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -60951,7 +60951,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -61035,7 +61035,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -61126,7 +61126,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of regional disk types available to the specified project.</summary>
@@ -61285,7 +61285,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -61410,7 +61410,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Bulk create a set of disks.</summary>
@@ -61500,7 +61500,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -61612,7 +61612,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -61716,7 +61716,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns a specified regional persistent disk.</summary>
@@ -61792,7 +61792,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -61884,7 +61884,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -61990,7 +61990,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of persistent disks contained within the specified region.</summary>
@@ -62149,7 +62149,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes resource policies from a regional disk.</summary>
@@ -62253,7 +62253,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Resizes the specified regional persistent disk.</summary>
@@ -62357,7 +62357,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -62441,7 +62441,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the labels on the target regional disk.</summary>
@@ -62545,7 +62545,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Starts asynchronous replication. Must be invoked on the primary disk.</summary>
@@ -62649,7 +62649,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -62749,7 +62749,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -62851,7 +62851,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -62935,7 +62935,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -63068,7 +63068,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -63176,7 +63176,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -63375,7 +63375,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified HealthAggregationPolicy in the given region.</summary>
@@ -63471,7 +63471,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified HealthAggregationPolicy resource in the given region.</summary>
@@ -63547,7 +63547,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -63643,7 +63643,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the HealthAggregationPolicies for a project in the given region.</summary>
@@ -63802,7 +63802,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -63918,7 +63918,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -64002,7 +64002,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -64201,7 +64201,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified regional HealthCheckService.</summary>
@@ -64302,7 +64302,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified regional HealthCheckService resource.</summary>
@@ -64383,7 +64383,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -64479,7 +64479,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -64644,7 +64644,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -64759,7 +64759,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -64843,7 +64843,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -64954,7 +64954,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified HealthCheck resource.</summary>
@@ -65030,7 +65030,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -65124,7 +65124,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of HealthCheck resources available to the specified project.</summary>
@@ -65283,7 +65283,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -65393,7 +65393,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -65477,7 +65477,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -65585,7 +65585,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -65784,7 +65784,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified HealthSource in the given region</summary>
@@ -65880,7 +65880,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified HealthSource resource in the given region.</summary>
@@ -65956,7 +65956,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets the most recent health check results for this regional HealthSource.</summary>
@@ -66032,7 +66032,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -66128,7 +66128,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the HealthSources for a project in the given region.</summary>
@@ -66287,7 +66287,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -66401,7 +66401,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -66485,7 +66485,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -66624,7 +66624,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -66748,7 +66748,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns all of the details about the specified resize request.</summary>
@@ -66844,7 +66844,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -66958,7 +66958,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of Resize Requests that are contained in the managed instance group.</summary>
@@ -67133,7 +67133,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -67272,7 +67272,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Apply updates to selected instances the managed instance group.</summary>
@@ -67358,7 +67358,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -67477,7 +67477,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified managed instance group and all of the instances in that group.</summary>
@@ -67587,7 +67587,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -67723,7 +67723,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes selected per-instance configurations for the managed instance group.</summary>
@@ -67809,7 +67809,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns all of the details about the specified managed instance group.</summary>
@@ -67885,7 +67885,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -67987,7 +67987,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -68150,7 +68150,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -68335,7 +68335,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -68518,7 +68518,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -68699,7 +68699,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -68819,7 +68819,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -68931,7 +68931,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -69066,7 +69066,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -69192,7 +69192,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -69316,7 +69316,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -69426,7 +69426,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -69536,7 +69536,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -69660,7 +69660,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -69806,7 +69806,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -69938,7 +69938,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -70050,7 +70050,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -70141,7 +70141,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of instance group resources contained within the specified region.</summary>
@@ -70300,7 +70300,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -70491,7 +70491,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the named ports for the specified regional instance group.</summary>
@@ -70597,7 +70597,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -70681,7 +70681,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -70796,7 +70796,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified instance template.</summary>
@@ -70872,7 +70872,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -70968,7 +70968,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -71131,7 +71131,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -71240,7 +71240,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -71351,7 +71351,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>returns the specified InstantSnapshotGroup resource in the specified region.</summary>
@@ -71427,7 +71427,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -71519,7 +71519,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>creates a Regional InstantSnapshotGroup resource</summary>
@@ -71621,7 +71621,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -71784,7 +71784,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -71868,7 +71868,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -71952,7 +71952,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -72073,7 +72073,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified InstantSnapshot resource in the specified region.</summary>
@@ -72149,7 +72149,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -72241,7 +72241,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates an instant snapshot in the specified region.</summary>
@@ -72331,7 +72331,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of InstantSnapshot resources contained within the specified region.</summary>
@@ -72490,7 +72490,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -72574,7 +72574,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -72684,7 +72684,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -72768,7 +72768,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -72898,7 +72898,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -73006,7 +73006,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Detach the network endpoint from the specified network endpoint group.</summary>
@@ -73120,7 +73120,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified network endpoint group.</summary>
@@ -73202,7 +73202,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -73309,7 +73309,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -73478,7 +73478,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the network endpoints in the specified network endpoint group.</summary>
@@ -73661,7 +73661,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -73810,7 +73810,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Inserts a rule into a network firewall policy.</summary>
@@ -73944,7 +73944,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Copies rules to the specified network firewall policy.</summary>
@@ -74052,7 +74052,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified network firewall policy.</summary>
@@ -74148,7 +74148,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified network firewall policy.</summary>
@@ -74224,7 +74224,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets an association with the specified name.</summary>
@@ -74312,7 +74312,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the effective firewalls on a given network.</summary>
@@ -74388,7 +74388,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -74480,7 +74480,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets a rule of the specified priority.</summary>
@@ -74568,7 +74568,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new network firewall policy in the specified project and region.</summary>
@@ -74658,7 +74658,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -74823,7 +74823,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches the specified network firewall policy.</summary>
@@ -74927,7 +74927,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates an association for the specified network firewall policy.</summary>
@@ -75031,7 +75031,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches a rule of the specified priority.</summary>
@@ -75147,7 +75147,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes an association for the specified network firewall policy.</summary>
@@ -75255,7 +75255,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a rule of the specified priority.</summary>
@@ -75363,7 +75363,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -75447,7 +75447,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -75531,7 +75531,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -75730,7 +75730,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified NotificationEndpoint in the given region</summary>
@@ -75826,7 +75826,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified NotificationEndpoint resource in the given region.</summary>
@@ -75902,7 +75902,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -75998,7 +75998,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the NotificationEndpoints for a project in the given region.</summary>
@@ -76157,7 +76157,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -76241,7 +76241,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -76332,7 +76332,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the specified region-specific Operations resource.</summary>
@@ -76408,7 +76408,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of Operation resources contained within the specified region.</summary>
@@ -76567,7 +76567,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -76661,7 +76661,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -76772,7 +76772,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified policy.</summary>
@@ -76868,7 +76868,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>List all of the ordered rules present in a single specified policy.</summary>
@@ -76944,7 +76944,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets a rule at the specified priority.</summary>
@@ -77032,7 +77032,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
@@ -77134,7 +77134,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>List all the policies that have been configured for the specified project and region.</summary>
@@ -77293,7 +77293,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -77417,7 +77417,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -77543,7 +77543,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a rule at the specified priority.</summary>
@@ -77631,7 +77631,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -77739,7 +77739,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -77816,7 +77816,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patch region snapshot settings.</summary>
@@ -77918,7 +77918,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -78039,7 +78039,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified Snapshot resource.</summary>
@@ -78115,7 +78115,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -78207,7 +78207,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a snapshot in the specified region using the data included in the request.</summary>
@@ -78297,7 +78297,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of Snapshot resources contained within the specified region.</summary>
@@ -78456,7 +78456,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -78540,7 +78540,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -78650,7 +78650,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -78734,7 +78734,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -78842,7 +78842,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -78953,7 +78953,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -79035,7 +79035,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -79129,7 +79129,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -79292,7 +79292,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -79413,7 +79413,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists all of the ordered rules present in a single specified policy.</summary>
@@ -79493,7 +79493,99 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string region, string resource)
+        {
+            return new GetIamPolicyRequest(this.service, project, region, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string region, string resource) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/sslPolicies/{resource}/getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "optionsRequestedPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -79587,7 +79679,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -79750,7 +79842,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists all features that can be specified in the SSL policy when using custom profile.</summary>
@@ -79909,7 +80001,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches the specified SSL policy with the data included in the request.</summary>
@@ -80017,7 +80109,175 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.RegionSetPolicyRequest body, string project, string region, string resource)
+        {
+            return new SetIamPolicyRequest(this.service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionSetPolicyRequest body, string project, string region, string resource) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionSetPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/sslPolicies/{resource}/setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-11-01";
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(this.service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource) : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/sslPolicies/{resource}/testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -80128,7 +80388,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetHttpProxy resource in the specified region.</summary>
@@ -80204,7 +80464,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -80300,7 +80560,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -80463,7 +80723,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the URL map for TargetHttpProxy.</summary>
@@ -80567,7 +80827,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -80678,7 +80938,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetHttpsProxy resource in the specified region.</summary>
@@ -80754,7 +81014,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -80850,7 +81110,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -81013,7 +81273,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -81123,7 +81383,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
@@ -81229,7 +81489,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the URL map for TargetHttpsProxy.</summary>
@@ -81333,7 +81593,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -81444,7 +81704,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetTcpProxy resource.</summary>
@@ -81520,7 +81780,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -81616,7 +81876,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -81779,7 +82039,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -81882,7 +82142,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified UrlMap resource.</summary>
@@ -81958,7 +82218,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -82044,7 +82304,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -82207,7 +82467,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -82309,7 +82569,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
@@ -82405,7 +82665,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -82495,7 +82755,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -82673,7 +82933,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -82772,7 +83032,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -82939,7 +83199,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -83016,7 +83276,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of reliabilityRisks available in the specified project.</summary>
@@ -83161,7 +83421,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -83300,7 +83560,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -83406,7 +83666,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of reservation blocks under a single reservation.</summary>
@@ -83581,7 +83841,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Allows customers to perform maintenance on a reservation block</summary>
@@ -83705,7 +83965,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -83803,7 +84063,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -83901,7 +84161,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -84014,7 +84274,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Get health info on a reservation slot.</summary>
@@ -84124,7 +84384,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Allows customers to get SBOM versions of a reservation slot.</summary>
@@ -84250,7 +84510,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of reservation slots under a single reservation.</summary>
@@ -84429,7 +84689,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Update a reservation slot in the specified sub-block.</summary>
@@ -84539,7 +84799,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -84682,7 +84942,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -84788,7 +85048,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Allows customers to get SBOM versions of a reservation subBlock.</summary>
@@ -84916,7 +85176,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of reservation subBlocks under a single reservation.</summary>
@@ -85095,7 +85355,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Allows customers to perform maintenance on a reservation subBlock</summary>
@@ -85215,7 +85475,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Allows customers to report a faulty subBlock.</summary>
@@ -85343,7 +85603,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -85441,7 +85701,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -85539,7 +85799,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -85738,7 +85998,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified reservation.</summary>
@@ -85834,7 +86094,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves information about the specified reservation.</summary>
@@ -85910,7 +86170,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -86002,7 +86262,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new reservation. For more information, readReserving zonal resources.</summary>
@@ -86092,7 +86352,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -86255,7 +86515,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Perform maintenance on an extended reservation</summary>
@@ -86361,7 +86621,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -86471,7 +86731,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -86555,7 +86815,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -86639,7 +86899,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Update share settings of the reservation.</summary>
@@ -86766,7 +87026,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -86965,7 +87225,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified resource policy.</summary>
@@ -87061,7 +87321,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves all information of the specified resource policy.</summary>
@@ -87137,7 +87397,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -87229,7 +87489,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new resource policy.</summary>
@@ -87319,7 +87579,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -87482,7 +87742,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Modify the specified resource policy.</summary>
@@ -87598,7 +87858,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -87682,7 +87942,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -87766,7 +88026,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -87863,7 +88123,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets details of a single project-scoped RolloutPlan.</summary>
@@ -87925,7 +88185,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new RolloutPlan in a given project and location.</summary>
@@ -88001,7 +88261,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists RolloutPlans in a given project and location.</summary>
@@ -88146,7 +88406,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -88255,7 +88515,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Cancels a Rollout.</summary>
@@ -88353,7 +88613,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a Rollout.</summary>
@@ -88435,7 +88695,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets details of a single project-scoped Rollout.</summary>
@@ -88497,7 +88757,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists Rollouts in a given project and location.</summary>
@@ -88642,7 +88902,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Pauses a Rollout.</summary>
@@ -88739,7 +88999,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Resumes a Rollout.</summary>
@@ -88836,7 +89096,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -89035,7 +89295,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified Router resource.</summary>
@@ -89131,7 +89391,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes Named Set</summary>
@@ -89239,7 +89499,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes Route Policy</summary>
@@ -89347,7 +89607,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified Router resource.</summary>
@@ -89423,7 +89683,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns specified Named Set</summary>
@@ -89515,7 +89775,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves runtime NAT IP information.</summary>
@@ -89610,7 +89870,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves runtime Nat mapping information of VM endpoints.</summary>
@@ -89800,7 +90060,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns specified Route Policy</summary>
@@ -89892,7 +90152,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves runtime information of the specified router.</summary>
@@ -89968,7 +90228,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -90062,7 +90322,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of Router resources available to the specified project.</summary>
@@ -90221,7 +90481,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of router bgp routes available to the specified project.</summary>
@@ -90490,7 +90750,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of router named set subresources available to the specified project.</summary>
@@ -90663,7 +90923,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of router route policy subresources available to the specified project.</summary>
@@ -90836,7 +91096,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -90946,7 +91206,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches Named Set</summary>
@@ -91050,7 +91310,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches Route Policy</summary>
@@ -91154,7 +91414,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -91244,7 +91504,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -91356,7 +91616,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates or creates new Named Set</summary>
@@ -91460,7 +91720,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates or creates new Route Policy</summary>
@@ -91564,7 +91824,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -91661,7 +91921,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified Route resource.</summary>
@@ -91723,7 +91983,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a Route resource in the specified project using the data included in the request.</summary>
@@ -91799,7 +92059,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of Route resources available to the specified project.</summary>
@@ -91944,7 +92204,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -92014,7 +92274,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -92111,7 +92371,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -92295,7 +92555,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified policy.</summary>
@@ -92377,7 +92637,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>List all of the ordered rules present in a single specified policy.</summary>
@@ -92439,7 +92699,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets a rule at the specified priority.</summary>
@@ -92513,7 +92773,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new policy in the specified project using the data included in the request.</summary>
@@ -92601,7 +92861,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>List all the policies that have been configured for the specified project.</summary>
@@ -92746,7 +93006,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets the current list of preconfigured Web Application Firewall (WAF) expressions.</summary>
@@ -92891,7 +93151,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -93001,7 +93261,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -93113,7 +93373,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes a rule at the specified priority.</summary>
@@ -93187,7 +93447,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -93261,7 +93521,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -93460,7 +93720,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified ServiceAttachment in the given scope</summary>
@@ -93556,7 +93816,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified ServiceAttachment resource in the given scope.</summary>
@@ -93644,7 +93904,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -93736,7 +93996,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -93832,7 +94092,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the ServiceAttachments for a project in the given scope.</summary>
@@ -93991,7 +94251,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -94107,7 +94367,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -94191,7 +94451,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -94275,7 +94535,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -94338,7 +94598,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patch snapshot settings.</summary>
@@ -94426,7 +94686,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -94533,7 +94793,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified Snapshot resource.</summary>
@@ -94595,7 +94855,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -94673,7 +94933,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -94757,7 +95017,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of Snapshot resources contained within the specified project.</summary>
@@ -94902,7 +95162,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -94972,7 +95232,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -95046,7 +95306,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -95116,7 +95376,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -95210,7 +95470,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -95409,7 +95669,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified SslCertificate resource.</summary>
@@ -95491,7 +95751,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified SslCertificate resource.</summary>
@@ -95553,7 +95813,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -95633,7 +95893,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of SslCertificate resources available to the specified project.</summary>
@@ -95778,7 +96038,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -95977,7 +96237,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -96069,7 +96329,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists all of the ordered rules present in a single specified policy.</summary>
@@ -96135,7 +96395,85 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(this.service, project, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+        /// </summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource) : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Requested IAM Policy version.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("optionsRequestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/sslPolicies/{resource}/getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("optionsRequestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "optionsRequestedPolicyVersion",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified SSL policy resource.</summary>
@@ -96211,7 +96549,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists all the SSL policies that have been configured for the specified project.</summary>
@@ -96356,7 +96694,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists all features that can be specified in the SSL policy when using custom profile.</summary>
@@ -96501,7 +96839,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Patches the specified SSL policy with the data included in the request.</summary>
@@ -96595,7 +96933,147 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(this.service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest body, string project, string resource) : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.GlobalSetPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/sslPolicies/{resource}/setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-11-01";
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name or id of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(this.service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string resource) : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name or id of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/global/sslPolicies/{resource}/testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -96794,7 +97272,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified storage pool type.</summary>
@@ -96870,7 +97348,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of storage pool types available to the specified project.</summary>
@@ -97029,7 +97507,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -97228,7 +97706,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -97332,7 +97810,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -97412,7 +97890,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -97504,7 +97982,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a storage pool in the specified project using the data in the request.</summary>
@@ -97594,7 +98072,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of storage pools contained within the specified zone.</summary>
@@ -97753,7 +98231,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the disks in a specified storage pool.</summary>
@@ -97926,7 +98404,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -98010,7 +98488,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -98094,7 +98572,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -98218,7 +98696,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -98462,7 +98940,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified subnetwork.</summary>
@@ -98558,7 +99036,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Expands the IP CIDR range of the subnetwork to a specified value.</summary>
@@ -98662,7 +99140,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified subnetwork.</summary>
@@ -98783,7 +99261,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -98875,7 +99353,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a subnetwork in the specified project using the data included in the request.</summary>
@@ -98965,7 +99443,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of subnetworks available to the specified project.</summary>
@@ -99169,7 +99647,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves an aggregated list of all usable subnetworks in the project.</summary>
@@ -99329,7 +99807,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -99460,7 +99938,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
@@ -99544,7 +100022,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -99654,7 +100132,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -99738,7 +100216,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -99835,7 +100313,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetGrpcProxy resource in the given scope.</summary>
@@ -99897,7 +100375,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -99979,7 +100457,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the TargetGrpcProxies for a project in the given scope.</summary>
@@ -100124,7 +100602,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -100220,7 +100698,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -100419,7 +100897,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified TargetHttpProxy resource.</summary>
@@ -100501,7 +100979,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetHttpProxy resource.</summary>
@@ -100563,7 +101041,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -100643,7 +101121,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of TargetHttpProxy resources available to the specified project.</summary>
@@ -100788,7 +101266,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -100884,7 +101362,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the URL map for TargetHttpProxy.</summary>
@@ -100974,7 +101452,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -101173,7 +101651,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified TargetHttpsProxy resource.</summary>
@@ -101255,7 +101733,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetHttpsProxy resource.</summary>
@@ -101317,7 +101795,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -101397,7 +101875,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of TargetHttpsProxy resources available to the specified project.</summary>
@@ -101542,7 +102020,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -101638,7 +102116,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the Certificate Map for TargetHttpsProxy.</summary>
@@ -101734,7 +102212,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Sets the QUIC override policy for TargetHttpsProxy.</summary>
@@ -101830,7 +102308,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Replaces SslCertificates for TargetHttpsProxy.</summary>
@@ -101922,7 +102400,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -102026,7 +102504,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the URL map for TargetHttpsProxy.</summary>
@@ -102116,7 +102594,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -102315,7 +102793,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified TargetInstance resource.</summary>
@@ -102411,7 +102889,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetInstance resource.</summary>
@@ -102487,7 +102965,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -102581,7 +103059,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of TargetInstance resources available to the specified project and zone.</summary>
@@ -102740,7 +103218,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -102856,7 +103334,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -102940,7 +103418,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -103059,7 +103537,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Adds an instance to a target pool.</summary>
@@ -103163,7 +103641,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -103347,7 +103825,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified target pool.</summary>
@@ -103443,7 +103921,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified target pool.</summary>
@@ -103519,7 +103997,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -103609,7 +104087,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -103703,7 +104181,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of target pools available to the specified project and region.</summary>
@@ -103862,7 +104340,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes health check URL from a target pool.</summary>
@@ -103966,7 +104444,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Removes instance URL from a target pool.</summary>
@@ -104070,7 +104548,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes a backup target pool's configurations.</summary>
@@ -104186,7 +104664,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -104302,7 +104780,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -104386,7 +104864,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -104483,7 +104961,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetSslProxy resource.</summary>
@@ -104545,7 +105023,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -104625,7 +105103,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of TargetSslProxy resources available to the specified project.</summary>
@@ -104770,7 +105248,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the BackendService for TargetSslProxy.</summary>
@@ -104862,7 +105340,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the Certificate Map for TargetSslProxy.</summary>
@@ -104958,7 +105436,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the ProxyHeaderType for TargetSslProxy.</summary>
@@ -105048,7 +105526,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes SslCertificates for TargetSslProxy.</summary>
@@ -105140,7 +105618,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -105244,7 +105722,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -105314,7 +105792,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -105513,7 +105991,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified TargetTcpProxy resource.</summary>
@@ -105595,7 +106073,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified TargetTcpProxy resource.</summary>
@@ -105657,7 +106135,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -105737,7 +106215,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of TargetTcpProxy resources available to the specified project.</summary>
@@ -105882,7 +106360,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the BackendService for TargetTcpProxy.</summary>
@@ -105974,7 +106452,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Changes the ProxyHeaderType for TargetTcpProxy.</summary>
@@ -106064,7 +106542,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -106134,7 +106612,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -106333,7 +106811,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified target VPN gateway.</summary>
@@ -106429,7 +106907,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified target VPN gateway.</summary>
@@ -106505,7 +106983,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -106599,7 +107077,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of target VPN gateways available to the specified project and region.</summary>
@@ -106758,7 +107236,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -106866,7 +107344,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -107065,7 +107543,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified UrlMap resource.</summary>
@@ -107147,7 +107625,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified UrlMap resource.</summary>
@@ -107209,7 +107687,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -107289,7 +107767,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -107385,7 +107863,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of UrlMap resources available to the specified project.</summary>
@@ -107530,7 +108008,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -107626,7 +108104,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -107696,7 +108174,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Updates the specified UrlMap resource with the data included in the request.</summary>
@@ -107786,7 +108264,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -107862,7 +108340,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -108061,7 +108539,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified VPN gateway.</summary>
@@ -108157,7 +108635,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified VPN gateway.</summary>
@@ -108233,7 +108711,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the status for the specified VPN gateway.</summary>
@@ -108309,7 +108787,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -108403,7 +108881,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of VPN gateways available to the specified project and region.</summary>
@@ -108562,7 +109040,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -108670,7 +109148,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
@@ -108754,7 +109232,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -108953,7 +109431,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Deletes the specified VpnTunnel resource.</summary>
@@ -109049,7 +109527,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Returns the specified VpnTunnel resource.</summary>
@@ -109125,7 +109603,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -109219,7 +109697,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of VpnTunnel resources contained in the specified project and region.</summary>
@@ -109378,7 +109856,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -109486,7 +109964,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -109596,7 +110074,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Gets the specified wire group resource in the given scope.</summary>
@@ -109671,7 +110149,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -109778,7 +110256,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists the wire groups for a project in the given scope.</summary>
@@ -109936,7 +110414,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -110069,7 +110547,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -110160,7 +110638,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the specified zone-specific Operations resource.</summary>
@@ -110236,7 +110714,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves a list of Operation resources contained within the specified zone.</summary>
@@ -110395,7 +110873,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>
@@ -110487,7 +110965,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -110598,7 +111076,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves details of a specific zone VM extension policy within a project.</summary>
@@ -110674,7 +111152,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Creates a new zone-level VM extension policy within a project.</summary>
@@ -110764,7 +111242,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Lists all VM extension policies within a specific zone for a project.</summary>
@@ -110923,7 +111401,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Modifies an existing zone VM extension policy within a project.</summary>
@@ -111027,7 +111505,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 
@@ -111104,7 +111582,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
 
         /// <summary>Retrieves the list of Zone resources available to the specified project.</summary>
@@ -111249,7 +111727,7 @@ namespace Google.Apis.Compute.v1
             }
 
             /// <inheritdoc/>
-            public override string ApiVersion => "2026-09-01";
+            public override string ApiVersion => "2026-11-01";
         }
     }
 }
@@ -111663,6 +112141,18 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<int> ExternalIpv6PrefixLength { get; set; }
 
         /// <summary>
+        /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix (PDP) for BYOIP. The PDP
+        /// must support enhanced IPv4 allocations.  Use one of the following formats to specify a PDP when allocating
+        /// an external IPv4 address using BYOIP.        -     Full resource URL, as
+        /// inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+        ///  -     Partial URL, as in                        -
+        /// projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name           -
+        /// regions/region/publicDelegatedPrefixes/pdp-name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCollection")]
+        public virtual string IpCollection { get; set; }
+
+        /// <summary>
         /// Output only. [Output Only] Type of the resource. Alwayscompute#accessConfig for access configs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -111825,6 +112315,13 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Optional. The URL of the network attachment that this address comes from in the following format:
+        /// projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
         /// This signifies the networking tier used for configuring this address and can only take the following values:
         /// PREMIUM orSTANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always
         /// Premium Tier; regional external IP addresses can be either Standard or Premium Tier.  If this field is not
@@ -111869,6 +112366,14 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// Optional. Producer Service's Service class ID for the region of this address. Can only be used with
+        /// network_attachment. It is not possible to use on its own; however, network_attachment can be used without
+        /// service_class_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClassId")]
+        public virtual string ServiceClassId { get; set; }
 
         /// <summary>
         /// Output only. [Output Only] The status of the address, which can be one ofRESERVING, RESERVED, or IN_USE. An
@@ -114277,6 +114782,13 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic
+        /// forwarding feature which together with Service Extension allows customized and complex routing logic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicForwarding")]
+        public virtual BackendServiceDynamicForwarding DynamicForwarding { get; set; }
+
+        /// <summary>
         /// [Output Only] The resource URL for the edge security policy associated with this backend service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("edgeSecurityPolicy")]
@@ -114963,6 +115475,50 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a dynamic forwarding configuration for the backend service.</summary>
+    public class BackendServiceDynamicForwarding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dynamic Forwarding Proxy configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardProxy")]
+        public virtual BackendServiceDynamicForwardingForwardProxy ForwardProxy { get; set; }
+
+        /// <summary>IP:PORT based dynamic forwarding configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipPortSelection")]
+        public virtual BackendServiceDynamicForwardingIpPortSelection IpPortSelection { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines Dynamic Forwarding Proxy configuration.</summary>
+    public class BackendServiceDynamicForwardingForwardProxy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boolean flag enabling dynamic forwarding proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Determines the dynamic forwarding proxy mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyMode")]
+        public virtual string ProxyMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines a IP:PORT based dynamic forwarding configuration for the backend service. Some ranges are restricted:
+    /// Restricted ranges.
+    /// </summary>
+    public class BackendServiceDynamicForwardingIpPortSelection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A boolean flag enabling IP:PORT based dynamic forwarding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -116189,6 +116745,15 @@ namespace Google.Apis.Compute.v1.Data
     public class CacheInvalidationRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// If set, this invalidation rule will only apply to requests routed to the given backend service or backend
+        /// bucket. For example, for a backend bucket `bb1` in the same scope as the URL map, the path would be
+        /// `projects/my-project/global/backendBuckets/bb1`; and for a backend service `bs1` in the same scope as the
+        /// URL map, the path would be `projects/my-project/global/backendServices/bs1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendService")]
+        public virtual string BackendService { get; set; }
+
+        /// <summary>
         /// A list of cache tags used to identify cached objects.         - Cache tags are specified when the response
         /// is first cached, by setting    the `Cache-Tag` response header at the origin.    - Multiple cache tags in
         /// the same invalidation request are treated as    Boolean `OR` - for example, `tag1 OR tag2 OR tag3`.    - If
@@ -116199,12 +116764,26 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Collections.Generic.IList<string> CacheTags { get; set; }
 
         /// <summary>
+        /// If set, this invalidation rule will only apply to responses with the given content-type. Parameters are not
+        /// allowed and are ignored from the response when matching. Wildcards are not allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>
         /// If set, this invalidation rule will only apply to requests with a Host header matching host. This field also
         /// accepts wildcards (*) to replace the leftmost (or first) label of a hostname. For example, *.example.com
         /// will match www.example.com, but not sub1.dev.example.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
+
+        /// <summary>
+        /// If set, this invalidation rule will only apply to responses with the given HTTP status. Valid range is
+        /// 200-599.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpStatus")]
+        public virtual System.Nullable<int> HttpStatus { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -117694,9 +118273,31 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceType")]
         public virtual string ConfidentialInstanceType { get; set; }
 
-        /// <summary>Defines whether the instance should have confidential compute enabled.</summary>
+        /// <summary>Defines a set of Confidential Paravisor (SVSM) options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialParavisorConfig")]
+        public virtual ConfidentialParavisorConfig ConfidentialParavisorConfig { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled. When enabled, the technology used
+        /// defaults to  AMD SEV unless confidentialInstanceType is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of Confidential Paravisor (SVSM) options.</summary>
+    public class ConfidentialParavisorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines the type of TPM to use for the confidential instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialTpmType")]
+        public virtual string ConfidentialTpmType { get; set; }
+
+        /// <summary>Defines the IRQ mode to use for the confidential instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sevSnpIrqMode")]
+        public virtual string SevSnpIrqMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -118531,6 +119132,37 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceInstantSnapshotId")]
         public virtual string SourceInstantSnapshotId { get; set; }
+
+        /// <summary>
+        /// The machine image to create the disk from. You can provide this as a partial or full URL to the resource.
+        /// For example, the following are valid values:              -
+        /// https://www.googleapis.com/compute/v1/projects/project/global/machineImages/machineImage     -
+        /// projects/project/global/machineImages/machineImage      - global/machineImages/machineImage
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMachineImage")]
+        public virtual string SourceMachineImage { get; set; }
+
+        /// <summary>
+        /// The device name of a disk within a given machine image. The source_machine_image must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMachineImageDiskDeviceName")]
+        public virtual string SourceMachineImageDiskDeviceName { get; set; }
+
+        /// <summary>
+        /// Thecustomer-supplied encryption key of the source machine image. Required if the source machine image is
+        /// protected by a customer-supplied encryption key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMachineImageEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceMachineImageEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique ID of the machine image used to create this disk. This value
+        /// identifies the exact machine image that was used to create this persistent disk. For example, if you created
+        /// the persistent disk from a machine image that was later deleted and recreated under the same name, the
+        /// source machine image ID would identify the exact version of the machine image that was used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMachineImageId")]
+        public virtual string SourceMachineImageId { get; set; }
 
         /// <summary>
         /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
@@ -119423,6 +120055,19 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<long> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dynamic compression policy for this URL Map's route.</summary>
+    public class DynamicCompressionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressionMode")]
+        public virtual string CompressionMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -120336,6 +120981,16 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Parent { get; set; }
 
         /// <summary>
+        /// Indicates the source of this Firewall Policy. This field is optional on creation and defaults to
+        /// USER_DEFINED.  The USER_DEFINED value indicates a regular firewall policy.  The SYSTEM value indicates a
+        /// system-level policy managed by an internal service like GKE. This SYSTEM value is reserved for internal
+        /// services and cannot be set by users during policy creation. Policies with a SYSTEM source cannot be modified
+        /// or deleted by users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySource")]
+        public virtual string PolicySource { get; set; }
+
+        /// <summary>
         /// The type of the firewall policy. This field can be one of VPC_POLICY, RDMA_ROCE_POLICY or ULL_POLICY.  Note:
         /// if not specified then VPC_POLICY will be used.
         /// </summary>
@@ -120945,6 +121600,39 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string IPAddress { get; set; }
 
         /// <summary>
+        /// IP addresses for which this forwarding rule accepts traffic. All IP addresses must have the same IP version,
+        /// IPv4 or IPv6. When a client sends traffic that matches one of the specified IP addresses, protocol and
+        /// ports, the forwarding rule directs the traffic to the referencedbackendService. All IP addresses are served
+        /// by the same set of backends, and they share the target capacities specified in the backend service fairly.
+        /// Global external Passthrough Network Load Balancer requires two IP addresses for each forwarding rule to
+        /// provide high availability when both IP addresses are used to serve client requests. The two IP addresses
+        /// must come from global IP pools that belong to two distinct Availability Groups, represented by the
+        /// purposePASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0 andPASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1.
+        /// TheIPAddresses field specifies zero, one, or two IP addresses:        - If omitted, Google Cloud assigns two
+        /// ephemeral IP addresses, one from    each Availability Group.    - If you specify one IP address that
+        /// references an existing static IP    address resource from one Availability Group, Google Cloud assigns an
+        /// ephemeral IP address from the other Availability Group.    - If you specify two IP addresses that reference
+        /// existing static IP    address resources, they are required to be from different Availability    Groups.
+        /// For global external Passthrough Network Load Balancer, each IP address can be one of the following:        -
+        /// A static or ephemeral IPv4 address from a Google-owned IP pool.    - A static IPv4 address from a global
+        /// public delegated prefix.    - A static or ephemeral IPv6 /96 prefix from a Google-owned IP pool.    For
+        /// global external Passthrough Network Load Balancer, the two IP addresses can be of different types. One IP
+        /// address can be from a BYOIP prefix while the other is from a Google-owned IP pool. One IP address can be
+        /// static while the other is ephemeral. However, both IP addresses must have the same IP version, IPv4 or IPv6.
+        ///  The IP addresses can only be set at creation and cannot be updated.  When creating a global external
+        /// Passthrough Network Load Balancer forwarding rule (a parent forwarding rule), you must use theIPAddresses
+        /// field, but the Google Cloud-generated child forwarding rules set the IPAddress field instead. Refer to
+        /// theavailabilityGroup field for further details.  Refer to the IPAddress field for the formats that can be
+        /// used to specify IP addresses while creating a forwarding rule.  Because Passthrough Network Load Balancers
+        /// do not terminate or translate traffic, the backend stack types must be compatible with the forwarding rule
+        /// IP version:        - If the forwarding rule IP version is IPv4, backends should be    configured as
+        /// dual-stack or IPv4-only.    - If the forwarding rule IP version is IPv6, backends should be    configured as
+        /// dual-stack or IPv6-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("IPAddresses")]
+        public virtual System.Collections.Generic.IList<string> IPAddresses { get; set; }
+
+        /// <summary>
         /// The IP protocol to which this rule applies.  For protocol forwarding, valid options are TCP, UDP, ESP,AH,
         /// SCTP, ICMP andL3_DEFAULT.  The valid IP protocols are different for different load balancing products as
         /// described in [Load balancing
@@ -120988,6 +121676,25 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Collections.Generic.IList<ForwardingRuleAttachedExtension> AttachedExtensions { get; set; }
 
         /// <summary>
+        /// Output only. [Output Only] Specifies the load balancing availability group, one of the two that collectively
+        /// provide high availability.  Specifies the availability group of the forwarding rule. This field is for use
+        /// by global external passthrough load balancers (load balancing scheme EXTERNAL_PASSTHROUGH) and is set for
+        /// the child forwarding rules only. The possible values are:        - AVAILABILITY_GROUP0: Set for the child
+        /// forwarding rule    that is programmed on the AVAILABILITY_GROUP0 load balancing    stack. The child
+        /// forwarding rule has the same IP protocol, port, and    backend service settings as the parent forwarding
+        /// rule, but has only one of    the two IP addresses of the parent forwarding rule, the one with the    purpose
+        /// PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0.    - AVAILABILITY_GROUP1: Set for the child forwarding rule
+        ///  that is programmed on the AVAILABILITY_GROUP1 load balancing    stack. The child forwarding rule has the
+        /// same IP protocol, port and backend    service settings as the parent forwarding rule, but has only one of
+        /// the two    IP addresses of the parent forwarding rule, the one with the
+        /// purposePASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1.    For each global external Passthrough Network Load
+        /// Balancer forwarding rule (a parent forwarding rule) that you create, Google Cloud generates two output-only
+        /// child forwarding rules, one forAVAILABILITY_GROUP0 and one forAVAILABILITY_GROUP1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityGroup")]
+        public virtual string AvailabilityGroup { get; set; }
+
+        /// <summary>
         /// Identifies the backend service to which the forwarding rule sends traffic.  It is a required field for the
         /// following load balancers:        - Internal passthrough Network Load Balancers    - Backend service-based
         /// regional external passthrough Network Load    Balancers    - Global external passthrough Network Load
@@ -121004,6 +121711,16 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseForwardingRule")]
         public virtual string BaseForwardingRule { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The resource URLs for the child forwarding rules.  Applicable only to the parent
+        /// forwarding rule of global external passthrough load balancers. This field contains the list of child
+        /// forwarding rule URLs associated with the parent forwarding rule: one for each availability group.
+        /// AVAILABILITY_GROUP0 will be the first element, and AVAILABILITY_GROUP1 will be the second element. Refer to
+        /// theavailabilityGroup field for further details. It cannot be set by any other forwarding rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childForwardingRules")]
+        public virtual System.Collections.Generic.IList<string> ChildForwardingRules { get; set; }
 
         /// <summary>Output only. [Output Only] Creation timestamp inRFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
@@ -121166,6 +121883,14 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noAutomateDnsZone")]
         public virtual System.Nullable<bool> NoAutomateDnsZone { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The resource URL for the parent forwarding rule.  Applicable only to the child
+        /// forwarding rules of global external passthrough load balancers. This field contains the URL of the parent
+        /// forwarding rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentForwardingRule")]
+        public virtual string ParentForwardingRule { get; set; }
 
         /// <summary>
         /// The ports, portRange, and allPorts fields are mutually exclusive. Only packets addressed to ports in the
@@ -125757,6 +126482,13 @@ namespace Google.Apis.Compute.v1.Data
         public virtual CorsPolicy CorsPolicy { get; set; }
 
         /// <summary>
+        /// Dynamic compression policy for this URL Map's route. Available only for Global EXTERNAL_MANAGED load
+        /// balancer schemes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicCompressionPolicy")]
+        public virtual DynamicCompressionPolicy DynamicCompressionPolicy { get; set; }
+
+        /// <summary>
         /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend
         /// service failure. As part of fault injection, when clients send requests to a backend service, delays can be
         /// introduced by a load balancer on a percentage of requests before sending those requests to the backend
@@ -125768,6 +126500,14 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("faultInjectionPolicy")]
         public virtual HttpFaultInjection FaultInjectionPolicy { get; set; }
+
+        /// <summary>
+        /// Image optimization policy for this URL Map's route. Available only for Global EXTERNAL_MANAGED load balancer
+        /// schemes. Either Cloud CDN must be enabled on the backend service or backend bucket serving the route, or
+        /// cache policy must be configured on the same route
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageOptimizationPolicy")]
+        public virtual ImageOptimizationPolicy ImageOptimizationPolicy { get; set; }
 
         /// <summary>
         /// Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where
@@ -126527,6 +127267,22 @@ namespace Google.Apis.Compute.v1.Data
                 public virtual string Value { get; set; }
             }
         }
+    }
+
+    /// <summary>
+    /// The configuration for Cloud CDN's image optimization feature. This feature dynamically processes and delivers
+    /// images from the network edge. Image Optimization is only available for Global External Application Load
+    /// Balancers. Either Cloud CDN must be enabled on the backend service or backend bucket serving the route, or cache
+    /// policy must be configured on the same route.
+    /// </summary>
+    public class ImageOptimizationPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies whether to interpret query parameters for image optimization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameterInterpretation")]
+        public virtual string QueryParameterInterpretation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Additional image params.</summary>
@@ -135224,6 +135980,18 @@ namespace Google.Apis.Compute.v1.Data
     public class MachineImageParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Input only. Specifies the list of disk device names that must be excluded from the new machine image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedDisks")]
+        public virtual System.Collections.Generic.IList<string> ExcludedDisks { get; set; }
+
+        /// <summary>
+        /// Input only. Specifies the list of disk device names that must be included with the new machine image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedDisks")]
+        public virtual System.Collections.Generic.IList<string> IncludedDisks { get; set; }
+
+        /// <summary>
         /// Input only. Resource manager tags to be bound to the machine image. Tag keys and values have the same
         /// definition as resource manager tags. Keys and values can be either in numeric format, such as
         /// `tagKeys/{tag_key_id}` and `tagValues/{tag_value_id}` or in namespaced format such as
@@ -136286,6 +137054,10 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPv4Range")]
         public virtual string IPv4Range { get; set; }
+
+        /// <summary>Output only. [Output Only] Additional tags for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTags")]
+        public virtual System.Collections.Generic.IList<string> AdditionalTags { get; set; }
 
         /// <summary>
         /// Must be set to create a VPC network. If not set, a legacy network is created.  When set to true, the VPC
@@ -142461,6 +143233,22 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Collections.Generic.IList<PublicDelegatedPrefixPublicDelegatedSubPrefix> PublicDelegatedSubPrefixs { get; set; }
 
         /// <summary>
+        /// Immutable. The purpose of the public delegated prefix.  This field can only be set for the top-level global
+        /// public delegated prefix. It is an output-only field for the sub-delegates that inherit the value from the
+        /// top-level global public delegated prefix. Once the value is set, it cannot be changed.  The field cannot be
+        /// set for regional public delegated prefixes.  The supported values are:              -
+        /// APPLICATION_AND_PROXY_LOAD_BALANCERS: The global public      delegated prefix can only be used by Global
+        /// External Application and      Proxy Load Balancers to allocate addresses for forwarding rules. This is
+        /// the default value.      - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0: The      global public delegated
+        /// prefix can only be used by Global External      Passthrough Network Load Balancers to allocate Availability
+        /// Group 0      addresses for forwarding rules.      - PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1: The
+        /// global public delegated prefix can only be used by Global External      Passthrough Network Load Balancers
+        /// to allocate Availability Group 1      addresses for forwarding rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
+
+        /// <summary>
         /// Output only. [Output Only] URL of the region where the public delegated prefix resides. This field applies
         /// only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable
         /// as a field in the request body.
@@ -142698,6 +143486,12 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>The name of the sub public delegated prefix.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The purpose of the sub public delegated prefix. Inherited from parent prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
 
         /// <summary>
         /// Output only. [Output Only] The region of the sub public delegated prefix if it is regional. If absent, the
@@ -146392,6 +147186,13 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulShutdownTimestamp")]
         public virtual string GracefulShutdownTimestamp { get; set; }
 
+        /// <summary>
+        /// Output only. Protection tier for the workload which specifies the workload expectations in the event of
+        /// infrastructure failures at data center (e.g. power and/or cooling failures).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionTier")]
+        public virtual string ProtectionTier { get; set; }
+
         /// <summary>Time in future when the instance will be terminated inRFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminationTimestamp")]
         public virtual string TerminationTimestamp { get; set; }
@@ -148537,6 +149338,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bfdStatus")]
         public virtual BfdStatus BfdStatus { get; set; }
 
+        /// <summary>Output only. [Output Only] Indicates whether the BGP peer is in a depreferenced state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("depreferenced")]
+        public virtual System.Nullable<bool> Depreferenced { get; set; }
+
         /// <summary>
         /// Output only. Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         /// </summary>
@@ -149388,6 +150193,13 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptionNoticeDuration")]
         public virtual Duration PreemptionNoticeDuration { get; set; }
+
+        /// <summary>
+        /// Protection tier for the workload which specifies the workload expectations in the event of infrastructure
+        /// failures at data center (e.g. power and/or cooling failures).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionTier")]
+        public virtual string ProtectionTier { get; set; }
 
         /// <summary>Specifies the provisioning model of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
@@ -151564,7 +152376,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotGroupName")]
         public virtual string SnapshotGroupName { get; set; }
 
-        /// <summary>Indicates the type of the snapshot.</summary>
+        /// <summary>
+        /// Indicates the type of the snapshot. Valid values are ARCHIVE or STANDARD. The default is STANDARD.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotType")]
         public virtual string SnapshotType { get; set; }
 
@@ -155271,7 +156085,7 @@ namespace Google.Apis.Compute.v1.Data
         /// accepted formats are:        -
         /// //certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}.
         /// -
-        /// https://certificatemanager.googleapis.com/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
+        /// https://certificatemanager.{universeDomain}/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; }
@@ -157340,6 +158154,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
+        /// <summary>Output only. [Output Only] The status of the URL map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual UrlMapStatus Status { get; set; }
+
         /// <summary>
         /// The list of expected URL mapping tests. Request to update theUrlMap succeeds only if all test cases pass.
         /// You can specify a maximum of 100 tests per UrlMap.  Not supported when the URL map is bound to a target gRPC
@@ -157431,10 +158249,36 @@ namespace Google.Apis.Compute.v1.Data
         }
     }
 
+    /// <summary>Message representing the quota usage for a UrlMap.</summary>
+    public class UrlMapQuotaUsage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of forwarding rules that uses this UrlMap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
+        public virtual System.Nullable<int> ForwardingRules { get; set; }
+
+        /// <summary>Output only. The number of quota units calculated for this UrlMap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class UrlMapReference : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("urlMap")]
         public virtual string UrlMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[Output Only] The status of the URL map.</summary>
+    public class UrlMapStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Summary of quota usage for given UrlMap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaUsage")]
+        public virtual UrlMapQuotaUsage QuotaUsage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -157522,6 +158366,10 @@ namespace Google.Apis.Compute.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadSucceeded")]
         public virtual System.Nullable<bool> LoadSucceeded { get; set; }
+
+        /// <summary>Output only. Summary of quota usage for given UrlMap.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaUsage")]
+        public virtual UrlMapQuotaUsage QuotaUsage { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("testFailures")]
         public virtual System.Collections.Generic.IList<TestFailure> TestFailures { get; set; }
@@ -159858,6 +160706,10 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("faultResponse")]
         public virtual string FaultResponse { get; set; }
 
+        /// <summary>The flow management configuration for the wire.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowManagement")]
+        public virtual string FlowManagement { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -159869,6 +160721,9 @@ namespace Google.Apis.Compute.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("identityCertificateEnabled")]
         public virtual System.Nullable<bool> IdentityCertificateEnabled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("identityType")]
+        public virtual string IdentityType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
