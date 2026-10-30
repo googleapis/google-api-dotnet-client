@@ -12899,6 +12899,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class CloudRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
+        public virtual System.Collections.Generic.IList<string> Revisions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Compliance : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
@@ -13966,6 +13975,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpInspection")]
         public virtual CloudDlpInspection CloudDlpInspection { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
+        public virtual CloudRun CloudRun { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("complianceDetails")]
         public virtual ComplianceDetails ComplianceDetails { get; set; }
@@ -16189,6 +16201,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudSecuritycenterV2CloudRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("revisions")]
+        public virtual System.Collections.Generic.IList<string> Revisions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudSecuritycenterV2Compliance : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
@@ -17219,6 +17240,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpInspection")]
         public virtual GoogleCloudSecuritycenterV2CloudDlpInspection CloudDlpInspection { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
+        public virtual GoogleCloudSecuritycenterV2CloudRun CloudRun { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("complianceDetails")]
         public virtual GoogleCloudSecuritycenterV2ComplianceDetails ComplianceDetails { get; set; }
