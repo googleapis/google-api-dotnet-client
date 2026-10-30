@@ -19016,6 +19016,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>The output of a DataDocumentation scan.</summary>
     public class GoogleCloudDataplexV1DataDocumentationResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Insights for a data product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProductResult")]
+        public virtual GoogleCloudDataplexV1DataDocumentationResultDataProductResult DataProductResult { get; set; }
+
         /// <summary>Output only. Insights for a Dataset resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetResult")]
         public virtual GoogleCloudDataplexV1DataDocumentationResultDatasetResult DatasetResult { get; set; }
@@ -19023,6 +19027,46 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Output only. Insights for a Table resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableResult")]
         public virtual GoogleCloudDataplexV1DataDocumentationResultTableResult TableResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generated metadata about a data product.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultDataProductResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Unordered list. Generated descriptions for assets in the data product. Note that some assets
+        /// may not have a generated description. Such assets will not be included in this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetDescriptions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription> AssetDescriptions { get; set; }
+
+        /// <summary>Output only. A detailed description for the data product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual string Overview { get; set; }
+
+        /// <summary>Output only. Unordered list. Sample SQL queries for the data product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultQuery> Queries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Description for an asset in the data product.</summary>
+    public class GoogleCloudDataplexV1DataDocumentationResultDataProductResultAssetDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A generated description for the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual string Overview { get; set; }
+
+        /// <summary>
+        /// Output only. The service-qualified full resource name of the asset. Example:
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22543,6 +22587,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
 
         /// <summary>
+        /// Output only. The type of the EntryGroup that this entry belongs to. The default value is an empty string.
+        /// Recognised values include: * context-set: EntryGroup containing context set data assets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryGroupType")]
+        public virtual string EntryGroupType { get; set; }
+
+        /// <summary>
         /// Optional. Information related to the source system of the data resource that is represented by the entry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entrySource")]
@@ -22696,6 +22747,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferStatus")]
         public virtual string TransferStatus { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The type of this EntryGroup. The default value is an empty string. Recognised values
+        /// include: * context-set: EntryGroup containing context set data assets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>
         /// Output only. System generated globally unique ID for the EntryGroup. If you delete and recreate the
@@ -25617,6 +25675,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changePayload")]
         public virtual GoogleCloudDataplexV1BatchChangeMetadataRequest ChangePayload { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, defers reference validation between entries to when the change request is approved
+        /// and applied. Structural validation of entries and aspects is still performed at the time of submission. The
+        /// default is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deferredValidation")]
+        public virtual System.Nullable<bool> DeferredValidation { get; set; }
 
         /// <summary>Optional. Justification for the metadata change request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("justification")]
