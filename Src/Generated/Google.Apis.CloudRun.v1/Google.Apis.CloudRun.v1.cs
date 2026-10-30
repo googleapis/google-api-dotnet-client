@@ -10729,6 +10729,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restartPolicy")]
         public virtual string RestartPolicy { get; set; }
 
+        /// <summary>Optional. Sandbox configuration that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the Instance. The service account
         /// represents the identity of the running container, and determines what permissions the Instance has. If not
@@ -11837,6 +11841,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeClassName")]
         public virtual string RuntimeClassName { get; set; }
 
+        /// <summary>Optional. Sandbox configuration that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>
         /// Email address of the IAM service account associated with the revision of the service. The service account
         /// represents the identity of the running revision, and determines what permissions the revision has. If not
@@ -12035,6 +12043,63 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
         public virtual Overrides Overrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for sandboxes.</summary>
+    public class SandboxConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Sandbox templates that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templates")]
+        public virtual System.Collections.Generic.IList<SandboxTemplate> Templates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Template for a single sandbox.</summary>
+    public class SandboxTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Optional. Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is
+        /// not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>Optional. List of environment variables to set in the sandbox.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; }
+
+        /// <summary>
+        /// Required. Name of the container image in Dockerhub or Artifact Registry. If the host is not provided,
+        /// Dockerhub is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>Required. Name of the sandbox specified as a DNS_LABEL (RFC 1123).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Volume to mount into the container's filesystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
+        public virtual System.Collections.Generic.IList<VolumeMount> VolumeMounts { get; set; }
+
+        /// <summary>
+        /// Optional. Container's working directory. If not specified, the container runtime's default will be used,
+        /// which might be configured in the container image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
+        public virtual string WorkingDir { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12558,6 +12623,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> NodeSelector { get; set; }
+
+        /// <summary>Optional. Sandbox configuration that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual SandboxConfiguration Sandboxes { get; set; }
 
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the task of a job execution. The service
