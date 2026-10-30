@@ -97,9 +97,10 @@ namespace Google.Apis.Auth.OAuth2
                 // The service name is the first part of the host, for instance
                 // iam in iam.amazonaws.com or sts in sts.amazonaws.com.
                 // For FIPS endpoints (e.g. sts-fips.us-east-2.amazonaws.com), strip the "-fips" suffix.
+                const string fipsSuffix = "-fips";
                 string firstSegment = host.Split('.')[0];
-                string serviceName = firstSegment.EndsWith("-fips", StringComparison.Ordinal)
-                    ? firstSegment.Substring(0, firstSegment.Length - 5)
+                string serviceName = firstSegment.EndsWith(fipsSuffix, StringComparison.Ordinal)
+                    ? firstSegment.Substring(0, firstSegment.Length - fipsSuffix.Length)
                     : firstSegment;
                 IDictionary<string, string> canonicalHeaders = CreateCanonicalHeaders();
                 var sortedHeaders = canonicalHeaders.OrderBy(pair => pair.Key, StringComparer.Ordinal);
