@@ -713,11 +713,11 @@ namespace Google.Apis.DeveloperConnect.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. Filtering results</summary>
+                        /// <summary>Optional. Filtering results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Optional. Hint for how to order the results</summary>
+                        /// <summary>Optional. Hint for how to order the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -1214,11 +1214,11 @@ namespace Google.Apis.DeveloperConnect.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1445,6 +1445,124 @@ namespace Google.Apis.DeveloperConnect.v1
                         this.service = service;
                     }
 
+                    /// <summary>Add a comment to a Pull Request.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the GitRepositoryLink in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual AddPullRequestCommentRequest AddPullRequestComment(Google.Apis.DeveloperConnect.v1.Data.AddGitRepositoryLinkPullRequestCommentRequest body, string name)
+                    {
+                        return new AddPullRequestCommentRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Add a comment to a Pull Request.</summary>
+                    public class AddPullRequestCommentRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.PullRequestComment>
+                    {
+                        /// <summary>Constructs a new AddPullRequestComment request.</summary>
+                        public AddPullRequestCommentRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.AddGitRepositoryLinkPullRequestCommentRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the GitRepositoryLink in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DeveloperConnect.v1.Data.AddGitRepositoryLinkPullRequestCommentRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "addPullRequestComment";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:addPullRequestComment";
+
+                        /// <summary>Initializes AddPullRequestComment parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Add a review comment (inline on diff) to a Pull Request.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the GitRepositoryLink in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual AddPullRequestReviewCommentRequest AddPullRequestReviewComment(Google.Apis.DeveloperConnect.v1.Data.AddGitRepositoryLinkPullRequestReviewCommentRequest body, string name)
+                    {
+                        return new AddPullRequestReviewCommentRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Add a review comment (inline on diff) to a Pull Request.</summary>
+                    public class AddPullRequestReviewCommentRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.PullRequestReviewComment>
+                    {
+                        /// <summary>Constructs a new AddPullRequestReviewComment request.</summary>
+                        public AddPullRequestReviewCommentRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.AddGitRepositoryLinkPullRequestReviewCommentRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the GitRepositoryLink in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DeveloperConnect.v1.Data.AddGitRepositoryLinkPullRequestReviewCommentRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "addPullRequestReviewComment";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:addPullRequestReviewComment";
+
+                        /// <summary>Initializes AddPullRequestReviewComment parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Creates a GitRepositoryLink. Upon linking a Git Repository, Developer Connect will configure the
                     /// Git Repository to send webhook events to Developer Connect. Connections that use Firebase GitHub
@@ -1655,6 +1773,452 @@ namespace Google.Apis.DeveloperConnect.v1
                         }
                     }
 
+                    /// <summary>Diff commits for a GitRepositoryLink.</summary>
+                    /// <param name="name">Required. The resource name of the GitRepositoryLink.</param>
+                    public virtual DiffCommitRequest DiffCommit(string name)
+                    {
+                        return new DiffCommitRequest(this.service, name);
+                    }
+
+                    /// <summary>Diff commits for a GitRepositoryLink.</summary>
+                    public class DiffCommitRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.DiffGitRepositoryLinkCommitResponse>
+                    {
+                        /// <summary>Constructs a new DiffCommit request.</summary>
+                        public DiffCommitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The resource name of the GitRepositoryLink.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The base commit SHA or ref.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("baseSha", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string BaseSha { get; set; }
+
+                        /// <summary>Required. The head commit SHA or ref.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("headSha", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string HeadSha { get; set; }
+
+                        /// <summary>
+                        /// Optional. Path patterns or exact paths to filter returned files. When `path_filters` is
+                        /// specified, `FileDiff.patch` is populated for all matching files (use `["**"]` to include
+                        /// patches for all changed files). When `path_filters` is omitted or empty, the full list of
+                        /// `FileDiff` is returned without patch diffs (`FileDiff.patch` is empty).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pathFilters", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> PathFilters { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "diffCommit";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:diffCommit";
+
+                        /// <summary>Initializes DiffCommit parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                            RequestParameters.Add("baseSha", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "baseSha",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("headSha", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "headSha",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pathFilters", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pathFilters",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Fetch Commit details from a Git repository link.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the GitRepositoryLink in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual FetchCommitRequest FetchCommit(string name)
+                    {
+                        return new FetchCommitRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetch Commit details from a Git repository link.</summary>
+                    public class FetchCommitRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.FetchGitRepositoryLinkCommitResponse>
+                    {
+                        /// <summary>Constructs a new FetchCommit request.</summary>
+                        public FetchCommitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the GitRepositoryLink in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. The commit SHA, or symbolic revision (for example, branch name, tag, or Git
+                        /// reference).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("commitSha", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string CommitSha { get; set; }
+
+                        /// <summary>
+                        /// Optional. Path patterns or exact paths to filter returned files (only applicable in `FULL`
+                        /// view). When `path_filters` is specified, `FileDiff.patch` is populated for all matching
+                        /// files (use `["**"]` to include patches for all changed files). When `path_filters` is
+                        /// omitted or empty, the full list of `FileDiff` is returned without patch diffs
+                        /// (`FileDiff.patch` is empty).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pathFilters", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> PathFilters { get; set; }
+
+                        /// <summary>
+                        /// Optional. The level of commit details to return in the response. Defaults to `FULL` if
+                        /// unspecified. In `FULL` view, `files` metadata (paths and statuses) are returned;
+                        /// `path_filters` must also be specified to populate line patch hunks.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The level of commit details to return in the response. Defaults to `FULL` if
+                        /// unspecified. In `FULL` view, `files` metadata (paths and statuses) are returned;
+                        /// `path_filters` must also be specified to populate line patch hunks.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Unspecified, defaults to BASIC.</summary>
+                            [Google.Apis.Util.StringValueAttribute("COMMIT_VIEW_UNSPECIFIED")]
+                            COMMITVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Basic view, returns commit metadata but no file diffs.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>Full view, returns commit metadata and file diffs.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchCommit";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:fetchCommit";
+
+                        /// <summary>Initializes FetchCommit parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                            RequestParameters.Add("commitSha", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "commitSha",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pathFilters", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pathFilters",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Fetch a list of Commits from a Git repository link.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the GitRepositoryLink in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual FetchCommitListRequest FetchCommitList(string name)
+                    {
+                        return new FetchCommitListRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetch a list of Commits from a Git repository link.</summary>
+                    public class FetchCommitListRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.FetchGitRepositoryLinkCommitListResponse>
+                    {
+                        /// <summary>Constructs a new FetchCommitList request.</summary>
+                        public FetchCommitListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the GitRepositoryLink in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Number of results to return in the list. Default is 50. Max is 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `FetchGitRepositoryLinkCommitList` call.
+                        /// Provide this to retrieve the subsequent page. When paginating, all other parameters provided
+                        /// to `FetchGitRepositoryLinkCommitList` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// Optional. The commit SHA, or symbolic revision (for example, branch name, tag, or Git
+                        /// reference) from which to start listing commits.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ref", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Ref { get; set; }
+
+                        /// <summary>
+                        /// Optional. The level of commit details to return in the response. Only `BASIC` is supported;
+                        /// `FULL` returns `INVALID_ARGUMENT`. Defaults to `BASIC` if unspecified. Use
+                        /// `FetchGitRepositoryLinkCommit` to get file diffs for a single commit.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The level of commit details to return in the response. Only `BASIC` is supported;
+                        /// `FULL` returns `INVALID_ARGUMENT`. Defaults to `BASIC` if unspecified. Use
+                        /// `FetchGitRepositoryLinkCommit` to get file diffs for a single commit.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Unspecified, defaults to BASIC.</summary>
+                            [Google.Apis.Util.StringValueAttribute("COMMIT_VIEW_UNSPECIFIED")]
+                            COMMITVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Basic view, returns commit metadata but no file diffs.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>Full view, returns commit metadata and file diffs.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchCommitList";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:fetchCommitList";
+
+                        /// <summary>Initializes FetchCommitList parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("ref", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ref",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Fetches blame information for a file or line range in a file.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the GitRepositoryLink in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual FetchFileBlameRequest FetchFileBlame(string name)
+                    {
+                        return new FetchFileBlameRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetches blame information for a file or line range in a file.</summary>
+                    public class FetchFileBlameRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.FetchGitRepositoryLinkFileBlameResponse>
+                    {
+                        /// <summary>Constructs a new FetchFileBlame request.</summary>
+                        public FetchFileBlameRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the GitRepositoryLink in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The 1-indexed starting line number of the range to blame (inclusive). If not
+                        /// specified, blame begins at line 1.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("firstLine", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> FirstLine { get; set; }
+
+                        /// <summary>
+                        /// Optional. The 1-indexed ending line number of the range to blame (inclusive). If not
+                        /// specified, blame extends to the end of the file.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("lastLine", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> LastLine { get; set; }
+
+                        /// <summary>Required. The file path within the repository.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Path { get; set; }
+
+                        /// <summary>
+                        /// Required. The SCM commit SHA, or symbolic revision (for example, branch name, tag) from
+                        /// which to fetch the blame.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ref", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Ref { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchFileBlame";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:fetchFileBlame";
+
+                        /// <summary>Initializes FetchFileBlame parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                            RequestParameters.Add("firstLine", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "firstLine",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("lastLine", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "lastLine",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "path",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("ref", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ref",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Fetch the list of branches or tags for a given repository.</summary>
                     /// <param name="gitRepositoryLink">
                     /// Required. The resource name of GitRepositoryLink in the format
@@ -1750,6 +2314,170 @@ namespace Google.Apis.DeveloperConnect.v1
                             RequestParameters.Add("refType", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "refType",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Fetch Pull Request details from a Git repository link.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the GitRepositoryLink in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual FetchPullRequestRequest FetchPullRequest(string name)
+                    {
+                        return new FetchPullRequestRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetch Pull Request details from a Git repository link.</summary>
+                    public class FetchPullRequestRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.PullRequest>
+                    {
+                        /// <summary>Constructs a new FetchPullRequest request.</summary>
+                        public FetchPullRequestRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the GitRepositoryLink in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The ID of the Pull Request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pullRequestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PullRequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchPullRequest";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:fetchPullRequest";
+
+                        /// <summary>Initializes FetchPullRequest parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                            RequestParameters.Add("pullRequestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pullRequestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Fetches a list of Pull Requests from the remote repository.</summary>
+                    /// <param name="name">
+                    /// Required. The GitRepositoryLink resource name in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual FetchPullRequestListRequest FetchPullRequestList(string name)
+                    {
+                        return new FetchPullRequestListRequest(this.service, name);
+                    }
+
+                    /// <summary>Fetches a list of Pull Requests from the remote repository.</summary>
+                    public class FetchPullRequestListRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.FetchGitRepositoryLinkPullRequestListResponse>
+                    {
+                        /// <summary>Constructs a new FetchPullRequestList request.</summary>
+                        public FetchPullRequestListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The GitRepositoryLink resource name in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A filter expression that filters the pull requests returned in the response. Only
+                        /// a single equality comparison on `state` is supported, for example `state = "OPEN"`.
+                        /// Supported values are `OPEN`, `CLOSED`, and `MERGED`. `DECLINED` is only supported for SCM
+                        /// providers that support declining pull requests, and returns `INVALID_ARGUMENT` for GitHub,
+                        /// GitHub Enterprise, GitLab, and GitLab Enterprise. Other values or expressions return
+                        /// `INVALID_ARGUMENT`. Defaults to `state = "OPEN"` if unspecified.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Number of results to return in the list. Default is 20. Max is 100. A page may
+                        /// contain fewer than `page_size` results even when more results are available; use
+                        /// `next_page_token` to check for more pages.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `FetchGitRepositoryLinkPullRequestList`
+                        /// call. Provide this to retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchPullRequestList";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:fetchPullRequestList";
+
+                        /// <summary>Initializes FetchPullRequestList parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1922,7 +2650,7 @@ namespace Google.Apis.DeveloperConnect.v1
                     }
 
                     /// <summary>Lists GitRepositoryLinks in a given project, location, and connection.</summary>
-                    /// <param name="parent">Required. Parent value for ListGitRepositoryLinksRequest</param>
+                    /// <param name="parent">Required. Parent value for ListGitRepositoryLinksRequest.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -1938,15 +2666,15 @@ namespace Google.Apis.DeveloperConnect.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Parent value for ListGitRepositoryLinksRequest</summary>
+                        /// <summary>Required. Parent value for ListGitRepositoryLinksRequest.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. Filtering results</summary>
+                        /// <summary>Optional. Filtering results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Optional. Hint for how to order the results</summary>
+                        /// <summary>Optional. Hint for how to order the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -2013,6 +2741,132 @@ namespace Google.Apis.DeveloperConnect.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Modifies a Pull Request in the remote SCM repository associated with a GitRepositoryLink.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The GitRepositoryLink resource name in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual ModifyPullRequestRequest ModifyPullRequest(Google.Apis.DeveloperConnect.v1.Data.ModifyGitRepositoryLinkPullRequestRequest body, string name)
+                    {
+                        return new ModifyPullRequestRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Modifies a Pull Request in the remote SCM repository associated with a GitRepositoryLink.
+                    /// </summary>
+                    public class ModifyPullRequestRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.PullRequest>
+                    {
+                        /// <summary>Constructs a new ModifyPullRequest request.</summary>
+                        public ModifyPullRequestRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.ModifyGitRepositoryLinkPullRequestRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The GitRepositoryLink resource name in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DeveloperConnect.v1.Data.ModifyGitRepositoryLinkPullRequestRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "modifyPullRequest";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:modifyPullRequest";
+
+                        /// <summary>Initializes ModifyPullRequest parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Opens a Pull Request in the remote SCM repository associated with a GitRepositoryLink.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The GitRepositoryLink resource name in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
+                    public virtual OpenPullRequestRequest OpenPullRequest(Google.Apis.DeveloperConnect.v1.Data.OpenGitRepositoryLinkPullRequestRequest body, string name)
+                    {
+                        return new OpenPullRequestRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Opens a Pull Request in the remote SCM repository associated with a GitRepositoryLink.
+                    /// </summary>
+                    public class OpenPullRequestRequest : DeveloperConnectBaseServiceRequest<Google.Apis.DeveloperConnect.v1.Data.PullRequest>
+                    {
+                        /// <summary>Constructs a new OpenPullRequest request.</summary>
+                        public OpenPullRequestRequest(Google.Apis.Services.IClientService service, Google.Apis.DeveloperConnect.v1.Data.OpenGitRepositoryLinkPullRequestRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The GitRepositoryLink resource name in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DeveloperConnect.v1.Data.OpenGitRepositoryLinkPullRequestRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "openPullRequest";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:openPullRequest";
+
+                        /// <summary>Initializes OpenPullRequest parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/gitRepositoryLinks/[^/]+$",
                             });
                         }
                     }
@@ -2296,8 +3150,8 @@ namespace Google.Apis.DeveloperConnect.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object If auto-generating Id server-side, remove this field and
-                    /// connection_id from the method_signature of Create RPC
+                    /// Required. The ID to use for the connection, which becomes the final component of the
+                    /// connection's resource name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("connectionId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ConnectionId { get; set; }
@@ -2669,11 +3523,11 @@ namespace Google.Apis.DeveloperConnect.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -4154,6 +5008,42 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         }
     }
 
+    /// <summary>Request message for AddGitRepositoryLinkPullRequestComment.</summary>
+    public class AddGitRepositoryLinkPullRequestCommentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The comment to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual PullRequestComment Comment { get; set; }
+
+        /// <summary>Required. The ID of the Pull Request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequestId")]
+        public virtual string PullRequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for AddGitRepositoryLinkPullRequestReviewComment.</summary>
+    public class AddGitRepositoryLinkPullRequestReviewCommentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The review comment to add.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual PullRequestReviewComment Comment { get; set; }
+
+        /// <summary>
+        /// Optional. The commit SHA to comment on. If not specified, defaults to the HEAD commit of the Pull Request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitId")]
+        public virtual string CommitId { get; set; }
+
+        /// <summary>Required. The ID of the Pull Request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequestId")]
+        public virtual string PullRequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AppHubService represents the App Hub Service.</summary>
     public class AppHubService : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4454,6 +5344,25 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BlameRange represents blame information for a range of lines.</summary>
+    public class BlameRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The commit metadata for this line range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commit")]
+        public virtual SCMCommit Commit { get; set; }
+
+        /// <summary>The 1-indexed starting line number of the range (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstLine")]
+        public virtual System.Nullable<int> FirstLine { get; set; }
+
+        /// <summary>The 1-indexed ending line number of the range (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastLine")]
+        public virtual System.Nullable<int> LastLine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4480,7 +5389,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create timestamp</summary>
+        /// <summary>Output only. Create timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -4524,7 +5433,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _deleteTime;
 
-        /// <summary>Output only. [Output only] Delete timestamp</summary>
+        /// <summary>Output only. Delete timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual string DeleteTimeRaw
         {
@@ -4572,7 +5481,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for the git proxy feature. Enabling the git proxy allows clients to perform git
+        /// Optional. Configuration for the Git proxy feature. Enabling the Git proxy allows clients to perform Git
         /// operations on the repositories linked in the connection. [Learn
         /// more](https://docs.cloud.google.com/developer-connect/docs/configure-git-proxy).
         /// </summary>
@@ -4632,7 +5541,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update timestamp</summary>
+        /// <summary>Output only. Update timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -4932,6 +5841,17 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for DiffGitRepositoryLinkCommit.</summary>
+    public class DiffGitRepositoryLinkCommitResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file diff extracted from the unified diff.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<FileDiff> Files { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -5047,6 +5967,71 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Name of the refs fetched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refNames")]
         public virtual System.Collections.Generic.IList<string> RefNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchGitRepositoryLinkCommitList.</summary>
+    public class FetchGitRepositoryLinkCommitListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of commit metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commits")]
+        public virtual System.Collections.Generic.IList<SCMCommit> Commits { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchGitRepositoryLinkCommit.</summary>
+    public class FetchGitRepositoryLinkCommitResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The commit metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commit")]
+        public virtual SCMCommit Commit { get; set; }
+
+        /// <summary>
+        /// List of file changes and patch diffs. Omitted when view is `BASIC`. Patch diffs (`FileDiff.patch`) are only
+        /// populated when `path_filters` is specified in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<FileDiff> Files { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchGitRepositoryLinkFileBlame.</summary>
+    public class FetchGitRepositoryLinkFileBlameResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of blame ranges for the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
+        public virtual System.Collections.Generic.IList<BlameRange> Ranges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchGitRepositoryLinkPullRequestList.</summary>
+    public class FetchGitRepositoryLinkPullRequestListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of pull requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequests")]
+        public virtual System.Collections.Generic.IList<PullRequest> PullRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5223,6 +6208,28 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>The name of the parameter in the input_schema or output_schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for a file diff.</summary>
+    public class FileDiff : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Standard unified diff patch hunk for the file. Only populated when `path_filters` is specified in the
+        /// request; otherwise empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patch")]
+        public virtual string Patch { get; set; }
+
+        /// <summary>Relative path to the file in the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Status of change: "ADDED", "MODIFIED", "REMOVED", "RENAMED".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5480,7 +6487,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     public class GitProxyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Setting this to true allows the git proxy to be used for performing git operations on the
+        /// Optional. Setting this to true allows the Git proxy to be used for performing Git operations on the
         /// repositories linked in the connection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
@@ -5513,7 +6520,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. [Output only] Create timestamp</summary>
+        /// <summary>Output only. Create timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -5550,7 +6557,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _deleteTime;
 
-        /// <summary>Output only. [Output only] Delete timestamp</summary>
+        /// <summary>Output only. Delete timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual string DeleteTimeRaw
         {
@@ -5591,8 +6598,8 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. URI to access the linked repository through the Git Proxy. This field is only populated if the
-        /// git proxy is enabled for the connection.
+        /// Output only. URI to access the linked repository through the Git proxy. This field is only populated if the
+        /// Git proxy is enabled for the connection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitProxyUri")]
         public virtual string GitProxyUri { get; set; }
@@ -5622,7 +6629,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. [Output only] Update timestamp</summary>
+        /// <summary>Output only. Update timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -5955,7 +6962,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     /// <summary>Message for response to listing Connections</summary>
     public class ListConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Connection</summary>
+        /// <summary>The list of Connections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
         public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
 
@@ -5992,7 +6999,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     /// <summary>Message for response to listing GitRepositoryLinks</summary>
     public class ListGitRepositoryLinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of GitRepositoryLinks</summary>
+        /// <summary>The list of GitRepositoryLinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitRepositoryLinks")]
         public virtual System.Collections.Generic.IList<GitRepositoryLink> GitRepositoryLinks { get; set; }
 
@@ -6143,6 +7150,33 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for modifying SCM Pull Request.</summary>
+    public class ModifyGitRepositoryLinkPullRequestRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The target branch to merge into.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseRef")]
+        public virtual string BaseRef { get; set; }
+
+        /// <summary>Optional. The body description of the Pull Request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; }
+
+        /// <summary>Required. The SCM-specific pull request identifier (for example, "45").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequestId")]
+        public virtual string PullRequestId { get; set; }
+
+        /// <summary>Optional. The state of the Pull Request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. The title of the Pull Request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents an OAuth token of the account that authorized the Connection, and associated metadata.
     /// </summary>
@@ -6159,6 +7193,19 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// <summary>Output only. The username associated with this token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for opening SCM Pull Request.</summary>
+    public class OpenGitRepositoryLinkPullRequestRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Pull Request details to open. Input fields used: title, body, head_ref, base_ref.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullRequest")]
+        public virtual PullRequest PullRequest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6418,6 +7465,450 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message representing a SCM Pull Request.</summary>
+    public class PullRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The username of the author.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        /// <summary>Required. The target commit SHA of the base branch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseRef")]
+        public virtual string BaseRef { get; set; }
+
+        /// <summary>Optional. The body description of the PR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; }
+
+        private string _closeTimeRaw;
+
+        private object _closeTime;
+
+        /// <summary>Output only. When the PR was closed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("closeTime")]
+        public virtual string CloseTimeRaw
+        {
+            get => _closeTimeRaw;
+            set
+            {
+                _closeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _closeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CloseTimeDateTimeOffset instead.")]
+        public virtual object CloseTime
+        {
+            get => _closeTime;
+            set
+            {
+                _closeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _closeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CloseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CloseTimeRaw);
+            set => CloseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. When the PR was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _declineTimeRaw;
+
+        private object _declineTime;
+
+        /// <summary>
+        /// Output only. When the PR was declined. Only set for SCM providers that support declining pull requests.
+        /// Never set for GitHub, GitHub Enterprise, GitLab, or GitLab Enterprise, where a pull request closed without
+        /// being merged is `CLOSED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("declineTime")]
+        public virtual string DeclineTimeRaw
+        {
+            get => _declineTimeRaw;
+            set
+            {
+                _declineTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _declineTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeclineTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeclineTimeDateTimeOffset instead.")]
+        public virtual object DeclineTime
+        {
+            get => _declineTime;
+            set
+            {
+                _declineTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _declineTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeclineTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeclineTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeclineTimeRaw);
+            set => DeclineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The source commit SHA of the head branch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headRef")]
+        public virtual string HeadRef { get; set; }
+
+        /// <summary>Output only. The HTML URL of the pull request on the SCM provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("htmlUrl")]
+        public virtual string HtmlUrl { get; set; }
+
+        /// <summary>Required. The ID of the PR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        private string _mergeTimeRaw;
+
+        private object _mergeTime;
+
+        /// <summary>Output only. When the PR was merged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergeTime")]
+        public virtual string MergeTimeRaw
+        {
+            get => _mergeTimeRaw;
+            set
+            {
+                _mergeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _mergeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MergeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MergeTimeDateTimeOffset instead.")]
+        public virtual object MergeTime
+        {
+            get => _mergeTime;
+            set
+            {
+                _mergeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _mergeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="MergeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MergeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MergeTimeRaw);
+            set => MergeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The mergeability state of the pull request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergeability")]
+        public virtual string Mergeability { get; set; }
+
+        /// <summary>Output only. The current state of the PR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. The title of the PR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. When the PR was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message representing a SCM Pull Request Comment.</summary>
+    public class PullRequestComment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The username of the author.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        /// <summary>Required. The body of the comment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. When the comment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The ID of the comment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. When the comment was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message representing a SCM Pull Request Review Comment (inline on diff).</summary>
+    public class PullRequestReviewComment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The username of the author.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        /// <summary>Required. The body of the comment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual string Body { get; set; }
+
+        /// <summary>Output only. The commit SHA the comment was actually applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitId")]
+        public virtual string CommitId { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. When the comment was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The first line of the comment range (inclusive). If not specified, the comment applies only to the
+        /// `last_line`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstLine")]
+        public virtual System.Nullable<int> FirstLine { get; set; }
+
+        /// <summary>Output only. The ID of the comment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Required. The last line of the comment range (inclusive). If `first_line` is not specified, the comment
+        /// applies only to this line.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastLine")]
+        public virtual System.Nullable<int> LastLine { get; set; }
+
+        /// <summary>Required. The file path to comment on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Optional. The side of the diff to comment on. Defaults to HEAD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("side")]
+        public virtual string Side { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. When the comment was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RuntimeConfig represents the runtimes where the application is deployed.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6447,6 +7938,70 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SCMCommit represents commit metadata.</summary>
+    public class SCMCommit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The author's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual string Author { get; set; }
+
+        /// <summary>The author's email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorEmail")]
+        public virtual string AuthorEmail { get; set; }
+
+        private string _commitTimeRaw;
+
+        private object _commitTime;
+
+        /// <summary>Timestamp when the commit was authored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTime")]
+        public virtual string CommitTimeRaw
+        {
+            get => _commitTimeRaw;
+            set
+            {
+                _commitTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _commitTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CommitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CommitTimeDateTimeOffset instead.")]
+        public virtual object CommitTime
+        {
+            get => _commitTime;
+            set
+            {
+                _commitTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _commitTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CommitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CommitTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
+            set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Commit message text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Full 40-character SCM commit SHA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha")]
+        public virtual string Sha { get; set; }
+
+        /// <summary>The SCM provider's HTML URL link for this commit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
