@@ -4444,6 +4444,26 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
     }
 
     /// <summary>
+    /// DurationLimits defines the time-related constraints for a UnitOperation's execution. This allows users to
+    /// control how long an operation can run before being cancelled by the system.
+    /// </summary>
+    public class DurationLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The maximum duration a UnitOperation is allowed to execute in the RUNNING state. - Minimum value:
+        /// 60 seconds (1 minute) - Maximum value: 604800 seconds (7 days) If this field is not set, or if the provided
+        /// value falls outside the allowed range, the system will use a default timeout of 10800 seconds (3 hours).
+        /// Upon exceeding this time limit, the UnitOperation will be best-effort cancelled, and its state will be set
+        /// to FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitOperationTimeout")]
+        public virtual object UnitOperationTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -6491,6 +6511,16 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         public virtual System.Collections.Generic.IList<Dependency> Dependencies { get; set; }
 
         /// <summary>
+        /// Optional. Defines the default duration limits for UnitOperations created from this UnitKind. These settings
+        /// provide a baseline for execution time constraints. The limits specified here can be overridden by more
+        /// specific settings on an individual UnitOperation resource. See the DurationLimits message definition for
+        /// details on the constraints like minimum, maximum, and system default values for unit_operation_timeout. If
+        /// not set, UnitOperations will use the system default duration limits unless overridden on the UnitOperation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationLimits")]
+        public virtual DurationLimits DurationLimits { get; set; }
+
+        /// <summary>
         /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
         /// to confirm that the client and server agree on the ordering of a resource being written.
         /// </summary>
@@ -6693,6 +6723,14 @@ namespace Google.Apis.SaaSServiceManagement.v1.Data
         /// <summary>Optional. Deprovision operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprovision")]
         public virtual Deprovision Deprovision { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the duration limits for this specific UnitOperation instance. These settings override any
+        /// default duration limits set on the UnitKind. See the DurationLimits message definition for details on the
+        /// constraints like minimum, maximum, and system default values for unit_operation_timeout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationLimits")]
+        public virtual DurationLimits DurationLimits { get; set; }
 
         /// <summary>
         /// Optional. Output only. The engine state for on-going deployment engine operation(s). This field is opaque
