@@ -6231,7 +6231,9 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.</summary>
+    /// <summary>
+    /// Represents a volume backed by a Cloud Storage bucket (mounted via Cloud Storage FUSE or as a block device disk).
+    /// </summary>
     public class GoogleCloudRunV2GCSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Storage Bucket name.</summary>
@@ -6620,6 +6622,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. Restart policy for the Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restartPolicy")]
         public virtual string RestartPolicy { get; set; }
+
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
@@ -7632,6 +7638,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
+        /// <summary>Output only. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
@@ -7865,6 +7875,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
 
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>Optional. Scaling settings for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
         public virtual GoogleCloudRunV2RevisionScaling Scaling { get; set; }
@@ -7928,6 +7942,63 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Indicates that the request should be validated without actually deleting any resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    /// <summary>Configuration for sandboxes.</summary>
+    public class GoogleCloudRunV2SandboxConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Sandbox templates that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2SandboxTemplate> Templates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Template for a single sandbox.</summary>
+    public class GoogleCloudRunV2SandboxTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Optional. Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is
+        /// not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>Optional. List of environment variables to set in the sandbox.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2EnvVar> Env { get; set; }
+
+        /// <summary>
+        /// Required. Name of the container image in Dockerhub or Artifact Registry. If the host is not provided,
+        /// Dockerhub is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>Required. Name of the sandbox specified as a DNS_LABEL (RFC 1123).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Volume to mount into the container's filesystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2VolumeMount> VolumeMounts { get; set; }
+
+        /// <summary>
+        /// Optional. Container's working directory. If not specified, the container runtime's default will be used,
+        /// which might be configured in the container image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
+        public virtual string WorkingDir { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>SecretEnvVarSource represents a source for the value of an EnvVar.</summary>
@@ -8898,6 +8969,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retried")]
         public virtual System.Nullable<int> Retried { get; set; }
 
+        /// <summary>Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
@@ -9115,6 +9190,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. The node selector for the task template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
         public virtual GoogleCloudRunV2NodeSelector NodeSelector { get; set; }
+
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
 
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the Task of a Job. The service account
@@ -9766,6 +9845,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
+
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
 
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the revision of the service. The service
