@@ -8,6 +8,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.DeveloperConnect.v1.ProjectsResource+LocationsResource+ConnectionsResource+GitRepositoryLinksResource+FetchCommitListRequest.ViewEnum": [
+    "COMMIT_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.DeveloperConnect.v1.ProjectsResource+LocationsResource+ConnectionsResource+GitRepositoryLinksResource+FetchCommitRequest.ViewEnum": [
+    "COMMIT_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
   "Google.Apis.DeveloperConnect.v1.ProjectsResource+LocationsResource+ConnectionsResource+GitRepositoryLinksResource+FetchGitRefsRequest.RefTypeEnum": [
     "REF_TYPE_UNSPECIFIED",
     "TAG",
