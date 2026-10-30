@@ -4392,8 +4392,11 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual TechnologyWatchListAlertThreshold AlertThreshold { get; set; }
 
         /// <summary>
-        /// Optional. List of vendor, technology or cpe fingerprint. example: Microsoft office 360 Apache Server 3.5
-        /// cpe:2.3:a:microsoft:outlook:*:*:*:*:*:*:*:*
+        /// Optional. List of technologies to watch, one per entry, in the form ` [version]`, using the vendor and
+        /// product names from the Google Threat Intelligence products and fixes section. example: `microsoft outlook`
+        /// `apache http_server 2.4.54` CPE strings such as `cpe:2.3:a:microsoft:outlook:*:*:*:*:*:*:*:*` are only
+        /// parsed through the Google Threat Intelligence interface and are not available through the API. Send the
+        /// vendor and product pair instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
         public virtual System.Collections.Generic.IList<string> Technologies { get; set; }
@@ -4520,8 +4523,8 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual System.Collections.Generic.IList<string> ExploitationVectors { get; set; }
 
         /// <summary>
-        /// Optional. The specific technologies from the configured watchlist that triggered the match. Ex: "Apache
-        /// Struts".
+        /// Optional. The entries from the configured watchlist that triggered the match, exactly as written in
+        /// `TechnologyWatchListConfig.technologies`. Ex: `apache http_server 2.4.54`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedTechnologies")]
         public virtual System.Collections.Generic.IList<string> MatchedTechnologies { get; set; }
@@ -4546,7 +4549,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("riskRating")]
         public virtual string RiskRating { get; set; }
 
-        /// <summary>Required. All technologies affected by the vulnerability. Ex: "Apache Struts".</summary>
+        /// <summary>
+        /// Required. All technologies affected by the vulnerability, using the vendor and product names of its affected
+        /// products, optionally followed by a version. Ex: `Apache Struts 2.2.3`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
         public virtual System.Collections.Generic.IList<string> Technologies { get; set; }
 
