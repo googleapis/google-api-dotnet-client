@@ -1,0 +1,11 @@
+{
+  "Google.Apis.DeviceRun.v1.DeviceRunBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DeviceRun.v1.DeviceRunBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
