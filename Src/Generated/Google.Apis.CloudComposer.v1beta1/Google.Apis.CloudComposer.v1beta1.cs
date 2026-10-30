@@ -3279,6 +3279,12 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationDisabled")]
         public virtual System.Nullable<bool> CreationDisabled { get; set; }
 
+        /// <summary>
+        /// Whether it is possible to create an environment in the `DEVELOPMENT` mode with the image version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devModeSupported")]
+        public virtual System.Nullable<bool> DevModeSupported { get; set; }
+
         /// <summary>The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b.c"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersionId")]
         public virtual string ImageVersionId { get; set; }
