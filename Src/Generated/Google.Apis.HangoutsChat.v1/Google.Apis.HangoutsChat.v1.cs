@@ -7498,29 +7498,39 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class CommonEventObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A map containing the current values of the widgets in the displayed card. The map keys are the string IDs
-        /// assigned with each widget. The structure of the map value object is dependent on the widget type: **Note**:
-        /// The following examples are formatted for Apps Script's V8 runtime. If you're using Rhino runtime, you must
-        /// add `[""]` after the value. For example, instead of
+        /// A map containing the current values of the widgets in the displayed card. The map keys are the string `name`
+        /// values assigned to each input widget (such as `TextInput.name`, `SelectionInput.name`,
+        /// `DateTimePicker.name`, or `DecoratedText.SwitchControl.name`). The structure of the map value object is
+        /// dependent on the widget type: **Note**: The following examples are formatted for Apps Script's V8 runtime.
+        /// If you're using Rhino runtime, you must add `[""]` after the value. For example, instead of
         /// `e.commonEventObject.formInputs.employeeName.stringInputs.value[0]`, format the event object as
         /// `e.commonEventObject.formInputs.employeeName[""].stringInputs.value[0]`. To learn more about runtimes in
         /// Apps Script, see the [V8 Runtime Overview](https://developers.google.com/apps-script/guides/v8-runtime). *
-        /// Single-valued widgets (for example, a text box): a list of strings (only one element). **Example**: for a
-        /// text input widget with `employeeName` as its ID, access the text input value with:
-        /// `e.commonEventObject.formInputs.employeeName.stringInputs.value[0]`. * Multi-valued widgets (for example,
-        /// checkbox groups): a list of strings. **Example**: for a multi-value widget with `participants` as its ID,
-        /// access the value array with: `e.commonEventObject.formInputs.participants.stringInputs.value`. * **A
-        /// date-time picker**: a [`DateTimeInput
+        /// Single-valued widgets (for example, a `TextInput` widget, or a `SelectionInput` widget of type `DROPDOWN` or
+        /// `RADIO_BUTTON`): a `StringInputs` object containing a single-element list (or an empty list if no selection
+        /// is made). **Example**: for a text input widget with `employeeName` as its `name`, access the text input
+        /// value with: `e.commonEventObject.formInputs.employeeName.stringInputs.value[0]`. * Multi-valued widgets (for
+        /// example, a `SelectionInput` widget of type `CHECK_BOX`, `SWITCH`, or `MULTI_SELECT`): a `StringInputs`
+        /// object containing the list of selected item `value` strings. **Example**: for a multi-value widget with
+        /// `participants` as its `name`, access the value array with:
+        /// `e.commonEventObject.formInputs.participants.stringInputs.value`. * **A `DecoratedText.SwitchControl`
+        /// widget**: a `StringInputs` object. When `selected` is `true`, `stringInputs.value` contains the switch's
+        /// `value` field (or `""` if `value` was not specified; if multiple switches share the same `name`, each
+        /// selected switch's `value` is included in the list). When `selected` is `false`, the switch's `value` is
+        /// omitted from `stringInputs.value`. * **A date-time picker (`DateTimePickerType.DATE_AND_TIME`)**: a
+        /// [`DateTimeInput
         /// object`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-time-input).
-        /// **Example**: For a picker with an ID of `myDTPicker`, access the
+        /// **Example**: For a picker with a `name` of `myDTPicker`, access the
         /// [`DateTimeInput`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-time-input)
-        /// object using `e.commonEventObject.formInputs.myDTPicker.dateTimeInput`. * **A date-only picker**: a
-        /// [`DateInput object`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-input).
-        /// **Example**: For a picker with an ID of `myDatePicker`, access the
+        /// object using `e.commonEventObject.formInputs.myDTPicker.dateTimeInput`. * **A date-only picker
+        /// (`DateTimePickerType.DATE_ONLY`)**: a [`DateInput
+        /// object`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-input). **Example**:
+        /// For a picker with a `name` of `myDatePicker`, access the
         /// [`DateInput`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-input) object
-        /// using `e.commonEventObject.formInputs.myDatePicker.dateInput`. * **A time-only picker**: a [`TimeInput
+        /// using `e.commonEventObject.formInputs.myDatePicker.dateInput`. * **A time-only picker
+        /// (`DateTimePickerType.TIME_ONLY`)**: a [`TimeInput
         /// object`](https://developers.google.com/workspace/add-ons/concepts/event-objects#time-input). **Example**:
-        /// For a picker with an ID of `myTimePicker`, access the
+        /// For a picker with a `name` of `myTimePicker`, access the
         /// [`TimeInput`](https://developers.google.com/workspace/add-ons/concepts/event-objects#time-input) object
         /// using `e.commonEventObject.formInputs.myTimePicker.timeInput`.
         /// </summary>
@@ -7934,10 +7944,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Wrapper around the card body of the dialog.</summary>
     public class Dialog : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Input only. Body of the dialog, which is rendered in a modal. Google Chat apps don't support the following
-        /// card entities: `DateTimePicker`, `OnChangeAction`.
-        /// </summary>
+        /// <summary>Input only. Body of the dialog, which is rendered in a modal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual GoogleAppsCardV1Card Body { get; set; }
 
@@ -8445,14 +8452,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The card's actions. Actions are added to the card's toolbar menu. [Google Workspace
-        /// add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON constructs a card
-        /// action menu with `Settings` and `Send Feedback` options:
+        /// The card's actions. Actions are added to the card's toolbar menu. Supports up to 10 `CardAction` items.
+        /// [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON
+        /// constructs a card action menu with `Settings` and `Send Feedback` options:
         /// ```
-        /// "card_actions": [ { "actionLabel": "Settings",
-        /// "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key": "viewType", "value": "SETTING"
-        /// } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send Feedback", "onClick": {
-        /// "openLink": { "url": "https://example.com/feedback" } } } ]
+        /// "card_actions": [ {
+        /// "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
+        /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
+        /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ]
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
@@ -8605,16 +8612,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A carousel, also known as a slider, rotates and displays a list of widgets in a slideshow format, with buttons
-    /// navigating to the previous or next widget. For example, this is a JSON representation of a carousel that
-    /// contains three text paragraph widgets.
+    /// Rotates and displays a list of carousel cards in a slideshow format, with buttons navigating to the previous or
+    /// next card. For example, this is a JSON representation of a carousel that contains three text paragraph widgets.
     /// ```
-    /// { "carouselCards": [ { "widgets": [ { "textParagraph": { "text":
-    /// "First text paragraph in carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Second text paragraph
-    /// in carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Third text paragraph in carousel", } } ] } ]
-    /// }
+    /// { "carouselCards": [ { "widgets": [ { "textParagraph": { "text": "First text paragraph in carousel" } } ] },
+    /// { "widgets": [ { "textParagraph": { "text": "Second text paragraph in carousel" } } ] }, { "widgets": [ {
+    /// "textParagraph": { "text": "Third text paragraph in carousel" } } ] } ] }
     /// ```
-    /// [Google Chat apps](https://developers.google.com/workspace/chat):
+    /// [Google Chat
+    /// apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class GoogleAppsCardV1Carousel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8669,13 +8675,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>
-        /// Whether the chip is in an active state and responds to user actions. Defaults to `true`. Deprecated. Use
-        /// `disabled` instead.
+        /// Deprecated: Use `disabled` instead. Whether the chip is in an active state and responds to user actions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>The icon image. If both `icon` and `text` are set, then the icon appears before the text.</summary>
+        /// <summary>
+        /// The icon image. If both `icon` and `label` are set, then the icon appears before the label.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual GoogleAppsCardV1Icon Icon { get; set; }
 
@@ -8893,7 +8900,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The number representing the time zone offset from UTC, in minutes. If set, the `value_ms_epoch` is displayed
-        /// in the specified time zone. If unset, the value defaults to the user's time zone setting.
+        /// in the specified time zone. If unset, the value defaults to the user's time zone setting. Note: This field
+        /// is in minutes, whereas user interaction event payloads typically provide time zone offsets in milliseconds
+        /// (divide by `60000` to convert).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
         public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
@@ -8960,7 +8969,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual GoogleAppsCardV1Icon Icon { get; set; }
 
-        /// <summary>This action is triggered when users click `topLabel` or `bottomLabel`.</summary>
+        /// <summary>
+        /// This action is triggered when users click anywhere on the `DecoratedText` widget (including `text`,
+        /// `top_label`, `bottom_label`, and icons), except when clicking a separate interactive control (`button` or
+        /// `switch_control`).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
 
@@ -9124,8 +9137,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1GridItem> Items { get; set; }
 
         /// <summary>
-        /// This callback is reused by each individual grid item, but with the item's identifier and index in the items
-        /// list added to the callback's parameters.
+        /// This callback is reused by each individual grid item, but with the item's identifier added to the callback's
+        /// parameters (under the key `"grid_item_identifier"`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
@@ -9569,7 +9582,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uncollapsibleWidgetsCount")]
         public virtual System.Nullable<int> UncollapsibleWidgetsCount { get; set; }
 
-        /// <summary>All the widgets in the section. Must contain at least one widget.</summary>
+        /// <summary>
+        /// All the widgets in the section. Must contain at least one widget. A card supports up to 100 widgets across
+        /// all sections.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1Widget> Widgets { get; set; }
 
@@ -9765,8 +9781,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ControlType { get; set; }
 
         /// <summary>
-        /// The name by which the switch widget is identified in a form input event. For details about working with form
-        /// inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
+        /// The name by which the switch widget is identified in a form input event (as the key in
+        /// `CommonEventObject.form_inputs`). For details about working with form inputs, see [Receive form
+        /// data](https://developers.google.com/workspace/chat/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9775,13 +9792,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
-        /// <summary>When `true`, the switch is selected.</summary>
+        /// <summary>
+        /// When `true`, the switch is selected, and its `value` is included in
+        /// `CommonEventObject.form_inputs[name].string_inputs.value`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
         public virtual System.Nullable<bool> Selected { get; set; }
 
         /// <summary>
-        /// The value entered by a user, returned as part of a form input event. For details about working with form
-        /// inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
+        /// The value returned in `CommonEventObject.form_inputs[name].string_inputs` when the switch is selected
+        /// (`selected` is `true`). If `selected` is `true` and `value` is unset, an empty string (`""`) is returned in
+        /// `string_inputs.value`. When `selected` is `false`, this value is omitted from `string_inputs.value`. For
+        /// details about working with form inputs, see [Receive form
+        /// data](https://developers.google.com/workspace/chat/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -10005,11 +10028,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
 
         /// <summary>
-        /// A carousel contains a collection of nested widgets. For example, this is a JSON representation of a carousel
-        /// that contains two text paragraphs.
+        /// Contains a collection of `CarouselCard` items, each of which contains nested widgets. For example, this is a
+        /// JSON representation of a carousel that contains two carousel cards, each with a text paragraph:
         /// ```
-        /// { "widgets": [ { "textParagraph": { "text": "First text paragraph in
-        /// the carousel." } }, { "textParagraph": { "text": "Second text paragraph in the carousel." } } ] }
+        /// {
+        /// "carouselCards": [ { "widgets": [ { "textParagraph": { "text": "First text paragraph in the carousel." } } ]
+        /// }, { "widgets": [ { "textParagraph": { "text": "Second text paragraph in the carousel." } } ] } ] }
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carousel")]
@@ -10019,7 +10043,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// A list of chips. For example, the following JSON creates two chips. The first is a text chip and the second
         /// is an icon chip that opens a link:
         /// ```
-        /// "chipList": { "chips": [ { "text": "Edit", "disabled": true, }, {
+        /// "chipList": { "chips": [ { "label": "Edit", "disabled": true }, {
         /// "icon": { "knownIcon": "INVITE", "altText": "check calendar" }, "onClick": { "openLink": { "url":
         /// "https://example.com/calendar" } } } ] }
         /// ```
