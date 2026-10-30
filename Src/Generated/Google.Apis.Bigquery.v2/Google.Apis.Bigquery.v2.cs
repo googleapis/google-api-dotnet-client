@@ -8939,6 +8939,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("printHeader")]
         public virtual System.Nullable<bool> PrintHeader { get; set; }
 
+        /// <summary>
+        /// Optional. A set of key-value pairs representing the secure context. This can be used to pass sensitive or
+        /// context-specific information. They can be retrieved via the SECURE_CONTEXT() function and used to modify the
+        /// run-time behavior of an extract job on tables with row access policies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureContext")]
+        public virtual SecureContext SecureContext { get; set; }
+
         /// <summary>A reference to the model being exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceModel")]
         public virtual ModelReference SourceModel { get; set; }
