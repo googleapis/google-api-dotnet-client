@@ -921,6 +921,10 @@ namespace Google.Apis.Solar.v1.Data
     /// <summary>Information about solar arrays detected on the building.</summary>
     public class BuildingInsightsDetectedArrays : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of solar arrays detected on the building.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrays")]
+        public virtual System.Collections.Generic.IList<BuildingInsightsDetectedArraysSolarArray> Arrays { get; set; }
+
         /// <summary>Indicates the detection status of solar arrays for this building.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectionStatus")]
         public virtual string DetectionStatus { get; set; }
@@ -928,6 +932,22 @@ namespace Google.Apis.Solar.v1.Data
         /// <summary>The date indicating when the latest solar array data was captured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestCaptureDate")]
         public virtual Date LatestCaptureDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a single detected solar array.</summary>
+    public class BuildingInsightsDetectedArraysSolarArray : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A GeoJSON representation of the building area where solar panels were detected. The GeoJSON data must be in
+        /// RFC 7946 format and represent a Polygon for a single contiguous area. The Polygon will be represented by
+        /// several loops when it contains holes. Example: { "type": "Polygon", "coordinates": [ [ [-1, -1], [-1, 0],
+        /// [0, 0], [-1, -1] ] ] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("polygonGeojson")]
+        public virtual System.Collections.Generic.IDictionary<string, object> PolygonGeojson { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
