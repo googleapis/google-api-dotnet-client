@@ -827,7 +827,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fcmOptions")]
         public virtual AndroidFcmOptions FcmOptions { get; set; }
 
-        /// <summary>Notification to send to android devices.</summary>
+        /// <summary>Notification to send to Android devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
         public virtual AndroidNotification Notification { get; set; }
 
@@ -1121,7 +1121,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
 
         /// <summary>
         /// Sets the number of items this notification represents. May be displayed as a badge count for launchers that
-        /// support badging.See [Notification Badge](https://developer.android.com/training/notify-user/badges). For
+        /// support badging. See [Notification Badge](https://developer.android.com/training/notify-user/badges). For
         /// example, this might be useful if you're using just one notification to represent multiple new messages but
         /// you want the count here to represent the number of total new messages. If zero or unspecified, systems that
         /// support badging use the default, which is to increment a number displayed on the long-press menu each time a
@@ -1224,7 +1224,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
     }
 
     /// <summary>
-    /// Notification v2 to send to android devices. This is a v2 version of the AndroidNotification message and will
+    /// Notification v2 to send to Android devices. This is a v2 version of the AndroidNotification message and will
     /// replace it in the v2 API.
     /// </summary>
     public class AndroidNotificationV2 : Google.Apis.Requests.IDirectResponseSchema
@@ -1349,7 +1349,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
 
         /// <summary>
         /// Optional. Identifier used to replace existing notifications in the notification drawer. It is used in
-        /// conjunction with `tag` to form a unique identifier `(tag, id`)` within the app. If not specified, each
+        /// conjunction with `tag` to form a unique identifier `(tag, id)` within the app. If not specified, each
         /// request creates a new notification. If specified and a notification with the same `(tag, id)` is already
         /// being shown, the new notification replaces the existing one in the notification drawer.
         /// </summary>
@@ -1381,7 +1381,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
 
         /// <summary>
         /// Sets the number of items this notification represents. May be displayed as a badge count for launchers that
-        /// support badging.See [Notification Badge](https://developer.android.com/training/notify-user/badges). For
+        /// support badging. See [Notification Badge](https://developer.android.com/training/notify-user/badges). For
         /// example, this might be useful if you're using just one notification to represent multiple new messages but
         /// you want the count here to represent the number of total new messages. If non-positive or unspecified,
         /// systems that support badging use the default, which is to increment a number displayed on the long-press
@@ -1421,7 +1421,7 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
 
         /// <summary>
         /// Identifier used to replace existing notifications in the notification drawer. It is used in conjunction with
-        /// `id` to form a unique identifier `(tag, id`)` within the app. If not specified, each request creates a new
+        /// `id` to form a unique identifier `(tag, id)` within the app. If not specified, each request creates a new
         /// notification. If specified and a notification with the same `(tag, id)` is already being shown, the new
         /// notification replaces the existing one in the notification drawer.
         /// </summary>
@@ -1490,16 +1490,15 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mutableContent")]
         public virtual System.Nullable<bool> MutableContent { get; set; }
 
-        /// <summary>Optional. Notification to send to android devices.</summary>
+        /// <summary>Optional. Notification to send to Android devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notification")]
         public virtual AndroidNotificationV2 Notification { get; set; }
 
         /// <summary>
-        /// Optional. If set to true, this RemoteNotification message will be delivered to legacy V1 clients as data
-        /// messages by omitting the google.firebase.fcm.v1.Message.android_v2.remote_notification.notification. This
-        /// should only be enabled when migration from legacy V1 data messages. Note that by default (when set to
-        /// false), RemoteNotification messages are automatically translated to V1 notification message for legacy
-        /// clients;
+        /// Optional. If set to `true`, this RemoteNotification message will be delivered to legacy V1 clients as a data
+        /// message by omitting the google.firebase.fcm.v1.AndroidRemoteNotification.notification. This should only be
+        /// enabled when migrating from legacy V1 data messages. Note that by default (when set to false),
+        /// RemoteNotification messages are automatically translated to V1 notification messages for legacy clients.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAsV1DataMessage")]
         public virtual System.Nullable<bool> UseAsV1DataMessage { get; set; }
