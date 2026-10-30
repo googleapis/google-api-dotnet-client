@@ -1188,7 +1188,7 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newsletterConfig")]
         public virtual NewsletterConfig NewsletterConfig { get; set; }
 
-        /// <summary>Output only. The current state of this CTA.</summary>
+        /// <summary>Optional. The current state of this CTA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -1226,7 +1226,7 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("categoryLabel")]
         public virtual string CategoryLabel { get; set; }
 
-        /// <summary>Required. The question prompt displayed to readers.</summary>
+        /// <summary>Optional. The question prompt displayed to readers (up to 140 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
         public virtual string DisplayText { get; set; }
 
@@ -1531,6 +1531,10 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questions")]
         public virtual System.Collections.Generic.IList<SurveyQuestion> Questions { get; set; }
+
+        /// <summary>Output only. Link to the Looker Studio dashboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportUrl")]
+        public virtual string ReportUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
