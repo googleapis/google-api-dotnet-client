@@ -838,10 +838,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Nullable<bool> IncludeQueryPredictions { get; set; }
 
         /// <summary>
-        /// Optional. Included primary Place type (for example, "restaurant" or "gas_station") in Place Types
-        /// (https://developers.google.com/maps/documentation/places/web-service/place-types), or only `(regions)`, or
-        /// only `(cities)`. A Place is only returned if its primary type is included in this list. Up to 5 values can
-        /// be specified. If no types are specified, all Place types are returned.
+        /// Optional. Included primary Place type (for example, "restaurant" or "gas_station") in [Place
+        /// Types](https://developers.google.com/maps/documentation/places/web-service/place-types), or only
+        /// `(regions)`, or only `(cities)`. A Place is only returned if its primary type is included in this list. Up
+        /// to 5 values can be specified. If no types are specified, all Place types are returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedPrimaryTypes")]
         public virtual System.Collections.Generic.IList<string> IncludedPrimaryTypes { get; set; }
@@ -1384,7 +1384,11 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>Fuel price information for a given type.</summary>
     public class GoogleMapsPlacesV1FuelOptionsFuelPrice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The price of the fuel.</summary>
+        /// <summary>
+        /// The price of the fuel. The price is per US liquid gallon in the United States, and per liter elsewhere.
+        /// Prices do not distinguish between payment methods (cash or credit). When a station offers multiple prices
+        /// for the same `FuelType`, the API returns the standard (highest) price.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual GoogleTypeMoney Price { get; set; }
 
@@ -1396,7 +1400,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
 
         private object _updateTime;
 
-        /// <summary>The time the fuel price was last updated.</summary>
+        /// <summary>
+        /// The time the fuel price was last updated. This represents the time when the specific fuel price offer was
+        /// last observed or updated by the data provider.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
