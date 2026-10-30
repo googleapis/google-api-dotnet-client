@@ -1954,6 +1954,14 @@ namespace Google.Apis.Looker.v1.Data
     public class ExportMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Opaque capability token for O2C Elite System Activity (ESA) direct dataset migration. It is minted by the
+        /// exporter together with the cloned source dataset and presented back to Looker Original when the import
+        /// requests access to that dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("esaMigrationToken")]
+        public virtual string EsaMigrationToken { get; set; }
+
+        /// <summary>
         /// Source BigQuery dataset (formatted as `project_id:dataset_id`) for O2C Elite System Activity (ESA) direct
         /// dataset migration.
         /// </summary>
