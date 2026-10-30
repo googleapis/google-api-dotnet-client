@@ -26715,6 +26715,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     public class GoogleCloudDialogflowV2beta1InputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
 
@@ -29334,6 +29337,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
     public class GoogleCloudDialogflowV2beta1SpeechToTextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }
 
