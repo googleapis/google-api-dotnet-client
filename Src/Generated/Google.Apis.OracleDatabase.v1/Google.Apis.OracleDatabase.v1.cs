@@ -17120,7 +17120,7 @@ namespace Google.Apis.OracleDatabase.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The DNS suffix for the zone. Ex: abc.example.com.</summary>
+        /// <summary>Required. Immutable. The DNS suffix for the zone. Ex: abc.example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
@@ -18029,13 +18029,6 @@ namespace Google.Apis.OracleDatabase.v1.Data
     /// <summary>SqlResult represents the result for the execution of a sql statement.</summary>
     public class SqlResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The number of rows affected by DML statements (e.g., INSERT, UPDATE, DELETE, MERGE). Unset or 0
-        /// for SELECT / DDL statements.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("affectedRowCount")]
-        public virtual System.Nullable<long> AffectedRowCount { get; set; }
-
         /// <summary>List of columns included in the result, including data type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<Column> Columns { get; set; }
