@@ -1093,8 +1093,9 @@ namespace Google.Apis.CloudFTP.v1
 
                     /// <summary>
                     /// Required. A unique ID for the server. Must start with a lowercase letter, and end with a
-                    /// lowercase letter or number. Can contain lowercase letters, numbers, and hyphens. Maximum length
-                    /// is 30 characters.
+                    /// lowercase letter or number. Can contain lowercase letters, numbers, and hyphens. Can't begin
+                    /// with the prefix `goog` or contain the string `google`, including close misspellings such as
+                    /// `g00gle`. Maximum length is 30 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serverId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServerId { get; set; }
