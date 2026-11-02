@@ -50,6 +50,8 @@ namespace Google.Apis.Compute.preview
             FirewallPolicies = new FirewallPoliciesResource(this);
             Firewalls = new FirewallsResource(this);
             FolderGlobalVmExtensionPolicies = new FolderGlobalVmExtensionPoliciesResource(this);
+            FolderRolloutPlans = new FolderRolloutPlansResource(this);
+            FolderRollouts = new FolderRolloutsResource(this);
             FolderZoneVmExtensionPolicies = new FolderZoneVmExtensionPoliciesResource(this);
             ForwardingRules = new ForwardingRulesResource(this);
             FutureReservations = new FutureReservationsResource(this);
@@ -93,6 +95,7 @@ namespace Google.Apis.Compute.preview
             NetworkEdgeSecurityServices = new NetworkEdgeSecurityServicesResource(this);
             NetworkEndpointGroups = new NetworkEndpointGroupsResource(this);
             NetworkFirewallPolicies = new NetworkFirewallPoliciesResource(this);
+            NetworkLocationBindings = new NetworkLocationBindingsResource(this);
             NetworkProfiles = new NetworkProfilesResource(this);
             Networks = new NetworksResource(this);
             NodeGroups = new NodeGroupsResource(this);
@@ -300,6 +303,12 @@ namespace Google.Apis.Compute.preview
         /// <summary>Gets the FolderGlobalVmExtensionPolicies resource.</summary>
         public virtual FolderGlobalVmExtensionPoliciesResource FolderGlobalVmExtensionPolicies { get; }
 
+        /// <summary>Gets the FolderRolloutPlans resource.</summary>
+        public virtual FolderRolloutPlansResource FolderRolloutPlans { get; }
+
+        /// <summary>Gets the FolderRollouts resource.</summary>
+        public virtual FolderRolloutsResource FolderRollouts { get; }
+
         /// <summary>Gets the FolderZoneVmExtensionPolicies resource.</summary>
         public virtual FolderZoneVmExtensionPoliciesResource FolderZoneVmExtensionPolicies { get; }
 
@@ -428,6 +437,9 @@ namespace Google.Apis.Compute.preview
 
         /// <summary>Gets the NetworkFirewallPolicies resource.</summary>
         public virtual NetworkFirewallPoliciesResource NetworkFirewallPolicies { get; }
+
+        /// <summary>Gets the NetworkLocationBindings resource.</summary>
+        public virtual NetworkLocationBindingsResource NetworkLocationBindings { get; }
 
         /// <summary>Gets the NetworkProfiles resource.</summary>
         public virtual NetworkProfilesResource NetworkProfiles { get; }
@@ -14293,6 +14305,1076 @@ namespace Google.Apis.Compute.preview
                     Name = "globalVmExtensionPolicy",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
+    /// <summary>The "folderRolloutPlans" collection of methods.</summary>
+    public class FolderRolloutPlansResource
+    {
+        private const string Resource = "folderRolloutPlans";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FolderRolloutPlansResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Deletes a FolderRolloutPlan.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="rolloutPlan">Name of the FolderRolloutPlan resource to delete.</param>
+        public virtual DeleteRequest Delete(string folder, string rolloutPlan)
+        {
+            return new DeleteRequest(this.service, folder, rolloutPlan);
+        }
+
+        /// <summary>Deletes a FolderRolloutPlan.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string folder, string rolloutPlan) : base(service)
+            {
+                Folder = folder;
+                RolloutPlan = rolloutPlan;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the FolderRolloutPlan resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rolloutPlan", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RolloutPlan { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rolloutPlans/{rolloutPlan}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("rolloutPlan", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rolloutPlan",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Gets details of a single folder-scoped RolloutPlan.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="rolloutPlan">Name of the persistent rollout plan to return.</param>
+        public virtual GetRequest Get(string folder, string rolloutPlan)
+        {
+            return new GetRequest(this.service, folder, rolloutPlan);
+        }
+
+        /// <summary>Gets details of a single folder-scoped RolloutPlan.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.RolloutPlan>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string folder, string rolloutPlan) : base(service)
+            {
+                Folder = folder;
+                RolloutPlan = rolloutPlan;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the persistent rollout plan to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rolloutPlan", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RolloutPlan { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rolloutPlans/{rolloutPlan}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("rolloutPlan", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rolloutPlan",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Creates a new RolloutPlan in a given folder and location.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="folder">Folder ID for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.preview.Data.RolloutPlan body, string folder)
+        {
+            return new InsertRequest(this.service, body, folder);
+        }
+
+        /// <summary>Creates a new RolloutPlan in a given folder and location.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.preview.Data.RolloutPlan body, string folder) : base(service)
+            {
+                Folder = folder;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.preview.Data.RolloutPlan Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "insert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rolloutPlans";
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists FolderRolloutPlans in a given folder and location.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        public virtual ListRequest List(string folder)
+        {
+            return new ListRequest(this.service, folder);
+        }
+
+        /// <summary>Lists FolderRolloutPlans in a given folder and location.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.RolloutPlansListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string folder) : base(service)
+            {
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rolloutPlans";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
+    /// <summary>The "folderRollouts" collection of methods.</summary>
+    public class FolderRolloutsResource
+    {
+        private const string Resource = "folderRollouts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FolderRolloutsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Advances a Rollout to the next wave, or completes it if no waves remain.</summary>
+        /// <param name="folder">Required. Folder ID for this request.</param>
+        /// <param name="rollout">Required. Name of the Rollout resource to advance.</param>
+        public virtual AdvanceRequest Advance(string folder, string rollout)
+        {
+            return new AdvanceRequest(this.service, folder, rollout);
+        }
+
+        /// <summary>Advances a Rollout to the next wave, or completes it if no waves remain.</summary>
+        public class AdvanceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Advance request.</summary>
+            public AdvanceRequest(Google.Apis.Services.IClientService service, string folder, string rollout) : base(service)
+            {
+                Folder = folder;
+                Rollout = rollout;
+                InitParameters();
+            }
+
+            /// <summary>Required. Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Required. Name of the Rollout resource to advance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Rollout { get; private set; }
+
+            /// <summary>Required. Wave number of the current wave.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("currentWaveNumber", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> CurrentWaveNumber { get; set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "advance";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rollouts/{rollout}/advance";
+
+            /// <summary>Initializes Advance parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{1,19}",
+                });
+                RequestParameters.Add("rollout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rollout",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("currentWaveNumber", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "currentWaveNumber",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Cancels a Rollout.</summary>
+        /// <param name="folder">Required. Folder ID for this request.</param>
+        /// <param name="rollout">Name of the Rollout resource to cancel.</param>
+        public virtual CancelRequest Cancel(string folder, string rollout)
+        {
+            return new CancelRequest(this.service, folder, rollout);
+        }
+
+        /// <summary>Cancels a Rollout.</summary>
+        public class CancelRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, string folder, string rollout) : base(service)
+            {
+                Folder = folder;
+                Rollout = rollout;
+                InitParameters();
+            }
+
+            /// <summary>Required. Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the Rollout resource to cancel.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Rollout { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>
+            /// Optional. If true, then the ongoing rollout must be rolled back. Else, just cancel the rollout without
+            /// taking any further actions. Note that products must support at least one of these options, however, it
+            /// does not need to support both.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("rollback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Rollback { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rollouts/{rollout}";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{1,19}",
+                });
+                RequestParameters.Add("rollout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rollout",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("rollback", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rollback",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Deletes a Rollout.</summary>
+        /// <param name="folder">Required. Folder ID for this request.</param>
+        /// <param name="rollout">Name of the Rollout resource to delete.</param>
+        public virtual DeleteRequest Delete(string folder, string rollout)
+        {
+            return new DeleteRequest(this.service, folder, rollout);
+        }
+
+        /// <summary>Deletes a Rollout.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string folder, string rollout) : base(service)
+            {
+                Folder = folder;
+                Rollout = rollout;
+                InitParameters();
+            }
+
+            /// <summary>Required. Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the Rollout resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Rollout { get; private set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rollouts/{rollout}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{1,19}",
+                });
+                RequestParameters.Add("rollout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rollout",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Gets details of a single folder-scoped Rollout.</summary>
+        /// <param name="folder">Folder ID for this request.</param>
+        /// <param name="rollout">Name of the persistent rollout to return.</param>
+        public virtual GetRequest Get(string folder, string rollout)
+        {
+            return new GetRequest(this.service, folder, rollout);
+        }
+
+        /// <summary>Gets details of a single folder-scoped Rollout.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Rollout>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string folder, string rollout) : base(service)
+            {
+                Folder = folder;
+                Rollout = rollout;
+                InitParameters();
+            }
+
+            /// <summary>Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Name of the persistent rollout to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Rollout { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rollouts/{rollout}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{0,20}",
+                });
+                RequestParameters.Add("rollout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rollout",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists Rollouts in a given folder and location.</summary>
+        /// <param name="folder">Required. Folder ID for this request.</param>
+        public virtual ListRequest List(string folder)
+        {
+            return new ListRequest(this.service, folder);
+        }
+
+        /// <summary>Lists Rollouts in a given folder and location.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.FolderRolloutsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string folder) : base(service)
+            {
+                Folder = folder;
+                InitParameters();
+            }
+
+            /// <summary>Required. Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rollouts";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{1,19}",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Pauses a Rollout.</summary>
+        /// <param name="folder">Required. Folder ID for this request.</param>
+        /// <param name="rollout">Required. Name of the Rollout resource to pause.</param>
+        public virtual PauseRequest Pause(string folder, string rollout)
+        {
+            return new PauseRequest(this.service, folder, rollout);
+        }
+
+        /// <summary>Pauses a Rollout.</summary>
+        public class PauseRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Pause request.</summary>
+            public PauseRequest(Google.Apis.Services.IClientService service, string folder, string rollout) : base(service)
+            {
+                Folder = folder;
+                Rollout = rollout;
+                InitParameters();
+            }
+
+            /// <summary>Required. Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Required. Name of the Rollout resource to pause.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Rollout { get; private set; }
+
+            /// <summary>
+            /// The etag of the Rollout. If this is provided, the request will only succeed if the etag matches the
+            /// current etag of the Rollout.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Etag { get; set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "pause";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rollouts/{rollout}/pause";
+
+            /// <summary>Initializes Pause parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{1,19}",
+                });
+                RequestParameters.Add("rollout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rollout",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "etag",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Resumes a Rollout.</summary>
+        /// <param name="folder">Required. Folder ID for this request.</param>
+        /// <param name="rollout">Required. Name of the Rollout resource to resume.</param>
+        public virtual ResumeRequest Resume(string folder, string rollout)
+        {
+            return new ResumeRequest(this.service, folder, rollout);
+        }
+
+        /// <summary>Resumes a Rollout.</summary>
+        public class ResumeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.Operation>
+        {
+            /// <summary>Constructs a new Resume request.</summary>
+            public ResumeRequest(Google.Apis.Services.IClientService service, string folder, string rollout) : base(service)
+            {
+                Folder = folder;
+                Rollout = rollout;
+                InitParameters();
+            }
+
+            /// <summary>Required. Folder ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("folder", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Folder { get; private set; }
+
+            /// <summary>Required. Name of the Rollout resource to resume.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("rollout", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Rollout { get; private set; }
+
+            /// <summary>
+            /// The etag of the Rollout. If this is provided, the request will only succeed if the etag matches the
+            /// current etag of the Rollout.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Etag { get; set; }
+
+            /// <summary>
+            /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your
+            /// request, the server will know to ignore the request if it has already been completed.  For example,
+            /// consider a situation where you make an initial request and the request times out. If you make the
+            /// request again with the same request ID, the server can check if original operation with the same request
+            /// ID was received, and if so, will ignore the second request. This prevents clients from accidentally
+            /// creating duplicate commitments.  The request ID must be a valid UUID with the exception that zero UUID
+            /// is not supported (00000000-0000-0000-0000-000000000000).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "resume";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+folder}/global/rollouts/{rollout}/resume";
+
+            /// <summary>Initializes Resume parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("folder", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "folder",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"folders/[0-9]{1,19}",
+                });
+                RequestParameters.Add("rollout", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "rollout",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+                RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "etag",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -50715,6 +51797,256 @@ namespace Google.Apis.Compute.preview
         }
     }
 
+    /// <summary>The "networkLocationBindings" collection of methods.</summary>
+    public class NetworkLocationBindingsResource
+    {
+        private const string Resource = "networkLocationBindings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public NetworkLocationBindingsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Returns the specified NetworkLocationBinding resource in the given scope.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region of this request.</param>
+        /// <param name="networkLocationBinding">Name of the NetworkLocationBinding resource to return.</param>
+        public virtual GetRequest Get(string project, string region, string networkLocationBinding)
+        {
+            return new GetRequest(this.service, project, region, networkLocationBinding);
+        }
+
+        /// <summary>Returns the specified NetworkLocationBinding resource in the given scope.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.NetworkLocationBinding>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string networkLocationBinding) : base(service)
+            {
+                Project = project;
+                Region = region;
+                NetworkLocationBinding = networkLocationBinding;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the NetworkLocationBinding resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("networkLocationBinding", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string NetworkLocationBinding { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/networkLocationBindings/{networkLocationBinding}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("networkLocationBinding", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "networkLocationBinding",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+
+        /// <summary>Lists the NetworkLocationBindings for a project in the given scope.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region of this request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(this.service, project, region);
+        }
+
+        /// <summary>Lists the NetworkLocationBindings for a project in the given scope.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.preview.Data.NetworkLocationBindingList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region) : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>
+            /// A filter expression that filters resources listed in the response. Most Compute resources support two
+            /// types of filter expressions: expressions that support regular expressions and expressions that follow
+            /// API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request.
+            /// If you want to use AIP-160, your expression must specify the field name, an operator, and the value that
+            /// you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be
+            /// either `=`, `!=`, `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=` or `:`.  For example, if you are
+            /// filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying
+            /// `name != example-instance`.  The `:*` comparison can be used to test whether a key has been defined. For
+            /// example, to find all objects with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested
+            /// fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only
+            /// if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based
+            /// onresource labels.  To filter on multiple expressions, provide each separate expression within
+            /// parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+            /// explicitly. For example:
+            /// ```
+            /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
+            /// (scheduling.automaticRestart = true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal)
+            /// or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or
+            /// against multiple parenthesized expressions. Examples:  `fieldname eq unquoted literal` `fieldname eq
+            /// 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne
+            /// "literal")`  The literal value is interpreted as a regular expression using GoogleRE2 library syntax.
+            /// The literal value must match the entire field.  For example, to filter for instances that do not end
+            /// with name "instance", you would use `name ne .*instance`.  You cannot combine constraints on multiple
+            /// fields using regular expressions.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// The maximum number of results per page that should be returned. If the number of available results is
+            /// larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page
+            /// of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>
+            /// Sorts list results by a certain order. By default, results are returned in alphanumerical order based on
+            /// the resource name.  You can also sort results in descending order based on the creation timestamp using
+            /// `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.  Currently, only sorting by `name` or `creationTimestamp desc` is
+            /// supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
+            /// Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list
+            /// request to get the next page of results.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{project}/regions/{region}/networkLocationBindings";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "region",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "500",
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+
+            /// <inheritdoc/>
+            public override string ApiVersion => "2026-10-01-preview";
+        }
+    }
+
     /// <summary>The "networkProfiles" collection of methods.</summary>
     public class NetworkProfilesResource
     {
@@ -85016,6 +86348,13 @@ namespace Google.Apis.Compute.preview
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>
+            /// Required. Name of the SslCertificate resource to be created. The name must be 1-63 characters long, and
+            /// comply withRFC1035.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "fetchEncryptionKey";
 
@@ -85042,6 +86381,14 @@ namespace Google.Apis.Compute.preview
                     Name = "region",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
@@ -101610,6 +102957,13 @@ namespace Google.Apis.Compute.preview
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>
+            /// Required. Name of the SslCertificate resource to be created. The name must be 1-63 characters long, and
+            /// comply withRFC1035.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "fetchEncryptionKey";
 
@@ -101630,6 +102984,14 @@ namespace Google.Apis.Compute.preview
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                 });
             }
 
@@ -125130,9 +126492,31 @@ namespace Google.Apis.Compute.preview.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceType")]
         public virtual string ConfidentialInstanceType { get; set; }
 
-        /// <summary>Defines whether the instance should have confidential compute enabled.</summary>
+        /// <summary>Defines a set of Confidential Paravisor (SVSM) options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialParavisorConfig")]
+        public virtual ConfidentialParavisorConfig ConfidentialParavisorConfig { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled. When enabled, the technology used
+        /// defaults to  AMD SEV unless confidentialInstanceType is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of Confidential Paravisor (SVSM) options.</summary>
+    public class ConfidentialParavisorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Defines the type of TPM to use for the confidential instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialTpmType")]
+        public virtual string ConfidentialTpmType { get; set; }
+
+        /// <summary>Defines the IRQ mode to use for the confidential instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sevSnpIrqMode")]
+        public virtual string SevSnpIrqMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -128343,6 +129727,86 @@ namespace Google.Apis.Compute.preview.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    public class FolderRolloutsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of Rollout resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Rollout> Items { get; set; }
+
+        /// <summary>
+        /// [Output Only] This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
     }
 
     public class FolderVmExtensionPolicyAggregatedListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -135616,6 +137080,13 @@ namespace Google.Apis.Compute.preview.Data
         public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
 
         /// <summary>
+        /// Metadata key/value pairs assigned to instances created from this selection. Key/value pairs specified here
+        /// override keys specified in the instance properties on a key-by-key basis.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataOverrides")]
+        public virtual System.Collections.Generic.IList<MetadataOverridesData> MetadataOverrides { get; set; }
+
+        /// <summary>
         /// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
@@ -135630,6 +137101,29 @@ namespace Google.Apis.Compute.preview.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Metadata key/value pairs assigned to instances created from this selection. Key/value pairs specified here
+        /// override keys specified in the instance properties on a key-by-key basis.
+        /// </summary>
+        public class MetadataOverridesData
+        {
+            /// <summary>
+            /// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than
+            /// 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid
+            /// ambiguity, keys must not conflict with any other metadata keys for the project.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("key")]
+            public virtual string Key { get; set; }
+
+            /// <summary>
+            /// Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the
+            /// image running in the instance. The only restriction placed on values is that their size must be less
+            /// than or equal to 262144 bytes (256 KiB).
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value { get; set; }
+        }
     }
 
     /// <summary>
@@ -145029,6 +146523,13 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string NetworkFirewallPolicyEnforcementOrder { get; set; }
 
         /// <summary>
+        /// Output only. [Output Only] List of server-defined fully-qualified URLs of regional network location bindings
+        /// in this VPC network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkLocationBindings")]
+        public virtual System.Collections.Generic.IList<string> NetworkLocationBindings { get; set; }
+
+        /// <summary>
         /// A full or partial URL of the network profile to apply to this network. This field can be set only at
         /// resource creation time. For example, the following are valid URLs:         -
         /// https://www.googleapis.com/compute/{api_version}/projects/{project_id}/global/networkProfiles/{network_profile_name}
@@ -146708,6 +148209,199 @@ namespace Google.Apis.Compute.preview.Data
                 public virtual string Value { get; set; }
             }
         }
+    }
+
+    /// <summary>
+    /// A regional, read-only resource that reflects the physical location(s) (i.e. clusters) to which a special-purpose
+    /// VPC network is bound, across the zones of a region. Its lifecycle is managed by the service: it is created when
+    /// a network using a network profile that requires location binding is created, and deleted when that network is
+    /// deleted.
+    /// </summary>
+    public class NetworkLocationBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output Only] Creation timestamp inRFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; }
+
+        /// <summary>Output only. [Output Only] An optional textual description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The unique identifier for the resource type. The server generates this
+        /// identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Type of the resource. Alwayscompute#networkLocationBinding for network location
+        /// bindings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Name of the resource. The name is generated by the server when the associated
+        /// network is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. [Output Only] The network this network location binding belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] URL of the region where the network location binding resides. You must specify
+        /// this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>Output only. [Output Only] Server-defined URL for this resource with the resource id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
+        public virtual string SelfLinkWithId { get; set; }
+
+        /// <summary>Output only. [Output Only] State of the binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Status and derived information about the network location binding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual NetworkLocationBindingStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for NetworkLocationBindings.List.</summary>
+    public class NetworkLocationBindingList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Server-defined ETag for optimistic concurrency control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of NetworkLocationBinding resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<NetworkLocationBinding> Items { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Type of the resource. Alwayscompute#networkLocationBindingList for a list of
+        /// network location bindings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// [Output Only] This token allows you to get the next page of results for list requests. If the number of
+        /// results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the
+        /// next list request. Subsequent list requests will have their own nextPageToken to continue paging through the
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachables")]
+        public virtual System.Collections.Generic.IList<string> Unreachables { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual WarningData Warning { get; set; }
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>
+            /// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if
+            /// there are no results in the response.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<DataData> Data { get; set; }
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; }
+
+            /// <summary>
+            /// [Output Only] Metadata about this warning in key: value format. For example:  "data": [   {    "key":
+            /// "scope",    "value": "zones/us-east1-d"   }]
+            /// </summary>
+            public class DataData
+            {
+                /// <summary>
+                /// [Output Only] A key that provides more detail on the warning being returned. For example, for
+                /// warnings where there are no results in a list request for a particular zone, this key might be scope
+                /// and the key value might be the zone name. Other examples might be a key indicating a deprecated
+                /// resource and a suggested replacement, or a warning about invalid network settings (for example, if
+                /// an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; }
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; }
+            }
+        }
+    }
+
+    /// <summary>Status and derived information about the network location binding.</summary>
+    public class NetworkLocationBindingStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. [Output Only] Indicates whether a single cluster, specific clusters, or all clusters are
+        /// allowed for instance creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindingType")]
+        public virtual string BindingType { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The mapping of zones to their binding information, keyed by the zone, e.g.
+        /// zones/us-central1-a.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zonalBindings")]
+        public virtual System.Collections.Generic.IDictionary<string, NetworkLocationBindingZonalBinding> ZonalBindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Binding information for a single zone.</summary>
+    public class NetworkLocationBindingZonalBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. [Output Only] Prod cluster names in the zone that this network could schedule instances in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prodClusters")]
+        public virtual System.Collections.Generic.IList<string> ProdClusters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Additional network parameters.</summary>
@@ -160684,7 +162378,9 @@ namespace Google.Apis.Compute.preview.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotGroupName")]
         public virtual string SnapshotGroupName { get; set; }
 
-        /// <summary>Indicates the type of the snapshot.</summary>
+        /// <summary>
+        /// Indicates the type of the snapshot. Valid values are ARCHIVE or STANDARD. The default is STANDARD.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotType")]
         public virtual string SnapshotType { get; set; }
 
@@ -164414,7 +166110,7 @@ namespace Google.Apis.Compute.preview.Data
         /// accepted formats are:        -
         /// //certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}.
         /// -
-        /// https://certificatemanager.googleapis.com/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
+        /// https://certificatemanager.{universeDomain}/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; }
