@@ -13359,6 +13359,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ParentToolCallId { get; set; }
 
         /// <summary>
+        /// Output only. The app this call targets, derived by the assistant from the call's resource arguments: an app
+        /// resource name, `PROJECT` for location-scoped tools, or empty for session-local tools. Set only in
+        /// project-scoped assistant sessions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
+
+        /// <summary>
         /// Optional. The name of the tool to execute. Format:
         /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
         /// </summary>
@@ -13406,6 +13414,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>Output only. The app the executed tool targeted; mirrors ToolCall.target_app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
 
         /// <summary>
         /// Optional. The name of the tool to execute. Format:
