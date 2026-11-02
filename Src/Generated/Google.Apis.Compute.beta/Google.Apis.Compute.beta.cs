@@ -128920,7 +128920,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceType")]
         public virtual string ConfidentialInstanceType { get; set; }
 
-        /// <summary>Defines whether the instance should have confidential compute enabled.</summary>
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled. When enabled, the technology used
+        /// defaults to  AMD SEV unless confidentialInstanceType is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
 
@@ -147759,15 +147762,13 @@ namespace Google.Apis.Compute.beta.Data
     public class MachineImageParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. [Input Only] Specifies the list of disk device names that must be excluded from the new machine
-        /// image.
+        /// Input only. Specifies the list of disk device names that must be excluded from the new machine image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDisks")]
         public virtual System.Collections.Generic.IList<string> ExcludedDisks { get; set; }
 
         /// <summary>
-        /// Input only. [Input Only] Specifies the list of disk device names that must be included with the new machine
-        /// image.
+        /// Input only. Specifies the list of disk device names that must be included with the new machine image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDisks")]
         public virtual System.Collections.Generic.IList<string> IncludedDisks { get; set; }
@@ -156916,7 +156917,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotGroupName")]
         public virtual string SnapshotGroupName { get; set; }
 
-        /// <summary>Indicates the type of the snapshot.</summary>
+        /// <summary>Indicates the type of the snapshot. Valid values are ARCHIVE or STANDARD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotType")]
         public virtual string SnapshotType { get; set; }
 
@@ -166104,7 +166105,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotGroupName")]
         public virtual string SnapshotGroupName { get; set; }
 
-        /// <summary>Indicates the type of the snapshot.</summary>
+        /// <summary>
+        /// Indicates the type of the snapshot. Valid values are ARCHIVE or STANDARD. The default is STANDARD.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotType")]
         public virtual string SnapshotType { get; set; }
 
@@ -170226,7 +170229,7 @@ namespace Google.Apis.Compute.beta.Data
         /// accepted formats are:        -
         /// //certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}.
         /// -
-        /// https://certificatemanager.googleapis.com/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
+        /// https://certificatemanager.{universeDomain}/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; }
