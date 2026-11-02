@@ -5601,10 +5601,6 @@ namespace Google.Apis.AgentRegistry.v1.Data
     /// <summary>Represents a security Finding.</summary>
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Category of the finding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("category")]
-        public virtual string Category { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
@@ -7095,7 +7091,7 @@ namespace Google.Apis.AgentRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Required. Human-readable display name of the skill. Maximum length is 128 characters.</summary>
+        /// <summary>Optional. Human-readable display name of the skill. Maximum length is 128 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -7343,6 +7339,12 @@ namespace Google.Apis.AgentRegistry.v1.Data
     /// <summary>Represents a single tool provided by an MCP Server.</summary>
     public class Tool : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Protocol-level tool metadata conforming to MCP _meta specification. Output only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_meta")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Meta { get; set; }
+
         /// <summary>Output only. Annotations associated with the tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual Annotations Annotations { get; set; }
