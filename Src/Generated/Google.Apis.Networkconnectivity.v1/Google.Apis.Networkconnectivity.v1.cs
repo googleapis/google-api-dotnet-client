@@ -10187,6 +10187,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
+    /// Configuration for more granular control of Private Service Connect connection propagation. This allows enabling
+    /// or disabling connection propagation for specific types of Private Service Connect endpoints.
+    /// </summary>
+    public class ExportPscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Controls whether Private Service Connect endpoints for global Google APIs should be propagated.
+        /// The default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalGoogleApis")]
+        public virtual System.Nullable<bool> GlobalGoogleApis { get; set; }
+
+        /// <summary>
+        /// Optional. Controls whether Private Service Connect endpoints for regional ILBs and regional Google APIs
+        /// should be propagated. Default value is true if export_psc is true. Otherwise, the default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishedServicesAndRegionalGoogleApis")]
+        public virtual System.Nullable<bool> PublishedServicesAndRegionalGoogleApis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -10746,6 +10770,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportPsc")]
         public virtual System.Nullable<bool> ExportPsc { get; set; }
+
+        /// <summary>Optional. Config for more granular control of Private Service Connect transitivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportPscConfig")]
+        public virtual ExportPscConfig ExportPscConfig { get; set; }
 
         /// <summary>
         /// Optional labels in key-value pair format. For more information about labels, see [Requirements for
