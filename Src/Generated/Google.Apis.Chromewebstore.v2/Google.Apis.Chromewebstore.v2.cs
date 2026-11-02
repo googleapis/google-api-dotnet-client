@@ -592,6 +592,122 @@ namespace Google.Apis.Chromewebstore.v2
                 }
             }
 
+            /// <summary>Fetch user reviews for an item.</summary>
+            /// <param name="name">
+            /// Required. The item resource name whose reviews are being fetched. Format:
+            /// publishers/{publisher_id}/items/{item_id}
+            /// </param>
+            public virtual FetchReviewsRequest FetchReviews(string name)
+            {
+                return new FetchReviewsRequest(this.service, name);
+            }
+
+            /// <summary>Fetch user reviews for an item.</summary>
+            public class FetchReviewsRequest : ChromewebstoreBaseServiceRequest<Google.Apis.Chromewebstore.v2.Data.FetchItemReviewsResponse>
+            {
+                /// <summary>Constructs a new FetchReviews request.</summary>
+                public FetchReviewsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The item resource name whose reviews are being fetched. Format:
+                /// publishers/{publisher_id}/items/{item_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. A filter to apply to the reviews. Only equality comparison on rating is supported, e.g.
+                /// `rating = 5`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. An optional comma-separated list of fields by which to sort the results. The default sort
+                /// order is ascending (`asc`). Supported fields are: - `rating`: Supported orders are `asc` (default)
+                /// and `desc`. - `create_time`: Only `desc` (most recent first) is supported; `desc` must be explicitly
+                /// specified since the default is `asc`. Example: `rating desc`, `create_time desc`, or `rating desc,
+                /// create_time desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of reviews to return. The service may return fewer than this value. If
+                /// unspecified, at most 50 reviews will be returned. The maximum value is 200; values above 200 will be
+                /// coerced to 200.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `FetchItemReviews` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `FetchItemReviews` must match
+                /// the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "fetchReviews";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}:fetchReviews";
+
+                /// <summary>Initializes FetchReviews parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/items/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Fetch the status of an item.</summary>
             /// <param name="name">
             /// Required. Name of the item to retrieve the status of in the form
@@ -639,6 +755,57 @@ namespace Google.Apis.Chromewebstore.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^publishers/[^/]+/items/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets the RatingSummary for the publishers item.</summary>
+            /// <param name="name">
+            /// Required. The name of the rating summary to retrieve. Format:
+            /// publishers/{publisher}/items/{item}/ratingSummary
+            /// </param>
+            public virtual GetRatingSummaryRequest GetRatingSummary(string name)
+            {
+                return new GetRatingSummaryRequest(this.service, name);
+            }
+
+            /// <summary>Gets the RatingSummary for the publishers item.</summary>
+            public class GetRatingSummaryRequest : ChromewebstoreBaseServiceRequest<Google.Apis.Chromewebstore.v2.Data.RatingSummary>
+            {
+                /// <summary>Constructs a new GetRatingSummary request.</summary>
+                public GetRatingSummaryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the rating summary to retrieve. Format:
+                /// publishers/{publisher}/items/{item}/ratingSummary
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getRatingSummary";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}";
+
+                /// <summary>Initializes GetRatingSummary parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/items/[^/]+/ratingSummary$",
                     });
                 }
             }
@@ -692,6 +859,269 @@ namespace Google.Apis.Chromewebstore.v2
                 public override string RestPath => "v2/{+name}:publish";
 
                 /// <summary>Initializes Publish parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/items/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Query the metrics for an item.</summary>
+            /// <param name="name">
+            /// Required. The name of the item to query the metrics for. Format: publishers/{publisher}/items/{item}
+            /// </param>
+            public virtual QueryMetricsRequest QueryMetrics(string name)
+            {
+                return new QueryMetricsRequest(this.service, name);
+            }
+
+            /// <summary>Query the metrics for an item.</summary>
+            public class QueryMetricsRequest : ChromewebstoreBaseServiceRequest<Google.Apis.Chromewebstore.v2.Data.QueryItemMetricsResponse>
+            {
+                /// <summary>Constructs a new QueryMetrics request.</summary>
+                public QueryMetricsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the item to query the metrics for. Format: publishers/{publisher}/items/{item}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. Dimensions to slice the metrics by. At most one dimension can be specified. **Supported
+                /// dimensions:** - os: The operating system of the user. - app-version: The version of the item. -
+                /// country: The country of the user. - install-source: The source of the install. - install-type: The
+                /// type of install (from webstore, inline, or other). - language: The language of the user. - enabled:
+                /// If the item is enabled or disabled. - utm-campaign: The UTM campaign of the user. - utm-content: The
+                /// UTM content of the user. - utm-medium: The UTM medium of the user. - utm-source: The UTM source of
+                /// the user. - utm-term: The UTM term of the user.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Dimensions { get; set; }
+
+                /// <summary>
+                /// Required. The metrics to query the metric set for. **Supported metrics:** - installs: Count of item
+                /// installs. - installs-7d: Count of item installs in the last 7 days. - uninstalls: Count of item
+                /// uninstalls. - users: Count of daily active users of the item. - users-7d: Count of 7-day active
+                /// users of the item. - impressions: Count of item impressions across the entire store front. -
+                /// page-views: Count of individual views of the item's detail page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Metrics { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of rows to return. If unspecified, at most 100 rows will be returned.
+                /// The maximum value is 1000; Values above 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page.
+                /// When paginating, all other parameters provided to the request must match the call that provided the
+                /// page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeSpec.firstDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeSpecFirstDateDay { get; set; }
+
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeSpec.firstDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeSpecFirstDateMonth { get; set; }
+
+                /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeSpec.firstDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeSpecFirstDateYear { get; set; }
+
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeSpec.lastDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeSpecLastDateDay { get; set; }
+
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeSpec.lastDate.month", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeSpecLastDateMonth { get; set; }
+
+                /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeSpec.lastDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> TimeSpecLastDateYear { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "queryMetrics";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}:queryMetrics";
+
+                /// <summary>Initializes QueryMetrics parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^publishers/[^/]+/items/[^/]+$",
+                    });
+                    RequestParameters.Add("dimensions", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dimensions",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("metrics", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metrics",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeSpec.firstDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeSpec.firstDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeSpec.firstDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeSpec.firstDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeSpec.firstDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeSpec.firstDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeSpec.lastDate.day", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeSpec.lastDate.day",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeSpec.lastDate.month", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeSpec.lastDate.month",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeSpec.lastDate.year", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeSpec.lastDate.year",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Rolls back an item's published CRX package to a specified previously published CRX package and publishes
+            /// it to all users.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Name of the item to rollback in the form `publishers/{publisherId}/items/{itemId}`
+            /// </param>
+            public virtual RollbackRequest Rollback(Google.Apis.Chromewebstore.v2.Data.RollbackItemRequest body, string name)
+            {
+                return new RollbackRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Rolls back an item's published CRX package to a specified previously published CRX package and publishes
+            /// it to all users.
+            /// </summary>
+            public class RollbackRequest : ChromewebstoreBaseServiceRequest<Google.Apis.Chromewebstore.v2.Data.RollbackItemResponse>
+            {
+                /// <summary>Constructs a new Rollback request.</summary>
+                public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.Chromewebstore.v2.Data.RollbackItemRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the item to rollback in the form `publishers/{publisherId}/items/{itemId}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Chromewebstore.v2.Data.RollbackItemRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "rollback";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}:rollback";
+
+                /// <summary>Initializes Rollback parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -777,6 +1207,17 @@ namespace Google.Apis.Chromewebstore.v2
 }
 namespace Google.Apis.Chromewebstore.v2.Data
 {
+    /// <summary>Info on the author of the review.</summary>
+    public class AuthorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name for the author.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CancelSubmission.</summary>
     public class CancelSubmissionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -787,6 +1228,35 @@ namespace Google.Apis.Chromewebstore.v2.Data
     /// <summary>Response message for `CancelSubmission`.</summary>
     public class CancelSubmissionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -818,6 +1288,24 @@ namespace Google.Apis.Chromewebstore.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployPercentage")]
         public virtual System.Nullable<int> DeployPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchItemReviews.</summary>
+    public class FetchItemReviewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of reviews.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
+        public virtual System.Collections.Generic.IList<Review> Reviews { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -891,6 +1379,44 @@ namespace Google.Apis.Chromewebstore.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single row of metrics and dimension values.</summary>
+    public class MetricRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The date of the record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>Dimension value columns for the row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionValues")]
+        public virtual System.Collections.Generic.IList<string> DimensionValues { get; set; }
+
+        /// <summary>Metric columns for the row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricValues")]
+        public virtual System.Collections.Generic.IList<MetricValue> MetricValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the value of a single metric</summary>
+    public class MetricValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the metric</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>The unique user count associated with the metric (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueUserCount")]
+        public virtual System.Nullable<long> UniqueUserCount { get; set; }
+
+        /// <summary>The value of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for PublishItem.</summary>
     public class PublishItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -946,6 +1472,177 @@ namespace Google.Apis.Chromewebstore.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("warningInfo")]
         public virtual WarningsInfo WarningInfo { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for QueryItemMetrics.</summary>
+    public class QueryItemMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The metric rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricRows")]
+        public virtual System.Collections.Generic.IList<MetricRow> MetricRows { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Singleton resource for the rating summary of an item.</summary>
+    public class RatingSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of five star ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fiveStarRatingCount")]
+        public virtual System.Nullable<long> FiveStarRatingCount { get; set; }
+
+        /// <summary>The number of four star ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fourStarRatingCount")]
+        public virtual System.Nullable<long> FourStarRatingCount { get; set; }
+
+        /// <summary>
+        /// Identifier. Item rating summary resource name Format: publishers/{publisher}/items/{item}/ratingSummary
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The number of ratings with a non-empty review text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonEmptyReviewCount")]
+        public virtual System.Nullable<long> NonEmptyReviewCount { get; set; }
+
+        /// <summary>The number of one star ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneStarRatingCount")]
+        public virtual System.Nullable<long> OneStarRatingCount { get; set; }
+
+        /// <summary>The rating of the item as shown on the store page, expressed as a double between 1 and 5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rating")]
+        public virtual System.Nullable<double> Rating { get; set; }
+
+        /// <summary>The total number of ratings for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratingCount")]
+        public virtual System.Nullable<long> RatingCount { get; set; }
+
+        /// <summary>The number of three star ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threeStarRatingCount")]
+        public virtual System.Nullable<long> ThreeStarRatingCount { get; set; }
+
+        /// <summary>The number of two star ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("twoStarRatingCount")]
+        public virtual System.Nullable<long> TwoStarRatingCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A review written by a user to rate an item in the Chrome Web Store.</summary>
+    public class Review : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Info on the author of the review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorInfo")]
+        public virtual AuthorInfo AuthorInfo { get; set; }
+
+        /// <summary>Content of the review.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. When the review was posted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The item that this review evaluates. Format: publishers/{publisher}/items/{item}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("item")]
+        public virtual string Item { get; set; }
+
+        /// <summary>Identifier. Review resource name. Format: reviews/{reviewId}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Rating of the item, between 1 and 5.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rating")]
+        public virtual System.Nullable<int> Rating { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for RollbackItem.</summary>
+    public class RollbackItemRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The new version to assign to the package being rolled back to. This effectively "rolls forward"
+        /// the previous package by giving it a higher version number than the currently-published package. E.g. if the
+        /// current published version is 1.1, the new version could be 1.1.1 or 1.2 but not 1.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newVersion")]
+        public virtual string NewVersion { get; set; }
+
+        /// <summary>
+        /// Required. The reason for the rollback that will be used for internal auditing and developer dashboard
+        /// visibility.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackReason")]
+        public virtual string RollbackReason { get; set; }
+
+        /// <summary>
+        /// Required. The target previously published CRX version to roll back to. If unset, defaults to the last
+        /// published CRX version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCrxVersion")]
+        public virtual string TargetCrxVersion { get; set; }
+
+        /// <summary>
+        /// Optional. If set, validate and dry run the request but do not actually initiate the rollback
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `RollbackItem`.</summary>
+    public class RollbackItemResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
