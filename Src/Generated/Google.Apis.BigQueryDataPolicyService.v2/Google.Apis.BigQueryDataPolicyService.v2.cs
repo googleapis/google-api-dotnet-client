@@ -1249,6 +1249,15 @@ namespace Google.Apis.BigQueryDataPolicyService.v2.Data
         public virtual System.Collections.Generic.IList<string> Grantees { get; set; }
 
         /// <summary>
+        /// Optional. Matching condition specified as a SQL expression string. Data Governance Tag matcher functions
+        /// are: `COLUMN_HAS_TAG_KEY(keyName STRING) -&amp;gt; BOOL` `COLUMN_MATCH_TAG(keyName STRING, valueShortName
+        /// STRING) -&amp;gt; BOOL` For example: `COLUMN_HAS_TAG_KEY('project-id/pii') AND
+        /// COLUMN_MATCH_TAG('project-id/pii', 'ssn')`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingCondition")]
+        public virtual string MatchingCondition { get; set; }
+
+        /// <summary>
         /// Identifier. Resource name of this data policy, in the format of
         /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
         /// </summary>
