@@ -3559,8 +3559,9 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
         public virtual string DataSourceFamily { get; set; }
 
         /// <summary>
-        /// Optional. The maximum number of data points to return. If unspecified, at most 90 data points will be
-        /// returned. The maximum page size is 10000; values above that will be truncated accordingly.
+        /// Optional. The maximum number of data points to return. If unspecified, at most `90` data points will be
+        /// returned. The maximum page size is `90`. For `calories-in-heart-rate-zone`, `heart-rate`, `active-minutes`,
+        /// and `total-calories`, the default and maximum page size is `14`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
