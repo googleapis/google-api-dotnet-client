@@ -8996,6 +8996,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Output only. The type of Management Project. This field is only populated if `is_management_project` is
+        /// `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
+        public virtual string ManagementType { get; set; }
+
+        /// <summary>
         /// Output only. The unique resource name of the project. It is an int64 generated number prefixed by
         /// "projects/". Example: `projects/415104041262`
         /// </summary>
