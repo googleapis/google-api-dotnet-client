@@ -5084,6 +5084,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string MinimumWifiSecurityLevel { get; set; }
 
         /// <summary>
+        /// Optional. Controls whether NFC is disabled on the device and if the user can toggle NFC between enabled and
+        /// disabled. This is for fully managed devices. To control NFC on work profiles on company-owned devices, use
+        /// deviceWidePolicies.deviceRadioState.nfc instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfc")]
+        public virtual string Nfc { get; set; }
+
+        /// <summary>
         /// Optional. Controls the state of the ultra wideband setting and whether the user can toggle it on or off.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ultraWidebandState")]
@@ -5136,6 +5144,32 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyAppsEnabled")]
         public virtual System.Nullable<bool> VerifyAppsEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policies controlling the device on company-owned devices.</summary>
+    public class DeviceWidePolicies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Covers controls for radio state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceRadioState")]
+        public virtual DeviceWideRadioState DeviceRadioState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Controls for device radio settings.</summary>
+    public class DeviceWideRadioState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Controls whether NFC is disabled on the device and if the user can toggle NFC between enabled and
+        /// disabled. This is for work profiles on company-owned devices. To control NFC on fully managed devices, use
+        /// deviceRadioState.nfc instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfc")]
+        public virtual string Nfc { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7504,6 +7538,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Optional. Covers controls for radio state such as Wi-Fi, bluetooth, and more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRadioState")]
         public virtual DeviceRadioState DeviceRadioState { get; set; }
+
+        /// <summary>Optional. Policies controlling the device on company-owned devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceWidePolicies")]
+        public virtual DeviceWidePolicies DeviceWidePolicies { get; set; }
 
         /// <summary>Optional. Controls for the display settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displaySettings")]
