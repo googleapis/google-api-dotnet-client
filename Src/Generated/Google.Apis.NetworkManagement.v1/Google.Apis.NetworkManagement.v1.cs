@@ -5181,6 +5181,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string CloudSqlInstance { get; set; }
 
         /// <summary>
+        /// A [Datastream Private
+        /// Connection](https://docs.cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.privateConnections)
+        /// name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastreamPrivateConnection")]
+        public virtual string DatastreamPrivateConnection { get; set; }
+
+        /// <summary>
         /// A [DMS Private
         /// Connection](https://docs.cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.privateConnections)
         /// name format: projects/{project}/locations/{location}/privateConnections/{privateConnection}.
