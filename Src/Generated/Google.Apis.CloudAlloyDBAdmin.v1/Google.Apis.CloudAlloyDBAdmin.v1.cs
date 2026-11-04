@@ -5079,6 +5079,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Connections count policy for the autoscaler.</summary>
+    public class ConnectionsCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The target number of connections for the autoscaler to scale the instance to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCount")]
+        public virtual System.Nullable<long> TargetCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ContinuousBackupConfig describes the continuous backups recovery configurations of a cluster.</summary>
     public class ContinuousBackupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6646,6 +6657,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     /// <summary>Policy for the autoscaler.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Connections count policy for the autoscaler. If not set, the autoscaler will not use connection
+        /// count for scaling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionsCount")]
+        public virtual ConnectionsCount ConnectionsCount { get; set; }
+
         /// <summary>
         /// The period of time in seconds after a new node is created before the autoscaler will incorporate its
         /// resource usage (e.g. CPU utilization) into the autoscaling recommendation algorithm.
