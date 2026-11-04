@@ -12152,6 +12152,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The validation check for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationCheck")]
+        public virtual ValidationCheck ValidationCheck { get; set; }
     }
 
     /// <summary>NodePoolAutoscaling config for the NodePool to allow for the kubernetes to scale NodePool.</summary>
