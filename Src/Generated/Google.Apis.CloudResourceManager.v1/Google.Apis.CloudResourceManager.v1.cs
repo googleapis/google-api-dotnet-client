@@ -4072,6 +4072,13 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string LifecycleState { get; set; }
 
         /// <summary>
+        /// Output only. The type of Management Project. This field is only populated if `is_management_project` is
+        /// `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
+        public virtual string ManagementType { get; set; }
+
+        /// <summary>
         /// The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters.
         /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space,
         /// and exclamation point. Example: `My Project` Read-write.
