@@ -11288,6 +11288,14 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dueTime")]
         public virtual TimeOfDay DueTime { get; set; }
 
+        /// <summary>
+        /// Output only. Whether changes to `pointsEarned` values on this attachment's student submissions will be
+        /// copied to the `pointsEarned` field on the students' CourseWork submissions. This field can be `true` for at
+        /// most one add-on attachment per stream item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gradeSyncEnabled")]
+        public virtual System.Nullable<bool> GradeSyncEnabled { get; set; }
+
         /// <summary>Immutable. Classroom-assigned identifier for this attachment, unique per post.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
