@@ -7801,11 +7801,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// interactions](https://developers.google.com/workspace/chat/receive-respond-interactions). In addition to
     /// receiving events from user interactions, Chat apps can receive events about changes to spaces, such as when a
     /// new member is added to a space. To learn about space events, see [Work with events from Google
-    /// Chat](https://developers.google.com/workspace/chat/events-overview). Note: This event is only used for [Chat
-    /// interaction events](https://developers.google.com/workspace/chat/receive-respond-interactions). If your Chat app
-    /// is built as a [Google Workspace add-on](https://developers.google.com/workspace/add-ons/chat/build), see [Chat
-    /// event objects](https://developers.google.com/workspace/add-ons/concepts/event-objects#chat-event-object) in the
-    /// add-ons documentation.
+    /// Chat](https://developers.google.com/workspace/chat/events-overview). Warning: This event object is only used for
+    /// [Chat apps that aren't
+    /// add-ons](https://developers.google.com/workspace/chat/receive-respond-interactions#not-add-on-interaction-events).
+    /// If your Chat app is built as a [Google Workspace
+    /// add-on](https://developers.google.com/workspace/add-ons/chat/build), instead see [Add-on event
+    /// objects](https://developers.google.com/workspace/add-ons/concepts/event-objects#chat-event-object) in the
+    /// add-ons documentation. To confirm which type of event your app receives, see [Determine your event
+    /// type](https://developers.google.com/workspace/chat/receive-respond-interactions#determine-event-type).
     /// </summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11256,7 +11259,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
             set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Specifies how the server interprets the message `text` field content.</summary>
+        /// <summary>
+        /// Optional. Specifies how the server interprets the message `text` field content when creating a message or
+        /// updating the `text` field of a message. When calling `UpdateMessage`, set `markup_syntax` and `text` on the
+        /// `Message` resource and include `text` (not `markup_syntax`) in `update_mask`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markupSyntax")]
         public virtual string MarkupSyntax { get; set; }
 
