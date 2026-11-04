@@ -1761,7 +1761,7 @@ namespace Google.Apis.Meet.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Identifier. Resource name of the member. Format: spaces/{space}/members/{member}
+            /// Identifier. Resource name of the member. Format: `spaces/{space}/members/{member}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Meet.v2.Data.Member body, string name)
             {
@@ -1782,7 +1782,9 @@ namespace Google.Apis.Meet.v2
                     InitParameters();
                 }
 
-                /// <summary>Identifier. Resource name of the member. Format: spaces/{space}/members/{member}</summary>
+                /// <summary>
+                /// Identifier. Resource name of the member. Format: `spaces/{space}/members/{member}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2575,7 +2577,7 @@ namespace Google.Apis.Meet.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>Identifier. Resource name of the member. Format: spaces/{space}/members/{member}</summary>
+        /// <summary>Identifier. Resource name of the member. Format: `spaces/{space}/members/{member}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3354,7 +3356,7 @@ namespace Google.Apis.Meet.v2.Data
 
         /// <summary>
         /// Output only. Resource name of the entry. Format:
-        /// "conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}"
+        /// `conferenceRecords/{conference_record}/transcripts/{transcript}/entries/{entry}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
