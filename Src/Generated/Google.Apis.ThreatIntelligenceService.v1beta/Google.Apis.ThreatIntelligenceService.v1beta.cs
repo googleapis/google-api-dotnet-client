@@ -2536,6 +2536,25 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Brand information for the customer profile.</summary>
+    public class CustomerProfileBrand : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>Optional. The citation ids for the brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationIds")]
+        public virtual System.Collections.Generic.IList<string> CitationIds { get; set; }
+
+        /// <summary>Optional. The unique identifier for the brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Citation information for the customer profile.</summary>
     public class CustomerProfileCitation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2629,6 +2648,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>CustomerProfileConfig is the configuration for the customer profile.</summary>
     public class CustomerProfileConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Brands associated with the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brands")]
+        public virtual System.Collections.Generic.IList<CustomerProfileBrand> Brands { get; set; }
+
         /// <summary>Optional. Citations for the organization profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
         public virtual System.Collections.Generic.IList<CustomerProfileCitation> Citations { get; set; }
