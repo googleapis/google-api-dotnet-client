@@ -95,8 +95,13 @@ namespace Google.Apis.Auth.OAuth2
                 DateTime utcNow = clock.UtcNow;
                 string host = verificationRequestUrl.Host;
                 // The service name is the first part of the host, for instance
-                // iam in iam.amazonaws.com or sts in sts.amazonaws.com
-                string serviceName = host.Split('.')[0];
+                // iam in iam.amazonaws.com or sts in sts.amazonaws.com.
+                // For FIPS endpoints (e.g. sts-fips.us-east-2.amazonaws.com), strip the "-fips" suffix.
+                const string fipsSuffix = "-fips";
+                string firstSegment = host.Split('.')[0];
+                string serviceName = firstSegment.EndsWith(fipsSuffix, StringComparison.Ordinal)
+                    ? firstSegment.Substring(0, firstSegment.Length - fipsSuffix.Length)
+                    : firstSegment;
                 IDictionary<string, string> canonicalHeaders = CreateCanonicalHeaders();
                 var sortedHeaders = canonicalHeaders.OrderBy(pair => pair.Key, StringComparer.Ordinal);
                 var signedHeaders = string.Join(";", sortedHeaders.Select(pair => pair.Key));
