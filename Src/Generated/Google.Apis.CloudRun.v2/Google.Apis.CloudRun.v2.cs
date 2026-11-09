@@ -5157,14 +5157,74 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string SourceLocation { get; set; }
 
         /// <summary>
-        /// Optional. Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function.
-        /// The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where
-        /// `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and
+        /// Optional. Name of the Cloud Build private pool that should be used to build the Cloud Run function. The
+        /// format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}`
+        /// and `{region}` are the project id and region respectively where the worker pool is defined and
         /// `{workerPool}` is the short name of the worker pool.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Build configuration for a container.</summary>
+    public class GoogleCloudRunV2BuildConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Builds the source using Buildpacks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildpacksBuild")]
+        public virtual GoogleCloudRunV2BuildConfigurationBuildpacksBuild BuildpacksBuild { get; set; }
+
+        /// <summary>Optional. Builds the source using Docker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerBuild")]
+        public virtual GoogleCloudRunV2BuildConfigurationDockerBuild DockerBuild { get; set; }
+
+        /// <summary>Required. Artifact Registry URI to store the built image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageRepositoryUri")]
+        public virtual string ImageRepositoryUri { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to use for the build. Its resource name in the format
+        /// `projects/{project}/serviceAccounts/{email}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Optional. Tags to add to the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>Optional. Configuration for the worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerConfiguration")]
+        public virtual GoogleCloudRunV2WorkerConfiguration WorkerConfiguration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Buildpacks build configuration.</summary>
+    public class GoogleCloudRunV2BuildConfigurationBuildpacksBuild : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specify base image other than the default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildBaseImageUri")]
+        public virtual string BuildBaseImageUri { get; set; }
+
+        /// <summary>Optional. Cache image URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheImageUri")]
+        public virtual string CacheImageUri { get; set; }
+
+        /// <summary>Optional. Environment variables for the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Docker build configuration.</summary>
+    public class GoogleCloudRunV2BuildConfigurationDockerBuild : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5179,6 +5239,25 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. Source code location of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
         public virtual string SourceLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BuildStatus holds the status of a build.</summary>
+    public class GoogleCloudRunV2BuildStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The log URL for the Cloud Build execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildLogUrl")]
+        public virtual string CloudBuildLogUrl { get; set; }
+
+        /// <summary>The message details of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The status of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5245,6 +5324,21 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Indicates that the request should be validated without actually cancelling any resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    /// <summary>Configuration for Cloud Build worker.</summary>
+    public class GoogleCloudRunV2CloudBuildWorkerConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The machine type for the Cloud Build worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. The name of the Cloud Build worker pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -5394,6 +5488,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseImageUri")]
         public virtual string BaseImageUri { get; set; }
 
+        /// <summary>Optional. The build configuration for the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildConfig")]
+        public virtual GoogleCloudRunV2BuildConfiguration BuildConfig { get; set; }
+
         /// <summary>Output only. The build info of the container image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildInfo")]
         public virtual GoogleCloudRunV2BuildInfo BuildInfo { get; set; }
@@ -5524,6 +5622,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
     public class GoogleCloudRunV2ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The build status of the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStatus")]
+        public virtual GoogleCloudRunV2BuildStatus BuildStatus { get; set; }
+
         /// <summary>
         /// ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision.
         /// This field holds the digest value regardless of whether a tag or digest was originally specified in the
@@ -6226,6 +6328,20 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. The state of the overall export operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
         public virtual string OperationState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a volume backed by a Filestore instance.</summary>
+    public class GoogleCloudRunV2FilestoreVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the Filestore volume. Format:
+        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
+        public virtual string Volume { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7424,6 +7540,13 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
+
+        /// <summary>
+        /// Output only. Status information for each of the specified containers. The status includes the resolved
+        /// digest for specified images.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2ContainerStatus> ContainerStatuses { get; set; }
 
         /// <summary>Holds the list which define the units of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
@@ -8647,10 +8770,10 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>
-        /// Optional. Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format
-        /// of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and
-        /// `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is
-        /// the short name of the worker pool.
+        /// Optional. Name of the Cloud Build private pool that should be used to build the function. The format of this
+        /// field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}`
+        /// are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short
+        /// name of the worker pool.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
@@ -9353,6 +9476,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
         public virtual GoogleCloudRunV2EmptyDirVolumeSource EmptyDir { get; set; }
 
+        /// <summary>Optional. Represents a volume backed by a Filestore instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
+        public virtual GoogleCloudRunV2FilestoreVolumeSource Filestore { get; set; }
+
         /// <summary>Persistent storage backed by a Google Cloud Storage bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcs")]
         public virtual GoogleCloudRunV2GCSVolumeSource Gcs { get; set; }
@@ -9425,6 +9552,17 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2NetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the worker.</summary>
+    public class GoogleCloudRunV2WorkerConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Cloud Build worker configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildWorkerConfiguration")]
+        public virtual GoogleCloudRunV2CloudBuildWorkerConfiguration CloudBuildWorkerConfiguration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
