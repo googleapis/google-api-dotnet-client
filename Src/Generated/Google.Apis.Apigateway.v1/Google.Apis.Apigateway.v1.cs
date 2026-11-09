@@ -480,15 +480,15 @@ namespace Google.Apis.Apigateway.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Specifies which fields of the API Config are returned in the response. Defaults to `BASIC`
-                        /// view.
+                        /// Optional. Specifies which fields of the API Config are returned in the response. Defaults to
+                        /// `BASIC` view.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// Specifies which fields of the API Config are returned in the response. Defaults to `BASIC`
-                        /// view.
+                        /// Optional. Specifies which fields of the API Config are returned in the response. Defaults to
+                        /// `BASIC` view.
                         /// </summary>
                         public enum ViewEnum
                         {
@@ -644,19 +644,19 @@ namespace Google.Apis.Apigateway.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Filter.</summary>
+                        /// <summary>Optional. Filter.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Order by parameters.</summary>
+                        /// <summary>Optional. Order by parameters.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>Page size.</summary>
+                        /// <summary>Optional. Page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>Page token.</summary>
+                        /// <summary>Optional. Page token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -719,7 +719,7 @@ namespace Google.Apis.Apigateway.v1
                     /// <summary>Updates the parameters of a single ApiConfig.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. Resource name of the API Config. Format:
+                    /// Identifier. Resource name of the API Config. Format:
                     /// projects/{project}/locations/global/apis/{api}/configs/{api_config}
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Apigateway.v1.Data.ApigatewayApiConfig body, string name)
@@ -739,17 +739,17 @@ namespace Google.Apis.Apigateway.v1
                         }
 
                         /// <summary>
-                        /// Output only. Resource name of the API Config. Format:
+                        /// Identifier. Resource name of the API Config. Format:
                         /// projects/{project}/locations/global/apis/{api}/configs/{api_config}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Field mask is used to specify the fields to be overwritten in the ApiConfig resource by the
-                        /// update. The fields specified in the update_mask are relative to the resource, not the full
-                        /// request. A field will be overwritten if it is in the mask. If the user does not provide a
-                        /// mask then all fields will be overwritten.
+                        /// Optional. Field mask is used to specify the fields to be overwritten in the ApiConfig
+                        /// resource by the update. The fields specified in the update_mask are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. The
+                        /// request fails if `update_mask` is missing or empty.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -1197,19 +1197,19 @@ namespace Google.Apis.Apigateway.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter.</summary>
+                    /// <summary>Optional. Filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Order by parameters.</summary>
+                    /// <summary>Optional. Order by parameters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Page size.</summary>
+                    /// <summary>Optional. Page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Page token.</summary>
+                    /// <summary>Optional. Page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1272,7 +1272,7 @@ namespace Google.Apis.Apigateway.v1
                 /// <summary>Updates the parameters of a single Api.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+                /// Identifier. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Apigateway.v1.Data.ApigatewayApi body, string name)
                 {
@@ -1291,16 +1291,16 @@ namespace Google.Apis.Apigateway.v1
                     }
 
                     /// <summary>
-                    /// Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+                    /// Identifier. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Field mask is used to specify the fields to be overwritten in the Api resource by the update.
-                    /// The fields specified in the update_mask are relative to the resource, not the full request. A
-                    /// field will be overwritten if it is in the mask. If the user does not provide a mask then all
-                    /// fields will be overwritten.
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Api resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. The request fails if `update_mask` is
+                    /// missing or empty.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1766,19 +1766,19 @@ namespace Google.Apis.Apigateway.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter.</summary>
+                    /// <summary>Optional. Filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Order by parameters.</summary>
+                    /// <summary>Optional. Order by parameters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Page size.</summary>
+                    /// <summary>Optional. Page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Page token.</summary>
+                    /// <summary>Optional. Page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1841,7 +1841,7 @@ namespace Google.Apis.Apigateway.v1
                 /// <summary>Updates the parameters of a single Gateway.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. Resource name of the Gateway. Format:
+                /// Identifier. Resource name of the Gateway. Format:
                 /// projects/{project}/locations/{location}/gateways/{gateway}
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Apigateway.v1.Data.ApigatewayGateway body, string name)
@@ -1861,17 +1861,17 @@ namespace Google.Apis.Apigateway.v1
                     }
 
                     /// <summary>
-                    /// Output only. Resource name of the Gateway. Format:
+                    /// Identifier. Resource name of the Gateway. Format:
                     /// projects/{project}/locations/{location}/gateways/{gateway}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Field mask is used to specify the fields to be overwritten in the Gateway resource by the
-                    /// update. The fields specified in the update_mask are relative to the resource, not the full
-                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
-                    /// then all fields will be overwritten.
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the Gateway resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field will be overwritten if it is in the mask. The request fails if `update_mask` is
+                    /// missing or empty.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2579,7 +2579,7 @@ namespace Google.Apis.Apigateway.v1.Data
         public virtual string ManagedService { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+        /// Identifier. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2711,7 +2711,7 @@ namespace Google.Apis.Apigateway.v1.Data
         public virtual System.Collections.Generic.IList<ApigatewayApiConfigFile> ManagedServiceConfigs { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the API Config. Format:
+        /// Identifier. Resource name of the API Config. Format:
         /// projects/{project}/locations/global/apis/{api}/configs/{api_config}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3077,8 +3077,7 @@ namespace Google.Apis.Apigateway.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the Gateway. Format:
-        /// projects/{project}/locations/{location}/gateways/{gateway}
+        /// Identifier. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
