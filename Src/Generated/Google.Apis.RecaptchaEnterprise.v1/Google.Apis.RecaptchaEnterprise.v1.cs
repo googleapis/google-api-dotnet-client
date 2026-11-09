@@ -2198,8 +2198,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Assessment returned when a site key, a token, and a phone number as `user_id` are provided. SMS
-        /// defense needs to be enabled.
+        /// Output only. Assessment returned when a site key, a token, `user_info.account_id`, and a phone number in
+        /// `user_info.user_ids` are provided. SMS defense must be enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneFraudAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment PhoneFraudAssessment { get; set; }
@@ -2261,11 +2261,12 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// Optional. Enumerated string value that indicates the identity of the bot, formatted in kebab-case. Current
         /// example values include the following: * google-agent - AI_AGENT * browser-base - AI_AGENT * chat-gpt -
         /// AI_AGENT * aws-bedrock - AI_AGENT * cybaa-bot - AI_AGENT * cloudflare - AI_AGENT * payhawk - AI_AGENT *
-        /// duck-duck-go - SEARCH_INDEXER * mediaboard - CONTENT_SCRAPER * marker-io - AI_AGENT * anchor-browser -
-        /// AI_AGENT * shopify - AI_AGENT * stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-sh - AI_AGENT *
-        /// zvelo - SEARCH_INDEXER * meta-muse - AI_AGENT Ensure that your applications can handle identifier values not
-        /// explicitly listed here. Deprecated values might take some time to stop showing up in responses. New values
-        /// can be pushed so this list should be taken as non exhaustive.
+        /// duck-duck-go - AI_AGENT * mediaboard - CONTENT_SCRAPER * marker-io - AI_AGENT * anchor-browser - AI_AGENT *
+        /// shopify - AI_AGENT * stackscope - CONTENT_SCRAPER * manus - AI_AGENT * kernel-sh - AI_AGENT * zvelo -
+        /// SEARCH_INDEXER * meta-muse - AI_AGENT * duck-duck-bot - SEARCH_INDEXER * my-porta - SEARCH_INDEXER *
+        /// ison-search - SEARCH_INDEXER * rokt - SEARCH_INDEXER Ensure that your applications can handle identifier
+        /// values not explicitly listed here. Deprecated values might take some time to stop showing up in responses.
+        /// New values can be pushed so this list should be taken as non exhaustive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2316,9 +2317,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>
         /// Optional. A CEL condition that must be met for this rule to apply. If unspecified, the rule applies
         /// unconditionally. The following fields can be referenced in the condition: * `score` * `user_ip_address` *
-        /// `user_asn` * `user_agent` * `verified_bots.name` * `verified_bots.bot_type` Examples: * `score &amp;lt; 0.5`
-        /// * `user_ip_address == "123.45.67.89"` * `user_agent.contains("Chrome")` * `score &amp;lt; 0.5
-        /// &amp;amp;&amp;amp; user_ip_address == "123.45.67.89"`
+        /// `user_asn` * `user_agent` * `region_code` * `verified_bots.name` * `verified_bots.bot_type` Examples: *
+        /// `score &amp;lt; 0.5` * `user_ip_address == "123.45.67.89"` * `user_agent.contains("Chrome")` * `score
+        /// &amp;lt; 0.5 &amp;amp;&amp;amp; user_ip_address == "123.45.67.89"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
@@ -3645,8 +3646,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1TestingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site return
-        /// nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
+        /// Optional. For challenge-based keys only (`CHECKBOX`, `INVISIBLE`), all challenge requests for this site do
+        /// not show a challenge if `NOCAPTCHA`, or show an unsolvable challenge if `UNSOLVABLE_CHALLENGE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingChallenge")]
         public virtual string TestingChallenge { get; set; }
@@ -3936,7 +3937,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     {
         /// <summary>
         /// Optional. Unique account identifier for this user. If using Account defense, this should match the
-        /// hashed_account_id field. Otherwise, a unique and persistent identifier for this account.
+        /// `user_info.account_id` field. Otherwise, a unique and persistent identifier for this account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
