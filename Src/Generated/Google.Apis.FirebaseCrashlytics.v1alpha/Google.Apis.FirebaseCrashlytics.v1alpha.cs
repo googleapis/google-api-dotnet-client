@@ -2319,6 +2319,133 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     });
                 }
             }
+
+            /// <summary>Retrieves the Android Profiling Manager configuration for an app.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the Profiling Manager configuration to retrieve. Format:
+            /// "projects/{project}/apps/{app}/profilingManagerConfig".
+            /// </param>
+            public virtual GetProfilingManagerConfigRequest GetProfilingManagerConfig(string name)
+            {
+                return new GetProfilingManagerConfigRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the Android Profiling Manager configuration for an app.</summary>
+            public class GetProfilingManagerConfigRequest : FirebaseCrashlyticsBaseServiceRequest<Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig>
+            {
+                /// <summary>Constructs a new GetProfilingManagerConfig request.</summary>
+                public GetProfilingManagerConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Profiling Manager configuration to retrieve. Format:
+                /// "projects/{project}/apps/{app}/profilingManagerConfig".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getProfilingManagerConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes GetProfilingManagerConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+/profilingManagerConfig$",
+                    });
+                }
+            }
+
+            /// <summary>Updates the Android Profiling Manager configuration for an app.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the Profiling Manager configuration. Format:
+            /// "projects/{project}/apps/{app}/profilingManagerConfig".
+            /// </param>
+            public virtual UpdateProfilingManagerConfigRequest UpdateProfilingManagerConfig(Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig body, string name)
+            {
+                return new UpdateProfilingManagerConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the Android Profiling Manager configuration for an app.</summary>
+            public class UpdateProfilingManagerConfigRequest : FirebaseCrashlyticsBaseServiceRequest<Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig>
+            {
+                /// <summary>Constructs a new UpdateProfilingManagerConfig request.</summary>
+                public UpdateProfilingManagerConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the Profiling Manager configuration. Format:
+                /// "projects/{project}/apps/{app}/profilingManagerConfig".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The list of ProfilingManagerConfig fields to update (`gcs_bucket`,
+                /// `heap_dump_collection_enabled`). If omitted, all populated (non-default) fields are updated; specify
+                /// an explicit `update_mask` (or `*`) when clearing a field to its default value (such as `""` or
+                /// `false`).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateProfilingManagerConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes UpdateProfilingManagerConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+/profilingManagerConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 }
@@ -3587,6 +3714,35 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha.Data
         /// <summary>The type of track (prod, internal, etc...).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the Android Profiling Manager configuration for a Firebase application, used to manage Crashlytics
+    /// heap dump collection.
+    /// </summary>
+    public class ProfilingManagerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of the Google Cloud Storage bucket where enriched heap dumps are stored. Format:
+        /// "projects/{project}/buckets/{bucket}" (use `_` as `{project}` for global buckets, for example
+        /// "projects/_/buckets/my-global-bucket").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Optional. Whether Crashlytics heap dump collection is enabled for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heapDumpCollectionEnabled")]
+        public virtual System.Nullable<bool> HeapDumpCollectionEnabled { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the Profiling Manager configuration. Format:
+        /// "projects/{project}/apps/{app}/profilingManagerConfig".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
