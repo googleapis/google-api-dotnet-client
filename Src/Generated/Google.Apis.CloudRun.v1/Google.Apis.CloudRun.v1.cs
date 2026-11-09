@@ -7530,6 +7530,25 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BuildStatus holds the status of a build.</summary>
+    public class BuildStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The log URL for the Cloud Build execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildLogUrl")]
+        public virtual string CloudBuildLogUrl { get; set; }
+
+        /// <summary>The message details of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The status of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Storage volume source using the Container Storage Interface.</summary>
     public class CSIVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7911,6 +7930,29 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Protocol for port. Must be "TCP". Defaults to "TCP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
+    public class ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The build status of the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStatus")]
+        public virtual BuildStatus BuildStatus { get; set; }
+
+        /// <summary>
+        /// ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision.
+        /// This field holds the digest value regardless of whether a tag or digest was originally specified in the
+        /// Container object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
+        public virtual string ImageDigest { get; set; }
+
+        /// <summary>The name of the container, if specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8513,6 +8555,20 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a volume backed by a Filestore instance.</summary>
+    public class FilestoreVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the Filestore volume. Format:
+        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
+        public virtual string Volume { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11881,6 +11937,13 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
 
         /// <summary>
+        /// Output only. Status information for each of the specified containers. The status includes the resolved
+        /// digest for specified images.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
+        public virtual System.Collections.Generic.IList<ContainerStatus> ContainerStatuses { get; set; }
+
+        /// <summary>
         /// Output only. The configured number of instances running this revision. For Cloud Run, this only includes
         /// instances provisioned using the minScale annotation. It does not include instances created by autoscaling.
         /// </summary>
@@ -12869,6 +12932,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Ephemeral storage used as a shared volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
         public virtual EmptyDirVolumeSource EmptyDir { get; set; }
+
+        /// <summary>Represents a volume backed by a Filestore instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
+        public virtual FilestoreVolumeSource Filestore { get; set; }
 
         /// <summary>Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
