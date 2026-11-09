@@ -34,20 +34,5 @@
   "aiplatform.v1",
 
   // b/533068783
-  "readerrevenuesubscriptionlinking.v1",
-
-  // Turned down: google/shopping/merchant/*/v1beta
-  "merchantapi.accounts_v1beta",
-  "merchantapi.conversions_v1beta",
-  "merchantapi.datasources_v1beta",
-  "merchantapi.inventories_v1beta",
-  "merchantapi.issueresolution_v1beta",
-  "merchantapi.lfp_v1beta",
-  "merchantapi.notifications_v1beta",
-  "merchantapi.ordertracking_v1beta",
-  "merchantapi.products_v1beta",
-  "merchantapi.promotions_v1beta",
-  "merchantapi.quota_v1beta",
-  "merchantapi.reports_v1beta",
-  "merchantapi.reviews_v1beta"
+  "readerrevenuesubscriptionlinking.v1"
 ]
