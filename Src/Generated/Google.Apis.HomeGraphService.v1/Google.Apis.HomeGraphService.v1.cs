@@ -1016,21 +1016,24 @@ namespace Google.Apis.HomeGraphService.v1.Data
     }
 
     /// <summary>
-    /// Dynamic JSON trait state payload conforming to `json_trait_schema.md`. Used for Category 2 (vendor Matter
-    /// clusters) and Category 3 (non-Matter capabilities) traits across all wire and internal paths, and for Category 1
-    /// traits on external JSON-only wire paths (e.g., `Query` with `JSON_TRAIT_ONLY`).
+    /// Represents a dynamic JSON trait state payload that conforms to `json_trait_schema.md`. This message is used for
+    /// Category 2 (vendor Matter clusters) and Category 3 (non-Matter capabilities) traits across all wire and internal
+    /// paths, and for Category 1 traits on external JSON-only wire paths (for example, `Query` with `JSON_TRAIT_ONLY`).
     /// </summary>
     public class JsonTrait : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Trait attribute map conforming to the trait's registered JSON Schema.</summary>
+        /// <summary>
+        /// Optional. Holds the trait attributes, which conform to the trait's registered JSON Schema.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
 
         /// <summary>
-        /// Required. Canonical symbolic trait ID per `json_trait_schema.md`: - Standard Matter (Cat 1): `matter.`
-        /// (e.g., `matter.thermostat`) - Google / vendor Matter (Cat 1/2): `matter..` (e.g., `matter.google.`,
-        /// `matter.eve.utility`) - Non-Matter (Cat 3, any provider incl. Google): `ghp..` (e.g., `ghp.acme.warranty`,
-        /// `ghp.google.`)
+        /// Required. Identifies the trait by its canonical four-segment capability ID, `capability...`: * Standard or
+        /// Google Matter (Category 1): `capability.matter.standard.` or `capability.matter.google.`, for example
+        /// `capability.matter.standard.Thermostat`. * Vendor Matter (Category 2): `capability.matter..`. * Non-Matter
+        /// (Category 3, from any provider including Google): `capability.generic..`, for example
+        /// `capability.generic.acme.Warranty`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -1039,16 +1042,19 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Dynamic JSON event payload conforming to `json_trait_schema.md`.</summary>
+    /// <summary>Represents a dynamic JSON event payload that conforms to `json_trait_schema.md`.</summary>
     public class JsonTraitEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Event payload fields conforming to the event's registered JSON Schema.</summary>
+        /// <summary>
+        /// Optional. Holds the event payload fields, which conform to the event's registered JSON Schema.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
 
         /// <summary>
-        /// Required. Fully qualified event ID: `.` (e.g., `matter.doorLock.lockOperation`,
-        /// `ghp.acme.warranty.claimUpdated`).
+        /// Required. Identifies the event as `.`, where `` is the PascalCase key in the schema's
+        /// `x-capability-info.events`, for example `capability.matter.standard.DoorLock.LockOperation` or
+        /// `capability.generic.acme.Warranty.ClaimUpdated`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
