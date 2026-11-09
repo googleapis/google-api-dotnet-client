@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Colab.v1beta.ColabBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Colab.v1beta.ColabBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
