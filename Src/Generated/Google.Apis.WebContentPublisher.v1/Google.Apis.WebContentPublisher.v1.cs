@@ -63,6 +63,12 @@ namespace Google.Apis.WebContentPublisher.v1
         public class Scope
         {
             /// <summary>
+            /// Private Service:
+            /// https://www.googleapis.com/auth/webcontentpublisher.publications.entitlements.readonly.system
+            /// </summary>
+            public static string WebcontentpublisherPublicationsEntitlementsReadonlySystem = "https://www.googleapis.com/auth/webcontentpublisher.publications.entitlements.readonly.system";
+
+            /// <summary>
             /// Private Service: https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system
             /// </summary>
             public static string WebcontentpublisherPublicationsManageSystem = "https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system";
@@ -71,6 +77,12 @@ namespace Google.Apis.WebContentPublisher.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Web Content Publisher API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// Private Service:
+            /// https://www.googleapis.com/auth/webcontentpublisher.publications.entitlements.readonly.system
+            /// </summary>
+            public const string WebcontentpublisherPublicationsEntitlementsReadonlySystem = "https://www.googleapis.com/auth/webcontentpublisher.publications.entitlements.readonly.system";
+
             /// <summary>
             /// Private Service: https://www.googleapis.com/auth/webcontentpublisher.publications.manage.system
             /// </summary>
@@ -971,7 +983,7 @@ namespace Google.Apis.WebContentPublisher.v1
 
         /// <summary>Checks if a user is eligible for free article access.</summary>
         /// <param name="name">
-        /// Required. The resource name of the publication. Format: publications/{publication_id}
+        /// Required. The resource name of the publication. Format: publications/{publication}
         /// </param>
         public virtual CheckFreeAccessRequest CheckFreeAccess(string name)
         {
@@ -988,7 +1000,7 @@ namespace Google.Apis.WebContentPublisher.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The resource name of the publication. Format: publications/{publication_id}</summary>
+            /// <summary>Required. The resource name of the publication. Format: publications/{publication}</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1032,6 +1044,77 @@ namespace Google.Apis.WebContentPublisher.v1
                 RequestParameters.Add("uri", new Google.Apis.Discovery.Parameter
                 {
                     Name = "uri",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Checks if a reader has active program access.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the publication. Format: publications/{publication}
+        /// </param>
+        public virtual CheckProgramAccessRequest CheckProgramAccess(string name)
+        {
+            return new CheckProgramAccessRequest(this.service, name);
+        }
+
+        /// <summary>Checks if a reader has active program access.</summary>
+        public class CheckProgramAccessRequest : WebContentPublisherBaseServiceRequest<Google.Apis.WebContentPublisher.v1.Data.CheckProgramAccessResponse>
+        {
+            /// <summary>Constructs a new CheckProgramAccess request.</summary>
+            public CheckProgramAccessRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The resource name of the publication. Format: publications/{publication}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. The specific product ID being accessed.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProductId { get; set; }
+
+            /// <summary>Required. The encrypted site token string received from the Chrome HTTP header.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("swgUserToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SwgUserToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "checkProgramAccess";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:checkProgramAccess";
+
+            /// <summary>Initializes CheckProgramAccess parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^publications/[^/]+$",
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("swgUserToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "swgUserToken",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1148,6 +1231,17 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         /// <summary>Output only. True if free access should be allowed, false otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAllowed")]
         public virtual System.Nullable<bool> IsAllowed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `CheckProgramAccess`.</summary>
+    public class CheckProgramAccessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entitlement access status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
