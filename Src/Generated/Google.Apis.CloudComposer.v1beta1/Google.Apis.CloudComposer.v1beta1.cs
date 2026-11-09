@@ -3093,6 +3093,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resilienceMode")]
         public virtual string ResilienceMode { get; set; }
 
+        /// <summary>
+        /// Optional. The configuration for hibernating and resuming the environment on a schedule. Supported for
+        /// environments that have `mode` set to `DEVELOPMENT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledHibernationConfig")]
+        public virtual ScheduledHibernationConfig ScheduledHibernationConfig { get; set; }
+
         /// <summary>Optional. The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; }
@@ -4146,6 +4153,41 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotPath")]
         public virtual string SnapshotPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The configuration for hibernating and resuming the environment on a schedule. Supported for environments in the
+    /// development mode.
+    /// </summary>
+    public class ScheduledHibernationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether hibernating and resuming the environment on a schedule is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. The cron expressions representing the times when the environment will automatically hibernate,
+        /// entering the HIBERNATED state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hibernationSchedules")]
+        public virtual System.Collections.Generic.IList<string> HibernationSchedules { get; set; }
+
+        /// <summary>
+        /// Optional. The cron expressions representing the times when the environment will automatically resume,
+        /// entering the RUNNING state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resumptionSchedules")]
+        public virtual System.Collections.Generic.IList<string> ResumptionSchedules { get; set; }
+
+        /// <summary>
+        /// Optional. Time zone that sets the context to interpret the schedule expressions. Expected format is
+        /// "UTC+05", "UTC-03", etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
