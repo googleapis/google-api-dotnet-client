@@ -26359,6 +26359,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> EffectiveFeatures { get; set; }
 
         /// <summary>
+        /// Optional. Per-feature access policies, keyed by feature toggle name (see `features`). A feature with no
+        /// entry is available to every user when it is on. Only features that support access policies are accepted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featurePolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1EngineFeaturePolicy> FeaturePolicies { get; set; }
+
+        /// <summary>
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
@@ -26367,10 +26374,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `music-generation` *
         /// `speech-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
-        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` * `remote-vm`
-        /// * `license-tier-badge` * `agent-marketplace` * `agent-scheduling` * `preview-agents`
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `skill-security-scan` * `disable-projects` *
+        /// `sobi` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// * `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` *
+        /// `remote-vm` * `license-tier-badge` * `canvas-app-sharing` * `agent-marketplace` * `agent-scheduling` *
+        /// `preview-agents` * `plugins`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -26583,6 +26591,55 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Restricts which users may use a feature that is turned on in `features`.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineFeaturePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Members who may use the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1EngineFeaturePolicyMember> AllowedMembers { get; set; }
+
+        /// <summary>Optional. Access for users who match neither list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAccess")]
+        public virtual string DefaultAccess { get; set; }
+
+        /// <summary>Optional. Members who may not use the feature. Takes precedence over `allowed_members`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1EngineFeaturePolicyMember> DeniedMembers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user or group the policy refers to.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineFeaturePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Label shown in the console. Never used for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Identifier evaluated at serving time. Its format depends on the project's identity provider: *
+        /// Google identity (`GSUITE`): the group or user email. For groups, the server resolves the email to a group ID
+        /// on write and returns the email on read. * Workforce Identity Federation (`THIRD_PARTY`), groups: the value
+        /// the provider emits in `google.groups`. With SCIM this is the SCIM group ID; without SCIM and with the
+        /// default Microsoft Entra mapping it is the Entra group object ID. * Workforce Identity Federation, users: the
+        /// user's workforce identity subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Kind of member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Result of the server's directory check when the member was saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verification")]
+        public virtual string Verification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -35829,6 +35886,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> EffectiveFeatures { get; set; }
 
         /// <summary>
+        /// Optional. Per-feature access policies, keyed by feature toggle name (see `features`). A feature with no
+        /// entry is available to every user when it is on. Only features that support access policies are accepted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featurePolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicy> FeaturePolicies { get; set; }
+
+        /// <summary>
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
@@ -35837,10 +35901,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `music-generation` *
         /// `speech-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
-        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` * `remote-vm`
-        /// * `license-tier-badge` * `agent-marketplace` * `agent-scheduling` * `preview-agents`
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `skill-security-scan` * `disable-projects` *
+        /// `sobi` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// * `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` *
+        /// `remote-vm` * `license-tier-badge` * `canvas-app-sharing` * `agent-marketplace` * `agent-scheduling` *
+        /// `preview-agents` * `plugins`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -36064,6 +36129,55 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Restricts which users may use a feature that is turned on in `features`.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Members who may use the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicyMember> AllowedMembers { get; set; }
+
+        /// <summary>Optional. Access for users who match neither list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAccess")]
+        public virtual string DefaultAccess { get; set; }
+
+        /// <summary>Optional. Members who may not use the feature. Takes precedence over `allowed_members`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicyMember> DeniedMembers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user or group the policy refers to.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Label shown in the console. Never used for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Identifier evaluated at serving time. Its format depends on the project's identity provider: *
+        /// Google identity (`GSUITE`): the group or user email. For groups, the server resolves the email to a group ID
+        /// on write and returns the email on read. * Workforce Identity Federation (`THIRD_PARTY`), groups: the value
+        /// the provider emits in `google.groups`. With SCIM this is the SCIM group ID; without SCIM and with the
+        /// default Microsoft Entra mapping it is the Entra group object ID. * Workforce Identity Federation, users: the
+        /// user's workforce identity subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Kind of member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Result of the server's directory check when the member was saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verification")]
+        public virtual string Verification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49257,6 +49371,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> EffectiveFeatures { get; set; }
 
         /// <summary>
+        /// Optional. Per-feature access policies, keyed by feature toggle name (see `features`). A feature with no
+        /// entry is available to every user when it is on. Only features that support access policies are accepted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featurePolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1betaEngineFeaturePolicy> FeaturePolicies { get; set; }
+
+        /// <summary>
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
@@ -49265,10 +49386,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `music-generation` *
         /// `speech-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
-        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` * `remote-vm`
-        /// * `license-tier-badge` * `agent-marketplace` * `agent-scheduling` * `preview-agents`
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `skill-security-scan` * `disable-projects` *
+        /// `sobi` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// * `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` *
+        /// `remote-vm` * `license-tier-badge` * `canvas-app-sharing` * `agent-marketplace` * `agent-scheduling` *
+        /// `preview-agents` * `plugins`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -49481,6 +49603,55 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Restricts which users may use a feature that is turned on in `features`.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineFeaturePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Members who may use the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaEngineFeaturePolicyMember> AllowedMembers { get; set; }
+
+        /// <summary>Optional. Access for users who match neither list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAccess")]
+        public virtual string DefaultAccess { get; set; }
+
+        /// <summary>Optional. Members who may not use the feature. Takes precedence over `allowed_members`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaEngineFeaturePolicyMember> DeniedMembers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user or group the policy refers to.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineFeaturePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Label shown in the console. Never used for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Identifier evaluated at serving time. Its format depends on the project's identity provider: *
+        /// Google identity (`GSUITE`): the group or user email. For groups, the server resolves the email to a group ID
+        /// on write and returns the email on read. * Workforce Identity Federation (`THIRD_PARTY`), groups: the value
+        /// the provider emits in `google.groups`. With SCIM this is the SCIM group ID; without SCIM and with the
+        /// default Microsoft Entra mapping it is the Entra group object ID. * Workforce Identity Federation, users: the
+        /// user's workforce identity subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Kind of member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Result of the server's directory check when the member was saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verification")]
+        public virtual string Verification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
