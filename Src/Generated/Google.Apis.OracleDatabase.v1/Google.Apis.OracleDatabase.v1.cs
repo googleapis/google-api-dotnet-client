@@ -301,6 +301,7 @@ namespace Google.Apis.OracleDatabase.v1
                 DatabaseCharacterSets = new DatabaseCharacterSetsResource(service);
                 DatabaseConnections = new DatabaseConnectionsResource(service);
                 Databases = new DatabasesResource(service);
+                DbSystemComputePerformances = new DbSystemComputePerformancesResource(service);
                 DbSystemInitialStorageSizes = new DbSystemInitialStorageSizesResource(service);
                 DbSystemShapes = new DbSystemShapesResource(service);
                 DbSystems = new DbSystemsResource(service);
@@ -308,6 +309,7 @@ namespace Google.Apis.OracleDatabase.v1
                 Entitlements = new EntitlementsResource(service);
                 ExadbVmClusters = new ExadbVmClustersResource(service);
                 ExascaleDbStorageVaults = new ExascaleDbStorageVaultsResource(service);
+                FlexComponents = new FlexComponentsResource(service);
                 GiVersions = new GiVersionsResource(service);
                 GoldengateConnectionAssignments = new GoldengateConnectionAssignmentsResource(service);
                 GoldengateConnectionTypes = new GoldengateConnectionTypesResource(service);
@@ -2495,6 +2497,124 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Disables the Workload Identity Connector for a Cloud VM Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Cloud VM Cluster in the following format:
+                /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+                /// </param>
+                public virtual DisableIdentityConnectorRequest DisableIdentityConnector(Google.Apis.OracleDatabase.v1.Data.DisableCloudVmClusterIdentityConnectorRequest body, string name)
+                {
+                    return new DisableIdentityConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Disables the Workload Identity Connector for a Cloud VM Cluster.</summary>
+                public class DisableIdentityConnectorRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DisableIdentityConnector request.</summary>
+                    public DisableIdentityConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.DisableCloudVmClusterIdentityConnectorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Cloud VM Cluster in the following format:
+                    /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.DisableCloudVmClusterIdentityConnectorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disableIdentityConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:disableIdentityConnector";
+
+                    /// <summary>Initializes DisableIdentityConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cloudVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enables the Workload Identity Connector for a Cloud VM Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Cloud VM Cluster in the following format:
+                /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+                /// </param>
+                public virtual EnableIdentityConnectorRequest EnableIdentityConnector(Google.Apis.OracleDatabase.v1.Data.EnableCloudVmClusterIdentityConnectorRequest body, string name)
+                {
+                    return new EnableIdentityConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Enables the Workload Identity Connector for a Cloud VM Cluster.</summary>
+                public class EnableIdentityConnectorRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new EnableIdentityConnector request.</summary>
+                    public EnableIdentityConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.EnableCloudVmClusterIdentityConnectorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Cloud VM Cluster in the following format:
+                    /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.EnableCloudVmClusterIdentityConnectorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableIdentityConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:enableIdentityConnector";
+
+                    /// <summary>Initializes EnableIdentityConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cloudVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single VM Cluster.</summary>
                 /// <param name="name">
                 /// Required. The name of the Cloud VM Cluster in the following format:
@@ -3515,6 +3635,117 @@ namespace Google.Apis.OracleDatabase.v1
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/databases";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbSystemComputePerformances resource.</summary>
+            public virtual DbSystemComputePerformancesResource DbSystemComputePerformances { get; }
+
+            /// <summary>The "dbSystemComputePerformances" collection of methods.</summary>
+            public class DbSystemComputePerformancesResource
+            {
+                private const string Resource = "dbSystemComputePerformances";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbSystemComputePerformancesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists all the DbSystemComputePerformances for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListDbSystemComputePerformancesRequest Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the DbSystemComputePerformances for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDbSystemComputePerformancesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for ListDbSystemComputePerformancesRequest Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Only the `db_system_shape`
+                    /// field is supported in the following format: `db_system_shape="{db_system_shape}"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbSystemComputePerformances";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -4688,6 +4919,124 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Disables the Workload Identity Connector for an Exadb VM Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Exadb VM Cluster in the following format:
+                /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+                /// </param>
+                public virtual DisableIdentityConnectorRequest DisableIdentityConnector(Google.Apis.OracleDatabase.v1.Data.DisableExadbVmClusterIdentityConnectorRequest body, string name)
+                {
+                    return new DisableIdentityConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Disables the Workload Identity Connector for an Exadb VM Cluster.</summary>
+                public class DisableIdentityConnectorRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DisableIdentityConnector request.</summary>
+                    public DisableIdentityConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.DisableExadbVmClusterIdentityConnectorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Exadb VM Cluster in the following format:
+                    /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.DisableExadbVmClusterIdentityConnectorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disableIdentityConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:disableIdentityConnector";
+
+                    /// <summary>Initializes DisableIdentityConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enables the Workload Identity Connector for an Exadb VM Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Exadb VM Cluster in the following format:
+                /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+                /// </param>
+                public virtual EnableIdentityConnectorRequest EnableIdentityConnector(Google.Apis.OracleDatabase.v1.Data.EnableExadbVmClusterIdentityConnectorRequest body, string name)
+                {
+                    return new EnableIdentityConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Enables the Workload Identity Connector for an Exadb VM Cluster.</summary>
+                public class EnableIdentityConnectorRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new EnableIdentityConnector request.</summary>
+                    public EnableIdentityConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.EnableExadbVmClusterIdentityConnectorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Exadb VM Cluster in the following format:
+                    /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.EnableExadbVmClusterIdentityConnectorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableIdentityConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:enableIdentityConnector";
+
+                    /// <summary>Initializes EnableIdentityConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single Exadb (Exascale) VM Cluster.</summary>
                 /// <param name="name">
                 /// Required. The name of the ExadbVmCluster in the following format:
@@ -5429,6 +5778,116 @@ namespace Google.Apis.OracleDatabase.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FlexComponents resource.</summary>
+            public virtual FlexComponentsResource FlexComponents { get; }
+
+            /// <summary>The "flexComponents" collection of methods.</summary>
+            public class FlexComponentsResource
+            {
+                private const string Resource = "flexComponents";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FlexComponentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists Flex Components in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListFlexComponentsRequest Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Flex Components in a given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListFlexComponentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for ListFlexComponentsRequest Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Only the `shape` field is
+                    /// supported in the following format: `shape="{shape}"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/flexComponents";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -11153,6 +11612,15 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identityConnector")]
         public virtual IdentityConnector IdentityConnector { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. If set to true, disables the automatic provisioning of the Workload
+        /// Identity Connector during creation. If set to false or omitted, the Workload Identity Connector will be
+        /// automatically provisioned by default. Note: Provisioning the Workload Identity Connector is a prerequisite
+        /// for enabling Google Cloud CMEK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConnectorDisabled")]
+        public virtual System.Nullable<bool> IdentityConnectorDisabled { get; set; }
+
         /// <summary>Optional. Labels or tags associated with the VM Cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -11372,6 +11840,29 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Required. Database-specific type name (e.g., "VARCHAR2(255)", "NUMBER", "DATE", "CLOB")</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters detailing the compute performance for a specified DB system shape.</summary>
+    public class ComputePerformance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of compute servers for the DB system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeCount")]
+        public virtual System.Nullable<int> ComputeCount { get; set; }
+
+        /// <summary>Output only. The compute model for Base Database Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeModel")]
+        public virtual string ComputeModel { get; set; }
+
+        /// <summary>Output only. The number of CPU cores available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCoreCount")]
+        public virtual System.Nullable<int> CpuCoreCount { get; set; }
+
+        /// <summary>Output only. The amount of memory allocated for the VMDB System in GBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryInGbs")]
+        public virtual System.Nullable<double> MemoryInGbs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12202,6 +12693,28 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of the DbSystem compute performance resource.</summary>
+    public class DbSystemComputePerformance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of Compute performance details for the specified DB system shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computePerformances")]
+        public virtual System.Collections.Generic.IList<ComputePerformance> ComputePerformances { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the DbSystemComputePerformance resource with the format:
+        /// projects/{project}/locations/{location}/dbSystemComputePerformances/{db_system_compute_performance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The shape of the DB system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shape")]
+        public virtual string Shape { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Summary of the DbSystem initial storage size.</summary>
     public class DbSystemInitialStorageSize : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12589,12 +13102,40 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for `CloudVmCluster.DisableCloudVmClusterIdentityConnector`.</summary>
+    public class DisableCloudVmClusterIdentityConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `ExadbVmCluster.DisableExadbVmClusterIdentityConnector`.</summary>
+    public class DisableExadbVmClusterIdentityConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `CloudVmCluster.EnableCloudVmClusterIdentityConnector`.</summary>
+    public class EnableCloudVmClusterIdentityConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `ExadbVmCluster.EnableExadbVmClusterIdentityConnector`.</summary>
+    public class EnableExadbVmClusterIdentityConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12771,6 +13312,15 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityConnector")]
         public virtual IdentityConnector IdentityConnector { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. If set to true, disables the automatic provisioning of the Workload
+        /// Identity Connector during creation. If set to false or omitted, the Workload Identity Connector will be
+        /// automatically provisioned by default. Note: Provisioning the Workload Identity Connector is a prerequisite
+        /// for enabling Google Cloud CMEK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConnectorDisabled")]
+        public virtual System.Nullable<bool> IdentityConnectorDisabled { get; set; }
 
         /// <summary>Optional. The labels or tags associated with the ExadbVmCluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -13182,6 +13732,89 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerAutonomousDatabase")]
         public virtual string PeerAutonomousDatabase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the Flex Component resource.</summary>
+    public class FlexComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. Specifies the name of the Flex Component resource with the format:
+        /// projects/{project}/locations/{region}/flexComponents/{flex_component}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The properties of the Flex Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual FlexComponentProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of the Flex Component.</summary>
+    public class FlexComponentProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The maximum number of CPU cores that can be enabled on the DB system for this shape.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableCoreCount")]
+        public virtual System.Nullable<int> AvailableCoreCount { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum storage that can be enabled on the Storage Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableDbNodeStoragePerNodeGb")]
+        public virtual System.Nullable<int> AvailableDbNodeStoragePerNodeGb { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum local storage that can be enabled on the DB Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableLocalStorageGb")]
+        public virtual System.Nullable<int> AvailableLocalStorageGb { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum memory size that can be enabled on the DB Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableMemoryGb")]
+        public virtual System.Nullable<int> AvailableMemoryGb { get; set; }
+
+        /// <summary>Output only. The compute model of the DB Server for this Flex Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeModel")]
+        public virtual string ComputeModel { get; set; }
+
+        /// <summary>Output only. The description summary for this Flex Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptionSummary")]
+        public virtual string DescriptionSummary { get; set; }
+
+        /// <summary>
+        /// Output only. The hardware type of the DB (Compute) or Storage (Cell) Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardwareType")]
+        public virtual string HardwareType { get; set; }
+
+        /// <summary>
+        /// Output only. The minimum number of CPU cores that can be enabled on the DB Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumCoreCount")]
+        public virtual System.Nullable<int> MinimumCoreCount { get; set; }
+
+        /// <summary>Output only. The name of the Flex Component used for the DB system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The runtime minimum number of CPU cores that can be enabled for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeMinimumCoreCount")]
+        public virtual System.Nullable<int> RuntimeMinimumCoreCount { get; set; }
+
+        /// <summary>Output only. The name of the DB system shape for this Flex Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shape")]
+        public virtual string Shape { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16255,11 +16888,31 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ConnectionState { get; set; }
 
         /// <summary>
+        /// Output only. The unique partner identifier for the Identity Connector, used to establish secure cross-cloud
+        /// access between Google Cloud and OCI. This corresponds directly to the ID of the OracleDbGcpIdentityConnector
+        /// resource in Oracle Cloud Infrastructure (OCI).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConnectorId")]
+        public virtual string IdentityConnectorId { get; set; }
+
+        /// <summary>Output only. Additional information about the current lifecycle state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleStateDetails")]
+        public virtual string LifecycleStateDetails { get; set; }
+
+        /// <summary>
         /// Output only. A google managed service account on which customers can grant roles to access resources in the
         /// customer project. Example: `p176944527254-55-75119d87fd8f@gcp-sa-oci.iam.gserviceaccount.com`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentEmail")]
         public virtual string ServiceAgentEmail { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the Workload Identity Pool configured for identity federation with OCI.
+        /// This exact pool name can be used to configure VPC Service Controls (VPC-SC) egress rules. Format:
+        /// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPool")]
+        public virtual string WorkloadIdentityPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16492,6 +17145,28 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to listing DbSystemComputePerformances</summary>
+    public class ListDbSystemComputePerformancesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DbSystemComputePerformance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbSystemComputePerformances")]
+        public virtual System.Collections.Generic.IList<DbSystemComputePerformance> DbSystemComputePerformances { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for `DbSystemInitialStorageSizes.List`.</summary>
     public class ListDbSystemInitialStorageSizesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16612,6 +17287,28 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>
         /// Unreachable locations when listing resources across all locations using wildcard location '-'.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing FlexComponents</summary>
+    public class ListFlexComponentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of FlexComponent</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexComponents")]
+        public virtual System.Collections.Generic.IList<FlexComponent> FlexComponents { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -17188,8 +17885,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string EntitlementId { get; set; }
 
         /// <summary>
-        /// Optional. The GCP Oracle zone where OdbNetwork is hosted. Example: us-east4-b-r2. If not specified, the
-        /// system will pick a zone based on availability.
+        /// Optional. Immutable. The GCP Oracle zone where OdbNetwork is hosted. Example: us-east4-b-r2. If not
+        /// specified, the system will pick a zone based on availability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
@@ -17206,7 +17903,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The name of the VPC network in the following format: projects/{project}/global/networks/{network}
+        /// Required. Immutable. The name of the VPC network in the following format:
+        /// projects/{project}/global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
