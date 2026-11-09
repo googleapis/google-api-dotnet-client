@@ -2296,9 +2296,31 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// LayerAttribute represents a single attribute (such as a tag) that applies to a layer, along with the plugin that
+    /// generated it.
+    /// </summary>
+    public class GrafeasV1LayerAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the plugin that generated this attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plugin")]
+        public virtual string Plugin { get; set; }
+
+        /// <summary>The value of the attribute, with a meaning defined by the plugin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about the layer a package was found in.</summary>
     public class GrafeasV1LayerDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Attributes that apply to the layer, such as buildpacks metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<GrafeasV1LayerAttribute> Attributes { get; set; }
+
         /// <summary>The base images the layer is found within.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseImages")]
         public virtual System.Collections.Generic.IList<GrafeasV1BaseImage> BaseImages { get; set; }
