@@ -17577,14 +17577,32 @@ namespace Google.Apis.Dfareporting.v5
             this.service = service;
         }
 
-        /// <summary>Inserts a new studio creative asset.</summary>
+        /// <summary>
+        /// Inserts a new studio creative asset. Requests to upload an asset file must be sent to the upload URI using
+        /// multipart media upload (or resumable media upload). For [multipart
+        /// uploads](https://developers.google.com/doubleclick-advertisers/upload#multipart) (`uploadType=multipart`),
+        /// the request uses `multipart/related` and includes two parts: * **Metadata**: A JSON object representing
+        /// DfareportingStudioCreativeAssetsInsertRequest with `studioAdvertiserId`, and optional `studioAccountId` and
+        /// `studioCreativeId`. * **Media**: The binary data of the asset file, specifying the `Content-Type` of the
+        /// asset and a `Content-Disposition` header with `name="media"` and `filename=""` (for example,
+        /// `Content-Disposition: form-data; name="media"; filename="asset.jpg"`).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Dfareporting.v5.Data.DfareportingStudioCreativeAssetsInsertRequest body)
         {
             return new InsertRequest(this.service, body);
         }
 
-        /// <summary>Inserts a new studio creative asset.</summary>
+        /// <summary>
+        /// Inserts a new studio creative asset. Requests to upload an asset file must be sent to the upload URI using
+        /// multipart media upload (or resumable media upload). For [multipart
+        /// uploads](https://developers.google.com/doubleclick-advertisers/upload#multipart) (`uploadType=multipart`),
+        /// the request uses `multipart/related` and includes two parts: * **Metadata**: A JSON object representing
+        /// DfareportingStudioCreativeAssetsInsertRequest with `studioAdvertiserId`, and optional `studioAccountId` and
+        /// `studioCreativeId`. * **Media**: The binary data of the asset file, specifying the `Content-Type` of the
+        /// asset and a `Content-Disposition` header with `name="media"` and `filename=""` (for example,
+        /// `Content-Disposition: form-data; name="media"; filename="asset.jpg"`).
+        /// </summary>
         public class InsertRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v5.Data.StudioCreativeAssetsResponse>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -17616,7 +17634,16 @@ namespace Google.Apis.Dfareporting.v5
             }
         }
 
-        /// <summary>Inserts a new studio creative asset.</summary>
+        /// <summary>
+        /// Inserts a new studio creative asset. Requests to upload an asset file must be sent to the upload URI using
+        /// multipart media upload (or resumable media upload). For [multipart
+        /// uploads](https://developers.google.com/doubleclick-advertisers/upload#multipart) (`uploadType=multipart`),
+        /// the request uses `multipart/related` and includes two parts: * **Metadata**: A JSON object representing
+        /// DfareportingStudioCreativeAssetsInsertRequest with `studioAdvertiserId`, and optional `studioAccountId` and
+        /// `studioCreativeId`. * **Media**: The binary data of the asset file, specifying the `Content-Type` of the
+        /// asset and a `Content-Disposition` header with `name="media"` and `filename=""` (for example,
+        /// `Content-Disposition: form-data; name="media"; filename="asset.jpg"`).
+        /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
