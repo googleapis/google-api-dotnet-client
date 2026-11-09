@@ -7150,7 +7150,7 @@ namespace Google.Apis.SQLAdmin.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Required. Project ID of the project that contains the instance.</param>
         /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
-        public virtual StartRequest Start(Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStartRequest body, string project, string instance)
+        public virtual StartRequest Start(Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStartRequest body, string project, string instance)
         {
             return new StartRequest(this.service, body, project, instance);
         }
@@ -7164,7 +7164,7 @@ namespace Google.Apis.SQLAdmin.v1
         public class StartRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
         {
             /// <summary>Constructs a new Start request.</summary>
-            public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStartRequest body, string project, string instance) : base(service)
+            public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStartRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -7181,7 +7181,7 @@ namespace Google.Apis.SQLAdmin.v1
             public virtual string Instance { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStartRequest Body { get; set; }
+            Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStartRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -7226,7 +7226,7 @@ namespace Google.Apis.SQLAdmin.v1
         /// <param name="project">Required. Project ID of the project that contains the instance.</param>
         /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
         /// <param name="workloadId">Required. The ID of the workload to replay.</param>
-        public virtual StartReplayRequest StartReplay(Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStartReplayRequest body, string project, string instance, string workloadId)
+        public virtual StartReplayRequest StartReplay(Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStartReplayRequest body, string project, string instance, string workloadId)
         {
             return new StartReplayRequest(this.service, body, project, instance, workloadId);
         }
@@ -7238,7 +7238,7 @@ namespace Google.Apis.SQLAdmin.v1
         public class StartReplayRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
         {
             /// <summary>Constructs a new StartReplay request.</summary>
-            public StartReplayRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStartReplayRequest body, string project, string instance, string workloadId) : base(service)
+            public StartReplayRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStartReplayRequest body, string project, string instance, string workloadId) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -7260,7 +7260,7 @@ namespace Google.Apis.SQLAdmin.v1
             public virtual string WorkloadId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStartReplayRequest Body { get; set; }
+            Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStartReplayRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -7311,7 +7311,7 @@ namespace Google.Apis.SQLAdmin.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Required. Project ID of the project that contains the instance.</param>
         /// <param name="instance">Required. Cloud SQL instance ID. This does not include the project ID.</param>
-        public virtual StopRequest Stop(Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopRequest body, string project, string instance)
+        public virtual StopRequest Stop(Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStopRequest body, string project, string instance)
         {
             return new StopRequest(this.service, body, project, instance);
         }
@@ -7322,7 +7322,7 @@ namespace Google.Apis.SQLAdmin.v1
         public class StopRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
         {
             /// <summary>Constructs a new Stop request.</summary>
-            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopRequest body, string project, string instance) : base(service)
+            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStopRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -7339,7 +7339,7 @@ namespace Google.Apis.SQLAdmin.v1
             public virtual string Instance { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopRequest Body { get; set; }
+            Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStopRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -7382,7 +7382,7 @@ namespace Google.Apis.SQLAdmin.v1
         /// <param name="instance">
         /// Required. Cloud SQL instance ID of the target replay instance. This does not include the project ID.
         /// </param>
-        public virtual StopReplayRequest StopReplay(Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopReplayRequest body, string project, string instance)
+        public virtual StopReplayRequest StopReplay(Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStopReplayRequest body, string project, string instance)
         {
             return new StopReplayRequest(this.service, body, project, instance);
         }
@@ -7391,7 +7391,7 @@ namespace Google.Apis.SQLAdmin.v1
         public class StopReplayRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Operation>
         {
             /// <summary>Constructs a new StopReplay request.</summary>
-            public StopReplayRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopReplayRequest body, string project, string instance) : base(service)
+            public StopReplayRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStopReplayRequest body, string project, string instance) : base(service)
             {
                 Project = project;
                 Instance = instance;
@@ -7410,7 +7410,7 @@ namespace Google.Apis.SQLAdmin.v1
             public virtual string Instance { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.SQLAdmin.v1.Data.SqlWorkloadCapturesStopReplayRequest Body { get; set; }
+            Google.Apis.SQLAdmin.v1.Data.WorkloadCapturesStopReplayRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -13219,55 +13219,6 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request to start executing a captured workload on a replay instance (the Cloud SQL instance where the recorded
-    /// SQL queries are executed).
-    /// </summary>
-    public class SqlWorkloadCapturesStartReplayRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Contains details about the start workload replay operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startWorkloadReplayContext")]
-        public virtual StartWorkloadReplayContext StartWorkloadReplayContext { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request to start recording traffic from the primary instance (captured workload).</summary>
-    public class SqlWorkloadCapturesStartRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Contains details about the start workload capture operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startWorkloadCaptureContext")]
-        public virtual StartWorkloadCaptureContext StartWorkloadCaptureContext { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request to stop an active workload replay on a target Cloud SQL replay instance.</summary>
-    public class SqlWorkloadCapturesStopReplayRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Contains details about the stop workload replay operation. If omitted, default values are used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stopWorkloadReplayContext")]
-        public virtual StopWorkloadReplayContext StopWorkloadReplayContext { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request to stop recording traffic from the primary instance.</summary>
-    public class SqlWorkloadCapturesStopRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Contains details about the stop workload capture operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stopWorkloadCaptureContext")]
-        public virtual StopWorkloadCaptureContext StopWorkloadCaptureContext { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>SslCerts Resource</summary>
     public class SslCert : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13951,6 +13902,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instance list captured workloads response.</summary>
     public class WorkloadCapturesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This is always `sql#workloadCapturesList`.</summary>
@@ -13960,6 +13912,55 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>List of captured workloads for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadCaptures")]
         public virtual System.Collections.Generic.IList<WorkloadCapture> WorkloadCaptures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request to start executing a captured workload on a replay instance (the Cloud SQL instance where the recorded
+    /// SQL queries are executed).
+    /// </summary>
+    public class WorkloadCapturesStartReplayRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Contains details about the start workload replay operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startWorkloadReplayContext")]
+        public virtual StartWorkloadReplayContext StartWorkloadReplayContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to start recording traffic from the primary instance (captured workload).</summary>
+    public class WorkloadCapturesStartRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Contains details about the start workload capture operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startWorkloadCaptureContext")]
+        public virtual StartWorkloadCaptureContext StartWorkloadCaptureContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to stop an active workload replay on a target Cloud SQL replay instance.</summary>
+    public class WorkloadCapturesStopReplayRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Contains details about the stop workload replay operation. If omitted, default values are used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopWorkloadReplayContext")]
+        public virtual StopWorkloadReplayContext StopWorkloadReplayContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to stop recording traffic from the primary instance.</summary>
+    public class WorkloadCapturesStopRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Contains details about the stop workload capture operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopWorkloadCaptureContext")]
+        public virtual StopWorkloadCaptureContext StopWorkloadCaptureContext { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
