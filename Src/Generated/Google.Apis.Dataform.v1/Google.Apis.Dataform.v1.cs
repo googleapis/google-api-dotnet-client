@@ -8130,6 +8130,10 @@ namespace Google.Apis.Dataform.v1.Data
     /// </summary>
     public class InvocationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Maximum number of actions that can be executed concurrently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrentActionsLimit")]
+        public virtual System.Nullable<int> ConcurrentActionsLimit { get; set; }
+
         /// <summary>
         /// Optional. Configuration for end user authentication. Do not set if `service_account` is used.
         /// </summary>
