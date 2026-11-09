@@ -11164,6 +11164,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
 
         /// <summary>
+        /// Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeImportRanges { get; set; }
+
+        /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
         /// available only in [supported
         /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
@@ -11264,6 +11288,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<RouterApplianceInstance> Instances { get; set; }
 
         /// <summary>
+        /// Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeImportRanges { get; set; }
+
+        /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
         /// available only in [supported
         /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
@@ -11350,6 +11398,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
         public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeImportRanges { get; set; }
 
         /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
