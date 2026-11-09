@@ -16826,6 +16826,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qhd")]
         public virtual Thumbnail Qhd { get; set; }
 
+        /// <summary>The Shorts aspect ratio (9:16) image for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortsAspectRatio")]
+        public virtual Thumbnail ShortsAspectRatio { get; set; }
+
         /// <summary>The standard quality image for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standard")]
         public virtual Thumbnail Standard { get; set; }
