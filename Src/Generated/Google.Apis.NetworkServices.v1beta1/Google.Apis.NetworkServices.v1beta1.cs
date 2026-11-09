@@ -297,6 +297,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 AuthzExtensions = new AuthzExtensionsResource(service);
                 CdnEdgeExtensions = new CdnEdgeExtensionsResource(service);
                 EndpointPolicies = new EndpointPoliciesResource(service);
+                ExpressLinks = new ExpressLinksResource(service);
                 ExtensionBindings = new ExtensionBindingsResource(service);
                 Gateways = new GatewaysResource(service);
                 GrpcRoutes = new GrpcRoutesResource(service);
@@ -2283,6 +2284,442 @@ namespace Google.Apis.NetworkServices.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/endpointPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ExpressLinks resource.</summary>
+            public virtual ExpressLinksResource ExpressLinks { get; }
+
+            /// <summary>The "expressLinks" collection of methods.</summary>
+            public class ExpressLinksResource
+            {
+                private const string Resource = "expressLinks";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ExpressLinksResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new ExpressLink in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the ExpressLink. Must be in the format `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1beta1.Data.ExpressLink body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new ExpressLink in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.ExpressLink body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the ExpressLink. Must be in the format
+                    /// `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Short name of the ExpressLink resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("expressLinkId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ExpressLinkId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.ExpressLink Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/expressLinks";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("expressLinkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "expressLinkId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single ExpressLink.</summary>
+                /// <param name="name">
+                /// Required. A name of the ExpressLink to delete. Must be in the format
+                /// `projects/*/locations/*/expressLinks/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single ExpressLink.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the ExpressLink to delete. Must be in the format
+                    /// `projects/*/locations/*/expressLinks/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The etag of the ExpressLink to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/expressLinks/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single ExpressLink.</summary>
+                /// <param name="name">
+                /// Required. A name of the ExpressLink to get. Must be in the format
+                /// `projects/*/locations/*/expressLinks/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single ExpressLink.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ExpressLink>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the ExpressLink to get. Must be in the format
+                    /// `projects/*/locations/*/expressLinks/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Determines the information level of the ExpressLink resource returned in the API
+                    /// response.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Determines the information level of the ExpressLink resource returned in the API
+                    /// response.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The unset value. The API will default to `EXPRESS_LINK_VIEW_BASIC`.</summary>
+                        [Google.Apis.Util.StringValueAttribute("EXPRESS_LINK_VIEW_UNSPECIFIED")]
+                        EXPRESSLINKVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Includes the configuration of an ExpressLink resource, but not the debug information (e.g.
+                        /// PSC endpoints) of the bound service. This is the default value for the Get and List APIs.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("EXPRESS_LINK_VIEW_BASIC")]
+                        EXPRESSLINKVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Includes the configuration of an ExpressLink resource and all the debug information (e.g.
+                        /// PSC endpoints) of the bound service. This is available only for the Get API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("EXPRESS_LINK_VIEW_FULL")]
+                        EXPRESSLINKVIEWFULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/expressLinks/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists ExpressLinks in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the ExpressLinks should be listed, specified in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists ExpressLinks in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListExpressLinksResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the ExpressLinks should be listed, specified in
+                    /// the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum number of ExpressLinks to return per call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListExpressLinksResponse` Indicates that this is a continuation
+                    /// of a prior `ListExpressLinks` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. Determines the information level of the ExpressLink resources returned in the API
+                    /// response.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Optional. Determines the information level of the ExpressLink resources returned in the API
+                    /// response.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>The unset value. The API will default to `EXPRESS_LINK_VIEW_BASIC`.</summary>
+                        [Google.Apis.Util.StringValueAttribute("EXPRESS_LINK_VIEW_UNSPECIFIED")]
+                        EXPRESSLINKVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Includes the configuration of an ExpressLink resource, but not the debug information (e.g.
+                        /// PSC endpoints) of the bound service. This is the default value for the Get and List APIs.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("EXPRESS_LINK_VIEW_BASIC")]
+                        EXPRESSLINKVIEWBASIC = 1,
+
+                        /// <summary>
+                        /// Includes the configuration of an ExpressLink resource and all the debug information (e.g.
+                        /// PSC endpoints) of the bound service. This is available only for the Get API.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("EXPRESS_LINK_VIEW_FULL")]
+                        EXPRESSLINKVIEWFULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/expressLinks";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single ExpressLink.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Name of the ExpressLink resource. It matches pattern
+                /// `projects/*/locations/*/expressLinks/`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.ExpressLink body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single ExpressLink.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.ExpressLink body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Name of the ExpressLink resource. It matches pattern
+                    /// `projects/*/locations/*/expressLinks/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask is used to specify the fields to be overwritten in the ExpressLink resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.ExpressLink Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/expressLinks/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -10323,6 +10760,370 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// ExpressLink provides automated, zero-friction service-to-service secure connectivity across network boundaries
+    /// without manual infrastructure configuration toil.
+    /// </summary>
+    public class ExpressLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Cloud Run security information if the ExpressLink destination is a Cloud Run service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunSecurityInfo")]
+        public virtual ExpressLinkCloudRunSecurityInfo CloudRunSecurityInfo { get; set; }
+
+        /// <summary>Output only. Cloud Run source observability details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunSourceInfo")]
+        public virtual ExpressLinkCloudRunSourceInfo CloudRunSourceInfo { get; set; }
+
+        /// <summary>Output only. The connection status and negotiated parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionStatus")]
+        public virtual System.Collections.Generic.IList<ExpressLinkConnectionStatus> ConnectionStatus { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A free-text description of the resource. Max length 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The destination service(s) for this binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual ExpressLinkDestination Destination { get; set; }
+
+        /// <summary>
+        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
+        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. Forwarding Rule information if the ExpressLink destination is a Forwarding Rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRuleInfo")]
+        public virtual ExpressLinkForwardingRuleInfo ForwardingRuleInfo { get; set; }
+
+        /// <summary>Optional. Set of label tags associated with the ExpressLink resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. A list of matches define conditions used to match requests to destination services. Each match is
+        /// independent with the OR semantic, i.e. we consider it matched if ANY one of the matches is satisfied. If an
+        /// ExpressLink has only one Cloud Run service, Match is optional. If not specified, only the default hostname
+        /// `-..run.app` can be used. If an ExpressLink has multiple Cloud Run services, at least one Match with valid
+        /// hostname is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matches")]
+        public virtual System.Collections.Generic.IList<ExpressLinkMatch> Matches { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the ExpressLink resource. It matches pattern `projects/*/locations/*/expressLinks/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Private Service Connect (PSC) endpoint information if the ExpressLink destination is a PSC
+        /// service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEndpointInfo")]
+        public virtual ExpressLinkPscEndpointInfo PscEndpointInfo { get; set; }
+
+        /// <summary>Optional. The source service(s) for this binding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual ExpressLinkSource Source { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>AuthenticationMethod specifies identity type and credential type pair.</summary>
+    public class ExpressLinkAuthenticationMethod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Credential type supported or used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialType")]
+        public virtual string CredentialType { get; set; }
+
+        /// <summary>Output only. Identity type supported or used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityType")]
+        public virtual string IdentityType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CloudRunSecurityInfo provides security details for Cloud Run to Cloud Run ExpressLinks.</summary>
+    public class ExpressLinkCloudRunSecurityInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Identifies the level of mTLS transport security in use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtlsTier")]
+        public virtual string MtlsTier { get; set; }
+
+        /// <summary>
+        /// Output only. The inbound server authentication methods required by the destination Cloud Run service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverAuthenticationMethods")]
+        public virtual System.Collections.Generic.IList<ExpressLinkAuthenticationMethod> ServerAuthenticationMethods { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CloudRunSourceInfo provides observability details for Cloud Run source services.</summary>
+    public class ExpressLinkCloudRunSourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Observability details for Cloud Run source workloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
+        public virtual System.Collections.Generic.IList<ExpressLinkCloudRunSourceInfoWorkloadInfo> Workloads { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>WorkloadInfo provides observability details for a single Cloud Run source workload.</summary>
+    public class ExpressLinkCloudRunSourceInfoWorkloadInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The outbound authentication methods the workload is capable of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientAuthenticationMethods")]
+        public virtual System.Collections.Generic.IList<ExpressLinkAuthenticationMethod> ClientAuthenticationMethods { get; set; }
+
+        /// <summary>Output only. Consumer VPC network resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
+        public virtual string VpcNetwork { get; set; }
+
+        /// <summary>Output only. The URI of the source workload (e.g. Cloud Run revision).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadUri")]
+        public virtual string WorkloadUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ConnectionStatus details the resolved state, error status, and negotiated configuration of the ExpressLink
+    /// resource.
+    /// </summary>
+    public class ExpressLinkConnectionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The negotiated credential type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialType")]
+        public virtual string CredentialType { get; set; }
+
+        /// <summary>Output only. Code representing the type of error encountered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>Output only. Detailed error message explaining the binding failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Output only. The list of hostnames that will route to this destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostnames")]
+        public virtual System.Collections.Generic.IList<ExpressLinkConnectionStatusHostnameInfo> Hostnames { get; set; }
+
+        /// <summary>Output only. The route type of the connection (e.g. HTTP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
+        public virtual string RouteType { get; set; }
+
+        /// <summary>Output only. The URI of the source workload this status applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadUri")]
+        public virtual string WorkloadUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HostnameInfo provides details about a hostname that routes to this destination.</summary>
+    public class ExpressLinkConnectionStatusHostnameInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The hostname string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The destination of the traffic. This defines the service that the source wants to connect to.</summary>
+    public class ExpressLinkDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The service URIs to which the ExpressLink resource is bound. Can be one of the following (all the
+        /// service URIs should have the same type):
+        /// `//compute.googleapis.com/projects/*/regions/*/serviceAttachments/`;
+        /// `//compute.googleapis.com/projects/*/regions/*/forwardingRules/`;
+        /// `//run.googleapis.com/projects/*/locations/*/services/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ForwardingRuleInfo provides operational details when the ExpressLink destination is a Forwarding Rule.
+    /// </summary>
+    public class ExpressLinkForwardingRuleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The IP address of the forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>Output only. The port or port range of the forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual string Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Match defines the predicate used to match requests to destination services.</summary>
+    public class ExpressLinkMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the hostname to match against the HTTP request host header. Hostname is the fully
+        /// qualified domain name of a network host, as defined by RFC1123 with the exception that: - IPs are not
+        /// allowed. - Wildcard labels (`*.`) are not allowed. Hostname must be "precise" which is a domain name without
+        /// the terminating dot of a network host (e.g. `foo.example.com`). Note that as per RFC1035 and RFC1123, a
+        /// label must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric
+        /// character. No other punctuation is allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Private Service Connect (PSC) endpoint information populated in the Get API responses if the ExpressLink
+    /// resource is bound to a PSC service.
+    /// </summary>
+    public class ExpressLinkPscEndpointInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A list of PSC endpoints mapped to the PSC producer service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEndpoints")]
+        public virtual System.Collections.Generic.IList<ExpressLinkPscEndpointInfoPscEndpoint> PscEndpoints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Private Service Connect (PSC) endpoint details.</summary>
+    public class ExpressLinkPscEndpointInfoPscEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether the PSC endpoint is accessible from all regions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGlobalAccess")]
+        public virtual System.Nullable<bool> AllowGlobalAccess { get; set; }
+
+        /// <summary>
+        /// Output only. The ForwardingRule resource name of the PSC endpoint. Should match the pattern:
+        /// `projects/*/regions/*/forwardingRules/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
+        public virtual string ForwardingRule { get; set; }
+
+        /// <summary>Output only. The IP address of the PSC endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEndpointAddress")]
+        public virtual string PscEndpointAddress { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the consumer VPC network. Should match the pattern:
+        /// `projects/*/global/networks/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
+        public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The source of the traffic. This defines where the connection originates from.</summary>
+    public class ExpressLinkSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of resources attached to the ExpressLink. The resources can be Cloud Run services of the
+        /// format: `//run.googleapis.com/projects/*/locations/*/services/`. The location of the resources must match
+        /// the location of the ExpressLink (unless the ExpressLink is global).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<string> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`ExtensionBinding` is a resource representing the attachment of an extension to a service.</summary>
     public class ExtensionBinding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12882,6 +13683,31 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// <summary>
         /// Unreachable resources. Populated when the request opts into return_partial_success and reading across
         /// collections e.g. when attempting to list all resources across all supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response returned by the ListExpressLinks method.</summary>
+    public class ListExpressLinksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of ExpressLink resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressLinks")]
+        public virtual System.Collections.Generic.IList<ExpressLink> ExpressLinks { get; set; }
+
+        /// <summary>
+        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
+        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unordered list. Unreachable resources. Populated when the request attempts to list all resources across all
+        /// supported locations, while some locations are temporarily unavailable.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
