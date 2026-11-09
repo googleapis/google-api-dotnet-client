@@ -291,9 +291,9 @@ namespace Google.Apis.Firebaseappcheck.v1
         }
 
         /// <summary>
-        /// Returns a public JWK set as specified by [RFC 7517](https://tools.ietf.org/html/rfc7517) that can be used to
-        /// verify App Check tokens. Exactly one of the public keys in the returned set will successfully validate any
-        /// App Check token that is currently valid.
+        /// Returns a public JWK set as specified by [RFC 7517](https://www.rfc-editor.org/info/rfc7517/) that can be
+        /// used to verify App Check tokens. Exactly one of the public keys in the returned set will successfully
+        /// validate any App Check token that is currently valid.
         /// </summary>
         /// <param name="name">
         /// Required. The relative resource name to the public JWK set. Must always be exactly the string `jwks`.
@@ -304,9 +304,9 @@ namespace Google.Apis.Firebaseappcheck.v1
         }
 
         /// <summary>
-        /// Returns a public JWK set as specified by [RFC 7517](https://tools.ietf.org/html/rfc7517) that can be used to
-        /// verify App Check tokens. Exactly one of the public keys in the returned set will successfully validate any
-        /// App Check token that is currently valid.
+        /// Returns a public JWK set as specified by [RFC 7517](https://www.rfc-editor.org/info/rfc7517/) that can be
+        /// used to verify App Check tokens. Exactly one of the public keys in the returned set will successfully
+        /// validate any App Check token that is currently valid.
         /// </summary>
         public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1PublicJwkSet>
         {
@@ -4058,7 +4058,7 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     public class GoogleFirebaseAppcheckV1AppCheckToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing
+        /// The App Check token. App Check tokens are signed [JWTs](https://www.rfc-editor.org/info/rfc7519/) containing
         /// claims that identify the attested app and GCP project. This token is used to access Google services
         /// protected by App Check. These tokens can also be [verified by your own custom
         /// backends](https://firebase.google.com/docs/app-check/custom-resource-backend) using the Firebase Admin SDK
@@ -4872,32 +4872,36 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     }
 
     /// <summary>
-    /// A JWK as specified by [section 4 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4) and [section 6.3.1
-    /// of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1).
+    /// A JWK as specified by [section 4 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4) and [section
+    /// 6.3.1 of RFC 7518](https://www.rfc-editor.org/info/rfc7518/#section-6.3.1).
     /// </summary>
     public class GoogleFirebaseAppcheckV1PublicJwk : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>See [section 4.4 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.4).</summary>
+        /// <summary>See [section 4.4 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4.4).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alg")]
         public virtual string Alg { get; set; }
 
-        /// <summary>See [section 6.3.1.2 of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1.2).</summary>
+        /// <summary>
+        /// See [section 6.3.1.2 of RFC 7518](https://www.rfc-editor.org/info/rfc7518/#section-6.3.1.2).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("e")]
         public virtual string E { get; set; }
 
-        /// <summary>See [section 4.5 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.5).</summary>
+        /// <summary>See [section 4.5 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4.5).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kid")]
         public virtual string Kid { get; set; }
 
-        /// <summary>See [section 4.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.1).</summary>
+        /// <summary>See [section 4.1 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4.1).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kty")]
         public virtual string Kty { get; set; }
 
-        /// <summary>See [section 6.3.1.1 of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1.1).</summary>
+        /// <summary>
+        /// See [section 6.3.1.1 of RFC 7518](https://www.rfc-editor.org/info/rfc7518/#section-6.3.1.1).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("n")]
         public virtual string N { get; set; }
 
-        /// <summary>See [section 4.2 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.2).</summary>
+        /// <summary>See [section 4.2 of RFC 7517](https://www.rfc-editor.org/info/rfc7517/#section-4.2).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
         public virtual string Use { get; set; }
 
@@ -4907,13 +4911,13 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
 
     /// <summary>
     /// The currently active set of public keys that can be used to verify App Check tokens. This object is a JWK set as
-    /// specified by [section 5 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-5). For security, the response
-    /// **must not** be cached for longer than six hours.
+    /// specified by [section 5 of RFC 7517](https://www.rfc-editor.org/info/rfc7517#section-5). For security, the
+    /// response **must not** be cached for longer than six hours.
     /// </summary>
     public class GoogleFirebaseAppcheckV1PublicJwkSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The set of public keys. See [section 5.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-5).
+        /// The set of public keys. See [section 5.1 of RFC 7517](https://www.rfc-editor.org/info/rfc7517#section-5).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1PublicJwk> Keys { get; set; }
