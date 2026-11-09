@@ -4533,6 +4533,13 @@ namespace Google.Apis.CloudAuditManager.v1.Data
     public class AuditReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. Parameter values provided by the user and values for tunable parameters, stored in the DB,
+        /// keyed by control name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudControlParameterStates")]
+        public virtual System.Collections.Generic.IDictionary<string, CloudControlParameterStates> CloudControlParameterStates { get; set; }
+
+        /// <summary>
         /// Output only. Compliance framework to use for the audit report. For example, `CIS_GCP_FOUNDATIONS_V1_2_0`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceFramework")]
@@ -4782,6 +4789,13 @@ namespace Google.Apis.CloudAuditManager.v1.Data
             set => NextRunTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Maps dynamic parameter overrides by Cloud Control resource name at execution time. For example,
+        /// `{"organizations/123/locations/global/cloudControls/control-1": {parameters: [...]}}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterOverrides")]
+        public virtual System.Collections.Generic.IDictionary<string, ParameterOverrides> ParameterOverrides { get; set; }
+
         /// <summary>Required. Format for the audit report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportFormat")]
         public virtual string ReportFormat { get; set; }
@@ -4864,6 +4878,17 @@ namespace Google.Apis.CloudAuditManager.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of parameter states for a cloud control.</summary>
+    public class CloudControlParameterStates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The parameter states for the cloud control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterStates")]
+        public virtual System.Collections.Generic.IList<ParameterState> ParameterStates { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5066,6 +5091,13 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
+        /// <summary>
+        /// Optional. Maps dynamic parameter overrides by Cloud Control resource name at execution time. For example,
+        /// `{"organizations/123/locations/global/cloudControls/control-1": {parameters: [...]}}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterOverrides")]
+        public virtual System.Collections.Generic.IDictionary<string, ParameterOverrides> ParameterOverrides { get; set; }
+
         /// <summary>Required. Format for the audit report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportFormat")]
         public virtual string ReportFormat { get; set; }
@@ -5102,6 +5134,13 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceStandard")]
         public virtual string ComplianceStandard { get; set; }
+
+        /// <summary>
+        /// Optional. Maps dynamic parameter overrides by Cloud Control resource name at execution time. For example,
+        /// `{"organizations/123/locations/global/cloudControls/control-1": {parameters: [...]}}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterOverrides")]
+        public virtual System.Collections.Generic.IDictionary<string, ParameterOverrides> ParameterOverrides { get; set; }
 
         /// <summary>Required. Format for the audit scope report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportFormat")]
@@ -5416,6 +5455,77 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The possible parameter value types.</summary>
+    public class ParamValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Optional. A double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
+        public virtual System.Nullable<double> NumberValue { get; set; }
+
+        /// <summary>Optional. Sub-parameter values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneofValue")]
+        public virtual Parameter OneofValue { get; set; }
+
+        /// <summary>Optional. A repeated string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringListValue")]
+        public virtual StringList StringListValue { get; set; }
+
+        /// <summary>Optional. A string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters are key-value pairs that let you provide your custom location requirements, environment requirements,
+    /// or other settings that are relevant to the cloud control.
+    /// </summary>
+    public class Parameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name or key of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterValue")]
+        public virtual ParamValue ParameterValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper message to associate a list of CSC internal parameter overrides with a control name.</summary>
+    public class ParameterOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of parameter overrides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<Parameter> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State of a parameter for a cloud control.</summary>
+    public class ParameterState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether this parameter was overridden by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isOverridden")]
+        public virtual System.Nullable<bool> IsOverridden { get; set; }
+
+        /// <summary>Output only. The parameter key and value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual Parameter Parameter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about the current status of the report-generation process.</summary>
     public class ReportGenerationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5647,6 +5757,17 @@ namespace Google.Apis.CloudAuditManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of strings for the parameter value.</summary>
+    public class StringList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The strings in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
