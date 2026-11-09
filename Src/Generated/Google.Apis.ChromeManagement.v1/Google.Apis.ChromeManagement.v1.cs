@@ -68,6 +68,23 @@ namespace Google.Apis.ChromeManagement.v1
             public static string ChromeManagementAppdetailsReadonly = "https://www.googleapis.com/auth/chrome.management.appdetails.readonly";
 
             /// <summary>
+            /// See, edit, delete, and take other necessary actions on Chrome browsers managed by your organization
+            /// </summary>
+            public static string ChromeManagementBrowsers = "https://www.googleapis.com/auth/chrome.management.browsers";
+
+            /// <summary>See Chrome browsers managed by your organization</summary>
+            public static string ChromeManagementBrowsersReadonly = "https://www.googleapis.com/auth/chrome.management.browsers.readonly";
+
+            /// <summary>
+            /// See, edit, revoke, and take other necessary actions on Chrome enrollment tokens managed by your
+            /// organization
+            /// </summary>
+            public static string ChromeManagementEnrollmenttokens = "https://www.googleapis.com/auth/chrome.management.enrollmenttokens";
+
+            /// <summary>See Chrome enrollment tokens managed by your organization</summary>
+            public static string ChromeManagementEnrollmenttokensReadonly = "https://www.googleapis.com/auth/chrome.management.enrollmenttokens.readonly";
+
+            /// <summary>
             /// See, edit, delete, and take other necessary actions on Chrome browser profiles managed by your
             /// organization
             /// </summary>
@@ -100,6 +117,23 @@ namespace Google.Apis.ChromeManagement.v1
             /// organization
             /// </summary>
             public const string ChromeManagementAppdetailsReadonly = "https://www.googleapis.com/auth/chrome.management.appdetails.readonly";
+
+            /// <summary>
+            /// See, edit, delete, and take other necessary actions on Chrome browsers managed by your organization
+            /// </summary>
+            public const string ChromeManagementBrowsers = "https://www.googleapis.com/auth/chrome.management.browsers";
+
+            /// <summary>See Chrome browsers managed by your organization</summary>
+            public const string ChromeManagementBrowsersReadonly = "https://www.googleapis.com/auth/chrome.management.browsers.readonly";
+
+            /// <summary>
+            /// See, edit, revoke, and take other necessary actions on Chrome enrollment tokens managed by your
+            /// organization
+            /// </summary>
+            public const string ChromeManagementEnrollmenttokens = "https://www.googleapis.com/auth/chrome.management.enrollmenttokens";
+
+            /// <summary>See Chrome enrollment tokens managed by your organization</summary>
+            public const string ChromeManagementEnrollmenttokensReadonly = "https://www.googleapis.com/auth/chrome.management.enrollmenttokens.readonly";
 
             /// <summary>
             /// See, edit, delete, and take other necessary actions on Chrome browser profiles managed by your
