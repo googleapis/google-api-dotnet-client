@@ -15617,6 +15617,71 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>
+                    /// Checks members for Engine.feature_policies against the project's directory, as
+                    /// EngineService.UpdateEngine does when it saves them, and saves nothing.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The engine resource name. Format:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                    /// </param>
+                    public virtual CheckFeaturePolicyMembersRequest CheckFeaturePolicyMembers(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckFeaturePolicyMembersRequest body, string name)
+                    {
+                        return new CheckFeaturePolicyMembersRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Checks members for Engine.feature_policies against the project's directory, as
+                    /// EngineService.UpdateEngine does when it saves them, and saves nothing.
+                    /// </summary>
+                    public class CheckFeaturePolicyMembersRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckFeaturePolicyMembersResponse>
+                    {
+                        /// <summary>Constructs a new CheckFeaturePolicyMembers request.</summary>
+                        public CheckFeaturePolicyMembersRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckFeaturePolicyMembersRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The engine resource name. Format:
+                        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckFeaturePolicyMembersRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "checkFeaturePolicyMembers";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}:checkFeaturePolicyMembers";
+
+                        /// <summary>Initializes CheckFeaturePolicyMembers parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates an Engine.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -28411,6 +28476,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     this.service = service;
                     LicenseConfigsUsageStats = new LicenseConfigsUsageStatsResource(service);
                     Operations = new OperationsResource(service);
+                    UserAvailabilities = new UserAvailabilitiesResource(service);
+                    UserAvailability = new UserAvailabilityResource(service);
                     UserLicenses = new UserLicensesResource(service);
                 }
 
@@ -28653,6 +28720,259 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the UserAvailabilities resource.</summary>
+                public virtual UserAvailabilitiesResource UserAvailabilities { get; }
+
+                /// <summary>The "userAvailabilities" collection of methods.</summary>
+                public class UserAvailabilitiesResource
+                {
+                    private const string Resource = "userAvailabilities";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public UserAvailabilitiesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Updates multiple UserAvailabilitys.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent UserStore resource name, format:
+                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                    /// </param>
+                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesRequest body, string parent)
+                    {
+                        return new BatchUpdateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Updates multiple UserAvailabilitys.</summary>
+                    public class BatchUpdateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesResponse>
+                    {
+                        /// <summary>Constructs a new BatchUpdate request.</summary>
+                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent UserStore resource name, format:
+                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchUpdate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/userAvailabilities:batchUpdate";
+
+                        /// <summary>Initializes BatchUpdate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists the UserAvailabilitys.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent UserStore resource name, format:
+                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists the UserAvailabilitys.</summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListUserAvailabilitiesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent UserStore resource name, format:
+                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter for the list request. Supported fields (only `user_principal` is supported
+                        /// for now): * `user_principal` (will be normalized for matching) Examples: * `user_principal =
+                        /// "user1@example.com"` to list user availability for `user1@example.com`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                        /// defaults to 100. The maximum value is 1000; values above 1000 will be coerced to 1000. If
+                        /// this field is negative, an INVALID_ARGUMENT error is returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListUserAvailabilities` call. Provide this
+                        /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListUserAvailabilities` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/userAvailabilities";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the UserAvailability resource.</summary>
+                public virtual UserAvailabilityResource UserAvailability { get; }
+
+                /// <summary>The "userAvailability" collection of methods.</summary>
+                public class UserAvailabilityResource
+                {
+                    private const string Resource = "userAvailability";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public UserAvailabilityResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Updates a UserAvailability.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Optional. The parent UserStore resource name, format:
+                    /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                    /// </param>
+                    public virtual UpdateRequest Update(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest body, string parent)
+                    {
+                        return new UpdateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Updates a UserAvailability.</summary>
+                    public class UpdateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUserAvailability>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Optional. The parent UserStore resource name, format:
+                        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "update";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/userAvailability:update";
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/userStores/[^/]+$",
                             });
                         }
                     }
@@ -35194,6 +35514,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IDictionary<string, string> EffectiveFeatures { get; set; }
 
         /// <summary>
+        /// Optional. Per-feature access policies, keyed by feature toggle name (see `features`). A feature with no
+        /// entry is available to every user when it is on. Only features that support access policies are accepted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featurePolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1EngineFeaturePolicy> FeaturePolicies { get; set; }
+
+        /// <summary>
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
@@ -35202,10 +35529,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `music-generation` *
         /// `speech-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
-        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` * `remote-vm`
-        /// * `license-tier-badge` * `agent-marketplace` * `agent-scheduling` * `preview-agents`
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `skill-security-scan` * `disable-projects` *
+        /// `sobi` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// * `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` *
+        /// `remote-vm` * `license-tier-badge` * `canvas-app-sharing` * `agent-marketplace` * `agent-scheduling` *
+        /// `preview-agents` * `plugins`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -35418,6 +35746,55 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Restricts which users may use a feature that is turned on in `features`.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineFeaturePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Members who may use the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1EngineFeaturePolicyMember> AllowedMembers { get; set; }
+
+        /// <summary>Optional. Access for users who match neither list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAccess")]
+        public virtual string DefaultAccess { get; set; }
+
+        /// <summary>Optional. Members who may not use the feature. Takes precedence over `allowed_members`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1EngineFeaturePolicyMember> DeniedMembers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user or group the policy refers to.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineFeaturePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Label shown in the console. Never used for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Identifier evaluated at serving time. Its format depends on the project's identity provider: *
+        /// Google identity (`GSUITE`): the group or user email. For groups, the server resolves the email to a group ID
+        /// on write and returns the email on read. * Workforce Identity Federation (`THIRD_PARTY`), groups: the value
+        /// the provider emits in `google.groups`. With SCIM this is the SCIM group ID; without SCIM and with the
+        /// default Microsoft Entra mapping it is the Entra group object ID. * Workforce Identity Federation, users: the
+        /// user's workforce identity subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Kind of member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Result of the server's directory check when the member was saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verification")]
+        public virtual string Verification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42655,6 +43032,33 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for UserStoreService.BatchUpdateUserAvailabilities method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The UserAvailabilitys to update. Maximum of 1000 at a time: if more are passed in, returns
+        /// INVALID_ARGUMENT. Batch is all or nothing; either all updates succeed or none. The `parent` field in each
+        /// child request must either be empty, or match the `parent` field in the batch request. If there is a
+        /// mismatch, that will also result in an INVALID_ARGUMENT being returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UserStoreService.BatchUpdateUserAvailabilities method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaBatchUpdateUserAvailabilitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated UserAvailabilitys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAvailabilities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaUserAvailability> UserAvailabilities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the UserLicenseService.BatchUpdateUserLicenses operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -43239,6 +43643,63 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The text of the suggested prompt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptText")]
         public virtual string PromptText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for EngineService.CheckFeaturePolicyMembers method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckFeaturePolicyMembersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The members to check, in the form a policy takes them. At least 1 and at most 100. `verification`
+        /// is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicyMember> Members { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for EngineService.CheckFeaturePolicyMembers method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckFeaturePolicyMembersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Where the project's groups are looked up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directorySource")]
+        public virtual string DirectorySource { get; set; }
+
+        /// <summary>
+        /// One result per requested member, in request order. Members are checked independently, so two emails for the
+        /// same Google group both pass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberChecks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCheckFeaturePolicyMembersResponseMemberCheck> MemberChecks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result for one requested member.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckFeaturePolicyMembersResponseMemberCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The member as EngineService.UpdateEngine would save it: `id` normalized, `display_name` taken from the
+        /// directory when it has one, and `verification` set. Echoes the request's member when `status` is an
+        /// INVALID_ARGUMENT from the member's format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("member")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicyMember Member { get; set; }
+
+        /// <summary>
+        /// OK when the member is valid and, for a group, in the directory. Otherwise INVALID_ARGUMENT for a malformed
+        /// member or a group the directory doesn't have, and UNAVAILABLE for a Google group the directory couldn't be
+        /// asked about. EngineService.UpdateEngine fails on all of these, except that it leaves out an allowed group
+        /// the directory doesn't have, saves the other members, and lists the group in
+        /// Engine.feature_policy_rejections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48678,6 +49139,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IDictionary<string, string> EffectiveFeatures { get; set; }
 
         /// <summary>
+        /// Optional. Per-feature access policies, keyed by feature toggle name (see `features`). A feature with no
+        /// entry is available to every user when it is on. Only features that support access policies are accepted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featurePolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicy> FeaturePolicies { get; set; }
+
+        /// <summary>
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
@@ -48686,10 +49154,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `music-generation` *
         /// `speech-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
-        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` * `remote-vm`
-        /// * `license-tier-badge` * `agent-marketplace` * `agent-scheduling` * `preview-agents`
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `skill-security-scan` * `disable-projects` *
+        /// `sobi` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// * `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` *
+        /// `remote-vm` * `license-tier-badge` * `canvas-app-sharing` * `agent-marketplace` * `agent-scheduling` *
+        /// `preview-agents` * `plugins`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -48913,6 +49382,55 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Restricts which users may use a feature that is turned on in `features`.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Members who may use the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicyMember> AllowedMembers { get; set; }
+
+        /// <summary>Optional. Access for users who match neither list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAccess")]
+        public virtual string DefaultAccess { get; set; }
+
+        /// <summary>Optional. Members who may not use the feature. Takes precedence over `allowed_members`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicyMember> DeniedMembers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user or group the policy refers to.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEngineFeaturePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Label shown in the console. Never used for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Identifier evaluated at serving time. Its format depends on the project's identity provider: *
+        /// Google identity (`GSUITE`): the group or user email. For groups, the server resolves the email to a group ID
+        /// on write and returns the email on read. * Workforce Identity Federation (`THIRD_PARTY`), groups: the value
+        /// the provider emits in `google.groups`. With SCIM this is the SCIM group ID; without SCIM and with the
+        /// default Microsoft Entra mapping it is the Entra group object ID. * Workforce Identity Federation, users: the
+        /// user's workforce identity subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Kind of member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Result of the server's directory check when the member was saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verification")]
+        public virtual string Verification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52404,6 +52922,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for UserStoreService.ListUserAvailabilities method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListUserAvailabilitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The UserAvailabilitys matching the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAvailabilities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaUserAvailability> UserAvailabilities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60063,6 +60599,131 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// Request message for UserStoreService.UpdateUserAvailability method. Also nested within
+    /// BatchUpdateUserAvailabilityRequest for the UserStoreService.BatchUpdateUserAvailability method. `parent` is a
+    /// required field when this message is used for a single Update, but is optional when used for a BatchUpdate.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaUpdateUserAvailabilityRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The parent UserStore resource name, format:
+        /// `projects/{project}/locations/{location}/userStores/{user_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. The list of fields to update. Only 'state' is supported; if unset, defaults to 'state'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>Required. The UserAvailability to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAvailability")]
+        public virtual GoogleCloudDiscoveryengineV1alphaUserAvailability UserAvailability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Tracks whether a resource is available for a given user (distinct from whether the user is allowed to use that
+    /// resource by licensing, etc).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaUserAvailability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _observeTimeRaw;
+
+        private object _observeTime;
+
+        /// <summary>Optional. Deprecated: use `update_time` only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observeTime")]
+        public virtual string ObserveTimeRaw
+        {
+            get => _observeTimeRaw;
+            set
+            {
+                _observeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _observeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ObserveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ObserveTimeDateTimeOffset instead.")]
+        public virtual object ObserveTime
+        {
+            get => _observeTime;
+            set
+            {
+                _observeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _observeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ObserveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ObserveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ObserveTimeRaw);
+            set => ObserveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Whether the user can currently use the resource. Set by the caller on update. If unspecified,
+        /// defaults to `ACTIVE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when the most recent update to `state` was saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Immutable. User principal (IdP subject for Workforce Identity, email for Google sign-in).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrincipal")]
+        public virtual string UserPrincipal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// UserEvent captures all metadata information Discovery Engine API needs to know about how end users interact with
     /// your website.
     /// </summary>
@@ -61405,10 +62066,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// * `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `music-generation` *
         /// `speech-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
-        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` * `remote-vm`
-        /// * `license-tier-badge` * `agent-marketplace` * `agent-scheduling` * `preview-agents`
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `skill-security-scan` * `disable-projects` *
+        /// `sobi` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// * `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` *
+        /// `remote-vm` * `license-tier-badge` * `canvas-app-sharing` * `agent-marketplace` * `agent-scheduling` *
+        /// `preview-agents` * `plugins`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -64456,6 +65118,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IDictionary<string, string> EffectiveFeatures { get; set; }
 
         /// <summary>
+        /// Optional. Per-feature access policies, keyed by feature toggle name (see `features`). A feature with no
+        /// entry is available to every user when it is on. Only features that support access policies are accepted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featurePolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1betaEngineFeaturePolicy> FeaturePolicies { get; set; }
+
+        /// <summary>
         /// Optional. Feature config for the engine to opt in or opt out of features. Supported keys: * `*`: all
         /// features, if it's present, all other feature state settings are ignored. * `agent-gallery` *
         /// `no-code-agent-builder` * `prompt-gallery` * `model-selector` * `notebook-lm` * `people-search` *
@@ -64464,10 +65133,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `disable-agent-sharing` * `disable-image-generation` * `disable-video-generation` * `music-generation` *
         /// `speech-generation` * `disable-onedrive-upload` * `disable-talk-to-content` * `disable-google-drive-upload`
         /// * `disable-welcome-emails` * `disable-canvas` * `canvas-workspace` * `canvas-app-builder` * `skills` *
-        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `disable-projects` * `sobi` *
-        /// `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration` *
-        /// `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` * `remote-vm`
-        /// * `license-tier-badge` * `agent-marketplace` * `agent-scheduling` * `preview-agents`
+        /// `skill-sharing` * `skill-sharing-without-admin-approval` * `skill-security-scan` * `disable-projects` *
+        /// `sobi` * `enable-end-user-sharing-with-groups` * `single-agent-orchestration` * `multi-agent-orchestration`
+        /// * `cross-product-intelligence` * `workflow-agents` * `in-app-notifications` * `code-extraction` *
+        /// `remote-vm` * `license-tier-badge` * `canvas-app-sharing` * `agent-marketplace` * `agent-scheduling` *
+        /// `preview-agents` * `plugins`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IDictionary<string, string> Features { get; set; }
@@ -64680,6 +65350,55 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Restricts which users may use a feature that is turned on in `features`.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineFeaturePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Members who may use the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaEngineFeaturePolicyMember> AllowedMembers { get; set; }
+
+        /// <summary>Optional. Access for users who match neither list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAccess")]
+        public virtual string DefaultAccess { get; set; }
+
+        /// <summary>Optional. Members who may not use the feature. Takes precedence over `allowed_members`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedMembers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaEngineFeaturePolicyMember> DeniedMembers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user or group the policy refers to.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineFeaturePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Label shown in the console. Never used for evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Identifier evaluated at serving time. Its format depends on the project's identity provider: *
+        /// Google identity (`GSUITE`): the group or user email. For groups, the server resolves the email to a group ID
+        /// on write and returns the email on read. * Workforce Identity Federation (`THIRD_PARTY`), groups: the value
+        /// the provider emits in `google.groups`. With SCIM this is the SCIM group ID; without SCIM and with the
+        /// default Microsoft Entra mapping it is the Entra group object ID. * Workforce Identity Federation, users: the
+        /// user's workforce identity subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Kind of member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Result of the server's directory check when the member was saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verification")]
+        public virtual string Verification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
