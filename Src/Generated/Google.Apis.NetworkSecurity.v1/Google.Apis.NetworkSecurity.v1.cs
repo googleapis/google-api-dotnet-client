@@ -1092,14 +1092,15 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and
-                    /// location.
+                    /// Creates an Advanced malware sandbox verdict change request in a given firewall endpoint in an
+                    /// organization and location.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a firewall
+                    /// Required. Parent value for `CreateWildfireVerdictChangeRequestRequest`. The parent is a firewall
                     /// endpoint resource. Format:
-                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                    /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}` or
+                    /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.WildfireVerdictChangeRequest body, string parent)
                     {
@@ -1107,8 +1108,8 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and
-                    /// location.
+                    /// Creates an Advanced malware sandbox verdict change request in a given firewall endpoint in an
+                    /// organization and location.
                     /// </summary>
                     public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.WildfireVerdictChangeRequest>
                     {
@@ -1121,9 +1122,10 @@ namespace Google.Apis.NetworkSecurity.v1
                         }
 
                         /// <summary>
-                        /// Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a
+                        /// Required. Parent value for `CreateWildfireVerdictChangeRequestRequest`. The parent is a
                         /// firewall endpoint resource. Format:
-                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                        /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}` or
+                        /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1159,13 +1161,16 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and location.
+                    /// Gets an Advanced malware sandbox verdict change request in a given firewall endpoint in an
+                    /// organization and location.
                     /// </summary>
                     /// <param name="name">
-                    /// Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
-                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
-                    /// Where {wildfire_verdict_change_request_id} is the ID in the format:
-                    /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                    /// Required. The name of the `WildfireVerdictChangeRequest` to retrieve. Format:
+                    /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`
+                    /// or
+                    /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`.
+                    /// Where `{wildfire_verdict_change_request_id}` is an ID in the format
+                    /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -1173,7 +1178,8 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and location.
+                    /// Gets an Advanced malware sandbox verdict change request in a given firewall endpoint in an
+                    /// organization and location.
                     /// </summary>
                     public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.WildfireVerdictChangeRequest>
                     {
@@ -1185,10 +1191,12 @@ namespace Google.Apis.NetworkSecurity.v1
                         }
 
                         /// <summary>
-                        /// Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
-                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
-                        /// Where {wildfire_verdict_change_request_id} is the ID in the format:
-                        /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                        /// Required. The name of the `WildfireVerdictChangeRequest` to retrieve. Format:
+                        /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`.
+                        /// Where `{wildfire_verdict_change_request_id}` is an ID in the format
+                        /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1218,13 +1226,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in an organization and
-                    /// location.
+                    /// Lists the Advanced malware sandbox (WildFire) verdict change requests in a given firewall
+                    /// endpoint in an organization and location.
                     /// </summary>
                     /// <param name="parent">
-                    /// Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a firewall
+                    /// Required. Parent value for `ListWildfireVerdictChangeRequestsRequest`. The parent is a firewall
                     /// endpoint resource. Format:
-                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                    /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}` or
+                    /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1232,8 +1241,8 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in an organization and
-                    /// location.
+                    /// Lists the Advanced malware sandbox (WildFire) verdict change requests in a given firewall
+                    /// endpoint in an organization and location.
                     /// </summary>
                     public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListWildfireVerdictChangeRequestsResponse>
                     {
@@ -1245,30 +1254,38 @@ namespace Google.Apis.NetworkSecurity.v1
                         }
 
                         /// <summary>
-                        /// Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a
+                        /// Required. Parent value for `ListWildfireVerdictChangeRequestsRequest`. The parent is a
                         /// firewall endpoint resource. Format:
-                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                        /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}` or
+                        /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression to filter the results. See AIP-160 for filtering syntax.
-                        /// Supported fields are: - `sha256` (string, equality only, e.g. `sha256 = "..."`) - `state`
-                        /// (enum, equality only, e.g. `state = "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g.
-                        /// `create_time &amp;gt; "2026-01-01T00:00:00Z"`)
+                        /// Optional. Filter expression to filter the results. Supported fields are: - `sha256` (string,
+                        /// equality only, for example, `sha256 = "..."`) - `state` (enum, equality only, valid values
+                        /// are `OPEN`, `CLOSED`, or `PENDING`, for example, `state = "PENDING"`) - `create_time`
+                        /// (timestamp, comparisons, for example, `create_time &amp;gt;= "2026-01-01T00:00:00Z" AND
+                        /// create_time &amp;lt;= "2026-01-31T23:59:59Z"`). If filtering by `create_time`, you must
+                        /// specify both a start time and an end time. If `create_time` is not specified, the query
+                        /// defaults to the past 30 days.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                        /// server will pick an appropriate default.
+                        /// Optional. Requested page size. The server might return fewer items than requested. If
+                        /// unspecified, the server picks an appropriate default.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListWildfireVerdictChangeRequests` call.
+                        /// Provide this to retrieve the subsequent page. When paginating, all other parameters provided
+                        /// to `ListWildfireVerdictChangeRequests` must match the call that provided the page token.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1321,15 +1338,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Creates a new FirewallEndpoint in a given organization and location.</summary>
+                /// <summary>Creates a new firewall endpoint in a given organization and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this firewall endpoint is created. Format:
+                /// `organizations/{organization}/locations/{location}` or `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new FirewallEndpoint in a given organization and location.</summary>
+                /// <summary>Creates a new firewall endpoint in a given organization and location.</summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1340,32 +1360,39 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this firewall endpoint is created. Format:
+                    /// `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object. If auto-generating Id server-side, remove this field and
-                    /// firewall_endpoint_id from the method_signature of Create RPC.
+                    /// Required. The ID to use for the firewall endpoint, which becomes the final component of the
+                    /// endpoint's resource name. This value must be 1-63 characters long, start with a lowercase
+                    /// letter, contain only lowercase letters, numbers, and hyphens, and cannot end with a hyphen.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("firewallEndpointId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FirewallEndpointId { get; set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. If set, validate the request and preview the endpoint, but do not actually create it.
+                    /// Optional. If set, validates the request and previews the endpoint, but does not actually create
+                    /// it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1424,14 +1451,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single org Endpoint.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes a single organization endpoint.</summary>
+                /// <param name="name">Required. The name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single org Endpoint.</summary>
+                /// <summary>Deletes a single organization endpoint.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1441,19 +1468,20 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes after the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1490,14 +1518,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single org Endpoint.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets details of a single organization endpoint.</summary>
+                /// <param name="name">Required. The name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single org Endpoint.</summary>
+                /// <summary>Gets details of a single organization endpoint.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1507,7 +1535,7 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1535,14 +1563,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists FirewallEndpoints in a given organization and location.</summary>
-                /// <param name="parent">Required. Parent value for ListEndpointsRequest</param>
+                /// <summary>Lists firewall endpoints in a given organization and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource from which the firewall endpoints are listed. Format:
+                /// `organizations/{organization}/locations/{location}` or `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists FirewallEndpoints in a given organization and location.</summary>
+                /// <summary>Lists firewall endpoints in a given organization and location.</summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListFirewallEndpointsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1552,26 +1583,35 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListEndpointsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent resource from which the firewall endpoints are listed. Format:
+                    /// `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// Optional. Requested page size. The server might return fewer items than requested. The maximum
+                    /// value is 1000; values above 1000 are coerced to 1000. If unspecified, the server picks an
+                    /// appropriate default.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// A page token, received from a previous `ListFirewallEndpoints` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListFirewallEndpoints`
+                    /// must match the call that provided the page token.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1631,15 +1671,15 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Update a single org Endpoint.</summary>
+                /// <summary>Updates a single organization endpoint.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. Name of resource.</param>
+                /// <param name="name">Immutable. Identifier. The name of the resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Update a single org Endpoint.</summary>
+                /// <summary>Updates a single organization endpoint.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1650,28 +1690,29 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. Name of resource.</summary>
+                    /// <summary>Immutable. Identifier. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the Endpoint resource by
-                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
-                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
-                    /// then all fields will be overwritten.
+                    /// Required. Field mask used to specify the fields to be overwritten in the `FirewallEndpoint`
+                    /// resource by the update. The fields specified in the `update_mask` are relative to the resource,
+                    /// not the full request. A field is overwritten if it is in the mask. If the user does not provide
+                    /// a mask, then all fields present in the request are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2035,18 +2076,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new SecurityProfileGroup in a given organization and location.</summary>
+                /// <summary>Creates a new security profile group in a given organization and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the SecurityProfileGroup. Must be in the format
-                /// `projects|organizations/*/locations/{location}`.
+                /// Required. The parent resource of the `SecurityProfileGroup`. Format:
+                /// `organizations/{organization}/locations/{location}` or `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.SecurityProfileGroup body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new SecurityProfileGroup in a given organization and location.</summary>
+                /// <summary>Creates a new security profile group in a given organization and location.</summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2058,16 +2099,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the SecurityProfileGroup. Must be in the format
-                    /// `projects|organizations/*/locations/{location}`.
+                    /// Required. The parent resource of the `SecurityProfileGroup`. Format:
+                    /// `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Short name of the SecurityProfileGroup resource to be created. This value should be
-                    /// 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not
-                    /// start with a number. E.g. "security_profile_group1".
+                    /// Required. Short name of the `SecurityProfileGroup` resource to be created. This value must be 1
+                    /// to 63 characters long, contain only lowercase letters, numbers, and hyphens, and must not start
+                    /// with a number. For example, `security-profile-group1`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("securityProfileGroupId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SecurityProfileGroupId { get; set; }
@@ -2110,17 +2152,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single SecurityProfileGroup.</summary>
+                /// <summary>Deletes a single security profile group.</summary>
                 /// <param name="name">
-                /// Required. A name of the SecurityProfileGroup to delete. Must be in the format
-                /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                /// Required. The name of the `SecurityProfileGroup` to delete. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single SecurityProfileGroup.</summary>
+                /// <summary>Deletes a single security profile group.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2131,14 +2174,16 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the SecurityProfileGroup to delete. Must be in the format
-                    /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                    /// Required. The name of the `SecurityProfileGroup` to delete. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                    /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error.
+                    /// Optional. If the client-provided `etag` is out of date, the delete request returns an `ABORTED`
+                    /// error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -2175,17 +2220,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single SecurityProfileGroup.</summary>
+                /// <summary>Gets details of a single security profile group.</summary>
                 /// <param name="name">
-                /// Required. A name of the SecurityProfileGroup to get. Must be in the format
-                /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                /// Required. The name of the `SecurityProfileGroup` to get. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single SecurityProfileGroup.</summary>
+                /// <summary>Gets details of a single security profile group.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.SecurityProfileGroup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2196,8 +2242,9 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the SecurityProfileGroup to get. Must be in the format
-                    /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                    /// Required. The name of the `SecurityProfileGroup` to get. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                    /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2226,17 +2273,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists SecurityProfileGroups in a given organization and location.</summary>
+                /// <summary>Lists security profile group resources in a given organization and location.</summary>
                 /// <param name="parent">
-                /// Required. The project or organization and location from which the SecurityProfileGroups should be
-                /// listed, specified in the format `projects|organizations/*/locations/{location}`.
+                /// Required. The project or organization and location from which the `SecurityProfileGroup` resources
+                /// are listed. Format: `organizations/{organization}/locations/{location}` or
+                /// `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists SecurityProfileGroups in a given organization and location.</summary>
+                /// <summary>Lists security profile group resources in a given organization and location.</summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListSecurityProfileGroupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2247,20 +2295,25 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. The project or organization and location from which the SecurityProfileGroups should
-                    /// be listed, specified in the format `projects|organizations/*/locations/{location}`.
+                    /// Required. The project or organization and location from which the `SecurityProfileGroup`
+                    /// resources are listed. Format: `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Maximum number of SecurityProfileGroups to return per call.</summary>
+                    /// <summary>
+                    /// Optional. Maximum number of `SecurityProfileGroup` resources to return per call. The maximum
+                    /// value is 1000; values above 1000 are coerced to 1000. If unspecified, the server picks an
+                    /// appropriate default.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The value returned by the last `ListSecurityProfileGroupsResponse` Indicates that this
-                    /// is a continuation of a prior `ListSecurityProfileGroups` call, and that the system should return
-                    /// the next page of data.
+                    /// Optional. A page token, received from a previous `ListSecurityProfileGroups` call. Provide this
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListSecurityProfileGroups` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2305,18 +2358,19 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Updates the parameters of a single SecurityProfileGroup.</summary>
+                /// <summary>Updates the parameters of a single security profile group.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern
-                /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                /// Immutable. Identifier. Name of the `SecurityProfileGroup` resource. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.SecurityProfileGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates the parameters of a single SecurityProfileGroup.</summary>
+                /// <summary>Updates the parameters of a single security profile group.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -2328,16 +2382,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern
-                    /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                    /// Immutable. Identifier. Name of the `SecurityProfileGroup` resource. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                    /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the SecurityProfileGroup
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask.
+                    /// Required. Field mask is used to specify the fields to be overwritten in the
+                    /// `SecurityProfileGroup` resource by the update. The fields specified in the `update_mask` are
+                    /// relative to the resource, not the full request. A field is overwritten if it is in the mask.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2398,18 +2453,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new SecurityProfile in a given organization and location.</summary>
+                /// <summary>Creates a new security profile in a given organization and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the SecurityProfile. Must be in the format
-                /// `projects|organizations/*/locations/{location}`.
+                /// Required. The parent resource of the `SecurityProfile`. Format:
+                /// `organizations/{organization}/locations/{location}` or `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.SecurityProfile body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new SecurityProfile in a given organization and location.</summary>
+                /// <summary>Creates a new security profile in a given organization and location.</summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2421,16 +2476,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the SecurityProfile. Must be in the format
-                    /// `projects|organizations/*/locations/{location}`.
+                    /// Required. The parent resource of the `SecurityProfile`. Format:
+                    /// `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Short name of the SecurityProfile resource to be created. This value should be 1-63
-                    /// characters long, containing only letters, numbers, hyphens, and underscores, and should not
-                    /// start with a number. E.g. "security_profile1".
+                    /// Required. Short name of the `SecurityProfile` resource to be created. This value must be 1 to 63
+                    /// characters long, contain only lowercase letters, numbers, and hyphens, and must not start with a
+                    /// number. For example, `security-profile1`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("securityProfileId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SecurityProfileId { get; set; }
@@ -2473,17 +2529,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single SecurityProfile.</summary>
+                /// <summary>Deletes a single security profile.</summary>
                 /// <param name="name">
-                /// Required. A name of the SecurityProfile to delete. Must be in the format
-                /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile_id}`.
+                /// Required. The name of the `SecurityProfile` to delete. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single SecurityProfile.</summary>
+                /// <summary>Deletes a single security profile.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2494,14 +2551,16 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the SecurityProfile to delete. Must be in the format
-                    /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile_id}`.
+                    /// Required. The name of the `SecurityProfile` to delete. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                    /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error.
+                    /// Optional. If the client-provided `etag` is out of date, the delete request returns an `ABORTED`
+                    /// error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -2538,17 +2597,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single SecurityProfile.</summary>
+                /// <summary>Gets details of a single security profile.</summary>
                 /// <param name="name">
-                /// Required. A name of the SecurityProfile to get. Must be in the format
-                /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile_id}`.
+                /// Required. The name of the `SecurityProfile` to get. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single SecurityProfile.</summary>
+                /// <summary>Gets details of a single security profile.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.SecurityProfile>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2559,8 +2619,9 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the SecurityProfile to get. Must be in the format
-                    /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile_id}`.
+                    /// Required. The name of the `SecurityProfile` to get. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                    /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2589,17 +2650,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists SecurityProfiles in a given organization and location.</summary>
+                /// <summary>Lists security profile resources in a given organization and location.</summary>
                 /// <param name="parent">
-                /// Required. The project or organization and location from which the SecurityProfiles should be listed,
-                /// specified in the format `projects|organizations/*/locations/{location}`.
+                /// Required. The project or organization and location from which the `SecurityProfile` resources are
+                /// listed. Format: `organizations/{organization}/locations/{location}` or
+                /// `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists SecurityProfiles in a given organization and location.</summary>
+                /// <summary>Lists security profile resources in a given organization and location.</summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListSecurityProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2610,20 +2672,25 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. The project or organization and location from which the SecurityProfiles should be
-                    /// listed, specified in the format `projects|organizations/*/locations/{location}`.
+                    /// Required. The project or organization and location from which the `SecurityProfile` resources
+                    /// are listed. Format: `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Maximum number of SecurityProfiles to return per call.</summary>
+                    /// <summary>
+                    /// Optional. Maximum number of `SecurityProfile` resources to return per call. The maximum value is
+                    /// 1000; values above 1000 are coerced to 1000. If unspecified, the server picks an appropriate
+                    /// default.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The value returned by the last `ListSecurityProfilesResponse` Indicates that this is a
-                    /// continuation of a prior `ListSecurityProfiles` call, and that the system should return the next
-                    /// page of data.
+                    /// Optional. A page token, received from a previous `ListSecurityProfiles` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListSecurityProfiles` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2668,18 +2735,19 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Updates the parameters of a single SecurityProfile.</summary>
+                /// <summary>Updates the parameters of a single security profile.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern
-                /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
+                /// Immutable. Identifier. Name of the `SecurityProfile` resource. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.SecurityProfile body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates the parameters of a single SecurityProfile.</summary>
+                /// <summary>Updates the parameters of a single security profile.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -2691,16 +2759,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern
-                    /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
+                    /// Immutable. Identifier. Name of the `SecurityProfile` resource. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                    /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the SecurityProfile
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask.
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `SecurityProfile`
+                    /// resource by the update. The fields specified in the `update_mask` are relative to the resource,
+                    /// not the full request. A field is overwritten if it is in the mask.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -6366,15 +6435,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new FirewallEndpointAssociation in a given project and location.</summary>
+                /// <summary>Creates a new firewall endpoint association in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this firewall endpoint association is created. Format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpointAssociation body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new FirewallEndpointAssociation in a given project and location.</summary>
+                /// <summary>Creates a new firewall endpoint association in a given project and location.</summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -6385,26 +6457,32 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this firewall endpoint association is created. Format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and
-                    /// firewall_endpoint_association_id from the method_signature of Create RPC.
+                    /// Optional. The ID to use for the firewall endpoint association, which becomes the final component
+                    /// of the association's resource name. This value must be 1-63 characters long, start with a
+                    /// lowercase letter, contain only lowercase letters, numbers, and hyphens, and cannot end with a
+                    /// hyphen.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("firewallEndpointAssociationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FirewallEndpointAssociationId { get; set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -6455,14 +6533,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single FirewallEndpointAssociation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes a single firewall endpoint association.</summary>
+                /// <param name="name">Required. The name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single FirewallEndpointAssociation.</summary>
+                /// <summary>Deletes a single firewall endpoint association.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -6472,19 +6550,20 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes after the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -6521,14 +6600,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single FirewallEndpointAssociation.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets details of a single firewall endpoint association.</summary>
+                /// <param name="name">Required. The name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single FirewallEndpointAssociation.</summary>
+                /// <summary>Gets details of a single firewall endpoint association.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.FirewallEndpointAssociation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -6538,7 +6617,7 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6566,14 +6645,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists Associations in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListAssociationsRequest</param>
+                /// <summary>Lists associations in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource from which the firewall endpoint associations are listed. Format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists Associations in a given project and location.</summary>
+                /// <summary>Lists associations in a given project and location.</summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListFirewallEndpointAssociationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -6583,26 +6665,34 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListAssociationsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent resource from which the firewall endpoint associations are listed. Format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Hint for how to order the results</summary>
+                    /// <summary>Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// Optional. Requested page size. The server might return fewer items than requested. The maximum
+                    /// value is 1000; values above 1000 are coerced to 1000. If unspecified, the server picks an
+                    /// appropriate default.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// A page token, received from a previous `ListFirewallEndpointAssociations` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListFirewallEndpointAssociations` must match the call that provided the page token.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -6662,15 +6752,15 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Update a single FirewallEndpointAssociation.</summary>
+                /// <summary>Updates a single firewall endpoint association.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. name of resource</param>
+                /// <param name="name">Immutable. Identifier. The name of the resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpointAssociation body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Update a single FirewallEndpointAssociation.</summary>
+                /// <summary>Updates a single firewall endpoint association.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -6681,28 +6771,29 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. name of resource</summary>
+                    /// <summary>Immutable. Identifier. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the Association resource
-                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
-                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
-                    /// mask then all fields will be overwritten.
+                    /// Required. Field mask used to specify the fields to be overwritten in the
+                    /// `FirewallEndpointAssociation` resource by the update. The fields specified in the `update_mask`
+                    /// are relative to the resource, not the full request. A field is overwritten if it is in the mask.
+                    /// If the user does not provide a mask, then all fields present in the request are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -6790,13 +6881,15 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location.
+                    /// Creates an Advanced malware sandbox verdict change request in a given firewall endpoint in a
+                    /// project and location.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a firewall
+                    /// Required. Parent value for `CreateWildfireVerdictChangeRequestRequest`. The parent is a firewall
                     /// endpoint resource. Format:
-                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                    /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}` or
+                    /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.WildfireVerdictChangeRequest body, string parent)
                     {
@@ -6804,7 +6897,8 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Create WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location.
+                    /// Creates an Advanced malware sandbox verdict change request in a given firewall endpoint in a
+                    /// project and location.
                     /// </summary>
                     public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.WildfireVerdictChangeRequest>
                     {
@@ -6817,9 +6911,10 @@ namespace Google.Apis.NetworkSecurity.v1
                         }
 
                         /// <summary>
-                        /// Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a
+                        /// Required. Parent value for `CreateWildfireVerdictChangeRequestRequest`. The parent is a
                         /// firewall endpoint resource. Format:
-                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                        /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}` or
+                        /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -6855,13 +6950,16 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location.
+                    /// Gets an Advanced malware sandbox verdict change request in a given firewall endpoint in a
+                    /// project and location.
                     /// </summary>
                     /// <param name="name">
-                    /// Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
-                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
-                    /// Where {wildfire_verdict_change_request_id} is the ID in the format:
-                    /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                    /// Required. The name of the `WildfireVerdictChangeRequest` to retrieve. Format:
+                    /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`
+                    /// or
+                    /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`.
+                    /// Where `{wildfire_verdict_change_request_id}` is an ID in the format
+                    /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -6869,7 +6967,8 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Get WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location.
+                    /// Gets an Advanced malware sandbox verdict change request in a given firewall endpoint in a
+                    /// project and location.
                     /// </summary>
                     public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.WildfireVerdictChangeRequest>
                     {
@@ -6881,10 +6980,12 @@ namespace Google.Apis.NetworkSecurity.v1
                         }
 
                         /// <summary>
-                        /// Required. Name of the WildfireVerdictChangeRequest to retrieve. Format:
-                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
-                        /// Where {wildfire_verdict_change_request_id} is the ID in the format:
-                        /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+                        /// Required. The name of the `WildfireVerdictChangeRequest` to retrieve. Format:
+                        /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`.
+                        /// Where `{wildfire_verdict_change_request_id}` is an ID in the format
+                        /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -6914,12 +7015,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in a project and location.
+                    /// Lists the Advanced malware sandbox verdict change requests in a given firewall endpoint in a
+                    /// project and location.
                     /// </summary>
                     /// <param name="parent">
-                    /// Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a firewall
+                    /// Required. Parent value for `ListWildfireVerdictChangeRequestsRequest`. The parent is a firewall
                     /// endpoint resource. Format:
-                    /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                    /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}` or
+                    /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -6927,7 +7030,8 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in a project and location.
+                    /// Lists the Advanced malware sandbox verdict change requests in a given firewall endpoint in a
+                    /// project and location.
                     /// </summary>
                     public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListWildfireVerdictChangeRequestsResponse>
                     {
@@ -6939,30 +7043,38 @@ namespace Google.Apis.NetworkSecurity.v1
                         }
 
                         /// <summary>
-                        /// Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a
+                        /// Required. Parent value for `ListWildfireVerdictChangeRequestsRequest`. The parent is a
                         /// firewall endpoint resource. Format:
-                        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}
+                        /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}` or
+                        /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression to filter the results. See AIP-160 for filtering syntax.
-                        /// Supported fields are: - `sha256` (string, equality only, e.g. `sha256 = "..."`) - `state`
-                        /// (enum, equality only, e.g. `state = "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g.
-                        /// `create_time &amp;gt; "2026-01-01T00:00:00Z"`)
+                        /// Optional. Filter expression to filter the results. Supported fields are: - `sha256` (string,
+                        /// equality only, for example, `sha256 = "..."`) - `state` (enum, equality only, valid values
+                        /// are `OPEN`, `CLOSED`, or `PENDING`, for example, `state = "PENDING"`) - `create_time`
+                        /// (timestamp, comparisons, for example, `create_time &amp;gt;= "2026-01-01T00:00:00Z" AND
+                        /// create_time &amp;lt;= "2026-01-31T23:59:59Z"`). If filtering by `create_time`, you must
+                        /// specify both a start time and an end time. If `create_time` is not specified, the query
+                        /// defaults to the past 30 days.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                        /// server will pick an appropriate default.
+                        /// Optional. Requested page size. The server might return fewer items than requested. If
+                        /// unspecified, the server picks an appropriate default.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListWildfireVerdictChangeRequests` call.
+                        /// Provide this to retrieve the subsequent page. When paginating, all other parameters provided
+                        /// to `ListWildfireVerdictChangeRequests` must match the call that provided the page token.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -7015,15 +7127,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Creates a new FirewallEndpoint in a given project and location.</summary>
+                /// <summary>Creates a new firewall endpoint in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this firewall endpoint is created. Format:
+                /// `organizations/{organization}/locations/{location}` or `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new FirewallEndpoint in a given project and location.</summary>
+                /// <summary>Creates a new firewall endpoint in a given project and location.</summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -7034,32 +7149,39 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. The parent resource where this firewall endpoint is created. Format:
+                    /// `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Id of the requesting object. If auto-generating Id server-side, remove this field and
-                    /// firewall_endpoint_id from the method_signature of Create RPC.
+                    /// Required. The ID to use for the firewall endpoint, which becomes the final component of the
+                    /// endpoint's resource name. This value must be 1-63 characters long, start with a lowercase
+                    /// letter, contain only lowercase letters, numbers, and hyphens, and cannot end with a hyphen.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("firewallEndpointId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FirewallEndpointId { get; set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Optional. If set, validate the request and preview the endpoint, but do not actually create it.
+                    /// Optional. If set, validates the request and previews the endpoint, but does not actually create
+                    /// it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -7118,14 +7240,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single project Endpoint.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Deletes a single project endpoint.</summary>
+                /// <param name="name">Required. The name of the resource.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single project Endpoint.</summary>
+                /// <summary>Deletes a single project endpoint.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -7135,19 +7257,20 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes after the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -7184,14 +7307,14 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single project Endpoint.</summary>
-                /// <param name="name">Required. Name of the resource</param>
+                /// <summary>Gets details of a single project endpoint.</summary>
+                /// <param name="name">Required. The name of the resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single project Endpoint.</summary>
+                /// <summary>Gets details of a single project endpoint.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -7201,7 +7324,7 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Name of the resource</summary>
+                    /// <summary>Required. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -7229,14 +7352,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists FirewallEndpoints in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListEndpointsRequest</param>
+                /// <summary>Lists firewall endpoints in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource from which the firewall endpoints are listed. Format:
+                /// `organizations/{organization}/locations/{location}` or `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists FirewallEndpoints in a given project and location.</summary>
+                /// <summary>Lists firewall endpoints in a given project and location.</summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListFirewallEndpointsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -7246,26 +7372,35 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListEndpointsRequest</summary>
+                    /// <summary>
+                    /// Required. The parent resource from which the firewall endpoints are listed. Format:
+                    /// `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
+                    /// Optional. Requested page size. The server might return fewer items than requested. The maximum
+                    /// value is 1000; values above 1000 are coerced to 1000. If unspecified, the server picks an
+                    /// appropriate default.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A token identifying a page of results the server should return.</summary>
+                    /// <summary>
+                    /// A page token, received from a previous `ListFirewallEndpoints` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListFirewallEndpoints`
+                    /// must match the call that provided the page token.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -7325,15 +7460,15 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Update a single project Endpoint.</summary>
+                /// <summary>Updates a single project endpoint.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Immutable. Identifier. Name of resource.</param>
+                /// <param name="name">Immutable. Identifier. The name of the resource.</param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.FirewallEndpoint body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Update a single project Endpoint.</summary>
+                /// <summary>Updates a single project endpoint.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -7344,28 +7479,29 @@ namespace Google.Apis.NetworkSecurity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Immutable. Identifier. Name of resource.</summary>
+                    /// <summary>Immutable. Identifier. The name of the resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes since the first request. For
                     /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the Endpoint resource by
-                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
-                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
-                    /// then all fields will be overwritten.
+                    /// Required. Field mask used to specify the fields to be overwritten in the `FirewallEndpoint`
+                    /// resource by the update. The fields specified in the `update_mask` are relative to the resource,
+                    /// not the full request. A field is overwritten if it is in the mask. If the user does not provide
+                    /// a mask, then all fields present in the request are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -12533,18 +12669,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new SecurityProfileGroup in a given project and location.</summary>
+                /// <summary>Creates a new security profile group in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the SecurityProfileGroup. Must be in the format
-                /// `projects|organizations/*/locations/{location}`.
+                /// Required. The parent resource of the `SecurityProfileGroup`. Format:
+                /// `organizations/{organization}/locations/{location}` or `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.SecurityProfileGroup body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new SecurityProfileGroup in a given project and location.</summary>
+                /// <summary>Creates a new security profile group in a given project and location.</summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -12556,16 +12692,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the SecurityProfileGroup. Must be in the format
-                    /// `projects|organizations/*/locations/{location}`.
+                    /// Required. The parent resource of the `SecurityProfileGroup`. Format:
+                    /// `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Short name of the SecurityProfileGroup resource to be created. This value should be
-                    /// 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not
-                    /// start with a number. E.g. "security_profile_group1".
+                    /// Required. Short name of the `SecurityProfileGroup` resource to be created. This value must be 1
+                    /// to 63 characters long, contain only lowercase letters, numbers, and hyphens, and must not start
+                    /// with a number. For example, `security-profile-group1`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("securityProfileGroupId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SecurityProfileGroupId { get; set; }
@@ -12608,17 +12745,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single SecurityProfileGroup.</summary>
+                /// <summary>Deletes a single security profile group.</summary>
                 /// <param name="name">
-                /// Required. A name of the SecurityProfileGroup to delete. Must be in the format
-                /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                /// Required. The name of the `SecurityProfileGroup` to delete. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single SecurityProfileGroup.</summary>
+                /// <summary>Deletes a single security profile group.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -12629,14 +12767,16 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the SecurityProfileGroup to delete. Must be in the format
-                    /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                    /// Required. The name of the `SecurityProfileGroup` to delete. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                    /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error.
+                    /// Optional. If the client-provided `etag` is out of date, the delete request returns an `ABORTED`
+                    /// error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -12673,17 +12813,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single SecurityProfileGroup.</summary>
+                /// <summary>Gets details of a single security profile group.</summary>
                 /// <param name="name">
-                /// Required. A name of the SecurityProfileGroup to get. Must be in the format
-                /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                /// Required. The name of the `SecurityProfileGroup` to get. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single SecurityProfileGroup.</summary>
+                /// <summary>Gets details of a single security profile group.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.SecurityProfileGroup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -12694,8 +12835,9 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the SecurityProfileGroup to get. Must be in the format
-                    /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                    /// Required. The name of the `SecurityProfileGroup` to get. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                    /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -12724,17 +12866,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists SecurityProfileGroups in a given project and location.</summary>
+                /// <summary>Lists security profile group resources in a given project and location.</summary>
                 /// <param name="parent">
-                /// Required. The project or organization and location from which the SecurityProfileGroups should be
-                /// listed, specified in the format `projects|organizations/*/locations/{location}`.
+                /// Required. The project or organization and location from which the `SecurityProfileGroup` resources
+                /// are listed. Format: `organizations/{organization}/locations/{location}` or
+                /// `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists SecurityProfileGroups in a given project and location.</summary>
+                /// <summary>Lists security profile group resources in a given project and location.</summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListSecurityProfileGroupsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -12745,20 +12888,25 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. The project or organization and location from which the SecurityProfileGroups should
-                    /// be listed, specified in the format `projects|organizations/*/locations/{location}`.
+                    /// Required. The project or organization and location from which the `SecurityProfileGroup`
+                    /// resources are listed. Format: `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Maximum number of SecurityProfileGroups to return per call.</summary>
+                    /// <summary>
+                    /// Optional. Maximum number of `SecurityProfileGroup` resources to return per call. The maximum
+                    /// value is 1000; values above 1000 are coerced to 1000. If unspecified, the server picks an
+                    /// appropriate default.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The value returned by the last `ListSecurityProfileGroupsResponse` Indicates that this
-                    /// is a continuation of a prior `ListSecurityProfileGroups` call, and that the system should return
-                    /// the next page of data.
+                    /// Optional. A page token, received from a previous `ListSecurityProfileGroups` call. Provide this
+                    /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListSecurityProfileGroups` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -12803,18 +12951,19 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Updates the parameters of a single SecurityProfileGroup.</summary>
+                /// <summary>Updates the parameters of a single security profile group.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern
-                /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                /// Immutable. Identifier. Name of the `SecurityProfileGroup` resource. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.SecurityProfileGroup body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates the parameters of a single SecurityProfileGroup.</summary>
+                /// <summary>Updates the parameters of a single security profile group.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -12826,16 +12975,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern
-                    /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+                    /// Immutable. Identifier. Name of the `SecurityProfileGroup` resource. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}`
+                    /// or `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the SecurityProfileGroup
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask.
+                    /// Required. Field mask is used to specify the fields to be overwritten in the
+                    /// `SecurityProfileGroup` resource by the update. The fields specified in the `update_mask` are
+                    /// relative to the resource, not the full request. A field is overwritten if it is in the mask.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -12896,18 +13046,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new SecurityProfile in a given project and location.</summary>
+                /// <summary>Creates a new security profile in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent resource of the SecurityProfile. Must be in the format
-                /// `projects|organizations/*/locations/{location}`.
+                /// Required. The parent resource of the `SecurityProfile`. Format:
+                /// `organizations/{organization}/locations/{location}` or `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1.Data.SecurityProfile body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new SecurityProfile in a given project and location.</summary>
+                /// <summary>Creates a new security profile in a given project and location.</summary>
                 public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -12919,16 +13069,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent resource of the SecurityProfile. Must be in the format
-                    /// `projects|organizations/*/locations/{location}`.
+                    /// Required. The parent resource of the `SecurityProfile`. Format:
+                    /// `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Short name of the SecurityProfile resource to be created. This value should be 1-63
-                    /// characters long, containing only letters, numbers, hyphens, and underscores, and should not
-                    /// start with a number. E.g. "security_profile1".
+                    /// Required. Short name of the `SecurityProfile` resource to be created. This value must be 1 to 63
+                    /// characters long, contain only lowercase letters, numbers, and hyphens, and must not start with a
+                    /// number. For example, `security-profile1`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("securityProfileId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string SecurityProfileId { get; set; }
@@ -12971,17 +13122,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Deletes a single SecurityProfile.</summary>
+                /// <summary>Deletes a single security profile.</summary>
                 /// <param name="name">
-                /// Required. A name of the SecurityProfile to delete. Must be in the format
-                /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile_id}`.
+                /// Required. The name of the `SecurityProfile` to delete. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a single SecurityProfile.</summary>
+                /// <summary>Deletes a single security profile.</summary>
                 public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -12992,14 +13144,16 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the SecurityProfile to delete. Must be in the format
-                    /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile_id}`.
+                    /// Required. The name of the `SecurityProfile` to delete. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                    /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error.
+                    /// Optional. If the client-provided `etag` is out of date, the delete request returns an `ABORTED`
+                    /// error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -13036,17 +13190,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Gets details of a single SecurityProfile.</summary>
+                /// <summary>Gets details of a single security profile.</summary>
                 /// <param name="name">
-                /// Required. A name of the SecurityProfile to get. Must be in the format
-                /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile_id}`.
+                /// Required. The name of the `SecurityProfile` to get. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets details of a single SecurityProfile.</summary>
+                /// <summary>Gets details of a single security profile.</summary>
                 public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.SecurityProfile>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -13057,8 +13212,9 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. A name of the SecurityProfile to get. Must be in the format
-                    /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile_id}`.
+                    /// Required. The name of the `SecurityProfile` to get. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                    /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -13087,17 +13243,18 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Lists SecurityProfiles in a given project and location.</summary>
+                /// <summary>Lists security profiles in a given project and location.</summary>
                 /// <param name="parent">
-                /// Required. The project or organization and location from which the SecurityProfiles should be listed,
-                /// specified in the format `projects|organizations/*/locations/{location}`.
+                /// Required. The project or organization and location from which the `SecurityProfile` resources are
+                /// listed. Format: `organizations/{organization}/locations/{location}` or
+                /// `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists SecurityProfiles in a given project and location.</summary>
+                /// <summary>Lists security profiles in a given project and location.</summary>
                 public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.ListSecurityProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -13108,20 +13265,25 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Required. The project or organization and location from which the SecurityProfiles should be
-                    /// listed, specified in the format `projects|organizations/*/locations/{location}`.
+                    /// Required. The project or organization and location from which the `SecurityProfile` resources
+                    /// are listed. Format: `organizations/{organization}/locations/{location}` or
+                    /// `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Maximum number of SecurityProfiles to return per call.</summary>
+                    /// <summary>
+                    /// Optional. Maximum number of `SecurityProfile` resources to return per call. The maximum value is
+                    /// 1000; values above 1000 are coerced to 1000. If unspecified, the server picks an appropriate
+                    /// default.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The value returned by the last `ListSecurityProfilesResponse` Indicates that this is a
-                    /// continuation of a prior `ListSecurityProfiles` call, and that the system should return the next
-                    /// page of data.
+                    /// Optional. A page token, received from a previous `ListSecurityProfiles` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListSecurityProfiles` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -13166,18 +13328,19 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
                 }
 
-                /// <summary>Updates the parameters of a single SecurityProfile.</summary>
+                /// <summary>Updates the parameters of a single security profile.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern
-                /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
+                /// Immutable. Identifier. Name of the `SecurityProfile` resource. Format:
+                /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1.Data.SecurityProfile body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates the parameters of a single SecurityProfile.</summary>
+                /// <summary>Updates the parameters of a single security profile.</summary>
                 public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -13189,16 +13352,17 @@ namespace Google.Apis.NetworkSecurity.v1
                     }
 
                     /// <summary>
-                    /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern
-                    /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
+                    /// Immutable. Identifier. Name of the `SecurityProfile` resource. Format:
+                    /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+                    /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the SecurityProfile
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask.
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `SecurityProfile`
+                    /// resource by the update. The fields specified in the `update_mask` are relative to the resource,
+                    /// not the full request. A field is overwritten if it is in the mask.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -16092,20 +16256,21 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Endpoint object.</summary>
+    /// <summary>Message describing a firewall endpoint.</summary>
     public class FirewallEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Deprecated: List of networks that are associated with this endpoint in the local zone. This is
-        /// a projection of the FirewallEndpointAssociations pointing at this endpoint. A network will only appear in
-        /// this list after traffic routing is fully configured. Format: projects/{project}/global/networks/{name}.
+        /// Output only. Deprecated: Use the `network` field in the `associations` message instead. List of networks
+        /// that are associated with this endpoint in the local zone. This is a projection of the firewall endpoint
+        /// association resources pointing at this endpoint. A network only appears in this list after traffic routing
+        /// is fully configured. Format: `projects/{project}/global/networks/{name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedNetworks")]
         public virtual System.Collections.Generic.IList<string> AssociatedNetworks { get; set; }
 
         /// <summary>
-        /// Output only. List of FirewallEndpointAssociations that are associated to this endpoint. An association will
-        /// only appear in this list after traffic routing is fully configured.
+        /// Output only. List of firewall endpoint association resources that are associated with this endpoint. An
+        /// association only appears in this list after traffic routing is fully configured.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<FirewallEndpointAssociationReference> Associations { get; set; }
@@ -16121,7 +16286,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. Create time stamp.</summary>
+        /// <summary>Output only. Create timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -16154,7 +16319,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Description of the firewall endpoint. Max length 2048 characters.</summary>
+        /// <summary>Optional. Description of the firewall endpoint. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -16162,11 +16327,11 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpointSettings")]
         public virtual FirewallEndpointEndpointSettings EndpointSettings { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels as key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Immutable. Identifier. Name of resource.</summary>
+        /// <summary>Immutable. Identifier. The name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -16176,11 +16341,11 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
-        /// <summary>Output only. [Output Only] Reserved for future use.</summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -16192,7 +16357,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Update time stamp</summary>
+        /// <summary>Output only. Update timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -16225,7 +16390,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Settings for WildFire analysis.</summary>
+        /// <summary>Optional. Settings for Advanced malware sandbox (WildFire) analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireSettings")]
         public virtual FirewallEndpointWildfireSettings WildfireSettings { get; set; }
 
@@ -16233,14 +16398,14 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Association object</summary>
+    /// <summary>Message describing a firewall endpoint association.</summary>
     public class FirewallEndpointAssociation : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>Output only. Create time stamp</summary>
+        /// <summary>Output only. Create timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -16274,20 +16439,21 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         }
 
         /// <summary>
-        /// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+        /// Optional. Whether the association is disabled. Setting this to `true` indicates that traffic isn't
+        /// intercepted. The default value is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>Required. The URL of the FirewallEndpoint that is being associated.</summary>
+        /// <summary>Required. The URL of the `FirewallEndpoint` that is being associated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewallEndpoint")]
         public virtual string FirewallEndpoint { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs</summary>
+        /// <summary>Optional. Labels as key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Immutable. Identifier. name of resource</summary>
+        /// <summary>Immutable. Identifier. The name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -16295,9 +16461,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>
-        /// Output only. Whether reconciling is in progress, recommended per https://google.aip.dev/128.
-        /// </summary>
+        /// <summary>Output only. Whether reconciliation is in progress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
@@ -16305,7 +16469,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Optional. The URL of the TlsInspectionPolicy that is being associated.</summary>
+        /// <summary>Optional. The URL of the `TlsInspectionPolicy` that is being associated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tlsInspectionPolicy")]
         public virtual string TlsInspectionPolicy { get; set; }
 
@@ -16313,7 +16477,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Update time stamp</summary>
+        /// <summary>Output only. Update timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -16351,19 +16515,19 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     }
 
     /// <summary>
-    /// This is a subset of the FirewallEndpointAssociation message, containing fields to be used by the consumer.
+    /// A subset of the `FirewallEndpointAssociation` message, containing fields to be used by the consumer.
     /// </summary>
     public class FirewallEndpointAssociationReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The resource name of the FirewallEndpointAssociation. Format:
-        /// projects/{project}/locations/{location}/firewallEndpointAssociations/{id}
+        /// Output only. The resource name of the `FirewallEndpointAssociation`. Format:
+        /// `projects/{project}/locations/{location}/firewallEndpointAssociations/{id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}.
+        /// Output only. The associated VPC network. Format: `projects/{project}/global/networks/{name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -16380,14 +16544,16 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ContentCloudRegion { get; set; }
 
         /// <summary>
-        /// Optional. Whether to block HTTP partial responses for the endpoint. When this is true, resumption of blocked
-        /// malicious HTTP file downloads will be blocked by the firewall. False provides maximum availability, true
+        /// Optional. Whether to block HTTP partial responses for the endpoint. When set to `true`, the firewall blocks
+        /// the resumption of HTTP file downloads. Setting this to `false` provides maximum availability, while `true`
         /// provides maximum security.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpPartialResponseBlocked")]
         public virtual System.Nullable<bool> HttpPartialResponseBlocked { get; set; }
 
-        /// <summary>Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value is false.</summary>
+        /// <summary>
+        /// Optional. Immutable. Indicates whether jumbo frames are enabled. The default value is `false`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jumboFramesEnabled")]
         public virtual System.Nullable<bool> JumboFramesEnabled { get; set; }
 
@@ -16395,33 +16561,39 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings for WildFire analysis.</summary>
+    /// <summary>Settings for Advanced malware sandbox analysis.</summary>
     public class FirewallEndpointWildfireSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Indicates whether WildFire analysis is enabled. Default value is false.</summary>
+        /// <summary>
+        /// Optional. Indicates whether Advanced malware sandbox analysis is enabled. The default value is `false`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>Optional. Settings for WildFire inline cloud analysis.</summary>
+        /// <summary>Optional. Settings for Advanced malware sandbox inline cloud analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineCloudAnalysisSettings")]
         public virtual FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings WildfireInlineCloudAnalysisSettings { get; set; }
 
         /// <summary>
-        /// Optional. Duration in milliseconds on a file being held while the WildFire real time signature cloud
-        /// performs a signature lookup. Value between 1 to 5000 is valid. Default value is 1000.
+        /// Optional. The duration that a file is held while the Advanced malware sandbox real-time signature cloud
+        /// performs a signature lookup. Valid values are from 1 to 5000 milliseconds. In canonical JSON encoding, this
+        /// is represented as a string ending in `s` (for example, `"0.001s"` to `"5s"`). The default value is `1000`
+        /// milliseconds (`"1s"` in JSON).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireRealtimeLookupDuration")]
         public virtual object WildfireRealtimeLookupDuration { get; set; }
 
         /// <summary>
-        /// Optional. Action to take on WildFire real time signature lookup timeout. Default value is ALLOW.
+        /// Optional. The action to take on an Advanced malware sandbox real-time signature lookup timeout. The default
+        /// value is `ALLOW`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireRealtimeLookupTimeoutAction")]
         public virtual string WildfireRealtimeLookupTimeoutAction { get; set; }
 
         /// <summary>
-        /// Optional. The region where WildFire analysis will be performed. Palo Alto Networks supports regions:
-        /// https://docs.paloaltonetworks.com/advanced-wildfire/administration/advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-global-cloud
+        /// Optional. The region where Advanced malware sandbox analysis is performed. For a list of Palo Alto Networks
+        /// supported regions, see [Advanced WildFire global
+        /// cloud](https://docs.paloaltonetworks.com/advanced-wildfire/administration/advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-global-cloud).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireRegion")]
         public virtual string WildfireRegion { get; set; }
@@ -16430,25 +16602,28 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings for WildFire inline cloud analysis.</summary>
+    /// <summary>Settings for Advanced malware sandbox inline cloud analysis.</summary>
     public class FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Timeout in milliseconds on a file being held while WildFire inline cloud analysis is performed.
-        /// Value between 1 to 240000 is valid. Default value is 30000.
+        /// Optional. The timeout that a file is held while Advanced malware sandbox inline cloud analysis is performed.
+        /// Valid values are from 1 to 240000 milliseconds. In canonical JSON encoding, this is represented as a string
+        /// ending in `s` (for example, `"0.001s"` to `"240s"`). The default value is `30000` milliseconds (`"30s"` in
+        /// JSON).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAnalysisDuration")]
         public virtual object MaxAnalysisDuration { get; set; }
 
         /// <summary>
-        /// Optional. Whether to disable WildFire submission log generation for files that timeout during WildFire
-        /// inline cloud analysis.
+        /// Optional. Whether to disable Advanced malware sandbox submission log generation for files that time out
+        /// during Advanced malware sandbox inline cloud analysis.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submissionTimeoutLoggingDisabled")]
         public virtual System.Nullable<bool> SubmissionTimeoutLoggingDisabled { get; set; }
 
         /// <summary>
-        /// Optional. Action to take when WildFire inline cloud analysis times out. Default value is ALLOW.
+        /// Optional. The action to take when Advanced malware sandbox inline cloud analysis times out. The default
+        /// value is `ALLOW`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutAction")]
         public virtual string TimeoutAction { get; set; }
@@ -17810,18 +17985,23 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing Associations</summary>
+    /// <summary>Message for response to listing associations.</summary>
     public class ListFirewallEndpointAssociationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Association</summary>
+        /// <summary>The list of associations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewallEndpointAssociations")]
         public virtual System.Collections.Generic.IList<FirewallEndpointAssociation> FirewallEndpointAssociations { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>
+        /// Locations that could not be reached. The list of unreachable locations might expand in the future.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -17829,18 +18009,23 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing Endpoints</summary>
+    /// <summary>Message for response to listing endpoints.</summary>
     public class ListFirewallEndpointsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Endpoint</summary>
+        /// <summary>The list of endpoints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewallEndpoints")]
         public virtual System.Collections.Generic.IList<FirewallEndpoint> FirewallEndpoints { get; set; }
 
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>
+        /// Locations that could not be reached. The list of unreachable locations might expand in the future.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -18122,17 +18307,17 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response returned by the ListSecurityProfileGroups method.</summary>
+    /// <summary>Response returned by the `ListSecurityProfileGroups` method.</summary>
     public class ListSecurityProfileGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
-        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of SecurityProfileGroups resources.</summary>
+        /// <summary>List of `SecurityProfileGroup` resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityProfileGroups")]
         public virtual System.Collections.Generic.IList<SecurityProfileGroup> SecurityProfileGroups { get; set; }
 
@@ -18140,17 +18325,17 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response returned by the ListSecurityProfiles method.</summary>
+    /// <summary>Response returned by the `ListSecurityProfiles` method.</summary>
     public class ListSecurityProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If there might be more results than those appearing in this response, then `next_page_token` is included. To
-        /// get the next set of results, call this method again using the value of `next_page_token` as `page_token`.
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of SecurityProfile resources.</summary>
+        /// <summary>List of `SecurityProfile` resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityProfiles")]
         public virtual System.Collections.Generic.IList<SecurityProfile> SecurityProfiles { get; set; }
 
@@ -18227,10 +18412,13 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing WildfireVerdictChangeRequests.</summary>
+    /// <summary>Message for response to listing `WildfireVerdictChangeRequest` resources.</summary>
     public class ListWildfireVerdictChangeRequestsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token identifying a page of results the server should return.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -18238,7 +18426,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
-        /// <summary>The list of WildfireVerdictChangeRequests</summary>
+        /// <summary>The list of `WildfireVerdictChangeRequest` resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireVerdictChangeRequests")]
         public virtual System.Collections.Generic.IList<WildfireVerdictChangeRequest> WildfireVerdictChangeRequests { get; set; }
 
@@ -19449,7 +19637,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>SecurityProfile is a resource that defines the behavior for one of many ProfileTypes.</summary>
+    /// <summary>A resource that defines the behavior for one of many `ProfileType` values.</summary>
     public class SecurityProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -19489,15 +19677,17 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The custom TPPI configuration for the SecurityProfile.</summary>
+        /// <summary>The custom network security in-band integration configuration for the `SecurityProfile`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customInterceptProfile")]
         public virtual CustomInterceptProfile CustomInterceptProfile { get; set; }
 
-        /// <summary>The custom Packet Mirroring v2 configuration for the SecurityProfile.</summary>
+        /// <summary>
+        /// The custom network security out-of-band integration configuration for the `SecurityProfile`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
         public virtual CustomMirroringProfile CustomMirroringProfile { get; set; }
 
-        /// <summary>Optional. An optional description of the profile. Max length 512 characters.</summary>
+        /// <summary>Optional. An optional description of the profile. The maximum length is 512 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -19508,22 +19698,23 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs.</summary>
+        /// <summary>Optional. Labels as key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern
-        /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
+        /// Immutable. Identifier. Name of the `SecurityProfile` resource. Format:
+        /// `organizations/{organization}/locations/{location}/securityProfiles/{security_profile}` or
+        /// `projects/{project}/locations/{location}/securityProfiles/{security_profile}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The threat prevention configuration for the SecurityProfile.</summary>
+        /// <summary>The threat prevention configuration for the `SecurityProfile`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatPreventionProfile")]
         public virtual ThreatPreventionProfile ThreatPreventionProfile { get; set; }
 
-        /// <summary>Immutable. The single ProfileType that the SecurityProfile resource configures.</summary>
+        /// <summary>Immutable. The single `ProfileType` that the `SecurityProfile` resource configures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -19564,16 +19755,16 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The URL filtering configuration for the SecurityProfile.</summary>
+        /// <summary>The URL filtering configuration for the `SecurityProfile`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlFilteringProfile")]
         public virtual UrlFilteringProfile UrlFilteringProfile { get; set; }
 
-        /// <summary>The WildFire Analysis configurations for SecurityProfile.</summary>
+        /// <summary>The Advanced malware sandbox analysis configuration for the `SecurityProfile`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireAnalysisProfile")]
         public virtual WildfireAnalysisProfile WildfireAnalysisProfile { get; set; }
     }
 
-    /// <summary>SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes.</summary>
+    /// <summary>A resource that defines the behavior for various `ProfileType` values.</summary>
     public class SecurityProfileGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -19613,19 +19804,21 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Reference to a SecurityProfile with the CustomIntercept configuration.</summary>
+        /// <summary>Optional. Reference to a `SecurityProfile` with the custom intercept configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customInterceptProfile")]
         public virtual string CustomInterceptProfile { get; set; }
 
-        /// <summary>Optional. Reference to a SecurityProfile with the CustomMirroring configuration.</summary>
+        /// <summary>Optional. Reference to a `SecurityProfile` with the custom mirroring configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMirroringProfile")]
         public virtual string CustomMirroringProfile { get; set; }
 
-        /// <summary>Output only. Identifier used by the data-path. Unique within `{container, location}`.</summary>
+        /// <summary>Output only. Identifier used by the data path. Unique within `{container, location}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataPathId")]
         public virtual System.Nullable<ulong> DataPathId { get; set; }
 
-        /// <summary>Optional. An optional description of the profile group. Max length 2048 characters.</summary>
+        /// <summary>
+        /// Optional. An optional description of the profile group. The maximum length is 2048 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -19636,18 +19829,19 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. Labels as key value pairs.</summary>
+        /// <summary>Optional. Labels as key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern
-        /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
+        /// Immutable. Identifier. Name of the `SecurityProfileGroup` resource. Format:
+        /// `organizations/{organization}/locations/{location}/securityProfileGroups/{security_profile_group}` or
+        /// `projects/{project}/locations/{location}/securityProfileGroups/{security_profile_group}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Reference to a SecurityProfile with the ThreatPrevention configuration.</summary>
+        /// <summary>Optional. Reference to a `SecurityProfile` with the threat prevention configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatPreventionProfile")]
         public virtual string ThreatPreventionProfile { get; set; }
 
@@ -19688,11 +19882,13 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Reference to a SecurityProfile with the UrlFiltering configuration.</summary>
+        /// <summary>Optional. Reference to a `SecurityProfile` with the URL filtering configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlFilteringProfile")]
         public virtual string UrlFilteringProfile { get; set; }
 
-        /// <summary>Optional. Reference to a SecurityProfile with the WildFire configuration.</summary>
+        /// <summary>
+        /// Optional. Reference to a `SecurityProfile` with the Advanced malware sandbox (WildFire) configuration.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireAnalysisProfile")]
         public virtual string WildfireAnalysisProfile { get; set; }
     }
@@ -20251,41 +20447,48 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>WildfireAnalysisProfile defines Palo Alto Networks WildFire behavior.</summary>
+    /// <summary>`WildfireAnalysisProfile` defines Palo Alto Networks WildFire behavior.</summary>
     public class WildfireAnalysisProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Configuration for WildFire inline cloud analysis.</summary>
+        /// <summary>Optional. Configuration for Advanced malware sandbox inline cloud analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineCloudAnalysisRules")]
         public virtual System.Collections.Generic.IList<WildfireInlineCloudAnalysisRule> WildfireInlineCloudAnalysisRules { get; set; }
 
-        /// <summary>Optional. Configuration for overriding inline ML WildFire actions per protocol.</summary>
+        /// <summary>
+        /// Optional. Configuration for overriding inline ML Advanced malware sandbox actions per protocol.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineMlOverrides")]
         public virtual System.Collections.Generic.IList<WildfireInlineMlOverride> WildfireInlineMlOverrides { get; set; }
 
-        /// <summary>Optional. Settings for WildFire Inline ML analysis.</summary>
+        /// <summary>Optional. Settings for Advanced malware sandbox inline ML analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineMlSetting")]
         public virtual WildfireInlineMlSettings WildfireInlineMlSetting { get; set; }
 
-        /// <summary>Optional. Settings for WildFire Inline ML analysis.</summary>
+        /// <summary>
+        /// Optional. Deprecated: Use `wildfire_inline_ml_setting` instead. Settings for Advanced malware sandbox inline
+        /// ML analysis.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireInlineMlSettings")]
         public virtual System.Collections.Generic.IList<WildfireInlineMlSettings> WildfireInlineMlSettings { get; set; }
 
-        /// <summary>Optional. Configuration for overriding WildFire actions per protocol.</summary>
+        /// <summary>Optional. Configuration for overriding Advanced malware sandbox actions per protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireOverrides")]
         public virtual System.Collections.Generic.IList<WildfireOverride> WildfireOverrides { get; set; }
 
         /// <summary>
-        /// Optional. Whether to hold the transfer of a file while the WildFire real-time signature cloud performs a
-        /// signature lookup. Default value is false.
+        /// Optional. Whether to hold the transfer of a file while the Advanced malware sandbox real-time signature
+        /// cloud performs a signature lookup. The default value is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireRealtimeLookup")]
         public virtual System.Nullable<bool> WildfireRealtimeLookup { get; set; }
 
-        /// <summary>Optional. Configurations for WildFire file submissions.</summary>
+        /// <summary>Optional. Configurations for Advanced malware sandbox (WildFire) file submissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireSubmissionRules")]
         public virtual System.Collections.Generic.IList<WildfireSubmissionRule> WildfireSubmissionRules { get; set; }
 
-        /// <summary>Optional. Configuration for overriding WildFire threats action by threat_id match.</summary>
+        /// <summary>
+        /// Optional. Configuration for overriding the Advanced malware sandbox threat action by `threat_id` match.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireThreatOverrides")]
         public virtual System.Collections.Generic.IList<WildfireThreatOverride> WildfireThreatOverrides { get; set; }
 
@@ -20293,25 +20496,29 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The list of file type configurations to be scanned by WildFire Inline Cloud Analysis.</summary>
+    /// <summary>
+    /// The list of file type configurations to be scanned by Advanced malware sandbox inline cloud analysis.
+    /// </summary>
     public class WildfireInlineCloudAnalysisRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Action to take when a threat is detected using WildFire Inline Cloud Analysis. The default Value
-        /// is DENY.
+        /// Required. Action to take when a threat is detected using Advanced malware sandbox inline cloud analysis. The
+        /// default value is `DENY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
-        /// <summary>Submit a custom list of file types for WildFire analysis.</summary>
+        /// <summary>Submit a custom list of file types for Advanced malware sandbox inline cloud analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFileTypes")]
         public virtual WildfireInlineCloudAnalysisRuleCustomFileTypes CustomFileTypes { get; set; }
 
-        /// <summary>Required. Direction for the file to be analyzed by WildFire Inline Cloud Analysis.</summary>
+        /// <summary>
+        /// Required. Direction for the files to be analyzed by Advanced malware sandbox inline cloud analysis.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; }
 
-        /// <summary>Required. File selection mode for WildFire inline cloud analysis.</summary>
+        /// <summary>Required. File selection mode for Advanced malware sandbox inline cloud analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSelectionMode")]
         public virtual string FileSelectionMode { get; set; }
 
@@ -20319,10 +20526,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The options to submit a custom list of file types for scan.</summary>
+    /// <summary>The options to submit a custom list of file types for scanning.</summary>
     public class WildfireInlineCloudAnalysisRuleCustomFileTypes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. File types to be submitted for WildFire inline cloud analysis.</summary>
+        /// <summary>Required. File types to be submitted for Advanced malware sandbox inline cloud analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; }
 
@@ -20330,15 +20537,16 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines the file to exclude from WildFire Inline ML analysis.</summary>
+    /// <summary>Defines the file to exclude from Advanced malware sandbox inline ML analysis.</summary>
     public class WildfireInlineMlFileException : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Name of the file to exclude from WildFire Inline ML analysis.</summary>
+        /// <summary>Optional. Name of the file to exclude from Advanced malware sandbox inline ML analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; }
 
         /// <summary>
-        /// Required. Machine learning partial hash of the file to exclude from WildFire Inline ML analysis.
+        /// Required. Machine learning partial hash of the file to exclude from Advanced malware sandbox inline ML
+        /// analysis.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partialHash")]
         public virtual string PartialHash { get; set; }
@@ -20347,14 +20555,14 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines what action to take for WildFire Inline ML threats per protocol.</summary>
+    /// <summary>Defines what action to take for Advanced malware sandbox inline ML threats per protocol.</summary>
     public class WildfireInlineMlOverride : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The action to take for WildFire Inline ML override.</summary>
+        /// <summary>Required. The action to take for Advanced malware sandbox inline ML override.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
-        /// <summary>Required. Protocol to match for WildFire Inline ML override.</summary>
+        /// <summary>Required. Protocol to match for Advanced malware sandbox inline ML override.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
 
@@ -20362,14 +20570,16 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines the settings for WildFire Inline ML analysis.</summary>
+    /// <summary>Defines the settings for Advanced malware sandbox inline ML analysis.</summary>
     public class WildfireInlineMlSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. List of files to exclude from WildFire Inline ML analysis.</summary>
+        /// <summary>Optional. List of files to exclude from Advanced malware sandbox inline ML analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileExceptions")]
         public virtual System.Collections.Generic.IList<WildfireInlineMlFileException> FileExceptions { get; set; }
 
-        /// <summary>Optional. List of Inline ML configs to enable in WildFire Inline ML analysis.</summary>
+        /// <summary>
+        /// Optional. List of inline ML configurations to enable in Advanced malware sandbox inline ML analysis.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineMlConfigs")]
         public virtual System.Collections.Generic.IList<WildfireInlineMlSettingsInlineMlConfig> InlineMlConfigs { get; set; }
 
@@ -20377,14 +20587,14 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for WildFire Inline ML analysis per file type.</summary>
+    /// <summary>Configuration for Advanced malware sandbox inline ML analysis per file type.</summary>
     public class WildfireInlineMlSettingsInlineMlConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Action to take when a threat is detected using Inline ML.</summary>
+        /// <summary>Required. Action to take when a threat is detected using inline ML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
-        /// <summary>Required. File type to configure Inline ML for.</summary>
+        /// <summary>Required. File type to configure inline ML for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; }
 
@@ -20392,7 +20602,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines what action to take for WildFire threats per protocol.</summary>
+    /// <summary>Defines what action to take for Advanced malware sandbox threats per protocol.</summary>
     public class WildfireOverride : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -20410,19 +20620,19 @@ namespace Google.Apis.NetworkSecurity.v1.Data
     }
 
     /// <summary>
-    /// Defines the file types to be submitted for WildFire analysis and the direction of the traffic.
+    /// Defines the file types to be submitted for Advanced malware sandbox analysis and the direction of the traffic.
     /// </summary>
     public class WildfireSubmissionRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Submit a custom list of file types for WildFire analysis.</summary>
+        /// <summary>Submit a custom list of file types for Advanced malware sandbox analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFileTypes")]
         public virtual WildfireSubmissionRuleCustomFileTypes CustomFileTypes { get; set; }
 
-        /// <summary>Required. Direction for the files to be analyzed by WildFire.</summary>
+        /// <summary>Required. Direction for the files to be analyzed by Advanced malware sandbox.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; }
 
-        /// <summary>Required. File selection mode for WildFire analysis.</summary>
+        /// <summary>Required. File selection mode for Advanced malware sandbox analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileSelectionMode")]
         public virtual string FileSelectionMode { get; set; }
 
@@ -20430,10 +20640,10 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The options to submit a custom list of file types for scan.</summary>
+    /// <summary>The options to submit a custom list of file types for scanning.</summary>
     public class WildfireSubmissionRuleCustomFileTypes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. File types to be submitted for WildFire analysis.</summary>
+        /// <summary>Required. File types to be submitted for Advanced malware sandbox analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; }
 
@@ -20441,7 +20651,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines what action to take for a specific WildFire threat_id match.</summary>
+    /// <summary>Defines what action to take for a specific Advanced malware sandbox `threat_id` match.</summary>
     public class WildfireThreatOverride : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Threat action override.</summary>
@@ -20456,10 +20666,14 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for a WildfireVerdictChangeRequest.</summary>
+    /// <summary>
+    /// Message for an Advanced malware sandbox verdict change request (`WildfireVerdictChangeRequest`).
+    /// </summary>
     public class WildfireVerdictChangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The justification for the verdict change request. Max length 2048 characters.</summary>
+        /// <summary>
+        /// Required. The justification for the verdict change request. The maximum length is 2048 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
@@ -20467,7 +20681,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The timestamp when the WildfireVerdictChangeRequest was created.</summary>
+        /// <summary>Output only. The timestamp when the `WildfireVerdictChangeRequest` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -20500,33 +20714,35 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The file name of the Malware Sample.</summary>
+        /// <summary>Output only. The file name of the malware sample.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; }
 
-        /// <summary>Output only. The file type of the Malware Sample.</summary>
+        /// <summary>Output only. The file type of the malware sample.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; }
 
-        /// <summary>Output only. The final verdict of the Malware Sample.</summary>
+        /// <summary>Output only. The final verdict of the malware sample.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalVerdict")]
         public virtual string FinalVerdict { get; set; }
 
         /// <summary>
-        /// Output only. Identifier. The relative name of the WildfireVerdictChangeRequest. Output only. This is a
-        /// unique identifier generated by the third party API. Format:
-        /// organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}
-        /// Where {wildfire_verdict_change_request_id} is the ID in the format:
-        /// ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        /// Output only. Identifier. The relative name of the `WildfireVerdictChangeRequest`. This is a unique
+        /// identifier generated by the third-party API. Format:
+        /// `organizations/{organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`
+        /// or
+        /// `projects/{project}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id}`.
+        /// Where `{wildfire_verdict_change_request_id}` is an ID in the format
+        /// `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The suggested verdict to apply to the Malware Sample.</summary>
+        /// <summary>Required. The suggested verdict to apply to the malware sample.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newVerdict")]
         public virtual string NewVerdict { get; set; }
 
-        /// <summary>Output only. The original verdict of the Malware Sample.</summary>
+        /// <summary>Output only. The original verdict of the malware sample.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldVerdict")]
         public virtual string OldVerdict { get; set; }
 
@@ -20534,7 +20750,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _resolutionTime;
 
-        /// <summary>Output only. The timestamp when the WildfireVerdictChangeRequest was resolved.</summary>
+        /// <summary>Output only. The timestamp when the `WildfireVerdictChangeRequest` was resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolutionTime")]
         public virtual string ResolutionTimeRaw
         {
@@ -20569,15 +20785,18 @@ namespace Google.Apis.NetworkSecurity.v1.Data
             set => ResolutionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The SHA256 hash of the Malware Sample to change the verdict of.</summary>
+        /// <summary>
+        /// Required. The SHA256 hash ([FIPS 180-4](https://csrc.nist.gov/publications/detail/fips/180/4/final)) of the
+        /// malware sample that requires a verdict change.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
         public virtual string Sha256 { get; set; }
 
-        /// <summary>Output only. The region of the file associated with the Malware Sample.</summary>
+        /// <summary>Output only. The region of the file associated with the malware sample.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRegion")]
         public virtual string SourceRegion { get; set; }
 
-        /// <summary>Output only. The review state of the WildfireVerdictChangeRequest.</summary>
+        /// <summary>Output only. The review state of the `WildfireVerdictChangeRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -20585,7 +20804,7 @@ namespace Google.Apis.NetworkSecurity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The timestamp when the WildfireVerdictChangeRequest was last updated.</summary>
+        /// <summary>Output only. The timestamp when the `WildfireVerdictChangeRequest` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -20619,8 +20838,8 @@ namespace Google.Apis.NetworkSecurity.v1.Data
         }
 
         /// <summary>
-        /// Output only. The ID of the WildfireVerdictChangeRequest. This is a unique identifier generated by the third
-        /// party API. Format: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+        /// Output only. The ID of the `WildfireVerdictChangeRequest`. This is a unique identifier generated by the
+        /// third-party API. Format: `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wildfireVerdictChangeRequestId")]
         public virtual string WildfireVerdictChangeRequestId { get; set; }
