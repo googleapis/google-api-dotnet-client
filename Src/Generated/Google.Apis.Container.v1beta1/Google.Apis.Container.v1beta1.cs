@@ -8166,6 +8166,14 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string Subnetwork { get; set; }
 
         /// <summary>
+        /// Optional. The cluster-level default node version to be used for newly created node pools where the node
+        /// version is not explicitly specified. The node version is also used to reconcile existing node pools to this
+        /// version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetNodeVersion")]
+        public virtual string TargetNodeVersion { get; set; }
+
+        /// <summary>
         /// Configuration for Cloud TPU support; This field is deprecated due to the deprecation of 2VM TPU. The end of
         /// life date for 2VM TPU is 2025-04-25.
         /// </summary>
@@ -9709,6 +9717,21 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Additional entries to be added to /etc/hosts.</summary>
+    public class EtcHostsEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The hostname of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>The IPv4 or IPv6 address of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ip")]
+        public virtual string Ip { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Eviction grace periods are grace periods for each eviction signal.</summary>
     public class EvictionGracePeriod : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10767,6 +10790,38 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Definition of possible additional kernel command line arguments to be configured to the kernel.
+    /// </summary>
+    public class KernelCommandlineOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defines the change of init_on_alloc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initOnAlloc")]
+        public virtual string InitOnAlloc { get; set; }
+
+        /// <summary>Optional. Defines the change of spec_rstack_overflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specRstackOverflow")]
+        public virtual string SpecRstackOverflow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters that can be configured on the kernel.</summary>
+    public class KernelOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Allow setting for optional kernel command line arguments overrides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelCommandlineOverrides")]
+        public virtual KernelCommandlineOverrides KernelCommandlineOverrides { get; set; }
+
+        /// <summary>Optional. lrugen (Multi-Gen LRU) options</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lruGen")]
+        public virtual LRUGen LruGen { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains expiry information about the kubelet certificate.</summary>
     public class KubeletCertInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10865,6 +10920,23 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>lrugen (Multi-Gen LRU) options See https://docs.kernel.org/admin-guide/mm/multigen_lru.html</summary>
+    public class LRUGen : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enable lrugen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. Users can write N to min_ttl_ms to prevent the working set of N milliseconds from getting evicted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTtlMs")]
+        public virtual System.Nullable<int> MinTtlMs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the legacy Attribute Based Access Control authorization mode.</summary>
     public class LegacyAbac : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10887,6 +10959,18 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accurateTimeConfig")]
         public virtual AccurateTimeConfig AccurateTimeConfig { get; set; }
 
+        /// <summary>Optional. Additional entries to be added to /etc/hosts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalEtcHosts")]
+        public virtual System.Collections.Generic.IList<EtcHostsEntry> AdditionalEtcHosts { get; set; }
+
+        /// <summary>Optional. Additional entries to be added to /etc/resolv.conf.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalEtcResolvConf")]
+        public virtual System.Collections.Generic.IList<ResolvedConfEntry> AdditionalEtcResolvConf { get; set; }
+
+        /// <summary>Optional. Additional entries to be added to /etc/systemd/resolved.conf.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalEtcSystemdResolvedConf")]
+        public virtual System.Collections.Generic.IList<ResolvedConfEntry> AdditionalEtcSystemdResolvedConf { get; set; }
+
         /// <summary>cgroup_mode specifies the cgroup mode to be used on the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cgroupMode")]
         public virtual string CgroupMode { get; set; }
@@ -10902,6 +10986,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Optional. Amounts for 2M and 1G hugepages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hugepages")]
         public virtual HugepagesConfig Hugepages { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the kernel overrides to be applied to the nodes. Note: sysctl changes are defined
+        /// separately in the sysctls fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelOverrides")]
+        public virtual KernelOverrides KernelOverrides { get; set; }
 
         /// <summary>
         /// Optional. Configuration for kernel module loading on nodes. When enabled, the node pool will be provisioned
@@ -10938,6 +11029,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sysctls")]
         public virtual System.Collections.Generic.IDictionary<string, string> Sysctls { get; set; }
+
+        /// <summary>Optional. Configures the timezone of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>
         /// Optional. Defines the transparent hugepage defrag configuration on the node. VM hugepage allocation can be
@@ -13628,6 +13723,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryReservedMib")]
         public virtual System.Nullable<long> MemoryReservedMib { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional entries to be added to resolved.conf.</summary>
+    public class ResolvedConfEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of resolved.conf</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. The value of resolved.conf</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<string> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
