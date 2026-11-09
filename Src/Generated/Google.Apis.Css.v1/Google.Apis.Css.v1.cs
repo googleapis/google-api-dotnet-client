@@ -1430,7 +1430,7 @@ namespace Google.Apis.Css.v1.Data
 
         /// <summary>
         /// The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant
-        /// Center).
+        /// Center). Supported values are: - `css_ads_experiences` - `css_organic_experiences`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
@@ -1540,7 +1540,8 @@ namespace Google.Apis.Css.v1.Data
 
         /// <summary>
         /// The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center).
-        /// Default destinations are always included unless provided in `excludedDestinations`.
+        /// Default destinations are always included unless provided in `excluded_destinations`. Supported values are: -
+        /// `css_ads_experiences` - `css_organic_experiences`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; }
