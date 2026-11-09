@@ -123269,6 +123269,13 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Optional. The URL of the network attachment that this resource belongs
+        /// to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
         /// Configures traffic steering properties of internal passthrough Network Load Balancers.
         /// networkPassThroughLbTrafficPolicy cannot be specified with haPolicy.
         /// </summary>
@@ -123365,6 +123372,14 @@ namespace Google.Apis.Compute.preview.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceBindings")]
         public virtual System.Collections.Generic.IList<string> ServiceBindings { get; set; }
+
+        /// <summary>
+        /// Optional. The service class ID associated with this resource. Producer Service's Service class ID for the
+        /// region of this backend service. Can only be used with network_attachment. It is not possible to use on its
+        /// own; however, network_attachment can be used without service_class_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClassId")]
+        public virtual string ServiceClassId { get; set; }
 
         /// <summary>
         /// URL to networkservices.ServiceLbPolicy resource.  Can only be set if load balancing scheme is
@@ -130137,6 +130152,13 @@ namespace Google.Apis.Compute.preview.Data
         public virtual string Network { get; set; }
 
         /// <summary>
+        /// Optional. The URL of the network attachment that this resource belongs
+        /// to.projects/{project}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
         /// This signifies the networking tier used for configuring this load balancer and can only take the following
         /// values:PREMIUM, STANDARD.  For regional ForwardingRule, the valid values are PREMIUM andSTANDARD. For
         /// GlobalForwardingRule, the valid value isPREMIUM.  If this field is not specified, it is assumed to be
@@ -130206,6 +130228,14 @@ namespace Google.Apis.Compute.preview.Data
         /// <summary>Output only. [Output Only] Server-defined URL for this resource with the resource id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLinkWithId")]
         public virtual string SelfLinkWithId { get; set; }
+
+        /// <summary>
+        /// Optional. Producer Service's Service class ID for the region of this forwarding rule. Can only be used with
+        /// network_attachment. It is not possible to use on its own; however, network_attachment can be used without
+        /// service_class_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceClassId")]
+        public virtual string ServiceClassId { get; set; }
 
         /// <summary>
         /// Service Directory resources to register this forwarding rule with. Currently, only supports a single Service
@@ -138840,6 +138870,10 @@ namespace Google.Apis.Compute.preview.Data
 
     public class InstanceGroupManagerUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Actions that are allowed to update instances within MIG.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedActions")]
+        public virtual System.Collections.Generic.IList<string> AllowedActions { get; set; }
+
         /// <summary>
         /// The  instance redistribution policy for regional managed instance groups. Valid values are:         -
         /// PROACTIVE (default): The group attempts to maintain an    even distribution of VM instances across zones in
@@ -138965,6 +138999,10 @@ namespace Google.Apis.Compute.preview.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allInstances")]
         public virtual System.Nullable<bool> AllInstances { get; set; }
+
+        /// <summary>Actions that are allowed to update instances within MIG.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedActions")]
+        public virtual System.Collections.Generic.IList<string> AllowedActions { get; set; }
 
         /// <summary>
         /// The list of URLs of one or more instances for which you want to apply updates. Each URL can be a full URL or
@@ -154198,6 +154236,10 @@ namespace Google.Apis.Compute.preview.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allInstances")]
         public virtual System.Nullable<bool> AllInstances { get; set; }
 
+        /// <summary>Actions that are allowed to update instances within MIG.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedActions")]
+        public virtual System.Collections.Generic.IList<string> AllowedActions { get; set; }
+
         /// <summary>
         /// The list of URLs of one or more instances for which you want to apply updates. Each URL can be a full URL or
         /// a partial URL, such aszones/[ZONE]/instances/[INSTANCE_NAME].
@@ -161664,6 +161706,10 @@ namespace Google.Apis.Compute.preview.Data
         /// <summary>Metadata of the service attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Optional. The connection mode of the service attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters
