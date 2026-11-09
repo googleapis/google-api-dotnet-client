@@ -5057,7 +5057,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Optional. Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which
-        /// networks can be configured on the device. Supported on company-owned devices running Android 13 and above.
+        /// networks can be configured on the device.Supported on Android 13 (API level 33) and higher on fully managed
+        /// devices and work profiles on company-owned devices. A NonComplianceDetail with MANAGEMENT_MODE is reported
+        /// on other management modes. A NonComplianceDetail with API_LEVEL is reported if the Android version is less
+        /// than 13 (API level 33).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiSsidPolicy")]
         public virtual WifiSsidPolicy WifiSsidPolicy { get; set; }
@@ -9592,7 +9595,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks can
-    /// be configured on the device. Supported on company-owned devices running Android 13 and above.
+    /// be configured on the device. Supported on Android 13 (API level 33) and higher on fully managed devices and work
+    /// profiles on company-owned devices.
     /// </summary>
     public class WifiSsidPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9602,9 +9606,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field must be non-empty when
-        /// WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a
-        /// NonComplianceDetail detail with API_LEVEL is reported if the Android version is less than 13 and a
-        /// NonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned devices.
+        /// wifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiSsids")]
         public virtual System.Collections.Generic.IList<WifiSsid> WifiSsids { get; set; }
