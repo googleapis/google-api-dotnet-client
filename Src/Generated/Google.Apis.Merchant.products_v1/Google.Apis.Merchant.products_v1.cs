@@ -2902,7 +2902,10 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The minimum order value in the cart before the checkout is permitted.</summary>
+    /// <summary>
+    /// [Minimum order value](https://support.google.com/merchants/answer/16989009) in the cart before the checkout is
+    /// permitted.
+    /// </summary>
     public class ProductMinimumOrderValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
