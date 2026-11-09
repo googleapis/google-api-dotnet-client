@@ -25020,6 +25020,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
         public virtual System.Collections.Generic.IList<string> PhraseSets { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("profanityFilter")]
+        public virtual System.Nullable<bool> ProfanityFilter { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
@@ -27374,6 +27377,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("phraseSets")]
         public virtual System.Collections.Generic.IList<string> PhraseSets { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("profanityFilter")]
+        public virtual System.Nullable<bool> ProfanityFilter { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; }
