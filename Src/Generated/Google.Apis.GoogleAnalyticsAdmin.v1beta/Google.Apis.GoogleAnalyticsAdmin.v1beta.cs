@@ -5893,10 +5893,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual GoogleAnalyticsAdminV1betaAccount Account { get; set; }
 
-        /// <summary>
-        /// Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Cloud
-        /// Console as a Redirect URI.
-        /// </summary>
+        /// <summary>Redirect URI where the user will be sent after accepting Terms of Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
 
