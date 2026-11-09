@@ -1919,9 +1919,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Search for folders that match specific filter criteria. `search()` provides an eventually consistent view of
-        /// the folders a user has access to which meet the specified filter criteria. This will only return folders on
-        /// which the caller has the permission `resourcemanager.folders.get`.
+        /// Searches for folders that match specific filter criteria. `search()` provides an eventually consistent view
+        /// of the folders a user has access to which meet the specified filter criteria. This will only return folders
+        /// on which the caller has the permission `resourcemanager.folders.get`.
         /// </summary>
         public virtual SearchRequest Search()
         {
@@ -1929,9 +1929,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Search for folders that match specific filter criteria. `search()` provides an eventually consistent view of
-        /// the folders a user has access to which meet the specified filter criteria. This will only return folders on
-        /// which the caller has the permission `resourcemanager.folders.get`.
+        /// Searches for folders that match specific filter criteria. `search()` provides an eventually consistent view
+        /// of the folders a user has access to which meet the specified filter criteria. This will only return folders
+        /// on which the caller has the permission `resourcemanager.folders.get`.
         /// </summary>
         public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.SearchFoldersResponse>
         {
@@ -2313,7 +2313,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will
+        /// Creates a Lien which applies to the resource denoted by the `parent` field. Callers of this method will
         /// require permission on the `parent` resource. For example, applying to `projects/1234` requires permission
         /// `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be
         /// applied.
@@ -2325,7 +2325,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will
+        /// Creates a Lien which applies to the resource denoted by the `parent` field. Callers of this method will
         /// require permission on the `parent` resource. For example, applying to `projects/1234` requires permission
         /// `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be
         /// applied.
@@ -2362,7 +2362,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
+        /// Deletes a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
         /// example, a Lien with a `parent` of `projects/1234` requires permission
         /// `resourcemanager.projects.updateLiens`.
         /// </summary>
@@ -2373,7 +2373,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
+        /// Deletes a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
         /// example, a Lien with a `parent` of `projects/1234` requires permission
         /// `resourcemanager.projects.updateLiens`.
         /// </summary>
@@ -2415,7 +2415,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
+        /// Retrieves a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
         /// example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
         /// </summary>
         /// <param name="name">Required. The name/identifier of the Lien.</param>
@@ -2425,7 +2425,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
+        /// Retrieves a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
         /// example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
         /// </summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Lien>
@@ -2466,7 +2466,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// List all Liens applied to the `parent` resource. Callers of this method will require permission on the
+        /// Lists all Liens applied to the `parent` resource. Callers of this method will require permission on the
         /// `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission
         /// `resourcemanager.projects.get`.
         /// </summary>
@@ -2476,7 +2476,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// List all Liens applied to the `parent` resource. Callers of this method will require permission on the
+        /// Lists all Liens applied to the `parent` resource. Callers of this method will require permission on the
         /// `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission
         /// `resourcemanager.projects.get`.
         /// </summary>
@@ -4547,7 +4547,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Request that a new project be created. The result is an `Operation` which can be used to track the creation
+        /// Requests that a new project be created. The result is an `Operation` which can be used to track the creation
         /// process. This process usually takes a few seconds, but can sometimes take much longer. The tracking
         /// `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
         /// </summary>
@@ -4558,7 +4558,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Request that a new project be created. The result is an `Operation` which can be used to track the creation
+        /// Requests that a new project be created. The result is an `Operation` which can be used to track the creation
         /// process. This process usually takes a few seconds, but can sometimes take much longer. The tracking
         /// `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
         /// </summary>
@@ -4709,8 +4709,8 @@ namespace Google.Apis.CloudResourceManager.v3
 
         /// <summary>
         /// Returns the IAM access control policy for the specified project, in the format
-        /// `projects/{ProjectIdOrNumber}` e.g. projects/123. Permission is denied if the policy or the resource do not
-        /// exist.
+        /// `projects/{ProjectIdOrNumber}`, for example, `projects/123`. Permission is denied if the policy or the
+        /// resource do not exist.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -4724,8 +4724,8 @@ namespace Google.Apis.CloudResourceManager.v3
 
         /// <summary>
         /// Returns the IAM access control policy for the specified project, in the format
-        /// `projects/{ProjectIdOrNumber}` e.g. projects/123. Permission is denied if the policy or the resource do not
-        /// exist.
+        /// `projects/{ProjectIdOrNumber}`, for example, `projects/123`. Permission is denied if the policy or the
+        /// resource do not exist.
         /// </summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
         {
@@ -4877,7 +4877,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Move a project to another place in your resource hierarchy, under a new resource parent. Returns an
+        /// Moves a project to another place in your resource hierarchy, under a new resource parent. Returns an
         /// operation which can be used to track the process of the project move workflow. Upon success, the
         /// `Operation.response` field will be populated with the moved project. The caller must have
         /// `resourcemanager.projects.move` permission on the project, on the project's current and proposed new parent.
@@ -4892,7 +4892,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Move a project to another place in your resource hierarchy, under a new resource parent. Returns an
+        /// Moves a project to another place in your resource hierarchy, under a new resource parent. Returns an
         /// operation which can be used to track the process of the project move workflow. Upon success, the
         /// `Operation.response` field will be populated with the moved project. The caller must have
         /// `resourcemanager.projects.move` permission on the project, on the project's current and proposed new parent.
@@ -5023,7 +5023,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Search for projects that the caller has the `resourcemanager.projects.get` permission on, and also satisfy
+        /// Searches for projects on which the caller has the `resourcemanager.projects.get` permission and that match
         /// the specified query. This method returns projects in an unspecified order. This method is eventually
         /// consistent with project mutations; this means that a newly created project may not appear in the results or
         /// recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a
@@ -5035,7 +5035,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Search for projects that the caller has the `resourcemanager.projects.get` permission on, and also satisfy
+        /// Searches for projects on which the caller has the `resourcemanager.projects.get` permission and that match
         /// the specified query. This method returns projects in an unspecified order. This method is eventually
         /// consistent with project mutations; this means that a newly created project may not appear in the results or
         /// recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a
@@ -5134,19 +5134,19 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Sets the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}`
-        /// e.g. projects/123. CAUTION: This method will replace the existing policy, and cannot be used to append
-        /// additional IAM settings. Note: Removing service accounts from policies or changing their roles can render
-        /// services completely inoperable. It is important to understand how the service account is being used before
-        /// removing or updating its roles. The following constraints apply when using `setIamPolicy()`: + Project does
-        /// not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner
-        /// role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example,
-        /// group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com
-        /// organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a
-        /// project directly without any restrictions. However, to be added as an owner, a user must be invited using
-        /// the Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using
-        /// `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must
-        /// explicitly accept the invitation. + Invitations to grant the owner role cannot be sent using
+        /// Sets the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}`,
+        /// for example, `projects/123`. CAUTION: This method will replace the existing policy, and cannot be used to
+        /// append additional IAM settings. Note: Removing service accounts from policies or changing their roles can
+        /// render services completely inoperable. It is important to understand how the service account is being used
+        /// before removing or updating its roles. The following constraints apply when using `setIamPolicy()`: +
+        /// Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. +
+        /// The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For
+        /// example, group@myownpersonaldomain.com could be added as an owner to a project in the
+        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can
+        /// be made owners of a project directly without any restrictions. However, to be added as an owner, a user must
+        /// be invited using the Cloud Platform console and must accept the invitation. + A user cannot be granted the
+        /// owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console
+        /// and must explicitly accept the invitation. + Invitations to grant the owner role cannot be sent using
         /// `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + If the project is not part of
         /// an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in
         /// the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This
@@ -5165,19 +5165,19 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Sets the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}`
-        /// e.g. projects/123. CAUTION: This method will replace the existing policy, and cannot be used to append
-        /// additional IAM settings. Note: Removing service accounts from policies or changing their roles can render
-        /// services completely inoperable. It is important to understand how the service account is being used before
-        /// removing or updating its roles. The following constraints apply when using `setIamPolicy()`: + Project does
-        /// not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner
-        /// role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example,
-        /// group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com
-        /// organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a
-        /// project directly without any restrictions. However, to be added as an owner, a user must be invited using
-        /// the Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using
-        /// `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must
-        /// explicitly accept the invitation. + Invitations to grant the owner role cannot be sent using
+        /// Sets the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}`,
+        /// for example, `projects/123`. CAUTION: This method will replace the existing policy, and cannot be used to
+        /// append additional IAM settings. Note: Removing service accounts from policies or changing their roles can
+        /// render services completely inoperable. It is important to understand how the service account is being used
+        /// before removing or updating its roles. The following constraints apply when using `setIamPolicy()`: +
+        /// Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. +
+        /// The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For
+        /// example, group@myownpersonaldomain.com could be added as an owner to a project in the
+        /// myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can
+        /// be made owners of a project directly without any restrictions. However, to be added as an owner, a user must
+        /// be invited using the Cloud Platform console and must accept the invitation. + A user cannot be granted the
+        /// owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console
+        /// and must explicitly accept the invitation. + Invitations to grant the owner role cannot be sent using
         /// `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + If the project is not part of
         /// an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in
         /// the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This
@@ -5233,8 +5233,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Returns permissions that a caller has on the specified project, in the format `projects/{ProjectIdOrNumber}`
-        /// e.g. projects/123..
+        /// Returns permissions that a caller has on the specified project, in the format
+        /// `projects/{ProjectIdOrNumber}`, for example, `projects/123`.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -5247,8 +5247,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Returns permissions that a caller has on the specified project, in the format `projects/{ProjectIdOrNumber}`
-        /// e.g. projects/123..
+        /// Returns permissions that a caller has on the specified project, in the format
+        /// `projects/{ProjectIdOrNumber}`, for example, `projects/123`.
         /// </summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsResponse>
         {
