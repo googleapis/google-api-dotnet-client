@@ -18,6 +18,11 @@ name: Clast Publish
 # Trigger (the tag/label only names the run + artifact bundle; it does NOT set package versions):
 #   - push a tag like v2026.07.15  -> packs each package at its own upstream version and pushes.
 #   - manual run (workflow_dispatch) -> dry_run=true (default) packs without pushing.
+#
+# AUTH: NuGet.org trusted publishing (OIDC) — no long-lived API key secret. The job requests a GitHub OIDC
+# token (id-token: write) and NuGet/login exchanges it for a short-lived (~1h) API key. nuget.org accepts it
+# only because the trusted-publishing policy on the curt_hagenlocher account matches
+# clast-project/google-api-dotnet-client + clast-publish.yml — renaming this file breaks that match.
 
 on:
   push:
@@ -35,6 +40,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write   # OIDC token for NuGet trusted publishing
 
 jobs:
   publish:
@@ -149,11 +155,18 @@ jobs:
           name: clast-packages-${{ steps.ver.outputs.label }}
           path: ${{ github.workspace }}/clast-packages/*.nupkg
 
+      - name: NuGet login (trusted publishing)
+        id: nuget-login
+        if: ${{ github.event_name == 'push' || github.event.inputs.dry_run == 'false' }}
+        uses: NuGet/login@v1
+        with:
+          user: curt_hagenlocher
+
       - name: Push to NuGet.org
         if: ${{ github.event_name == 'push' || github.event.inputs.dry_run == 'false' }}
         shell: bash
         run: |
           dotnet nuget push "${{ github.workspace }}/clast-packages/*.nupkg" \
-            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" \
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate

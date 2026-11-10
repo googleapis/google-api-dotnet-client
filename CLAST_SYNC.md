@@ -77,7 +77,9 @@ Steps (example is this repo; take the target versions from the `upstream-sync` i
 
 ## Requirements
 
-- `clast-publish.yml` needs a `NUGET_API_KEY` secret (org-level secret on `clast-project` covers
-  all repos). The watch workflow needs no secrets — it uses the built-in `GITHUB_TOKEN`.
+- `clast-publish.yml` pushes to NuGet.org via **trusted publishing** (OIDC, `NuGet/login`) — no API key
+  secret. It relies on a trusted-publishing policy on the `curt_hagenlocher` nuget.org account for
+  `clast-project/google-api-dotnet-client` + `clast-publish.yml`; renaming the workflow file breaks it.
+  The watch workflow needs no secrets — it uses the built-in `GITHUB_TOKEN`.
 - Adding a new fork to the system: drop in `upstream-watch.yml` (unchanged) + a
   `.clast/upstream-baseline.json` listing its upstream packages, and add the repo to the routine.
