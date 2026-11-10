@@ -34,5 +34,9 @@
   "aiplatform.v1",
 
   // b/533068783
-  "readerrevenuesubscriptionlinking.v1"
+  "readerrevenuesubscriptionlinking.v1",
+
+  // b/582817219
+  "parallelstore.v1",
+  "parallelstore.v1beta"
 ]
