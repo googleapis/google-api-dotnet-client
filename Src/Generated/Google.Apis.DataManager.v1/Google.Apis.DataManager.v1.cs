@@ -326,6 +326,7 @@ namespace Google.Apis.DataManager.v1
                 this.service = service;
                 Insights = new InsightsResource(service);
                 PartnerLinks = new PartnerLinksResource(service);
+                Reports = new ReportsResource(service);
                 UserListDirectLicenses = new UserListDirectLicensesResource(service);
                 UserListGlobalLicenses = new UserListGlobalLicensesResource(service);
                 UserLists = new UserListsResource(service);
@@ -583,6 +584,134 @@ namespace Google.Apis.DataManager.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Reports resource.</summary>
+            public virtual ReportsResource Reports { get; }
+
+            /// <summary>The "reports" collection of methods.</summary>
+            public class ReportsResource
+            {
+                private const string Resource = "reports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary></summary>
+                /// <param name="parent"><c>null</c></param>
+                public virtual RetrievePartnerMatchReportRequest RetrievePartnerMatchReport(string parent)
+                {
+                    return new RetrievePartnerMatchReportRequest(this.service, parent);
+                }
+
+                /// <summary></summary>
+                public class RetrievePartnerMatchReportRequest : DataManagerBaseServiceRequest<Google.Apis.DataManager.v1.Data.RetrievePartnerMatchReportResponse>
+                {
+                    /// <summary>Constructs a new RetrievePartnerMatchReport request.</summary>
+                    public RetrievePartnerMatchReportRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CurrencyCode { get; set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> EndDate { get; set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> StartDate { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "retrievePartnerMatchReport";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/reports:retrievePartnerMatchReport";
+
+                    /// <summary>Initializes RetrievePartnerMatchReport parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accountTypes/[^/]+/accounts/[^/]+$",
+                        });
+                        RequestParameters.Add("currencyCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currencyCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("endDate", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endDate",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startDate", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startDate",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2082,6 +2211,9 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("landingPageDeviceInfo")]
         public virtual DeviceInfo LandingPageDeviceInfo { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("leadId")]
+        public virtual string LeadId { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("matchId")]
         public virtual string MatchId { get; set; }
 
@@ -2192,6 +2324,50 @@ namespace Google.Apis.DataManager.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("locationAutoDetectionEnabled")]
         public virtual System.Nullable<bool> LocationAutoDetectionEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CallInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _startTimestampRaw;
+
+        private object _startTimestamp;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
+        public virtual string StartTimestampRaw
+        {
+            get => _startTimestampRaw;
+            set
+            {
+                _startTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimestampDateTimeOffset instead.")]
+        public virtual object StartTimestamp
+        {
+            get => _startTimestamp;
+            set
+            {
+                _startTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimestampRaw);
+            set => StartTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2403,6 +2579,9 @@ namespace Google.Apis.DataManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("recordIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RecordIndices { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2426,6 +2605,9 @@ namespace Google.Apis.DataManager.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("appInstanceId")]
         public virtual string AppInstanceId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("callInfo")]
+        public virtual CallInfo CallInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("cartData")]
         public virtual CartData CartData { get; set; }
@@ -3204,6 +3386,21 @@ namespace Google.Apis.DataManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class PairData : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("pairIds")]
@@ -3292,6 +3489,99 @@ namespace Google.Apis.DataManager.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("implicitAccounts")]
         public virtual System.Collections.Generic.IList<PartnerCustomerAccount> ImplicitAccounts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PartnerMatchAdGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupId")]
+        public virtual System.Nullable<long> AdGroupId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PartnerMatchAdvertiserAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("accountType")]
+        public virtual string AccountType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PartnerMatchCampaign : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignId")]
+        public virtual System.Nullable<long> CampaignId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PartnerMatchLineItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual System.Nullable<long> LineItemId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PartnerMatchReportEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroup")]
+        public virtual PartnerMatchAdGroup AdGroup { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserAccount")]
+        public virtual PartnerMatchAdvertiserAccount AdvertiserAccount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
+        public virtual PartnerMatchCampaign Campaign { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFees")]
+        public virtual Money DataFees { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionCount")]
+        public virtual System.Nullable<long> ImpressionCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItem")]
+        public virtual PartnerMatchLineItem LineItem { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaCost")]
+        public virtual Money MediaCost { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userList")]
+        public virtual PartnerMatchUserList UserList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PartnerMatchUserList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userListId")]
+        public virtual System.Nullable<long> UserListId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3639,6 +3929,18 @@ namespace Google.Apis.DataManager.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("marketingDataInsights")]
         public virtual System.Collections.Generic.IList<MarketingDataInsight> MarketingDataInsights { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RetrievePartnerMatchReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerMatchReportEntries")]
+        public virtual System.Collections.Generic.IList<PartnerMatchReportEntry> PartnerMatchReportEntries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4110,6 +4412,9 @@ namespace Google.Apis.DataManager.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("recordCount")]
         public virtual System.Nullable<long> RecordCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("recordIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RecordIndices { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

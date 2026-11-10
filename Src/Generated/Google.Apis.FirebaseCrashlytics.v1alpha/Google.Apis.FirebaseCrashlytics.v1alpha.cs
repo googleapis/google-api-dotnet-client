@@ -776,15 +776,16 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     /// <summary>
                     /// Optional. Filters events by custom keys
                     /// (https://firebase.google.com/docs/crashlytics/customize-crash-reports#add-keys). Supported
-                    /// forms: * Equality: `custom_keys.level = "vip"` or `custom_keys.level:"vip"` * Presence:
-                    /// `custom_keys.level:*` * OR across values of one key: `custom_keys.level = "vip" OR
-                    /// custom_keys.level = "enterprise"` * AND across different keys: `custom_keys.level = "vip" AND
-                    /// custom_keys.region = "us"` Keys are case-sensitive. Keys and values containing spaces must be
-                    /// double-quoted, for example `custom_keys."app state" = "background"`. OR across different keys,
-                    /// repeating a key within an AND, NOT, and comparators other than `=` and `:` are rejected with
-                    /// INVALID_ARGUMENT. Wildcards are not supported in values; use `custom_keys.:*` to match events
-                    /// that set a key to any value. This filter expression applies in addition to the `filter` field
-                    /// above. The syntax is a subset of AIP-160 (https://google.aip.dev/160).
+                    /// forms: * Equality: `custom_keys.level = "vip"` * Has: `custom_keys.level:"vip"` (matches the
+                    /// same events as equality) * Presence: `custom_keys.level:*` * OR across values of one key:
+                    /// `custom_keys.level = "vip" OR custom_keys.level = "enterprise"` * AND across different keys:
+                    /// `custom_keys.level = "vip" AND custom_keys.region = "us"` Keys are case-sensitive. Keys and
+                    /// values containing spaces must be double-quoted, for example `custom_keys."app state" =
+                    /// "background"`. OR across different keys, repeating a key within an AND, NOT, and comparators
+                    /// other than `=` and `:` are rejected with INVALID_ARGUMENT. Wildcards are not supported in
+                    /// values; use `custom_keys.:*` to match events that set a key to any value. This filter expression
+                    /// applies in addition to the `filter` field above. The syntax is a subset of AIP-160
+                    /// (https://google.aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string FilterExpression { get; set; }
@@ -1775,6 +1776,24 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                     public virtual Google.Apis.Util.Repeatable<string> FilterVersionDisplayNames { get; set; }
 
                     /// <summary>
+                    /// Optional. Filters the events counted in the report by custom keys. Not all reports support this
+                    /// filter. It is currently only supported for web apps; see the report's `usage` field for whether
+                    /// `filter_expression` is supported. Requests for other apps or unsupported reports that set this
+                    /// field are rejected with `INVALID_ARGUMENT`. Supported forms: * Equality: `custom_keys.level =
+                    /// "vip"` * Has: `custom_keys.level:"vip"` (matches the same events as equality) * Presence:
+                    /// `custom_keys.level:*` * OR across values of one key: `custom_keys.level = "vip" OR
+                    /// custom_keys.level = "enterprise"` * AND across different keys: `custom_keys.level = "vip" AND
+                    /// custom_keys.region = "us"` Keys are case-sensitive. Keys and values containing spaces must be
+                    /// double-quoted, for example `custom_keys."app state" = "background"`. OR across different keys,
+                    /// repeating a key within an AND, NOT, and comparators other than `=` and `:` are rejected with
+                    /// INVALID_ARGUMENT. Wildcards are not supported in values; use `custom_keys.:*` to match events
+                    /// that set a key to any value. This filter expression applies in addition to the `filter` field
+                    /// above. The syntax is a subset of AIP-160 (https://google.aip.dev/160).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterExpression", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string FilterExpression { get; set; }
+
+                    /// <summary>
                     /// Optional. The report response will contain one data point per time grain. If omitted, the report
                     /// will contain a single data point for the complete interval.
                     /// </summary>
@@ -2009,6 +2028,14 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                             DefaultValue = null,
                             Pattern = null,
                         });
+                        RequestParameters.Add("filterExpression", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterExpression",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                         RequestParameters.Add("granularity", new Google.Apis.Discovery.Parameter
                         {
                             Name = "granularity",
@@ -2229,6 +2256,194 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha
                             Pattern = @"^projects/[^/]+/apps/[^/]+/users/[^/]+/crashReports$",
                         });
                     }
+                }
+            }
+
+            /// <summary>
+            /// Creates a Cloud Monitoring AlertPolicy for the requested Crashlytics Web alert type and returns the
+            /// created resource reference.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The firebase application. Format: "projects/{project}/apps/{app_id}".
+            /// </param>
+            public virtual GenerateAlertPolicyRequest GenerateAlertPolicy(Google.Apis.FirebaseCrashlytics.v1alpha.Data.GenerateAlertPolicyRequest body, string name)
+            {
+                return new GenerateAlertPolicyRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Creates a Cloud Monitoring AlertPolicy for the requested Crashlytics Web alert type and returns the
+            /// created resource reference.
+            /// </summary>
+            public class GenerateAlertPolicyRequest : FirebaseCrashlyticsBaseServiceRequest<Google.Apis.FirebaseCrashlytics.v1alpha.Data.GenerateAlertPolicyResponse>
+            {
+                /// <summary>Constructs a new GenerateAlertPolicy request.</summary>
+                public GenerateAlertPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseCrashlytics.v1alpha.Data.GenerateAlertPolicyRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The firebase application. Format: "projects/{project}/apps/{app_id}".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseCrashlytics.v1alpha.Data.GenerateAlertPolicyRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateAlertPolicy";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}:generateAlertPolicy";
+
+                /// <summary>Initializes GenerateAlertPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves the Android Profiling Manager configuration for an app.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the Profiling Manager configuration to retrieve. Format:
+            /// "projects/{project}/apps/{app}/profilingManagerConfig".
+            /// </param>
+            public virtual GetProfilingManagerConfigRequest GetProfilingManagerConfig(string name)
+            {
+                return new GetProfilingManagerConfigRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the Android Profiling Manager configuration for an app.</summary>
+            public class GetProfilingManagerConfigRequest : FirebaseCrashlyticsBaseServiceRequest<Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig>
+            {
+                /// <summary>Constructs a new GetProfilingManagerConfig request.</summary>
+                public GetProfilingManagerConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Profiling Manager configuration to retrieve. Format:
+                /// "projects/{project}/apps/{app}/profilingManagerConfig".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getProfilingManagerConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes GetProfilingManagerConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+/profilingManagerConfig$",
+                    });
+                }
+            }
+
+            /// <summary>Updates the Android Profiling Manager configuration for an app.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the Profiling Manager configuration. Format:
+            /// "projects/{project}/apps/{app}/profilingManagerConfig".
+            /// </param>
+            public virtual UpdateProfilingManagerConfigRequest UpdateProfilingManagerConfig(Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig body, string name)
+            {
+                return new UpdateProfilingManagerConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the Android Profiling Manager configuration for an app.</summary>
+            public class UpdateProfilingManagerConfigRequest : FirebaseCrashlyticsBaseServiceRequest<Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig>
+            {
+                /// <summary>Constructs a new UpdateProfilingManagerConfig request.</summary>
+                public UpdateProfilingManagerConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the Profiling Manager configuration. Format:
+                /// "projects/{project}/apps/{app}/profilingManagerConfig".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The list of ProfilingManagerConfig fields to update (`gcs_bucket`,
+                /// `heap_dump_collection_enabled`). If omitted, all populated (non-default) fields are updated; specify
+                /// an explicit `update_mask` (or `*`) when clearing a field to its default value (such as `""` or
+                /// `false`).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseCrashlytics.v1alpha.Data.ProfilingManagerConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateProfilingManagerConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes UpdateProfilingManagerConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+/profilingManagerConfig$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
         }
@@ -2891,6 +3106,35 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the GenerateAlertPolicy method.</summary>
+    public class GenerateAlertPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of alert to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertType")]
+        public virtual string AlertType { get; set; }
+
+        /// <summary>Optional. Language to use for the alert policy. Defaults to USER_PREFERENCE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the GenerateAlertPolicy method.</summary>
+    public class GenerateAlertPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The created Cloud Monitoring AlertPolicy resource name. Format:
+        /// "projects/{project}/alertPolicies/{alert_policy_id}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicy")]
+        public virtual string AlertPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A set of computed metric values for a time interval</summary>
     public class IntervalMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3470,6 +3714,35 @@ namespace Google.Apis.FirebaseCrashlytics.v1alpha.Data
         /// <summary>The type of track (prod, internal, etc...).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the Android Profiling Manager configuration for a Firebase application, used to manage Crashlytics
+    /// heap dump collection.
+    /// </summary>
+    public class ProfilingManagerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of the Google Cloud Storage bucket where enriched heap dumps are stored. Format:
+        /// "projects/{project}/buckets/{bucket}" (use `_` as `{project}` for global buckets, for example
+        /// "projects/_/buckets/my-global-bucket").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>Optional. Whether Crashlytics heap dump collection is enabled for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heapDumpCollectionEnabled")]
+        public virtual System.Nullable<bool> HeapDumpCollectionEnabled { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the Profiling Manager configuration. Format:
+        /// "projects/{project}/apps/{app}/profilingManagerConfig".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

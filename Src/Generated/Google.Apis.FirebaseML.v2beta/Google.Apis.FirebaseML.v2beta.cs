@@ -681,6 +681,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
+        /// <summary>
+        /// Optional. The source text to be edited or rewritten via voice instructions. When provided in `SMART` mode,
+        /// the model evaluates the audio input against this text and emits the complete replacement text in the
+        /// candidate response rather than appending to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceText")]
+        public virtual string SourceText { get; set; }
+
         /// <summary>Optional. Configures word-level timestamp generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordTimestamp")]
         public virtual System.Nullable<bool> WordTimestamp { get; set; }
@@ -1543,6 +1551,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inlineData")]
         public virtual GoogleCloudAiplatformV1beta1FunctionResponseBlob InlineData { get; set; }
 
+        /// <summary>
+        /// Optional. Processes this part's media for understanding. Only meaningful for video parts (`inline_data` or
+        /// `file_data` with video mime). Non-video parts ignore this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaProcessing")]
+        public virtual string MediaProcessing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1593,6 +1608,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelArmorConfig")]
         public virtual GoogleCloudAiplatformV1beta1ModelArmorConfig ModelArmorConfig { get; set; }
 
+        /// <summary>Optional. Configuration for persisting output assets to external storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig OutputConfig { get; set; }
+
         /// <summary>
         /// Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates.
         /// </summary>
@@ -1617,6 +1636,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tools")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Tool> Tools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for persisting output assets to external storage.</summary>
+    public class GoogleCloudAiplatformV1beta1GenerateContentRequestOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Cloud Storage URI prefix or directory where generated media assets should be written (e.g.
+        /// `gs://my-bucket/prefix/`). Supported URI schemes: `gs://`. When set, media bytes are written directly to
+        /// this location and returned as `FileData` with a `file_uri` instead of raw inline bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
+        public virtual string OutputUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2082,7 +2116,9 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual System.Nullable<bool> EnableWidget { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the types of Google Maps grounding to enable. Defaults to `places` when unset.
+        /// Optional. Specifies the types of Google Maps grounding to enable. Defaults to `places` when unset, and to
+        /// `places` and `routing` for Gemini 4 and later models. When set, only the listed types are enabled; for
+        /// example, setting only `places` disables routing.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingTypes")]
         public virtual GoogleCloudAiplatformV1beta1GoogleMapsGroundingTypes GroundingTypes { get; set; }
@@ -2102,7 +2138,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1GoogleMapsPlaces Places { get; set; }
 
         /// <summary>
-        /// Optional. Enables grounding with Google Maps Routing APIs (ComputeRoutes and SearchAlongRoute).
+        /// Optional. Enables grounding with Google Maps Routing APIs (ComputeRoutes and SearchAlongRoute). Also enabled
+        /// by default for Gemini 4 and later models when no `GroundingTypes` are specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routing")]
         public virtual GoogleCloudAiplatformV1beta1GoogleMapsRouting Routing { get; set; }
@@ -2121,7 +2158,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Grounding with Google Maps Routing APIs (ComputeRoutes and SearchAlongRoute).</summary>
+    /// <summary>
+    /// Grounding with Google Maps Routing APIs (ComputeRoutes and SearchAlongRoute). Also enabled by default for Gemini
+    /// 4 and later models when no grounding type is specified.
+    /// </summary>
     public class GoogleCloudAiplatformV1beta1GoogleMapsRouting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

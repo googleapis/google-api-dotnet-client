@@ -7530,6 +7530,25 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BuildStatus holds the status of a build.</summary>
+    public class BuildStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The log URL for the Cloud Build execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildLogUrl")]
+        public virtual string CloudBuildLogUrl { get; set; }
+
+        /// <summary>The message details of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The status of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Storage volume source using the Container Storage Interface.</summary>
     public class CSIVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7911,6 +7930,29 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Protocol for port. Must be "TCP". Defaults to "TCP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
+    public class ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The build status of the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStatus")]
+        public virtual BuildStatus BuildStatus { get; set; }
+
+        /// <summary>
+        /// ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision.
+        /// This field holds the digest value regardless of whether a tag or digest was originally specified in the
+        /// Container object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageDigest")]
+        public virtual string ImageDigest { get; set; }
+
+        /// <summary>The name of the container, if specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8513,6 +8555,20 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a volume backed by a Filestore instance.</summary>
+    public class FilestoreVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the Filestore volume. Format:
+        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
+        public virtual string Volume { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9172,6 +9228,14 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Optional. Option to specify the Pub/Sub topic to receive build status updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
+
+        /// <summary>
+        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
+        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region. This
+        /// field must be empty for the Build to be eligible to be paired with a pre-provisioned worker VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
+        public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
 
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
@@ -10721,6 +10785,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restartPolicy")]
         public virtual string RestartPolicy { get; set; }
 
+        /// <summary>Optional. Sandbox configuration that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the Instance. The service account
         /// represents the identity of the running container, and determines what permissions the Instance has. If not
@@ -11829,6 +11897,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeClassName")]
         public virtual string RuntimeClassName { get; set; }
 
+        /// <summary>Optional. Sandbox configuration that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>
         /// Email address of the IAM service account associated with the revision of the service. The service account
         /// represents the identity of the running revision, and determines what permissions the revision has. If not
@@ -11863,6 +11935,13 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV1Condition> Conditions { get; set; }
+
+        /// <summary>
+        /// Output only. Status information for each of the specified containers. The status includes the resolved
+        /// digest for specified images.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
+        public virtual System.Collections.Generic.IList<ContainerStatus> ContainerStatuses { get; set; }
 
         /// <summary>
         /// Output only. The configured number of instances running this revision. For Cloud Run, this only includes
@@ -12027,6 +12106,63 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
         public virtual Overrides Overrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for sandboxes.</summary>
+    public class SandboxConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Sandbox templates that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templates")]
+        public virtual System.Collections.Generic.IList<SandboxTemplate> Templates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Template for a single sandbox.</summary>
+    public class SandboxTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Optional. Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is
+        /// not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>Optional. List of environment variables to set in the sandbox.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; }
+
+        /// <summary>
+        /// Required. Name of the container image in Dockerhub or Artifact Registry. If the host is not provided,
+        /// Dockerhub is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>Required. Name of the sandbox specified as a DNS_LABEL (RFC 1123).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Volume to mount into the container's filesystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
+        public virtual System.Collections.Generic.IList<VolumeMount> VolumeMounts { get; set; }
+
+        /// <summary>
+        /// Optional. Container's working directory. If not specified, the container runtime's default will be used,
+        /// which might be configured in the container image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
+        public virtual string WorkingDir { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12551,6 +12687,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> NodeSelector { get; set; }
 
+        /// <summary>Optional. Sandbox configuration that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the task of a job execution. The service
         /// account represents the identity of the running task, and determines what permissions the task has. If not
@@ -12792,6 +12932,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Ephemeral storage used as a shared volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
         public virtual EmptyDirVolumeSource EmptyDir { get; set; }
+
+        /// <summary>Represents a volume backed by a Filestore instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
+        public virtual FilestoreVolumeSource Filestore { get; set; }
 
         /// <summary>Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

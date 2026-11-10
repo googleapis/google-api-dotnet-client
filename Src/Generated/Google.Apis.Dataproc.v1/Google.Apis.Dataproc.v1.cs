@@ -13693,6 +13693,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metastoreConfig")]
         public virtual MetastoreConfig MetastoreConfig { get; set; }
 
+        /// <summary>Optional. Config for scheduling the resources to be allocated when available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulingConfig")]
+        public virtual SchedulingConfig SchedulingConfig { get; set; }
+
         /// <summary>Optional. The Compute Engine config settings for a cluster's secondary worker instances</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
         public virtual InstanceGroupConfig SecondaryWorkerConfig { get; set; }
@@ -18229,6 +18233,30 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. Properties of the workload organized by origin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertiesInfo")]
         public virtual PropertiesInfo PropertiesInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Config for scheduling the request to create Compute Engine resources for the cluster, when available.
+    /// </summary>
+    public class SchedulingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Required lifetime of the resources, once provisioned. Min 10 mins, Max/Default 7 days . Note that
+        /// the cluster can still be deleted before reaching this time. This time is a maximum amount of time before the
+        /// cluster is forcibly deleted. Lower times are more likely to start running sooner.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedRunDuration")]
+        public virtual object RequestedRunDuration { get; set; }
+
+        /// <summary>
+        /// Optional. How long to wait for worker resources to be allocated before failing the cluster creation request.
+        /// Max/Default value: 13 days
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulingTimeout")]
+        public virtual object SchedulingTimeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

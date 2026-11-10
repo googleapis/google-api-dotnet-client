@@ -5070,6 +5070,21 @@ namespace Google.Apis.CloudRun.v2
 }
 namespace Google.Apis.CloudRun.v2.Data
 {
+    /// <summary>Configuration for Ambient Networking.</summary>
+    public class GoogleCloudRunV2AmbientNetworking : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ambient networking scope of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ambientScope")]
+        public virtual string AmbientScope { get; set; }
+
+        /// <summary>Optional. Whether ambient networking is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings for Binary Authorization feature.</summary>
     public class GoogleCloudRunV2BinaryAuthorization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5142,14 +5157,74 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string SourceLocation { get; set; }
 
         /// <summary>
-        /// Optional. Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function.
-        /// The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where
-        /// `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and
+        /// Optional. Name of the Cloud Build private pool that should be used to build the Cloud Run function. The
+        /// format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}`
+        /// and `{region}` are the project id and region respectively where the worker pool is defined and
         /// `{workerPool}` is the short name of the worker pool.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Build configuration for a container.</summary>
+    public class GoogleCloudRunV2BuildConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Builds the source using Buildpacks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildpacksBuild")]
+        public virtual GoogleCloudRunV2BuildConfigurationBuildpacksBuild BuildpacksBuild { get; set; }
+
+        /// <summary>Optional. Builds the source using Docker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerBuild")]
+        public virtual GoogleCloudRunV2BuildConfigurationDockerBuild DockerBuild { get; set; }
+
+        /// <summary>Required. Artifact Registry URI to store the built image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageRepositoryUri")]
+        public virtual string ImageRepositoryUri { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to use for the build. Its resource name in the format
+        /// `projects/{project}/serviceAccounts/{email}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Optional. Tags to add to the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>Optional. Configuration for the worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerConfiguration")]
+        public virtual GoogleCloudRunV2WorkerConfiguration WorkerConfiguration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Buildpacks build configuration.</summary>
+    public class GoogleCloudRunV2BuildConfigurationBuildpacksBuild : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specify base image other than the default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildBaseImageUri")]
+        public virtual string BuildBaseImageUri { get; set; }
+
+        /// <summary>Optional. Cache image URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cacheImageUri")]
+        public virtual string CacheImageUri { get; set; }
+
+        /// <summary>Optional. Environment variables for the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Docker build configuration.</summary>
+    public class GoogleCloudRunV2BuildConfigurationDockerBuild : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5164,6 +5239,25 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. Source code location of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
         public virtual string SourceLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BuildStatus holds the status of a build.</summary>
+    public class GoogleCloudRunV2BuildStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The log URL for the Cloud Build execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildLogUrl")]
+        public virtual string CloudBuildLogUrl { get; set; }
+
+        /// <summary>The message details of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The status of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5230,6 +5324,21 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Indicates that the request should be validated without actually cancelling any resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    /// <summary>Configuration for Cloud Build worker.</summary>
+    public class GoogleCloudRunV2CloudBuildWorkerConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The machine type for the Cloud Build worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. The name of the Cloud Build worker pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -5379,6 +5488,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseImageUri")]
         public virtual string BaseImageUri { get; set; }
 
+        /// <summary>Optional. The build configuration for the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildConfig")]
+        public virtual GoogleCloudRunV2BuildConfiguration BuildConfig { get; set; }
+
         /// <summary>Output only. The build info of the container image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildInfo")]
         public virtual GoogleCloudRunV2BuildInfo BuildInfo { get; set; }
@@ -5509,6 +5622,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>ContainerStatus holds the information of container name and image digest value.</summary>
     public class GoogleCloudRunV2ContainerStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The build status of the container image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStatus")]
+        public virtual GoogleCloudRunV2BuildStatus BuildStatus { get; set; }
+
         /// <summary>
         /// ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision.
         /// This field holds the digest value regardless of whether a tag or digest was originally specified in the
@@ -6216,7 +6333,23 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.</summary>
+    /// <summary>Represents a volume backed by a Filestore instance.</summary>
+    public class GoogleCloudRunV2FilestoreVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the Filestore volume. Format:
+        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
+        public virtual string Volume { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a volume backed by a Cloud Storage bucket (mounted via Cloud Storage FUSE or as a block device disk).
+    /// </summary>
     public class GoogleCloudRunV2GCSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Storage Bucket name.</summary>
@@ -6605,6 +6738,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. Restart policy for the Instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restartPolicy")]
         public virtual string RestartPolicy { get; set; }
+
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
@@ -7378,6 +7515,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// </summary>
     public class GoogleCloudRunV2Revision : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The ambient networking configuration for this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ambientNetworking")]
+        public virtual GoogleCloudRunV2AmbientNetworking AmbientNetworking { get; set; }
+
         /// <summary>
         /// Output only. Unstructured key value map that may be set by external tools to store and arbitrary metadata.
         /// They are not queryable and should be preserved when modifying objects.
@@ -7399,6 +7540,13 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Condition> Conditions { get; set; }
+
+        /// <summary>
+        /// Output only. Status information for each of the specified containers. The status includes the resolved
+        /// digest for specified images.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2ContainerStatus> ContainerStatuses { get; set; }
 
         /// <summary>Holds the list which define the units of execution for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
@@ -7613,6 +7761,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
+        /// <summary>Output only. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
@@ -7757,6 +7909,10 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>RevisionTemplate describes the data a revision should have when created from a template.</summary>
     public class GoogleCloudRunV2RevisionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The ambient networking configuration for this revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ambientNetworking")]
+        public virtual GoogleCloudRunV2AmbientNetworking AmbientNetworking { get; set; }
+
         /// <summary>
         /// Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They
         /// are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support
@@ -7842,6 +7998,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
 
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>Optional. Scaling settings for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
         public virtual GoogleCloudRunV2RevisionScaling Scaling { get; set; }
@@ -7905,6 +8065,63 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Indicates that the request should be validated without actually deleting any resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    /// <summary>Configuration for sandboxes.</summary>
+    public class GoogleCloudRunV2SandboxConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Sandbox templates that can be launched through the `sandbox` CLI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2SandboxTemplate> Templates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Template for a single sandbox.</summary>
+    public class GoogleCloudRunV2SandboxTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Optional. Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is
+        /// not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>Optional. List of environment variables to set in the sandbox.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2EnvVar> Env { get; set; }
+
+        /// <summary>
+        /// Required. Name of the container image in Dockerhub or Artifact Registry. If the host is not provided,
+        /// Dockerhub is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual string Image { get; set; }
+
+        /// <summary>Required. Name of the sandbox specified as a DNS_LABEL (RFC 1123).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Volume to mount into the container's filesystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2VolumeMount> VolumeMounts { get; set; }
+
+        /// <summary>
+        /// Optional. Container's working directory. If not specified, the container runtime's default will be used,
+        /// which might be configured in the container image.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
+        public virtual string WorkingDir { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>SecretEnvVarSource represents a source for the value of an EnvVar.</summary>
@@ -8553,10 +8770,10 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>
-        /// Optional. Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format
-        /// of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and
-        /// `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is
-        /// the short name of the worker pool.
+        /// Optional. Name of the Cloud Build private pool that should be used to build the function. The format of this
+        /// field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}`
+        /// are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short
+        /// name of the worker pool.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
@@ -8875,6 +9092,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retried")]
         public virtual System.Nullable<int> Retried { get; set; }
 
+        /// <summary>Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
@@ -9093,6 +9314,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
         public virtual GoogleCloudRunV2NodeSelector NodeSelector { get; set; }
 
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
+
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the Task of a Job. The service account
         /// represents the identity of the running task, and determines what permissions the task has. If not provided,
@@ -9251,6 +9476,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
         public virtual GoogleCloudRunV2EmptyDirVolumeSource EmptyDir { get; set; }
 
+        /// <summary>Optional. Represents a volume backed by a Filestore instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
+        public virtual GoogleCloudRunV2FilestoreVolumeSource Filestore { get; set; }
+
         /// <summary>Persistent storage backed by a Google Cloud Storage bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcs")]
         public virtual GoogleCloudRunV2GCSVolumeSource Gcs { get; set; }
@@ -9323,6 +9552,17 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2NetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the worker.</summary>
+    public class GoogleCloudRunV2WorkerConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Cloud Build worker configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildWorkerConfiguration")]
+        public virtual GoogleCloudRunV2CloudBuildWorkerConfiguration CloudBuildWorkerConfiguration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9743,6 +9983,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
+
+        /// <summary>Optional. Configuration for sandboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sandboxes")]
+        public virtual GoogleCloudRunV2SandboxConfiguration Sandboxes { get; set; }
 
         /// <summary>
         /// Optional. Email address of the IAM service account associated with the revision of the service. The service
@@ -10361,6 +10605,14 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. Option to specify the Pub/Sub topic to receive build status updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
+
+        /// <summary>
+        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
+        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region. This
+        /// field must be empty for the Build to be eligible to be paired with a pre-provisioned worker VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
+        public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
 
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]

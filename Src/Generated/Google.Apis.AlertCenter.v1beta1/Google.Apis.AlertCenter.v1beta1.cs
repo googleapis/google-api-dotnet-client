@@ -1515,6 +1515,21 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         }
     }
 
+    /// <summary>The alert data relevant for this alert</summary>
+    public class AlertDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Audit data key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>Audit data values</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldValues")]
+        public virtual System.Collections.Generic.IList<SystemDefinedAlertDataAlertDetailFieldValue> FieldValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A customer feedback about an alert.</summary>
     public class AlertFeedback : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3131,6 +3146,75 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>The serial number of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>System defined alerts which trigger when an relevant audit event occures.</summary>
+    public class SystemDefinedAlertData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of the conditions which led to alert being created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertDetails")]
+        public virtual System.Collections.Generic.IList<AlertDetail> AlertDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Audit data value</summary>
+    public class SystemDefinedAlertDataAlertDetailFieldValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value if the type is boolean</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Value if the type is integer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; }
+
+        /// <summary>Value if the type is string</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        private string _timestampValueRaw;
+
+        private object _timestampValue;
+
+        /// <summary>Value is the type is a timestamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
+        public virtual string TimestampValueRaw
+        {
+            get => _timestampValueRaw;
+            set
+            {
+                _timestampValue = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampValueRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampValueRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampValueDateTimeOffset instead.")]
+        public virtual object TimestampValue
+        {
+            get => _timestampValue;
+            set
+            {
+                _timestampValueRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestampValue = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampValueRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

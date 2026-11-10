@@ -3492,6 +3492,81 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
+            /// Replaces the cards included in a message. A Chat app can only replace cards on a human-created message
+            /// if the message already contains cards, and the cards were created by the app. If the app replaces the
+            /// cards with an empty list, the cards are removed. After removing the cards, the app cannot add cards back
+            /// to the message. Requires [app
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.bot`
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The resource name of the message. Format: `spaces/{space}/messages/{message}`
+            /// </param>
+            public virtual ReplaceCardsRequest ReplaceCards(Google.Apis.HangoutsChat.v1.Data.ReplaceMessageCardsRequest body, string name)
+            {
+                return new ReplaceCardsRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Replaces the cards included in a message. A Chat app can only replace cards on a human-created message
+            /// if the message already contains cards, and the cards were created by the app. If the app replaces the
+            /// cards with an empty list, the cards are removed. After removing the cards, the app cannot add cards back
+            /// to the message. Requires [app
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the
+            /// [authorization
+            /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+            /// `https://www.googleapis.com/auth/chat.bot`
+            /// </summary>
+            public class ReplaceCardsRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ReplaceMessageCardsResponse>
+            {
+                /// <summary>Constructs a new ReplaceCards request.</summary>
+                public ReplaceCardsRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.ReplaceMessageCardsRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the message. Format: `spaces/{space}/messages/{message}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.ReplaceMessageCardsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "replaceCards";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:replaceCards";
+
+                /// <summary>Initializes ReplaceCards parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/messages/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Searches for messages in Google Chat that the calling user has access to. Returns a list of messages
             /// matching the search criteria. To search across all spaces the user has access to, set `parent` to
             /// `spaces/-`. Using any other value for `parent` results in an `INVALID_ARGUMENT` error. The returned
@@ -7224,6 +7299,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cardId")]
         public virtual string CardId { get; set; }
 
+        /// <summary>Output only. The app that owns the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerUser")]
+        public virtual User OwnerUser { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7284,6 +7363,57 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The thread of the linked Chat space resource. Format: `spaces/{space}/threads/{thread}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thread")]
         public virtual string Thread { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Citations are inline references that can provide users more detailed information about the inline reference.
+    /// Corresponding inline citations should be present in the message text in a markup format of `{text}`. Citations
+    /// are only supported when the message's `markup_syntax` is set to `MARKDOWN`. Unreferenced citations in
+    /// `Elements.citations` (those without a matching `` tag in the message text) are ignored and do not cause the
+    /// message to be rejected.
+    /// </summary>
+    public class Citation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of sources that are relevant to the citation. Sources are displayed in the citation hover
+        /// card.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedSources")]
+        public virtual System.Collections.Generic.IList<CitedSource> CitedSources { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the citation. This ID is defined by the app creating the citation and must match the
+        /// `data-id` attribute of the `` tag in the message text. Must contain only ASCII letters and numbers, and less
+        /// than 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to a source of information.</summary>
+    public class CitedSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional information to show alongside the snippet in the form of a footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footer")]
+        public virtual Footer Footer { get; set; }
+
+        /// <summary>Optional. Snippet containing information directly from the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual Snippet Snippet { get; set; }
+
+        /// <summary>Required. The plaintext title of the `CitedSource`. Does not support markdown format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Required. The URI pointing to the resource referenced by this `CitedSource`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7368,29 +7498,39 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class CommonEventObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A map containing the current values of the widgets in the displayed card. The map keys are the string IDs
-        /// assigned with each widget. The structure of the map value object is dependent on the widget type: **Note**:
-        /// The following examples are formatted for Apps Script's V8 runtime. If you're using Rhino runtime, you must
-        /// add `[""]` after the value. For example, instead of
+        /// A map containing the current values of the widgets in the displayed card. The map keys are the string `name`
+        /// values assigned to each input widget (such as `TextInput.name`, `SelectionInput.name`,
+        /// `DateTimePicker.name`, or `DecoratedText.SwitchControl.name`). The structure of the map value object is
+        /// dependent on the widget type: **Note**: The following examples are formatted for Apps Script's V8 runtime.
+        /// If you're using Rhino runtime, you must add `[""]` after the value. For example, instead of
         /// `e.commonEventObject.formInputs.employeeName.stringInputs.value[0]`, format the event object as
         /// `e.commonEventObject.formInputs.employeeName[""].stringInputs.value[0]`. To learn more about runtimes in
         /// Apps Script, see the [V8 Runtime Overview](https://developers.google.com/apps-script/guides/v8-runtime). *
-        /// Single-valued widgets (for example, a text box): a list of strings (only one element). **Example**: for a
-        /// text input widget with `employeeName` as its ID, access the text input value with:
-        /// `e.commonEventObject.formInputs.employeeName.stringInputs.value[0]`. * Multi-valued widgets (for example,
-        /// checkbox groups): a list of strings. **Example**: for a multi-value widget with `participants` as its ID,
-        /// access the value array with: `e.commonEventObject.formInputs.participants.stringInputs.value`. * **A
-        /// date-time picker**: a [`DateTimeInput
+        /// Single-valued widgets (for example, a `TextInput` widget, or a `SelectionInput` widget of type `DROPDOWN` or
+        /// `RADIO_BUTTON`): a `StringInputs` object containing a single-element list (or an empty list if no selection
+        /// is made). **Example**: for a text input widget with `employeeName` as its `name`, access the text input
+        /// value with: `e.commonEventObject.formInputs.employeeName.stringInputs.value[0]`. * Multi-valued widgets (for
+        /// example, a `SelectionInput` widget of type `CHECK_BOX`, `SWITCH`, or `MULTI_SELECT`): a `StringInputs`
+        /// object containing the list of selected item `value` strings. **Example**: for a multi-value widget with
+        /// `participants` as its `name`, access the value array with:
+        /// `e.commonEventObject.formInputs.participants.stringInputs.value`. * **A `DecoratedText.SwitchControl`
+        /// widget**: a `StringInputs` object. When `selected` is `true`, `stringInputs.value` contains the switch's
+        /// `value` field (or `""` if `value` was not specified; if multiple switches share the same `name`, each
+        /// selected switch's `value` is included in the list). When `selected` is `false`, the switch's `value` is
+        /// omitted from `stringInputs.value`. * **A date-time picker (`DateTimePickerType.DATE_AND_TIME`)**: a
+        /// [`DateTimeInput
         /// object`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-time-input).
-        /// **Example**: For a picker with an ID of `myDTPicker`, access the
+        /// **Example**: For a picker with a `name` of `myDTPicker`, access the
         /// [`DateTimeInput`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-time-input)
-        /// object using `e.commonEventObject.formInputs.myDTPicker.dateTimeInput`. * **A date-only picker**: a
-        /// [`DateInput object`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-input).
-        /// **Example**: For a picker with an ID of `myDatePicker`, access the
+        /// object using `e.commonEventObject.formInputs.myDTPicker.dateTimeInput`. * **A date-only picker
+        /// (`DateTimePickerType.DATE_ONLY`)**: a [`DateInput
+        /// object`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-input). **Example**:
+        /// For a picker with a `name` of `myDatePicker`, access the
         /// [`DateInput`](https://developers.google.com/workspace/add-ons/concepts/event-objects#date-input) object
-        /// using `e.commonEventObject.formInputs.myDatePicker.dateInput`. * **A time-only picker**: a [`TimeInput
+        /// using `e.commonEventObject.formInputs.myDatePicker.dateInput`. * **A time-only picker
+        /// (`DateTimePickerType.TIME_ONLY`)**: a [`TimeInput
         /// object`](https://developers.google.com/workspace/add-ons/concepts/event-objects#time-input). **Example**:
-        /// For a picker with an ID of `myTimePicker`, access the
+        /// For a picker with a `name` of `myTimePicker`, access the
         /// [`TimeInput`](https://developers.google.com/workspace/add-ons/concepts/event-objects#time-input) object
         /// using `e.commonEventObject.formInputs.myTimePicker.timeInput`.
         /// </summary>
@@ -7661,11 +7801,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// interactions](https://developers.google.com/workspace/chat/receive-respond-interactions). In addition to
     /// receiving events from user interactions, Chat apps can receive events about changes to spaces, such as when a
     /// new member is added to a space. To learn about space events, see [Work with events from Google
-    /// Chat](https://developers.google.com/workspace/chat/events-overview). Note: This event is only used for [Chat
-    /// interaction events](https://developers.google.com/workspace/chat/receive-respond-interactions). If your Chat app
-    /// is built as a [Google Workspace add-on](https://developers.google.com/workspace/add-ons/chat/build), see [Chat
-    /// event objects](https://developers.google.com/workspace/add-ons/concepts/event-objects#chat-event-object) in the
-    /// add-ons documentation.
+    /// Chat](https://developers.google.com/workspace/chat/events-overview). Warning: This event object is only used for
+    /// [Chat apps that aren't
+    /// add-ons](https://developers.google.com/workspace/chat/receive-respond-interactions#not-add-on-interaction-events).
+    /// If your Chat app is built as a [Google Workspace
+    /// add-on](https://developers.google.com/workspace/add-ons/chat/build), instead see [Add-on event
+    /// objects](https://developers.google.com/workspace/add-ons/concepts/event-objects#chat-event-object) in the
+    /// add-ons documentation. To confirm which type of event your app receives, see [Determine your event
+    /// type](https://developers.google.com/workspace/chat/receive-respond-interactions#determine-event-type).
     /// </summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7804,10 +7947,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Wrapper around the card body of the dialog.</summary>
     public class Dialog : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Input only. Body of the dialog, which is rendered in a modal. Google Chat apps don't support the following
-        /// card entities: `DateTimePicker`, `OnChangeAction`.
-        /// </summary>
+        /// <summary>Input only. Body of the dialog, which is rendered in a modal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual GoogleAppsCardV1Card Body { get; set; }
 
@@ -7919,6 +8059,48 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Elements are additional message components, including inline `citations` (where each citation is associated with
+    /// a specific portion of the message text) and `cited_sources` (which are general references used to generate the
+    /// response and are not directly linked to specific segments of the text). Both `citations` and `cited_sources` can
+    /// be provided as input when creating or updating a message and are populated on output when reading a message.
+    /// </summary>
+    public class Elements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of inline citations referenced within the message text (via `` tags) that render as
+        /// interactive hover cards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<Citation> Citations { get; set; }
+
+        /// <summary>
+        /// Optional. A list of sources to be displayed under the message as footer links. These are not referenced
+        /// inline. For inline references, use `citations`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedSources")]
+        public virtual System.Collections.Generic.IList<CitedSource> CitedSources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object encapsulating different ways of representing an image. Currently supported representations: * An image
+    /// fetched from a URI. Additional representations might be supported in the future.
+    /// </summary>
+    public class ElementsImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The URI of the image. Must be a publicly accessible URI so that Chat can fetch and display it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An emoji that is used as a reaction to a message.</summary>
     public class Emoji : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7975,6 +8157,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>List of spaces in the requested (or first) page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaces")]
         public virtual System.Collections.Generic.IList<Space> Spaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A footer for a source, used for attribution.</summary>
+    public class Footer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The plaintext to display in the footer. Does not support markdown format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8262,14 +8455,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The card's actions. Actions are added to the card's toolbar menu. [Google Workspace
-        /// add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON constructs a card
-        /// action menu with `Settings` and `Send Feedback` options:
+        /// The card's actions. Actions are added to the card's toolbar menu. Supports up to 10 `CardAction` items.
+        /// [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON
+        /// constructs a card action menu with `Settings` and `Send Feedback` options:
         /// ```
-        /// "card_actions": [ { "actionLabel": "Settings",
-        /// "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key": "viewType", "value": "SETTING"
-        /// } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send Feedback", "onClick": {
-        /// "openLink": { "url": "https://example.com/feedback" } } } ]
+        /// "card_actions": [ {
+        /// "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
+        /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
+        /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ]
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
@@ -8422,16 +8615,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A carousel, also known as a slider, rotates and displays a list of widgets in a slideshow format, with buttons
-    /// navigating to the previous or next widget. For example, this is a JSON representation of a carousel that
-    /// contains three text paragraph widgets.
+    /// Rotates and displays a list of carousel cards in a slideshow format, with buttons navigating to the previous or
+    /// next card. For example, this is a JSON representation of a carousel that contains three text paragraph widgets.
     /// ```
-    /// { "carouselCards": [ { "widgets": [ { "textParagraph": { "text":
-    /// "First text paragraph in carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Second text paragraph
-    /// in carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Third text paragraph in carousel", } } ] } ]
-    /// }
+    /// { "carouselCards": [ { "widgets": [ { "textParagraph": { "text": "First text paragraph in carousel" } } ] },
+    /// { "widgets": [ { "textParagraph": { "text": "Second text paragraph in carousel" } } ] }, { "widgets": [ {
+    /// "textParagraph": { "text": "Third text paragraph in carousel" } } ] } ] }
     /// ```
-    /// [Google Chat apps](https://developers.google.com/workspace/chat):
+    /// [Google Chat
+    /// apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class GoogleAppsCardV1Carousel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8486,13 +8678,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>
-        /// Whether the chip is in an active state and responds to user actions. Defaults to `true`. Deprecated. Use
-        /// `disabled` instead.
+        /// Deprecated: Use `disabled` instead. Whether the chip is in an active state and responds to user actions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        /// <summary>The icon image. If both `icon` and `text` are set, then the icon appears before the text.</summary>
+        /// <summary>
+        /// The icon image. If both `icon` and `label` are set, then the icon appears before the label.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual GoogleAppsCardV1Icon Icon { get; set; }
 
@@ -8710,7 +8903,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The number representing the time zone offset from UTC, in minutes. If set, the `value_ms_epoch` is displayed
-        /// in the specified time zone. If unset, the value defaults to the user's time zone setting.
+        /// in the specified time zone. If unset, the value defaults to the user's time zone setting. Note: This field
+        /// is in minutes, whereas user interaction event payloads typically provide time zone offsets in milliseconds
+        /// (divide by `60000` to convert).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
         public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
@@ -8777,7 +8972,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual GoogleAppsCardV1Icon Icon { get; set; }
 
-        /// <summary>This action is triggered when users click `topLabel` or `bottomLabel`.</summary>
+        /// <summary>
+        /// This action is triggered when users click anywhere on the `DecoratedText` widget (including `text`,
+        /// `top_label`, `bottom_label`, and icons), except when clicking a separate interactive control (`button` or
+        /// `switch_control`).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
 
@@ -8941,8 +9140,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1GridItem> Items { get; set; }
 
         /// <summary>
-        /// This callback is reused by each individual grid item, but with the item's identifier and index in the items
-        /// list added to the callback's parameters.
+        /// This callback is reused by each individual grid item, but with the item's identifier added to the callback's
+        /// parameters (under the key `"grid_item_identifier"`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
@@ -9386,7 +9585,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uncollapsibleWidgetsCount")]
         public virtual System.Nullable<int> UncollapsibleWidgetsCount { get; set; }
 
-        /// <summary>All the widgets in the section. Must contain at least one widget.</summary>
+        /// <summary>
+        /// All the widgets in the section. Must contain at least one widget. A card supports up to 100 widgets across
+        /// all sections.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1Widget> Widgets { get; set; }
 
@@ -9582,8 +9784,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ControlType { get; set; }
 
         /// <summary>
-        /// The name by which the switch widget is identified in a form input event. For details about working with form
-        /// inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
+        /// The name by which the switch widget is identified in a form input event (as the key in
+        /// `CommonEventObject.form_inputs`). For details about working with form inputs, see [Receive form
+        /// data](https://developers.google.com/workspace/chat/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9592,13 +9795,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
-        /// <summary>When `true`, the switch is selected.</summary>
+        /// <summary>
+        /// When `true`, the switch is selected, and its `value` is included in
+        /// `CommonEventObject.form_inputs[name].string_inputs.value`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
         public virtual System.Nullable<bool> Selected { get; set; }
 
         /// <summary>
-        /// The value entered by a user, returned as part of a form input event. For details about working with form
-        /// inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data).
+        /// The value returned in `CommonEventObject.form_inputs[name].string_inputs` when the switch is selected
+        /// (`selected` is `true`). If `selected` is `true` and `value` is unset, an empty string (`""`) is returned in
+        /// `string_inputs.value`. When `selected` is `false`, this value is omitted from `string_inputs.value`. For
+        /// details about working with form inputs, see [Receive form
+        /// data](https://developers.google.com/workspace/chat/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -9822,11 +10031,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
 
         /// <summary>
-        /// A carousel contains a collection of nested widgets. For example, this is a JSON representation of a carousel
-        /// that contains two text paragraphs.
+        /// Contains a collection of `CarouselCard` items, each of which contains nested widgets. For example, this is a
+        /// JSON representation of a carousel that contains two carousel cards, each with a text paragraph:
         /// ```
-        /// { "widgets": [ { "textParagraph": { "text": "First text paragraph in
-        /// the carousel." } }, { "textParagraph": { "text": "Second text paragraph in the carousel." } } ] }
+        /// {
+        /// "carouselCards": [ { "widgets": [ { "textParagraph": { "text": "First text paragraph in the carousel." } } ]
+        /// }, { "widgets": [ { "textParagraph": { "text": "Second text paragraph in the carousel." } } ] } ] }
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carousel")]
@@ -9836,7 +10046,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// A list of chips. For example, the following JSON creates two chips. The first is a text chip and the second
         /// is an icon chip that opens a link:
         /// ```
-        /// "chipList": { "chips": [ { "text": "Edit", "disabled": true, }, {
+        /// "chipList": { "chips": [ { "label": "Edit", "disabled": true }, {
         /// "icon": { "knownIcon": "INVITE", "altText": "check calendar" }, "onClick": { "openLink": { "url":
         /// "https://example.com/calendar" } } } ] }
         /// ```
@@ -10967,6 +11177,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deletionMetadata")]
         public virtual DeletionMetadata DeletionMetadata { get; set; }
 
+        /// <summary>
+        /// Optional. Additional message components, including inline `citations` (where each citation is associated
+        /// with a specific portion of the message text) and `cited_sources` (which are general references used to
+        /// generate the response and are not directly linked to specific segments of the text). On input, provide
+        /// `elements` when creating or updating a message. On output, both `citations` and `cited_sources` are
+        /// populated when reading a message that contains them. Callers can read structured citation metadata from
+        /// `elements`, while `formatted_text` also includes inline citation tags or source links depending on
+        /// `markup_syntax`. These differ from `annotations`, which are output-only and offer supplementary information
+        /// tied to message fragments or the entire message text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual Elements Elements { get; set; }
+
         /// <summary>Output only. The list of emoji reaction summaries on the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emojiReactionSummaries")]
         public virtual System.Collections.Generic.IList<EmojiReactionSummary> EmojiReactionSummaries { get; set; }
@@ -11036,7 +11259,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
             set => LastUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Specifies how the server interprets the message `text` field content.</summary>
+        /// <summary>
+        /// Optional. Specifies how the server interprets the message `text` field content when creating a message or
+        /// updating the `text` field of a message. When calling `UpdateMessage`, set `markup_syntax` and `text` on the
+        /// `Message` resource and include `text` (not `markup_syntax`) in `update_mask`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markupSyntax")]
         public virtual string MarkupSyntax { get; set; }
 
@@ -11593,6 +11820,28 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ReplaceMessageCards API method.</summary>
+    public class ReplaceMessageCardsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An array of [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards) to
+        /// be included in the message. These cards will replace the existing cards of the message. If empty, the
+        /// original cards included in the message will be cleared.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardsV2")]
+        public virtual System.Collections.Generic.IList<CardWithId> CardsV2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ReplaceMessageCards API.</summary>
+    public class ReplaceMessageCardsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A rich link to a resource. Rich links can be associated with the plain-text body of the message or represent
     /// chips that link to Google Workspace resources like Google Docs or Sheets with `start_index` and `length` of 0.
@@ -11977,6 +12226,26 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The type of slash command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A snippet object representing an excerpt from a larger corpus.</summary>
+    public class Snippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Image preview of the snippet provided as an input when creating the citation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imagePreview")]
+        public virtual ElementsImage ImagePreview { get; set; }
+
+        /// <summary>
+        /// Optional. A short plaintext excerpt directly from the corpus that is rendered in the citation hover card or
+        /// source preview. When footer sources are automatically populated from inline `citations` (because
+        /// `Elements.cited_sources` is not set), snippets are omitted from the deduplicated footer sources. Does not
+        /// support markdown format, and must not exceed 1,000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

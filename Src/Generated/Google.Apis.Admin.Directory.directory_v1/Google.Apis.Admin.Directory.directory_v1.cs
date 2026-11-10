@@ -9380,7 +9380,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Create a guest user with access to a [subset of Workspace
-        /// capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Open Beta.
+        /// capabilities](https://support.google.com/a/answer/16558545).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateGuestRequest CreateGuest(Google.Apis.Admin.Directory.directory_v1.Data.DirectoryUsersCreateGuestRequest body)
@@ -9390,7 +9390,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>
         /// Create a guest user with access to a [subset of Workspace
-        /// capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Open Beta.
+        /// capabilities](https://support.google.com/a/answer/16558545).
         /// </summary>
         public class CreateGuestRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {

@@ -299,7 +299,9 @@ namespace Google.Apis.OracleDatabase.v1
                 CloudExadataInfrastructures = new CloudExadataInfrastructuresResource(service);
                 CloudVmClusters = new CloudVmClustersResource(service);
                 DatabaseCharacterSets = new DatabaseCharacterSetsResource(service);
+                DatabaseConnections = new DatabaseConnectionsResource(service);
                 Databases = new DatabasesResource(service);
+                DbSystemComputePerformances = new DbSystemComputePerformancesResource(service);
                 DbSystemInitialStorageSizes = new DbSystemInitialStorageSizesResource(service);
                 DbSystemShapes = new DbSystemShapesResource(service);
                 DbSystems = new DbSystemsResource(service);
@@ -307,6 +309,7 @@ namespace Google.Apis.OracleDatabase.v1
                 Entitlements = new EntitlementsResource(service);
                 ExadbVmClusters = new ExadbVmClustersResource(service);
                 ExascaleDbStorageVaults = new ExascaleDbStorageVaultsResource(service);
+                FlexComponents = new FlexComponentsResource(service);
                 GiVersions = new GiVersionsResource(service);
                 GoldengateConnectionAssignments = new GoldengateConnectionAssignmentsResource(service);
                 GoldengateConnectionTypes = new GoldengateConnectionTypesResource(service);
@@ -2494,6 +2497,124 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Disables the Workload Identity Connector for a Cloud VM Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Cloud VM Cluster in the following format:
+                /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+                /// </param>
+                public virtual DisableIdentityConnectorRequest DisableIdentityConnector(Google.Apis.OracleDatabase.v1.Data.DisableCloudVmClusterIdentityConnectorRequest body, string name)
+                {
+                    return new DisableIdentityConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Disables the Workload Identity Connector for a Cloud VM Cluster.</summary>
+                public class DisableIdentityConnectorRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DisableIdentityConnector request.</summary>
+                    public DisableIdentityConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.DisableCloudVmClusterIdentityConnectorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Cloud VM Cluster in the following format:
+                    /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.DisableCloudVmClusterIdentityConnectorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disableIdentityConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:disableIdentityConnector";
+
+                    /// <summary>Initializes DisableIdentityConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cloudVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enables the Workload Identity Connector for a Cloud VM Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Cloud VM Cluster in the following format:
+                /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+                /// </param>
+                public virtual EnableIdentityConnectorRequest EnableIdentityConnector(Google.Apis.OracleDatabase.v1.Data.EnableCloudVmClusterIdentityConnectorRequest body, string name)
+                {
+                    return new EnableIdentityConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Enables the Workload Identity Connector for a Cloud VM Cluster.</summary>
+                public class EnableIdentityConnectorRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new EnableIdentityConnector request.</summary>
+                    public EnableIdentityConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.EnableCloudVmClusterIdentityConnectorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Cloud VM Cluster in the following format:
+                    /// projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.EnableCloudVmClusterIdentityConnectorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableIdentityConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:enableIdentityConnector";
+
+                    /// <summary>Initializes EnableIdentityConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/cloudVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single VM Cluster.</summary>
                 /// <param name="name">
                 /// Required. The name of the Cloud VM Cluster in the following format:
@@ -2846,6 +2967,550 @@ namespace Google.Apis.OracleDatabase.v1
                 }
             }
 
+            /// <summary>Gets the DatabaseConnections resource.</summary>
+            public virtual DatabaseConnectionsResource DatabaseConnections { get; }
+
+            /// <summary>The "databaseConnections" collection of methods.</summary>
+            public class DatabaseConnectionsResource
+            {
+                private const string Resource = "databaseConnections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DatabaseConnectionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new DatabaseConnection in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent value for the DatabaseConnection in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.OracleDatabase.v1.Data.DatabaseConnection body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new DatabaseConnection in a given project and location.</summary>
+                public class CreateRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.DatabaseConnection body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for the DatabaseConnection in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID of the DatabaseConnection to create. This value is restricted to
+                    /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value
+                    /// must start with a letter and end with a letter or a number.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("databaseConnectionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DatabaseConnectionId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.DatabaseConnection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/databaseConnections";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("databaseConnectionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "databaseConnectionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single DatabaseConnection.</summary>
+                /// <param name="name">
+                /// Required. The name of the resource in the following format:
+                /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single DatabaseConnection.</summary>
+                public class DeleteRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the resource in the following format:
+                    /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/databaseConnections/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Executes a SQL statement on a DatabaseConnection.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the DatabaseConnection in the following format:
+                /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+                /// </param>
+                public virtual ExecuteSqlRequest ExecuteSql(Google.Apis.OracleDatabase.v1.Data.ExecuteSqlRequest body, string name)
+                {
+                    return new ExecuteSqlRequest(this.service, body, name);
+                }
+
+                /// <summary>Executes a SQL statement on a DatabaseConnection.</summary>
+                public class ExecuteSqlRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ExecuteSqlResponse>
+                {
+                    /// <summary>Constructs a new ExecuteSql request.</summary>
+                    public ExecuteSqlRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.ExecuteSqlRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DatabaseConnection in the following format:
+                    /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.ExecuteSqlRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "executeSql";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:executeSql";
+
+                    /// <summary>Initializes ExecuteSql parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/databaseConnections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single DatabaseConnection.</summary>
+                /// <param name="name">
+                /// Required. The name of the DatabaseConnection in the following format:
+                /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single DatabaseConnection.</summary>
+                public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.DatabaseConnection>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DatabaseConnection in the following format:
+                    /// projects/{project}/locations/{location}/databaseConnections/{database_connection}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/databaseConnections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists DatabaseConnections in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent value for the DatabaseConnection in the following format:
+                /// projects/{project}/locations/{location}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists DatabaseConnections in a given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDatabaseConnectionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent value for the DatabaseConnection in the following format:
+                    /// projects/{project}/locations/{location}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. An expression for filtering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. An expression for ordering the results of the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return. If unspecified, at most 50 DatabaseConnections
+                    /// will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/databaseConnections";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single DatabaseConnection.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The resource name of the DatabaseConnection. Format:
+                /// projects/{project}/locations/{location}/databaseConnections/{database_connection}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.DatabaseConnection body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single DatabaseConnection.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.DatabaseConnection body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The resource name of the DatabaseConnection. Format:
+                    /// projects/{project}/locations/{location}/databaseConnections/{database_connection}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in the DatabaseConnection should be updated. A field
+                    /// specified in the mask is overwritten. If a mask isn't provided then all the fields in the
+                    /// DatabaseConnection are overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.DatabaseConnection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/databaseConnections/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Tests connectivity of a DatabaseConnection.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the DatabaseConnection to test. Format:
+                /// projects/{project}/locations/{location}/databaseConnections/{database_connection}
+                /// </param>
+                public virtual TestRequest Test(Google.Apis.OracleDatabase.v1.Data.TestDatabaseConnectionRequest body, string name)
+                {
+                    return new TestRequest(this.service, body, name);
+                }
+
+                /// <summary>Tests connectivity of a DatabaseConnection.</summary>
+                public class TestRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.TestDatabaseConnectionResponse>
+                {
+                    /// <summary>Constructs a new Test request.</summary>
+                    public TestRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.TestDatabaseConnectionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the DatabaseConnection to test. Format:
+                    /// projects/{project}/locations/{location}/databaseConnections/{database_connection}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.TestDatabaseConnectionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "test";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:test";
+
+                    /// <summary>Initializes Test parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/databaseConnections/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Databases resource.</summary>
             public virtual DatabasesResource Databases { get; }
 
@@ -2970,6 +3635,117 @@ namespace Google.Apis.OracleDatabase.v1
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/databases";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the DbSystemComputePerformances resource.</summary>
+            public virtual DbSystemComputePerformancesResource DbSystemComputePerformances { get; }
+
+            /// <summary>The "dbSystemComputePerformances" collection of methods.</summary>
+            public class DbSystemComputePerformancesResource
+            {
+                private const string Resource = "dbSystemComputePerformances";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public DbSystemComputePerformancesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists all the DbSystemComputePerformances for the given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListDbSystemComputePerformancesRequest Format:
+                /// projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all the DbSystemComputePerformances for the given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListDbSystemComputePerformancesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for ListDbSystemComputePerformancesRequest Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Only the `db_system_shape`
+                    /// field is supported in the following format: `db_system_shape="{db_system_shape}"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/dbSystemComputePerformances";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -4143,6 +4919,124 @@ namespace Google.Apis.OracleDatabase.v1
                     }
                 }
 
+                /// <summary>Disables the Workload Identity Connector for an Exadb VM Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Exadb VM Cluster in the following format:
+                /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+                /// </param>
+                public virtual DisableIdentityConnectorRequest DisableIdentityConnector(Google.Apis.OracleDatabase.v1.Data.DisableExadbVmClusterIdentityConnectorRequest body, string name)
+                {
+                    return new DisableIdentityConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Disables the Workload Identity Connector for an Exadb VM Cluster.</summary>
+                public class DisableIdentityConnectorRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DisableIdentityConnector request.</summary>
+                    public DisableIdentityConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.DisableExadbVmClusterIdentityConnectorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Exadb VM Cluster in the following format:
+                    /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.DisableExadbVmClusterIdentityConnectorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disableIdentityConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:disableIdentityConnector";
+
+                    /// <summary>Initializes DisableIdentityConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Enables the Workload Identity Connector for an Exadb VM Cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the Exadb VM Cluster in the following format:
+                /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+                /// </param>
+                public virtual EnableIdentityConnectorRequest EnableIdentityConnector(Google.Apis.OracleDatabase.v1.Data.EnableExadbVmClusterIdentityConnectorRequest body, string name)
+                {
+                    return new EnableIdentityConnectorRequest(this.service, body, name);
+                }
+
+                /// <summary>Enables the Workload Identity Connector for an Exadb VM Cluster.</summary>
+                public class EnableIdentityConnectorRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new EnableIdentityConnector request.</summary>
+                    public EnableIdentityConnectorRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.EnableExadbVmClusterIdentityConnectorRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the Exadb VM Cluster in the following format:
+                    /// projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.EnableExadbVmClusterIdentityConnectorRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableIdentityConnector";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:enableIdentityConnector";
+
+                    /// <summary>Initializes EnableIdentityConnector parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/exadbVmClusters/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets details of a single Exadb (Exascale) VM Cluster.</summary>
                 /// <param name="name">
                 /// Required. The name of the ExadbVmCluster in the following format:
@@ -4884,6 +5778,116 @@ namespace Google.Apis.OracleDatabase.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FlexComponents resource.</summary>
+            public virtual FlexComponentsResource FlexComponents { get; }
+
+            /// <summary>The "flexComponents" collection of methods.</summary>
+            public class FlexComponentsResource
+            {
+                private const string Resource = "flexComponents";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FlexComponentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists Flex Components in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. Parent value for ListFlexComponentsRequest Format: projects/{project}/locations/{location}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Flex Components in a given project and location.</summary>
+                public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListFlexComponentsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent value for ListFlexComponentsRequest Format:
+                    /// projects/{project}/locations/{location}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. Only the `shape` field is
+                    /// supported in the following format: `shape="{shape}"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/flexComponents";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7076,7 +8080,341 @@ namespace Google.Apis.OracleDatabase.v1
                 public OdbNetworksResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    OdbDnsZones = new OdbDnsZonesResource(service);
                     OdbSubnets = new OdbSubnetsResource(service);
+                }
+
+                /// <summary>Gets the OdbDnsZones resource.</summary>
+                public virtual OdbDnsZonesResource OdbDnsZones { get; }
+
+                /// <summary>The "odbDnsZones" collection of methods.</summary>
+                public class OdbDnsZonesResource
+                {
+                    private const string Resource = "odbDnsZones";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OdbDnsZonesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new ODB DNS Zone in a given ODB Network.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent value for the OdbDnsZone in the following format:
+                    /// projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.OracleDatabase.v1.Data.OdbDnsZone body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new ODB DNS Zone in a given ODB Network.</summary>
+                    public class CreateRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.OdbDnsZone body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent value for the OdbDnsZone in the following format:
+                        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID of the OdbDnsZone to create. This value is restricted to
+                        /// (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The
+                        /// value must start with a letter and end with a letter or a number.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("odbDnsZoneId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OdbDnsZoneId { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                        /// requests. If you make a request with the same request ID and the original request is still
+                        /// in progress or completed, the server ignores the second request. This prevents clients from
+                        /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                        /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.OracleDatabase.v1.Data.OdbDnsZone Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/odbDnsZones";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/odbNetworks/[^/]+$",
+                            });
+                            RequestParameters.Add("odbDnsZoneId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "odbDnsZoneId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single ODB DNS Zone.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the resource in the following format:
+                    /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a single ODB DNS Zone.</summary>
+                    public class DeleteRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the resource in the following format:
+                        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                        /// requests. If you make a request with the same request ID and the original request is still
+                        /// in progress or completed, the server ignores the second request. This prevents clients from
+                        /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                        /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/odbNetworks/[^/]+/odbDnsZones/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single ODB DNS Zone.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the OdbDnsZone in the following format:
+                    /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single ODB DNS Zone.</summary>
+                    public class GetRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.OdbDnsZone>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the OdbDnsZone in the following format:
+                        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/odbNetworks/[^/]+/odbDnsZones/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all the ODB DNS Zones in a given ODB Network.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent value for the OdbDnsZone in the following format:
+                    /// projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all the ODB DNS Zones in a given ODB Network.</summary>
+                    public class ListRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.ListOdbDnsZonesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent value for the OdbDnsZone in the following format:
+                        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. An expression for filtering the results of the request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. An expression for ordering the results of the request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return. If unspecified, at most 50 OdbDnsZones will
+                        /// be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/odbDnsZones";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/odbNetworks/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the OdbSubnets resource.</summary>
@@ -7813,6 +9151,100 @@ namespace Google.Apis.OracleDatabase.v1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the `labels` and `service_connectivity_config` of a single OdbNetwork.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. The name of the OdbNetwork resource in the following format:
+                /// projects/{project}/locations/{region}/odbNetworks/{odb_network}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.OracleDatabase.v1.Data.OdbNetwork body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the `labels` and `service_connectivity_config` of a single OdbNetwork.</summary>
+                public class PatchRequest : OracleDatabaseBaseServiceRequest<Google.Apis.OracleDatabase.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.OracleDatabase.v1.Data.OdbNetwork body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. The name of the OdbNetwork resource in the following format:
+                    /// projects/{project}/locations/{region}/odbNetworks/{odb_network}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional ID to identify the request. This value is used to identify duplicate
+                    /// requests. If you make a request with the same request ID and the original request is still in
+                    /// progress or completed, the server ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A mask specifying which fields in the OdbNetwork should be updated. A field specified
+                    /// in the mask is updated. If a mask isn't provided, the service treats this as an implied field
+                    /// mask equivalent to all fields that are populated (have a non-empty value). To clear or unset a
+                    /// field, the field must be explicitly specified in the `update_mask`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OracleDatabase.v1.Data.OdbNetwork Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/odbNetworks/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -10180,6 +11612,15 @@ namespace Google.Apis.OracleDatabase.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identityConnector")]
         public virtual IdentityConnector IdentityConnector { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. If set to true, disables the automatic provisioning of the Workload
+        /// Identity Connector during creation. If set to false or omitted, the Workload Identity Connector will be
+        /// automatically provisioned by default. Note: Provisioning the Workload Identity Connector is a prerequisite
+        /// for enabling Google Cloud CMEK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConnectorDisabled")]
+        public virtual System.Nullable<bool> IdentityConnectorDisabled { get; set; }
+
         /// <summary>Optional. Labels or tags associated with the VM Cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -10196,6 +11637,13 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The name of the OdbDnsZone for using custom domain name for the VM Cluster. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbDnsZone")]
+        public virtual string OdbDnsZone { get; set; }
 
         /// <summary>
         /// Optional. Immutable. The name of the OdbNetwork associated with the VM Cluster. Format:
@@ -10377,6 +11825,44 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmFileSystemStorageType")]
         public virtual string VmFileSystemStorageType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the name and datatype of a column in a SQL Result.</summary>
+    public class Column : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Database-specific type name (e.g., "VARCHAR2(255)", "NUMBER", "DATE", "CLOB")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters detailing the compute performance for a specified DB system shape.</summary>
+    public class ComputePerformance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of compute servers for the DB system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeCount")]
+        public virtual System.Nullable<int> ComputeCount { get; set; }
+
+        /// <summary>Output only. The compute model for Base Database Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeModel")]
+        public virtual string ComputeModel { get; set; }
+
+        /// <summary>Output only. The number of CPU cores available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCoreCount")]
+        public virtual System.Nullable<int> CpuCoreCount { get; set; }
+
+        /// <summary>Output only. The amount of memory allocated for the VMDB System in GBs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryInGbs")]
+        public virtual System.Nullable<double> MemoryInGbs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10634,6 +12120,146 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents DatabaseConnection resource.</summary>
+    public class DatabaseConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. Oracle Easy Connect or TNS connection string. Example:
+        /// "your-db-host.example.com:1521/YOUR_SERVICE_NAME"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionString")]
+        public virtual string ConnectionString { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The create time of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Immutable. User-friendly display name for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Optional: Labels as key-value pairs to organize the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. Additional information about the current state of the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleDetails")]
+        public virtual string LifecycleDetails { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the DatabaseConnection. Format:
+        /// projects/{project}/locations/{location}/databaseConnections/{database_connection}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. For Oracle Database@Google cloud resources. Format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odbNetwork}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbNetwork")]
+        public virtual string OdbNetwork { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the GCP Secret Manager secret version containing the password for the
+        /// specified username. Format: projects/{project}/secrets/{secret_id}/versions/{version_id} The service's
+        /// Per-Product Per-Project Service Account (P4SA) must have the 'secretmanager.secretAccessor' permission on
+        /// this secret.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersion")]
+        public virtual string PasswordSecretVersion { get; set; }
+
+        /// <summary>Output only. The current state of the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The update time of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Immutable. The default database username to use for connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>
+        /// Optional. Optional: The resource name of the GCP Secret Manager secret version containing base64 encoded
+        /// content of the Oracle Wallet ZIP file required for mTLS/TLS connections. Format:
+        /// projects/{project}/secrets/{secret_id}/versions/{version_id} The service's Per-Product Per-Project Service
+        /// Account (P4SA) must have the 'secretmanager.secretAccessor' permission on this secret.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("walletSecretVersion")]
+        public virtual string WalletSecretVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11067,6 +12693,28 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of the DbSystem compute performance resource.</summary>
+    public class DbSystemComputePerformance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of Compute performance details for the specified DB system shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computePerformances")]
+        public virtual System.Collections.Generic.IList<ComputePerformance> ComputePerformances { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the DbSystemComputePerformance resource with the format:
+        /// projects/{project}/locations/{location}/dbSystemComputePerformances/{db_system_compute_performance}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The shape of the DB system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shape")]
+        public virtual string Shape { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Summary of the DbSystem initial storage size.</summary>
     public class DbSystemInitialStorageSize : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11454,12 +13102,40 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for `CloudVmCluster.DisableCloudVmClusterIdentityConnector`.</summary>
+    public class DisableCloudVmClusterIdentityConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `ExadbVmCluster.DisableExadbVmClusterIdentityConnector`.</summary>
+    public class DisableExadbVmClusterIdentityConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `CloudVmCluster.EnableCloudVmClusterIdentityConnector`.</summary>
+    public class EnableCloudVmClusterIdentityConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `ExadbVmCluster.EnableExadbVmClusterIdentityConnector`.</summary>
+    public class EnableExadbVmClusterIdentityConnectorRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11636,6 +13312,15 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityConnector")]
         public virtual IdentityConnector IdentityConnector { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. If set to true, disables the automatic provisioning of the Workload
+        /// Identity Connector during creation. If set to false or omitted, the Workload Identity Connector will be
+        /// automatically provisioned by default. Note: Provisioning the Workload Identity Connector is a prerequisite
+        /// for enabling Google Cloud CMEK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConnectorDisabled")]
+        public virtual System.Nullable<bool> IdentityConnectorDisabled { get; set; }
 
         /// <summary>Optional. The labels or tags associated with the ExadbVmCluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -11977,6 +13662,67 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Any additional metadata information regarding the execution of the SQL</summary>
+    public class ExecuteSqlMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time duration taken to execute the sql statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionDuration")]
+        public virtual object ExecutionDuration { get; set; }
+
+        /// <summary>
+        /// Message related to SQL execution. This field can be used to convey size limit related message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// Set to true if SQL returned a result set larger than the acceptable response size limits and the result was
+        /// truncated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialResult")]
+        public virtual System.Nullable<bool> PartialResult { get; set; }
+
+        /// <summary>Output only. Status of SQL execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for `DatabaseConnection.ExecuteSql`.</summary>
+    public class ExecuteSqlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional: Bind variables (parameters) to be used with the SQL statement. Supports named bind
+        /// variables (e.g., :dept_id, :status in Oracle SQL) or positional parameters (:1, :2).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IList<SqlParameter> Params__ { get; set; }
+
+        /// <summary>Required. The SQL statement to execute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlStatement")]
+        public virtual string SqlStatement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Execute a SQL statement response.</summary>
+    public class ExecuteSqlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Any additional metadata information regarding the execution of the sql statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ExecuteSqlMetadata Metadata { get; set; }
+
+        /// <summary>SqlResult represents the results for the execution of sql statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlResults")]
+        public virtual System.Collections.Generic.IList<SqlResult> SqlResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for `OracleDatabase.FailoverAutonomousDatabase`.</summary>
     public class FailoverAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11986,6 +13732,89 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerAutonomousDatabase")]
         public virtual string PeerAutonomousDatabase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the Flex Component resource.</summary>
+    public class FlexComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. Specifies the name of the Flex Component resource with the format:
+        /// projects/{project}/locations/{region}/flexComponents/{flex_component}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The properties of the Flex Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual FlexComponentProperties Properties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of the Flex Component.</summary>
+    public class FlexComponentProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The maximum number of CPU cores that can be enabled on the DB system for this shape.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableCoreCount")]
+        public virtual System.Nullable<int> AvailableCoreCount { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum storage that can be enabled on the Storage Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableDbNodeStoragePerNodeGb")]
+        public virtual System.Nullable<int> AvailableDbNodeStoragePerNodeGb { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum local storage that can be enabled on the DB Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableLocalStorageGb")]
+        public virtual System.Nullable<int> AvailableLocalStorageGb { get; set; }
+
+        /// <summary>
+        /// Output only. The maximum memory size that can be enabled on the DB Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableMemoryGb")]
+        public virtual System.Nullable<int> AvailableMemoryGb { get; set; }
+
+        /// <summary>Output only. The compute model of the DB Server for this Flex Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeModel")]
+        public virtual string ComputeModel { get; set; }
+
+        /// <summary>Output only. The description summary for this Flex Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptionSummary")]
+        public virtual string DescriptionSummary { get; set; }
+
+        /// <summary>
+        /// Output only. The hardware type of the DB (Compute) or Storage (Cell) Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardwareType")]
+        public virtual string HardwareType { get; set; }
+
+        /// <summary>
+        /// Output only. The minimum number of CPU cores that can be enabled on the DB Server for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumCoreCount")]
+        public virtual System.Nullable<int> MinimumCoreCount { get; set; }
+
+        /// <summary>Output only. The name of the Flex Component used for the DB system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The runtime minimum number of CPU cores that can be enabled for this Flex Component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeMinimumCoreCount")]
+        public virtual System.Nullable<int> RuntimeMinimumCoreCount { get; set; }
+
+        /// <summary>Output only. The name of the DB system shape for this Flex Component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shape")]
+        public virtual string Shape { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15059,11 +16888,31 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ConnectionState { get; set; }
 
         /// <summary>
+        /// Output only. The unique partner identifier for the Identity Connector, used to establish secure cross-cloud
+        /// access between Google Cloud and OCI. This corresponds directly to the ID of the OracleDbGcpIdentityConnector
+        /// resource in Oracle Cloud Infrastructure (OCI).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConnectorId")]
+        public virtual string IdentityConnectorId { get; set; }
+
+        /// <summary>Output only. Additional information about the current lifecycle state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lifecycleStateDetails")]
+        public virtual string LifecycleStateDetails { get; set; }
+
+        /// <summary>
         /// Output only. A google managed service account on which customers can grant roles to access resources in the
         /// customer project. Example: `p176944527254-55-75119d87fd8f@gcp-sa-oci.iam.gserviceaccount.com`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentEmail")]
         public virtual string ServiceAgentEmail { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the Workload Identity Pool configured for identity federation with OCI.
+        /// This exact pool name can be used to configure VPC Service Controls (VPC-SC) egress rules. Format:
+        /// `projects/{project}/locations/global/workloadIdentityPools/{workload_identity_pool}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPool")]
+        public virtual string WorkloadIdentityPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15230,6 +17079,27 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for `DatabaseConnection.List`.</summary>
+    public class ListDatabaseConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DatabaseConnections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseConnections")]
+        public virtual System.Collections.Generic.IList<DatabaseConnection> DatabaseConnections { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for `Database.List`.</summary>
     public class ListDatabasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15270,6 +17140,28 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing DbSystemComputePerformances</summary>
+    public class ListDbSystemComputePerformancesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DbSystemComputePerformance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dbSystemComputePerformances")]
+        public virtual System.Collections.Generic.IList<DbSystemComputePerformance> DbSystemComputePerformances { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15395,6 +17287,28 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>
         /// Unreachable locations when listing resources across all locations using wildcard location '-'.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing FlexComponents</summary>
+    public class ListFlexComponentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of FlexComponent</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexComponents")]
+        public virtual System.Collections.Generic.IList<FlexComponent> FlexComponents { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -15592,6 +17506,27 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for `OdbDnsZone.List`.</summary>
+    public class ListOdbDnsZonesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of OdbDnsZones.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("odbDnsZones")]
+        public virtual System.Collections.Generic.IList<OdbDnsZone> OdbDnsZones { get; set; }
+
+        /// <summary>
+        /// Unreachable locations when listing resources across all locations using wildcard location '-'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15842,6 +17777,69 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents OdbDnsZone resource.</summary>
+    public class OdbDnsZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The date and time that the OdbDnsZone was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Immutable. The DNS suffix for the zone. Ex: abc.example.com.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>Optional. Labels or tags associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the OdbDnsZone resource in the following format:
+        /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbDnsZones/{odb_dns_zone}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the OdbDnsZone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents OdbNetwork resource.</summary>
     public class OdbNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15887,8 +17885,8 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string EntitlementId { get; set; }
 
         /// <summary>
-        /// Optional. The GCP Oracle zone where OdbNetwork is hosted. Example: us-east4-b-r2. If not specified, the
-        /// system will pick a zone based on availability.
+        /// Optional. Immutable. The GCP Oracle zone where OdbNetwork is hosted. Example: us-east4-b-r2. If not
+        /// specified, the system will pick a zone based on availability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpOracleZone")]
         public virtual string GcpOracleZone { get; set; }
@@ -15905,10 +17903,24 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The name of the VPC network in the following format: projects/{project}/global/networks/{network}
+        /// Required. Immutable. The name of the VPC network in the following format:
+        /// projects/{project}/global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Output only. Indicates whether the OdbNetwork is currently reconciling changes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
+        public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration to enable the service (Oracledatabase@Google Cloud) to establish connectivity to the
+        /// database. This should be specified if you intend to associate this OdbNetwork with a DatabaseConnection
+        /// resource to `ExecuteSQL` on the database, or to create a ServiceIntegration with the Database. Please don't
+        /// specify it otherwise to avoid complicating the network setup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectivityConfig")]
+        public virtual ServiceConnectivityConfig ServiceConnectivityConfig { get; set; }
 
         /// <summary>Output only. State of the ODB Network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -16335,6 +18347,24 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for a Private Service Connect (PSC) interface used by Oracledatabase@Google Cloud to establish
+    /// private connectivity to the database.
+    /// </summary>
+    public class PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The resource name of the Network Attachment that Oracledatabase@Google Cloud will use to establish
+        /// private connectivity to the database via a Private Service Connect Interface (PSC-I). Format:
+        /// projects/{project}/regions/{region}/networkAttachments/{network_attachment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for RefreshAutonomousDatabase method.</summary>
     public class RefreshAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16474,6 +18504,17 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single row from a sql result.</summary>
+    public class Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of values in a row of sql result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<Value> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details of scheduled operation.
     /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/ScheduledOperationDetails
@@ -16491,6 +18532,22 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Output only. Auto stop time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopTime")]
         public virtual TimeOfDay StopTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration to enable the service (Oracledatabase@Google Cloud) to establish connectivity to the database.
+    /// This should be specified if you intend to associate this OdbNetwork with a DatabaseConnection resource to
+    /// `ExecuteSQL` on the database, or to create a ServiceIntegration with the Database. Please don't specify it
+    /// otherwise to avoid complicating the network setup.
+    /// </summary>
+    public class ServiceConnectivityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for Private Service Connect (PSC) interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfig")]
+        public virtual PscInterfaceConfig PscInterfaceConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16642,6 +18699,46 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a bind variable (parameter) for SQL execution.</summary>
+    public class SqlParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the SQL bind parameter (excluding the leading colon, e.g. "id"). If omitted,
+        /// parameters bind positionally based on their order in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Optional: Datatype hint for the parameter (e.g., "VARCHAR2", "NUMBER", "DATE", "TIMESTAMP"). If
+        /// omitted, the Oracle driver will infer the type from the value string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeName")]
+        public virtual string TypeName { get; set; }
+
+        /// <summary>Required. Use protobuf.Value so clients can pass ints, bools, and strings natively.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SqlResult represents the result for the execution of a sql statement.</summary>
+    public class SqlResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of columns included in the result, including data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<Column> Columns { get; set; }
+
+        /// <summary>Rows returned by the SQL statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for `AutonomousDatabase.Start`.</summary>
     public class StartAutonomousDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16755,6 +18852,28 @@ namespace Google.Apis.OracleDatabase.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for `DatabaseConnection.TestDatabaseConnection`.</summary>
+    public class TestDatabaseConnectionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `DatabaseConnection.TestDatabaseConnection`.</summary>
+    public class TestDatabaseConnectionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error message if the test connection failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>Whether the test connection was successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for TestGoldengateConnectionAssignment.</summary>
     public class TestGoldengateConnectionAssignmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16835,6 +18954,23 @@ namespace Google.Apis.OracleDatabase.v1.Data
         /// <summary>Optional. IANA Time Zone Database version number. For example "2019a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single value in a row from a sql result.</summary>
+    public class Value : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set to true if the cell value is NULL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullValue")]
+        public virtual System.Nullable<bool> NullValue { get; set; }
+
+        /// <summary>
+        /// The cell value represented in string format. Timestamps should be converted using RFC3339Nano format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string ValueValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

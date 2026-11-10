@@ -11348,7 +11348,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RolloutSequence defines the desired order of upgrades. Next ID: 20</summary>
+    /// <summary>RolloutSequence defines the desired order of upgrades. Next ID: 22</summary>
     public class RolloutSequence : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

@@ -322,18 +322,24 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Lists the finding summary by category for a given scope.</summary>
+                /// <summary>
+                /// Lists summaries of the active findings in a Data Boundary scope (an organization, folder, or
+                /// project), with one summary for each finding category.
+                /// </summary>
                 /// <param name="parent">
-                /// Required. The parent scope for the framework overview page. Formats: -
-                /// projects/{project}/locations/{location} - folders/{folder}/locations/{location} -
-                /// organizations/{organization}/locations/{location}
+                /// Required. The parent scope to list finding summaries for. Formats: *
+                /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the finding summary by category for a given scope.</summary>
+                /// <summary>
+                /// Lists summaries of the active findings in a Data Boundary scope (an organization, folder, or
+                /// project), with one summary for each finding category.
+                /// </summary>
                 public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbFindingSummariesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -344,14 +350,19 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent scope for the framework overview page. Formats: -
-                    /// projects/{project}/locations/{location} - folders/{folder}/locations/{location} -
-                    /// organizations/{organization}/locations/{location}
+                    /// Required. The parent scope to list finding summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the framework deployments whose findings are
+                    /// summarized. The syntax follows [AIP-160](https://google.aip.dev/160). Supported fields are
+                    /// `framework_deployment`, `framework_name`, and `framework_revision` (the major revision ID of the
+                    /// framework).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -363,7 +374,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. A token that identifies the page of results that the server should return.
+                    /// Optional. A token that identifies the page of results that the server should return. Pass the
+                    /// `next_page_token` value from a previous result.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -452,19 +464,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         this.service = service;
                     }
 
-                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <summary>
+                    /// Lists the compliance summaries of the controls in a framework compliance report.
+                    /// </summary>
                     /// <param name="parent">
-                    /// Required. The parent scope for the framework overview page. Format:
-                    /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                    /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                    /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// Required. The framework compliance report to list control compliance summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <summary>
+                    /// Lists the compliance summaries of the controls in a framework compliance report.
+                    /// </summary>
                     public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbControlComplianceSummariesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -475,15 +493,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The parent scope for the framework overview page. Format:
-                        /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                        /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                        /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// Required. The framework compliance report to list control compliance summaries for. Formats:
+                        /// *
+                        /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                        /// *
+                        /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                        /// *
+                        /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The filtering results.</summary>
+                        /// <summary>
+                        /// Optional. A filter expression that restricts the results. The syntax follows
+                        /// [AIP-160](https://google.aip.dev/160). Supported fields are `framework_deployment`,
+                        /// `framework_name`, `framework_revision` (the major revision ID of the framework), and
+                        /// `end_time`. The `end_time` field accepts a single equality comparison with an [RFC
+                        /// 3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp, for example `end_time =
+                        /// "2026-01-01T00:00:00Z"`. Only findings that were updated at or after this time are counted.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -495,7 +523,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. A token that identifies the page of results that the server should return.
+                        /// Optional. A token that identifies the page of results that the server should return. Pass
+                        /// the `next_page_token` value from a previous result.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -549,9 +578,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
-                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <summary>
+                /// Gets daily compliance reports over a time range for a framework that's deployed in a Data Boundary
+                /// scope.
+                /// </summary>
                 /// <param name="name">
-                /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                /// Required. The name of the framework compliance report to aggregate over time. The report ID is the
+                /// ID of the compliance framework, for example `builtin-fedramp-high`. Format:
                 /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                 /// </param>
                 public virtual AggregateRequest Aggregate(string name)
@@ -559,7 +592,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     return new AggregateRequest(this.service, name);
                 }
 
-                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <summary>
+                /// Gets daily compliance reports over a time range for a framework that's deployed in a Data Boundary
+                /// scope.
+                /// </summary>
                 public class AggregateRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AggregateDbFrameworkComplianceReportResponse>
                 {
                     /// <summary>Constructs a new Aggregate request.</summary>
@@ -570,13 +606,19 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                    /// Required. The name of the framework compliance report to aggregate over time. The report ID is
+                    /// the ID of the compliance framework, for example `builtin-fedramp-high`. Format:
                     /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the framework deployments that are included in the
+                    /// report. The syntax follows [AIP-160](https://google.aip.dev/160). Supported fields are
+                    /// `framework_deployment`, `framework_name`, and `framework_revision` (the major revision ID of the
+                    /// framework).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -692,14 +734,30 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
-                /// <summary>Fetches the framework compliance report for a given scope.</summary>
-                /// <param name="name">Required. The name of the framework compliance report to retrieve.</param>
+                /// <summary>
+                /// Fetches the current compliance report for a framework that's deployed in a Data Boundary scope (an
+                /// organization, folder, or project). The report includes the number of passing, failing, and not
+                /// assessed controls in the framework.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the framework compliance report to retrieve. The report ID is the ID of the
+                /// compliance framework, for example `builtin-fedramp-high`. Formats: *
+                /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// *
+                /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// *
+                /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// </param>
                 public virtual FetchRequest Fetch(string name)
                 {
                     return new FetchRequest(this.service, name);
                 }
 
-                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                /// <summary>
+                /// Fetches the current compliance report for a framework that's deployed in a Data Boundary scope (an
+                /// organization, folder, or project). The report includes the number of passing, failing, and not
+                /// assessed controls in the framework.
+                /// </summary>
                 public class FetchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponse>
                 {
                     /// <summary>Constructs a new Fetch request.</summary>
@@ -709,7 +767,15 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the framework compliance report to retrieve.</summary>
+                    /// <summary>
+                    /// Required. The name of the framework compliance report to retrieve. The report ID is the ID of
+                    /// the compliance framework, for example `builtin-fedramp-high`. Formats: *
+                    /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -744,7 +810,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
                     }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the results. Reserved for future use.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -806,18 +874,24 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <summary>
+                /// Lists the compliance summaries of the frameworks that are deployed in a Data Boundary scope (an
+                /// organization, folder, or project).
+                /// </summary>
                 /// <param name="parent">
-                /// Required. The parent scope for the framework compliance summary. Format:
-                /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
-                /// projects/{project}/locations/{location}
+                /// Required. The parent scope to list framework compliance summaries for. Formats: *
+                /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <summary>
+                /// Lists the compliance summaries of the frameworks that are deployed in a Data Boundary scope (an
+                /// organization, folder, or project).
+                /// </summary>
                 public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbFrameworkComplianceSummariesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -828,14 +902,16 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent scope for the framework compliance summary. Format:
-                    /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
-                    /// projects/{project}/locations/{location}
+                    /// Required. The parent scope to list framework compliance summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the results. Reserved for future use.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -848,16 +924,22 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
                     /// <summary>
                     /// Optional. A token that identifies the page of results that the server should return. Pass the
-                    /// next_page_token value from a previous result.
+                    /// `next_page_token` value from a previous result.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    /// <summary>
+                    /// Optional. The level of detail to return for each summary. If not specified,
+                    /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    /// <summary>
+                    /// Optional. The level of detail to return for each summary. If not specified,
+                    /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
+                    /// </summary>
                     public enum ViewEnum
                     {
                         /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
@@ -989,18 +1071,24 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Lists the finding summary by category for a given scope.</summary>
+                /// <summary>
+                /// Lists summaries of the active findings in a Data Boundary scope (an organization, folder, or
+                /// project), with one summary for each finding category.
+                /// </summary>
                 /// <param name="parent">
-                /// Required. The parent scope for the framework overview page. Formats: -
-                /// projects/{project}/locations/{location} - folders/{folder}/locations/{location} -
-                /// organizations/{organization}/locations/{location}
+                /// Required. The parent scope to list finding summaries for. Formats: *
+                /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the finding summary by category for a given scope.</summary>
+                /// <summary>
+                /// Lists summaries of the active findings in a Data Boundary scope (an organization, folder, or
+                /// project), with one summary for each finding category.
+                /// </summary>
                 public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbFindingSummariesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1011,14 +1099,19 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent scope for the framework overview page. Formats: -
-                    /// projects/{project}/locations/{location} - folders/{folder}/locations/{location} -
-                    /// organizations/{organization}/locations/{location}
+                    /// Required. The parent scope to list finding summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the framework deployments whose findings are
+                    /// summarized. The syntax follows [AIP-160](https://google.aip.dev/160). Supported fields are
+                    /// `framework_deployment`, `framework_name`, and `framework_revision` (the major revision ID of the
+                    /// framework).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1030,7 +1123,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. A token that identifies the page of results that the server should return.
+                    /// Optional. A token that identifies the page of results that the server should return. Pass the
+                    /// `next_page_token` value from a previous result.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1119,19 +1213,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         this.service = service;
                     }
 
-                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <summary>
+                    /// Lists the compliance summaries of the controls in a framework compliance report.
+                    /// </summary>
                     /// <param name="parent">
-                    /// Required. The parent scope for the framework overview page. Format:
-                    /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                    /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                    /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// Required. The framework compliance report to list control compliance summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <summary>
+                    /// Lists the compliance summaries of the controls in a framework compliance report.
+                    /// </summary>
                     public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbControlComplianceSummariesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1142,15 +1242,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The parent scope for the framework overview page. Format:
-                        /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                        /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                        /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// Required. The framework compliance report to list control compliance summaries for. Formats:
+                        /// *
+                        /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                        /// *
+                        /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                        /// *
+                        /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The filtering results.</summary>
+                        /// <summary>
+                        /// Optional. A filter expression that restricts the results. The syntax follows
+                        /// [AIP-160](https://google.aip.dev/160). Supported fields are `framework_deployment`,
+                        /// `framework_name`, `framework_revision` (the major revision ID of the framework), and
+                        /// `end_time`. The `end_time` field accepts a single equality comparison with an [RFC
+                        /// 3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp, for example `end_time =
+                        /// "2026-01-01T00:00:00Z"`. Only findings that were updated at or after this time are counted.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -1162,7 +1272,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. A token that identifies the page of results that the server should return.
+                        /// Optional. A token that identifies the page of results that the server should return. Pass
+                        /// the `next_page_token` value from a previous result.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -1216,9 +1327,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
-                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <summary>
+                /// Gets daily compliance reports over a time range for a framework that's deployed in a Data Boundary
+                /// scope.
+                /// </summary>
                 /// <param name="name">
-                /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                /// Required. The name of the framework compliance report to aggregate over time. The report ID is the
+                /// ID of the compliance framework, for example `builtin-fedramp-high`. Format:
                 /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                 /// </param>
                 public virtual AggregateRequest Aggregate(string name)
@@ -1226,7 +1341,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     return new AggregateRequest(this.service, name);
                 }
 
-                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <summary>
+                /// Gets daily compliance reports over a time range for a framework that's deployed in a Data Boundary
+                /// scope.
+                /// </summary>
                 public class AggregateRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AggregateDbFrameworkComplianceReportResponse>
                 {
                     /// <summary>Constructs a new Aggregate request.</summary>
@@ -1237,13 +1355,19 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                    /// Required. The name of the framework compliance report to aggregate over time. The report ID is
+                    /// the ID of the compliance framework, for example `builtin-fedramp-high`. Format:
                     /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the framework deployments that are included in the
+                    /// report. The syntax follows [AIP-160](https://google.aip.dev/160). Supported fields are
+                    /// `framework_deployment`, `framework_name`, and `framework_revision` (the major revision ID of the
+                    /// framework).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1359,14 +1483,30 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
-                /// <summary>Fetches the framework compliance report for a given scope.</summary>
-                /// <param name="name">Required. The name of the framework compliance report to retrieve.</param>
+                /// <summary>
+                /// Fetches the current compliance report for a framework that's deployed in a Data Boundary scope (an
+                /// organization, folder, or project). The report includes the number of passing, failing, and not
+                /// assessed controls in the framework.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the framework compliance report to retrieve. The report ID is the ID of the
+                /// compliance framework, for example `builtin-fedramp-high`. Formats: *
+                /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// *
+                /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// *
+                /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// </param>
                 public virtual FetchRequest Fetch(string name)
                 {
                     return new FetchRequest(this.service, name);
                 }
 
-                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                /// <summary>
+                /// Fetches the current compliance report for a framework that's deployed in a Data Boundary scope (an
+                /// organization, folder, or project). The report includes the number of passing, failing, and not
+                /// assessed controls in the framework.
+                /// </summary>
                 public class FetchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponse>
                 {
                     /// <summary>Constructs a new Fetch request.</summary>
@@ -1376,7 +1516,15 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the framework compliance report to retrieve.</summary>
+                    /// <summary>
+                    /// Required. The name of the framework compliance report to retrieve. The report ID is the ID of
+                    /// the compliance framework, for example `builtin-fedramp-high`. Formats: *
+                    /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1411,7 +1559,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
                     }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the results. Reserved for future use.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1473,18 +1623,24 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <summary>
+                /// Lists the compliance summaries of the frameworks that are deployed in a Data Boundary scope (an
+                /// organization, folder, or project).
+                /// </summary>
                 /// <param name="parent">
-                /// Required. The parent scope for the framework compliance summary. Format:
-                /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
-                /// projects/{project}/locations/{location}
+                /// Required. The parent scope to list framework compliance summaries for. Formats: *
+                /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <summary>
+                /// Lists the compliance summaries of the frameworks that are deployed in a Data Boundary scope (an
+                /// organization, folder, or project).
+                /// </summary>
                 public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbFrameworkComplianceSummariesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1495,14 +1651,16 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent scope for the framework compliance summary. Format:
-                    /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
-                    /// projects/{project}/locations/{location}
+                    /// Required. The parent scope to list framework compliance summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the results. Reserved for future use.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1515,16 +1673,22 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
                     /// <summary>
                     /// Optional. A token that identifies the page of results that the server should return. Pass the
-                    /// next_page_token value from a previous result.
+                    /// `next_page_token` value from a previous result.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    /// <summary>
+                    /// Optional. The level of detail to return for each summary. If not specified,
+                    /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    /// <summary>
+                    /// Optional. The level of detail to return for each summary. If not specified,
+                    /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
+                    /// </summary>
                     public enum ViewEnum
                     {
                         /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
@@ -1968,8 +2132,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. The resource name of the Violation to acknowledge. Format:
-                    /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+                    /// Required. The resource name of the violation to acknowledge. Format:
+                    /// `organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}`
                     /// </param>
                     public virtual AcknowledgeRequest Acknowledge(Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest body, string name)
                     {
@@ -1992,8 +2156,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the Violation to acknowledge. Format:
-                        /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+                        /// Required. The resource name of the violation to acknowledge. Format:
+                        /// `organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2028,17 +2192,18 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
                     }
 
-                    /// <summary>Retrieves Assured Workload Violation based on ID.</summary>
+                    /// <summary>Retrieves an Assured Workloads violation by its resource name.</summary>
                     /// <param name="name">
-                    /// Required. The resource name of the Violation to fetch (ie. Violation.name). Format:
-                    /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+                    /// Required. The resource name of the violation to retrieve (that is, the value of
+                    /// `Violation.name`). Format:
+                    /// `organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Retrieves Assured Workload Violation based on ID.</summary>
+                    /// <summary>Retrieves an Assured Workloads violation by its resource name.</summary>
                     public class GetRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1Violation>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -2049,22 +2214,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the Violation to fetch (ie. Violation.name). Format:
-                        /// organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
+                        /// Required. The resource name of the violation to retrieve (that is, the value of
+                        /// `Violation.name`). Format:
+                        /// `organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`) for fetching
-                        /// violations.
+                        /// Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or
+                        /// `VIOLATION_VIEW_DATA_BOUNDARY`) that the violation belongs to. If not specified,
+                        /// `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`) for fetching
-                        /// violations.
+                        /// Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or
+                        /// `VIOLATION_VIEW_DATA_BOUNDARY`) that the violation belongs to. If not specified,
+                        /// `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
                         /// </summary>
                         public enum ViewEnum
                         {
@@ -2122,8 +2290,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     /// `organizations/{org_id}/locations/{location}/workloads/-`
                     /// </summary>
                     /// <param name="parent">
-                    /// Required. The Workload name. Format
-                    /// `organizations/{org_id}/locations/{location}/workloads/{workload}`.
+                    /// Required. The workload to list violations for. To list violations across all workloads in an
+                    /// organization, use `-` as the workload ID. When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`,
+                    /// violations are listed for the entire organization and location, and the workload ID is ignored.
+                    /// Format: `organizations/{organization}/locations/{location}/workloads/{workload}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2146,13 +2316,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The Workload name. Format
-                        /// `organizations/{org_id}/locations/{location}/workloads/{workload}`.
+                        /// Required. The workload to list violations for. To list violations across all workloads in an
+                        /// organization, use `-` as the workload ID. When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`,
+                        /// violations are listed for the entire organization and location, and the workload ID is
+                        /// ignored. Format: `organizations/{organization}/locations/{location}/workloads/{workload}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. A custom filter for filtering by the Violations properties.</summary>
+                        /// <summary>
+                        /// Optional. A filter expression that restricts the violations that are returned. The syntax
+                        /// follows [AIP-160](https://google.aip.dev/160). Only the equality operator (`=`) is
+                        /// supported, and expressions can be combined with `AND`, `OR`, and `NOT`. When `view` is
+                        /// `VIOLATION_VIEW_DATA_BOUNDARY`, the following fields are supported: `violationId`,
+                        /// `category`, `state` (`UNRESOLVED`, `RESOLVED`, or `EXCEPTION`), `violationType`
+                        /// (`ORG_POLICY` or `RESOURCE`), `resourceType`, `resourceName`, `project`,
+                        /// `associatedOrgPolicyViolationId`, `cloudControlName`, `workloadDisplayName`, and
+                        /// `complianceType` (a framework ID). Example: `state = "UNRESOLVED" AND complianceType =
+                        /// "builtin-fedramp-high"`
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -2222,28 +2404,44 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                             }
                         }
 
-                        /// <summary>Optional. Actionable sorting delegation.</summary>
+                        /// <summary>
+                        /// Optional. A comma-separated list of fields to sort the results by. The default sort order is
+                        /// ascending; to sort in descending order, append ` desc` to the field name. For example,
+                        /// `update_time desc,category`. When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`, the following
+                        /// fields are supported: `begin_time`, `update_time`, `resource_type`, `state`, and `category`.
+                        /// If not specified, results are sorted by `begin_time` in descending order.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>Optional. Page size.</summary>
+                        /// <summary>
+                        /// Optional. The maximum number of violations to return. The service might return fewer
+                        /// violations than this value. If unspecified, at most 100 violations are returned. The maximum
+                        /// value is 1000; values above 1000 are coerced to 1000.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>Optional. Page token returned from previous request.</summary>
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListViolations` call. Provide this token
+                        /// to retrieve the subsequent page. When paginating, all other parameters that are provided to
+                        /// `ListViolations` must match the call that provided the page token.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
                         /// <summary>
-                        /// Optional. Specifies the violation view(AssuredWorkloads or DataBoundary) for fetching
-                        /// violations.
+                        /// Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or
+                        /// `VIOLATION_VIEW_DATA_BOUNDARY`) to list violations for. If not specified,
+                        /// `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// Optional. Specifies the violation view(AssuredWorkloads or DataBoundary) for fetching
-                        /// violations.
+                        /// Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or
+                        /// `VIOLATION_VIEW_DATA_BOUNDARY`) to list violations for. If not specified,
+                        /// `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
                         /// </summary>
                         public enum ViewEnum
                         {
@@ -3083,18 +3281,24 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Lists the finding summary by category for a given scope.</summary>
+                /// <summary>
+                /// Lists summaries of the active findings in a Data Boundary scope (an organization, folder, or
+                /// project), with one summary for each finding category.
+                /// </summary>
                 /// <param name="parent">
-                /// Required. The parent scope for the framework overview page. Formats: -
-                /// projects/{project}/locations/{location} - folders/{folder}/locations/{location} -
-                /// organizations/{organization}/locations/{location}
+                /// Required. The parent scope to list finding summaries for. Formats: *
+                /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the finding summary by category for a given scope.</summary>
+                /// <summary>
+                /// Lists summaries of the active findings in a Data Boundary scope (an organization, folder, or
+                /// project), with one summary for each finding category.
+                /// </summary>
                 public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbFindingSummariesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3105,14 +3309,19 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent scope for the framework overview page. Formats: -
-                    /// projects/{project}/locations/{location} - folders/{folder}/locations/{location} -
-                    /// organizations/{organization}/locations/{location}
+                    /// Required. The parent scope to list finding summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the framework deployments whose findings are
+                    /// summarized. The syntax follows [AIP-160](https://google.aip.dev/160). Supported fields are
+                    /// `framework_deployment`, `framework_name`, and `framework_revision` (the major revision ID of the
+                    /// framework).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -3124,7 +3333,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. A token that identifies the page of results that the server should return.
+                    /// Optional. A token that identifies the page of results that the server should return. Pass the
+                    /// `next_page_token` value from a previous result.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -3213,19 +3423,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         this.service = service;
                     }
 
-                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <summary>
+                    /// Lists the compliance summaries of the controls in a framework compliance report.
+                    /// </summary>
                     /// <param name="parent">
-                    /// Required. The parent scope for the framework overview page. Format:
-                    /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                    /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                    /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                    /// Required. The framework compliance report to list control compliance summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists the control compliance summary for a given scope.</summary>
+                    /// <summary>
+                    /// Lists the compliance summaries of the controls in a framework compliance report.
+                    /// </summary>
                     public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbControlComplianceSummariesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3236,15 +3452,25 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The parent scope for the framework overview page. Format:
-                        /// organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                        /// folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
-                        /// projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}
+                        /// Required. The framework compliance report to list control compliance summaries for. Formats:
+                        /// *
+                        /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                        /// *
+                        /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                        /// *
+                        /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The filtering results.</summary>
+                        /// <summary>
+                        /// Optional. A filter expression that restricts the results. The syntax follows
+                        /// [AIP-160](https://google.aip.dev/160). Supported fields are `framework_deployment`,
+                        /// `framework_name`, `framework_revision` (the major revision ID of the framework), and
+                        /// `end_time`. The `end_time` field accepts a single equality comparison with an [RFC
+                        /// 3339](https://www.ietf.org/rfc/rfc3339.txt) timestamp, for example `end_time =
+                        /// "2026-01-01T00:00:00Z"`. Only findings that were updated at or after this time are counted.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -3256,7 +3482,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. A token that identifies the page of results that the server should return.
+                        /// Optional. A token that identifies the page of results that the server should return. Pass
+                        /// the `next_page_token` value from a previous result.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -3310,9 +3537,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
-                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <summary>
+                /// Gets daily compliance reports over a time range for a framework that's deployed in a Data Boundary
+                /// scope.
+                /// </summary>
                 /// <param name="name">
-                /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                /// Required. The name of the framework compliance report to aggregate over time. The report ID is the
+                /// ID of the compliance framework, for example `builtin-fedramp-high`. Format:
                 /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                 /// </param>
                 public virtual AggregateRequest Aggregate(string name)
@@ -3320,7 +3551,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     return new AggregateRequest(this.service, name);
                 }
 
-                /// <summary>Gets the aggregated compliance report over time for a given scope.</summary>
+                /// <summary>
+                /// Gets daily compliance reports over a time range for a framework that's deployed in a Data Boundary
+                /// scope.
+                /// </summary>
                 public class AggregateRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AggregateDbFrameworkComplianceReportResponse>
                 {
                     /// <summary>Constructs a new Aggregate request.</summary>
@@ -3331,13 +3565,19 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The name of the aggregated compliance report over time to retrieve. Format:
+                    /// Required. The name of the framework compliance report to aggregate over time. The report ID is
+                    /// the ID of the compliance framework, for example `builtin-fedramp-high`. Format:
                     /// `organizations/{organization_id}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the framework deployments that are included in the
+                    /// report. The syntax follows [AIP-160](https://google.aip.dev/160). Supported fields are
+                    /// `framework_deployment`, `framework_name`, and `framework_revision` (the major revision ID of the
+                    /// framework).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -3453,14 +3693,30 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
-                /// <summary>Fetches the framework compliance report for a given scope.</summary>
-                /// <param name="name">Required. The name of the framework compliance report to retrieve.</param>
+                /// <summary>
+                /// Fetches the current compliance report for a framework that's deployed in a Data Boundary scope (an
+                /// organization, folder, or project). The report includes the number of passing, failing, and not
+                /// assessed controls in the framework.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the framework compliance report to retrieve. The report ID is the ID of the
+                /// compliance framework, for example `builtin-fedramp-high`. Formats: *
+                /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// *
+                /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// *
+                /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                /// </param>
                 public virtual FetchRequest Fetch(string name)
                 {
                     return new FetchRequest(this.service, name);
                 }
 
-                /// <summary>Fetches the framework compliance report for a given scope.</summary>
+                /// <summary>
+                /// Fetches the current compliance report for a framework that's deployed in a Data Boundary scope (an
+                /// organization, folder, or project). The report includes the number of passing, failing, and not
+                /// assessed controls in the framework.
+                /// </summary>
                 public class FetchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponse>
                 {
                     /// <summary>Constructs a new Fetch request.</summary>
@@ -3470,7 +3726,15 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the framework compliance report to retrieve.</summary>
+                    /// <summary>
+                    /// Required. The name of the framework compliance report to retrieve. The report ID is the ID of
+                    /// the compliance framework, for example `builtin-fedramp-high`. Formats: *
+                    /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `folders/{folder}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// *
+                    /// `projects/{project}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3505,7 +3769,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         }
                     }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the results. Reserved for future use.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -3567,18 +3833,24 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <summary>
+                /// Lists the compliance summaries of the frameworks that are deployed in a Data Boundary scope (an
+                /// organization, folder, or project).
+                /// </summary>
                 /// <param name="parent">
-                /// Required. The parent scope for the framework compliance summary. Format:
-                /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
-                /// projects/{project}/locations/{location}
+                /// Required. The parent scope to list framework compliance summaries for. Formats: *
+                /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists the framework compliance summary for a given scope.</summary>
+                /// <summary>
+                /// Lists the compliance summaries of the frameworks that are deployed in a Data Boundary scope (an
+                /// organization, folder, or project).
+                /// </summary>
                 public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1ListDbFrameworkComplianceSummariesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3589,14 +3861,16 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent scope for the framework compliance summary. Format:
-                    /// organizations/{organization}/locations/{location} folders/{folder}/locations/{location}
-                    /// projects/{project}/locations/{location}
+                    /// Required. The parent scope to list framework compliance summaries for. Formats: *
+                    /// `organizations/{organization}/locations/{location}` * `folders/{folder}/locations/{location}` *
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The filtering results.</summary>
+                    /// <summary>
+                    /// Optional. A filter expression that restricts the results. Reserved for future use.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -3609,16 +3883,22 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
                     /// <summary>
                     /// Optional. A token that identifies the page of results that the server should return. Pass the
-                    /// next_page_token value from a previous result.
+                    /// `next_page_token` value from a previous result.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    /// <summary>
+                    /// Optional. The level of detail to return for each summary. If not specified,
+                    /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Optional. Specifies the level of detail to return in the response.</summary>
+                    /// <summary>
+                    /// Optional. The level of detail to return for each summary. If not specified,
+                    /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_BASIC` is used.
+                    /// </summary>
                     public enum ViewEnum
                     {
                         /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
@@ -3698,28 +3978,37 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 }
 namespace Google.Apis.Assuredworkloads.v1beta1.Data
 {
-    /// <summary>Request for acknowledging the violation</summary>
+    /// <summary>Request message for acknowledging a violation.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Acknowledge type of specified violation.</summary>
+        /// <summary>
+        /// Optional. The scope of the acknowledgement for the specified violation. If not specified, `SINGLE_VIOLATION`
+        /// is used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgeType")]
         public virtual string AcknowledgeType { get; set; }
 
-        /// <summary>Required. Business justification explaining the need for violation acknowledgement</summary>
+        /// <summary>
+        /// Required. The business justification for acknowledging the violation. The comment can't be empty or contain
+        /// only whitespace characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
         /// <summary>
-        /// Optional. This field is deprecated and will be removed in future version of the API. Name of the OrgPolicy
-        /// which was modified with non-compliant change and resulted in this violation. Format:
-        /// projects/{project_number}/policies/{constraint_name} folders/{folder_id}/policies/{constraint_name}
-        /// organizations/{organization_id}/policies/{constraint_name}
+        /// Optional. Deprecated: This field is deprecated and will be removed in a future version of the API. The
+        /// service identifies the violation to acknowledge by `name`, and ignores this field. Don't set this field. The
+        /// name of the organization policy that was modified with a non-compliant change and resulted in this
+        /// violation. Formats: * `projects/{project_number}/policies/{constraint_name}` *
+        /// `folders/{folder_id}/policies/{constraint_name}` *
+        /// `organizations/{organization_id}/policies/{constraint_name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
         public virtual string NonCompliantOrgPolicy { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the violation view (`AssuredWorkloads` or `DataBoundary`) for acknowledging violations.
+        /// Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or `VIOLATION_VIEW_DATA_BOUNDARY`) that the
+        /// violation belongs to. If not specified, `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
@@ -3728,7 +4017,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for violation acknowledgement</summary>
+    /// <summary>Response message for acknowledging a violation. This message is empty.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3738,7 +4027,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>The response message for AggregateDbFrameworkComplianceReport.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AggregateDbFrameworkComplianceReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of aggregated compliance reports.</summary>
+        /// <summary>The daily compliance reports for the requested time range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregatedComplianceReports")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport> AggregatedComplianceReports { get; set; }
 
@@ -3746,10 +4035,12 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The aggregated compliance report.</summary>
+    /// <summary>A point-in-time compliance report for a framework.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AggregatedComplianceReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The control assessment details of the framework.</summary>
+        /// <summary>
+        /// The number of passing, failing, and not assessed controls in the framework at `report_time`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlAssessmentDetails")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails ControlAssessmentDetails { get; set; }
 
@@ -3757,7 +4048,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
 
         private object _reportTime;
 
-        /// <summary>The report time of the aggregated compliance report.</summary>
+        /// <summary>The time that the compliance report represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
         public virtual string ReportTimeRaw
         {
@@ -4127,7 +4418,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The details for control compliance.</summary>
+    /// <summary>A summary of the compliance status of a control in a framework compliance report.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of cloud control reports.</summary>
@@ -4161,7 +4452,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isFakeControl")]
         public virtual System.Nullable<bool> IsFakeControl { get; set; }
 
-        /// <summary>Identifier. The name of the control compliance summary.</summary>
+        /// <summary>
+        /// Identifier. The resource name of the control compliance summary. Format:
+        /// `organizations/{organization}/locations/{location}/dbFrameworkComplianceReports/{db_framework_compliance_report}/dbControlComplianceSummaries/{db_control_compliance_summary}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4189,38 +4483,40 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The details for a finding.</summary>
+    /// <summary>A summary of the active findings for a finding category in a Data Boundary scope.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1DbFindingSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The category of the finding.</summary>
+        /// <summary>Output only. The category of the findings that are summarized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingCategory")]
         public virtual string FindingCategory { get; set; }
 
-        /// <summary>Output only. The class of the finding.</summary>
+        /// <summary>Output only. The class of the findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
         public virtual string FindingClass { get; set; }
 
-        /// <summary>Output only. The count of the finding.</summary>
+        /// <summary>Output only. The total number of active findings in the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingCount")]
         public virtual System.Nullable<long> FindingCount { get; set; }
 
-        /// <summary>Identifier. The name of the finding summary.</summary>
+        /// <summary>Identifier. The resource name of the finding summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. Number of active organization policy findings for this category.</summary>
+        /// <summary>Output only. The number of active organization policy findings in the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationPolicyFindingCount")]
         public virtual System.Nullable<long> OrganizationPolicyFindingCount { get; set; }
 
-        /// <summary>Optional. The list of compliance frameworks that the finding belongs to.</summary>
+        /// <summary>
+        /// Optional. The display names of the compliance frameworks that the findings are related to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedFrameworks")]
         public virtual System.Collections.Generic.IList<string> RelatedFrameworks { get; set; }
 
-        /// <summary>Output only. Number of active resource findings for this category.</summary>
+        /// <summary>Output only. The number of active resource findings in the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFindingCount")]
         public virtual System.Nullable<long> ResourceFindingCount { get; set; }
 
-        /// <summary>Output only. The severity of the finding.</summary>
+        /// <summary>Output only. The severity of the findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
@@ -4228,7 +4524,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The last updated time of the finding.</summary>
+        /// <summary>Output only. The time when the findings in the category were last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -4265,34 +4561,40 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The details for a framework compliance summary.</summary>
+    /// <summary>A summary of the compliance status of a framework that's deployed in a Data Boundary scope.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The control assessment details of the framework.</summary>
+        /// <summary>The number of passing, failing, and not assessed controls in the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlAssessmentDetails")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails ControlAssessmentDetails { get; set; }
 
-        /// <summary>Output only. The trend of controls that are passing for the given duration.</summary>
+        /// <summary>
+        /// Output only. The trend of passing controls over the trend duration. This field is only populated when using
+        /// `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlsPassingTrend")]
         public virtual GoogleCloudAssuredworkloadsV1beta1Trend ControlsPassingTrend { get; set; }
 
-        /// <summary>Output only. The count of the findings generated against the framework.</summary>
+        /// <summary>
+        /// Output only. The number of findings that were generated against the framework. This field is only populated
+        /// when using `FRAMEWORK_COMPLIANCE_SUMMARY_VIEW_FULL`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findingCount")]
         public virtual System.Nullable<long> FindingCount { get; set; }
 
-        /// <summary>The name of the framework.</summary>
+        /// <summary>The resource name of the compliance framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("framework")]
         public virtual string Framework { get; set; }
 
-        /// <summary>The list of framework categories supported by the framework.</summary>
+        /// <summary>The categories of the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameworkCategories")]
         public virtual System.Collections.Generic.IList<string> FrameworkCategories { get; set; }
 
-        /// <summary>Optional. The display name for the framework.</summary>
+        /// <summary>Optional. The display name of the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameworkDisplayName")]
         public virtual string FrameworkDisplayName { get; set; }
 
-        /// <summary>The type of framework.</summary>
+        /// <summary>The type of the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameworkType")]
         public virtual string FrameworkType { get; set; }
 
@@ -4304,15 +4606,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minorRevisionId")]
         public virtual System.Nullable<long> MinorRevisionId { get; set; }
 
-        /// <summary>Identifier. The name of the framework compliance summary.</summary>
+        /// <summary>Identifier. The resource name of the framework compliance summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The list of cloud providers supported by the framework.</summary>
+        /// <summary>The cloud providers that are supported by the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedCloudProviders")]
         public virtual System.Collections.Generic.IList<string> SupportedCloudProviders { get; set; }
 
-        /// <summary>The target resource details for the framework.</summary>
+        /// <summary>
+        /// The details of the target resources (organizations, folders, or projects) that the framework is deployed on.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResourceDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails> TargetResourceDetails { get; set; }
 
@@ -4337,15 +4641,18 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>The response message for FetchDbFrameworkComplianceReport.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1FetchDbFrameworkComplianceReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The control assessment details of the framework.</summary>
+        /// <summary>The number of passing, failing, and not assessed controls in the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlAssessmentDetails")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ControlAssessmentDetails ControlAssessmentDetails { get; set; }
 
-        /// <summary>The name of the framework.</summary>
+        /// <summary>
+        /// The resource name of the compliance framework. For example,
+        /// `organizations/{organization}/locations/{location}/frameworks/{framework_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("framework")]
         public virtual string Framework { get; set; }
 
-        /// <summary>The list of framework categories supported.</summary>
+        /// <summary>The categories of the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameworkCategories")]
         public virtual System.Collections.Generic.IList<string> FrameworkCategories { get; set; }
 
@@ -4353,7 +4660,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frameworkDescription")]
         public virtual string FrameworkDescription { get; set; }
 
-        /// <summary>Optional. The display name for the framework.</summary>
+        /// <summary>Optional. The display name of the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameworkDisplayName")]
         public virtual string FrameworkDisplayName { get; set; }
 
@@ -4369,15 +4676,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minorRevisionId")]
         public virtual System.Nullable<long> MinorRevisionId { get; set; }
 
-        /// <summary>The name of the framework compliance report.</summary>
+        /// <summary>The resource name of the framework compliance report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The list of cloud providers that are supported by the framework.</summary>
+        /// <summary>The cloud providers that are supported by the framework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedCloudProviders")]
         public virtual System.Collections.Generic.IList<string> SupportedCloudProviders { get; set; }
 
-        /// <summary>The target resource details of the framework.</summary>
+        /// <summary>
+        /// The details of the target resources (organizations, folders, or projects) that the framework is deployed on.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResourceDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1TargetResourceDetails> TargetResourceDetails { get; set; }
 
@@ -4385,7 +4694,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The last updated time of the report.</summary>
+        /// <summary>Output only. The time when the report was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -4422,14 +4731,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response message for ListDBControlComplianceSummaries.</summary>
+    /// <summary>The response message for ListDbControlComplianceSummaries.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListDbControlComplianceSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of control compliance details.</summary>
+        /// <summary>The list of control compliance summaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbControlComplianceSummaries")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1DbControlComplianceSummary> DbControlComplianceSummaries { get; set; }
 
-        /// <summary>Output only. The token to retrieve the next page of results.</summary>
+        /// <summary>
+        /// Output only. A token that can be sent as `page_token` to retrieve the next page. If this field is empty,
+        /// there are no subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4440,11 +4752,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>The response message for ListDbFindingSummaries.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListDbFindingSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of finding summary by category.</summary>
+        /// <summary>The list of finding summaries, one for each finding category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbFindingSummaries")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1DbFindingSummary> DbFindingSummaries { get; set; }
 
-        /// <summary>Output only. The token to retrieve the next page of results.</summary>
+        /// <summary>
+        /// Output only. A token that can be sent as `page_token` to retrieve the next page. If this field is empty,
+        /// there are no subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4452,14 +4767,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response message for ListDbFrameworkComplianceSummariesResponse.</summary>
+    /// <summary>The response message for ListDbFrameworkComplianceSummaries.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListDbFrameworkComplianceSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of framework compliance summaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbFrameworkComplianceSummaries")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1DbFrameworkComplianceSummary> DbFrameworkComplianceSummaries { get; set; }
 
-        /// <summary>Output only. The token to retrieve the next page of results.</summary>
+        /// <summary>
+        /// Output only. A token that can be sent as `page_token` to retrieve the next page. If this field is empty,
+        /// there are no subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4467,18 +4785,24 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response of ListViolations endpoint.</summary>
+    /// <summary>Response message for the `ListViolations` method.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The next page token. Returns empty if reached the last page.</summary>
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The total number of violations.</summary>
+        /// <summary>
+        /// The total number of violations that match the request, across all pages. This field might not be populated
+        /// for all requests; when it's not populated, its value is `0`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 
-        /// <summary>List of Violations under a Workload.</summary>
+        /// <summary>The list of violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1Violation> Violations { get; set; }
 
@@ -4869,10 +5193,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Workload monitoring Violation.</summary>
+    /// <summary>
+    /// A compliance violation that's detected by Assured Workloads monitoring. A violation is created when an
+    /// organization policy or a resource in a workload (or a Data Boundary scope) changes in a way that doesn't comply
+    /// with the controls of the applicable compliance regime or framework.
+    /// </summary>
     public class GoogleCloudAssuredworkloadsV1beta1Violation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A boolean that indicates if the violation is acknowledged</summary>
+        /// <summary>Whether the violation has been acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledged")]
         public virtual System.Nullable<bool> Acknowledged { get; set; }
 
@@ -4881,9 +5209,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         private object _acknowledgementTime;
 
         /// <summary>
-        /// Optional. Timestamp when this violation was acknowledged first. Check exception_contexts to find the last
-        /// time the violation was acknowledged when there are more than one violations. This field will be absent when
-        /// acknowledged field is marked as false.
+        /// Optional. The time when the violation was first acknowledged. To find the most recent time that the
+        /// violation was acknowledged, check `exception_contexts`. This field is absent when `acknowledged` is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
         public virtual string AcknowledgementTimeRaw
@@ -4920,22 +5247,22 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         }
 
         /// <summary>
-        /// Output only. List of compliance frameworks that are affected by this violation. This field is only populated
-        /// when using `VIOLATION_VIEW_DATA_BOUNDARY`. e.g. "FedRAMP High", "NIST 800-53".
+        /// Output only. The IDs of the compliance frameworks that are affected by this violation. For example,
+        /// `builtin-fedramp-high`. This field is only populated when using `VIOLATION_VIEW_DATA_BOUNDARY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedFrameworks")]
         public virtual System.Collections.Generic.IList<string> AffectedFrameworks { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Violation Id of the org-policy violation due to which the resource violation is
-        /// caused. Empty for org-policy violations.
+        /// Optional. Output only. For resource violations, the ID of the organization policy violation that caused this
+        /// resource violation. This field is empty for organization policy violations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associatedOrgPolicyViolationId")]
         public virtual string AssociatedOrgPolicyViolationId { get; set; }
 
         /// <summary>
-        /// Output only. Immutable. Audit Log Link for violated resource Format:
-        /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{timeRange}{folder}
+        /// Output only. Immutable. A link to the Cloud Audit Logs entries for the violated resource. Format:
+        /// `https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{timeRange}{folder}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogLink")]
         public virtual string AuditLogLink { get; set; }
@@ -4944,7 +5271,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
 
         private object _beginTime;
 
-        /// <summary>Output only. Time of the event which triggered the Violation.</summary>
+        /// <summary>Output only. The time of the event that triggered the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("beginTime")]
         public virtual string BeginTimeRaw
         {
@@ -4978,70 +5305,79 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         }
 
         /// <summary>
-        /// Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access,
-        /// Encryption, etc.
+        /// Output only. The category that the violation is mapped to. For example, `Location`, `Service Usage`,
+        /// `Access`, or `Encryption`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
         /// <summary>
-        /// Optional. Output only. The number of resource violations for particular org policy violation. This will be 0
-        /// in case of resource violation.
+        /// Optional. Output only. For organization policy violations, the number of resource violations that are
+        /// associated with this violation. This field is `0` for resource violations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childResourceViolationCount")]
         public virtual System.Nullable<int> ChildResourceViolationCount { get; set; }
 
         /// <summary>
-        /// Output only. Description for the Violation. e.g. OrgPolicy gcp.resourceLocations has non compliant value.
+        /// Output only. A description of the violation. For example, `OrgPolicy gcp.resourceLocations has non compliant
+        /// value.`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. Immutable. Audit Log link to find business justification provided for violation exception.
-        /// Format:
-        /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{protoPayload.methodName}{timeRange}{organization}
+        /// Output only. Immutable. A link to the Cloud Audit Logs entries that contain the business justification that
+        /// was provided when the violation was acknowledged. Format:
+        /// `https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{protoPayload.methodName}{timeRange}{organization}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exceptionAuditLogLink")]
         public virtual string ExceptionAuditLogLink { get; set; }
 
-        /// <summary>Output only. List of all the exception detail added for the violation.</summary>
+        /// <summary>Output only. The details of all of the acknowledgements (exceptions) for the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exceptionContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext> ExceptionContexts { get; set; }
 
         /// <summary>
-        /// Output only. Immutable. Name of the Violation. Format:
-        /// organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}
+        /// Output only. Immutable. The resource name of the violation. Format:
+        /// `organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Immutable. Name of the OrgPolicy which was modified with non-compliant change and resulted this
-        /// violation. Format: projects/{project_number}/policies/{constraint_name}
-        /// folders/{folder_id}/policies/{constraint_name} organizations/{organization_id}/policies/{constraint_name}
+        /// Output only. Immutable. The name of the organization policy that was modified with a non-compliant change
+        /// and resulted in this violation. Formats: * `projects/{project_number}/policies/{constraint_name}` *
+        /// `folders/{folder_id}/policies/{constraint_name}` *
+        /// `organizations/{organization_id}/policies/{constraint_name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
         public virtual string NonCompliantOrgPolicy { get; set; }
 
         /// <summary>
-        /// Output only. Immutable. The org-policy-constraint that was incorrectly changed, which resulted in this
-        /// violation.
+        /// Output only. Immutable. Deprecated: This field is deprecated and might be removed in a future version of the
+        /// API. Use `non_compliant_org_policy` instead, which contains the full resource name of the organization
+        /// policy, including the constraint name. The organization policy constraint that was changed in a
+        /// non-compliant way, which resulted in this violation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraint")]
         public virtual string OrgPolicyConstraint { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Parent project number where resource is present. Empty for org-policy violations.
+        /// Optional. Output only. For resource violations, the number of the project that contains the non-compliant
+        /// resource. This field is empty for organization policy violations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentProjectNumber")]
         public virtual string ParentProjectNumber { get; set; }
 
-        /// <summary>Output only. Compliance violation remediation</summary>
+        /// <summary>Output only. The remediation guidance for the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ViolationRemediation Remediation { get; set; }
 
-        /// <summary>Output only. Contains the remediation instructions for the violation in markdown format.</summary>
+        /// <summary>
+        /// Output only. The remediation instructions for the violation, in Markdown format. This field is only
+        /// populated by `GetViolation` when using `VIOLATION_VIEW_DATA_BOUNDARY`. When this field isn't populated, see
+        /// `remediation` instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediationMarkdown")]
         public virtual string RemediationMarkdown { get; set; }
 
@@ -5050,7 +5386,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         private object _resolveTime;
 
         /// <summary>
-        /// Output only. Time of the event which fixed the Violation. If the violation is ACTIVE this will be empty.
+        /// Output only. The time of the event that resolved the violation. This field is empty if the violation is
+        /// unresolved.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolveTime")]
         public virtual string ResolveTimeRaw
@@ -5085,20 +5422,21 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         }
 
         /// <summary>
-        /// Optional. Output only. Name of the resource like //storage.googleapis.com/myprojectxyz-testbucket. Empty for
-        /// org-policy violations.
+        /// Optional. Output only. For resource violations, the full resource name of the non-compliant resource. For
+        /// example, `//storage.googleapis.com/myprojectxyz-testbucket`. This field is empty for organization policy
+        /// violations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
         /// <summary>
-        /// Optional. Output only. Type of the resource like compute.googleapis.com/Disk, etc. Empty for org-policy
-        /// violations.
+        /// Optional. Output only. For resource violations, the type of the non-compliant resource. For example,
+        /// `compute.googleapis.com/Disk`. This field is empty for organization policy violations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
-        /// <summary>Output only. State of the violation</summary>
+        /// <summary>Output only. The state of the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -5106,7 +5444,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The last time when the Violation record was updated.</summary>
+        /// <summary>Output only. The time when the violation record was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -5139,7 +5477,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. Type of the violation</summary>
+        /// <summary>Output only. The type of the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violationType")]
         public virtual string ViolationType { get; set; }
 
@@ -5147,14 +5485,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Violation exception detail.</summary>
+    /// <summary>Details about an acknowledgement (exception) of a violation.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _acknowledgementTimeRaw;
 
         private object _acknowledgementTime;
 
-        /// <summary>Timestamp when the violation was acknowledged.</summary>
+        /// <summary>The time when the violation was acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
         public virtual string AcknowledgementTimeRaw
         {
@@ -5189,11 +5527,11 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
             set => AcknowledgementTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Business justification provided towards the acknowledgement of the violation.</summary>
+        /// <summary>The business justification that was provided when the violation was acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
 
-        /// <summary>Name of the user (or service account) who acknowledged the violation.</summary>
+        /// <summary>The name of the user (or service account) who acknowledged the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; }
 
@@ -5201,21 +5539,24 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents remediation guidance to resolve compliance violation for AssuredWorkload</summary>
+    /// <summary>Remediation guidance to resolve a compliance violation.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ViolationRemediation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Values that can resolve the violation For example: for list org policy violations, this will either be the
-        /// list of allowed or denied values
+        /// The values that can resolve the violation. For example, for list organization policy violations, this field
+        /// contains the list of allowed or denied values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliantValues")]
         public virtual System.Collections.Generic.IList<string> CompliantValues { get; set; }
 
-        /// <summary>Required. Remediation instructions to resolve violations</summary>
+        /// <summary>Required. The instructions to resolve the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instructions")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructions Instructions { get; set; }
 
-        /// <summary>Output only. Reemediation type based on the type of org policy values violated</summary>
+        /// <summary>
+        /// Output only. The remediation type, which is based on the type of organization policy values that were
+        /// violated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediationType")]
         public virtual string RemediationType { get; set; }
 
@@ -5223,14 +5564,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Instructions to remediate violation</summary>
+    /// <summary>Instructions to remediate a violation.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Remediation instructions to resolve violation via cloud console</summary>
+        /// <summary>Instructions to resolve the violation by using the Google Cloud console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consoleInstructions")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructionsConsole ConsoleInstructions { get; set; }
 
-        /// <summary>Remediation instructions to resolve violation via gcloud cli</summary>
+        /// <summary>Instructions to resolve the violation by using the gcloud CLI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcloudInstructions")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructionsGcloud GcloudInstructions { get; set; }
 
@@ -5238,18 +5579,18 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Remediation instructions to resolve violation via cloud console</summary>
+    /// <summary>Instructions to remediate a violation by using the Google Cloud console.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructionsConsole : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional urls for more information about steps</summary>
+        /// <summary>Additional URLs with more information about the steps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalLinks")]
         public virtual System.Collections.Generic.IList<string> AdditionalLinks { get; set; }
 
-        /// <summary>Link to console page where violations can be resolved</summary>
+        /// <summary>Links to the Google Cloud console pages where the violation can be resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consoleUris")]
         public virtual System.Collections.Generic.IList<string> ConsoleUris { get; set; }
 
-        /// <summary>Steps to resolve violation via cloud console</summary>
+        /// <summary>The steps to resolve the violation by using the Google Cloud console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<string> Steps { get; set; }
 
@@ -5257,18 +5598,18 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Remediation instructions to resolve violation via gcloud cli</summary>
+    /// <summary>Instructions to remediate a violation by using the Google Cloud CLI.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ViolationRemediationInstructionsGcloud : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional urls for more information about steps</summary>
+        /// <summary>Additional URLs with more information about the steps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalLinks")]
         public virtual System.Collections.Generic.IList<string> AdditionalLinks { get; set; }
 
-        /// <summary>Gcloud command to resolve violation</summary>
+        /// <summary>The gcloud CLI commands that resolve the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcloudCommands")]
         public virtual System.Collections.Generic.IList<string> GcloudCommands { get; set; }
 
-        /// <summary>Steps to resolve violation via gcloud cli</summary>
+        /// <summary>The steps to resolve the violation by using the gcloud CLI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<string> Steps { get; set; }
 

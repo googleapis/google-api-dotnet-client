@@ -2815,6 +2815,83 @@ namespace Google.Apis.BigQueryReservation.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Upgrades the edition for a list of reservations and capacity commitments. You can only upgrade to a
+            /// higher edition (from `STANDARD` to `ENTERPRISE` or `ENTERPRISE_PLUS`, from `ENTERPRISE` to
+            /// `ENTERPRISE_PLUS`, or from `EDITION_UNSPECIFIED` to `ENTERPRISE` or `ENTERPRISE_PLUS`). You can't
+            /// downgrade an edition. The upgrade must not cause an overall flexible slot increase across the original
+            /// and target editions (for example, by upgrading a reservation without upgrading its corresponding
+            /// capacity commitment). Otherwise, the method fails with a `google.rpc.Code.FAILED_PRECONDITION` error.
+            /// Before the upgrade, the service validates that the resources meet the requirements of the target edition
+            /// (for example, all reservations within a reservation group must be upgraded together).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// The parent resource name that identifies the admin project and location, in the format
+            /// `projects/{project}/locations/{location}`. For example, `projects/myproject/locations/us-west1`.
+            /// </param>
+            public virtual UpgradeEditionRequest UpgradeEdition(Google.Apis.BigQueryReservation.v1.Data.UpgradeEditionRequest body, string parent)
+            {
+                return new UpgradeEditionRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Upgrades the edition for a list of reservations and capacity commitments. You can only upgrade to a
+            /// higher edition (from `STANDARD` to `ENTERPRISE` or `ENTERPRISE_PLUS`, from `ENTERPRISE` to
+            /// `ENTERPRISE_PLUS`, or from `EDITION_UNSPECIFIED` to `ENTERPRISE` or `ENTERPRISE_PLUS`). You can't
+            /// downgrade an edition. The upgrade must not cause an overall flexible slot increase across the original
+            /// and target editions (for example, by upgrading a reservation without upgrading its corresponding
+            /// capacity commitment). Otherwise, the method fails with a `google.rpc.Code.FAILED_PRECONDITION` error.
+            /// Before the upgrade, the service validates that the resources meet the requirements of the target edition
+            /// (for example, all reservations within a reservation group must be upgraded together).
+            /// </summary>
+            public class UpgradeEditionRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.UpgradeEditionResponse>
+            {
+                /// <summary>Constructs a new UpgradeEdition request.</summary>
+                public UpgradeEditionRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1.Data.UpgradeEditionRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The parent resource name that identifies the admin project and location, in the format
+                /// `projects/{project}/locations/{location}`. For example, `projects/myproject/locations/us-west1`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BigQueryReservation.v1.Data.UpgradeEditionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "upgradeEdition";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:upgradeEdition";
+
+                /// <summary>Initializes UpgradeEdition parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
         }
     }
 }
@@ -4168,6 +4245,57 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The request for ReservationService.UpgradeEdition. You must specify at least one reservation or capacity
+    /// commitment.
+    /// </summary>
+    public class UpgradeEditionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The resource names of the capacity commitments to upgrade, in the format
+        /// `projects/{project}/locations/{location}/capacityCommitments/{capacity_commitment}`. For example,
+        /// `projects/myproject/locations/us-west1/capacityCommitments/123`. These capacity commitments must be in the
+        /// `ACTIVE` state and must exist under the specified `parent`. The `commitment_start_time` and
+        /// `commitment_end_time` fields don't change after the upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityCommitments")]
+        public virtual System.Collections.Generic.IList<string> CapacityCommitments { get; set; }
+
+        /// <summary>
+        /// Optional. The resource names of the reservations to upgrade, in the format
+        /// `projects/{project}/locations/{location}/reservations/{reservation}`. For example,
+        /// `projects/myproject/locations/us-west1/reservations/team1-prod`. These reservations must exist under the
+        /// specified `parent`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
+        public virtual System.Collections.Generic.IList<string> Reservations { get; set; }
+
+        /// <summary>
+        /// The edition to upgrade the capacity commitments and reservations to. Supported values are `ENTERPRISE` and
+        /// `ENTERPRISE_PLUS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetEdition")]
+        public virtual string TargetEdition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for ReservationService.UpgradeEdition.</summary>
+    public class UpgradeEditionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated capacity commitments after the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityCommitments")]
+        public virtual System.Collections.Generic.IList<CapacityCommitment> CapacityCommitments { get; set; }
+
+        /// <summary>The updated reservations after the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservations")]
+        public virtual System.Collections.Generic.IList<Reservation> Reservations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

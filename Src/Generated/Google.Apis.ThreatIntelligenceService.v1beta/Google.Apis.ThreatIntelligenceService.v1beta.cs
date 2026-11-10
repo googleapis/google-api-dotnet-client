@@ -2047,6 +2047,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
             set => CollectionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Platform identifiers of the message, thread and channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("communicationContext")]
+        public virtual CommunicationContext CommunicationContext { get; set; }
+
         /// <summary>Output only. The content of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -2350,6 +2354,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channelUrl")]
         public virtual string ChannelUrl { get; set; }
 
+        /// <summary>Optional. Message or post identifier on the originating platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
         /// <summary>Optional. Service from the collection event origin (e.g. forum or chat service name).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
@@ -2528,6 +2536,25 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Brand information for the customer profile.</summary>
+    public class CustomerProfileBrand : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>Optional. The citation ids for the brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationIds")]
+        public virtual System.Collections.Generic.IList<string> CitationIds { get; set; }
+
+        /// <summary>Optional. The unique identifier for the brand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Citation information for the customer profile.</summary>
     public class CustomerProfileCitation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2621,6 +2648,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
     /// <summary>CustomerProfileConfig is the configuration for the customer profile.</summary>
     public class CustomerProfileConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Brands associated with the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brands")]
+        public virtual System.Collections.Generic.IList<CustomerProfileBrand> Brands { get; set; }
+
         /// <summary>Optional. Citations for the organization profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
         public virtual System.Collections.Generic.IList<CustomerProfileCitation> Citations { get; set; }
@@ -4384,8 +4415,11 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual TechnologyWatchListAlertThreshold AlertThreshold { get; set; }
 
         /// <summary>
-        /// Optional. List of vendor, technology or cpe fingerprint. example: Microsoft office 360 Apache Server 3.5
-        /// cpe:2.3:a:microsoft:outlook:*:*:*:*:*:*:*:*
+        /// Optional. List of technologies to watch, one per entry, in the form ` [version]`, using the vendor and
+        /// product names from the Google Threat Intelligence products and fixes section. example: `microsoft outlook`
+        /// `apache http_server 2.4.54` CPE strings such as `cpe:2.3:a:microsoft:outlook:*:*:*:*:*:*:*:*` are only
+        /// parsed through the Google Threat Intelligence interface and are not available through the API. Send the
+        /// vendor and product pair instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
         public virtual System.Collections.Generic.IList<string> Technologies { get; set; }
@@ -4512,8 +4546,8 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         public virtual System.Collections.Generic.IList<string> ExploitationVectors { get; set; }
 
         /// <summary>
-        /// Optional. The specific technologies from the configured watchlist that triggered the match. Ex: "Apache
-        /// Struts".
+        /// Optional. The entries from the configured watchlist that triggered the match, exactly as written in
+        /// `TechnologyWatchListConfig.technologies`. Ex: `apache http_server 2.4.54`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedTechnologies")]
         public virtual System.Collections.Generic.IList<string> MatchedTechnologies { get; set; }
@@ -4538,7 +4572,10 @@ namespace Google.Apis.ThreatIntelligenceService.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("riskRating")]
         public virtual string RiskRating { get; set; }
 
-        /// <summary>Required. All technologies affected by the vulnerability. Ex: "Apache Struts".</summary>
+        /// <summary>
+        /// Required. All technologies affected by the vulnerability, using the vendor and product names of its affected
+        /// products, optionally followed by a version. Ex: `Apache Struts 2.2.3`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("technologies")]
         public virtual System.Collections.Generic.IList<string> Technologies { get; set; }
 

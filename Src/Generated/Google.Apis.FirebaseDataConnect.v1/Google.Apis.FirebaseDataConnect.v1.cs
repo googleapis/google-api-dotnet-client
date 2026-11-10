@@ -4934,7 +4934,11 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>Output only. The list of connectors in this service.</summary>
+        /// <summary>
+        /// Output only. The list of connectors in this service. Connectors returned in this collection are a summary
+        /// view. Authoritative lifecycle metadata and entity tags are omitted from embedded representations. Call
+        /// `GetConnector` to retrieve the complete resource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectors")]
         public virtual System.Collections.Generic.IList<Connector> Connectors { get; set; }
 
@@ -5013,7 +5017,11 @@ namespace Google.Apis.FirebaseDataConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
-        /// <summary>Optional. The list of schemas in this service.</summary>
+        /// <summary>
+        /// Optional. The list of schemas in this service. Schemas returned in this collection are a summary view.
+        /// Authoritative lifecycle metadata and entity tags are omitted from embedded representations. Call `GetSchema`
+        /// to retrieve the complete resource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
         public virtual System.Collections.Generic.IList<Schema> Schemas { get; set; }
 

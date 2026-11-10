@@ -67,8 +67,16 @@ namespace Google.Apis.FirebaseHosting.v1
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
+            public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
             /// <summary>View and administer all your Firebase data and settings</summary>
             public static string Firebase = "https://www.googleapis.com/auth/firebase";
+
+            /// <summary>View all your Firebase data and settings</summary>
+            public static string FirebaseReadonly = "https://www.googleapis.com/auth/firebase.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Firebase Hosting API.</summary>
@@ -80,8 +88,16 @@ namespace Google.Apis.FirebaseHosting.v1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
+            public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
             /// <summary>View and administer all your Firebase data and settings</summary>
             public const string Firebase = "https://www.googleapis.com/auth/firebase";
+
+            /// <summary>View all your Firebase data and settings</summary>
+            public const string FirebaseReadonly = "https://www.googleapis.com/auth/firebase.readonly";
         }
 
         /// <summary>Gets the Operations resource.</summary>

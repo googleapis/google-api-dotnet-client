@@ -35943,6 +35943,12 @@ namespace Google.Apis.Compute.beta
                 /// <summary>The instance will restart, potentially on a different host.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESTART")]
                 RESTART = 3,
+
+                /// <summary>
+                /// The instance will restart on the same host. Data on all local SSDs will be preserved.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("RESTART_IN_PLACE")]
+                RESTARTINPLACE = 4,
             }
 
             /// <summary>
@@ -35975,6 +35981,12 @@ namespace Google.Apis.Compute.beta
                 /// <summary>The instance will restart, potentially on a different host.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESTART")]
                 RESTART = 3,
+
+                /// <summary>
+                /// The instance will restart on the same host. Data on all local SSDs will be preserved.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("RESTART_IN_PLACE")]
+                RESTARTINPLACE = 4,
             }
 
             /// <summary>
@@ -127101,7 +127113,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
-        /// <summary>A flexible specification of machine type of instances to create.</summary>
+        /// <summary>
+        /// A specification of alternative machine types to use when creating instances. A single bulkInsert request can
+        /// create instances with multiple different machine types based on capacity and quota availability. This field
+        /// is supported only for regional bulkInsert requests. For more information, see About instance flexibility for
+        /// VMs created in bulk.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFlexibilityPolicy")]
         public virtual InstanceFlexibilityPolicy InstanceFlexibilityPolicy { get; set; }
 
@@ -127277,7 +127294,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ContentType { get; set; }
 
         /// <summary>
-        /// If set, this invalidation rule will only apply to requests with a Host header matching host.
+        /// If set, this invalidation rule will only apply to requests with a Host header matching host. This field also
+        /// accepts wildcards (*) to replace the leftmost (or first) label of a hostname. For example, *.example.com
+        /// will match www.example.com, but not sub1.dev.example.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
@@ -128899,7 +128918,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceType")]
         public virtual string ConfidentialInstanceType { get; set; }
 
-        /// <summary>Defines whether the instance should have confidential compute enabled.</summary>
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled. When enabled, the technology used
+        /// defaults to  AMD SEV unless confidentialInstanceType is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
 
@@ -138965,9 +138987,7 @@ namespace Google.Apis.Compute.beta.Data
     public class InstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specification of alternative, flexible instance subsets. One of them will be selected to create the
-        /// instances based on various criteria, like: - ranks, - location policy, - current capacity, - available
-        /// reservations (you can specify affinity in InstanceProperties), - SWAN/GOOSE limitations. Key is an
+        /// Specifies named instance selections that define properties for instances created in bulk. Key is an
         /// arbitrary, unique RFC1035 string that identifies the instance selection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceSelections")]
@@ -147740,15 +147760,13 @@ namespace Google.Apis.Compute.beta.Data
     public class MachineImageParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Input only. [Input Only] Specifies the list of disk device names that must be excluded from the new machine
-        /// image.
+        /// Input only. Specifies the list of disk device names that must be excluded from the new machine image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDisks")]
         public virtual System.Collections.Generic.IList<string> ExcludedDisks { get; set; }
 
         /// <summary>
-        /// Input only. [Input Only] Specifies the list of disk device names that must be included with the new machine
-        /// image.
+        /// Input only. Specifies the list of disk device names that must be included with the new machine image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDisks")]
         public virtual System.Collections.Generic.IList<string> IncludedDisks { get; set; }
@@ -156897,7 +156915,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotGroupName")]
         public virtual string SnapshotGroupName { get; set; }
 
-        /// <summary>Indicates the type of the snapshot.</summary>
+        /// <summary>Indicates the type of the snapshot. Valid values are ARCHIVE or STANDARD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotType")]
         public virtual string SnapshotType { get; set; }
 
@@ -162119,6 +162137,14 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Ipv6NexthopAddress { get; set; }
 
         /// <summary>
+        /// The linked custom hardware resource. The URI of the custom hardware link attachment is where you will
+        /// establish the BGP session from the Cloud Router. This link attachment must reside in the same subnetwork as
+        /// the associated router interface.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedCustomHardware")]
+        public virtual string LinkedCustomHardware { get; set; }
+
+        /// <summary>
         /// Output only. [Output Only] The resource that configures and manages this BGP peer.        -  MANAGED_BY_USER
         /// is the default value and can be managed by you    or other users    - MANAGED_BY_ATTACHMENT is a BGP peer
         /// that is configured and managed    by Cloud Interconnect, specifically by an InterconnectAttachment of type
@@ -162798,6 +162824,13 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Output only. IPv6 address of the local BGP interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6NexthopAddress")]
         public virtual string Ipv6NexthopAddress { get; set; }
+
+        /// <summary>
+        /// Output only. The URI of the linked custom hardware resource, CustomHardwareLinkAttachment. This
+        /// CustomHardwareLinkAttachment resource is the one that will establish the BGP session from the Cloud Router.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedCustomHardware")]
+        public virtual string LinkedCustomHardware { get; set; }
 
         /// <summary>Output only. URL of the VPN tunnel that this BGP peer controls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnel")]
@@ -163644,7 +163677,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ProvisioningModel { get; set; }
 
         /// <summary>
-        /// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for
+        /// Defines whether GCE ACPI G2 Soft Off signal should be skipped during shutdown operation of VM.  Default is
+        /// false, meaning there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for
         /// Standard VMs and 30 seconds for Spot VMs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipGuestOsShutdown")]
@@ -166069,7 +166103,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotGroupName")]
         public virtual string SnapshotGroupName { get; set; }
 
-        /// <summary>Indicates the type of the snapshot.</summary>
+        /// <summary>
+        /// Indicates the type of the snapshot. Valid values are ARCHIVE or STANDARD. The default is STANDARD.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotType")]
         public virtual string SnapshotType { get; set; }
 
@@ -170191,7 +170227,7 @@ namespace Google.Apis.Compute.beta.Data
         /// accepted formats are:        -
         /// //certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}.
         /// -
-        /// https://certificatemanager.googleapis.com/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
+        /// https://certificatemanager.{universeDomain}/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCertificates")]
         public virtual System.Collections.Generic.IList<string> SslCertificates { get; set; }
@@ -174256,9 +174292,11 @@ namespace Google.Apis.Compute.beta.Data
 
     public class VpnTunnelCipherSuite : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cipher algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase1")]
         public virtual VpnTunnelPhase1Algorithms Phase1 { get; set; }
 
+        /// <summary>Cipher algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase2")]
         public virtual VpnTunnelPhase2Algorithms Phase2 { get; set; }
 
@@ -174365,15 +174403,19 @@ namespace Google.Apis.Compute.beta.Data
 
     public class VpnTunnelPhase1Algorithms : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Diffie-Hellman groups for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dh")]
         public virtual System.Collections.Generic.IList<string> Dh { get; set; }
 
+        /// <summary>Encryption algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual System.Collections.Generic.IList<string> Encryption { get; set; }
 
+        /// <summary>Integrity algorithms for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrity")]
         public virtual System.Collections.Generic.IList<string> Integrity { get; set; }
 
+        /// <summary>Pseudo-random functions (PRF) for IKE phase 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prf")]
         public virtual System.Collections.Generic.IList<string> Prf { get; set; }
 
@@ -174383,12 +174425,15 @@ namespace Google.Apis.Compute.beta.Data
 
     public class VpnTunnelPhase2Algorithms : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Encryption algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual System.Collections.Generic.IList<string> Encryption { get; set; }
 
+        /// <summary>Integrity algorithms for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrity")]
         public virtual System.Collections.Generic.IList<string> Integrity { get; set; }
 
+        /// <summary>Perfect Forward Secrecy (PFS) groups for IKE phase 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pfs")]
         public virtual System.Collections.Generic.IList<string> Pfs { get; set; }
 
@@ -174888,6 +174933,9 @@ namespace Google.Apis.Compute.beta.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("identityCertificateEnabled")]
         public virtual System.Nullable<bool> IdentityCertificateEnabled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("identityType")]
+        public virtual string IdentityType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

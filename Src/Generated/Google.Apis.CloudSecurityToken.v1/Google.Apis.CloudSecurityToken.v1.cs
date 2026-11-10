@@ -930,6 +930,21 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
     public class GoogleIdentityStsV1ExchangeTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. A security token that represents the identity of the acting party. Typically, this is the party
+        /// that is authorized to use the requested security token and act on behalf of the subject.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actorToken")]
+        public virtual string ActorToken { get; set; }
+
+        /// <summary>
+        /// Optional. An identifier that indicates the type of the security token in the `actor_token` parameter.
+        /// Required when the `actor_token` parameter is set. Supported values are
+        /// `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:oauth:token-type:id_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actorTokenType")]
+        public virtual string ActorTokenType { get; set; }
+
+        /// <summary>
         /// The full resource name of the identity provider; for example:
         /// `//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/` for workload identity
         /// pool providers, or `//iam.googleapis.com/locations/global/workforcePools//providers/` for workforce pool

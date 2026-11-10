@@ -588,7 +588,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
                 WEBSITECLICKS = 8,
 
                 /// <summary>
-                /// The number of times the business profile messaging (e.g. Whatsapp) button was clicked.
+                /// The number of times the business profile messaging (e.g. WhatsApp) button was clicked.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("MESSAGING_CLICKS")]
                 MESSAGINGCLICKS = 12,
@@ -814,7 +814,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
                 WEBSITECLICKS = 8,
 
                 /// <summary>
-                /// The number of times the business profile messaging (e.g. Whatsapp) button was clicked.
+                /// The number of times the business profile messaging (e.g. WhatsApp) button was clicked.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("MESSAGING_CLICKS")]
                 MESSAGINGCLICKS = 12,

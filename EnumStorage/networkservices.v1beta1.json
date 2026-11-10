@@ -8,6 +8,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.NetworkServices.v1beta1.ProjectsResource+LocationsResource+ExpressLinksResource+GetRequest.ViewEnum": [
+    "EXPRESS_LINK_VIEW_UNSPECIFIED",
+    "EXPRESS_LINK_VIEW_BASIC",
+    "EXPRESS_LINK_VIEW_FULL"
+  ],
+  "Google.Apis.NetworkServices.v1beta1.ProjectsResource+LocationsResource+ExpressLinksResource+ListRequest.ViewEnum": [
+    "EXPRESS_LINK_VIEW_UNSPECIFIED",
+    "EXPRESS_LINK_VIEW_BASIC",
+    "EXPRESS_LINK_VIEW_FULL"
+  ],
   "Google.Apis.NetworkServices.v1beta1.ProjectsResource+LocationsResource+WasmPluginsResource+GetRequest.ViewEnum": [
     "WASM_PLUGIN_VIEW_UNSPECIFIED",
     "WASM_PLUGIN_VIEW_BASIC",

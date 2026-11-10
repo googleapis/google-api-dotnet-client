@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2013 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -311,6 +311,11 @@ namespace Google.Apis.Tests.Apis.Http
             /// </summary>
             public int CancelRequestNum { get; set; }
 
+            /// <summary>
+            /// Gets or sets an optional action to configure the response message (e.g. adding headers).
+            /// </summary>
+            public Action<HttpResponseMessage> ConfigureResponseAction { get; set; }
+
             protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
@@ -320,7 +325,9 @@ namespace Google.Apis.Tests.Apis.Http
                 }
 
                 TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
-                tcs.SetResult(new HttpResponseMessage { StatusCode = ResponseStatusCode });
+                var response = new HttpResponseMessage { StatusCode = ResponseStatusCode };
+                ConfigureResponseAction?.Invoke(response);
+                tcs.SetResult(response);
                 return tcs.Task;
             }
 
@@ -786,6 +793,176 @@ namespace Google.Apis.Tests.Apis.Http
         }
 
         #endregion
+
+        #endregion
+
+        #region Retry-After
+
+        [Fact]
+        public async Task SendAsync_BackOffHandler_RetryAfterDelta_RespectRetryAfterHeader_True()
+        {
+            var handler = new UnsuccessfulResponseMessageHandler
+            {
+                ResponseStatusCode = HttpStatusCode.ServiceUnavailable,
+                ConfigureResponseAction = r => r.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(5))
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 3 };
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+            {
+                RespectRetryAfterHeader = true
+            };
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using var client = new HttpClient(configurableHandler);
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after");
+            var response = await client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);
+            Assert.Equal(3, handler.Calls);
+            Assert.Equal(2, boHandler.Waits.Count);
+            Assert.All(boHandler.Waits, wait => Assert.Equal(TimeSpan.FromSeconds(5), wait));
+        }
+
+        [Fact]
+        public async Task SendAsync_BackOffHandler_RetryAfterDelta_RespectRetryAfterHeader_False()
+        {
+            var handler = new UnsuccessfulResponseMessageHandler
+            {
+                ResponseStatusCode = HttpStatusCode.ServiceUnavailable,
+                ConfigureResponseAction = r => r.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(5))
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 3 };
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+            {
+                RespectRetryAfterHeader = false
+            };
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using var client = new HttpClient(configurableHandler);
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after");
+            var response = await client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);
+            Assert.Equal(3, handler.Calls);
+            Assert.Equal(2, boHandler.Waits.Count);
+            // Exponential backoff produces 1s, 2s... not 5s.
+            Assert.Equal(TimeSpan.FromSeconds(1), boHandler.Waits[0]);
+            Assert.Equal(TimeSpan.FromSeconds(2), boHandler.Waits[1]);
+        }
+
+        [Fact]
+        public async Task SendAsync_BackOffHandler_RetryAfter_ExceedsMaxTimeSpan_NotRetried()
+        {
+            var handler = new UnsuccessfulResponseMessageHandler
+            {
+                ResponseStatusCode = HttpStatusCode.ServiceUnavailable,
+                ConfigureResponseAction = r => r.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(30))
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 3 };
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+            {
+                MaxTimeSpan = TimeSpan.FromSeconds(16),
+                RespectRetryAfterHeader = true
+            };
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using var client = new HttpClient(configurableHandler);
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after");
+            var response = await client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);
+            Assert.Equal(1, handler.Calls);
+            Assert.Empty(boHandler.Waits);
+        }
+
+        [Fact]
+        public async Task SendAsync_BackOffHandler_RetryAfterDelta_DefaultRespectRetryAfterHeader_IsFalse()
+        {
+            var handler = new UnsuccessfulResponseMessageHandler
+            {
+                ResponseStatusCode = HttpStatusCode.ServiceUnavailable,
+                ConfigureResponseAction = r => r.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(5))
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 3 };
+            // Do not explicitly set RespectRetryAfterHeader; verify default is false.
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero));
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using var client = new HttpClient(configurableHandler);
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after");
+            var response = await client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);
+            Assert.Equal(3, handler.Calls);
+            Assert.Equal(2, boHandler.Waits.Count);
+            // Default RespectRetryAfterHeader is false, so it must use exponential backoff (1s, 2s).
+            Assert.Equal(TimeSpan.FromSeconds(1), boHandler.Waits[0]);
+            Assert.Equal(TimeSpan.FromSeconds(2), boHandler.Waits[1]);
+        }
+
+        [Fact]
+        public async Task SendAsync_BackOffHandler_RetryAfter_ExceedMaxNumOfRetries()
+        {
+            var handler = new UnsuccessfulResponseMessageHandler
+            {
+                ResponseStatusCode = HttpStatusCode.ServiceUnavailable,
+                ConfigureResponseAction = r => r.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(5))
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 4 };
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero, 2))
+            {
+                RespectRetryAfterHeader = true
+            };
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using var client = new HttpClient(configurableHandler);
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after");
+            var response = await client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);
+            Assert.Equal(3, handler.Calls);
+            Assert.Equal(2, boHandler.Waits.Count);
+            Assert.All(boHandler.Waits, wait => Assert.Equal(TimeSpan.FromSeconds(5), wait));
+        }
+
+        [Fact]
+        public async Task SendAsync_BackOffHandler_RetryAfter_MalformedHeader_FallsBackToExponential()
+        {
+            var handler = new UnsuccessfulResponseMessageHandler
+            {
+                ResponseStatusCode = HttpStatusCode.ServiceUnavailable,
+                ConfigureResponseAction = r => r.Headers.TryAddWithoutValidation("Retry-After", "not-a-valid-retry-after")
+            };
+
+            var configurableHandler = new ConfigurableMessageHandler(handler) { NumTries = 3 };
+            var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
+            {
+                RespectRetryAfterHeader = true
+            };
+            var boHandler = new MockBackOffHandler(initializer);
+            configurableHandler.AddUnsuccessfulResponseHandler(boHandler);
+
+            using var client = new HttpClient(configurableHandler);
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://test-retry-after");
+            var response = await client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);
+            Assert.Equal(3, handler.Calls);
+            Assert.Equal(2, boHandler.Waits.Count);
+            // Falls back to exponential backoff (1s, 2s)
+            Assert.Equal(TimeSpan.FromSeconds(1), boHandler.Waits[0]);
+            Assert.Equal(TimeSpan.FromSeconds(2), boHandler.Waits[1]);
+        }
 
         #endregion
 

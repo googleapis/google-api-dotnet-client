@@ -4915,6 +4915,60 @@ namespace Google.Apis.Calendar.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>
+        /// Represents the information about the user's working hours. Only available for primary calendars of Google
+        /// Workspace users. To update the working hours, the entire working hours object must be passed. If not
+        /// specified (or passed as null or an empty object), the existing working hours remain unchanged. To disable
+        /// working hours or clear the schedule, set workingHoursEnabled to false (and omit availableTimes or pass an
+        /// empty list).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workingHours")]
+        public virtual WorkingHoursData WorkingHours { get; set; }
+
+        /// <summary>
+        /// Represents the information about the user's working hours. Only available for primary calendars of Google
+        /// Workspace users. To update the working hours, the entire working hours object must be passed. If not
+        /// specified (or passed as null or an empty object), the existing working hours remain unchanged. To disable
+        /// working hours or clear the schedule, set workingHoursEnabled to false (and omit availableTimes or pass an
+        /// empty list).
+        /// </summary>
+        public class WorkingHoursData
+        {
+            /// <summary>
+            /// Working hours. Each availability period represents the user's working hours block during one day.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("availableTimes")]
+            public virtual System.Collections.Generic.IList<AvailableTimesData> AvailableTimes { get; set; }
+
+            /// <summary>
+            /// Whether the working hours are enabled for this calendar. Cannot be set to true when availableTimes is
+            /// empty.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("workingHoursEnabled")]
+            public virtual System.Nullable<bool> WorkingHoursEnabled { get; set; }
+
+            /// <summary>
+            /// Working hours. Each availability period represents the user's working hours block during one day.
+            /// </summary>
+            public class AvailableTimesData
+            {
+                /// <summary>
+                /// Day of the week. Required. Possible values are:   - "monday" - "tuesday" - "wednesday" - "thursday"
+                /// - "friday" - "saturday" - "sunday"
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+                public virtual string DayOfWeek { get; set; }
+
+                /// <summary>Period end, in minutes from the start of the day, exclusive. Required.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("periodEnd")]
+                public virtual System.Nullable<int> PeriodEnd { get; set; }
+
+                /// <summary>Period start, in minutes from the start of the day, inclusive. Required.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("periodStart")]
+                public virtual System.Nullable<int> PeriodStart { get; set; }
+            }
+        }
     }
 
     public class CalendarList : Google.Apis.Requests.IDirectResponseSchema

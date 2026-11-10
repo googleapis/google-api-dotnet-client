@@ -2917,7 +2917,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stackedType")]
         public virtual string StackedType { get; set; }
 
-        /// <summary>True to make the chart 3D. Applies to Bar and Column charts.</summary>
+        /// <summary>
+        /// True to make the chart 3D. Applies to Bar and Column charts. Setting it on a Combo chart is allowed but has
+        /// no effect; setting it on any other chart type returns an error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threeDimensional")]
         public virtual System.Nullable<bool> ThreeDimensional { get; set; }
 

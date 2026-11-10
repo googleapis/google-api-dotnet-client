@@ -18328,6 +18328,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBoxes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2BoundingBox> BoundingBoxes { get; set; }
 
+        /// <summary>The 0-indexed page number or frame index for multi-page image formats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNumber")]
+        public virtual System.Nullable<int> PageNumber { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

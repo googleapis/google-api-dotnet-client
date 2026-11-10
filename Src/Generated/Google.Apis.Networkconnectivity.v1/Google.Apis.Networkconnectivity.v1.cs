@@ -10187,6 +10187,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
+    /// Configuration for more granular control of Private Service Connect connection propagation. This allows enabling
+    /// or disabling connection propagation for specific types of Private Service Connect endpoints.
+    /// </summary>
+    public class ExportPscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Controls whether Private Service Connect endpoints for global Google APIs should be propagated.
+        /// The default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalGoogleApis")]
+        public virtual System.Nullable<bool> GlobalGoogleApis { get; set; }
+
+        /// <summary>
+        /// Optional. Controls whether Private Service Connect endpoints for regional ILBs and regional Google APIs
+        /// should be propagated. Default value is true if export_psc is true. Otherwise, the default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishedServicesAndRegionalGoogleApis")]
+        public virtual System.Nullable<bool> PublishedServicesAndRegionalGoogleApis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -10747,6 +10771,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exportPsc")]
         public virtual System.Nullable<bool> ExportPsc { get; set; }
 
+        /// <summary>Optional. Config for more granular control of Private Service Connect transitivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportPscConfig")]
+        public virtual ExportPscConfig ExportPscConfig { get; set; }
+
         /// <summary>
         /// Optional labels in key-value pair format. For more information about labels, see [Requirements for
         /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -11136,6 +11164,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
 
         /// <summary>
+        /// Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeImportRanges { get; set; }
+
+        /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
         /// available only in [supported
         /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
@@ -11236,6 +11288,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IList<RouterApplianceInstance> Instances { get; set; }
 
         /// <summary>
+        /// Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeImportRanges { get; set; }
+
+        /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
         /// available only in [supported
         /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
@@ -11322,6 +11398,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
         public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed exclude import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedExcludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedExcludeImportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include export IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeExportRanges { get; set; }
+
+        /// <summary>
+        /// Output only. The proposed include import IP ranges waiting for hub administrator's approval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proposedIncludeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> ProposedIncludeImportRanges { get; set; }
 
         /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is

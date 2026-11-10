@@ -9739,7 +9739,7 @@ namespace Google.Apis.NetworkServices.v1.Data
     public class AgentConnectivityTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Immutable. The path of the access. Maps roughly to ingress/egress, though we keep CLIENT_TO_AGENT
+        /// Optional. Immutable. The path of the access. Maps roughly to ingress/egress, though we keep CLIENT_TO_AGENT
         /// and AGENT_TO_ANYWHERE as carryovers from Agent Gateway's original resource model. The path is immutable once
         /// set. Exactly one path can be set.
         /// </summary>
@@ -9795,7 +9795,7 @@ namespace Google.Apis.NetworkServices.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The deployment model for the gateway.</summary>
+        /// <summary>Optional. The deployment model for the gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
         public virtual string DeploymentModel { get; set; }
 
@@ -10836,10 +10836,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Optional. Priority of the extension binding. Lower numbers indicate higher priority. The priority determines
-        /// the order in which extension bindings are applied to a request.
-        /// </summary>
+        /// <summary>Optional. This field is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; }
 
@@ -11100,8 +11097,9 @@ namespace Google.Apis.NetworkServices.v1.Data
     {
         /// <summary>
         /// Required. A set of extensions to execute for the matching request. At least one extension is required. Up to
-        /// 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`,
-        /// `LbEdgeExtension`, and `LbTcpExtension` chains are limited to 1 extension per extension chain.
+        /// 3 extensions can be defined for each extension chain for `LbTrafficExtension` and `CdnEdgeExtension`
+        /// resources. `LbRouteExtension`, `LbEdgeExtension`, and `LbTcpExtension` chains are limited to 1 extension per
+        /// extension chain.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<ExtensionChainExtension> Extensions { get; set; }
@@ -11232,8 +11230,8 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// resource](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
         /// in the format: `projects/{project}/locations/{location}/wasmPlugins/{plugin}` or
         /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`. Plugin
-        /// extensions are currently supported for the `LbTrafficExtension`, the `LbRouteExtension`, and the
-        /// `LbEdgeExtension` resources.
+        /// extensions are currently supported for the `LbTrafficExtension`, the `LbRouteExtension`, the
+        /// `LbEdgeExtension`, and the `CdnEdgeExtension` resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -14506,7 +14504,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
 
-        /// <summary>Optional. Whether the extension should function in observability mode.</summary>
+        /// <summary>Optional. This field is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMode")]
         public virtual System.Nullable<bool> ObservabilityMode { get; set; }
 
@@ -14651,8 +14649,8 @@ namespace Google.Apis.NetworkServices.v1.Data
     }
 
     /// <summary>
-    /// ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a
-    /// BackendService.
+    /// ServiceLbPolicy holds load balancing and traffic distribution configuration that can be applied to a global or
+    /// regional BackendService.
     /// </summary>
     public class ServiceLbPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14771,7 +14769,7 @@ namespace Google.Apis.NetworkServices.v1.Data
     }
 
     /// <summary>
-    /// Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing.
+    /// Option to specify if an unhealthy IG/NEG should be considered for load balancing and traffic routing.
     /// </summary>
     public class ServiceLbPolicyAutoCapacityDrain : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15497,7 +15495,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// <summary>
         /// Optional. Non-empty default. Specifies the lowest level of the plugin logs that are exported to Cloud
         /// Logging. This setting relates to the logs generated by using logging statements in your Wasm code. This
-        /// field is can be set only if logging is enabled for the plugin. If the field is not provided when logging is
+        /// field can be set only if logging is enabled for the plugin. If the field is not provided when logging is
         /// enabled, it is set to `INFO` by default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLogLevel")]

@@ -7681,6 +7681,13 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("approvalId")]
         public virtual string ApprovalId { get; set; }
 
+        /// <summary>
+        /// The revision ID of the file when the approval completed successfully. This is only set when the approval
+        /// status is APPROVED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvedRevisionId")]
+        public virtual string ApprovedRevisionId { get; set; }
+
         private string _completeTimeRaw;
 
         private object _completeTime;

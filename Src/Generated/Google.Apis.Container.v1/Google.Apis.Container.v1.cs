@@ -6868,6 +6868,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statefulHaConfig")]
         public virtual StatefulHAConfig StatefulHaConfig { get; set; }
 
+        /// <summary>Optional. Configuration for the Wiz Sensor add-on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wizSensorConfig")]
+        public virtual WizSensorConfig WizSensorConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6922,6 +6926,17 @@ namespace Google.Apis.Container.v1.Data
     public class AgentSandboxConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Whether AgentSandbox is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AmbientNetworkingConfig contains the desired config of Ambient Networking on this cluster.</summary>
+    public class AmbientNetworkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, enable ambient networking for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -7176,6 +7191,28 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Specifies the upgrade settings for NAP created node pools</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AutoprovisioningRestrictionConfig configures restrictions related to autoprovisioning settings.
+    /// </summary>
+    public class AutoprovisioningRestrictionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Contains the list of service accounts allowed for autoprovisioned node pools / Custom
+        /// ComputeClasses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedServiceAccounts")]
+        public virtual System.Collections.Generic.IList<string> AuthorizedServiceAccounts { get; set; }
+
+        /// <summary>
+        /// Optional. Controls whether service account validation checks are enforced for autoprovisioning.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountPermissionCheck")]
+        public virtual string ServiceAccountPermissionCheck { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8028,6 +8065,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningNodePoolDefaults")]
         public virtual AutoprovisioningNodePoolDefaults AutoprovisioningNodePoolDefaults { get; set; }
 
+        /// <summary>Optional. Configures restrictions related to autoprovisioning settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningRestrictionConfig")]
+        public virtual AutoprovisioningRestrictionConfig AutoprovisioningRestrictionConfig { get; set; }
+
         /// <summary>Defines autoscaling behaviour.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingProfile")]
         public virtual string AutoscalingProfile { get; set; }
@@ -8107,6 +8148,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Configurations for the various addons available to run in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAddonsConfig")]
         public virtual AddonsConfig DesiredAddonsConfig { get; set; }
+
+        /// <summary>Optional. The desired ambient networking configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredAmbientNetworkingConfig")]
+        public virtual AmbientNetworkingConfig DesiredAmbientNetworkingConfig { get; set; }
 
         /// <summary>Configuration for limiting anonymous access to all endpoints except the health checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAnonymousAuthenticationConfig")]
@@ -9324,6 +9369,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<int> DataCacheCount { get; set; }
 
         /// <summary>
+        /// Capacity set aside for Ephemeral Storage if using mixed Local SSD modes. The remaining capacity is Raw
+        /// Block.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralCapacityGb")]
+        public virtual System.Nullable<long> EphemeralCapacityGb { get; set; }
+
+        /// <summary>
         /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has
         /// different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible
         /// numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for
@@ -9336,6 +9388,21 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localSsdCount")]
         public virtual System.Nullable<int> LocalSsdCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional entries to be added to /etc/hosts.</summary>
+    public class EtcHostsEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The hostname of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>The IPv4 or IPv6 address of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ip")]
+        public virtual string Ip { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9699,6 +9766,13 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Mode for how the GPU driver is installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gpuDriverVersion")]
         public virtual string GpuDriverVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The specific version of the GPU driver to install. Use this field only with gpu_driver_version set
+        /// to SPECIFIC. Otherwise, an error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specificVersion")]
+        public virtual string SpecificVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10341,6 +10415,38 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Definition of possible additional kernel command line arguments to be configured to the kernel.
+    /// </summary>
+    public class KernelCommandlineOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defines the change of init_on_alloc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initOnAlloc")]
+        public virtual string InitOnAlloc { get; set; }
+
+        /// <summary>Optional. Defines the change of spec_rstack_overflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specRstackOverflow")]
+        public virtual string SpecRstackOverflow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters that can be configured on the kernel.</summary>
+    public class KernelOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Allow setting for optional kernel command line arguments overrides.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelCommandlineOverrides")]
+        public virtual KernelCommandlineOverrides KernelCommandlineOverrides { get; set; }
+
+        /// <summary>Optional. lrugen (Multi-Gen LRU) options</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lruGen")]
+        public virtual LRUGen LruGen { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains expiry information about the kubelet certificate.</summary>
     public class KubeletCertInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10439,6 +10545,23 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>lrugen (Multi-Gen LRU) options See https://docs.kernel.org/admin-guide/mm/multigen_lru.html</summary>
+    public class LRUGen : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enable lrugen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. Users can write N to min_ttl_ms to prevent the working set of N milliseconds from getting evicted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTtlMs")]
+        public virtual System.Nullable<int> MinTtlMs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the legacy Attribute Based Access Control authorization mode.</summary>
     public class LegacyAbac : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10461,6 +10584,18 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accurateTimeConfig")]
         public virtual AccurateTimeConfig AccurateTimeConfig { get; set; }
 
+        /// <summary>Optional. Additional entries to be added to /etc/hosts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalEtcHosts")]
+        public virtual System.Collections.Generic.IList<EtcHostsEntry> AdditionalEtcHosts { get; set; }
+
+        /// <summary>Optional. Additional entries to be added to /etc/resolv.conf.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalEtcResolvConf")]
+        public virtual System.Collections.Generic.IList<ResolvedConfEntry> AdditionalEtcResolvConf { get; set; }
+
+        /// <summary>Optional. Additional entries to be added to /etc/systemd/resolved.conf.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalEtcSystemdResolvedConf")]
+        public virtual System.Collections.Generic.IList<ResolvedConfEntry> AdditionalEtcSystemdResolvedConf { get; set; }
+
         /// <summary>cgroup_mode specifies the cgroup mode to be used on the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cgroupMode")]
         public virtual string CgroupMode { get; set; }
@@ -10476,6 +10611,13 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Optional. Amounts for 2M and 1G hugepages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hugepages")]
         public virtual HugepagesConfig Hugepages { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the kernel overrides to be applied to the nodes. Note: sysctl changes are defined
+        /// separately in the sysctls fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kernelOverrides")]
+        public virtual KernelOverrides KernelOverrides { get; set; }
 
         /// <summary>
         /// Optional. Configuration for kernel module loading on nodes. When enabled, the node pool will be provisioned
@@ -10512,6 +10654,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sysctls")]
         public virtual System.Collections.Generic.IDictionary<string, string> Sysctls { get; set; }
+
+        /// <summary>Optional. Configures the timezone of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>
         /// Optional. Defines the transparent hugepage defrag configuration on the node. VM hugepage allocation can be
@@ -10978,6 +11124,10 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>NetworkConfig reports the relative names of network &amp; subnetwork.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Contains the desired config of Ambient Networking mode on this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ambientNetworkingConfig")]
+        public virtual AmbientNetworkingConfig AmbientNetworkingConfig { get; set; }
+
         /// <summary>
         /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy
         /// implementation.
@@ -11575,6 +11725,22 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ContainerLogMaxSize { get; set; }
 
         /// <summary>
+        /// Optional. Defines the maximum number of concurrent workers to rotate container log files. See
+        /// https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-rotation The value must be an
+        /// integer between 1 and 10, inclusive. The default value is 1 if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerLogMaxWorkers")]
+        public virtual System.Nullable<int> ContainerLogMaxWorkers { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the interval at which the container logs are monitored for performing the log rotate
+        /// operation. The value must be a positive interval between 3s and 300s, inclusive. The default value is "10s"
+        /// if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerLogMonitorInterval")]
+        public virtual object ContainerLogMonitorInterval { get; set; }
+
+        /// <summary>
         /// Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default
         /// which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to
         /// enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to
@@ -11709,6 +11875,13 @@ namespace Google.Apis.Container.v1.Data
         public virtual ReservedResourcesConfig ReservedResourcesConfig { get; set; }
 
         /// <summary>
+        /// Optional. The reserved_system_cpus option specifies the CPU list reserved for the host system services.
+        /// Format: a list of CPU IDs (e.g. "0-3", "0,1") that can be parsed as a cpuset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservedSystemCpus")]
+        public virtual string ReservedSystemCpus { get; set; }
+
+        /// <summary>
         /// Optional. shutdown_grace_period_critical_pods_seconds is the maximum allowed grace period (in seconds) used
         /// to terminate critical pods during a node shutdown. This value should be &amp;lt;=
         /// shutdown_grace_period_seconds, and is only valid if shutdown_grace_period_seconds is set.
@@ -11820,6 +11993,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createPodRange")]
         public virtual System.Nullable<bool> CreatePodRange { get; set; }
+
+        /// <summary>The datapath provider for this node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datapathProvider")]
+        public virtual string DatapathProvider { get; set; }
 
         /// <summary>
         /// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is
@@ -13007,6 +13184,21 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Additional entries to be added to resolved.conf.</summary>
+    public class ResolvedConfEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key of resolved.conf</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. The value of resolved.conf</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<string> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Collection of [Resource Manager
     /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
@@ -13376,7 +13568,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
-        /// <summary>Sets which mode to use for vulnerability scanning.</summary>
+        /// <summary>
+        /// Deprecated: Vulnerability scanning is no longer supported. For more details, see
+        /// https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. Sets which mode
+        /// to use for vulnerability scanning.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityMode")]
         public virtual string VulnerabilityMode { get; set; }
 
@@ -14648,6 +14844,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Option to specify the rollout strategy to apply node pool configuration updates. If unspecified,
+        /// standard rolling update strategy with VM recreation is used as the default behavior.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeConfigUpdateMode")]
+        public virtual string NodeConfigUpdateMode { get; set; }
+
         /// <summary>The desired node drain configuration for nodes in the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeDrainConfig")]
         public virtual NodeDrainConfig NodeDrainConfig { get; set; }
@@ -15363,6 +15566,41 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>OSVersion specifies the Windows node config to be used on the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
         public virtual string OsVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Wiz Sensor add-on.</summary>
+    public class WizSensorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The GCP Secret Manager URI for the Wiz API key secret. Format:
+        /// "projects/{project_id}/secrets/{secret_name}/versions/{version}" or Format:
+        /// "projects/{project_id}/locations/{location_id}/secrets/{secret_name}/versions/{version}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeySecretUri")]
+        public virtual string ApiKeySecretUri { get; set; }
+
+        /// <summary>Optional. Whether the Wiz Sensor add-on is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. The GCP Secret Manager URI for the Wiz proxy configuration. Format:
+        /// "projects/{project_id}/secrets/{secret_name}/versions/{version}" or Format:
+        /// "projects/{project_id}/locations/{location_id}/secrets/{secret_name}/versions/{version}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxySecretUri")]
+        public virtual string ProxySecretUri { get; set; }
+
+        /// <summary>
+        /// Optional. The GCP Secret Manager URI for the Wiz registry secret. Format:
+        /// "projects/{project_id}/secrets/{secret_name}/versions/{version}" or Format:
+        /// "projects/{project_id}/locations/{location_id}/secrets/{secret_name}/versions/{version}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("registrySecretUri")]
+        public virtual string RegistrySecretUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

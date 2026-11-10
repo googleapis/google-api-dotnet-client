@@ -1088,7 +1088,11 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                 }
             }
 
-            /// <summary>Updates a ScanConfig. This method support partial update of a ScanConfig.</summary>
+            /// <summary>
+            /// Updates a ScanConfig. This method supports partial update of a ScanConfig. Authorization requires the
+            /// following [IAM](https://cloud.google.com/iam/docs/) permission on the specified resource
+            /// `scan_config.name`: - `cloudsecurityscanner.scans.update`
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// The resource name of the ScanConfig. The name follows the format of
@@ -1099,7 +1103,11 @@ namespace Google.Apis.WebSecurityScanner.v1alpha
                 return new PatchRequest(this.service, body, name);
             }
 
-            /// <summary>Updates a ScanConfig. This method support partial update of a ScanConfig.</summary>
+            /// <summary>
+            /// Updates a ScanConfig. This method supports partial update of a ScanConfig. Authorization requires the
+            /// following [IAM](https://cloud.google.com/iam/docs/) permission on the specified resource
+            /// `scan_config.name`: - `cloudsecurityscanner.scans.update`
+            /// </summary>
             public class PatchRequest : WebSecurityScannerBaseServiceRequest<Google.Apis.WebSecurityScanner.v1alpha.Data.ScanConfig>
             {
                 /// <summary>Constructs a new Patch request.</summary>

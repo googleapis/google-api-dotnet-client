@@ -1901,7 +1901,7 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         /// workload pool, service account, and agent identity. Allowed string must be one of: -
         /// `iam.googleapis.com/WorkspaceIdentity` - `iam.googleapis.com/WorkforcePoolIdentity` -
         /// `iam.googleapis.com/WorkloadPoolIdentity` - `iam.googleapis.com/ServiceAccount` -
-        /// `iam.googleapis.com/AgentPoolIdentity` (available in Preview)
+        /// `iam.googleapis.com/AgentPoolIdentity`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual GoogleTypeExpr Condition { get; set; }
@@ -2055,7 +2055,7 @@ namespace Google.Apis.PolicyTroubleshooter.v3beta.Data
         public virtual string PrincipalSet { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name that's used for access policy bindings. Examples: * Organization:
+        /// Immutable. The full resource name that's used for Unified Access Policy bindings. Examples: * Organization:
         /// `//cloudresourcemanager.googleapis.com/organizations/ORGANIZATION_ID` * Folder:
         /// `//cloudresourcemanager.googleapis.com/folders/FOLDER_ID` * Project: *
         /// `//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER` *

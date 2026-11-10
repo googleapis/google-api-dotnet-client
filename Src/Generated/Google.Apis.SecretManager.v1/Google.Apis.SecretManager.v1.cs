@@ -3067,7 +3067,7 @@ namespace Google.Apis.SecretManager.v1.Data
     }
 
     /// <summary>These are the credentials required for Cloud SQL DB for Single user Managed Rotation.</summary>
-    public class CloudSQLSingleUserCredentials : Google.Apis.Requests.IDirectResponseSchema
+    public class CloudSqlSingleUserCredentials : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Instance ID of the Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
@@ -3155,7 +3155,7 @@ namespace Google.Apis.SecretManager.v1.Data
     {
         /// <summary>Credentials required for Cloud SQL DB for Single user Managed Rotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlSingleUserCredentials")]
-        public virtual CloudSQLSingleUserCredentials CloudSqlSingleUserCredentials { get; set; }
+        public virtual CloudSqlSingleUserCredentials CloudSqlSingleUserCredentials { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

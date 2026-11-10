@@ -1271,7 +1271,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Human readable title. Must be unique within the Policy.</summary>
+        /// <summary>Human-readable title. Must be unique within the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
@@ -1289,7 +1289,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>
         /// Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a
-        /// strongly validated etag, meaning that two Access Policies will be identical if and only if their etags are
+        /// strongly validated etag, meaning that two access policies will be identical if and only if their etags are
         /// identical. Clients should not expect this to be in any specific format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -1313,7 +1313,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// can be referenced. For example, policy A with `scopes=["folders/123"]` has the following behavior: -
         /// ServicePerimeter can only restrict projects within `folders/123`. - ServicePerimeter within policy A can
         /// only reference access levels defined within policy A. - Only one policy can include a given scope; thus,
-        /// attempting to create a second policy which includes `folders/123` will result in an error. If no scopes are
+        /// attempting to create a second policy that includes `folders/123` will result in an error. If no scopes are
         /// provided, then any resource within the organization can be restricted. Scopes cannot be modified after a
         /// policy is created. Policies can only have a single scope. Format: list of `folders/{folder_number}` or
         /// `projects/{project_number}`
@@ -1321,7 +1321,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
-        /// <summary>Required. Human readable title. Does not affect behavior.</summary>
+        /// <summary>Required. Human-readable title. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
     }
@@ -1367,10 +1367,10 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     public class GoogleIdentityAccesscontextmanagerV1BasicLevel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND
-        /// is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is
-        /// used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied.
-        /// Default behavior is AND.
+        /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If
+        /// `AND` is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If
+        /// `OR` is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be
+        /// applied. Default behavior is `AND`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combiningFunction")]
         public virtual string CombiningFunction { get; set; }
@@ -1384,26 +1384,27 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     }
 
     /// <summary>
-    /// A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a
-    /// Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device
-    /// complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent
-    /// at a time allowed by the DateTimeRestriction.
+    /// A condition necessary for an `AccessLevel` to be granted. The `Condition` is an AND over its fields. A
+    /// `Condition` is true if: 1) the request IP is from one of the listed subnetworks, AND 2) the originating device
+    /// complies with the listed device policy, AND 3) all listed access levels are granted, AND 4) the request was sent
+    /// at a time allowed by the `DateTimeRestriction`.
     /// </summary>
     public class GoogleIdentityAccesscontextmanagerV1Condition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all
-        /// devices are allowed.
+        /// Device-specific restrictions. All restrictions must hold for the `Condition` to be true. If not specified,
+        /// all devices are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePolicy")]
         public virtual GoogleIdentityAccesscontextmanagerV1DevicePolicy DevicePolicy { get; set; }
 
         /// <summary>
         /// CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the
-        /// specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input
-        /// is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for
-        /// IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be
-        /// in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed.
+        /// specified IP address portion must be properly truncated (that is, all the host bits must be zero) or the
+        /// input is considered malformed. For example, `"192.0.2.0/24"` is accepted, but `"192.0.2.1/24"` is not.
+        /// Similarly, for IPv6, `"2001:db8::/32"` is accepted, whereas `"2001:db8::1/32"` is not. The originating IP of
+        /// a request must be in one of the listed subnets in order for this `Condition` to be true. If empty, all IP
+        /// addresses are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipSubnetworks")]
         public virtual System.Collections.Generic.IList<string> IpSubnetworks { get; set; }
@@ -1416,9 +1417,9 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
-        /// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any
-        /// non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to
-        /// false.
+        /// Whether to negate the `Condition`. If `true`, the `Condition` becomes a NAND over its non-empty fields. Any
+        /// non-empty field criteria evaluating to `false` will result in the `Condition` being satisfied. Defaults to
+        /// `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negate")]
         public virtual System.Nullable<bool> Negate { get; set; }
@@ -1432,8 +1433,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
 
         /// <summary>
         /// A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an
-        /// `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition
-        /// to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
+        /// `AccessLevel` that does not exist is an error. All access levels listed must be granted for the `Condition`
+        /// to be true. Example: `"accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredAccessLevels")]
         public virtual System.Collections.Generic.IList<string> RequiredAccessLevels { get; set; }
@@ -1464,24 +1465,24 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     }
 
     /// <summary>
-    /// `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A
-    /// `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any
+    /// `DevicePolicy` specifies device-specific restrictions necessary to acquire a given access level. A
+    /// `DevicePolicy` specifies requirements for requests from devices to be granted access levels; it does not do any
     /// enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is
-    /// an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS,
-    /// os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests
-    /// originating from encrypted Linux desktops and encrypted Windows desktops.
+    /// an OR over its elements. Any unset fields are ignored. For example, if the proto is `{ os_type :
+    /// DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}`, then the `DevicePolicy` will be true
+    /// for requests originating from encrypted Linux desktops and encrypted Windows desktops.
     /// </summary>
     public class GoogleIdentityAccesscontextmanagerV1DevicePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Allowed device management levels, an empty list allows all management levels.</summary>
+        /// <summary>Allowed device management levels. An empty list allows all management levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedDeviceManagementLevels")]
         public virtual System.Collections.Generic.IList<string> AllowedDeviceManagementLevels { get; set; }
 
-        /// <summary>Allowed encryptions statuses, an empty list allows all statuses.</summary>
+        /// <summary>Allowed encryption statuses. An empty list allows all statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedEncryptionStatuses")]
         public virtual System.Collections.Generic.IList<string> AllowedEncryptionStatuses { get; set; }
 
-        /// <summary>Allowed OS versions, an empty list allows all types and all versions.</summary>
+        /// <summary>Allowed OS versions. An empty list allows all types and all versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osConstraints")]
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1OsConstraint> OsConstraints { get; set; }
 
@@ -1489,12 +1490,12 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requireAdminApproval")]
         public virtual System.Nullable<bool> RequireAdminApproval { get; set; }
 
-        /// <summary>Whether the device needs to be corp owned.</summary>
+        /// <summary>Whether the device needs to be corp-owned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireCorpOwned")]
         public virtual System.Nullable<bool> RequireCorpOwned { get; set; }
 
         /// <summary>
-        /// Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`.
+        /// Whether or not screenlock is required for the `DevicePolicy` to be true. Defaults to `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireScreenlock")]
         public virtual System.Nullable<bool> RequireScreenlock { get; set; }
@@ -1504,9 +1505,9 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     }
 
     /// <summary>
-    /// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the
-    /// source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then
-    /// that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+    /// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about
+    /// the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter,
+    /// then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
     /// </summary>
     public class GoogleIdentityAccesscontextmanagerV1EgressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1526,7 +1527,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual string IdentityType { get; set; }
 
         /// <summary>
-        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then
+        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is not empty, then
         /// this field must be set to `SOURCE_RESTRICTION_ENABLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRestriction")]
@@ -1549,9 +1550,9 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     /// matches a request, the request is allowed to span the ServicePerimeter boundary. For example, an EgressPolicy
     /// can be used to allow VMs on networks within the ServicePerimeter to access a defined set of projects outside the
     /// perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket or query against a BigQuery
-    /// dataset). EgressPolicies are concerned with the *resources* that a request relates as well as the API services
-    /// and API actions being used. They do not related to the direction of data movement. More detailed documentation
-    /// for this concept can be found in the descriptions of EgressFrom and EgressTo.
+    /// dataset). EgressPolicies are concerned with the *resources* that a request relates to, as well as the API
+    /// services and API actions being used. They do not relate to the direction of data movement. More detailed
+    /// documentation for this concept can be found in the descriptions of EgressFrom and EgressTo.
     /// </summary>
     public class GoogleIdentityAccesscontextmanagerV1EgressPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1566,8 +1567,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual GoogleIdentityAccesscontextmanagerV1EgressTo EgressTo { get; set; }
 
         /// <summary>
-        /// Optional. Human-readable title for the egress rule. The title must be unique within the perimeter and can
-        /// not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
+        /// Optional. Human-readable title for the egress rule. The title must be unique within the perimeter and cannot
+        /// exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
         /// 240,000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
@@ -1603,8 +1604,9 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
 
         /// <summary>
         /// A Google Cloud resource from the service perimeter that you want to allow to access data outside the
-        /// perimeter. This field supports projects, folders, and organizations in the form `projects/`, `folders/`, and
-        /// `organizations/`. You can't use `*` in this field to allow all Google Cloud resources.
+        /// perimeter. This field supports projects, folders, and organizations in the form `projects/{project_number}`,
+        /// `folders/{folder_id}`, and `organizations/{organization_id}`. You can't use `*` in this field to allow all
+        /// Google Cloud resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
@@ -1624,10 +1626,10 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     {
         /// <summary>
         /// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported.
-        /// For Amazon S3, the supported formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For
-        /// Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request
-        /// matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not
-        /// allowed.
+        /// For Amazon S3, the supported formats are `s3://BUCKET_NAME`, `s3a://BUCKET_NAME`, and `s3n://BUCKET_NAME`.
+        /// For Azure Storage, the supported format is `azure://myaccount.blob.core.windows.net/CONTAINER_NAME`. A
+        /// request matches if it contains an external resource in this list (Example: `s3://bucket/path`). Currently
+        /// `'*'` is not allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalResources")]
         public virtual System.Collections.Generic.IList<string> ExternalResources { get; set; }
@@ -1640,16 +1642,17 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1ApiOperation> Operations { get; set; }
 
         /// <summary>
-        /// A list of resources, currently projects, folders, and organizations in the form `projects/`, `folders/`, and
-        /// `organizations/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A
-        /// request matches if it contains a resource in this list. If `*` is specified for `resources`, then this
-        /// EgressTo rule will authorize access to all resources outside the perimeter.
+        /// A list of resources, currently projects, folders, and organizations in the form `projects/{project_number}`,
+        /// `folders/{folder_id}`, and `organizations/{organization_id}`, that are allowed to be accessed by sources
+        /// defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is
+        /// specified for `resources`, then this EgressTo rule will authorize access to all resources outside the
+        /// perimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
 
         /// <summary>
-        /// IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom.
+        /// IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom
         /// are allowed to perform in this ServicePerimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
@@ -1711,9 +1714,9 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual GoogleIdentityAccesscontextmanagerV1IngressTo IngressTo { get; set; }
 
         /// <summary>
-        /// Optional. Human-readable title for the ingress rule. The title must be unique within the perimeter and can
-        /// not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
-        /// 240,000 characters.
+        /// Optional. Human-readable title for the ingress rule. The title must be unique within the perimeter and
+        /// cannot exceed 100 characters. Within the access policy, the combined length of all rule titles must not
+        /// exceed 240,000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -1726,7 +1729,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     public class GoogleIdentityAccesscontextmanagerV1IngressSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the
+        /// An AccessLevel resource name that allows resources within the ServicePerimeters to be accessed from the
         /// internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent
         /// AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only
         /// be accessed via Google Cloud calls with request origins within the perimeter. Example:
@@ -1777,7 +1780,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// A list of resources, currently projects, folders, and organizations in the form `projects/{project_number}`,
         /// `folders/{folder_id}`, and `organizations/{organization_id}`, protected by this ServicePerimeter that are
         /// allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified,
-        /// then access to all resources inside the perimeter are allowed.
+        /// then access to all resources inside the perimeter is allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
@@ -1837,8 +1840,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual string OsType { get; set; }
 
         /// <summary>
-        /// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the
-        /// device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API
+        /// Only allows requests from devices with a verified Chrome OS. Verification includes requirements that the
+        /// device is enterprise-managed, conforms to domain policies, and the caller has permission to call the API
         /// targeted by the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireVerifiedChromeOs")]
@@ -1871,8 +1874,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1Modifier> Modifiers { get; set; }
 
         /// <summary>
-        /// URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.com//*" and "*.appspot.com/*
-        /// forms are supported, where should be an alphanumeric name.
+        /// URL pattern to allow. Only patterns of `".googleapis.com/*"`, `"www.googleapis.com//*"`, and
+        /// `"*.appspot.com/*"` forms are supported, where `` should be an alphanumeric name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
@@ -1918,24 +1921,24 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular
-        /// perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge
-        /// without being included in regular perimeter. For perimeter bridges, the restricted service list as well as
+        /// Perimeter type indicator. A single project or VPC network is allowed to be a member of a single regular
+        /// perimeter, but multiple service perimeter bridges. A project cannot be included in a perimeter bridge
+        /// without being included in a regular perimeter. For perimeter bridges, the restricted service list as well as
         /// access level lists must be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perimeterType")]
         public virtual string PerimeterType { get; set; }
 
         /// <summary>
-        /// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test
+        /// Proposed (or dry run) ServicePerimeter configuration. This configuration allows you to specify and test
         /// ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the
-        /// "use_explicit_dry_run_spec" flag is set.
+        /// `use_explicit_dry_run_spec` flag is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig Spec { get; set; }
 
         /// <summary>
-        /// Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels
+        /// Current ServicePerimeter configuration. Specifies sets of resources, restricted services, and access levels
         /// that determine perimeter content and boundaries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -1951,8 +1954,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to
         /// use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced
         /// config ("status") without actually enforcing them. This testing is done through analyzing the differences
-        /// between currently enforced and suggested restrictions. use_explicit_dry_run_spec must bet set to True if any
-        /// of the fields in the spec are set to non-default values.
+        /// between currently enforced and suggested restrictions. `use_explicit_dry_run_spec` must be set to `true` if
+        /// any of the fields in the spec are set to non-default values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
         public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; }
@@ -2024,8 +2027,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1ServicePattern> AllowedServicePatterns { get; set; }
 
         /// <summary>
-        /// The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You
-        /// can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which
+        /// The list of APIs usable within the Service Perimeter. Must be empty unless `enable_restriction` is `true`.
+        /// You can specify a list of individual services, as well as include the `'RESTRICTED-SERVICES'` value, which
         /// automatically includes all of the services protected by the perimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
@@ -2033,7 +2036,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
 
         /// <summary>
         /// Whether to restrict API calls within the Service Perimeter to the list of APIs specified in
-        /// 'allowed_services'.
+        /// `allowed_services`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
         public virtual System.Nullable<bool> EnableRestriction { get; set; }
@@ -2057,7 +2060,7 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Sub-segment ranges inside of a VPC Network.</summary>
+    /// <summary>Sub-segment ranges inside of a VPC network.</summary>
     public class GoogleIdentityAccesscontextmanagerV1VpcSubNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2072,8 +2075,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// <summary>
         /// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or
         /// private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly
-        /// truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example,
-        /// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+        /// truncated (that is, all the host bits must be zero) or the input is considered malformed. For example,
+        /// `"192.0.2.0/24"` is accepted, but `"192.0.2.1/24"` is not. If empty, all IP addresses are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcIpSubnetworks")]
         public virtual System.Collections.Generic.IList<string> VpcIpSubnetworks { get; set; }

@@ -14374,6 +14374,21 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a custom regular expression pattern to detect and redact in the image.</summary>
+    public class CustomRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The capturing group indexes to redact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupIndexes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> GroupIndexes { get; set; }
+
+        /// <summary>Optional. The regular expression pattern to match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
+        public virtual string Pattern { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A message representing a health dataset. A health dataset represents a collection of healthcare data pertaining
     /// to one or more patients. This may include multiple modalities of healthcare data, such as electronic medical
@@ -16281,6 +16296,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Specifies how to handle de-identification of image pixels.</summary>
     public class ImageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Custom regex patterns to redact from the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRegexes")]
+        public virtual System.Collections.Generic.IList<CustomRegex> CustomRegexes { get; set; }
+
         /// <summary>Optional. Determines how to redact text from image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textRedactionMode")]
         public virtual string TextRedactionMode { get; set; }

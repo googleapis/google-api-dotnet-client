@@ -293,6 +293,7 @@ namespace Google.Apis.VMwareEngine.v1
             {
                 this.service = service;
                 Announcements = new AnnouncementsResource(service);
+                CapacityAllocations = new CapacityAllocationsResource(service);
                 Datastores = new DatastoresResource(service);
                 DnsBindPermission = new DnsBindPermissionResource(service);
                 NetworkPeerings = new NetworkPeeringsResource(service);
@@ -458,6 +459,165 @@ namespace Google.Apis.VMwareEngine.v1
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+parent}/announcements";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the CapacityAllocations resource.</summary>
+            public virtual CapacityAllocationsResource CapacityAllocations { get; }
+
+            /// <summary>The "capacityAllocations" collection of methods.</summary>
+            public class CapacityAllocationsResource
+            {
+                private const string Resource = "capacityAllocations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CapacityAllocationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Lists `CapacityAllocation` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location to query for capacity allocations. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists `CapacityAllocation` resources in a given project and location.</summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListCapacityAllocationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to query for capacity allocations. Resource names
+                    /// are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A filter expression that matches resources returned in the response. The expression
+                    /// must specify the field name, a comparison operator, and the value that you want to use for
+                    /// filtering. The value must be a string or a number. The comparison operator must be `=`, `!=`,
+                    /// `&amp;gt;`, `&amp;gt;=`, `&amp;lt;`, or `&amp;lt;=`. The has operator `:` is also supported.
+                    /// Supported fields include `name`, `display_name` (or `placement_group`), `machine_family`,
+                    /// `allocated_capacity_count`, `consumed_capacity_count`, and `connected_placement_group` (using
+                    /// `=`). For example, if you are filtering a list of capacity allocations, you can exclude the ones
+                    /// named `example-capacity-allocation` by specifying `name != "example-capacity-allocation"`. You
+                    /// can also filter on other fields, such as machine family (`"ve1"`, `"ve2"`, or `"ve3"`) or
+                    /// connected placement group:
+                    /// ```
+                    /// machine_family = "ve1" connected_placement_group =
+                    /// "example-placement-group"
+                    /// ```
+                    /// To filter on multiple expressions, provide each separate
+                    /// expression within parentheses. For example:
+                    /// ```
+                    /// (machine_family = "ve1")
+                    /// (allocated_capacity_count &amp;gt; 10)
+                    /// ```
+                    /// By default, each expression is an `AND` expression.
+                    /// However, you can include `AND`, `OR`, and `NOT` expressions explicitly. For example:
+                    /// ```
+                    /// ((machine_family = "ve1") AND (allocated_capacity_count &amp;gt; 10)) OR
+                    /// (consumed_capacity_count &amp;gt; 0)
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Sorts list results by a certain order. By default, returned results are ordered by
+                    /// `name` in ascending order. You can also sort results in descending order based on the `name`
+                    /// value using `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of capacity allocations to return in one page. The service may
+                    /// return fewer than this value. The maximum value is coerced to 1000. The default value of this
+                    /// field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListCapacityAllocations` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListCapacityAllocations` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/capacityAllocations";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -10303,6 +10463,36 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a capacity allocation. Capacity allocation is zonal.</summary>
+    public class CapacityAllocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The allocated capacity for the capacity allocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedCapacityCount")]
+        public virtual System.Nullable<int> AllocatedCapacityCount { get; set; }
+
+        /// <summary>Output only. The consumed capacity for the capacity allocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumedCapacityCount")]
+        public virtual System.Nullable<int> ConsumedCapacityCount { get; set; }
+
+        /// <summary>Output only. The machine family of the capacity allocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineFamily")]
+        public virtual string MachineFamily { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The resource name of the capacity allocation. The last segment of the name is the
+        /// placement group name. For example: `projects/my-project/locations/us-central1-a/capacityAllocations/pg-123`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The private cloud names using the capacity allocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateClouds")]
+        public virtual System.Collections.Generic.IList<string> PrivateClouds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A cluster in a private cloud.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10372,6 +10562,15 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeTypeConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, NodeTypeConfig> NodeTypeConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The identifier of the placement group for cluster nodes. A placement group is an internal Google
+        /// identifier for a group of resources that are physically located within the same fault domain. If provided,
+        /// nodes for this cluster are placed within the specified placement group. If this field is omitted, the system
+        /// selects an appropriate placement group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placementGroup")]
+        public virtual string PlacementGroup { get; set; }
 
         /// <summary>Output only. State of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -11470,6 +11669,30 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for VmwareEngine.ListCapacityAllocations</summary>
+    public class ListCapacityAllocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of capacity allocations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacityAllocations")]
+        public virtual System.Collections.Generic.IList<CapacityAllocation> CapacityAllocations { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Unordered list. Locations that could not be reached when making an aggregated query using wildcards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for VmwareEngine.ListClusters</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12067,6 +12290,15 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeTypeConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, NodeTypeConfig> NodeTypeConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The identifier of the placement group for management cluster nodes. A placement group is an
+        /// internal Google identifier for a group of resources that are physically located within the same fault
+        /// domain. If provided, nodes for this cluster are placed within the specified placement group. If this field
+        /// is omitted, the system selects an appropriate placement group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placementGroup")]
+        public virtual string PlacementGroup { get; set; }
 
         /// <summary>Optional. Configuration of a stretched cluster. Required for STRETCHED private clouds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stretchedClusterConfig")]
@@ -13693,6 +13925,15 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string PreferredLocation { get; set; }
 
         /// <summary>
+        /// Optional. The identifier of the placement group for preferred location cluster nodes. A placement group is
+        /// an internal Google identifier for a group of resources that are physically located within the same fault
+        /// domain. If provided, nodes for this cluster are placed within the specified placement group. If this field
+        /// is omitted, the system selects an appropriate placement group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredLocationPlacementGroup")]
+        public virtual string PreferredLocationPlacementGroup { get; set; }
+
+        /// <summary>
         /// Required. Additional zone for a higher level of availability and load balancing. Specify the resource name
         /// or ID of a zone that belongs to the region of the private cloud. For example:
         /// `projects/{project}/locations/europe-west3-b` or `europe-west3-b`, where `{project}` can either be a project
@@ -13700,6 +13941,15 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryLocation")]
         public virtual string SecondaryLocation { get; set; }
+
+        /// <summary>
+        /// Optional. The identifier of the placement group for secondary location cluster nodes. A placement group is
+        /// an internal Google identifier for a group of resources that are physically located within the same fault
+        /// domain. If provided, nodes for this cluster are placed within the specified placement group. If this field
+        /// is omitted, the system selects an appropriate placement group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryLocationPlacementGroup")]
+        public virtual string SecondaryLocationPlacementGroup { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
