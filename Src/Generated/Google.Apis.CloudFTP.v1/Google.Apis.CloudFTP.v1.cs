@@ -738,7 +738,7 @@ namespace Google.Apis.CloudFTP.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. If set to true, the request will force the deletion of the User.
+                        /// Optional. If set to `true`, the request will `force` the deletion of the User.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -1093,8 +1093,9 @@ namespace Google.Apis.CloudFTP.v1
 
                     /// <summary>
                     /// Required. A unique ID for the server. Must start with a lowercase letter, and end with a
-                    /// lowercase letter or number. Can contain lowercase letters, numbers, and hyphens. Maximum length
-                    /// is 30 characters.
+                    /// lowercase letter or number. Can contain lowercase letters, numbers, and hyphens. Can't begin
+                    /// with the prefix `goog` or contain the string `google`, including close misspellings such as
+                    /// `g00gle`. Maximum length is 30 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serverId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServerId { get; set; }
@@ -1983,6 +1984,27 @@ namespace Google.Apis.CloudFTP.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Cloud Logging on the Server.</summary>
+    public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether platform logging (`ftp.googleapis.com/ftp_events`) is enabled for this server. Defaults to
+        /// `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. The verbosity level of logs emitted when `enabled` is `true`. Defaults to `ALL_EVENTS` if
+        /// unspecified when `enabled` is `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verbosity")]
+        public virtual string Verbosity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2218,6 +2240,10 @@ namespace Google.Apis.CloudFTP.v1.Data
         /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Configuration for Cloud Logging on the Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>Identifier. name of resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

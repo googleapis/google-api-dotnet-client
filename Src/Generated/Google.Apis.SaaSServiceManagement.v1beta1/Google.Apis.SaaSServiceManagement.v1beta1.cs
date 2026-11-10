@@ -322,7 +322,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                 RolloutKinds = new RolloutKindsResource(service);
                 Rollouts = new RolloutsResource(service);
                 Saas = new SaasResource(service);
-                SaasReleases = new SaasReleasesResource(service);
                 Tenants = new TenantsResource(service);
                 UnitGroupOperations = new UnitGroupOperationsResource(service);
                 UnitGroups = new UnitGroupsResource(service);
@@ -4099,439 +4098,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                 }
             }
 
-            /// <summary>Gets the SaasReleases resource.</summary>
-            public virtual SaasReleasesResource SaasReleases { get; }
-
-            /// <summary>The "saasReleases" collection of methods.</summary>
-            public class SaasReleasesResource
-            {
-                private const string Resource = "saasReleases";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public SaasReleasesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>Create a new saas release.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent of the saas release.</param>
-                public virtual CreateRequest Create(Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease body, string parent)
-                {
-                    return new CreateRequest(this.service, body, parent);
-                }
-
-                /// <summary>Create a new saas release.</summary>
-                public class CreateRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent of the saas release.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>An optional request ID to identify requests.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>Required. The ID value for the new saas release.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("saasReleaseId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string SaasReleaseId { get; set; }
-
-                    /// <summary>
-                    /// If "validate_only" is set to true, the service will try to validate that this request would
-                    /// succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/saasReleases";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("saasReleaseId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "saasReleaseId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Delete a single saas release.</summary>
-                /// <param name="name">Required. The resource name of the resource within a service.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(this.service, name);
-                }
-
-                /// <summary>Delete a single saas release.</summary>
-                public class DeleteRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Empty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The resource name of the resource within a service.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>The etag known to the client for the expected state of the saas release.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Etag { get; set; }
-
-                    /// <summary>An optional request ID to identify requests.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// If "validate_only" is set to true, the service will try to validate that this request would
-                    /// succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/saasReleases/[^/]+$",
-                        });
-                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "etag",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Retrieve a single saas release.</summary>
-                /// <param name="name">Required. The resource name of the resource within a service.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(this.service, name);
-                }
-
-                /// <summary>Retrieve a single saas release.</summary>
-                public class GetRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The resource name of the resource within a service.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/saasReleases/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Retrieve a collection of saas releases.</summary>
-                /// <param name="parent">Required. The parent of the saas releases.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(this.service, parent);
-                }
-
-                /// <summary>Retrieve a collection of saas releases.</summary>
-                public class ListRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.ListSaasReleasesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent of the saas releases.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Filter the list as specified in https://google.aip.dev/160.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>Order results as specified in https://google.aip.dev/132.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>The maximum number of saas releases to send per page.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>
-                    /// The page token: If the next_page_token from a previous response is provided, this request will
-                    /// send the subsequent page.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/saasReleases";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Update a single saas release.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
-                /// "projects/{project}/locations/{location}/saasReleases/{saasRelease}"
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease body, string name)
-                {
-                    return new PatchRequest(this.service, body, name);
-                }
-
-                /// <summary>Update a single saas release.</summary>
-                public class PatchRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
-                    /// "projects/{project}/locations/{location}/saasReleases/{saasRelease}"
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>An optional request ID to identify requests.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>Field mask is used to specify the fields to be overwritten.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>
-                    /// If "validate_only" is set to true, the service will try to validate that this request would
-                    /// succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.SaaSServiceManagement.v1beta1.Data.SaasRelease Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/saasReleases/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-            }
-
             /// <summary>Gets the Tenants resource.</summary>
             public virtual TenantsResource Tenants { get; }
 
@@ -5020,207 +4586,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                     this.service = service;
                 }
 
-                /// <summary>Create a new unit group operation.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent of the unit group operation.</param>
-                public virtual CreateRequest Create(Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroupOperation body, string parent)
-                {
-                    return new CreateRequest(this.service, body, parent);
-                }
-
-                /// <summary>Create a new unit group operation.</summary>
-                public class CreateRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroupOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroupOperation body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent of the unit group operation.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>Required. The ID value for the new unit group operation.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("unitGroupOperationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string UnitGroupOperationId { get; set; }
-
-                    /// <summary>
-                    /// Optional. If "validate_only" is set to true, the service will try to validate that this request
-                    /// would succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroupOperation Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/unitGroupOperations";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("unitGroupOperationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "unitGroupOperationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Delete a single unit group operation.</summary>
-                /// <param name="name">Required. The resource name of the resource within a service.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(this.service, name);
-                }
-
-                /// <summary>Delete a single unit group operation.</summary>
-                public class DeleteRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Empty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The resource name of the resource within a service.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The etag known to the client for the expected state of the unit group operation. This
-                    /// is used with state-changing methods to prevent accidental overwrites when multiple user agents
-                    /// might be acting in parallel on the same resource. An etag wildcard provide optimistic
-                    /// concurrency based on the expected existence of the unit group operation. The Any wildcard (`*`)
-                    /// requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it
-                    /// must not.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Etag { get; set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. If "validate_only" is set to true, the service will try to validate that this request
-                    /// would succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/unitGroupOperations/[^/]+$",
-                        });
-                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "etag",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
                 /// <summary>Retrieve a single unit group operation.</summary>
                 /// <param name="name">Required. The resource name of the resource within a service.</param>
                 public virtual GetRequest Get(string name)
@@ -5361,118 +4726,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                         });
                     }
                 }
-
-                /// <summary>Update a single unit group operation.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
-                /// "projects/{project}/locations/{location}/unitGroupOperations/{unitGroupOperation}"
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroupOperation body, string name)
-                {
-                    return new PatchRequest(this.service, body, name);
-                }
-
-                /// <summary>Update a single unit group operation.</summary>
-                public class PatchRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroupOperation>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroupOperation body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
-                    /// "projects/{project}/locations/{location}/unitGroupOperations/{unitGroupOperation}"
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. Field mask is used to specify the fields to be overwritten in the UnitGroupOperation
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
-                    /// provide a mask then all fields in the UnitGroupOperation will be overwritten.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>
-                    /// Optional. If "validate_only" is set to true, the service will try to validate that this request
-                    /// would succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroupOperation Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/unitGroupOperations/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the UnitGroups resource.</summary>
@@ -5490,182 +4743,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                 public UnitGroupsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                }
-
-                /// <summary>Create a new unit group.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent of the unit group.</param>
-                public virtual CreateRequest Create(Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroup body, string parent)
-                {
-                    return new CreateRequest(this.service, body, parent);
-                }
-
-                /// <summary>Create a new unit group.</summary>
-                public class CreateRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroup>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroup body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent of the unit group.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>An optional request ID to identify requests.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>Required. The ID value for the new unit group.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("unitGroupId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string UnitGroupId { get; set; }
-
-                    /// <summary>
-                    /// If "validate_only" is set to true, the service will try to validate that this request would
-                    /// succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroup Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+parent}/unitGroups";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("unitGroupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "unitGroupId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Delete a single unit group.</summary>
-                /// <param name="name">Required. The resource name of the resource within a service.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(this.service, name);
-                }
-
-                /// <summary>Delete a single unit group.</summary>
-                public class DeleteRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.Empty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The resource name of the resource within a service.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>The etag known to the client for the expected state of the unit group.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Etag { get; set; }
-
-                    /// <summary>An optional request ID to identify requests.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// If "validate_only" is set to true, the service will try to validate that this request would
-                    /// succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/unitGroups/[^/]+$",
-                        });
-                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "etag",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
                 }
 
                 /// <summary>Retrieve a single unit group.</summary>
@@ -5801,104 +4878,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Update a single unit group.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
-                /// "projects/{project}/locations/{location}/unitGroups/{unitGroup}"
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroup body, string name)
-                {
-                    return new PatchRequest(this.service, body, name);
-                }
-
-                /// <summary>Update a single unit group.</summary>
-                public class PatchRequest : SaaSServiceManagementBaseServiceRequest<Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroup>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroup body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
-                    /// "projects/{project}/locations/{location}/unitGroups/{unitGroup}"
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>An optional request ID to identify requests.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>Field mask is used to specify the fields to be overwritten.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>
-                    /// If "validate_only" is set to true, the service will try to validate that this request would
-                    /// succeed, but will not actually make changes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.SaaSServiceManagement.v1beta1.Data.UnitGroup Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta1/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/unitGroups/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7717,12 +6696,53 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
     }
 
     /// <summary>
+    /// DurationLimits defines the time-related constraints for a UnitOperation's execution. This allows users to
+    /// control how long an operation can run before being cancelled by the system.
+    /// </summary>
+    public class DurationLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The maximum duration a UnitOperation is allowed to execute in the RUNNING state. - Minimum value:
+        /// 60 seconds (1 minute) - Maximum value: 604800 seconds (7 days) If this field is not set, or if the provided
+        /// value falls outside the allowed range, the system will use a default timeout of 10800 seconds (3 hours).
+        /// Upon exceeding this time limit, the UnitOperation will be best-effort cancelled, and its state will be set
+        /// to FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitOperationTimeout")]
+        public virtual object UnitOperationTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Engine captures metadata about the underlying actuation engine instance managing this Unit.</summary>
+    public class Engine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Output only. The full resource name of the underlying engine deployment created for this unit
+        /// (e.g., "projects/{project}/locations/{location}/deployments/{deployment}").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineId")]
+        public virtual string EngineId { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. The location where the unit's underlying engine deployment is actuated (e.g.,
+        /// "us-central1").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8507,9 +7527,9 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string StringValue { get; set; }
 
         /// <summary>
-        /// Optional. trackingId is unique depending on name and value of the variant within the scope of the service.
-        /// It is typically generated by the server and must not be changed. trackingId is used to uniquely identify and
-        /// track variants.
+        /// Output only. trackingId is unique depending on name and value of the variant within the scope of the
+        /// service. It is typically generated by the server and must not be changed. trackingId is used to uniquely
+        /// identify and track variants.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; }
@@ -8725,28 +7745,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// <summary>The resulting rollouts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollouts")]
         public virtual System.Collections.Generic.IList<Rollout> Rollouts { get; set; }
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response structure for the ListSaasReleases method.</summary>
-    public class ListSaasReleasesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If present, the next page token can be provided to a subsequent ListSaasReleases call to list the next page.
-        /// If empty, there are no more pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The resulting saas releases.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("saasReleases")]
-        public virtual System.Collections.Generic.IList<SaasRelease> SaasReleases { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
@@ -9985,128 +8983,6 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// SaasRelease is a collection of Releases that are assigned to a UnitGroup. It allows provisioning and updates of
-    /// UnitGroup, which contains multiple Units of different UnitKinds.
-    /// </summary>
-    public class SaasRelease : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external
-        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
-        /// modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. The timestamp when the resource was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>
-        /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
-        /// to confirm that the client and server agree on the ordering of a resource being written.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>
-        /// Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource
-        /// labels.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>
-        /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
-        /// "projects/{project}/locations/{location}/saasReleases/{saasRelease}"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Output only. The unique identifier of the resource. UID is unique in the time and space for this resource
-        /// within the scope of the service. It is typically generated by the server on successful creation of a
-        /// resource and must not be changed. UID is used to uniquely identify resources with resource name reuses. This
-        /// should be a UUID4.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual string Uid { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>
-        /// Output only. The timestamp when the resource was last updated. Any change to the resource made by users must
-        /// refresh this value. Changes to a resource made by the service should refresh this value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-    }
-
     /// <summary>A time specification to schedule the maintenance.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10425,6 +9301,12 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dependents")]
         public virtual System.Collections.Generic.IList<UnitDependency> Dependents { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. Metadata about the underlying actuation engine instance managing this Unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual Engine Engine { get; set; }
 
         /// <summary>
         /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
@@ -11117,6 +9999,16 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual System.Collections.Generic.IList<Dependency> Dependencies { get; set; }
 
         /// <summary>
+        /// Optional. Defines the default duration limits for UnitOperations created from this UnitKind. These settings
+        /// provide a baseline for execution time constraints. The limits specified here can be overridden by more
+        /// specific settings on an individual UnitOperation resource. See the DurationLimits message definition for
+        /// details on the constraints like minimum, maximum, and system default values for unit_operation_timeout. If
+        /// not set, UnitOperations will use the system default duration limits unless overridden on the UnitOperation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationLimits")]
+        public virtual DurationLimits DurationLimits { get; set; }
+
+        /// <summary>
         /// Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used
         /// to confirm that the client and server agree on the ordering of a resource being written.
         /// </summary>
@@ -11319,6 +10211,14 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// <summary>Optional. Deprovision operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprovision")]
         public virtual Deprovision Deprovision { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the duration limits for this specific UnitOperation instance. These settings override any
+        /// default duration limits set on the UnitKind. See the DurationLimits message definition for details on the
+        /// constraints like minimum, maximum, and system default values for unit_operation_timeout.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationLimits")]
+        public virtual DurationLimits DurationLimits { get; set; }
 
         /// <summary>
         /// Optional. Output only. The engine state for on-going deployment engine operation(s). This field is opaque

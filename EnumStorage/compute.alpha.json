@@ -32,13 +32,15 @@
     "INVALID",
     "NO_EFFECT",
     "REFRESH",
-    "RESTART"
+    "RESTART",
+    "RESTART_IN_PLACE"
   ],
   "Google.Apis.Compute.alpha.InstancesResource+UpdateRequest.MostDisruptiveAllowedActionEnum": [
     "INVALID",
     "NO_EFFECT",
     "REFRESH",
-    "RESTART"
+    "RESTART",
+    "RESTART_IN_PLACE"
   ],
   "Google.Apis.Compute.alpha.InstanceTemplatesResource+GetRequest.ViewEnum": [
     "BASIC",

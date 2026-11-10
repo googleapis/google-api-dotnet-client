@@ -903,7 +903,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>Contains the details for a single event.</summary>
     public class EventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The actual event payload.</summary>
+        /// <summary>Optional. The actual event payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual System.Collections.Generic.IDictionary<string, object> Event__ { get; set; }
 
@@ -948,6 +948,10 @@ namespace Google.Apis.HomeGraphService.v1.Data
             set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Contains the dynamic JSON trait event payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonTraitEvent")]
+        public virtual JsonTraitEvent JsonTraitEvent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -957,7 +961,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
     {
         /// <summary>
         /// Optional. The ID of the provider component if the events are associated with a specific component. Optional
-        /// for WHDM events, required for UDDM events.
+        /// for WHDM events, required for UDDM and JSON events.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("componentId")]
         public virtual string ComponentId { get; set; }
@@ -985,7 +989,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Container for UDDM trait data associated with a device.</summary>
+    /// <summary>Container for UDDM or JSON trait data associated with a device.</summary>
     public class HomeTraitPayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The root component of the device as reported by the provider.</summary>
@@ -1006,6 +1010,54 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>Required. Unique identifier for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a dynamic JSON trait state payload that conforms to `json_trait_schema.md`. This message is used for
+    /// Category 2 (vendor Matter clusters) and Category 3 (non-Matter capabilities) traits across all wire and internal
+    /// paths, and for Category 1 traits on external JSON-only wire paths (for example, `Query` with `JSON_TRAIT_ONLY`).
+    /// </summary>
+    public class JsonTrait : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Holds the trait attributes, which conform to the trait's registered JSON Schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
+
+        /// <summary>
+        /// Required. Identifies the trait by its canonical four-segment capability ID, `capability...`: * Standard or
+        /// Google Matter (Category 1): `capability.matter.standard.` or `capability.matter.google.`, for example
+        /// `capability.matter.standard.Thermostat`. * Vendor Matter (Category 2): `capability.matter..`. * Non-Matter
+        /// (Category 3, from any provider including Google): `capability.generic..`, for example
+        /// `capability.generic.acme.Warranty`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a dynamic JSON event payload that conforms to `json_trait_schema.md`.</summary>
+    public class JsonTraitEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Holds the event payload fields, which conform to the event's registered JSON Schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
+
+        /// <summary>
+        /// Required. Identifies the event as `.`, where `` is the PascalCase key in the schema's
+        /// `x-capability-info.events`, for example `capability.matter.standard.DoorLock.LockOperation` or
+        /// `capability.generic.acme.Warranty.ClaimUpdated`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1088,7 +1140,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>
         /// Optional. Specifies the type of device data to be returned in the response. This allows callers to request
         /// traditional Smart Home traits, Unified Device Data Model (UDDM) traits, or both. If unspecified, defaults to
-        /// SMART_HOME_TRAIT_ONLY.
+        /// `SMART_HOME_TRAIT_ONLY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceView")]
         public virtual string DeviceView { get; set; }
@@ -1172,8 +1224,8 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> Devices { get; set; }
 
         /// <summary>
-        /// Map of device IDs to their Unified Device Data Model (UDDM) trait payloads. This field is populated when
-        /// `device_view` is set to HOME_TRAIT_ONLY or HOME_TRAIT_AND_SMART_HOME_TRAIT.
+        /// Map of device IDs to their Unified Device Data Model (UDDM) or JSON trait payloads. This field is populated
+        /// when `device_view` is set to `HOME_TRAIT_ONLY`, `HOME_TRAIT_AND_SMART_HOME_TRAIT`, or `JSON_TRAIT_ONLY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homeTraitPayload")]
         public virtual System.Collections.Generic.IDictionary<string, HomeTraitPayload> HomeTraitPayload { get; set; }
@@ -1509,6 +1561,10 @@ namespace Google.Apis.HomeGraphService.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CommitTimeRaw);
             set => CommitTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Contains the dynamic JSON trait payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonTrait")]
+        public virtual JsonTrait JsonTrait { get; set; }
 
         private string _providerUpdateTimeRaw;
 

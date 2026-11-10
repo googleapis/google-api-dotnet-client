@@ -473,18 +473,18 @@ namespace Google.Apis.AccessContextManager.v1
 
                 /// <summary>
                 /// Whether to return `BasicLevels` in the Cloud Common Expression Language rather than as
-                /// `BasicLevels`. Defaults to AS_DEFINED, where Access Levels are returned as `BasicLevels` or
-                /// `CustomLevels` based on how they were created. If set to CEL, all Access Levels are returned as
-                /// `CustomLevels`. In the CEL case, `BasicLevels` are translated to equivalent `CustomLevels`.
+                /// `BasicLevels`. Defaults to `AS_DEFINED`, where Access Levels are returned as `BasicLevels` or
+                /// `CustomLevels` based on how they were created. If set to `CEL`, all Access Levels are returned as
+                /// `CustomLevels`. In the `CEL` case, `BasicLevels` are translated to equivalent `CustomLevels`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("accessLevelFormat", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AccessLevelFormatEnum> AccessLevelFormat { get; set; }
 
                 /// <summary>
                 /// Whether to return `BasicLevels` in the Cloud Common Expression Language rather than as
-                /// `BasicLevels`. Defaults to AS_DEFINED, where Access Levels are returned as `BasicLevels` or
-                /// `CustomLevels` based on how they were created. If set to CEL, all Access Levels are returned as
-                /// `CustomLevels`. In the CEL case, `BasicLevels` are translated to equivalent `CustomLevels`.
+                /// `BasicLevels`. Defaults to `AS_DEFINED`, where Access Levels are returned as `BasicLevels` or
+                /// `CustomLevels` based on how they were created. If set to `CEL`, all Access Levels are returned as
+                /// `CustomLevels`. In the `CEL` case, `BasicLevels` are translated to equivalent `CustomLevels`.
                 /// </summary>
                 public enum AccessLevelFormatEnum
                 {
@@ -493,15 +493,15 @@ namespace Google.Apis.AccessContextManager.v1
                     LEVELFORMATUNSPECIFIED = 0,
 
                     /// <summary>
-                    /// Uses the format the resource was defined in. BasicLevels are returned as BasicLevels,
-                    /// CustomLevels are returned as CustomLevels.
+                    /// Uses the format the resource was defined in. `BasicLevels` are returned as `BasicLevels`, and
+                    /// `CustomLevels` are returned as `CustomLevels`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("AS_DEFINED")]
                     ASDEFINED = 1,
 
                     /// <summary>
-                    /// Use Cloud Common Expression Language when returning the resource. Both BasicLevels and
-                    /// CustomLevels are returned as CustomLevels.
+                    /// Uses Cloud Common Expression Language when returning the resource. Both `BasicLevels` and
+                    /// `CustomLevels` are returned as `CustomLevels`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CEL")]
                     CEL = 2,
@@ -567,14 +567,14 @@ namespace Google.Apis.AccessContextManager.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Whether to return `BasicLevels` in the Cloud Common Expression language, as `CustomLevels`, rather
+                /// Whether to return `BasicLevels` in the Cloud Common Expression Language, as `CustomLevels`, rather
                 /// than as `BasicLevels`. Defaults to returning `AccessLevels` in the format they were defined.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("accessLevelFormat", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<AccessLevelFormatEnum> AccessLevelFormat { get; set; }
 
                 /// <summary>
-                /// Whether to return `BasicLevels` in the Cloud Common Expression language, as `CustomLevels`, rather
+                /// Whether to return `BasicLevels` in the Cloud Common Expression Language, as `CustomLevels`, rather
                 /// than as `BasicLevels`. Defaults to returning `AccessLevels` in the format they were defined.
                 /// </summary>
                 public enum AccessLevelFormatEnum
@@ -584,15 +584,15 @@ namespace Google.Apis.AccessContextManager.v1
                     LEVELFORMATUNSPECIFIED = 0,
 
                     /// <summary>
-                    /// Uses the format the resource was defined in. BasicLevels are returned as BasicLevels,
-                    /// CustomLevels are returned as CustomLevels.
+                    /// Uses the format the resource was defined in. `BasicLevels` are returned as `BasicLevels`, and
+                    /// `CustomLevels` are returned as `CustomLevels`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("AS_DEFINED")]
                     ASDEFINED = 1,
 
                     /// <summary>
-                    /// Use Cloud Common Expression Language when returning the resource. Both BasicLevels and
-                    /// CustomLevels are returned as CustomLevels.
+                    /// Uses Cloud Common Expression Language when returning the resource. Both `BasicLevels` and
+                    /// `CustomLevels` are returned as `CustomLevels`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CEL")]
                     CEL = 2,
@@ -744,8 +744,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// atomically. The long-running operation from this RPC has a successful status after all replacements
             /// propagate to long-lasting storage. If the replacement contains errors, an error response is returned for
             /// the first error encountered. Upon error, the replacement is cancelled, and existing access levels are
-            /// not affected. The Operation.response field contains ReplaceAccessLevelsResponse. Removing access levels
-            /// contained in existing service perimeters result in an error.
+            /// not affected. The `Operation.response` field contains `ReplaceAccessLevelsResponse`. Removing access
+            /// levels contained in existing service perimeters results in an error.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -762,8 +762,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// atomically. The long-running operation from this RPC has a successful status after all replacements
             /// propagate to long-lasting storage. If the replacement contains errors, an error response is returned for
             /// the first error encountered. Upon error, the replacement is cancelled, and existing access levels are
-            /// not affected. The Operation.response field contains ReplaceAccessLevelsResponse. Removing access levels
-            /// contained in existing service perimeters result in an error.
+            /// not affected. The `Operation.response` field contains `ReplaceAccessLevelsResponse`. Removing access
+            /// levels contained in existing service perimeters results in an error.
             /// </summary>
             public class ReplaceAllRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
             {
@@ -902,7 +902,7 @@ namespace Google.Apis.AccessContextManager.v1
 
             /// <summary>
             /// Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after
-            /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
+            /// the authorized orgs desc propagates to long-lasting storage. If an authorized orgs desc contains errors,
             /// an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
             /// will be assigned during creation.
             /// </summary>
@@ -918,7 +918,7 @@ namespace Google.Apis.AccessContextManager.v1
 
             /// <summary>
             /// Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after
-            /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
+            /// the authorized orgs desc propagates to long-lasting storage. If an authorized orgs desc contains errors,
             /// an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc`
             /// will be assigned during creation.
             /// </summary>
@@ -975,7 +975,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// </summary>
             /// <param name="name">
             /// Required. Resource name for the Authorized Orgs Desc. Format:
-            /// `accessPolicies/{policy_id}/authorizedOrgsDesc/{authorized_orgs_desc_id}`
+            /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_desc_id}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -997,7 +997,7 @@ namespace Google.Apis.AccessContextManager.v1
 
                 /// <summary>
                 /// Required. Resource name for the Authorized Orgs Desc. Format:
-                /// `accessPolicies/{policy_id}/authorizedOrgsDesc/{authorized_orgs_desc_id}`
+                /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_desc_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1029,7 +1029,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// <summary>Gets an authorized orgs desc based on the resource name.</summary>
             /// <param name="name">
             /// Required. Resource name for the Authorized Orgs Desc. Format:
-            /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}`
+            /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_desc_id}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1048,7 +1048,7 @@ namespace Google.Apis.AccessContextManager.v1
 
                 /// <summary>
                 /// Required. Resource name for the Authorized Orgs Desc. Format:
-                /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}`
+                /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_desc_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1157,10 +1157,10 @@ namespace Google.Apis.AccessContextManager.v1
 
             /// <summary>
             /// Updates an authorized orgs desc. The long-running operation from this RPC has a successful status after
-            /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
+            /// the authorized orgs desc propagates to long-lasting storage. If an authorized orgs desc contains errors,
             /// an error response is returned for the first error encountered. Only the organization list in
-            /// `AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type and
-            /// authorization_direction cannot be updated.
+            /// `AuthorizedOrgsDesc` can be updated. The `name`, `authorization_type`, `asset_type`, and
+            /// `authorization_direction` cannot be updated.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1176,10 +1176,10 @@ namespace Google.Apis.AccessContextManager.v1
 
             /// <summary>
             /// Updates an authorized orgs desc. The long-running operation from this RPC has a successful status after
-            /// the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors,
+            /// the authorized orgs desc propagates to long-lasting storage. If an authorized orgs desc contains errors,
             /// an error response is returned for the first error encountered. Only the organization list in
-            /// `AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type and
-            /// authorization_direction cannot be updated.
+            /// `AuthorizedOrgsDesc` can be updated. The `name`, `authorization_type`, `asset_type`, and
+            /// `authorization_direction` cannot be updated.
             /// </summary>
             public class PatchRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
             {
@@ -1267,8 +1267,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// operation. The long-running operation from this RPC has a successful status after the dry-run
             /// specifications for all the service perimeters have been committed. If a commit fails, it causes the
             /// long-running operation to return an error response and the entire commit operation is cancelled. When
-            /// successful, the Operation.response field contains CommitServicePerimetersResponse. The `dry_run` and the
-            /// `spec` fields are cleared after a successful commit operation.
+            /// successful, the `Operation.response` field contains `CommitServicePerimetersResponse`. The `dry_run` and
+            /// the `spec` fields are cleared after a successful commit operation.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1287,8 +1287,8 @@ namespace Google.Apis.AccessContextManager.v1
             /// operation. The long-running operation from this RPC has a successful status after the dry-run
             /// specifications for all the service perimeters have been committed. If a commit fails, it causes the
             /// long-running operation to return an error response and the entire commit operation is cancelled. When
-            /// successful, the Operation.response field contains CommitServicePerimetersResponse. The `dry_run` and the
-            /// `spec` fields are cleared after a successful commit operation.
+            /// successful, the `Operation.response` field contains `CommitServicePerimetersResponse`. The `dry_run` and
+            /// the `spec` fields are cleared after a successful commit operation.
             /// </summary>
             public class CommitRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
             {
@@ -1464,7 +1464,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// <summary>Gets a service perimeter based on the resource name.</summary>
             /// <param name="name">
             /// Required. Resource name for the Service Perimeter. Format:
-            /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`
+            /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1483,7 +1483,7 @@ namespace Google.Apis.AccessContextManager.v1
 
                 /// <summary>
                 /// Required. Resource name for the Service Perimeter. Format:
-                /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}`
+                /// `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1791,11 +1791,11 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Replace all existing service perimeters in an access policy with the service perimeters provided. This
+            /// Replaces all existing service perimeters in an access policy with the service perimeters provided. This
             /// is done atomically. The long-running operation from this RPC has a successful status after all
             /// replacements propagate to long-lasting storage. Replacements containing errors result in an error
             /// response for the first error encountered. Upon an error, replacements are cancelled and existing service
-            /// perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
+            /// perimeters are not affected. The `Operation.response` field contains `ReplaceServicePerimetersResponse`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1808,11 +1808,11 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Replace all existing service perimeters in an access policy with the service perimeters provided. This
+            /// Replaces all existing service perimeters in an access policy with the service perimeters provided. This
             /// is done atomically. The long-running operation from this RPC has a successful status after all
             /// replacements propagate to long-lasting storage. Replacements containing errors result in an error
             /// response for the first error encountered. Upon an error, replacements are cancelled and existing service
-            /// perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
+            /// perimeters are not affected. The `Operation.response` field contains `ReplaceServicePerimetersResponse`.
             /// </summary>
             public class ReplaceAllRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.Operation>
             {
@@ -1984,7 +1984,7 @@ namespace Google.Apis.AccessContextManager.v1
         /// after the access policy is removed from long-lasting storage.
         /// </summary>
         /// <param name="name">
-        /// Required. Resource name for the access policy to delete. Format `accessPolicies/{policy_id}`
+        /// Required. Resource name for the access policy to delete. Format: `accessPolicies/{policy_id}`
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
@@ -2005,7 +2005,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Required. Resource name for the access policy to delete. Format `accessPolicies/{policy_id}`
+            /// Required. Resource name for the access policy to delete. Format: `accessPolicies/{policy_id}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2036,7 +2036,7 @@ namespace Google.Apis.AccessContextManager.v1
 
         /// <summary>Returns an access policy based on the name.</summary>
         /// <param name="name">
-        /// Required. Resource name for the access policy to get. Format `accessPolicies/{policy_id}`
+        /// Required. Resource name for the access policy to get. Format: `accessPolicies/{policy_id}`
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -2054,7 +2054,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Required. Resource name for the access policy to get. Format `accessPolicies/{policy_id}`
+            /// Required. Resource name for the access policy to get. Format: `accessPolicies/{policy_id}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2441,18 +2441,20 @@ namespace Google.Apis.AccessContextManager.v1
         }
 
         /// <summary>
-        /// Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}',
-        /// 'folders/{folderNumber}'].
+        /// Looks up the configured service perimeter for a given resource. Format: `['projects/{projectNumber}',
+        /// 'folders/{folderNumber}']`.
         /// </summary>
-        /// <param name="resource">Required. The Resource to resolve (e.g. "projects/123", "folders/456").</param>
+        /// <param name="resource">
+        /// Required. The resource to resolve (for example, `projects/123` or `folders/456`).
+        /// </param>
         public virtual LookupConfiguredServicePerimeterRequest LookupConfiguredServicePerimeter(string resource)
         {
             return new LookupConfiguredServicePerimeterRequest(this.service, resource);
         }
 
         /// <summary>
-        /// Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}',
-        /// 'folders/{folderNumber}'].
+        /// Looks up the configured service perimeter for a given resource. Format: `['projects/{projectNumber}',
+        /// 'folders/{folderNumber}']`.
         /// </summary>
         public class LookupConfiguredServicePerimeterRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.LookupConfiguredServicePerimeterResponse>
         {
@@ -2463,7 +2465,7 @@ namespace Google.Apis.AccessContextManager.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The Resource to resolve (e.g. "projects/123", "folders/456").</summary>
+            /// <summary>Required. The resource to resolve (for example, `projects/123` or `folders/456`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -2994,10 +2996,13 @@ namespace Google.Apis.AccessContextManager.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. The literal filter to apply to the results returned. See https://google.aip.dev/160 for
-                /// more details. Accepts values: * `principal:group_key` * `principal:service_account` OR
-                /// `principal:service_account_project_number`. If this field is empty or not one of the above, the
-                /// default value is `"principal:group_key"`.
+                /// Optional. Filters the results by principal type. Uses the [AIP-160](https://google.aip.dev/160)
+                /// filter syntax. Only the following filters are supported: * `principal:group_key`: bindings for
+                /// groups. This is the default when the filter is empty. * `principal:service_account OR
+                /// principal:service_account_project_number`: bindings for service accounts. *
+                /// `principal:federated_principal`: bindings for federated principals. Values can be in snake_case or
+                /// camelCase. Whitespace and the order of `OR` terms don't matter. Any other filter returns an
+                /// `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -3073,7 +3078,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only
             /// URI unreserved characters (as defined by [RFC 3986 Section
             /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
-            /// creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+            /// creation. Example: `"organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.GcpUserAccessBinding body, string name)
             {
@@ -3098,7 +3103,7 @@ namespace Google.Apis.AccessContextManager.v1
                 /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has
                 /// only URI unreserved characters (as defined by [RFC 3986 Section
                 /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
-                /// creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+                /// creation. Example: `"organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3106,18 +3111,18 @@ namespace Google.Apis.AccessContextManager.v1
                 /// <summary>
                 /// Optional. This field controls whether or not certain repeated settings in the update request
                 /// overwrite or append to existing settings on the binding. If true, then append. Otherwise overwrite.
-                /// So far, only scoped_access_settings with session_settings supports appending. Global access_levels,
-                /// access_levels in scoped_access_settings, dry_run_access_levels, and session_settings are not
-                /// compatible with append functionality, and the request will return an error if append=true when these
-                /// settings are in the update_mask. The request will also return an error if append=true when
-                /// "scoped_access_settings" is not set in the update_mask.
+                /// So far, only `scoped_access_settings` with `session_settings` supports appending. Global
+                /// `access_levels`, `access_levels` in `scoped_access_settings`, `dry_run_access_levels`, and
+                /// `session_settings` are not compatible with append functionality, and the request will return an
+                /// error if `append=true` when these settings are in the `update_mask`. The request will also return an
+                /// error if `append=true` when `"scoped_access_settings"` is not set in the `update_mask`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("append", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> Append { get; set; }
 
                 /// <summary>
-                /// Required. Only the fields specified in this mask are updated. Because name and group_key cannot be
-                /// changed, update_mask is required and may only contain the following fields: `access_levels`,
+                /// Required. Only the fields specified in this mask are updated. Because `name` and `group_key` cannot
+                /// be changed, `update_mask` is required and may only contain the following fields: `access_levels`,
                 /// `dry_run_access_levels`, `session_settings`, `scoped_access_settings`. update_mask { paths:
                 /// "access_levels" }
                 /// </summary>
@@ -3206,7 +3211,8 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Optional. This flag specifies the maximum number of services to return per page. Default value is 100.
+            /// Optional. This flag specifies the maximum number of permissions to return per page. Default value is
+            /// 100.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -3265,18 +3271,20 @@ namespace Google.Apis.AccessContextManager.v1
         }
 
         /// <summary>
-        /// Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}',
-        /// 'folders/{folderNumber}'].
+        /// Looks up the configured service perimeter for a given resource. Format: `['projects/{projectNumber}',
+        /// 'folders/{folderNumber}']`.
         /// </summary>
-        /// <param name="resource">Required. The Resource to resolve (e.g. "projects/123", "folders/456").</param>
+        /// <param name="resource">
+        /// Required. The resource to resolve (for example, `projects/123` or `folders/456`).
+        /// </param>
         public virtual LookupConfiguredServicePerimeterRequest LookupConfiguredServicePerimeter(string resource)
         {
             return new LookupConfiguredServicePerimeterRequest(this.service, resource);
         }
 
         /// <summary>
-        /// Looks up the configured service perimeter for a given resource Format: ['projects/{projectNumber}',
-        /// 'folders/{folderNumber}'].
+        /// Looks up the configured service perimeter for a given resource. Format: `['projects/{projectNumber}',
+        /// 'folders/{folderNumber}']`.
         /// </summary>
         public class LookupConfiguredServicePerimeterRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.LookupConfiguredServicePerimeterResponse>
         {
@@ -3287,7 +3295,7 @@ namespace Google.Apis.AccessContextManager.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The Resource to resolve (e.g. "projects/123", "folders/456").</summary>
+            /// <summary>Required. The resource to resolve (for example, `projects/123` or `folders/456`).</summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -3487,7 +3495,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Human readable title. Must be unique within the Policy.</summary>
+        /// <summary>Human-readable title. Must be unique within the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
@@ -3505,7 +3513,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>
         /// Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a
-        /// strongly validated etag, meaning that two Access Policies will be identical if and only if their etags are
+        /// strongly validated etag, meaning that two access policies will be identical if and only if their etags are
         /// identical. Clients should not expect this to be in any specific format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -3529,7 +3537,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// can be referenced. For example, policy A with `scopes=["folders/123"]` has the following behavior: -
         /// ServicePerimeter can only restrict projects within `folders/123`. - ServicePerimeter within policy A can
         /// only reference access levels defined within policy A. - Only one policy can include a given scope; thus,
-        /// attempting to create a second policy which includes `folders/123` will result in an error. If no scopes are
+        /// attempting to create a second policy that includes `folders/123` will result in an error. If no scopes are
         /// provided, then any resource within the organization can be restricted. Scopes cannot be modified after a
         /// policy is created. Policies can only have a single scope. Format: list of `folders/{folder_number}` or
         /// `projects/{project_number}`
@@ -3537,12 +3545,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
-        /// <summary>Required. Human readable title. Does not affect behavior.</summary>
+        /// <summary>Required. Human-readable title. Does not affect behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
     }
 
-    /// <summary>Access scope represents the client scope, etc. to which the settings will be applied to.</summary>
+    /// <summary>Access scope represents the client scope to which the settings are applied.</summary>
     public class AccessScope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Client scope for this access scope.</summary>
@@ -3562,12 +3570,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>
         /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not
         /// multiple. This repeated field must have exactly one element. Example:
-        /// "accessPolicies/9522/accessLevels/device_trusted"
+        /// `"accessPolicies/9522/accessLevels/device_trusted"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
 
-        /// <summary>Optional. Session settings applied to user access on a given AccessScope.</summary>
+        /// <summary>Optional. Session settings applied to user access on a given `AccessScope`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionSettings")]
         public virtual SessionSettings SessionSettings { get; set; }
 
@@ -3683,7 +3691,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class AuthorizedOrgsDesc : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and
+        /// The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE` and
         /// `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
@@ -3695,8 +3703,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// Allows this organization to evaluate traffic in the organizations listed in the `orgs` field.
         /// `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in
         /// this organization. For the authorization relationship to take effect, all of the organizations must
-        /// authorize and specify the appropriate relationship direction. For example, if organization A authorized
-        /// organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the
+        /// authorize and specify the appropriate relationship direction. For example, if organization A authorizes
+        /// organizations B and C to evaluate its traffic by specifying `AUTHORIZATION_DIRECTION_TO` as the
         /// authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the
         /// authorization direction in their `AuthorizedOrgsDesc` resource.
         /// </summary>
@@ -3719,7 +3727,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example:
+        /// The list of organization IDs in this `AuthorizedOrgsDesc`. Format: `organizations/{org_number}` Example:
         /// `organizations/123456`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgs")]
@@ -3733,10 +3741,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class BasicLevel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND
-        /// is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is
-        /// used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied.
-        /// Default behavior is AND.
+        /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If
+        /// `AND` is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If
+        /// `OR` is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be
+        /// applied. Default behavior is `AND`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("combiningFunction")]
         public virtual string CombiningFunction { get; set; }
@@ -3829,7 +3837,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Client scope represents the application, etc. subject to this binding's restrictions.</summary>
+    /// <summary>
+    /// Client scope represents the application, project, or other resource subject to this binding's restrictions.
+    /// </summary>
     public class ClientScope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The application that is subject to this binding's scope.</summary>
@@ -3871,26 +3881,27 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
-    /// A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a
-    /// Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device
-    /// complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent
-    /// at a time allowed by the DateTimeRestriction.
+    /// A condition necessary for an `AccessLevel` to be granted. The `Condition` is an AND over its fields. A
+    /// `Condition` is true if: 1) the request IP is from one of the listed subnetworks, AND 2) the originating device
+    /// complies with the listed device policy, AND 3) all listed access levels are granted, AND 4) the request was sent
+    /// at a time allowed by the `DateTimeRestriction`.
     /// </summary>
     public class Condition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all
-        /// devices are allowed.
+        /// Device-specific restrictions. All restrictions must hold for the `Condition` to be true. If not specified,
+        /// all devices are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devicePolicy")]
         public virtual DevicePolicy DevicePolicy { get; set; }
 
         /// <summary>
         /// CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the
-        /// specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input
-        /// is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for
-        /// IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be
-        /// in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed.
+        /// specified IP address portion must be properly truncated (that is, all the host bits must be zero) or the
+        /// input is considered malformed. For example, `"192.0.2.0/24"` is accepted, but `"192.0.2.1/24"` is not.
+        /// Similarly, for IPv6, `"2001:db8::/32"` is accepted, whereas `"2001:db8::1/32"` is not. The originating IP of
+        /// a request must be in one of the listed subnets in order for this `Condition` to be true. If empty, all IP
+        /// addresses are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipSubnetworks")]
         public virtual System.Collections.Generic.IList<string> IpSubnetworks { get; set; }
@@ -3903,9 +3914,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
-        /// Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any
-        /// non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to
-        /// false.
+        /// Whether to negate the `Condition`. If `true`, the `Condition` becomes a NAND over its non-empty fields. Any
+        /// non-empty field criteria evaluating to `false` will result in the `Condition` being satisfied. Defaults to
+        /// `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negate")]
         public virtual System.Nullable<bool> Negate { get; set; }
@@ -3919,8 +3930,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an
-        /// `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition
-        /// to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
+        /// `AccessLevel` that does not exist is an error. All access levels listed must be granted for the `Condition`
+        /// to be true. Example: `"accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiredAccessLevels")]
         public virtual System.Collections.Generic.IList<string> RequiredAccessLevels { get; set; }
@@ -3951,24 +3962,24 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
-    /// `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A
-    /// `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any
+    /// `DevicePolicy` specifies device-specific restrictions necessary to acquire a given access level. A
+    /// `DevicePolicy` specifies requirements for requests from devices to be granted access levels; it does not do any
     /// enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is
-    /// an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS,
-    /// os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests
-    /// originating from encrypted Linux desktops and encrypted Windows desktops.
+    /// an OR over its elements. Any unset fields are ignored. For example, if the proto is `{ os_type :
+    /// DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}`, then the `DevicePolicy` will be true
+    /// for requests originating from encrypted Linux desktops and encrypted Windows desktops.
     /// </summary>
     public class DevicePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Allowed device management levels, an empty list allows all management levels.</summary>
+        /// <summary>Allowed device management levels. An empty list allows all management levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedDeviceManagementLevels")]
         public virtual System.Collections.Generic.IList<string> AllowedDeviceManagementLevels { get; set; }
 
-        /// <summary>Allowed encryptions statuses, an empty list allows all statuses.</summary>
+        /// <summary>Allowed encryption statuses. An empty list allows all statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedEncryptionStatuses")]
         public virtual System.Collections.Generic.IList<string> AllowedEncryptionStatuses { get; set; }
 
-        /// <summary>Allowed OS versions, an empty list allows all types and all versions.</summary>
+        /// <summary>Allowed OS versions. An empty list allows all types and all versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osConstraints")]
         public virtual System.Collections.Generic.IList<OsConstraint> OsConstraints { get; set; }
 
@@ -3976,12 +3987,12 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requireAdminApproval")]
         public virtual System.Nullable<bool> RequireAdminApproval { get; set; }
 
-        /// <summary>Whether the device needs to be corp owned.</summary>
+        /// <summary>Whether the device needs to be corp-owned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireCorpOwned")]
         public virtual System.Nullable<bool> RequireCorpOwned { get; set; }
 
         /// <summary>
-        /// Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`.
+        /// Whether or not screenlock is required for the `DevicePolicy` to be true. Defaults to `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireScreenlock")]
         public virtual System.Nullable<bool> RequireScreenlock { get; set; }
@@ -3991,9 +4002,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
-    /// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the
-    /// source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then
-    /// that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+    /// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about
+    /// the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter,
+    /// then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
     /// </summary>
     public class EgressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4013,7 +4024,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string IdentityType { get; set; }
 
         /// <summary>
-        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then
+        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is not empty, then
         /// this field must be set to `SOURCE_RESTRICTION_ENABLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRestriction")]
@@ -4036,9 +4047,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
     /// matches a request, the request is allowed to span the ServicePerimeter boundary. For example, an EgressPolicy
     /// can be used to allow VMs on networks within the ServicePerimeter to access a defined set of projects outside the
     /// perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket or query against a BigQuery
-    /// dataset). EgressPolicies are concerned with the *resources* that a request relates as well as the API services
-    /// and API actions being used. They do not related to the direction of data movement. More detailed documentation
-    /// for this concept can be found in the descriptions of EgressFrom and EgressTo.
+    /// dataset). EgressPolicies are concerned with the *resources* that a request relates to, as well as the API
+    /// services and API actions being used. They do not relate to the direction of data movement. More detailed
+    /// documentation for this concept can be found in the descriptions of EgressFrom and EgressTo.
     /// </summary>
     public class EgressPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4053,8 +4064,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual EgressTo EgressTo { get; set; }
 
         /// <summary>
-        /// Optional. Human-readable title for the egress rule. The title must be unique within the perimeter and can
-        /// not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
+        /// Optional. Human-readable title for the egress rule. The title must be unique within the perimeter and cannot
+        /// exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
         /// 240,000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
@@ -4090,8 +4101,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// A Google Cloud resource from the service perimeter that you want to allow to access data outside the
-        /// perimeter. This field supports projects, folders, and organizations in the form `projects/`, `folders/`, and
-        /// `organizations/`. You can't use `*` in this field to allow all Google Cloud resources.
+        /// perimeter. This field supports projects, folders, and organizations in the form `projects/{project_number}`,
+        /// `folders/{folder_id}`, and `organizations/{organization_id}`. You can't use `*` in this field to allow all
+        /// Google Cloud resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
@@ -4111,10 +4123,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>
         /// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported.
-        /// For Amazon S3, the supported formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For
-        /// Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request
-        /// matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not
-        /// allowed.
+        /// For Amazon S3, the supported formats are `s3://BUCKET_NAME`, `s3a://BUCKET_NAME`, and `s3n://BUCKET_NAME`.
+        /// For Azure Storage, the supported format is `azure://myaccount.blob.core.windows.net/CONTAINER_NAME`. A
+        /// request matches if it contains an external resource in this list (Example: `s3://bucket/path`). Currently
+        /// `'*'` is not allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalResources")]
         public virtual System.Collections.Generic.IList<string> ExternalResources { get; set; }
@@ -4127,16 +4139,17 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual System.Collections.Generic.IList<ApiOperation> Operations { get; set; }
 
         /// <summary>
-        /// A list of resources, currently projects, folders, and organizations in the form `projects/`, `folders/`, and
-        /// `organizations/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A
-        /// request matches if it contains a resource in this list. If `*` is specified for `resources`, then this
-        /// EgressTo rule will authorize access to all resources outside the perimeter.
+        /// A list of resources, currently projects, folders, and organizations in the form `projects/{project_number}`,
+        /// `folders/{folder_id}`, and `organizations/{organization_id}`, that are allowed to be accessed by sources
+        /// defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is
+        /// specified for `resources`, then this EgressTo rule will authorize access to all resources outside the
+        /// perimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
 
         /// <summary>
-        /// IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom.
+        /// IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom
         /// are allowed to perform in this ServicePerimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
@@ -4209,25 +4222,25 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>
         /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not
         /// multiple. This repeated field must have exactly one element. Example:
-        /// "accessPolicies/9522/accessLevels/device_trusted"
+        /// `"accessPolicies/9522/accessLevels/device_trusted"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevels")]
         public virtual System.Collections.Generic.IList<string> AccessLevels { get; set; }
 
         /// <summary>
-        /// Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on
-        /// dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly
-        /// one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// Optional. Dry-run access level that is evaluated, but not enforced. Any access denial based on the dry-run
+        /// policy is logged. Only one access level is supported, not multiple. This list must have exactly one element.
+        /// Example: `"accessPolicies/9522/accessLevels/device_trusted"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRunAccessLevels")]
         public virtual System.Collections.Generic.IList<string> DryRunAccessLevels { get; set; }
 
         /// <summary>
-        /// Optional. Immutable. Google Group id whose users are subject to this binding's restrictions. See "id" in the
+        /// Optional. Immutable. Google Group ID whose users are subject to this binding's restrictions. See "id" in the
         /// [Google Workspace Directory API's Group Resource]
-        /// (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email
-        /// address/alias is changed, this resource will continue to point at the changed group. This field does not
-        /// accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        /// (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address
+        /// or alias is changed, this resource will continue to point at the changed group. This field does not accept
+        /// group email addresses or aliases. Example: `"01d520gv4vjcrht"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
         public virtual string GroupKey { get; set; }
@@ -4236,7 +4249,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI
         /// unreserved characters (as defined by [RFC 3986 Section
         /// 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during
-        /// creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        /// creation. Example: `"organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4350,9 +4363,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual IngressTo IngressTo { get; set; }
 
         /// <summary>
-        /// Optional. Human-readable title for the ingress rule. The title must be unique within the perimeter and can
-        /// not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed
-        /// 240,000 characters.
+        /// Optional. Human-readable title for the ingress rule. The title must be unique within the perimeter and
+        /// cannot exceed 100 characters. Within the access policy, the combined length of all rule titles must not
+        /// exceed 240,000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -4365,7 +4378,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class IngressSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the
+        /// An AccessLevel resource name that allows resources within the ServicePerimeters to be accessed from the
         /// internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent
         /// AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only
         /// be accessed via Google Cloud calls with request origins within the perimeter. Example:
@@ -4416,7 +4429,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// A list of resources, currently projects, folders, and organizations in the form `projects/{project_number}`,
         /// `folders/{folder_id}`, and `organizations/{organization_id}`, protected by this ServicePerimeter that are
         /// allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified,
-        /// then access to all resources inside the perimeter are allowed.
+        /// then access to all resources inside the perimeter is allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
@@ -4578,14 +4591,15 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class LookupConfiguredServicePerimeterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource (e.g. "projects/123", "folders/456") that directly owns/is restricted by the enforced
-        /// perimeter.
+        /// The resource (for example, `projects/123` or `folders/456`) that directly owns or is restricted by the
+        /// enforced perimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedResource")]
         public virtual string RestrictedResource { get; set; }
 
         /// <summary>
-        /// The resource (e.g. "projects/123", "folders/456") that directly owns/is restricted by the dry-run perimeter.
+        /// The resource (for example, `projects/123` or `folders/456`) that directly owns or is restricted by the
+        /// dry-run perimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedResourceDryRun")]
         public virtual string RestrictedResourceDryRun { get; set; }
@@ -4697,8 +4711,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string OsType { get; set; }
 
         /// <summary>
-        /// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the
-        /// device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API
+        /// Only allows requests from devices with a verified Chrome OS. Verification includes requirements that the
+        /// device is enterprise-managed, conforms to domain policies, and the caller has permission to call the API
         /// targeted by the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireVerifiedChromeOs")]
@@ -4808,9 +4822,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// Immutable. Service account email used to assign policies to a specific service account. If a service account
-        /// is subject to multiple policies (e.g., if there is a policy for all service accounts in a project and a
-        /// policy for the service account), the closest (i.e. the most specific) dry-run policy will be used for the
-        /// dry-run functionality and the closest enforcement policy will be used for the enforcement.
+        /// is subject to multiple policies (for example, if there is a policy for all service accounts in a project and
+        /// a policy for the service account), the closest (that is, the most specific) dry-run policy is used for the
+        /// dry-run functionality and the closest enforcement policy is used for enforcement.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -4840,7 +4854,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Google Cloud project which contains applications and resources that users can access.</summary>
+    /// <summary>A Google Cloud project that contains applications and resources that users can access.</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4925,26 +4939,26 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A relationship between access settings and its scope.</summary>
+    /// <summary>A relationship between access settings and their scope.</summary>
     public class ScopedAccessSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Access settings for this scoped access settings. This field may be empty if dry_run_settings is
+        /// Optional. Access settings for this `ScopedAccessSettings`. This field may be empty if `dry_run_settings` is
         /// set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeSettings")]
         public virtual AccessSettings ActiveSettings { get; set; }
 
         /// <summary>
-        /// Optional. Dry-run access settings for this scoped access settings. This field may be empty if
-        /// active_settings is set.
+        /// Optional. Dry-run access settings for this `ScopedAccessSettings`. This field may be empty if
+        /// `active_settings` is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRunSettings")]
         public virtual AccessSettings DryRunSettings { get; set; }
 
         /// <summary>
-        /// Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped
-        /// access settings key; as such, it must be unique and non-empty.
+        /// Optional. Application or other resource to which the access settings are applied. Implicitly, this is the
+        /// scoped access settings key; as such, it must be unique and non-empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual AccessScope Scope { get; set; }
@@ -4961,8 +4975,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual System.Collections.Generic.IList<Modifier> Modifiers { get; set; }
 
         /// <summary>
-        /// URL pattern to allow. Only patterns of ".googleapis.com/*", "www.googleapis.com//*" and "*.appspot.com/*
-        /// forms are supported, where should be an alphanumeric name.
+        /// URL pattern to allow. Only patterns of `".googleapis.com/*"`, `"www.googleapis.com//*"`, and
+        /// `"*.appspot.com/*"` forms are supported, where `` should be an alphanumeric name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
@@ -5008,24 +5022,24 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular
-        /// perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge
-        /// without being included in regular perimeter. For perimeter bridges, the restricted service list as well as
+        /// Perimeter type indicator. A single project or VPC network is allowed to be a member of a single regular
+        /// perimeter, but multiple service perimeter bridges. A project cannot be included in a perimeter bridge
+        /// without being included in a regular perimeter. For perimeter bridges, the restricted service list as well as
         /// access level lists must be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perimeterType")]
         public virtual string PerimeterType { get; set; }
 
         /// <summary>
-        /// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test
+        /// Proposed (or dry run) ServicePerimeter configuration. This configuration allows you to specify and test
         /// ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the
-        /// "use_explicit_dry_run_spec" flag is set.
+        /// `use_explicit_dry_run_spec` flag is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual ServicePerimeterConfig Spec { get; set; }
 
         /// <summary>
-        /// Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels
+        /// Current ServicePerimeter configuration. Specifies sets of resources, restricted services, and access levels
         /// that determine perimeter content and boundaries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -5041,8 +5055,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to
         /// use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced
         /// config ("status") without actually enforcing them. This testing is done through analyzing the differences
-        /// between currently enforced and suggested restrictions. use_explicit_dry_run_spec must bet set to True if any
-        /// of the fields in the spec are set to non-default values.
+        /// between currently enforced and suggested restrictions. `use_explicit_dry_run_spec` must be set to `true` if
+        /// any of the fields in the spec are set to non-default values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useExplicitDryRunSpec")]
         public virtual System.Nullable<bool> UseExplicitDryRunSpec { get; set; }
@@ -5105,8 +5119,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
     }
 
     /// <summary>
-    /// Stores settings related to Google Cloud Session Length including session duration, the type of challenge (i.e.
-    /// method) they should face when their session expires, and other related settings.
+    /// Stores settings related to Google Cloud Session Length, including session duration, the type of challenge (that
+    /// is, method) a user faces when their session expires, and other related settings.
     /// </summary>
     public class SessionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5121,28 +5135,28 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// Optional. The session length. Setting this field to zero allows for sessions that are active indefinitely.
         /// Also, setting `session_length_enabled` to `false` disregards session limits, which means that sessions never
         /// expire. If `use_oidc_max_age` is `true`, for OIDC apps, the session length will be the minimum of this field
-        /// and the OIDC `max_age` param. If this field is set to zero, `session_length_enabled` must be set to `false`
-        /// or left unset.
+        /// and the OIDC `max_age` parameter. If this field is set to zero, `session_length_enabled` must be set to
+        /// `false` or left unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionLength")]
         public virtual object SessionLength { get; set; }
 
         /// <summary>
-        /// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will
-        /// be disregarded and the session length is basically infinite. If `session_length` is set to zero, this field
-        /// must be set to false.
+        /// Optional. This field enables or disables Google Cloud session length. When `false`, all fields set above are
+        /// disregarded and the session length is effectively infinite. If `session_length` is set to zero, this field
+        /// must be set to `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionLengthEnabled")]
         public virtual System.Nullable<bool> SessionLengthEnabled { get; set; }
 
-        /// <summary>Optional. Session method when user's Google Cloud session is up.</summary>
+        /// <summary>Optional. Session challenge method when a user's Google Cloud session expires.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionReauthMethod")]
         public virtual string SessionReauthMethod { get; set; }
 
         /// <summary>
-        /// Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication
-        /// request will be ignored. When true, the re-auth period will be the minimum of the session_length field and
-        /// the max_age OIDC param.
+        /// Optional. Only useful for OIDC apps. When `false`, the OIDC `max_age` parameter, if passed in the
+        /// authentication request, is ignored. When `true`, the re-authentication period is the minimum of the
+        /// `session_length` field and the `max_age` OIDC parameter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useOidcMaxAge")]
         public virtual System.Nullable<bool> UseOidcMaxAge { get; set; }
@@ -5202,7 +5216,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>`SupportedService` specifies the VPC Service Controls and its properties.</summary>
+    /// <summary>`SupportedService` specifies a service supported by VPC Service Controls and its properties.</summary>
     public class SupportedService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5232,13 +5246,11 @@ namespace Google.Apis.AccessContextManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportStage")]
         public virtual string SupportStage { get; set; }
 
-        /// <summary>
-        /// The list of the supported methods. This field exists only in response to GetSupportedService
-        /// </summary>
+        /// <summary>The list of supported methods. This field exists only in response to GetSupportedService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedMethods")]
         public virtual System.Collections.Generic.IList<MethodSelector> SupportedMethods { get; set; }
 
-        /// <summary>The name of the supported product, such as 'Cloud Product API'.</summary>
+        /// <summary>The name of the supported product, such as `'Cloud Product API'`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
@@ -5282,8 +5294,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual System.Collections.Generic.IList<ServicePattern> AllowedServicePatterns { get; set; }
 
         /// <summary>
-        /// The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You
-        /// can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which
+        /// The list of APIs usable within the Service Perimeter. Must be empty unless `enable_restriction` is `true`.
+        /// You can specify a list of individual services, as well as include the `'RESTRICTED-SERVICES'` value, which
         /// automatically includes all of the services protected by the perimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedServices")]
@@ -5291,7 +5303,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// Whether to restrict API calls within the Service Perimeter to the list of APIs specified in
-        /// 'allowed_services'.
+        /// `allowed_services`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
         public virtual System.Nullable<bool> EnableRestriction { get; set; }
@@ -5315,7 +5327,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Sub-segment ranges inside of a VPC Network.</summary>
+    /// <summary>Sub-segment ranges inside of a VPC network.</summary>
     public class VpcSubNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5330,8 +5342,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>
         /// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or
         /// private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly
-        /// truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example,
-        /// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+        /// truncated (that is, all the host bits must be zero) or the input is considered malformed. For example,
+        /// `"192.0.2.0/24"` is accepted, but `"192.0.2.1/24"` is not. If empty, all IP addresses are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcIpSubnetworks")]
         public virtual System.Collections.Generic.IList<string> VpcIpSubnetworks { get; set; }

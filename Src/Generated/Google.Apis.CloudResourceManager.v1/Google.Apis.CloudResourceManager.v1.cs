@@ -662,7 +662,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>
-        /// Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will
+        /// Creates a Lien which applies to the resource denoted by the `parent` field. Callers of this method will
         /// require permission on the `parent` resource. For example, applying to `projects/1234` requires permission
         /// `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be
         /// applied.
@@ -674,7 +674,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>
-        /// Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will
+        /// Creates a Lien which applies to the resource denoted by the `parent` field. Callers of this method will
         /// require permission on the `parent` resource. For example, applying to `projects/1234` requires permission
         /// `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be
         /// applied.
@@ -711,7 +711,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>
-        /// Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
+        /// Deletes a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
         /// example, a Lien with a `parent` of `projects/1234` requires permission
         /// `resourcemanager.projects.updateLiens`.
         /// </summary>
@@ -722,7 +722,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>
-        /// Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
+        /// Deletes a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
         /// example, a Lien with a `parent` of `projects/1234` requires permission
         /// `resourcemanager.projects.updateLiens`.
         /// </summary>
@@ -764,7 +764,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>
-        /// Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
+        /// Retrieves a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
         /// example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
         /// </summary>
         /// <param name="name">Required. The name/identifier of the Lien.</param>
@@ -774,7 +774,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>
-        /// Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
+        /// Retrieves a Lien by `name`. Callers of this method will require permission on the `parent` resource. For
         /// example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`
         /// </summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Lien>
@@ -815,7 +815,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>
-        /// List all Liens applied to the `parent` resource. Callers of this method will require permission on the
+        /// Lists all Liens applied to the `parent` resource. Callers of this method will require permission on the
         /// `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission
         /// `resourcemanager.projects.get`.
         /// </summary>
@@ -825,7 +825,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>
-        /// List all Liens applied to the `parent` resource. Callers of this method will require permission on the
+        /// Lists all Liens applied to the `parent` resource. Callers of this method will require permission on the
         /// `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission
         /// `resourcemanager.projects.get`.
         /// </summary>
@@ -4070,6 +4070,13 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         /// <summary>The Project lifecycle state. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; }
+
+        /// <summary>
+        /// Output only. The type of Management Project. This field is only populated if `is_management_project` is
+        /// `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
+        public virtual string ManagementType { get; set; }
 
         /// <summary>
         /// The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters.

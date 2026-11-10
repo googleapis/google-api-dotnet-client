@@ -1453,7 +1453,11 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
     /// <summary>Required information for every language.</summary>
     public class CommonLanguageSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The destination where API teams want this client library to be published.</summary>
+        /// <summary>
+        /// Deprecated: Client libraries are published for all supported languages by default when a `library_settings`
+        /// entry is present with a `version` and `launch_stage`. The destination where API teams want this client
+        /// library to be published.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
 

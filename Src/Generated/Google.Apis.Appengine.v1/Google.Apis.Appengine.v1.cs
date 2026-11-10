@@ -9132,6 +9132,10 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vm")]
         public virtual System.Nullable<bool> Vm { get; set; }
 
+        /// <summary>Enables VPC access connectivity for standard apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
+        public virtual VpcAccess VpcAccess { get; set; }
+
         /// <summary>Enables VPC connectivity for standard apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccessConnector")]
         public virtual VpcAccessConnector VpcAccessConnector { get; set; }
@@ -9168,6 +9172,23 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>VPC Access settings</summary>
+    public class VpcAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Direct VPC configuration. Currently only single network interface is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
+        public virtual System.Collections.Generic.IList<VpcNetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>
+        /// The traffic egress setting for the VPC network interface, controlling what traffic is diverted through it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcEgress")]
+        public virtual string VpcEgress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>VPC access connector specification.</summary>
     public class VpcAccessConnector : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9180,6 +9201,37 @@ namespace Google.Apis.Appengine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network interface key message.</summary>
+    public class VpcNetworkInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The VPC network that the App Engine resource will be able to send traffic to. At least one of
+        /// network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC
+        /// subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the
+        /// subnetwork. Could be either a short name or a full path. e.g. {VPC_NETWORK} or
+        /// projects/{HOST_PROJECT_ID}/global/networks/{VPC_NETWORK}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Optional. The VPC subnetwork that the App Engine resource will get IPs from. At least one of network or
+        /// subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must
+        /// belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the
+        /// network will be used. Could be either a short name or a full path. e.g. {SUBNET_NAME} or
+        /// projects/{HOST_PROJECT_ID}/regions/{REGION}/subnetworks/{SUBNET_NAME}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
+        public virtual string Subnet { get; set; }
+
+        /// <summary>Optional. The network tags that will be applied to this App Engine resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

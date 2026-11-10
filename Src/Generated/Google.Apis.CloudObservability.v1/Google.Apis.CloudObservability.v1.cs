@@ -2504,6 +2504,73 @@ namespace Google.Apis.CloudObservability.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// Initiates reprovisioning of a bucket. This is allowed only a single time for a bucket and results in
+                /// data loss. Subsequent calls to this method for the same bucket will result in a FAILED_PRECONDITION
+                /// (400 Bad Request) error.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the bucket to reprovision. The format is:
+                /// projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]
+                /// </param>
+                public virtual ReprovisionRequest Reprovision(Google.Apis.CloudObservability.v1.Data.ReprovisionBucketRequest body, string name)
+                {
+                    return new ReprovisionRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Initiates reprovisioning of a bucket. This is allowed only a single time for a bucket and results in
+                /// data loss. Subsequent calls to this method for the same bucket will result in a FAILED_PRECONDITION
+                /// (400 Bad Request) error.
+                /// </summary>
+                public class ReprovisionRequest : CloudObservabilityBaseServiceRequest<Google.Apis.CloudObservability.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Reprovision request.</summary>
+                    public ReprovisionRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudObservability.v1.Data.ReprovisionBucketRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the bucket to reprovision. The format is:
+                    /// projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudObservability.v1.Data.ReprovisionBucketRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reprovision";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:reprovision";
+
+                    /// <summary>Initializes Reprovision parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/buckets/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -4318,11 +4385,20 @@ namespace Google.Apis.CloudObservability.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Request for reprovisioning a bucket, replaces configuration with that of the configured Observability settings.
+    /// </summary>
+    public class ReprovisionBucketRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing Scope object</summary>
     public class Scope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The full resource name of the `LogScope`. For example:
+        /// Required. The full resource name of the `logging.googleapis.com/LogScope`. For example:
         /// //logging.googleapis.com/projects/myproject/locations/global/logScopes/my-log-scope
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logScope")]
@@ -4336,7 +4412,7 @@ namespace Google.Apis.CloudObservability.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the `TraceScope`. For example:
+        /// Required. The unqualified resource name of the `cloudtrace.googleapis.com/TraceScope`. For example:
         /// projects/myproject/locations/global/traceScopes/my-trace-scope
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceScope")]

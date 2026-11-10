@@ -601,7 +601,9 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>
             /// Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be
             /// analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately
-            /// done.
+            /// done. Note: This method only approves or rejects builds in the "global" region when using the legacy
+            /// resource path projects/{project_id}/builds/{id}:approve. For all regions, use the regional resource
+            /// path: `projects/{project_id}/locations/{location}/builds/{id}:approve`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -615,7 +617,9 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>
             /// Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be
             /// analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately
-            /// done.
+            /// done. Note: This method only approves or rejects builds in the "global" region when using the legacy
+            /// resource path projects/{project_id}/builds/{id}:approve. For all regions, use the regional resource
+            /// path: `projects/{project_id}/locations/{location}/builds/{id}:approve`.
             /// </summary>
             public class ApproveRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
@@ -2107,7 +2111,9 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>
                 /// Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be
                 /// analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be
-                /// immediately done.
+                /// immediately done. Note: This method only approves or rejects builds in the "global" region when
+                /// using the legacy resource path projects/{project_id}/builds/{id}:approve. For all regions, use the
+                /// regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:approve`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2121,7 +2127,9 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>
                 /// Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be
                 /// analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be
-                /// immediately done.
+                /// immediately done. Note: This method only approves or rejects builds in the "global" region when
+                /// using the legacy resource path projects/{project_id}/builds/{id}:approve. For all regions, use the
+                /// regional resource path: `projects/{project_id}/locations/{location}/builds/{id}:approve`.
                 /// </summary>
                 public class ApproveRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
@@ -3150,7 +3158,11 @@ namespace Google.Apis.CloudBuild.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new `BuildTrigger`.</summary>
+                /// <summary>
+                /// Creates a new `BuildTrigger`. Note: This method only creates triggers in the "global" region when
+                /// using the legacy resource path projects/{project_id}/triggers. For all regions, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/triggers`.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// The parent resource where this trigger will be created. Format:
@@ -3161,7 +3173,11 @@ namespace Google.Apis.CloudBuild.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a new `BuildTrigger`.</summary>
+                /// <summary>
+                /// Creates a new `BuildTrigger`. Note: This method only creates triggers in the "global" region when
+                /// using the legacy resource path projects/{project_id}/triggers. For all regions, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/triggers`.
+                /// </summary>
                 public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3221,7 +3237,12 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
+                /// <summary>
+                /// Deletes a `BuildTrigger` by its project ID and trigger ID. Note: This method only deletes triggers
+                /// in the "global" region when using the legacy resource path
+                /// projects/{project_id}/triggers/{trigger_id}. For all regions, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+                /// </summary>
                 /// <param name="name">
                 /// The name of the `Trigger` to delete. Format:
                 /// `projects/{project}/locations/{location}/triggers/{trigger}`
@@ -3231,7 +3252,12 @@ namespace Google.Apis.CloudBuild.v1
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
+                /// <summary>
+                /// Deletes a `BuildTrigger` by its project ID and trigger ID. Note: This method only deletes triggers
+                /// in the "global" region when using the legacy resource path
+                /// projects/{project_id}/triggers/{trigger_id}. For all regions, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+                /// </summary>
                 public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -3296,7 +3322,12 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Returns information about a `BuildTrigger`.</summary>
+                /// <summary>
+                /// Returns information about a `BuildTrigger`. Note: This method only gets triggers in the "global"
+                /// region when using the legacy resource path projects/{project_id}/triggers/{trigger_id}. For all
+                /// regions, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+                /// </summary>
                 /// <param name="name">
                 /// The name of the `Trigger` to retrieve. Format:
                 /// `projects/{project}/locations/{location}/triggers/{trigger}`
@@ -3306,7 +3337,12 @@ namespace Google.Apis.CloudBuild.v1
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Returns information about a `BuildTrigger`.</summary>
+                /// <summary>
+                /// Returns information about a `BuildTrigger`. Note: This method only gets triggers in the "global"
+                /// region when using the legacy resource path projects/{project_id}/triggers/{trigger_id}. For all
+                /// regions, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+                /// </summary>
                 public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3371,7 +3407,11 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Lists existing `BuildTrigger`s.</summary>
+                /// <summary>
+                /// Lists existing `BuildTrigger`s. Note: This method only lists triggers in the "global" region when
+                /// using the legacy resource path projects/{project_id}/triggers. For all regions, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/triggers`.
+                /// </summary>
                 /// <param name="parent">
                 /// The parent of the collection of `Triggers`. Format: `projects/{project}/locations/{location}`
                 /// </param>
@@ -3380,7 +3420,11 @@ namespace Google.Apis.CloudBuild.v1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists existing `BuildTrigger`s.</summary>
+                /// <summary>
+                /// Lists existing `BuildTrigger`s. Note: This method only lists triggers in the "global" region when
+                /// using the legacy resource path projects/{project_id}/triggers. For all regions, use the regional
+                /// resource path: `projects/{project_id}/locations/{location}/triggers`.
+                /// </summary>
                 public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildTriggersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3456,7 +3500,12 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
+                /// <summary>
+                /// Updates a `BuildTrigger` by its project ID and trigger ID. Note: This method only updates triggers
+                /// in the "global" region when using the legacy resource path
+                /// projects/{project_id}/triggers/{trigger_id}. For all regions, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resourceName">
                 /// The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where
@@ -3467,7 +3516,12 @@ namespace Google.Apis.CloudBuild.v1
                     return new PatchRequest(this.service, body, resourceName);
                 }
 
-                /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
+                /// <summary>
+                /// Updates a `BuildTrigger` by its project ID and trigger ID. Note: This method only updates triggers
+                /// in the "global" region when using the legacy resource path
+                /// projects/{project_id}/triggers/{trigger_id}. For all regions, use the regional resource path:
+                /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+                /// </summary>
                 public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -4216,7 +4270,11 @@ namespace Google.Apis.CloudBuild.v1
                 this.service = service;
             }
 
-            /// <summary>Creates a new `BuildTrigger`.</summary>
+            /// <summary>
+            /// Creates a new `BuildTrigger`. Note: This method only creates triggers in the "global" region when using
+            /// the legacy resource path projects/{project_id}/triggers. For all regions, use the regional resource
+            /// path: `projects/{project_id}/locations/{location}/triggers`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project for which to configure automatic builds.</param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.BuildTrigger body, string projectId)
@@ -4224,7 +4282,11 @@ namespace Google.Apis.CloudBuild.v1
                 return new CreateRequest(this.service, body, projectId);
             }
 
-            /// <summary>Creates a new `BuildTrigger`.</summary>
+            /// <summary>
+            /// Creates a new `BuildTrigger`. Note: This method only creates triggers in the "global" region when using
+            /// the legacy resource path projects/{project_id}/triggers. For all regions, use the regional resource
+            /// path: `projects/{project_id}/locations/{location}/triggers`.
+            /// </summary>
             public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -4284,7 +4346,12 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
+            /// <summary>
+            /// Deletes a `BuildTrigger` by its project ID and trigger ID. Note: This method only deletes triggers in
+            /// the "global" region when using the legacy resource path projects/{project_id}/triggers/{trigger_id}. For
+            /// all regions, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+            /// </summary>
             /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
             /// <param name="triggerId">Required. ID of the `BuildTrigger` to delete.</param>
             public virtual DeleteRequest Delete(string projectId, string triggerId)
@@ -4292,7 +4359,12 @@ namespace Google.Apis.CloudBuild.v1
                 return new DeleteRequest(this.service, projectId, triggerId);
             }
 
-            /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
+            /// <summary>
+            /// Deletes a `BuildTrigger` by its project ID and trigger ID. Note: This method only deletes triggers in
+            /// the "global" region when using the legacy resource path projects/{project_id}/triggers/{trigger_id}. For
+            /// all regions, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+            /// </summary>
             public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -4358,7 +4430,11 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Returns information about a `BuildTrigger`.</summary>
+            /// <summary>
+            /// Returns information about a `BuildTrigger`. Note: This method only gets triggers in the "global" region
+            /// when using the legacy resource path projects/{project_id}/triggers/{trigger_id}. For all regions, use
+            /// the regional resource path: `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+            /// </summary>
             /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
             /// <param name="triggerId">Required. Identifier (`id` or `name`) of the `BuildTrigger` to get.</param>
             public virtual GetRequest Get(string projectId, string triggerId)
@@ -4366,7 +4442,11 @@ namespace Google.Apis.CloudBuild.v1
                 return new GetRequest(this.service, projectId, triggerId);
             }
 
-            /// <summary>Returns information about a `BuildTrigger`.</summary>
+            /// <summary>
+            /// Returns information about a `BuildTrigger`. Note: This method only gets triggers in the "global" region
+            /// when using the legacy resource path projects/{project_id}/triggers/{trigger_id}. For all regions, use
+            /// the regional resource path: `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+            /// </summary>
             public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -4432,14 +4512,22 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Lists existing `BuildTrigger`s.</summary>
+            /// <summary>
+            /// Lists existing `BuildTrigger`s. Note: This method only lists triggers in the "global" region when using
+            /// the legacy resource path projects/{project_id}/triggers. For all regions, use the regional resource
+            /// path: `projects/{project_id}/locations/{location}/triggers`.
+            /// </summary>
             /// <param name="projectId">Required. ID of the project for which to list BuildTriggers.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(this.service, projectId);
             }
 
-            /// <summary>Lists existing `BuildTrigger`s.</summary>
+            /// <summary>
+            /// Lists existing `BuildTrigger`s. Note: This method only lists triggers in the "global" region when using
+            /// the legacy resource path projects/{project_id}/triggers. For all regions, use the regional resource
+            /// path: `projects/{project_id}/locations/{location}/triggers`.
+            /// </summary>
             public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildTriggersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4515,7 +4603,12 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
+            /// <summary>
+            /// Updates a `BuildTrigger` by its project ID and trigger ID. Note: This method only updates triggers in
+            /// the "global" region when using the legacy resource path projects/{project_id}/triggers/{trigger_id}. For
+            /// all regions, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
             /// <param name="triggerId">Required. ID of the `BuildTrigger` to update.</param>
@@ -4524,7 +4617,12 @@ namespace Google.Apis.CloudBuild.v1
                 return new PatchRequest(this.service, body, projectId, triggerId);
             }
 
-            /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
+            /// <summary>
+            /// Updates a `BuildTrigger` by its project ID and trigger ID. Note: This method only updates triggers in
+            /// the "global" region when using the legacy resource path projects/{project_id}/triggers/{trigger_id}. For
+            /// all regions, use the regional resource path:
+            /// `projects/{project_id}/locations/{location}/triggers/{trigger_id}`.
+            /// </summary>
             public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -5805,6 +5903,14 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Optional. Option to specify the Pub/Sub topic to receive build status updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
+
+        /// <summary>
+        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
+        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region. This
+        /// field must be empty for the Build to be eligible to be paired with a pre-provisioned worker VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
+        public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
 
         /// <summary>Requested verifiability options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
@@ -9219,6 +9325,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
+        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
+        public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
 
         /// <summary>
         /// Optional. Option to specify which release or release channel (rapid|regular|stable) to use to run this

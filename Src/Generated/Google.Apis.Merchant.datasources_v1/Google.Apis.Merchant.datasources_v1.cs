@@ -1172,6 +1172,10 @@ namespace Google.Apis.Merchant.datasources_v1.Data
     /// <summary>The primary data source for local and online products.</summary>
     public class PrimaryProductDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Immutable. Specifies the type of data source channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
+        public virtual string Channel { get; set; }
+
         /// <summary>
         /// Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and
         /// `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without

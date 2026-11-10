@@ -3805,7 +3805,7 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for PlayerGameEvents.BatchRecordEvents Next ID: 7</summary>
+    /// <summary>Request message for PlayerGameEvents.BatchRecordEvents Next ID: 8</summary>
     public class BatchRecordEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3819,6 +3819,13 @@ namespace Google.Apis.Games.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<PlayerGameEvent> Events { get; set; }
+
+        /// <summary>
+        /// Optional. Developer-provided fraud or integrity verdicts passed as a request parameter. Maximum of 10
+        /// integrity verdicts per batch request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityVerdicts")]
+        public virtual System.Collections.Generic.IList<DeveloperIntegrityVerdict> IntegrityVerdicts { get; set; }
 
         /// <summary>Required. Application package name (e.g., "com.example.game").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
@@ -3924,6 +3931,28 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Token corresponding to the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a developer-provided fraud or integrity verdict.</summary>
+    public class DeveloperIntegrityVerdict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The standardized verdict category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Optional. Free-form diagnostic description or internal error code. Maximum length: 128 characters. Stored
+        /// for console debugging; never shown to players.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. The source that issued the verdict.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

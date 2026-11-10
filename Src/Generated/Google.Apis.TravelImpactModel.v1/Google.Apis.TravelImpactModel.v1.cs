@@ -1064,6 +1064,10 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
         public virtual Scope3FlightSegment Flight { get; set; }
 
+        /// <summary>Optional. The model version under which the emissions were computed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual ModelVersion ModelVersion { get; set; }
+
         /// <summary>Optional. The source of the emissions data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
@@ -1124,7 +1128,7 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual string Destination { get; set; }
 
         /// <summary>
-        /// Optional. Distance in kilometers, e.g. `2423`, from [1, 2.5e16) km. This is used to match a flight to
+        /// Optional. Distance in kilometers, e.g. `2423`, from [`1`, `1e12`) km. This is used to match a flight to
         /// distance-based emissions when origin and destination are not provided or there are no matching typical
         /// flights.
         /// </summary>

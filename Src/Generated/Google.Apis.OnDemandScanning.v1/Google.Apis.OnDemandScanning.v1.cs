@@ -2033,6 +2033,67 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Exploitability information for a vulnerability. This data can be used across multiple sources, including, but
+    /// not limited to a top-level vulnerability, a package occurrence, or a package file location.
+    /// </summary>
+    public class Exploitability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Individual exploitability signals from various sources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signals")]
+        public virtual System.Collections.Generic.IList<ExploitabilitySignal> Signals { get; set; }
+
+        /// <summary>Rollup summary of the exploitability signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual ExploitabilitySummary Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single exploitability signal from a specific source (e.g., an upstream advisory, a customer VEX document, or
+    /// an internal build analysis).
+    /// </summary>
+    public class ExploitabilitySignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human-readable explanation of this signal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rationale")]
+        public virtual string Rationale { get; set; }
+
+        /// <summary>Identifier of the signal source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Justification for why the vulnerability is not exploitable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vexJustification")]
+        public virtual string VexJustification { get; set; }
+
+        /// <summary>The VEX status asserted by this signal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vexStatus")]
+        public virtual string VexStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rollup summary of exploitability across signals.</summary>
+    public class ExploitabilitySummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human-readable explanation of the summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rationale")]
+        public virtual string Rationale { get; set; }
+
+        /// <summary>
+        /// The rolled-up VEX status. Usually, this should result in an AFFECTED or NOT_AFFECTED vex status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vexStatus")]
+        public virtual string VexStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("digest")]
@@ -2242,9 +2303,31 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// LayerAttribute represents a single attribute (such as a tag) that applies to a layer, along with the plugin that
+    /// generated it.
+    /// </summary>
+    public class GrafeasV1LayerAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the plugin that generated this attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plugin")]
+        public virtual string Plugin { get; set; }
+
+        /// <summary>The value of the attribute, with a meaning defined by the plugin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about the layer a package was found in.</summary>
     public class GrafeasV1LayerDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Attributes that apply to the layer, such as buildpacks metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IList<GrafeasV1LayerAttribute> Attributes { get; set; }
+
         /// <summary>The base images the layer is found within.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseImages")]
         public virtual System.Collections.Generic.IList<GrafeasV1BaseImage> BaseImages { get; set; }
@@ -3384,6 +3467,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }
 
+        /// <summary>Output only. Exploitability signals and summary for this package issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitability")]
+        public virtual Exploitability Exploitability { get; set; }
+
         /// <summary>The location at which this package was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileLocation")]
         public virtual System.Collections.Generic.IList<GrafeasV1FileLocation> FileLocation { get; set; }
@@ -4493,6 +4580,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }
+
+        /// <summary>Output only. Rollup of exploitability across all PackageIssues in this occurrence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitability")]
+        public virtual Exploitability Exploitability { get; set; }
 
         /// <summary>Occurrence-specific extra details about the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extraDetails")]

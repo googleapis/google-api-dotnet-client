@@ -1282,7 +1282,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// resources in the network, or you don't have read permissions to the network configurations of
                     /// listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint
                     /// specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of
-                    /// AMBIGUOUS. For more information, see the Connectivity Test documentation.
+                    /// `AMBIGUOUS`. For more information, see the Connectivity Test documentation.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1301,7 +1301,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// resources in the network, or you don't have read permissions to the network configurations of
                     /// listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint
                     /// specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of
-                    /// AMBIGUOUS. For more information, see the Connectivity Test documentation.
+                    /// `AMBIGUOUS`. For more information, see the Connectivity Test documentation.
                     /// </summary>
                     public class CreateRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1beta1.Data.Operation>
                     {
@@ -1578,12 +1578,12 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Lists the `ConnectivityTests` that match the filter expression. A filter expression filters
-                        /// the resources listed in the response. The expression must be of the form ` ` where
-                        /// operators: `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, `:` are supported
-                        /// (colon `:` represents a HAS operator which is roughly synonymous with equality). can refer
-                        /// to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case.
-                        /// Examples: - Filter by name: name =
+                        /// Optional. Lists the `ConnectivityTests` that match the filter expression. A filter
+                        /// expression filters the resources listed in the response. The expression must be of the form
+                        /// ` ` where operators: `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, `:` are
+                        /// supported (colon `:` represents a HAS operator which is roughly synonymous with equality).
+                        /// can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or
+                        /// snake_case. Examples: - Filter by name: name =
                         /// "projects/proj-1/locations/global/connectivityTests/test-1 - Filter by labels: - Resources
                         /// that have a key called `foo` labels.foo:* - Resources that have a key called `foo` whose
                         /// value is `bar` labels.foo = bar
@@ -1591,15 +1591,17 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Field to use to sort the list.</summary>
+                        /// <summary>Optional. Field to use to sort the list.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>Number of `ConnectivityTests` to return.</summary>
+                        /// <summary>Optional. Number of `ConnectivityTests` to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>Page token from an earlier query, as returned in `next_page_token`.</summary>
+                        /// <summary>
+                        /// Optional. Page token from an earlier query, as returned in `next_page_token`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1666,7 +1668,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they
                     /// contain non-existent resources in the network, or the user does not have read permissions to the
                     /// network configurations of listed projects), then the reachability result returns a value of
-                    /// UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability
+                    /// `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability
                     /// result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more
                     /// details.
                     /// </summary>
@@ -1687,7 +1689,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they
                     /// contain non-existent resources in the network, or the user does not have read permissions to the
                     /// network configurations of listed projects), then the reachability result returns a value of
-                    /// UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability
+                    /// `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability
                     /// result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more
                     /// details.
                     /// </summary>
@@ -4838,7 +4840,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("routerUri")]
         public virtual string RouterUri { get; set; }
 
-        /// <summary>The number of the NAT rule that was matched.</summary>
+        /// <summary>The number of the NAT rule that was matched. Only valid when `type` is CLOUD_NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ruleNumber")]
         public virtual System.Nullable<int> RuleNumber { get; set; }
 

@@ -5011,8 +5011,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string BluetoothSharing { get; set; }
 
         /// <summary>
-        /// Controls Wi-Fi configuring privileges. Based on the option set, user will have either full or limited or no
-        /// control in configuring Wi-Fi networks.
+        /// Optional. Controls Wi-Fi configuring privileges. Based on the option set, user will have either full or
+        /// limited or no control in configuring Wi-Fi networks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configureWifi")]
         public virtual string ConfigureWifi { get; set; }
@@ -5031,21 +5031,22 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual PrivateDnsSettings PrivateDnsSettings { get; set; }
 
         /// <summary>
-        /// Controls tethering settings. Based on the value set, the user is partially or fully disallowed from using
-        /// different forms of tethering.
+        /// Optional. Controls tethering settings. Based on the value set, the user is partially or fully disallowed
+        /// from using different forms of tethering.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tetheringSettings")]
         public virtual string TetheringSettings { get; set; }
 
         /// <summary>
-        /// Controls what files and/or data can be transferred via USB. Supported only on company-owned devices.
+        /// Optional. Controls what files and/or data can be transferred via USB. Supported only on company-owned
+        /// devices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbDataAccess")]
         public virtual string UsbDataAccess { get; set; }
 
         /// <summary>
-        /// Controls configuring and using Wi-Fi direct settings. Supported on company-owned devices running Android 13
-        /// and above.
+        /// Optional. Controls configuring and using Wi-Fi direct settings. Supported on company-owned devices running
+        /// Android 13 and above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiDirectSettings")]
         public virtual string WifiDirectSettings { get; set; }
@@ -5055,8 +5056,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual WifiRoamingPolicy WifiRoamingPolicy { get; set; }
 
         /// <summary>
-        /// Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks
-        /// can be configured on the device. Supported on company-owned devices running Android 13 and above.
+        /// Optional. Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which
+        /// networks can be configured on the device.Supported on Android 13 (API level 33) and higher on fully managed
+        /// devices and work profiles on company-owned devices. A NonComplianceDetail with MANAGEMENT_MODE is reported
+        /// on other management modes. A NonComplianceDetail with API_LEVEL is reported if the Android version is less
+        /// than 13 (API level 33).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiSsidPolicy")]
         public virtual WifiSsidPolicy WifiSsidPolicy { get; set; }
@@ -5081,6 +5085,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumWifiSecurityLevel")]
         public virtual string MinimumWifiSecurityLevel { get; set; }
+
+        /// <summary>
+        /// Optional. Controls whether NFC is disabled on the device and if the user can toggle NFC between enabled and
+        /// disabled. This is for fully managed devices. To control NFC on work profiles on company-owned devices, use
+        /// deviceWidePolicies.deviceRadioState.nfc instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfc")]
+        public virtual string Nfc { get; set; }
 
         /// <summary>
         /// Optional. Controls the state of the ultra wideband setting and whether the user can toggle it on or off.
@@ -5135,6 +5147,32 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyAppsEnabled")]
         public virtual System.Nullable<bool> VerifyAppsEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Policies controlling the device on company-owned devices.</summary>
+    public class DeviceWidePolicies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Covers controls for radio state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceRadioState")]
+        public virtual DeviceWideRadioState DeviceRadioState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Controls for device radio settings.</summary>
+    public class DeviceWideRadioState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Controls whether NFC is disabled on the device and if the user can toggle NFC between enabled and
+        /// disabled. This is for work profiles on company-owned devices. To control NFC on fully managed devices, use
+        /// deviceRadioState.nfc instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfc")]
+        public virtual string Nfc { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5614,6 +5652,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extra capabilities for a role.</summary>
+    public class ExtraCapabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Controls whether the companion app can perform local device wipe
+        /// (https://developers.google.com/android/management/sdk-local-commands) using AMAPI SDK
+        /// (https://developers.google.com/android/management/sdk-integration).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localDeviceWipeCommand")]
+        public virtual string LocalDeviceWipeCommand { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6999,6 +7052,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Determines how to proceed with the update.</summary>
+    public class Outcome : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Determines how to proceed with the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcomeType")]
+        public virtual string OutcomeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A list of package names.</summary>
     public class PackageNameList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7464,19 +7528,23 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string DefaultPermissionPolicy { get; set; }
 
         /// <summary>
-        /// Covers controls for device connectivity such as Wi-Fi, USB data access, keyboard/mouse connections, and
-        /// more.
+        /// Optional. Covers controls for device connectivity such as Wi-Fi, USB data access, keyboard/mouse
+        /// connections, and more.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceConnectivityManagement")]
         public virtual DeviceConnectivityManagement DeviceConnectivityManagement { get; set; }
 
-        /// <summary>The device owner information to be shown on the lock screen.</summary>
+        /// <summary>Optional. The device owner information to be shown on the lock screen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceOwnerLockScreenInfo")]
         public virtual UserFacingMessage DeviceOwnerLockScreenInfo { get; set; }
 
         /// <summary>Optional. Covers controls for radio state such as Wi-Fi, bluetooth, and more.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRadioState")]
         public virtual DeviceRadioState DeviceRadioState { get; set; }
+
+        /// <summary>Optional. Policies controlling the device on company-owned devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceWidePolicies")]
+        public virtual DeviceWidePolicies DeviceWidePolicies { get; set; }
 
         /// <summary>Optional. Controls for the display settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displaySettings")]
@@ -7802,7 +7870,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// update window will automatically apply to Play app updates as well.Note: Google Play system updates
         /// (https://source.android.com/docs/core/ota/modular-system) (also called Mainline updates) are automatically
         /// downloaded and require a device reboot to be installed. Refer to the mainline section in Manage system
-        /// updates (https://developer.android.com/work/dpc/system-updates#mainline) for further details.
+        /// updates (https://developer.android.com/work/dpc/system-updates#mainline) for further details.If this policy
+        /// is set, it takes precedence over unifiedUpdatePolicy for OEM OS updates. For more information, see
+        /// unifiedUpdatePolicy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemUpdate")]
         public virtual SystemUpdate SystemUpdate { get; set; }
@@ -7813,6 +7883,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tetheringConfigDisabled")]
         public virtual System.Nullable<bool> TetheringConfigDisabled { get; set; }
+
+        /// <summary>
+        /// Optional. The Unified Update Control policy, for controlling updates of software components on the device.
+        /// Supported only on company-owned devices.The targets OS_UPDATE_WITH_API_LEVEL_CHANGE and
+        /// OS_UPDATE_WITHOUT_API_LEVEL_CHANGE are supported only on devices where the OEM has integrated with Unified
+        /// Update Controls, and are ignored otherwise. If systemUpdate is set, then that policy takes precedence and
+        /// the targets OS_UPDATE_WITH_API_LEVEL_CHANGE and OS_UPDATE_WITHOUT_API_LEVEL_CHANGE are ignored here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unifiedUpdatePolicy")]
+        public virtual UnifiedUpdatePolicy UnifiedUpdatePolicy { get; set; }
 
         /// <summary>
         /// Whether user uninstallation of applications is disabled. This prevents apps from being uninstalled, even
@@ -7986,6 +8066,73 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Event type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A predicate is something that can be evaluated on a device at any point of time, to return true or false. This
+    /// is the conjunction (logical AND) of all the individual conditions defined here. An empty Predicate always
+    /// evaluates to true.
+    /// </summary>
+    public class Predicate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A lower bound on the current date, in the device time zone. If not set, always evaluates to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateLowerBound")]
+        public virtual Date DateLowerBound { get; set; }
+
+        /// <summary>
+        /// Optional. An upper bound on the current date, in the device time zone. If not set, always evaluates to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateUpperBound")]
+        public virtual Date DateUpperBound { get; set; }
+
+        /// <summary>
+        /// Optional. Evaluates to true if this list is empty or if the current day of the week in the device's local
+        /// time is in this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
+        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; }
+
+        /// <summary>
+        /// Optional. A lower bound on the current time of the day, evaluated as hh:00:00 in the device time zone. Must
+        /// specify only the hour (0-23). The policy will be rejected if minutes, seconds, or nanos are set. If not set,
+        /// always evaluates to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOfDayLowerBound")]
+        public virtual TimeOfDay TimeOfDayLowerBound { get; set; }
+
+        /// <summary>
+        /// Optional. An upper bound on the current time of the day, evaluated as hh:00:00 in the device time zone. Must
+        /// specify only the hour (0-23). The policy will be rejected if minutes, seconds, or nanos are set. If not set,
+        /// always evaluates to true.The window closes at the specified hour (for example, a lower bound of 14 and an
+        /// upper bound of 15 covers 14:00 to 15:00). When both bounds are set in the same rule, timeOfDayUpperBound
+        /// must be strictly greater than timeOfDayLowerBound for the window to match; if timeOfDayUpperBound is less
+        /// than or equal to timeOfDayLowerBound, the predicate evaluates to false. Setting timeOfDayUpperBound to 0
+        /// (00:00) evaluates to false for the entire day. To extend a window to the end of the day (24:00), omit
+        /// timeOfDayUpperBound. To define an overnight window spanning midnight, use two rules: an evening rule with
+        /// only timeOfDayLowerBound set and a morning rule with only timeOfDayUpperBound set (targeting the following
+        /// day if daysOfWeek is set).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOfDayUpperBound")]
+        public virtual TimeOfDay TimeOfDayUpperBound { get; set; }
+
+        /// <summary>
+        /// Optional. A lower bound on the amount of time for which the update (that is, the specific build or version)
+        /// has been available to the device. This must be a multiple of 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAgeLowerBound")]
+        public virtual object UpdateAgeLowerBound { get; set; }
+
+        /// <summary>
+        /// Optional. An upper bound on the amount of time for which the update has been available. If not set or set to
+        /// zero, always evaluates to true. This must be a multiple of 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAgeUpperBound")]
+        public virtual object UpdateAgeUpperBound { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8248,9 +8395,58 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Role an app can have.</summary>
     public class Role : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Extra capabilities configured specifically for this role. Not all role types support or utilize
+        /// extra capabilities.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraCapabilities")]
+        public virtual ExtraCapabilities ExtraCapabilities { get; set; }
+
         /// <summary>Required. The type of the role an app can have.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleType")]
         public virtual string RoleType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A rule as a part of the Unified Update Control policy. See rules for how this is used.</summary>
+    public class Rule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. An EMM-defined identifier for this rule, of length at most 64 characters. This must not be empty.
+        /// Within a UnifiedUpdatePolicy, different rules must have different ids.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. Determines how to proceed with the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
+        public virtual Outcome Outcome { get; set; }
+
+        /// <summary>
+        /// Optional. The predicate of the rule, which can evaluate to true or false. See rules for how this is used. If
+        /// not set, the predicate always evaluates to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predicate")]
+        public virtual Predicate Predicate { get; set; }
+
+        /// <summary>
+        /// Optional. The stages at which the rule is evaluated. If this list is empty, the rule is evaluated at all
+        /// stages. Specifying stages is supported only for OS_UPDATE_WITHOUT_API_LEVEL_CHANGE and
+        /// OS_UPDATE_WITH_API_LEVEL_CHANGE. For SINGLE_APP, GOOGLE_SYSTEM_SERVICES, and GOOGLE_PLAY_SYSTEM_UPDATE, this
+        /// field is ignored and the rule is evaluated at all stages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stages")]
+        public virtual System.Collections.Generic.IList<string> Stages { get; set; }
+
+        /// <summary>
+        /// Required. Targets that this rule applies to. This can have multiple targets here for convenience, and that
+        /// is equivalent to having multiple rules in sequence each having one target, in the same order in which
+        /// targets are listed here. This list must not be empty and must not have duplicates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<Target> Targets { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8450,6 +8646,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of an app on Google System services.</summary>
+    public class SingleApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The package name of the app. This can only be an app which is a part of GOOGLE_SYSTEM_SERVICES.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8838,6 +9047,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A software component that can be updated.</summary>
+    public class Target : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of an app on Google System services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleApp")]
+        public virtual SingleApp SingleApp { get; set; }
+
+        /// <summary>Required. The type of software component that can be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
+        public virtual string TargetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Telephony information associated with a given SIM card on the device. This is supported for all SIM cards on
     /// fully managed devices on Android 6 and above. In addition, this is supported for admin-added eSIMs on all
@@ -8889,6 +9113,61 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>A short header which appears above the HTML content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual UserFacingMessage Header { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and google.protobuf.Timestamp.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or
+        /// equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>
+        /// Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to
+        /// 999,999,999.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An
+        /// API may allow the value 60 if it allows leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Unified Update Control policy, for controlling updates of software components on the device (see Target).
+    /// Supported only on company-owned devices.
+    /// </summary>
+    public class UnifiedUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When the policy is evaluated for a given target, all rules which refer to that target are
+        /// evaluated in sequence. The first rule for which the predicate evaluates to true is considered, and its
+        /// outcome is used. If no rule matches, the default update behavior applies. In other words, this behaves like
+        /// a chained if-else statement.However, if an update has been available for more than a certain amount of time,
+        /// any outcome of BLOCK is automatically changed to the default update behavior. At most 100 rules are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9316,19 +9595,18 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks can
-    /// be configured on the device. Supported on company-owned devices running Android 13 and above.
+    /// be configured on the device. Supported on Android 13 (API level 33) and higher on fully managed devices and work
+    /// profiles on company-owned devices.
     /// </summary>
     public class WifiSsidPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of the Wi-Fi SSID policy to be applied.</summary>
+        /// <summary>Optional. Type of the Wi-Fi SSID policy to be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiSsidPolicyType")]
         public virtual string WifiSsidPolicyType { get; set; }
 
         /// <summary>
         /// Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field must be non-empty when
-        /// WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a
-        /// NonComplianceDetail detail with API_LEVEL is reported if the Android version is less than 13 and a
-        /// NonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned devices.
+        /// wifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiSsids")]
         public virtual System.Collections.Generic.IList<WifiSsid> WifiSsids { get; set; }

@@ -516,15 +516,15 @@ namespace Google.Apis.OSConfig.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Inventory view indicating what information should be included in the inventory resource. If
-                        /// unspecified, the default view is BASIC.
+                        /// Optional. Inventory view indicating what information should be included in the inventory
+                        /// resource. If unspecified, the default view is BASIC.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// Inventory view indicating what information should be included in the inventory resource. If
-                        /// unspecified, the default view is BASIC.
+                        /// Optional. Inventory view indicating what information should be included in the inventory
+                        /// resource. If unspecified, the default view is BASIC.
                         /// </summary>
                         public enum ViewEnum
                         {
@@ -603,33 +603,33 @@ namespace Google.Apis.OSConfig.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// If provided, this field specifies the criteria that must be met by a `Inventory` API
-                        /// resource to be included in the response.
+                        /// Optional. If provided, this field specifies the criteria that must be met by a `Inventory`
+                        /// API resource to be included in the response.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>The maximum number of results to return.</summary>
+                        /// <summary>Optional. The maximum number of results to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// A pagination token returned from a previous call to `ListInventories` that indicates where
-                        /// this listing should continue from.
+                        /// Optional. A pagination token returned from a previous call to `ListInventories` that
+                        /// indicates where this listing should continue from.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
                         /// <summary>
-                        /// Inventory view indicating what information should be included in the inventory resource. If
-                        /// unspecified, the default view is BASIC.
+                        /// Optional. Inventory view indicating what information should be included in the inventory
+                        /// resource. If unspecified, the default view is BASIC.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// Inventory view indicating what information should be included in the inventory resource. If
-                        /// unspecified, the default view is BASIC.
+                        /// Optional. Inventory view indicating what information should be included in the inventory
+                        /// resource. If unspecified, the default view is BASIC.
                         /// </summary>
                         public enum ViewEnum
                         {

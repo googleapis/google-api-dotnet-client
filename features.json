@@ -2,10 +2,10 @@
   "language": "csharp",
   "description": "C# libraries for Google APIs.",
   // Version of the generated packages
-  "releaseVersion": "1.77.0",
+  "releaseVersion": "1.78.0",
   
   // Version of the support libraries upon which to depend.
-  "currentSupportVersion": "1.77.0",
+  "currentSupportVersion": "1.78.0",
 
   // Defines the map of Google.Cloud packages that supercede Google.Apis packages
   "cloudPackageMap": {
@@ -47,7 +47,6 @@
     "Google.Apis.ApigeeRegistry.v1": "Google.Cloud.ApigeeRegistry.V1",
     "Google.Apis.Appengine.v1": "Google.Cloud.AppEngine.V1",
     "Google.Apis.AppHub.v1": "Google.Cloud.AppHub.V1",
-    "Google.Apis.Area120Tables.v1alpha1": "Google.Area120.Tables.V1Alpha1",
     "Google.Apis.ArtifactRegistry.v1": "Google.Cloud.ArtifactRegistry.V1",
     "Google.Apis.ArtifactRegistry.v1beta2": "Google.Cloud.ArtifactRegistry.V1Beta2",
     "Google.Apis.Assuredworkloads.v1": "Google.Cloud.AssuredWorkloads.V1",
@@ -114,7 +113,6 @@
     "Google.Apis.OSConfig.v1alpha": "Google.Cloud.OsConfig.V1Alpha",
     "Google.Apis.PolicySimulator.v1": "Google.Cloud.PolicySimulator.V1",
     "Google.Apis.PolicyTroubleshooter.v1": "Google.Cloud.PolicyTroubleshooter.V1",
-    "Google.Apis.RapidMigrationAssessment.v1": "Google.Cloud.RapidMigrationAssessment.V1",
     "Google.Apis.RecaptchaEnterprise.v1": "Google.Cloud.RecaptchaEnterprise.V1",
     "Google.Apis.Recommender.v1": "Google.Cloud.Recommender.V1",
     "Google.Apis.ResourceSettings.v1": "Google.Cloud.ResourceSettings.V1",

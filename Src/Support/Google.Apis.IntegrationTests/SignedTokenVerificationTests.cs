@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth;
 using Google.Apis.Auth.OAuth2;
 using System;
 using System.Security.Cryptography;
@@ -32,7 +33,7 @@ namespace IntegrationTests
         {
             var certCache = new CertificateCache();
 
-            var certificates = await certCache.GetCertificatesAsync(certificateLocation, FromKeyToRsa, false, default);
+            var certificates = await certCache.GetCertificatesAsync(certificateLocation, FromKeyToRsa, new SignedTokenVerificationOptions(), default);
 
             Assert.NotEmpty(certificates);
         }
@@ -43,7 +44,7 @@ namespace IntegrationTests
             var certCache = new CertificateCache();
 
             var exception = await Assert.ThrowsAsync<ArgumentException>(() => certCache.GetCertificatesAsync(
-                "https://www.googleapis.com/service_accounts/v1/metadata/x509/chat@system.gserviceaccount.com", json => RSA.Create(), false, default));
+                "https://www.googleapis.com/service_accounts/v1/metadata/x509/chat@system.gserviceaccount.com", json => RSA.Create(), new SignedTokenVerificationOptions(), default));
             Assert.Contains("Only JWK formatted keys are currently supported", exception.Message);
         }
     }

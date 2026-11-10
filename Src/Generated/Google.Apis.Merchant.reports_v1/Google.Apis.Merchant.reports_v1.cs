@@ -1375,6 +1375,10 @@ namespace Google.Apis.Merchant.reports_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("marketingMethod")]
         public virtual string MarketingMethod { get; set; }
 
+        /// <summary>Network to which metrics apply. Segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
         /// <summary>Merchant-provided id of the product. Segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; }

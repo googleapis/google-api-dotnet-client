@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2020 Google Inc
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +19,7 @@ using Google.Apis.Tests.Mocks;
 using System;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using static Google.Apis.Auth.SignedTokenVerification;
 using Xunit;
 
 namespace Google.Apis.Auth.Tests
@@ -34,10 +35,11 @@ namespace Google.Apis.Auth.Tests
             // The rest of the code can't be mocked and that's what we are testing here.
             var certCache = new FakeCertificateCache(clock);
 
-            var firstCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), false, default);
+            var options = new SignedTokenVerificationOptions();
+            var firstCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), options, default);
             // Move the clock a little, but not enough to invalidate the cache, which lasts for 1 hour.
             clock.UtcNow = clock.UtcNow.AddMinutes(30);
-            var secondCallCached = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), false, default);
+            var secondCallCached = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), options, default);
 
             Assert.NotNull(firstCall);
             Assert.Same(firstCall, secondCallCached);
@@ -51,10 +53,11 @@ namespace Google.Apis.Auth.Tests
             // The rest of the code can't be mocked and that's what we are testing here.
             var certCache = new FakeCertificateCache(clock);
 
-            var firstCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), false, default);
+            var options = new SignedTokenVerificationOptions();
+            var firstCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), options, default);
             // Move the clock so the cache expires
             clock.UtcNow = clock.UtcNow.AddMinutes(61);
-            var secondCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), false, default);
+            var secondCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), options, default);
 
             Assert.NotNull(firstCall);
             Assert.NotNull(secondCall);
@@ -69,15 +72,43 @@ namespace Google.Apis.Auth.Tests
             // The rest of the code can't be mocked and that's what we are testing here.
             var certCache = new FakeCertificateCache(clock);
 
-            var firstCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), false, default);
+            var options = new SignedTokenVerificationOptions();
+            var firstCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), options, default);
             // Move the clock some so that the cache doesn't expire.
             clock.UtcNow = clock.UtcNow.AddMinutes(30);
-            var secondCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), true, default);
+            options.ForceCertificateRefresh = true;
+            var secondCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, json => RSA.Create(), options, default);
 
             Assert.NotNull(firstCall);
             Assert.NotNull(secondCall);
             // Still they are different because we forced refreshed the cache.
             Assert.NotSame(firstCall, secondCall);
+        }
+
+        [Fact]
+        public async Task CertificateCache_UsesHttpClientFactory()
+        {
+            var factory = new CountingHttpClientFactory(FakeCertificateCache.GoogleCertsJson);
+            var certCache = new CertificateCache();
+            var options = new SignedTokenVerificationOptions
+            {
+                HttpClientFactory = factory
+            };
+
+            var firstCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, FromKeyToRsa, options, default);
+            Assert.NotEmpty(firstCall);
+            Assert.Equal(1, factory.Calls);
+
+            // Second call: should use cache, not call factory again
+            var secondCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, FromKeyToRsa, options, default);
+            Assert.Same(firstCall, secondCall);
+            Assert.Equal(1, factory.Calls);
+
+            // Force refresh: should call factory again
+            options.ForceCertificateRefresh = true;
+            var thirdCall = await certCache.GetCertificatesAsync(GoogleAuthConsts.JsonWebKeySetUrl, FromKeyToRsa, options, default);
+            Assert.NotEmpty(thirdCall);
+            Assert.Equal(2, factory.Calls);
         }
     }
 }

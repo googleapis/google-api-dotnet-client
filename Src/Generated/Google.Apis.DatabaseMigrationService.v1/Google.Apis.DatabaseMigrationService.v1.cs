@@ -7830,6 +7830,24 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud Storage source details for seeding.</summary>
+    public class GcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Cloud Storage bucket containing the schema report files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Required. The prefix for the report paths in the bucket. Different seed versions (report versions) might
+        /// reside in the same bucket, the prefix allows to identify the correct seed version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'GenerateSshScript' request.</summary>
     public class GenerateSshScriptRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9986,6 +10004,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'PromoteMigrationJob' request.</summary>
     public class PromoteMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If true, the promote operation will perform a failback promote from destination back to source
+        /// (only supported when the migration job is in FAILBACK phase).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failback")]
+        public virtual System.Nullable<bool> Failback { get; set; }
+
         /// <summary>Optional. The object filter to apply to the migration job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFilter")]
         public virtual MigrationJobObjectsConfig ObjectsFilter { get; set; }
@@ -10345,6 +10370,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConnectionProfile")]
         public virtual string DestinationConnectionProfile { get; set; }
 
+        /// <summary>Optional. Cloud Storage source details for seeding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsSource GcsSource { get; set; }
+
         /// <summary>Optional. Fully qualified (Uri) name of the source connection profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConnectionProfile")]
         public virtual string SourceConnectionProfile { get; set; }
@@ -10666,7 +10695,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>List of configurations for the source objects to be migrated.</summary>
     public class SourceObjectsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The list of the objects to be migrated.</summary>
+        /// <summary>
+        /// Optional. The list of the objects to be excluded from the migration. Exclusion takes precedence over
+        /// inclusion in `object_configs`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedObjectConfigs")]
+        public virtual System.Collections.Generic.IList<SourceObjectConfig> ExcludedObjectConfigs { get; set; }
+
+        /// <summary>Optional. The list of the objects to be included in the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectConfigs")]
         public virtual System.Collections.Generic.IList<SourceObjectConfig> ObjectConfigs { get; set; }
 
@@ -11106,8 +11142,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
         /// <summary>
         /// Optional. SSL flags used for establishing SSL connection to the source database. Only source specific flags
-        /// are supported. An object containing a list of "key": "value" pairs. Example: {
-        /// "server_certificate_hostname": "server.com"}.
+        /// are supported. An object containing a list of "key": "value" pairs. Examples: { "server_certificate_dn":
+        /// "CN=server.com,OU=RDS,O=Amazon.com,C=US"} or { "server_certificate_hostname": "server.com"}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslFlags")]
         public virtual System.Collections.Generic.IDictionary<string, string> SslFlags { get; set; }
