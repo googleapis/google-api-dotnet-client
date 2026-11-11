@@ -3613,6 +3613,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("functionCallingConfig")]
         public virtual GoogleCloudAiplatformV1beta1FunctionCallingConfig FunctionCallingConfig { get; set; }
 
+        /// <summary>
+        /// Optional. If true, the API response will include the server-side tool calls and responses within the
+        /// `Content` message. This allows clients to observe the server's tool interactions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeServerSideToolInvocations")]
+        public virtual System.Nullable<bool> IncludeServerSideToolInvocations { get; set; }
+
         /// <summary>Optional. Retrieval config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalConfig")]
         public virtual GoogleCloudAiplatformV1beta1RetrievalConfig RetrievalConfig { get; set; }
