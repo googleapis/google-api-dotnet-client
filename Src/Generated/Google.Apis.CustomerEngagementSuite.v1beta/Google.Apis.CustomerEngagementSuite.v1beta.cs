@@ -10252,7 +10252,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>
     /// A streamed fragment of a document artifact (e.g. a markdown TDD) that the assistant is generating. Content
     /// deltas stream while the document is being written so clients can render a live preview; the FINALIZED chunk
-    /// carries the GCS URI once the file has been persisted.
+    /// carries the Cloud Storage URI once the file has been persisted.
     /// </summary>
     public class ArtifactChunk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10270,7 +10270,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The GCS object the artifact was persisted to. Set on FINALIZED chunks.</summary>
+        /// <summary>The Cloud Storage object the artifact was persisted to. Set on FINALIZED chunks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
@@ -10281,6 +10281,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Lifecycle position of this chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The app this artifact was produced for, when it was produced for one. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10439,11 +10446,44 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual System.Collections.Generic.IList<OptionQuestionsChunkQuestion> Questions { get; set; }
 
         /// <summary>
+        /// Everything the confirmed action will change, so the console can render "Update 2 apps" and one badge per
+        /// app. Empty for legacy single-target cards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<AssistantConfirmationRequestTarget> Targets { get; set; }
+
+        /// <summary>
         /// Name of the tool call the agent paused on (e.g. "update_app"), for the card header. Unset for pure
         /// questions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>One resource the confirmed action will change.</summary>
+    public class AssistantConfirmationRequestTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action, e.g. `CREATE`, `UPDATE`, `DELETE`, `COPY`, `LINK`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Display name of the resource or app, for the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource that will change, as a full resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>
+        /// The app the resource belongs to, or empty for a location-scoped action such as creating an app. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10627,6 +10667,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Output only. The status of the assistant session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Apps this session has targeted or changed (project-scoped sessions only), for history tags.
+        /// Format: `projects/{project}/locations/{location}/apps/{app}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("touchedApps")]
+        public virtual System.Collections.Generic.IList<string> TouchedApps { get; set; }
 
         private string _updateTimeRaw;
 
@@ -14005,6 +14052,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hallucinationResult")]
         public virtual System.Collections.Generic.IList<EvaluationResultHallucinationResult> HallucinationResult { get; set; }
 
+        /// <summary>Output only. The results of each milestone in the scenario.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milestoneResults")]
+        public virtual System.Collections.Generic.IList<EvaluationResultScenarioResultMilestoneResult> MilestoneResults { get; set; }
+
         /// <summary>Output only. The outcome of the rubric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rubricOutcomes")]
         public virtual System.Collections.Generic.IList<EvaluationResultScenarioRubricOutcome> RubricOutcomes { get; set; }
@@ -14039,6 +14090,25 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>Output only. The result of the user goal satisfaction check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userGoalSatisfactionResult")]
         public virtual EvaluationResultUserGoalSatisfactionResult UserGoalSatisfactionResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of a milestone execution.</summary>
+    public class EvaluationResultScenarioResultMilestoneResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The justification for the current status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual string Justification { get; set; }
+
+        /// <summary>Output only. The milestone being tracked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milestone")]
+        public virtual EvaluationScenarioMilestone Milestone { get; set; }
+
+        /// <summary>Output only. The current status of the milestone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14648,6 +14718,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxTurns")]
         public virtual System.Nullable<int> MaxTurns { get; set; }
 
+        /// <summary>Optional. The milestones for this scenario.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milestones")]
+        public virtual System.Collections.Generic.IList<EvaluationScenarioMilestone> Milestones { get; set; }
+
         /// <summary>Required. The rubrics to score the scenario against.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rubrics")]
         public virtual System.Collections.Generic.IList<string> Rubrics { get; set; }
@@ -14722,6 +14796,44 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mockToolResponse")]
         public virtual ToolResponse MockToolResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a single milestone in the scenario. Used to guide the behaviour of the user simulator to follow a
+    /// protocol. The user simulator executes the milestone sequentially and only proceeds to the next one if the
+    /// success_criteria of that milestone is achieved.
+    /// </summary>
+    public class EvaluationScenarioMilestone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. An event input to send instead of dynamic generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual Event Event__ { get; set; }
+
+        /// <summary>Required. The goal of the milestone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goal")]
+        public virtual string Goal { get; set; }
+
+        /// <summary>Optional. The maximum number of turns for this milestone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTurnCount")]
+        public virtual System.Nullable<int> MaxTurnCount { get; set; }
+
+        /// <summary>Optional. The guidelines the agent should follow during the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; }
+
+        /// <summary>
+        /// Optional. A static utterance that the simulator will send exactly, instead of dynamically generating user
+        /// input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticUtterance")]
+        public virtual string StaticUtterance { get; set; }
+
+        /// <summary>Optional. The success criteria of the milestone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCriteria")]
+        public virtual string SuccessCriteria { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15038,7 +15150,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Optional. Traffic allocations for the version release.</summary>
+        /// <summary>
+        /// Optional. Traffic allocations for the version release. When non-empty, the `traffic_percentage` values
+        /// across all allocations must sum to `100`, representing the split of remaining non-study traffic.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficAllocations")]
         public virtual System.Collections.Generic.IList<ExperimentConfigVersionReleaseTrafficAllocation> TrafficAllocations { get; set; }
 
@@ -15060,7 +15175,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Optional. Traffic percentage of the traffic allocation. Must be between 0 and 100.</summary>
+        /// <summary>
+        /// Optional. Traffic percentage of the traffic allocation, relative to the remaining non-study traffic. Must be
+        /// between `0` and `100`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficPercentage")]
         public virtual System.Nullable<int> TrafficPercentage { get; set; }
 
@@ -15085,7 +15203,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// <summary>
         /// Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to which to export the app.
         /// The format of this URI must be `gs:///`. The exported app archive will be written directly to the specified
-        /// GCS object.
+        /// Cloud Storage object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
@@ -20339,7 +20457,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
     /// <summary>Response message for SessionService.StreamChatAiAssistant.</summary>
     public class StreamChatAiAssistantResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Generated-document artifact event (live preview deltas + final GCS pointer).</summary>
+        /// <summary>Generated-document artifact event (live preview deltas + final Cloud Storage pointer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactChunk")]
         public virtual ArtifactChunk ArtifactChunk { get; set; }
 
@@ -20808,6 +20926,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ParentToolCallId { get; set; }
 
         /// <summary>
+        /// Output only. The app this call targets, derived by the assistant from the call's resource arguments: an app
+        /// resource name, `PROJECT` for location-scoped tools, or empty for session-local tools. Set only in
+        /// project-scoped assistant sessions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
+
+        /// <summary>
         /// Optional. The name of the tool to execute. Format:
         /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
         /// </summary>
@@ -20883,6 +21009,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>Output only. The app the executed tool targeted; mirrors ToolCall.target_app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
 
         /// <summary>
         /// Optional. The name of the tool to execute. Format:
@@ -21204,6 +21334,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string Reason { get; set; }
 
         /// <summary>
+        /// Apps this turn targeted or changed, so the console can refresh exactly those apps' stores. Project-scoped
+        /// sessions only. Format: `projects/{project}/locations/{location}/apps/{app}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("touchedApps")]
+        public virtual System.Collections.Generic.IList<string> TouchedApps { get; set; }
+
+        /// <summary>
         /// Identifier of the turn that ended; matches TurnResumeSnapshot.turn_id and ActiveTurnInfo.turn_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("turnId")]
@@ -21336,7 +21473,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Payload with a type.</summary>
+    /// <summary>
+    /// Payload with a type. Used by the assistant history (`AssistantChunk`) and by the streaming `typed_payload`
+    /// event; lives here because both assistant_service.proto and session_service.proto need it.
+    /// </summary>
     public class TypedPayload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The display name of the payload.</summary>
