@@ -2003,6 +2003,13 @@ namespace Google.Apis.Batch.v1.Data
     public class AllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The instance flexibility policy for the job. This configuration overrides the `instances`
+        /// configuration. Only allowed in job level. Not allowed in task group level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceFlexibilityPolicy")]
+        public virtual InstanceFlexibilityPolicy InstanceFlexibilityPolicy { get; set; }
+
+        /// <summary>
         /// Describe instances that can be created by this AllocationPolicy. Only instances[0] is supported now.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
@@ -2387,6 +2394,27 @@ namespace Google.Apis.Batch.v1.Data
     }
 
     /// <summary>
+    /// Allows creating VMs from multiple types of machines. Instance flexibility configuration overrides instances
+    /// configuration.
+    /// </summary>
+    public class InstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Named instance selections configuring properties that the group will use when creating new VMs.
+        /// The map key is a user-specified name for the instance selection. The key must be 1-63 characters long, and
+        /// comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Specifically, the key must consist of lowercase
+        /// letters, numbers, and hyphens. The first character must be a lowercase letter, and the last character must
+        /// be a lowercase letter or number. The maximum number of instance selections is 50. Exceeding this limit
+        /// results in a validation error with code `INVALID_ARGUMENT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceSelections")]
+        public virtual System.Collections.Generic.IDictionary<string, InstanceSelection> InstanceSelections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// InstancePolicy describes an instance type and resources attached to each VM created by this InstancePolicy.
     /// </summary>
     public class InstancePolicy : Google.Apis.Requests.IDirectResponseSchema
@@ -2474,9 +2502,24 @@ namespace Google.Apis.Batch.v1.Data
         public virtual System.Nullable<bool> InstallOpsAgent { get; set; }
 
         /// <summary>
-        /// Name of an instance template used to create VMs. Named the field as 'instance_template' instead of
-        /// 'template' to avoid C++ keyword conflict. Batch only supports global instance templates from the same
-        /// project as the job. You can specify the global instance template as a full or partial URL.
+        /// An instance template used to create VMs. Batch supports global and regional instance templates from the same
+        /// project as the job. In case of a regional instance template, the job and the instance template must be in
+        /// the same region. As shown in the following examples, you can specify the instance template as either only
+        /// its ID, only its name (not unique), or a partial or full URL. If you specify only its name, then Batch
+        /// checks for a global instance template first. The following formats are valid for global instance templates:
+        /// * `{instance_template_id_number}` * `{instance_template_name}` (not unique) *
+        /// `projects/{project}/global/instanceTemplates/{instance_template_id_number}` *
+        /// `projects/{project}/global/instanceTemplates/{instance_template_name}` *
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/instanceTemplates/{instance_template_id_number}`
+        /// *
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/instanceTemplates/{instance_template_name}`
+        /// The following formats are valid for regional instance templates: * `{instance_template_id_number}` *
+        /// `{instance_template_name}` (not unique) *
+        /// `projects/{project}/regions/{region}/instanceTemplates/{instance_template_id_number}` *
+        /// `projects/{project}/regions/{region}/instanceTemplates/{instance_template_name}` *
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/instanceTemplates/{instance_template_id_number}`
+        /// *
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/instanceTemplates/{instance_template_name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplate")]
         public virtual string InstanceTemplate { get; set; }
@@ -2484,6 +2527,30 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>InstancePolicy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual InstancePolicy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines an instance selection for a given instance flexibility policy.</summary>
+    public class InstanceSelection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Compute Engine machine type IDs. Only the machine type ID is supported, such as
+        /// `n1-standard-16`. Full or partial URLs are not accepted. The total maximum number of machine types across
+        /// all instance selections is 200. Exceeding this limit results in a validation error with code
+        /// `INVALID_ARGUMENT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineTypes")]
+        public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates the preference of this instance selection. Lower number means higher preference. First
+        /// try is to create a VM based on the machine-type with lowest rank and fallback to next rank based on
+        /// availability. Machine types and instance selections with the same rank have the same preference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
+        public virtual System.Nullable<int> Rank { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
