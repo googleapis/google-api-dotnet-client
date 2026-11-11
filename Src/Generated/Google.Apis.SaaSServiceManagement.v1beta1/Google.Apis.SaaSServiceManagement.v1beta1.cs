@@ -7915,6 +7915,10 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Type of location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8627,6 +8631,13 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Optional. The location type of the rollout. Based on the location type, the rollout will target the
+        /// corresponding locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
+        public virtual string LocationType { get; set; }
+
+        /// <summary>
         /// Identifier. The resource name (full URI of the resource) following the standard naming scheme:
         /// "projects/{project}/locations/{location}/rolloutKinds/{rollout_kind_id}"
         /// </summary>
@@ -9301,6 +9312,13 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dependents")]
         public virtual System.Collections.Generic.IList<UnitDependency> Dependents { get; set; }
+
+        /// <summary>
+        /// Optional. Deployment location of the unit. Deployment location is used to determine which cloud_zone,
+        /// prod_zone or prod_region to use for the unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentLocation")]
+        public virtual Location DeploymentLocation { get; set; }
 
         /// <summary>
         /// Optional. Output only. Metadata about the underlying actuation engine instance managing this Unit.
