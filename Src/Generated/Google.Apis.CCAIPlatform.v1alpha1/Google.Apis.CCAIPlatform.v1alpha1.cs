@@ -311,6 +311,103 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                 public ContactCentersResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    PhoneNumbers = new PhoneNumbersResource(service);
+                }
+
+                /// <summary>Gets the PhoneNumbers resource.</summary>
+                public virtual PhoneNumbersResource PhoneNumbers { get; }
+
+                /// <summary>The "phoneNumbers" collection of methods.</summary>
+                public class PhoneNumbersResource
+                {
+                    private const string Resource = "phoneNumbers";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public PhoneNumbersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists phone numbers allocated to a single ContactCenter.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent ContactCenter resource name. Format:
+                    /// projects/{project}/locations/{location}/contactCenters/{contact_center}
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists phone numbers allocated to a single ContactCenter.</summary>
+                    public class ListRequest : CCAIPlatformBaseServiceRequest<Google.Apis.CCAIPlatform.v1alpha1.Data.ListPhoneNumbersResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent ContactCenter resource name. Format:
+                        /// projects/{project}/locations/{location}/contactCenters/{contact_center}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. The maximum value is 1000; values above 1000 will be coerced
+                        /// to 1000. If unspecified, the default page size is 500.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. Page token from a previous ListPhoneNumbers call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+parent}/phoneNumbers";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new ContactCenter in a given project and location.</summary>
@@ -2041,6 +2138,21 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListPhoneNumbers.</summary>
+    public class ListPhoneNumbersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token identifying the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of phone numbers allocated to the ContactCenter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
+        public virtual System.Collections.Generic.IList<PhoneNumber> PhoneNumbers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2229,6 +2341,125 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing a phone number allocated to a ContactCenter tenant.</summary>
+    public class PhoneNumber : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Current assignment and lifecycle state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignmentState")]
+        public virtual string AssignmentState { get; set; }
+
+        /// <summary>Output only. Underlying carrier hosting the number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
+        public virtual string Carrier { get; set; }
+
+        /// <summary>Output only. Regulatory compliance state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceState")]
+        public virtual string ComplianceState { get; set; }
+
+        /// <summary>Output only. ISO 3166-1 alpha-2 country code (e.g., "US", "GB", "IT").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when the phone number was added to the tenant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Tariff and routing classification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberType")]
+        public virtual string NumberType { get; set; }
+
+        /// <summary>Output only. E.164 formatted phone number (e.g., "+16502530000").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumberValue { get; set; }
+
+        /// <summary>
+        /// Output only. Reference ID for the country-specific regulatory bundle, or "LEGACY_VERIFIED".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regulatoryBundleId")]
+        public virtual string RegulatoryBundleId { get; set; }
+
+        /// <summary>Output only. SMS capability state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smsState")]
+        public virtual string SmsState { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when the phone number record was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Whether voice capabilities are enabled for this phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voiceEnabled")]
+        public virtual System.Nullable<bool> VoiceEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
