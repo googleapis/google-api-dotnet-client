@@ -78,11 +78,38 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Manage drafts and send emails</summary>
             public static string GmailCompose = "https://www.googleapis.com/auth/gmail.compose";
 
+            /// <summary>Read, compose, send, update, and permanently delete your draft emails</summary>
+            public static string GmailDrafts = "https://www.googleapis.com/auth/gmail.drafts";
+
+            /// <summary>Compose new draft emails</summary>
+            public static string GmailDraftsCreate = "https://www.googleapis.com/auth/gmail.drafts.create";
+
+            /// <summary>Read your draft emails</summary>
+            public static string GmailDraftsReadonly = "https://www.googleapis.com/auth/gmail.drafts.readonly";
+
             /// <summary>Add emails into your Gmail mailbox</summary>
             public static string GmailInsert = "https://www.googleapis.com/auth/gmail.insert";
 
             /// <summary>See and edit your email labels</summary>
             public static string GmailLabels = "https://www.googleapis.com/auth/gmail.labels";
+
+            /// <summary>Create new email labels</summary>
+            public static string GmailLabelsCreate = "https://www.googleapis.com/auth/gmail.labels.create";
+
+            /// <summary>Read your email labels</summary>
+            public static string GmailLabelsReadonly = "https://www.googleapis.com/auth/gmail.labels.readonly";
+
+            /// <summary>Read, update, and permanently delete all your emails</summary>
+            public static string GmailMessages = "https://www.googleapis.com/auth/gmail.messages";
+
+            /// <summary>Permanently delete all your emails</summary>
+            public static string GmailMessagesDelete = "https://www.googleapis.com/auth/gmail.messages.delete";
+
+            /// <summary>Update but not delete your emails</summary>
+            public static string GmailMessagesModify = "https://www.googleapis.com/auth/gmail.messages.modify";
+
+            /// <summary>Read your emails</summary>
+            public static string GmailMessagesReadonly = "https://www.googleapis.com/auth/gmail.messages.readonly";
 
             /// <summary>View your email message metadata such as labels and headers, but not the email body</summary>
             public static string GmailMetadata = "https://www.googleapis.com/auth/gmail.metadata";
@@ -96,8 +123,17 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Send email on your behalf</summary>
             public static string GmailSend = "https://www.googleapis.com/auth/gmail.send";
 
+            /// <summary>Send email to yourself</summary>
+            public static string GmailSendSelf = "https://www.googleapis.com/auth/gmail.send.self";
+
             /// <summary>See, edit, create, or change your email settings and filters in Gmail</summary>
             public static string GmailSettingsBasic = "https://www.googleapis.com/auth/gmail.settings.basic";
+
+            /// <summary>Read, create, and delete your filters</summary>
+            public static string GmailSettingsFilters = "https://www.googleapis.com/auth/gmail.settings.filters";
+
+            /// <summary>Read your filters</summary>
+            public static string GmailSettingsFiltersReadonly = "https://www.googleapis.com/auth/gmail.settings.filters.readonly";
 
             /// <summary>Manage your sensitive mail settings, including who can manage your mail</summary>
             public static string GmailSettingsSharing = "https://www.googleapis.com/auth/gmail.settings.sharing";
@@ -124,11 +160,38 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Manage drafts and send emails</summary>
             public const string GmailCompose = "https://www.googleapis.com/auth/gmail.compose";
 
+            /// <summary>Read, compose, send, update, and permanently delete your draft emails</summary>
+            public const string GmailDrafts = "https://www.googleapis.com/auth/gmail.drafts";
+
+            /// <summary>Compose new draft emails</summary>
+            public const string GmailDraftsCreate = "https://www.googleapis.com/auth/gmail.drafts.create";
+
+            /// <summary>Read your draft emails</summary>
+            public const string GmailDraftsReadonly = "https://www.googleapis.com/auth/gmail.drafts.readonly";
+
             /// <summary>Add emails into your Gmail mailbox</summary>
             public const string GmailInsert = "https://www.googleapis.com/auth/gmail.insert";
 
             /// <summary>See and edit your email labels</summary>
             public const string GmailLabels = "https://www.googleapis.com/auth/gmail.labels";
+
+            /// <summary>Create new email labels</summary>
+            public const string GmailLabelsCreate = "https://www.googleapis.com/auth/gmail.labels.create";
+
+            /// <summary>Read your email labels</summary>
+            public const string GmailLabelsReadonly = "https://www.googleapis.com/auth/gmail.labels.readonly";
+
+            /// <summary>Read, update, and permanently delete all your emails</summary>
+            public const string GmailMessages = "https://www.googleapis.com/auth/gmail.messages";
+
+            /// <summary>Permanently delete all your emails</summary>
+            public const string GmailMessagesDelete = "https://www.googleapis.com/auth/gmail.messages.delete";
+
+            /// <summary>Update but not delete your emails</summary>
+            public const string GmailMessagesModify = "https://www.googleapis.com/auth/gmail.messages.modify";
+
+            /// <summary>Read your emails</summary>
+            public const string GmailMessagesReadonly = "https://www.googleapis.com/auth/gmail.messages.readonly";
 
             /// <summary>View your email message metadata such as labels and headers, but not the email body</summary>
             public const string GmailMetadata = "https://www.googleapis.com/auth/gmail.metadata";
@@ -142,8 +205,17 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Send email on your behalf</summary>
             public const string GmailSend = "https://www.googleapis.com/auth/gmail.send";
 
+            /// <summary>Send email to yourself</summary>
+            public const string GmailSendSelf = "https://www.googleapis.com/auth/gmail.send.self";
+
             /// <summary>See, edit, create, or change your email settings and filters in Gmail</summary>
             public const string GmailSettingsBasic = "https://www.googleapis.com/auth/gmail.settings.basic";
+
+            /// <summary>Read, create, and delete your filters</summary>
+            public const string GmailSettingsFilters = "https://www.googleapis.com/auth/gmail.settings.filters";
+
+            /// <summary>Read your filters</summary>
+            public const string GmailSettingsFiltersReadonly = "https://www.googleapis.com/auth/gmail.settings.filters.readonly";
 
             /// <summary>Manage your sensitive mail settings, including who can manage your mail</summary>
             public const string GmailSettingsSharing = "https://www.googleapis.com/auth/gmail.settings.sharing";

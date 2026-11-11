@@ -319,6 +319,7 @@ namespace Google.Apis.APIhub.v1
                 Deployments = new DeploymentsResource(service);
                 DiscoveredApiObservations = new DiscoveredApiObservationsResource(service);
                 ExternalApis = new ExternalApisResource(service);
+                GeneratedSpecApis = new GeneratedSpecApisResource(service);
                 HostProjectRegistrations = new HostProjectRegistrationsResource(service);
                 Operations = new OperationsResource(service);
                 Plugins = new PluginsResource(service);
@@ -5363,6 +5364,255 @@ namespace Google.Apis.APIhub.v1
                 }
             }
 
+            /// <summary>Gets the GeneratedSpecApis resource.</summary>
+            public virtual GeneratedSpecApisResource GeneratedSpecApis { get; }
+
+            /// <summary>The "generatedSpecApis" collection of methods.</summary>
+            public class GeneratedSpecApisResource
+            {
+                private const string Resource = "generatedSpecApis";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GeneratedSpecApisResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Merges the per-day stored specs across the requested window and returns the merged OpenAPI document.
+                /// Preview: this method is in Public Preview. Behavior and the API surface may change until the Spec
+                /// Generation feature reaches General Availability.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the GeneratedSpecApi to generate from. Format:
+                /// `projects/{project}/locations/{location}/generatedSpecApis/{generated_spec_api}`
+                /// </param>
+                public virtual GenerateSpecRequest GenerateSpec(Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1GenerateSpecRequest body, string name)
+                {
+                    return new GenerateSpecRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Merges the per-day stored specs across the requested window and returns the merged OpenAPI document.
+                /// Preview: this method is in Public Preview. Behavior and the API surface may change until the Spec
+                /// Generation feature reaches General Availability.
+                /// </summary>
+                public class GenerateSpecRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1GenerateSpecResponse>
+                {
+                    /// <summary>Constructs a new GenerateSpec request.</summary>
+                    public GenerateSpecRequest(Google.Apis.Services.IClientService service, Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1GenerateSpecRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the GeneratedSpecApi to generate from. Format:
+                    /// `projects/{project}/locations/{location}/generatedSpecApis/{generated_spec_api}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1GenerateSpecRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateSpec";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:generateSpec";
+
+                    /// <summary>Initializes GenerateSpec parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/generatedSpecApis/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets a single GeneratedSpecApi by resource name. Preview: this method is in Public Preview. Behavior
+                /// and the API surface may change until the Spec Generation feature reaches General Availability.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the GeneratedSpecApi to retrieve. Format:
+                /// `projects/{project}/locations/{location}/generatedSpecApis/{generated_spec_api}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets a single GeneratedSpecApi by resource name. Preview: this method is in Public Preview. Behavior
+                /// and the API surface may change until the Spec Generation feature reaches General Availability.
+                /// </summary>
+                public class GetRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1GeneratedSpecApi>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the GeneratedSpecApi to retrieve. Format:
+                    /// `projects/{project}/locations/{location}/generatedSpecApis/{generated_spec_api}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/generatedSpecApis/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists the APIs the pipeline is tracking, ordered by `update_time desc`. Preview: this method is in
+                /// Public Preview. Behavior and the API surface may change until the Spec Generation feature reaches
+                /// General Availability.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent resource, which owns this collection of tracked APIs. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists the APIs the pipeline is tracking, ordered by `update_time desc`. Preview: this method is in
+                /// Public Preview. Behavior and the API surface may change until the Spec Generation feature reaches
+                /// General Availability.
+                /// </summary>
+                public class ListRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1ListGeneratedSpecApisResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource, which owns this collection of tracked APIs. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An AIP-160 filter. This release supports the fields `state` and `source.source_type`,
+                    /// the `=` comparison operator only, and `AND` conjunction only. Examples: - `state =
+                    /// "SPEC_GENERATED"` - `state = "SPEC_ASSOCIATED" AND source.source_type = APIGEE_X`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to return. The service may return fewer. If unspecified,
+                    /// at most 50 will be returned. The maximum value is 1000; values above 1000 will be coerced to
+                    /// 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListGeneratedSpecApis` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters (except `page_size`)
+                    /// provided to `ListGeneratedSpecApis` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/generatedSpecApis";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the HostProjectRegistrations resource.</summary>
             public virtual HostProjectRegistrationsResource HostProjectRegistrations { get; }
 
@@ -5382,8 +5632,9 @@ namespace Google.Apis.APIhub.v1
 
                 /// <summary>
                 /// Create a host project registration. A Google cloud project can be registered as a host project if it
-                /// is not attached as a runtime project to another host project. A project can be registered as a host
-                /// project only once. Subsequent register calls for the same project will fail.
+                /// is not attached as a runtime project to another host project. A project can have only one host
+                /// project registration at a time. Subsequent register calls for the same project will fail until the
+                /// existing registration is deleted.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -5397,8 +5648,9 @@ namespace Google.Apis.APIhub.v1
 
                 /// <summary>
                 /// Create a host project registration. A Google cloud project can be registered as a host project if it
-                /// is not attached as a runtime project to another host project. A project can be registered as a host
-                /// project only once. Subsequent register calls for the same project will fail.
+                /// is not attached as a runtime project to another host project. A project can have only one host
+                /// project registration at a time. Subsequent register calls for the same project will fail until the
+                /// existing registration is deleted.
                 /// </summary>
                 public class CreateRequest : APIhubBaseServiceRequest<Google.Apis.APIhub.v1.Data.GoogleCloudApihubV1HostProjectRegistration>
                 {
@@ -11053,6 +11305,220 @@ namespace Google.Apis.APIhub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for GenerateSpec.</summary>
+    public class GoogleCloudApihubV1GenerateSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The observation window. The server quantizes to day boundaries and caps the span at 90 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observationWindow")]
+        public virtual GoogleTypeInterval ObservationWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for GenerateSpec.</summary>
+    public class GoogleCloudApihubV1GenerateSpecResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The merged OpenAPI document for the requested window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSpec")]
+        public virtual GoogleCloudApihubV1SpecContents GeneratedSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An API the pipeline is tracking for spec generation.</summary>
+    public class GoogleCloudApihubV1GeneratedSpecApi : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The full resource name of the associated catalog API. Format:
+        /// `projects/{project}/locations/{location}/apis/{api}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("api")]
+        public virtual string Api { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The full resource name of the associated catalog Deployment. Format:
+        /// `projects/{project}/locations/{location}/deployments/{deployment}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
+        public virtual string Deployment { get; set; }
+
+        /// <summary>Output only. Human-readable display name; server-derived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        private string _lastSpecGeneratedTimeRaw;
+
+        private object _lastSpecGeneratedTime;
+
+        /// <summary>
+        /// Output only. The time at which the most recent spec was generated. Unset while `state ==
+        /// SPEC_API_REGISTERED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSpecGeneratedTime")]
+        public virtual string LastSpecGeneratedTimeRaw
+        {
+            get => _lastSpecGeneratedTimeRaw;
+            set
+            {
+                _lastSpecGeneratedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSpecGeneratedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSpecGeneratedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSpecGeneratedTimeDateTimeOffset instead.")]
+        public virtual object LastSpecGeneratedTime
+        {
+            get => _lastSpecGeneratedTime;
+            set
+            {
+                _lastSpecGeneratedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSpecGeneratedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSpecGeneratedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSpecGeneratedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSpecGeneratedTimeRaw);
+            set => LastSpecGeneratedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Identifier. The full resource name. The trailing segment is the pipeline-generated identifier. Format:
+        /// `projects/{project}/locations/{location}/generatedSpecApis/{generated_spec_api}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Where the pipeline observed this API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual GoogleCloudApihubV1GeneratedSpecApiSource Source { get; set; }
+
+        /// <summary>
+        /// Output only. The full resource name of the associated catalog Spec; populated only when `state ==
+        /// SPEC_ASSOCIATED`. Format:
+        /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual string Spec { get; set; }
+
+        /// <summary>Output only. The current lifecycle state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time at which the resource was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The full resource name of the associated catalog Version. Format:
+        /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User-facing collapse of the source-side identity tuple.</summary>
+    public class GoogleCloudApihubV1GeneratedSpecApiSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Per-source instance label (e.g. "/" for Apigee X).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDisplayName")]
+        public virtual string SourceDisplayName { get; set; }
+
+        /// <summary>Output only. The source type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Server-supplied label (e.g. "Apigee X").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeDisplayName")]
+        public virtual string TypeDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Config for Google service account authentication.</summary>
     public class GoogleCloudApihubV1GoogleServiceAccountConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11640,6 +12106,21 @@ namespace Google.Apis.APIhub.v1.Data
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListGeneratedSpecApis.</summary>
+    public class GoogleCloudApihubV1ListGeneratedSpecApisResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tracked APIs for the requested parent, ordered by `update_time desc`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedSpecApis")]
+        public virtual System.Collections.Generic.IList<GoogleCloudApihubV1GeneratedSpecApi> GeneratedSpecApis { get; set; }
+
+        /// <summary>A token to retrieve the next page of results; empty when there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -13260,7 +13741,10 @@ namespace Google.Apis.APIhub.v1.Data
     /// <summary>The spec contents.</summary>
     public class GoogleCloudApihubV1SpecContents : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The contents of the spec.</summary>
+        /// <summary>
+        /// Required. The contents of the spec. The contents should be base64 encoded while calling the OnePlatform APIs
+        /// like CreateSpec, UpdateSpec and CollectApiData.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual string Contents { get; set; }
 
@@ -14054,6 +14538,97 @@ namespace Google.Apis.APIhub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class GoogleTypeInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

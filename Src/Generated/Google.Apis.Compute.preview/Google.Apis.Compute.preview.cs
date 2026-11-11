@@ -139883,6 +139883,10 @@ namespace Google.Apis.Compute.preview.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceConfig")]
         public virtual ConfidentialInstanceConfig ConfidentialInstanceConfig { get; set; }
 
+        /// <summary>Whether the resource should be protected against deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtection")]
+        public virtual System.Nullable<bool> DeletionProtection { get; set; }
+
         /// <summary>An optional text description for the instances that are created from these properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }

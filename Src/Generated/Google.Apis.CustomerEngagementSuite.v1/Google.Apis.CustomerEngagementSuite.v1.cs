@@ -6822,7 +6822,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>
     /// A streamed fragment of a document artifact (e.g. a markdown TDD) that the assistant is generating. Content
     /// deltas stream while the document is being written so clients can render a live preview; the FINALIZED chunk
-    /// carries the GCS URI once the file has been persisted.
+    /// carries the Cloud Storage URI once the file has been persisted.
     /// </summary>
     public class ArtifactChunk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6840,7 +6840,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The GCS object the artifact was persisted to. Set on FINALIZED chunks.</summary>
+        /// <summary>The Cloud Storage object the artifact was persisted to. Set on FINALIZED chunks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
@@ -6851,6 +6851,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Lifecycle position of this chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The app this artifact was produced for, when it was produced for one. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6946,11 +6953,44 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual System.Collections.Generic.IList<OptionQuestionsChunkQuestion> Questions { get; set; }
 
         /// <summary>
+        /// Everything the confirmed action will change, so the console can render "Update 2 apps" and one badge per
+        /// app. Empty for legacy single-target cards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<AssistantConfirmationRequestTarget> Targets { get; set; }
+
+        /// <summary>
         /// Name of the tool call the agent paused on (e.g. "update_app"), for the card header. Unset for pure
         /// questions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tool")]
         public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>One resource the confirmed action will change.</summary>
+    public class AssistantConfirmationRequestTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action, e.g. `CREATE`, `UPDATE`, `DELETE`, `COPY`, `LINK`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Display name of the resource or app, for the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource that will change, as a full resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>
+        /// The app the resource belongs to, or empty for a location-scoped action such as creating an app. Format:
+        /// `projects/{project}/locations/{location}/apps/{app}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9143,7 +9183,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Optional. Traffic allocations for the version release.</summary>
+        /// <summary>
+        /// Optional. Traffic allocations for the version release. When non-empty, the `traffic_percentage` values
+        /// across all allocations must sum to `100`, representing the split of remaining non-study traffic.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficAllocations")]
         public virtual System.Collections.Generic.IList<ExperimentConfigVersionReleaseTrafficAllocation> TrafficAllocations { get; set; }
 
@@ -9165,7 +9208,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Optional. Traffic percentage of the traffic allocation. Must be between 0 and 100.</summary>
+        /// <summary>
+        /// Optional. Traffic percentage of the traffic allocation, relative to the remaining non-study traffic. Must be
+        /// between `0` and `100`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficPercentage")]
         public virtual System.Nullable<int> TrafficPercentage { get; set; }
 
@@ -9190,7 +9236,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>
         /// Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to which to export the app.
         /// The format of this URI must be `gs:///`. The exported app archive will be written directly to the specified
-        /// GCS object.
+        /// Cloud Storage object.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
@@ -12979,7 +13025,7 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
     /// <summary>Response message for SessionService.StreamChatAiAssistant.</summary>
     public class StreamChatAiAssistantResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Generated-document artifact event (live preview deltas + final GCS pointer).</summary>
+        /// <summary>Generated-document artifact event (live preview deltas + final Cloud Storage pointer).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactChunk")]
         public virtual ArtifactChunk ArtifactChunk { get; set; }
 
@@ -13422,6 +13468,14 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         public virtual string ParentToolCallId { get; set; }
 
         /// <summary>
+        /// Output only. The app this call targets, derived by the assistant from the call's resource arguments: an app
+        /// resource name, `PROJECT` for location-scoped tools, or empty for session-local tools. Set only in
+        /// project-scoped assistant sessions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
+
+        /// <summary>
         /// Optional. The name of the tool to execute. Format:
         /// `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
         /// </summary>
@@ -13497,6 +13551,10 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>Output only. The app the executed tool targeted; mirrors ToolCall.target_app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetApp")]
+        public virtual string TargetApp { get; set; }
 
         /// <summary>
         /// Optional. The name of the tool to execute. Format:
@@ -13816,6 +13874,13 @@ namespace Google.Apis.CustomerEngagementSuite.v1.Data
         /// <summary>Why the turn ended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>
+        /// Apps this turn targeted or changed, so the console can refresh exactly those apps' stores. Project-scoped
+        /// sessions only. Format: `projects/{project}/locations/{location}/apps/{app}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("touchedApps")]
+        public virtual System.Collections.Generic.IList<string> TouchedApps { get; set; }
 
         /// <summary>
         /// Identifier of the turn that ended; matches TurnResumeSnapshot.turn_id and ActiveTurnInfo.turn_id.

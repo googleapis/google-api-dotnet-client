@@ -2467,6 +2467,10 @@ namespace Google.Apis.CloudSearch.v1
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestOptionsLanguageCode { get; set; }
 
+                /// <summary>Optional. The BCP-47 language code representing the language of the query.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestOptions.queryLanguageCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestOptionsQueryLanguageCode { get; set; }
+
                 /// <summary>
                 /// The ID generated when you create a search application using the [admin
                 /// console](https://support.google.com/a/answer/9043922).
@@ -2533,6 +2537,14 @@ namespace Google.Apis.CloudSearch.v1
                     RequestParameters.Add("requestOptions.languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestOptions.languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("requestOptions.queryLanguageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestOptions.queryLanguageCode",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -9398,6 +9410,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
+        /// <summary>Optional. The BCP-47 language code representing the language of the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryLanguageCode")]
+        public virtual string QueryLanguageCode { get; set; }
+
         /// <summary>
         /// The ID generated when you create a search application using the [admin
         /// console](https://support.google.com/a/answer/9043922).
@@ -9837,7 +9853,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The search API response. NEXT ID: 20</summary>
+    /// <summary>The search API response. NEXT ID: 21</summary>
     public class SearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Debugging information about the response.</summary>

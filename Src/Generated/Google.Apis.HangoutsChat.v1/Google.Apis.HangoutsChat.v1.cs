@@ -8327,7 +8327,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// of the color. For example, the following sets the color to red at its maximum intensity:
         /// ```
         /// "color": {
-        /// "red": 1, "green": 0, "blue": 0, }
+        /// "red": 1, "green": 0, "blue": 0 }
         /// ```
         /// The `alpha` field is unavailable for stroke color. If specified, this
         /// field is ignored.
@@ -8368,7 +8368,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// of the color. For example, the following sets the color to red at its maximum intensity:
         /// ```
         /// "color": {
-        /// "red": 1, "green": 0, "blue": 0, }
+        /// "red": 1, "green": 0, "blue": 0 }
         /// ```
         /// The `alpha` field is unavailable for button color. If specified, this
         /// field is ignored.
@@ -8459,10 +8459,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON
         /// constructs a card action menu with `Settings` and `Send Feedback` options:
         /// ```
-        /// "card_actions": [ {
-        /// "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
-        /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
-        /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ]
+        /// "cardActions": [ {
+        /// "actionLabel": "Settings", "onClick": { "action": { "function": "goToView", "parameters": [ { "key":
+        /// "viewType", "value": "SETTING" } ], "loadIndicator": "SPINNER" } } }, { "actionLabel": "Send Feedback",
+        /// "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ]
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
@@ -9118,8 +9118,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// "grid": { "title": "A fine collection of items", "columnCount": 2,
     /// "borderStyle": { "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": { "imageUri":
     /// "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } },
-    /// "title": "An item", "textAlignment": "CENTER" } ], "onClick": { "openLink": { "url": "https://www.example.com" }
-    /// } }
+    /// "title": "An item" } ], "onClick": { "openLink": { "url": "https://www.example.com" } } }
     /// ```
     /// </summary>
     public class GoogleAppsCardV1Grid : Google.Apis.Requests.IDirectResponseSchema
@@ -9240,7 +9239,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048),
         /// use
         /// ```
-        /// "material_icon": { "name": "check_box" }
+        /// "materialIcon": { "name": "check_box" }
         /// ```
         /// [Google Chat
         /// apps](https://developers.google.com/workspace/chat):
@@ -10023,7 +10022,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// the second is an image button that opens a link:
         /// ```
         /// "buttonList": { "buttons": [ { "text": "Edit", "color":
-        /// { "red": 0, "green": 0, "blue": 1, }, "disabled": true, }, { "icon": { "knownIcon": "INVITE", "altText":
+        /// { "red": 0, "green": 0, "blue": 1 }, "disabled": true }, { "icon": { "knownIcon": "INVITE", "altText":
         /// "check calendar" }, "onClick": { "openLink": { "url": "https://example.com/calendar" } } } ] }
         /// ```
         /// </summary>
@@ -10083,9 +10082,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Displays a decorated text item. For example, the following JSON creates a decorated text widget showing
         /// email address:
         /// ```
-        /// "decoratedText": { "icon": { "knownIcon": "EMAIL" }, "topLabel": "Email Address", "text":
-        /// "sasha@example.com", "bottomLabel": "This is a new Email address!", "switchControl": { "name":
-        /// "has_send_welcome_email_to_sasha", "selected": false, "controlType": "CHECKBOX" } }
+        /// "decoratedText": { "startIcon": { "knownIcon": "EMAIL" }, "topLabel": "Email Address",
+        /// "text": "sasha@example.com", "bottomLabel": "This is a new Email address!", "switchControl": { "name":
+        /// "has_send_welcome_email_to_sasha", "selected": false, "controlType": "CHECK_BOX" } }
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
@@ -10117,8 +10116,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// "grid": { "title": "A fine collection of items", "columnCount": 2,
         /// "borderStyle": { "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": { "imageUri":
         /// "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" }
-        /// }, "title": "An item", "textAlignment": "CENTER" } ], "onClick": { "openLink": { "url":
-        /// "https://www.example.com" } } }
+        /// }, "title": "An item" } ], "onClick": { "openLink": { "url": "https://www.example.com" } } }
         /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grid")]
@@ -10152,7 +10150,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// buttons, switches, or dropdown menus. For example, the following JSON creates a dropdown menu that lets
         /// users choose a size:
         /// ```
-        /// "selectionInput": { "name": "size", "label": "Size" "type": "DROPDOWN", "items": [
+        /// "selectionInput": { "name": "size", "label": "Size", "type": "DROPDOWN", "items": [
         /// { "text": "S", "value": "small", "selected": false }, { "text": "M", "value": "medium", "selected": true },
         /// { "text": "L", "value": "large", "selected": false }, { "text": "XL", "value": "extra_large", "selected":
         /// false } ] }
