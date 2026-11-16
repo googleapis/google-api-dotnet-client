@@ -2440,22 +2440,17 @@ namespace Google.Apis.AccessContextManager.v1
             this.service = service;
         }
 
-        /// <summary>
-        /// Looks up the configured service perimeter for a given resource. Format: `['projects/{projectNumber}',
-        /// 'folders/{folderNumber}']`.
-        /// </summary>
+        /// <summary>Looks up the configured ServicePerimeter for a given resource.</summary>
         /// <param name="resource">
-        /// Required. The resource to resolve (for example, `projects/123` or `folders/456`).
+        /// Required. The resource name. Format: `projects/{project_number}` or `folders/{folder_number}` (for example,
+        /// `projects/123` or `folders/456`)
         /// </param>
         public virtual LookupConfiguredServicePerimeterRequest LookupConfiguredServicePerimeter(string resource)
         {
             return new LookupConfiguredServicePerimeterRequest(this.service, resource);
         }
 
-        /// <summary>
-        /// Looks up the configured service perimeter for a given resource. Format: `['projects/{projectNumber}',
-        /// 'folders/{folderNumber}']`.
-        /// </summary>
+        /// <summary>Looks up the configured ServicePerimeter for a given resource.</summary>
         public class LookupConfiguredServicePerimeterRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.LookupConfiguredServicePerimeterResponse>
         {
             /// <summary>Constructs a new LookupConfiguredServicePerimeter request.</summary>
@@ -2465,7 +2460,10 @@ namespace Google.Apis.AccessContextManager.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The resource to resolve (for example, `projects/123` or `folders/456`).</summary>
+            /// <summary>
+            /// Required. The resource name. Format: `projects/{project_number}` or `folders/{folder_number}` (for
+            /// example, `projects/123` or `folders/456`)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -3270,22 +3268,17 @@ namespace Google.Apis.AccessContextManager.v1
             this.service = service;
         }
 
-        /// <summary>
-        /// Looks up the configured service perimeter for a given resource. Format: `['projects/{projectNumber}',
-        /// 'folders/{folderNumber}']`.
-        /// </summary>
+        /// <summary>Looks up the configured ServicePerimeter for a given resource.</summary>
         /// <param name="resource">
-        /// Required. The resource to resolve (for example, `projects/123` or `folders/456`).
+        /// Required. The resource name. Format: `projects/{project_number}` or `folders/{folder_number}` (for example,
+        /// `projects/123` or `folders/456`)
         /// </param>
         public virtual LookupConfiguredServicePerimeterRequest LookupConfiguredServicePerimeter(string resource)
         {
             return new LookupConfiguredServicePerimeterRequest(this.service, resource);
         }
 
-        /// <summary>
-        /// Looks up the configured service perimeter for a given resource. Format: `['projects/{projectNumber}',
-        /// 'folders/{folderNumber}']`.
-        /// </summary>
+        /// <summary>Looks up the configured ServicePerimeter for a given resource.</summary>
         public class LookupConfiguredServicePerimeterRequest : AccessContextManagerBaseServiceRequest<Google.Apis.AccessContextManager.v1.Data.LookupConfiguredServicePerimeterResponse>
         {
             /// <summary>Constructs a new LookupConfiguredServicePerimeter request.</summary>
@@ -3295,7 +3288,10 @@ namespace Google.Apis.AccessContextManager.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The resource to resolve (for example, `projects/123` or `folders/456`).</summary>
+            /// <summary>
+            /// Required. The resource name. Format: `projects/{project_number}` or `folders/{folder_number}` (for
+            /// example, `projects/123` or `folders/456`)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
 
@@ -4587,7 +4583,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A configured service perimeter returned by Access Context Manager.</summary>
+    /// <summary>A configured ServicePerimeter returned by Access Context Manager.</summary>
     public class LookupConfiguredServicePerimeterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4605,17 +4601,15 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string RestrictedResourceDryRun { get; set; }
 
         /// <summary>
-        /// Fully qualified name of the configured enforced perimeter. Format:
-        /// `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}` This field is empty if no enforced perimeter
-        /// applies.
+        /// Fully qualified name of the configured enforced perimeter. This field is empty if no enforced perimeter
+        /// applies. Format: `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeter")]
         public virtual string ServicePerimeter { get; set; }
 
         /// <summary>
-        /// Fully qualified name of the configured dry-run perimeter. Format:
-        /// `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}` This field is empty if no dry-run perimeter
-        /// configuration applies.
+        /// Fully qualified name of the configured dry-run perimeter. This field is empty if no dry-run perimeter
+        /// configuration applies. Format: `accessPolicies/{policy_id}/servicePerimeters/{perimeter_name}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeterDryRun")]
         public virtual string ServicePerimeterDryRun { get; set; }
