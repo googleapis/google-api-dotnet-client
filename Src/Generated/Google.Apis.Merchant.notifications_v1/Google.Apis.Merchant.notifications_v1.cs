@@ -292,14 +292,14 @@ namespace Google.Apis.Merchant.notifications_v1
             /// Creates a notification subscription for a business. For standalone or sub-accounts, the business can
             /// create a subscription for self. For advanced accounts, the business can create a subscription for all
             /// managed accounts or for a specific subaccount. See [Decode
-            /// notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how
-            /// to decode the notification payload and how to interpret its contents. We will allow the following types
-            /// of notification subscriptions to exist together (per business as a subscriber per event type): 1.
-            /// Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for
-            /// managed accounts + subscription for self. we will not allow (per business as a subscriber per event
-            /// type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed
-            /// accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for
-            /// the same target account.
+            /// notifications](https://developers.google.com/merchant/api/guides/notifications/overview#decode_notifications)
+            /// for information on how to decode the notification payload and how to interpret its contents. We will
+            /// allow the following types of notification subscriptions to exist together (per business as a subscriber
+            /// per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial"
+            /// subscriptions for managed accounts + subscription for self. we will not allow (per business as a
+            /// subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts"
+            /// subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4.
+            /// Multiple partial subscriptions for the same target account.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -314,14 +314,14 @@ namespace Google.Apis.Merchant.notifications_v1
             /// Creates a notification subscription for a business. For standalone or sub-accounts, the business can
             /// create a subscription for self. For advanced accounts, the business can create a subscription for all
             /// managed accounts or for a specific subaccount. See [Decode
-            /// notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how
-            /// to decode the notification payload and how to interpret its contents. We will allow the following types
-            /// of notification subscriptions to exist together (per business as a subscriber per event type): 1.
-            /// Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for
-            /// managed accounts + subscription for self. we will not allow (per business as a subscriber per event
-            /// type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed
-            /// accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for
-            /// the same target account.
+            /// notifications](https://developers.google.com/merchant/api/guides/notifications/overview#decode_notifications)
+            /// for information on how to decode the notification payload and how to interpret its contents. We will
+            /// allow the following types of notification subscriptions to exist together (per business as a subscriber
+            /// per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial"
+            /// subscriptions for managed accounts + subscription for self. we will not allow (per business as a
+            /// subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts"
+            /// subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4.
+            /// Multiple partial subscriptions for the same target account.
             /// </summary>
             public class CreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.notifications_v1.Data.NotificationSubscription>
             {
@@ -647,9 +647,10 @@ namespace Google.Apis.Merchant.notifications_v1.Data
     }
 
     /// <summary>
-    /// Represents a notification subscription owned by a Merchant account. See [Decode
-    /// notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to
-    /// decode the notification payload and how to interpret its contents.
+    /// Represents a notification subscription owned by a Merchant account. For more information, see [Notifications
+    /// overview](https://developers.google.com/merchant/api/guides/notifications/overview). See [Decode
+    /// notifications](https://developers.google.com/merchant/api/guides/notifications/overview#decode_notifications)
+    /// for information on how to decode the notification payload and how to interpret its contents.
     /// </summary>
     public class NotificationSubscription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -722,7 +723,11 @@ namespace Google.Apis.Merchant.notifications_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
