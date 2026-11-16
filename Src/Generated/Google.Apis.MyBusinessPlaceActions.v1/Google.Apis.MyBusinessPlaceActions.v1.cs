@@ -567,9 +567,9 @@ namespace Google.Apis.MyBusinessPlaceActions.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. The specific fields to update. The only editable fields are `uri`, `place_action_type` and
-                /// `is_preferred`. If the updated link already exists at the same location with the same
-                /// `place_action_type` and `uri`, fails with an `ALREADY_EXISTS` error.
+                /// Required. The specific fields to update. The only editable fields are `uri`, `place_action_type`,
+                /// `is_preferred` and `is_disabled`. If the updated link already exists at the same location with the
+                /// same `place_action_type` and `uri`, fails with an `ALREADY_EXISTS` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -810,6 +810,15 @@ namespace Google.Apis.MyBusinessPlaceActions.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. Whether the merchant disabled this link. Defaults to `false`, which means the link is enabled. If
+        /// `provider_type` is `AGGREGATOR_3P`, the merchant can disable or enable this link through
+        /// `UpdatePlaceActionLink`. If `provider_type` is `MERCHANT`, this field is always `false` and
+        /// `UpdatePlaceActionLink` rejects updates to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDisabled")]
+        public virtual System.Nullable<bool> IsDisabled { get; set; }
 
         /// <summary>Output only. Indicates whether this link can be edited by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isEditable")]
