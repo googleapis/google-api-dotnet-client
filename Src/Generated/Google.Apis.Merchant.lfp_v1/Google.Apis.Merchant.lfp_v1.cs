@@ -851,7 +851,10 @@ namespace Google.Apis.Merchant.lfp_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Local Inventory for the merchant.</summary>
+    /// <summary>
+    /// Local Inventory for the merchant. For more information, see [Manage local feeds
+    /// partnership](https://developers.google.com/merchant/api/guides/local-feeds-partnership/overview).
+    /// </summary>
     public class LfpInventory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -908,7 +911,7 @@ namespace Google.Apis.Merchant.lfp_v1.Data
         public virtual string ContentLanguage { get; set; }
 
         /// <summary>
-        /// Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for
+        /// Optional. The [feed label](https://developers.google.com/merchant/api/guides/data-sources/api-sources) for
         /// the product. If this is not set, it will default to `regionCode`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
@@ -981,7 +984,10 @@ namespace Google.Apis.Merchant.lfp_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The LFP state of a merchant.</summary>
+    /// <summary>
+    /// The LFP state of a merchant. For more information, see [Manage local feeds
+    /// partnership](https://developers.google.com/merchant/api/guides/local-feeds-partnership/overview).
+    /// </summary>
     public class LfpMerchantState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Country-specific settings for the merchant.</summary>
@@ -1018,7 +1024,10 @@ namespace Google.Apis.Merchant.lfp_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A sale for the merchant.</summary>
+    /// <summary>
+    /// A sale for the merchant. For more information, see [Manage local feeds
+    /// partnership](https://developers.google.com/merchant/api/guides/local-feeds-partnership/overview).
+    /// </summary>
     public class LfpSale : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The two-letter ISO 639-1 language code for the item.</summary>
@@ -1026,7 +1035,7 @@ namespace Google.Apis.Merchant.lfp_v1.Data
         public virtual string ContentLanguage { get; set; }
 
         /// <summary>
-        /// Optional. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for
+        /// Optional. The [feed label](https://developers.google.com/merchant/api/guides/data-sources/api-sources) for
         /// the product. If this is not set, it will default to `regionCode`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
@@ -1124,7 +1133,8 @@ namespace Google.Apis.Merchant.lfp_v1.Data
     /// <summary>
     /// A store for the merchant. This will be used to match to a store under the Google Business Profile of the target
     /// merchant. If a matching store can't be found, the inventories or sales submitted with the store code will not be
-    /// used.
+    /// used. For more information, see [Manage local feeds
+    /// partnership](https://developers.google.com/merchant/api/guides/local-feeds-partnership/overview).
     /// </summary>
     public class LfpStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1298,7 +1308,11 @@ namespace Google.Apis.Merchant.lfp_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
