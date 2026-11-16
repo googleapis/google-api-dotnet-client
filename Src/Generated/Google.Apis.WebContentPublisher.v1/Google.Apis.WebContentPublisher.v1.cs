@@ -1265,7 +1265,10 @@ namespace Google.Apis.WebContentPublisher.v1.Data
     /// <summary>Represents a Call-To-Action (CTA) configuration for a publication.</summary>
     public class Cta : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The user-visible display name of the CTA.</summary>
+        /// <summary>
+        /// Optional. The user-visible display name of the CTA (up to 40 characters). Defaults to a server-specified
+        /// name based on the CTA type when omitted on creation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -1320,7 +1323,7 @@ namespace Google.Apis.WebContentPublisher.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("categoryLabel")]
         public virtual string CategoryLabel { get; set; }
 
-        /// <summary>Optional. The question prompt displayed to readers (up to 140 characters).</summary>
+        /// <summary>Required. The question prompt displayed to readers (up to 140 characters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayText")]
         public virtual string DisplayText { get; set; }
 
