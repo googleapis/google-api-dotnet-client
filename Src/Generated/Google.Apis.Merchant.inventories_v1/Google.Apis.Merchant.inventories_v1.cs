@@ -406,6 +406,10 @@ namespace Google.Apis.Merchant.inventories_v1
                 /// Inserts a `LocalInventory` resource to a product in your merchant account. Replaces the full
                 /// `LocalInventory` resource if an entry with the same `storeCode` already exists for the product. It
                 /// might take up to 30 minutes for the new or updated `LocalInventory` resource to appear in products.
+                /// For step-by-step instructions, see [Add local
+                /// inventory](https://developers.google.com/merchant/api/guides/inventories/add-local-inventory) and
+                /// [Update local
+                /// inventory](https://developers.google.com/merchant/api/guides/inventories/update-local-inventory).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -437,6 +441,10 @@ namespace Google.Apis.Merchant.inventories_v1
                 /// Inserts a `LocalInventory` resource to a product in your merchant account. Replaces the full
                 /// `LocalInventory` resource if an entry with the same `storeCode` already exists for the product. It
                 /// might take up to 30 minutes for the new or updated `LocalInventory` resource to appear in products.
+                /// For step-by-step instructions, see [Add local
+                /// inventory](https://developers.google.com/merchant/api/guides/inventories/add-local-inventory) and
+                /// [Update local
+                /// inventory](https://developers.google.com/merchant/api/guides/inventories/update-local-inventory).
                 /// </summary>
                 public class InsertRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.inventories_v1.Data.LocalInventory>
                 {
@@ -749,7 +757,10 @@ namespace Google.Apis.Merchant.inventories_v1
                 /// Inserts a `RegionalInventory` to a given product in your merchant account. Replaces the full
                 /// `RegionalInventory` resource if an entry with the same `region` already exists for the product. It
                 /// might take up to 30 minutes for the new or updated `RegionalInventory` resource to appear in
-                /// products.
+                /// products. For step-by-step instructions, see [Add regional
+                /// inventory](https://developers.google.com/merchant/api/guides/inventories/add-regional-inventory) and
+                /// [Update regional
+                /// inventory](https://developers.google.com/merchant/api/guides/inventories/update-regional-inventory).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -781,7 +792,10 @@ namespace Google.Apis.Merchant.inventories_v1
                 /// Inserts a `RegionalInventory` to a given product in your merchant account. Replaces the full
                 /// `RegionalInventory` resource if an entry with the same `region` already exists for the product. It
                 /// might take up to 30 minutes for the new or updated `RegionalInventory` resource to appear in
-                /// products.
+                /// products. For step-by-step instructions, see [Add regional
+                /// inventory](https://developers.google.com/merchant/api/guides/inventories/add-regional-inventory) and
+                /// [Update regional
+                /// inventory](https://developers.google.com/merchant/api/guides/inventories/update-regional-inventory).
                 /// </summary>
                 public class InsertRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.inventories_v1.Data.RegionalInventory>
                 {
@@ -1197,7 +1211,9 @@ namespace Google.Apis.Merchant.inventories_v1.Data
     /// <summary>
     /// Local inventory information for the product. Represents in-store information for a specific product at the store
     /// specified by `storeCode`. For a list of all accepted attribute values, see the [local product inventory data
-    /// specification](https://support.google.com/merchants/answer/3061342).
+    /// specification](https://support.google.com/merchants/answer/3061342). For more information, see [Add local
+    /// inventory](https://developers.google.com/merchant/api/guides/inventories/add-local-inventory) and [Update local
+    /// inventory](https://developers.google.com/merchant/api/guides/inventories/update-local-inventory).
     /// </summary>
     public class LocalInventory : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1399,7 +1415,11 @@ namespace Google.Apis.Merchant.inventories_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
@@ -1522,7 +1542,11 @@ namespace Google.Apis.Merchant.inventories_v1.Data
     /// <summary>
     /// Regional inventory information for the product. Represents specific information like price and availability for
     /// a given product in a specific `region`. For a list of all accepted attribute values, see the [regional product
-    /// inventory data specification](https://support.google.com/merchants/answer/9698880).
+    /// inventory data specification](https://support.google.com/merchants/answer/9698880). For more information, see
+    /// [Add regional inventory](https://developers.google.com/merchant/api/guides/inventories/add-regional-inventory),
+    /// [Update regional
+    /// inventory](https://developers.google.com/merchant/api/guides/inventories/update-regional-inventory), and [Create
+    /// and update regions](https://developers.google.com/merchant/api/guides/accounts/regions).
     /// </summary>
     public class RegionalInventory : Google.Apis.Requests.IDirectResponseSchema
     {
