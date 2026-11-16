@@ -290,7 +290,11 @@ namespace Google.Apis.Merchant.reports_v1
 
             /// <summary>
             /// Retrieves a report defined by a search query. The response might contain fewer rows than specified by
-            /// `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested.
+            /// `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. For more
+            /// information, see [Get started](https://developers.google.com/merchant/api/guides/reports/get-started),
+            /// [Use Merchant Center Query
+            /// Language](https://developers.google.com/merchant/api/guides/reports/query-language), and [Paginate query
+            /// results](https://developers.google.com/merchant/api/guides/reports/paging).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -304,7 +308,11 @@ namespace Google.Apis.Merchant.reports_v1
 
             /// <summary>
             /// Retrieves a report defined by a search query. The response might contain fewer rows than specified by
-            /// `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested.
+            /// `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. For more
+            /// information, see [Get started](https://developers.google.com/merchant/api/guides/reports/get-started),
+            /// [Use Merchant Center Query
+            /// Language](https://developers.google.com/merchant/api/guides/reports/query-language), and [Paginate query
+            /// results](https://developers.google.com/merchant/api/guides/reports/paging).
             /// </summary>
             public class SearchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.reports_v1.Data.SearchResponse>
             {
@@ -360,7 +368,8 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// <summary>
     /// Fields available for query in `best_sellers_brand_view` table. [Best
     /// sellers](https://support.google.com/merchants/answer/9488679) report with top brands. Values are only set for
-    /// fields requested explicitly in the request's search query.
+    /// fields requested explicitly in the request's search query. For more information, see [Understand the
+    /// market](https://developers.google.com/merchant/api/guides/reports/understand-the-market).
     /// </summary>
     public class BestSellersBrandView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -436,7 +445,9 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// Fields available for query in `best_sellers_product_cluster_view` table. [Best
     /// sellers](https://support.google.com/merchants/answer/9488679) report with top product clusters. A product
     /// cluster is a grouping for different offers and variants that represent the same product, for example, Google
-    /// Pixel 7. Values are only set for fields requested explicitly in the request's search query.
+    /// Pixel 7. Values are only set for fields requested explicitly in the request's search query. For more
+    /// information, see [Understand the
+    /// market](https://developers.google.com/merchant/api/guides/reports/understand-the-market).
     /// </summary>
     public class BestSellersProductClusterView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -571,7 +582,8 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// <summary>
     /// Fields available for query in `competitive_visibility_benchmark_view` table. [Competitive
     /// visibility](https://support.google.com/merchants/answer/11366442) report with the category benchmark. Values are
-    /// only set for fields requested explicitly in the request's search query.
+    /// only set for fields requested explicitly in the request's search query. For more information, see [Explore your
+    /// competitive landscape](https://developers.google.com/merchant/api/guides/reports/explore-competitive-landscape).
     /// </summary>
     public class CompetitiveVisibilityBenchmarkView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -622,7 +634,9 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// <summary>
     /// Fields available for query in `competitive_visibility_competitor_view` table. [Competitive
     /// visibility](https://support.google.com/merchants/answer/11366442) report with businesses with similar
-    /// visibility. Values are only set for fields requested explicitly in the request's search query.
+    /// visibility. Values are only set for fields requested explicitly in the request's search query. For more
+    /// information, see [Explore your competitive
+    /// landscape](https://developers.google.com/merchant/api/guides/reports/explore-competitive-landscape).
     /// </summary>
     public class CompetitiveVisibilityCompetitorView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -711,7 +725,9 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// <summary>
     /// Fields available for query in `competitive_visibility_top_merchant_view` table. [Competitive
     /// visibility](https://support.google.com/merchants/answer/11366442) report with business with highest visibility.
-    /// Values are only set for fields requested explicitly in the request's search query.
+    /// Values are only set for fields requested explicitly in the request's search query. For more information, see
+    /// [Explore your competitive
+    /// landscape](https://developers.google.com/merchant/api/guides/reports/explore-competitive-landscape).
     /// </summary>
     public class CompetitiveVisibilityTopMerchantView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -888,7 +904,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// Error code of the issue, equivalent to the `code` of [Product
-        /// issues](https://developers.google.com/shopping-content/guides/product-issues).
+        /// issues](https://developers.google.com/merchant/api/guides/products/list-products-data-issues).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
@@ -902,7 +918,8 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// links leading to your non-product pages. This includes performance metrics (for example, `clicks`) and
     /// dimensions according to which performance metrics are segmented (for example, `date`). Segment fields cannot be
     /// selected in queries without also selecting at least one metric field. Values are only set for fields requested
-    /// explicitly in the request's search query.
+    /// explicitly in the request's search query. For more information, see [Performance
+    /// reports](https://developers.google.com/merchant/api/guides/reports/performance-reports).
     /// </summary>
     public class NonProductPerformanceView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -966,7 +983,8 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// <summary>
     /// Fields available for query in `price_competitiveness_product_view` table. [Price
     /// competitiveness](https://support.google.com/merchants/answer/9626903) report. Values are only set for fields
-    /// requested explicitly in the request's search query.
+    /// requested explicitly in the request's search query. For more information, see [Understand the
+    /// market](https://developers.google.com/merchant/api/guides/reports/understand-the-market).
     /// </summary>
     public class PriceCompetitivenessProductView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1080,7 +1098,8 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// <summary>
     /// Fields available for query in `price_insights_product_view` table. [Price
     /// insights](https://support.google.com/merchants/answer/11916926) report. Values are only set for fields requested
-    /// explicitly in the request's search query.
+    /// explicitly in the request's search query. For more information, see [Understand the
+    /// market](https://developers.google.com/merchant/api/guides/reports/understand-the-market).
     /// </summary>
     public class PriceInsightsProductView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1251,7 +1270,9 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// including performance metrics (for example, `clicks`) and dimensions according to which performance metrics are
     /// segmented (for example, `offer_id`). Values of product dimensions, such as `offer_id`, reflect the state of a
     /// product at the time of the impression. Segment fields cannot be selected in queries without also selecting at
-    /// least one metric field. Values are only set for fields requested explicitly in the request's search query.
+    /// least one metric field. Values are only set for fields requested explicitly in the request's search query. For
+    /// more information, see [Performance
+    /// reports](https://developers.google.com/merchant/api/guides/reports/performance-reports).
     /// </summary>
     public class ProductPerformanceView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1261,7 +1282,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product category (1st
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in Google's product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL1")]
@@ -1269,7 +1290,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product category (2nd
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in Google's product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL2")]
@@ -1277,7 +1298,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product category (3rd
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in Google's product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL3")]
@@ -1285,7 +1306,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product category (4th
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in Google's product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL4")]
@@ -1293,7 +1314,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product category (5th
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in Google's product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL5")]
@@ -1385,7 +1406,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product type (1st
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in merchant's own product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL1")]
@@ -1393,7 +1414,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product type (2nd
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in merchant's own product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL2")]
@@ -1401,7 +1422,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product type (3rd
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in merchant's own product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL3")]
@@ -1409,7 +1430,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product type (4th
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in merchant's own product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL4")]
@@ -1417,7 +1438,7 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// [Product type (5th
-        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// level)](https://developers.google.com/merchant/api/guides/reports/performance-reports#category_and_product_type)
         /// in merchant's own product taxonomy. Segment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL5")]
@@ -1444,7 +1465,11 @@ namespace Google.Apis.Merchant.reports_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
@@ -1571,7 +1596,8 @@ namespace Google.Apis.Merchant.reports_v1.Data
     /// product attributes from Products sub-API are available for query in this table. In contrast to Products sub-API,
     /// this table allows to filter the returned list of products by product attributes. To retrieve a single product by
     /// `id` or list all products, Products sub-API should be used. Values are only set for fields requested explicitly
-    /// in the request's search query.
+    /// in the request's search query. For more information, see [Evaluate your
+    /// products](https://developers.google.com/merchant/api/guides/reports/evaluate-products).
     /// </summary>
     public class ProductView : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1796,7 +1822,9 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
     /// <summary>
     /// Result row returned from the search query. Only the message corresponding to the queried table is populated in
-    /// the response. Within the populated message, only the fields requested explicitly in the query are populated.
+    /// the response. Within the populated message, only the fields requested explicitly in the query are populated. For
+    /// more information, see [Reports overview](https://developers.google.com/merchant/api/guides/reports/overview) and
+    /// [Use Merchant Center Query Language](https://developers.google.com/merchant/api/guides/reports/query-language).
     /// </summary>
     public class ReportRow : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1864,8 +1892,8 @@ namespace Google.Apis.Merchant.reports_v1.Data
 
         /// <summary>
         /// Required. Query that defines a report to be retrieved. For details on how to construct your query, see the
-        /// [Query Language guide](/merchant/api/guides/reports/query-language). For the full list of available tables
-        /// and fields, see the Available fields.
+        /// [Query Language guide](https://developers.google.com/merchant/api/guides/reports/query-language). For the
+        /// full list of available tables and fields, see the Available fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
