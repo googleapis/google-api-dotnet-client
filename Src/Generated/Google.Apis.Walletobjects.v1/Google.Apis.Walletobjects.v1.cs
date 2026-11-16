@@ -7818,7 +7818,9 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on
-        /// smaller screens.
+        /// smaller screens. Ignored if `localizedIssuerName` is set, including when a patch request sets only this
+        /// field. To change the issuer name of a class that has `localizedIssuerName`, update `localizedIssuerName`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerName")]
         public virtual string IssuerName { get; set; }
@@ -7837,7 +7839,7 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is
-        /// displayed on smaller screens.
+        /// displayed on smaller screens. If set, this field takes precedence over `issuerName`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizedIssuerName")]
         public virtual LocalizedString LocalizedIssuerName { get; set; }
@@ -8514,7 +8516,9 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on
-        /// smaller screens.
+        /// smaller screens. Ignored if `localizedIssuerName` is set, including when a patch request sets only this
+        /// field. To change the issuer name of a class that has `localizedIssuerName`, update `localizedIssuerName`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerName")]
         public virtual string IssuerName { get; set; }
@@ -8606,7 +8610,7 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is
-        /// displayed on smaller screens.
+        /// displayed on smaller screens. If set, this field takes precedence over `issuerName`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizedIssuerName")]
         public virtual LocalizedString LocalizedIssuerName { get; set; }
@@ -9508,7 +9512,9 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on
-        /// smaller screens.
+        /// smaller screens. Ignored if `localizedIssuerName` is set, including when a patch request sets only this
+        /// field. To change the issuer name of a class that has `localizedIssuerName`, update `localizedIssuerName`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerName")]
         public virtual string IssuerName { get; set; }
@@ -9535,7 +9541,7 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is
-        /// displayed on smaller screens.
+        /// displayed on smaller screens. If set, this field takes precedence over `issuerName`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizedIssuerName")]
         public virtual LocalizedString LocalizedIssuerName { get; set; }
@@ -10443,7 +10449,9 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on
-        /// smaller screens.
+        /// smaller screens. Ignored if `localizedIssuerName` is set, including when a patch request sets only this
+        /// field. To change the issuer name of a class that has `localizedIssuerName`, update `localizedIssuerName`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerName")]
         public virtual string IssuerName { get; set; }
@@ -10476,7 +10484,7 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is
-        /// displayed on smaller screens.
+        /// displayed on smaller screens. If set, this field takes precedence over `issuerName`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizedIssuerName")]
         public virtual LocalizedString LocalizedIssuerName { get; set; }
@@ -11480,7 +11488,9 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on
-        /// smaller screens.
+        /// smaller screens. Ignored if `localizedIssuerName` is set, including when a patch request sets only this
+        /// field. To change the issuer name of a class that has `localizedIssuerName`, update `localizedIssuerName`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerName")]
         public virtual string IssuerName { get; set; }
@@ -11507,7 +11517,7 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is
-        /// displayed on smaller screens.
+        /// displayed on smaller screens. If set, this field takes precedence over `issuerName`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizedIssuerName")]
         public virtual LocalizedString LocalizedIssuerName { get; set; }
@@ -12842,7 +12852,9 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on
-        /// smaller screens.
+        /// smaller screens. Ignored if `localizedIssuerName` is set, including when a patch request sets only this
+        /// field. To change the issuer name of a class that has `localizedIssuerName`, update `localizedIssuerName`
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerName")]
         public virtual string IssuerName { get; set; }
@@ -12862,7 +12874,7 @@ namespace Google.Apis.Walletobjects.v1.Data
 
         /// <summary>
         /// Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is
-        /// displayed on smaller screens.
+        /// displayed on smaller screens. If set, this field takes precedence over `issuerName`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localizedIssuerName")]
         public virtual LocalizedString LocalizedIssuerName { get; set; }
