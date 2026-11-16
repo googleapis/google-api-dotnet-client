@@ -1119,6 +1119,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disclosureDate")]
         public virtual string DisclosureDate { get; set; }
 
+        /// <summary>Optional. URLs of PDF documents for the product, such as user manuals or specifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentLink")]
+        public virtual System.Collections.Generic.IList<string> DocumentLink { get; set; }
+
         /// <summary>
         /// A list of excluded destinations such as "ClientExport", "ClientShoppingCatalog" or "PartnerShoppingCatalog".
         /// For more information, see https://support.google.com/manufacturers/answer/7443550
@@ -1197,6 +1201,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemGroupId")]
         public virtual string ItemGroupId { get; set; }
 
+        /// <summary>Optional. The shared title of the product group that this variant belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemGroupTitle")]
+        public virtual string ItemGroupTitle { get; set; }
+
         /// <summary>
         /// The material of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#material.
@@ -1223,6 +1231,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
+
+        /// <summary>Optional. The popularity rank of the product from 0.0 (lowest) to 100.0 (highest).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("popularityRank")]
+        public virtual System.Nullable<double> PopularityRank { get; set; }
 
         /// <summary>
         /// The details of the product. For more information, see
@@ -1264,6 +1276,14 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productType")]
         public virtual System.Collections.Generic.IList<string> ProductType { get; set; }
+
+        /// <summary>Optional. Frequently asked questions and answers about the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("questionAndAnswer")]
+        public virtual System.Collections.Generic.IList<QuestionAndAnswer> QuestionAndAnswer { get; set; }
+
+        /// <summary>Optional. Products related to this product, such as accessories or substitutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedProduct")]
+        public virtual System.Collections.Generic.IList<RelatedProduct> RelatedProduct { get; set; }
 
         /// <summary>
         /// The release date of the product. For more information, see
@@ -1334,6 +1354,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
+        /// <summary>Optional. The list of all variant-identifying options for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantOption")]
+        public virtual System.Collections.Generic.IList<VariantOption> VariantOption { get; set; }
+
         /// <summary>
         /// The videos of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#video.
@@ -1377,6 +1401,21 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>Optional. A unique code to identify the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        /// <summary>
+        /// Optional. A URL to the certification fiche. For example:
+        /// https://eprel.ec.europa.eu/fiches/smartphonestablets20231669/Fiche_2556297_EN.pdf In case of multiple
+        /// languages, the English version is preferred.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentLink")]
+        public virtual string DocumentLink { get; set; }
+
+        /// <summary>
+        /// Optional. A URL to the certification label. For example:
+        /// https://eprel.ec.europa.eu/labels/smartphonestablets20231669/Label_2556297.pdf
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelLink")]
+        public virtual string LabelLink { get; set; }
 
         /// <summary>Optional. A URL link to the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
@@ -1507,6 +1546,20 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>Optional. A unique code to identify the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        /// <summary>
+        /// Optional. A URL to the (English if &amp;gt;1 language) certification fiche. For example:
+        /// https://eprel.ec.europa.eu/fiches/smartphonestablets20231669/Fiche_2556297_EN.pdf
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentLink")]
+        public virtual string DocumentLink { get; set; }
+
+        /// <summary>
+        /// Optional. A URL to the certification label. For example:
+        /// https://eprel.ec.europa.eu/labels/smartphonestablets20231669/Label_2556297.pdf
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelLink")]
+        public virtual string LabelLink { get; set; }
 
         /// <summary>Optional. A URL link to the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
@@ -2036,6 +2089,58 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>A short section name that can be reused between multiple product details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionName")]
         public virtual string SectionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A question and answer about the product.</summary>
+    public class QuestionAndAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The answer text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>Required. The question text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A product related to this product.</summary>
+    public class RelatedProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The identifier of the related product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identifier")]
+        public virtual string Identifier { get; set; }
+
+        /// <summary>Required. The identifier type of the related product, such as "GTIN" or "ID".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identifierType")]
+        public virtual string IdentifierType { get; set; }
+
+        /// <summary>
+        /// Required. The relationship to the related product, such as "ACCESSORY", "PART_OF_SET", "REQUIRED_PART",
+        /// "OFTEN_BOUGHT_WITH", "SUBSTITUTE", or "DIFFERENT_BRAND".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipType")]
+        public virtual string RelationshipType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A variant-identifying option for the product.</summary>
+    public class VariantOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the variant option, such as "Color" or "Watch band style".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The value of the variant option, such as "Red" or "Milanese loop".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
