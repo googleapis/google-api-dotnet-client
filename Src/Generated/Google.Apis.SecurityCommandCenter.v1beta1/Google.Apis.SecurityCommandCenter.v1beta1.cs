@@ -8840,6 +8840,94 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudSecuritycenterV2RuntimeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("evidence")]
+        public virtual string Evidence { get; set; }
+
+        private string _firstObservedTimeRaw;
+
+        private object _firstObservedTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("firstObservedTime")]
+        public virtual string FirstObservedTimeRaw
+        {
+            get => _firstObservedTimeRaw;
+            set
+            {
+                _firstObservedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstObservedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstObservedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstObservedTimeDateTimeOffset instead.")]
+        public virtual object FirstObservedTime
+        {
+            get => _firstObservedTime;
+            set
+            {
+                _firstObservedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstObservedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstObservedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstObservedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstObservedTimeRaw);
+            set => FirstObservedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("impact")]
+        public virtual string Impact { get; set; }
+
+        private string _lastObservedTimeRaw;
+
+        private object _lastObservedTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lastObservedTime")]
+        public virtual string LastObservedTimeRaw
+        {
+            get => _lastObservedTimeRaw;
+            set
+            {
+                _lastObservedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastObservedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastObservedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastObservedTimeDateTimeOffset instead.")]
+        public virtual object LastObservedTime
+        {
+            get => _lastObservedTime;
+            set
+            {
+                _lastObservedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastObservedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastObservedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastObservedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastObservedTimeRaw);
+            set => LastObservedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleCloudSecuritycenterV2Secret : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariable")]
@@ -9226,6 +9314,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("reachable")]
         public virtual System.Nullable<bool> Reachable { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeInfo")]
+        public virtual GoogleCloudSecuritycenterV2RuntimeInfo RuntimeInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("securityBulletin")]
         public virtual GoogleCloudSecuritycenterV2SecurityBulletin SecurityBulletin { get; set; }
@@ -10259,6 +10350,94 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class RuntimeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("evidence")]
+        public virtual string Evidence { get; set; }
+
+        private string _firstObservedTimeRaw;
+
+        private object _firstObservedTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("firstObservedTime")]
+        public virtual string FirstObservedTimeRaw
+        {
+            get => _firstObservedTimeRaw;
+            set
+            {
+                _firstObservedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstObservedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstObservedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstObservedTimeDateTimeOffset instead.")]
+        public virtual object FirstObservedTime
+        {
+            get => _firstObservedTime;
+            set
+            {
+                _firstObservedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstObservedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstObservedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstObservedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FirstObservedTimeRaw);
+            set => FirstObservedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("impact")]
+        public virtual string Impact { get; set; }
+
+        private string _lastObservedTimeRaw;
+
+        private object _lastObservedTime;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lastObservedTime")]
+        public virtual string LastObservedTimeRaw
+        {
+            get => _lastObservedTimeRaw;
+            set
+            {
+                _lastObservedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastObservedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastObservedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastObservedTimeDateTimeOffset instead.")]
+        public virtual object LastObservedTime
+        {
+            get => _lastObservedTime;
+            set
+            {
+                _lastObservedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastObservedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastObservedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastObservedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastObservedTimeRaw);
+            set => LastObservedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Secret : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariable")]
@@ -10759,6 +10938,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("reachable")]
         public virtual System.Nullable<bool> Reachable { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeInfo")]
+        public virtual RuntimeInfo RuntimeInfo { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("securityBulletin")]
         public virtual SecurityBulletin SecurityBulletin { get; set; }
