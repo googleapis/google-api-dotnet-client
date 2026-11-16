@@ -423,7 +423,9 @@ namespace Google.Apis.Merchant.issueresolution_v1
 
         /// <summary>
         /// Provide a list of business's account issues with an issue resolution content and available actions. This
-        /// content and actions are meant to be rendered and shown in third-party applications.
+        /// content and actions are meant to be rendered and shown in third-party applications. For more information,
+        /// see [Display issues and solutions to
+        /// businesses](https://developers.google.com/merchant/api/guides/accounts/render-issues).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The account to fetch issues for. Format: `accounts/{account}`</param>
@@ -434,7 +436,9 @@ namespace Google.Apis.Merchant.issueresolution_v1
 
         /// <summary>
         /// Provide a list of business's account issues with an issue resolution content and available actions. This
-        /// content and actions are meant to be rendered and shown in third-party applications.
+        /// content and actions are meant to be rendered and shown in third-party applications. For more information,
+        /// see [Display issues and solutions to
+        /// businesses](https://developers.google.com/merchant/api/guides/accounts/render-issues).
         /// </summary>
         public class RenderaccountissuesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.issueresolution_v1.Data.RenderAccountIssuesResponse>
         {
@@ -512,7 +516,9 @@ namespace Google.Apis.Merchant.issueresolution_v1
 
         /// <summary>
         /// Provide a list of issues for business's product with an issue resolution content and available actions. This
-        /// content and actions are meant to be rendered and shown in third-party applications.
+        /// content and actions are meant to be rendered and shown in third-party applications. For more information,
+        /// see [Display issues and solutions to
+        /// businesses](https://developers.google.com/merchant/api/guides/accounts/render-issues).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -541,7 +547,9 @@ namespace Google.Apis.Merchant.issueresolution_v1
 
         /// <summary>
         /// Provide a list of issues for business's product with an issue resolution content and available actions. This
-        /// content and actions are meant to be rendered and shown in third-party applications.
+        /// content and actions are meant to be rendered and shown in third-party applications. For more information,
+        /// see [Display issues and solutions to
+        /// businesses](https://developers.google.com/merchant/api/guides/accounts/render-issues).
         /// </summary>
         public class RenderproductissuesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.issueresolution_v1.Data.RenderProductIssuesResponse>
         {
@@ -644,7 +652,9 @@ namespace Google.Apis.Merchant.issueresolution_v1
         /// issue/question?" to get access to this feature. The action can be successfully started only once all
         /// `required` inputs are provided. If any `required` input is missing, or invalid value was provided, the
         /// service will return 400 error. Validation errors will contain Ids for all problematic field together with
-        /// translated, human readable error messages that can be shown to the user.
+        /// translated, human readable error messages that can be shown to the user. For more information, see [Display
+        /// issues and solutions to
+        /// businesses](https://developers.google.com/merchant/api/guides/accounts/render-issues).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -664,7 +674,9 @@ namespace Google.Apis.Merchant.issueresolution_v1
         /// issue/question?" to get access to this feature. The action can be successfully started only once all
         /// `required` inputs are provided. If any `required` input is missing, or invalid value was provided, the
         /// service will return 400 error. Validation errors will contain Ids for all problematic field together with
-        /// translated, human readable error messages that can be shown to the user.
+        /// translated, human readable error messages that can be shown to the user. For more information, see [Display
+        /// issues and solutions to
+        /// businesses](https://developers.google.com/merchant/api/guides/accounts/render-issues).
         /// </summary>
         public class TriggeractionRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.issueresolution_v1.Data.TriggerActionResponse>
         {
@@ -862,7 +874,10 @@ namespace Google.Apis.Merchant.issueresolution_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Aggregate product statuses for a given reporting context and country.</summary>
+    /// <summary>
+    /// Aggregate product statuses for a given reporting context and country. For more information, see [View Aggregate
+    /// Product Statuses](https://developers.google.com/merchant/api/guides/accounts/aggregate-product-statuses).
+    /// </summary>
     public class AggregateProductStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1286,7 +1301,11 @@ namespace Google.Apis.Merchant.issueresolution_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
@@ -1505,7 +1524,10 @@ namespace Google.Apis.Merchant.issueresolution_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An issue affecting specific business or their product.</summary>
+    /// <summary>
+    /// An issue affecting specific business or their product. For more information, see [Display issues and solutions
+    /// to businesses](https://developers.google.com/merchant/api/guides/accounts/render-issues).
+    /// </summary>
     public class RenderedIssue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
