@@ -925,6 +925,14 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identity")]
         public virtual string Identity { get; set; }
 
+        /// <summary>
+        /// Output only. The email address of the Google-owned service account that represents the connection's
+        /// identity. Grant IAM roles to this service account, for example, to let the connection resolve the Service
+        /// Directory service in `AwsProperties.service_directory_service`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountId")]
+        public virtual string ServiceAccountId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -939,6 +947,15 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         /// <summary>Optional. Configuration options for cross-cloud caching of data and metadata files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crossCloudCacheOptions")]
         public virtual CrossCloudCacheOptions CrossCloudCacheOptions { get; set; }
+
+        /// <summary>
+        /// Optional. The Service Directory resource name for routing traffic to AWS over a private network connection
+        /// through Cross-Cloud Interconnect, in the format
+        /// `projects/{project_id}/locations/{location}/namespaces/{namespace_id}/services/{service_id}`. If both this
+        /// field and `s3_service_directory_service` are set, this field takes precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryService")]
+        public virtual string ServiceDirectoryService { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -983,6 +1000,22 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         /// <summary>The URL user will be redirected to after granting consent during connection setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
+
+        /// <summary>
+        /// Output only. The email address of the Google-owned service account that represents the connection's
+        /// identity. Grant IAM roles to this service account, for example, to let the connection resolve the Service
+        /// Directory service in `AzureProperties.service_directory_service`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountId")]
+        public virtual string ServiceAccountId { get; set; }
+
+        /// <summary>
+        /// Optional. The service directory resource name for routing traffic over a private network connection through
+        /// Cross-Cloud Interconnect, in the format
+        /// `projects/{project_id}/locations/{location}/namespaces/{namespace_id}/services/{service_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryService")]
+        public virtual string ServiceDirectoryService { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
