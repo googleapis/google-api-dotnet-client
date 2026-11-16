@@ -3185,7 +3185,11 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// <summary>Required information for every language.</summary>
     public class CommonLanguageSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The destination where API teams want this client library to be published.</summary>
+        /// <summary>
+        /// Deprecated: Client libraries are published for all supported languages by default when a `library_settings`
+        /// entry is present with a `version` and `launch_stage`. The destination where API teams want this client
+        /// library to be published.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
 
@@ -3347,13 +3351,6 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedLocations")]
         public virtual System.Collections.Generic.IList<string> SupportedLocations { get; set; }
-
-        /// <summary>
-        /// Indicates the traffic type attribution for this quota limit (e.g. agentic). This is an informational field
-        /// used to categorize and filter the quota limits.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trafficSource")]
-        public virtual string TrafficSource { get; set; }
 
         /// <summary>
         /// The limit unit. An example unit would be `1/{project}/{region}` Note that `{project}` and `{region}` are not
