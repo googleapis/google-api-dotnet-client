@@ -1426,8 +1426,8 @@ namespace Google.Apis.Backupdr.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The current etag of the AutoProtectionPolicy. If an etag is provided and does not match the
-                    /// current etag of the connection, the request will be rejected with an ABORTED error.
+                    /// Optional. The current etag of the AutoProtectionPolicy. If an etag is provided and does not
+                    /// match the current etag of the connection, the request will be rejected with an ABORTED error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -9299,8 +9299,7 @@ namespace Google.Apis.Backupdr.v1beta.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Output only. The etag for the binding. If this is provided on update, it must match the server's
-        /// etag.
+        /// Output only. The etag for the binding. If this is provided on update, it must match the server's etag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -11061,16 +11060,16 @@ namespace Google.Apis.Backupdr.v1beta.Data
         }
 
         /// <summary>
-        /// Identifier. The resource name of the `BindingMatchingResource`. Format:
+        /// Output only. Identifier. The resource name of the `BindingMatchingResource`. Format:
         /// `projects/{project}/locations/{location}/autoProtectionPolicies/{auto_protection_policy}/bindings/{binding}/matchingResources/{matching_resource}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Resource name of the workload that matches the criteria of the binding. The format can
-        /// be either a relative resource name (e.g., `projects/my-project/zones/us-central1-a/instances/my-instance`)
-        /// or a schemeless full resource name (e.g.,
+        /// Output only. Resource name of the workload that matches the criteria of the binding. The format can be
+        /// either a relative resource name (e.g., `projects/my-project/zones/us-central1-a/instances/my-instance`) or a
+        /// schemeless full resource name (e.g.,
         /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
@@ -13600,7 +13599,7 @@ namespace Google.Apis.Backupdr.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -15600,7 +15599,7 @@ namespace Google.Apis.Backupdr.v1beta.Data
 
     /// <summary>
     /// A `RestoreVerificationPlan` specifies the scheduling and clean-up template for automated restore verification.
-    /// It contains a `RestoreVerificationSchedule` to dictate when the verifications should run, and a `CleanupConfig`
+    /// It contains a `schedule` to dictate when the verifications should run, and a `RestoreVerificationCleanupRule`
     /// for post-verification resource deletion.
     /// </summary>
     public class RestoreVerificationPlan : Google.Apis.Requests.IDirectResponseSchema
@@ -15781,8 +15780,8 @@ namespace Google.Apis.Backupdr.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. Identifier. The resource name of RestoreVerificationPlanAssociation in below format Format :
-        /// projects/{project}/locations/{location}/restoreVerificationPlans/{restore_verification_plan}/associations/{association}
+        /// Output only. Identifier. The resource name of the `RestoreVerificationPlanAssociation`. Format:
+        /// `projects/{project}/locations/{location}/restoreVerificationPlans/{restore_verification_plan}/associations/{association}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
