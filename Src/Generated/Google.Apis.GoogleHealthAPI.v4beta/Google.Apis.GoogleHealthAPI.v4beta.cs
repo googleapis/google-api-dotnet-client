@@ -6061,6 +6061,10 @@ namespace Google.Apis.GoogleHealthAPI.v4beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual ObservationSampleTime SampleTime { get; set; }
 
+        /// <summary>Optional. The type of ovulation test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testType")]
+        public virtual string TestType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
