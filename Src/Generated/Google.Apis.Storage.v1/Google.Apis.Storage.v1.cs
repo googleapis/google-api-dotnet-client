@@ -527,66 +527,7 @@ namespace Google.Apis.Storage.v1
             }
         }
 
-        /// <summary>Pauses an Anywhere Cache instance.</summary>
-        /// <param name="bucket">Name of the parent bucket.</param>
-        /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
-        public virtual PauseRequest Pause(string bucket, string anywhereCacheId)
-        {
-            return new PauseRequest(this.service, bucket, anywhereCacheId);
-        }
-
-        /// <summary>Pauses an Anywhere Cache instance.</summary>
-        public class PauseRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.AnywhereCache>
-        {
-            /// <summary>Constructs a new Pause request.</summary>
-            public PauseRequest(Google.Apis.Services.IClientService service, string bucket, string anywhereCacheId) : base(service)
-            {
-                Bucket = bucket;
-                AnywhereCacheId = anywhereCacheId;
-                InitParameters();
-            }
-
-            /// <summary>Name of the parent bucket.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Bucket { get; private set; }
-
-            /// <summary>The ID of requested Anywhere Cache instance.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("anywhereCacheId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string AnywhereCacheId { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "pause";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "b/{bucket}/anywhereCaches/{anywhereCacheId}/pause";
-
-            /// <summary>Initializes Pause parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "bucket",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("anywhereCacheId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "anywhereCacheId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Resumes a paused or disabled Anywhere Cache instance.</summary>
+        /// <summary>Resumes a disabled Anywhere Cache instance.</summary>
         /// <param name="bucket">Name of the parent bucket.</param>
         /// <param name="anywhereCacheId">The ID of requested Anywhere Cache instance.</param>
         public virtual ResumeRequest Resume(string bucket, string anywhereCacheId)
@@ -594,7 +535,7 @@ namespace Google.Apis.Storage.v1
             return new ResumeRequest(this.service, bucket, anywhereCacheId);
         }
 
-        /// <summary>Resumes a paused or disabled Anywhere Cache instance.</summary>
+        /// <summary>Resumes a disabled Anywhere Cache instance.</summary>
         public class ResumeRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.AnywhereCache>
         {
             /// <summary>Constructs a new Resume request.</summary>
@@ -11409,6 +11350,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
         public virtual string LocationType { get; set; }
 
+        /// <summary>The Rapid Cache configuration for the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rapidCacheInfo")]
+        public virtual RapidCacheInfoData RapidCacheInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
 
@@ -11426,6 +11371,17 @@ namespace Google.Apis.Storage.v1.Data
             /// <summary>When set to true, hierarchical namespace is enabled for this bucket.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
             public virtual System.Nullable<bool> Enabled { get; set; }
+        }
+
+        /// <summary>The Rapid Cache configuration for the bucket.</summary>
+        public class RapidCacheInfoData
+        {
+            /// <summary>
+            /// The type of cache in the bucket. Set to `rapid-cache` or `rapid-cache-ultra`, only if there is a cache
+            /// present.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("cacheType")]
+            public virtual string CacheType { get; set; }
         }
     }
 
@@ -12559,6 +12515,13 @@ namespace Google.Apis.Storage.v1.Data
         }
 
         /// <summary>
+        /// Information about the object's availability in Rapid Cache Ultra (RCU) zonal caches. This field will only
+        /// populate once the object is loaded into the cache.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zonalAvailabilityInfo")]
+        public virtual ZonalAvailabilityInfoData ZonalAvailabilityInfo { get; set; }
+
+        /// <summary>
         /// User-defined or system-defined object contexts. Each object context is a key-payload pair, where the key
         /// provides the identification and the payload holds the associated value and additional metadata.
         /// </summary>
@@ -12622,6 +12585,20 @@ namespace Google.Apis.Storage.v1.Data
                 get => Google.Apis.Util.Utilities.GetDateTimeFromString(RetainUntilTimeRaw);
                 set => RetainUntilTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
+        }
+
+        /// <summary>
+        /// Information about the object's availability in Rapid Cache Ultra (RCU) zonal caches. This field will only
+        /// populate once the object is loaded into the cache.
+        /// </summary>
+        public class ZonalAvailabilityInfoData
+        {
+            /// <summary>
+            /// A list of zones where the object has a zonal copy. The zone names are expected to be in lower-dash case
+            /// format (e.g., 'us-central1-a').
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("availableZones")]
+            public virtual System.Collections.Generic.IList<string> AvailableZones { get; set; }
         }
     }
 
