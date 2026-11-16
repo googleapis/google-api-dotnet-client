@@ -1028,13 +1028,13 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Creates a new WorkforcePoolProviderScimToken in a
+                        /// Gemini Enterprise and Looker only. Creates a new WorkforcePoolProviderScimToken in a
                         /// WorkforcePoolProviderScimTenant. You cannot reuse the name of a deleted SCIM token until 30
                         /// days after deletion.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. Gemini Enterprise only. The parent tenant to create SCIM token. Format:
+                        /// Required. Gemini Enterprise and Looker only. The parent tenant to create SCIM token. Format:
                         /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken body, string parent)
@@ -1043,7 +1043,7 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Creates a new WorkforcePoolProviderScimToken in a
+                        /// Gemini Enterprise and Looker only. Creates a new WorkforcePoolProviderScimToken in a
                         /// WorkforcePoolProviderScimTenant. You cannot reuse the name of a deleted SCIM token until 30
                         /// days after deletion.
                         /// </summary>
@@ -1058,16 +1058,17 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. Gemini Enterprise only. The parent tenant to create SCIM token. Format:
+                            /// Required. Gemini Enterprise and Looker only. The parent tenant to create SCIM token.
+                            /// Format:
                             /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Required. Gemini Enterprise only. The ID to use for the SCIM token, which becomes the
-                            /// final component of the resource name. This value should be 4-32 characters and follow
-                            /// the pattern: `([a-z]([a-z0-9\\-]{2,30}[a-z0-9]))`
+                            /// Required. Gemini Enterprise and Looker only. The ID to use for the SCIM token, which
+                            /// becomes the final component of the resource name. This value should be 4-32 characters
+                            /// and follow the pattern: `([a-z]([a-z0-9\\-]{2,30}[a-z0-9]))`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderScimTokenId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string WorkforcePoolProviderScimTokenId { get; set; }
@@ -1111,12 +1112,12 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Deletes a WorkforcePoolProviderScimToken. You can undelete a SCIM
-                        /// token for 30 days. After 30 days, the SCIM token is permanently deleted. You cannot update
-                        /// deleted SCIM tokens, however, you can view and list them.
+                        /// Gemini Enterprise and Looker only. Deletes a WorkforcePoolProviderScimToken. You can
+                        /// undelete a SCIM token for 30 days. After 30 days, the SCIM token is permanently deleted. You
+                        /// cannot update deleted SCIM tokens, however, you can view and list them.
                         /// </summary>
                         /// <param name="name">
-                        /// Required. Gemini Enterprise only. The name of the SCIM token to delete. Format:
+                        /// Required. Gemini Enterprise and Looker only. The name of the SCIM token to delete. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
@@ -1125,9 +1126,9 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Deletes a WorkforcePoolProviderScimToken. You can undelete a SCIM
-                        /// token for 30 days. After 30 days, the SCIM token is permanently deleted. You cannot update
-                        /// deleted SCIM tokens, however, you can view and list them.
+                        /// Gemini Enterprise and Looker only. Deletes a WorkforcePoolProviderScimToken. You can
+                        /// undelete a SCIM token for 30 days. After 30 days, the SCIM token is permanently deleted. You
+                        /// cannot update deleted SCIM tokens, however, you can view and list them.
                         /// </summary>
                         public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
                         {
@@ -1139,7 +1140,8 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. Gemini Enterprise only. The name of the SCIM token to delete. Format:
+                            /// Required. Gemini Enterprise and Looker only. The name of the SCIM token to delete.
+                            /// Format:
                             /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1170,10 +1172,10 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Gets an individual WorkforcePoolProviderScimToken.
+                        /// Gemini Enterprise and Looker only. Gets an individual WorkforcePoolProviderScimToken.
                         /// </summary>
                         /// <param name="name">
-                        /// Required. Gemini Enterprise only. The name of the SCIM token to retrieve. Format:
+                        /// Required. Gemini Enterprise and Looker only. The name of the SCIM token to retrieve. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                         /// </param>
                         public virtual GetRequest Get(string name)
@@ -1182,7 +1184,7 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Gets an individual WorkforcePoolProviderScimToken.
+                        /// Gemini Enterprise and Looker only. Gets an individual WorkforcePoolProviderScimToken.
                         /// </summary>
                         public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
                         {
@@ -1194,7 +1196,8 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. Gemini Enterprise only. The name of the SCIM token to retrieve. Format:
+                            /// Required. Gemini Enterprise and Looker only. The name of the SCIM token to retrieve.
+                            /// Format:
                             /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}/tokens/{token}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1225,12 +1228,12 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Lists all non-deleted WorkforcePoolProviderScimTokenss in a
-                        /// WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then deleted SCIM
+                        /// Gemini Enterprise and Looker only. Lists all non-deleted WorkforcePoolProviderScimTokenss in
+                        /// a WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then deleted SCIM
                         /// tokens are also listed.
                         /// </summary>
                         /// <param name="parent">
-                        /// Required. Gemini Enterprise only. The parent to list SCIM tokens. Format:
+                        /// Required. Gemini Enterprise and Looker only. The parent to list SCIM tokens. Format:
                         /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -1239,8 +1242,8 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Lists all non-deleted WorkforcePoolProviderScimTokenss in a
-                        /// WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then deleted SCIM
+                        /// Gemini Enterprise and Looker only. Lists all non-deleted WorkforcePoolProviderScimTokenss in
+                        /// a WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then deleted SCIM
                         /// tokens are also listed.
                         /// </summary>
                         public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListWorkforcePoolProviderScimTokensResponse>
@@ -1253,21 +1256,21 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Required. Gemini Enterprise only. The parent to list SCIM tokens. Format:
+                            /// Required. Gemini Enterprise and Looker only. The parent to list SCIM tokens. Format:
                             /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}'
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Optional. Gemini Enterprise only. The maximum number of SCIM tokens to return. If
-                            /// unspecified, at most 2 SCIM tokens will be returned.
+                            /// Optional. Gemini Enterprise and Looker only. The maximum number of SCIM tokens to
+                            /// return. If unspecified, at most 2 SCIM tokens will be returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// Optional. Gemini Enterprise only. A page token, received from a previous
+                            /// Optional. Gemini Enterprise and Looker only. A page token, received from a previous
                             /// `ListWorkforcePoolProviderScimTokens` call. Provide this to retrieve the subsequent
                             /// page.
                             /// </summary>
@@ -1275,7 +1278,7 @@ namespace Google.Apis.Iam.v1
                             public virtual string PageToken { get; set; }
 
                             /// <summary>
-                            /// Optional. Gemini Enterprise only. Whether to return soft-deleted SCIM tokens.
+                            /// Optional. Gemini Enterprise and Looker only. Whether to return soft-deleted SCIM tokens.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -1329,11 +1332,11 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Updates an existing WorkforcePoolProviderScimToken.
+                        /// Gemini Enterprise and Looker only. Updates an existing WorkforcePoolProviderScimToken.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Identifier. Gemini Enterprise only. The resource name of the SCIM Token. Format:
+                        /// Identifier. Gemini Enterprise and Looker only. The resource name of the SCIM Token. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/
                         /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
                         /// </param>
@@ -1343,7 +1346,7 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Gemini Enterprise only. Updates an existing WorkforcePoolProviderScimToken.
+                        /// Gemini Enterprise and Looker only. Updates an existing WorkforcePoolProviderScimToken.
                         /// </summary>
                         public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimToken>
                         {
@@ -1356,14 +1359,16 @@ namespace Google.Apis.Iam.v1
                             }
 
                             /// <summary>
-                            /// Identifier. Gemini Enterprise only. The resource name of the SCIM Token. Format:
-                            /// `locations/{location}/workforcePools/{workforce_pool}/providers/
+                            /// Identifier. Gemini Enterprise and Looker only. The resource name of the SCIM Token.
+                            /// Format: `locations/{location}/workforcePools/{workforce_pool}/providers/
                             /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>Optional. Gemini Enterprise only. The list of fields to update.</summary>
+                            /// <summary>
+                            /// Optional. Gemini Enterprise and Looker only. The list of fields to update.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
 
@@ -1407,13 +1412,13 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Gemini Enterprise only. Creates a new WorkforcePoolProviderScimTenant in a
+                    /// Gemini Enterprise and Looker only. Creates a new WorkforcePoolProviderScimTenant in a
                     /// WorkforcePoolProvider. You cannot reuse the name of a deleted SCIM tenant until 30 days after
                     /// deletion.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. Gemini Enterprise only. The parent to create SCIM tenant. Format:
+                    /// Required. Gemini Enterprise and Looker only. The parent to create SCIM tenant. Format:
                     /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant body, string parent)
@@ -1422,7 +1427,7 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Gemini Enterprise only. Creates a new WorkforcePoolProviderScimTenant in a
+                    /// Gemini Enterprise and Looker only. Creates a new WorkforcePoolProviderScimTenant in a
                     /// WorkforcePoolProvider. You cannot reuse the name of a deleted SCIM tenant until 30 days after
                     /// deletion.
                     /// </summary>
@@ -1437,16 +1442,16 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. Gemini Enterprise only. The parent to create SCIM tenant. Format:
+                        /// Required. Gemini Enterprise and Looker only. The parent to create SCIM tenant. Format:
                         /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Required. Gemini Enterprise only. The ID to use for the SCIM tenant, which becomes the final
-                        /// component of the resource name. This value should be 4-32 characters, containing the
-                        /// characters `[a-z0-9-]`.
+                        /// Required. Gemini Enterprise and Looker only. The ID to use for the SCIM tenant, which
+                        /// becomes the final component of the resource name. This value should be 4-32 characters,
+                        /// containing the characters `[a-z0-9-]`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("workforcePoolProviderScimTenantId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string WorkforcePoolProviderScimTenantId { get; set; }
@@ -1490,12 +1495,12 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Gemini Enterprise only. Deletes a WorkforcePoolProviderScimTenant. You can undelete a SCIM
-                    /// tenant for 30 days. After 30 days, deletion is permanent. You cannot update deleted SCIM
+                    /// Gemini Enterprise and Looker only. Deletes a WorkforcePoolProviderScimTenant. You can undelete a
+                    /// SCIM tenant for 30 days. After 30 days, deletion is permanent. You cannot update deleted SCIM
                     /// tenants. However, you can view and list them.
                     /// </summary>
                     /// <param name="name">
-                    /// Required. Gemini Enterprise only. The name of the SCIM tenant to delete. Format:
+                    /// Required. Gemini Enterprise and Looker only. The name of the SCIM tenant to delete. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
@@ -1504,8 +1509,8 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Gemini Enterprise only. Deletes a WorkforcePoolProviderScimTenant. You can undelete a SCIM
-                    /// tenant for 30 days. After 30 days, deletion is permanent. You cannot update deleted SCIM
+                    /// Gemini Enterprise and Looker only. Deletes a WorkforcePoolProviderScimTenant. You can undelete a
+                    /// SCIM tenant for 30 days. After 30 days, deletion is permanent. You cannot update deleted SCIM
                     /// tenants. However, you can view and list them.
                     /// </summary>
                     public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
@@ -1518,7 +1523,7 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. Gemini Enterprise only. The name of the SCIM tenant to delete. Format:
+                        /// Required. Gemini Enterprise and Looker only. The name of the SCIM tenant to delete. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1562,9 +1567,11 @@ namespace Google.Apis.Iam.v1
                         }
                     }
 
-                    /// <summary>Gemini Enterprise only. Gets an individual WorkforcePoolProviderScimTenant.</summary>
+                    /// <summary>
+                    /// Gemini Enterprise and Looker only. Gets an individual WorkforcePoolProviderScimTenant.
+                    /// </summary>
                     /// <param name="name">
-                    /// Required. Gemini Enterprise only. The name of the SCIM tenant to retrieve. Format:
+                    /// Required. Gemini Enterprise and Looker only. The name of the SCIM tenant to retrieve. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                     /// </param>
                     public virtual GetRequest Get(string name)
@@ -1572,7 +1579,9 @@ namespace Google.Apis.Iam.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gemini Enterprise only. Gets an individual WorkforcePoolProviderScimTenant.</summary>
+                    /// <summary>
+                    /// Gemini Enterprise and Looker only. Gets an individual WorkforcePoolProviderScimTenant.
+                    /// </summary>
                     public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -1583,7 +1592,8 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. Gemini Enterprise only. The name of the SCIM tenant to retrieve. Format:
+                        /// Required. Gemini Enterprise and Looker only. The name of the SCIM tenant to retrieve.
+                        /// Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1675,12 +1685,12 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Gemini Enterprise only. Lists all non-deleted WorkforcePoolProviderScimTenants in a
+                    /// Gemini Enterprise and Looker only. Lists all non-deleted WorkforcePoolProviderScimTenants in a
                     /// WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted SCIM tenants are also
                     /// listed.
                     /// </summary>
                     /// <param name="parent">
-                    /// Required. Gemini Enterprise only. The parent to list SCIM tenants. Format:
+                    /// Required. Gemini Enterprise and Looker only. The parent to list SCIM tenants. Format:
                     /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -1689,7 +1699,7 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Gemini Enterprise only. Lists all non-deleted WorkforcePoolProviderScimTenants in a
+                    /// Gemini Enterprise and Looker only. Lists all non-deleted WorkforcePoolProviderScimTenants in a
                     /// WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted SCIM tenants are also
                     /// listed.
                     /// </summary>
@@ -1703,29 +1713,29 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. Gemini Enterprise only. The parent to list SCIM tenants. Format:
+                        /// Required. Gemini Enterprise and Looker only. The parent to list SCIM tenants. Format:
                         /// 'locations/{location}/workforcePools/{workforce_pool}/providers/{provider}'
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Gemini Enterprise only. The maximum number of SCIM tenants to return. If
-                        /// unspecified, at most 50 SCIM tenants will be returned. The maximum value is 100; values
+                        /// Optional. Gemini Enterprise and Looker only. The maximum number of SCIM tenants to return.
+                        /// If unspecified, at most 50 SCIM tenants will be returned. The maximum value is 100; values
                         /// above 100 are truncated to 100.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Optional. Gemini Enterprise only. A page token, received from a previous `ListScimTenants`
-                        /// call. Provide this to retrieve the subsequent page.
+                        /// Optional. Gemini Enterprise and Looker only. A page token, received from a previous
+                        /// `ListScimTenants` call. Provide this to retrieve the subsequent page.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
                         /// <summary>
-                        /// Optional. Gemini Enterprise only. Whether to return soft-deleted SCIM tenants.
+                        /// Optional. Gemini Enterprise and Looker only. Whether to return soft-deleted SCIM tenants.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -1778,10 +1788,12 @@ namespace Google.Apis.Iam.v1
                         }
                     }
 
-                    /// <summary>Gemini Enterprise only. Updates an existing WorkforcePoolProviderScimTenant.</summary>
+                    /// <summary>
+                    /// Gemini Enterprise and Looker only. Updates an existing WorkforcePoolProviderScimTenant.
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Identifier. Gemini Enterprise only. The resource name of the SCIM Tenant. Format:
+                    /// Identifier. Gemini Enterprise and Looker only. The resource name of the SCIM Tenant. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool}/providers/
                     /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
                     /// </param>
@@ -1790,7 +1802,9 @@ namespace Google.Apis.Iam.v1
                         return new PatchRequest(this.service, body, name);
                     }
 
-                    /// <summary>Gemini Enterprise only. Updates an existing WorkforcePoolProviderScimTenant.</summary>
+                    /// <summary>
+                    /// Gemini Enterprise and Looker only. Updates an existing WorkforcePoolProviderScimTenant.
+                    /// </summary>
                     public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -1802,14 +1816,16 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Identifier. Gemini Enterprise only. The resource name of the SCIM Tenant. Format:
+                        /// Identifier. Gemini Enterprise and Looker only. The resource name of the SCIM Tenant. Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/
                         /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>Optional. Gemini Enterprise only. The list of fields to update.</summary>
+                        /// <summary>
+                        /// Optional. Gemini Enterprise and Looker only. The list of fields to update.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
 
@@ -1980,12 +1996,12 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Gemini Enterprise only. Undeletes a WorkforcePoolProviderScimTenant, that was deleted fewer than
-                    /// 30 days ago.
+                    /// Gemini Enterprise and Looker only. Undeletes a WorkforcePoolProviderScimTenant, that was deleted
+                    /// fewer than 30 days ago.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. Gemini Enterprise only. The name of the SCIM tenant to undelete. Format:
+                    /// Required. Gemini Enterprise and Looker only. The name of the SCIM tenant to undelete. Format:
                     /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                     /// </param>
                     public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteWorkforcePoolProviderScimTenantRequest body, string name)
@@ -1994,8 +2010,8 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Gemini Enterprise only. Undeletes a WorkforcePoolProviderScimTenant, that was deleted fewer than
-                    /// 30 days ago.
+                    /// Gemini Enterprise and Looker only. Undeletes a WorkforcePoolProviderScimTenant, that was deleted
+                    /// fewer than 30 days ago.
                     /// </summary>
                     public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.WorkforcePoolProviderScimTenant>
                     {
@@ -2008,7 +2024,8 @@ namespace Google.Apis.Iam.v1
                         }
 
                         /// <summary>
-                        /// Required. Gemini Enterprise only. The name of the SCIM tenant to undelete. Format:
+                        /// Required. Gemini Enterprise and Looker only. The name of the SCIM tenant to undelete.
+                        /// Format:
                         /// `locations/{location}/workforcePools/{workforce_pool}/providers/{provider}/scimTenants/{scim_tenant}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -11688,17 +11705,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Gemini Enterprise only. Response message for ListWorkforcePoolProviderScimTenants.</summary>
+    /// <summary>Gemini Enterprise and Looker only. Response message for ListWorkforcePoolProviderScimTenants.</summary>
     public class ListWorkforcePoolProviderScimTenantsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Gemini Enterprise only. A token, which can be sent as `page_token` to retrieve the next page. If
-        /// this field is omitted, there are no subsequent pages.
+        /// Optional. Gemini Enterprise and Looker only. A token, which can be sent as `page_token` to retrieve the next
+        /// page. If this field is omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Output only. Gemini Enterprise only. A list of SCIM tenants.</summary>
+        /// <summary>Output only. Gemini Enterprise and Looker only. A list of SCIM tenants.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolProviderScimTenants")]
         public virtual System.Collections.Generic.IList<WorkforcePoolProviderScimTenant> WorkforcePoolProviderScimTenants { get; set; }
 
@@ -11706,17 +11723,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Gemini Enterprise only. Response message for ListWorkforcePoolProviderScimTokens.</summary>
+    /// <summary>Gemini Enterprise and Looker only. Response message for ListWorkforcePoolProviderScimTokens.</summary>
     public class ListWorkforcePoolProviderScimTokensResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Gemini Enterprise only. A token, which can be sent as `page_token` to retrieve the next page. If
-        /// this field is omitted, there are no subsequent pages.
+        /// Optional. Gemini Enterprise and Looker only. A token, which can be sent as `page_token` to retrieve the next
+        /// page. If this field is omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Output only. Gemini Enterprise only. A list of SCIM tokens.</summary>
+        /// <summary>Output only. Gemini Enterprise and Looker only. A list of SCIM tokens.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolProviderScimTokens")]
         public virtual System.Collections.Generic.IList<WorkforcePoolProviderScimToken> WorkforcePoolProviderScimTokens { get; set; }
 
@@ -13086,7 +13103,9 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Gemini Enterprise only. Request message for UndeleteWorkforcePoolProviderScimTenant.</summary>
+    /// <summary>
+    /// Gemini Enterprise and Looker only. Request message for UndeleteWorkforcePoolProviderScimTenant.
+    /// </summary>
     public class UndeleteWorkforcePoolProviderScimTenantRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -13313,6 +13332,15 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> AttributeMapping { get; set; }
 
+        /// <summary>
+        /// Optional. An interval that determines how often user attributes are synced from the IdP. Must be between 30
+        /// minutes (1800s) and 12 hours (43200s). This configuration is used only when the Google Cloud session length
+        /// policy is configured. When Google Cloud session length policy is configured and `attribute_sync_interval` is
+        /// not configured, attributes are synced after a default interval of 12 hours (43200 seconds).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeSyncInterval")]
+        public virtual object AttributeSyncInterval { get; set; }
+
         /// <summary>Optional. A description of the provider. Cannot exceed 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -13412,10 +13440,10 @@ namespace Google.Apis.Iam.v1.Data
         public virtual GoogleIamAdminV1WorkforcePoolProviderSaml Saml { get; set; }
 
         /// <summary>
-        /// Optional. Gemini Enterprise only. Specifies whether the workforce identity pool provider uses SCIM-managed
-        /// groups instead of the `google.groups` attribute mapping for authorization checks. The `scim_usage` and
-        /// `extended_attributes_oauth2_client` fields are mutually exclusive. A request that enables both fields on the
-        /// same workforce identity pool provider will produce an error.
+        /// Optional. Gemini Enterprise and Looker only. Specifies whether the workforce identity pool provider uses
+        /// SCIM-managed groups, or users and groups. The `scim_usage` and `extended_attributes_oauth2_client` fields
+        /// are mutually exclusive. A request that enables both fields on the same workforce identity pool provider will
+        /// produce an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scimUsage")]
         public virtual string ScimUsage { get; set; }
@@ -13503,13 +13531,13 @@ namespace Google.Apis.Iam.v1.Data
     }
 
     /// <summary>
-    /// Gemini Enterprise only. Represents a SCIM tenant. Used for provisioning and managing identity data (such as
-    /// Users and Groups) in cross-domain environments.
+    /// Gemini Enterprise and Looker only. Represents a SCIM tenant. Used for provisioning and managing identity data
+    /// (such as Users and Groups) in cross-domain environments.
     /// </summary>
     public class WorkforcePoolProviderScimTenant : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Gemini Enterprise only. Represents the base URI as defined in [RFC 7644, Section
+        /// Output only. Gemini Enterprise and Looker only. Represents the base URI as defined in [RFC 7644, Section
         /// 1.3](https://datatracker.ietf.org/doc/html/rfc7644#section-1.3). Clients must use this as the root address
         /// for managing resources under the tenant. Format: https://iamscim.googleapis.com/{version}/{tenant_id}/
         /// </summary>
@@ -13517,17 +13545,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string BaseUri { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Gemini Enterprise only. Maps SCIM attributes to Google attributes. This mapping is used
-        /// to associate the attributes synced via SCIM with the Google Cloud attributes used in IAM policies for
-        /// Workforce Identity Federation. SCIM-managed user and group attributes are mapped to `google.subject` and
-        /// `google.group` respectively. Each key must be a string specifying the Google Cloud IAM attribute to map to.
-        /// The supported keys are as follows: * `google.subject`: The principal IAM is authenticating. You can
-        /// reference this value in IAM bindings. This is also the subject that appears in Cloud Logging logs. This is a
-        /// required field and the mapped subject cannot exceed 127 bytes. * `google.group`: Group the authenticating
-        /// user belongs to. You can grant group access to resources using an IAM `principalSet` binding; access applies
-        /// to all members of the group. Each value must be a [Common Expression Language]
-        /// (https://opensource.google/projects/cel) expression that maps SCIM user or group attribute to the normalized
-        /// attribute specified by the corresponding map key. Example: To map the SCIM user's `externalId` to
+        /// Required. Immutable. Gemini Enterprise and Looker only. Maps SCIM attributes to Google attributes. This
+        /// mapping is used to associate the attributes synced via SCIM with the Google Cloud attributes used in IAM
+        /// policies for Workforce Identity Federation. SCIM-managed user and group attributes are mapped to
+        /// `google.subject` and `google.group` respectively. Each key must be a string specifying the Google Cloud IAM
+        /// attribute to map to. The supported keys are as follows: * `google.subject`: The principal IAM is
+        /// authenticating. You can reference this value in IAM bindings. This is also the subject that appears in Cloud
+        /// Logging logs. This is a required field and the mapped subject cannot exceed 127 bytes. * `google.group`:
+        /// Group the authenticating user belongs to. You can grant group access to resources using an IAM
+        /// `principalSet` binding; access applies to all members of the group. Each value must be a [Common Expression
+        /// Language] (https://opensource.google/projects/cel) expression that maps SCIM user or group attribute to the
+        /// normalized attribute specified by the corresponding map key. Example: To map the SCIM user's `externalId` to
         /// `google.subject` and the SCIM group's `externalId` to `google.group`:
         /// ```
         /// { "google.subject":
@@ -13538,19 +13566,21 @@ namespace Google.Apis.Iam.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> ClaimMapping { get; set; }
 
         /// <summary>
-        /// Optional. Gemini Enterprise only. The description of the SCIM tenant. Cannot exceed 256 characters.
+        /// Optional. Gemini Enterprise and Looker only. The description of the SCIM tenant. Cannot exceed 256
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Gemini Enterprise only. The display name of the SCIM tenant. Cannot exceed 32 characters.
+        /// Optional. Gemini Enterprise and Looker only. The display name of the SCIM tenant. Cannot exceed 32
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Identifier. Gemini Enterprise only. The resource name of the SCIM Tenant. Format:
+        /// Identifier. Gemini Enterprise and Looker only. The resource name of the SCIM Tenant. Format:
         /// `locations/{location}/workforcePools/{workforce_pool}/providers/
         /// {workforce_pool_provider}/scimTenants/{scim_tenant}`
         /// </summary>
@@ -13562,7 +13592,8 @@ namespace Google.Apis.Iam.v1.Data
         private object _purgeTime;
 
         /// <summary>
-        /// Output only. Gemini Enterprise only. The timestamp that represents the time when the SCIM tenant is purged.
+        /// Output only. Gemini Enterprise and Looker only. The timestamp that represents the time when the SCIM tenant
+        /// is purged.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
         public virtual string PurgeTimeRaw
@@ -13603,7 +13634,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAgent")]
         public virtual string ServiceAgent { get; set; }
 
-        /// <summary>Output only. Gemini Enterprise only. The state of the tenant.</summary>
+        /// <summary>Output only. Gemini Enterprise and Looker only. The state of the tenant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -13612,19 +13643,20 @@ namespace Google.Apis.Iam.v1.Data
     }
 
     /// <summary>
-    /// Gemini Enterprise only. Represents a token for the WorkforcePoolProviderScimTenant. Used for authenticating SCIM
-    /// provisioning requests.
+    /// Gemini Enterprise and Looker only. Represents a token for the WorkforcePoolProviderScimTenant. Used for
+    /// authenticating SCIM provisioning requests.
     /// </summary>
     public class WorkforcePoolProviderScimToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Gemini Enterprise only. The display name of the SCIM token. Cannot exceed 32 characters.
+        /// Optional. Gemini Enterprise and Looker only. The display name of the SCIM token. Cannot exceed 32
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Identifier. Gemini Enterprise only. The resource name of the SCIM Token. Format:
+        /// Identifier. Gemini Enterprise and Looker only. The resource name of the SCIM Token. Format:
         /// `locations/{location}/workforcePools/{workforce_pool}/providers/
         /// {workforce_pool_provider}/scimTenants/{scim_tenant}/tokens/{token}`
         /// </summary>
@@ -13632,13 +13664,13 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Gemini Enterprise only. The token string. Provide this to the IdP for authentication. Will be
-        /// set only during creation.
+        /// Output only. Gemini Enterprise and Looker only. The token string. Provide this to the IdP for
+        /// authentication. Will be set only during creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityToken")]
         public virtual string SecurityToken { get; set; }
 
-        /// <summary>Output only. Gemini Enterprise only. The state of the token.</summary>
+        /// <summary>Output only. Gemini Enterprise and Looker only. The state of the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
