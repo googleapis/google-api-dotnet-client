@@ -3897,7 +3897,11 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A key-value pair representing a custom attribute associated with a resource.</summary>
+    /// <summary>
+    /// A key-value pair representing a custom attribute associated with a resource. Attributes are resource metadata
+    /// used to organize and search for resources. Do not include sensitive information, such as personally identifiable
+    /// information or credentials, in attribute `key` or `value`.
+    /// </summary>
     public class Attribute : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The key of the attribute.</summary>
@@ -3956,7 +3960,10 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IList<Attribute> Attributes { get; set; }
 
-        /// <summary>Optional. The description of the CustomRange.</summary>
+        /// <summary>
+        /// Optional. The description of the CustomRange. Do not include sensitive information, such as personally
+        /// identifiable information or credentials, in the `description` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4489,7 +4496,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -4510,7 +4517,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -4531,7 +4538,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -4590,7 +4597,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orgNumberRegistries")]
         public virtual System.Collections.Generic.IList<OrgNumberRegistry> OrgNumberRegistries { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -4609,7 +4616,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("realms")]
         public virtual System.Collections.Generic.IList<Realm> Realms { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -4628,7 +4635,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("registryBooks")]
         public virtual System.Collections.Generic.IList<RegistryBook> RegistryBooks { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -5304,7 +5311,7 @@ namespace Google.Apis.CloudNumberRegistry.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SearchIpResourcesResult> Results { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Unordered list. Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
