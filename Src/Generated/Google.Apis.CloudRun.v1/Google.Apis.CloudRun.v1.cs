@@ -8064,9 +8064,9 @@ namespace Google.Apis.CloudRun.v1.Data
     public class EmptyDirVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must
-        /// be an empty string (default), `Memory`, or `Disk`. More info:
-        /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+        /// The medium on which the data is stored. The default is `""` which means to use the node's default medium.
+        /// Must be an empty string (default), `Memory`, or `Disk`. For more information, see the [Kubernetes `emptyDir`
+        /// volume documentation](https://kubernetes.io/docs/concepts/storage/volumes#emptydir).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
@@ -8075,8 +8075,9 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium.
         /// The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here
         /// and the sum of memory limits of all containers. The default is nil which means that the limit is undefined.
-        /// More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in
-        /// Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+        /// For more information, see [Configure in-memory volume
+        /// mounts](https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume) and the
+        /// [Kubernetes `emptyDir` volume documentation](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeLimit")]
         public virtual string SizeLimit { get; set; }
@@ -8555,20 +8556,6 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a volume backed by a Filestore instance.</summary>
-    public class FilestoreVolumeSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The resource name of the Filestore volume. Format:
-        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
-        public virtual string Volume { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9230,9 +9217,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string PubsubTopic { get; set; }
 
         /// <summary>
-        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
-        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region. This
-        /// field must be empty for the Build to be eligible to be paired with a pre-provisioned worker VM.
+        /// Optional. Deprecated: Use PrivatePoolV1Config.WorkerConfig.ranked_machine_series instead. This field has no
+        /// effect.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
         public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
@@ -12932,10 +12918,6 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Ephemeral storage used as a shared volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
         public virtual EmptyDirVolumeSource EmptyDir { get; set; }
-
-        /// <summary>Represents a volume backed by a Filestore instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
-        public virtual FilestoreVolumeSource Filestore { get; set; }
 
         /// <summary>Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
