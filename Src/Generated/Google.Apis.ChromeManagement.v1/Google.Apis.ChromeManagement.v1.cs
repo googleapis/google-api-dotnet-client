@@ -6500,6 +6500,63 @@ namespace Google.Apis.ChromeManagement.v1
                 }
             }
         }
+
+        /// <summary>
+        /// Gets the aggregated subscription and license information for a given customer as a singleton resource. Note:
+        /// Because the data is snapshotted for ChromeOS devices, the exact numbers can be delayed by up to 10 seconds.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the customer subscription info to retrieve. Format:
+        /// customers/{customer}/subscriptionInfo
+        /// </param>
+        public virtual GetSubscriptionInfoRequest GetSubscriptionInfo(string name)
+        {
+            return new GetSubscriptionInfoRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Gets the aggregated subscription and license information for a given customer as a singleton resource. Note:
+        /// Because the data is snapshotted for ChromeOS devices, the exact numbers can be delayed by up to 10 seconds.
+        /// </summary>
+        public class GetSubscriptionInfoRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementVersionsV1SubscriptionInfo>
+        {
+            /// <summary>Constructs a new GetSubscriptionInfo request.</summary>
+            public GetSubscriptionInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the customer subscription info to retrieve. Format:
+            /// customers/{customer}/subscriptionInfo
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getSubscriptionInfo";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetSubscriptionInfo parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^customers/[^/]+/subscriptionInfo$",
+                });
+            }
+        }
     }
 
     /// <summary>The "operations" collection of methods.</summary>
@@ -11065,6 +11122,56 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information for annually recurring subscriptions/licenses.</summary>
+    public class GoogleChromeManagementVersionsV1AnnualSubscriptionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. License counts for this subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("counts")]
+        public virtual GoogleChromeManagementVersionsV1LicenseCounts Counts { get; set; }
+
+        private string _subscriptionEndTimeRaw;
+
+        private object _subscriptionEndTime;
+
+        /// <summary>Output only. The date when the current subscription period ends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionEndTime")]
+        public virtual string SubscriptionEndTimeRaw
+        {
+            get => _subscriptionEndTimeRaw;
+            set
+            {
+                _subscriptionEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _subscriptionEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SubscriptionEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SubscriptionEndTimeDateTimeOffset instead.")]
+        public virtual object SubscriptionEndTime
+        {
+            get => _subscriptionEndTime;
+            set
+            {
+                _subscriptionEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _subscriptionEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SubscriptionEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SubscriptionEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SubscriptionEndTimeRaw);
+            set => SubscriptionEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information of public key associated with a Chrome browser profile.</summary>
     public class GoogleChromeManagementVersionsV1AttestationCredential : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13071,6 +13178,25 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Resource counts for a specific license type.</summary>
+    public class GoogleChromeManagementVersionsV1LicenseCounts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Total number of licenses currently assigned to users or devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignedCount")]
+        public virtual System.Nullable<long> AssignedCount { get; set; }
+
+        /// <summary>Output only. Total number of licenses purchased.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalPurchasedCount")]
+        public virtual System.Nullable<long> TotalPurchasedCount { get; set; }
+
+        /// <summary>Output only. Total number of licenses available for assignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unassignedCount")]
+        public virtual System.Nullable<long> UnassignedCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to ListChromeBrowserProfileCommands method.</summary>
     public class GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13248,6 +13374,33 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Required. The reporting settings for the Palo Alto Networks config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingSettings")]
         public virtual GoogleChromeManagementVersionsV1ReportingSettings ReportingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information for perpetual licenses.</summary>
+    public class GoogleChromeManagementVersionsV1PerpetualLicenseInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Number of standalone perpetual upgrades that were previously enrolled and later unenrolled for
+        /// RMA, warranty, or repair reasons, and are only available to be reused on a same model device. Conditionally
+        /// available licenses are a subset of the Assigned total.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionallyAvailableCount")]
+        public virtual System.Nullable<long> ConditionallyAvailableCount { get; set; }
+
+        /// <summary>Output only. License counts for the perpetual SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("counts")]
+        public virtual GoogleChromeManagementVersionsV1LicenseCounts Counts { get; set; }
+
+        /// <summary>
+        /// Output only. Number of perpetual upgrades that were purchased but are no longer available for enrollment.
+        /// These are perpetual upgrades that were enrolled to a device that has since been retired, and the upgrade
+        /// cannot be transferred or re-used on a different device. Retired licenses are a subset of the Assigned total.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retiredCount")]
+        public virtual System.Nullable<long> RetiredCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13961,6 +14114,34 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. The value of the subject alternative name with respect to the `type`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Singleton resource representing the subscription and license information for a given customer.
+    /// </summary>
+    public class GoogleChromeManagementVersionsV1SubscriptionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Details for Chrome Enterprise Upgrade Annual SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeEnterpriseUpgradeAnnual")]
+        public virtual GoogleChromeManagementVersionsV1AnnualSubscriptionInfo ChromeEnterpriseUpgradeAnnual { get; set; }
+
+        /// <summary>Output only. Details for Chrome Ent/Edu Upgrade Perpetual SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromePerpetualUpgrade")]
+        public virtual GoogleChromeManagementVersionsV1PerpetualLicenseInfo ChromePerpetualUpgrade { get; set; }
+
+        /// <summary>Output only. Details for Kiosk &amp; Signage Upgrade Annual SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kioskSignageUpgradeAnnual")]
+        public virtual GoogleChromeManagementVersionsV1AnnualSubscriptionInfo KioskSignageUpgradeAnnual { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the customer subscription info. Format:
+        /// customers/{customer}/subscriptionInfo
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
