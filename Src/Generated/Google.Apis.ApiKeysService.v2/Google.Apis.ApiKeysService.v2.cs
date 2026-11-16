@@ -481,8 +481,9 @@ namespace Google.Apis.ApiKeysService.v2
                 }
 
                 /// <summary>
-                /// Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location
-                /// is `global`.
+                /// Creates a new API key. The key string of the API key is included in the response and can afterward
+                /// only be retrieved through the `GetKeyString` method. NOTE: Key is a global resource; hence the only
+                /// supported value for location is `global`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -495,8 +496,9 @@ namespace Google.Apis.ApiKeysService.v2
                 }
 
                 /// <summary>
-                /// Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location
-                /// is `global`.
+                /// Creates a new API key. The key string of the API key is included in the response and can afterward
+                /// only be retrieved through the `GetKeyString` method. NOTE: Key is a global resource; hence the only
+                /// supported value for location is `global`.
                 /// </summary>
                 public class CreateRequest : ApiKeysServiceBaseServiceRequest<Google.Apis.ApiKeysService.v2.Data.Operation>
                 {
@@ -565,8 +567,9 @@ namespace Google.Apis.ApiKeysService.v2
 
                 /// <summary>
                 /// Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be
-                /// purged from the project. NOTE: Key is a global resource; hence the only supported value for location
-                /// is `global`.
+                /// purged from the project. The key string of the API key isn't included in the response and can only
+                /// be retrieved through the `GetKeyString` method. NOTE: Key is a global resource; hence the only
+                /// supported value for location is `global`.
                 /// </summary>
                 /// <param name="name">Required. The resource name of the API key to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -576,8 +579,9 @@ namespace Google.Apis.ApiKeysService.v2
 
                 /// <summary>
                 /// Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be
-                /// purged from the project. NOTE: Key is a global resource; hence the only supported value for location
-                /// is `global`.
+                /// purged from the project. The key string of the API key isn't included in the response and can only
+                /// be retrieved through the `GetKeyString` method. NOTE: Key is a global resource; hence the only
+                /// supported value for location is `global`.
                 /// </summary>
                 public class DeleteRequest : ApiKeysServiceBaseServiceRequest<Google.Apis.ApiKeysService.v2.Data.Operation>
                 {
@@ -865,7 +869,8 @@ namespace Google.Apis.ApiKeysService.v2
 
                 /// <summary>
                 /// Patches the modifiable fields of an API key. The key string of the API key isn't included in the
-                /// response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+                /// response and can only be retrieved through the `GetKeyString` method. NOTE: Key is a global
+                /// resource; hence the only supported value for location is `global`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -881,7 +886,8 @@ namespace Google.Apis.ApiKeysService.v2
 
                 /// <summary>
                 /// Patches the modifiable fields of an API key. The key string of the API key isn't included in the
-                /// response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+                /// response and can only be retrieved through the `GetKeyString` method. NOTE: Key is a global
+                /// resource; hence the only supported value for location is `global`.
                 /// </summary>
                 public class PatchRequest : ApiKeysServiceBaseServiceRequest<Google.Apis.ApiKeysService.v2.Data.Operation>
                 {
@@ -986,8 +992,9 @@ namespace Google.Apis.ApiKeysService.v2
                 }
 
                 /// <summary>
-                /// Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the
-                /// only supported value for location is `global`.
+                /// Undeletes an API key which was deleted within 30 days. The key string of the API key isn't included
+                /// in the response and can only be retrieved through the `GetKeyString` method. NOTE: Key is a global
+                /// resource; hence the only supported value for location is `global`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name of the API key to be undeleted.</param>
@@ -997,8 +1004,9 @@ namespace Google.Apis.ApiKeysService.v2
                 }
 
                 /// <summary>
-                /// Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the
-                /// only supported value for location is `global`.
+                /// Undeletes an API key which was deleted within 30 days. The key string of the API key isn't included
+                /// in the response and can only be retrieved through the `GetKeyString` method. NOTE: Key is a global
+                /// resource; hence the only supported value for location is `global`.
                 /// </summary>
                 public class UndeleteRequest : ApiKeysServiceBaseServiceRequest<Google.Apis.ApiKeysService.v2.Data.Operation>
                 {
@@ -1315,8 +1323,8 @@ namespace Google.Apis.ApiKeysService.v2.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the
-        /// `GetKeyString` method.
+        /// Output only. An encrypted and signed value held by this key. This field is returned upon initial key
+        /// creation (`CreateKey`) and can afterward be accessed only through the `GetKeyString` method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyString")]
         public virtual string KeyString { get; set; }
