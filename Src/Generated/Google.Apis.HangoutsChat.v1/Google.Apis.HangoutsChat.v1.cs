@@ -4872,7 +4872,7 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Required. The updated field paths, comma separated if there are multiple. You can update the following
-            /// fields for a space: `space_details`: Updates the space's description and guidelines. You must pass both
+            /// fields for a space: `space_details`: Updates the space's description and guidelines. You must pass
             /// description and guidelines in the update request as `SpaceDetails`. If you only want to update one of
             /// the fields, pass the existing value for the other field. `display_name`: Only supports updating the
             /// display name for spaces where `spaceType` field is `SPACE`. If you receive the error message
