@@ -397,12 +397,13 @@ namespace Google.Apis.Merchant.products_v1
 
             /// <summary>
             /// [Uploads a product input to your Merchant Center
-            /// account](/merchant/api/guides/products/add-manage#add_a_product). You must have a products [data
-            /// source](/merchant/api/guides/data-sources/api-sources#create-primary-data-source) to be able to insert a
-            /// product. The unique identifier of the data source is passed as a query parameter in the request URL. If
-            /// a product input with the same contentLanguage, offerId, and dataSource already exists, then the product
-            /// input inserted by this method replaces that entry. After inserting, updating, or deleting a product
-            /// input, it may take several minutes before the processed product can be retrieved.
+            /// account](https://developers.google.com/merchant/api/guides/products/add-manage#add_a_product). You must
+            /// have a products [data
+            /// source](https://developers.google.com/merchant/api/guides/data-sources/api-sources#create-primary-data-source)
+            /// to be able to insert a product. The unique identifier of the data source is passed as a query parameter
+            /// in the request URL. If a product input with the same contentLanguage, offerId, and dataSource already
+            /// exists, then the product input inserted by this method replaces that entry. After inserting, updating,
+            /// or deleting a product input, it may take several minutes before the processed product can be retrieved.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -415,12 +416,13 @@ namespace Google.Apis.Merchant.products_v1
 
             /// <summary>
             /// [Uploads a product input to your Merchant Center
-            /// account](/merchant/api/guides/products/add-manage#add_a_product). You must have a products [data
-            /// source](/merchant/api/guides/data-sources/api-sources#create-primary-data-source) to be able to insert a
-            /// product. The unique identifier of the data source is passed as a query parameter in the request URL. If
-            /// a product input with the same contentLanguage, offerId, and dataSource already exists, then the product
-            /// input inserted by this method replaces that entry. After inserting, updating, or deleting a product
-            /// input, it may take several minutes before the processed product can be retrieved.
+            /// account](https://developers.google.com/merchant/api/guides/products/add-manage#add_a_product). You must
+            /// have a products [data
+            /// source](https://developers.google.com/merchant/api/guides/data-sources/api-sources#create-primary-data-source)
+            /// to be able to insert a product. The unique identifier of the data source is passed as a query parameter
+            /// in the request URL. If a product input with the same contentLanguage, offerId, and dataSource already
+            /// exists, then the product input inserted by this method replaces that entry. After inserting, updating,
+            /// or deleting a product input, it may take several minutes before the processed product can be retrieved.
             /// </summary>
             public class InsertRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.products_v1.Data.ProductInput>
             {
@@ -442,9 +444,9 @@ namespace Google.Apis.Merchant.products_v1
                 /// Required. The primary or supplemental product data source name. If the product already exists and
                 /// data source provided is different, then the product will be moved to a new data source. For more
                 /// information, see [Create a primary data
-                /// source](/merchant/api/guides/data-sources/api-sources#create-primary-data-source). Only API data
-                /// sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For example,
-                /// `accounts/123456/dataSources/104628`.
+                /// source](https://developers.google.com/merchant/api/guides/data-sources/api-sources#create-primary-data-source).
+                /// Only API data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For
+                /// example, `accounts/123456/dataSources/104628`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DataSource { get; set; }
@@ -490,7 +492,10 @@ namespace Google.Apis.Merchant.products_v1
             /// <summary>
             /// Updates the existing product input in your Merchant Center account. The name of the product input to
             /// update is taken from the `name` field within the `ProductInput` resource. After inserting, updating, or
-            /// deleting a product input, it may take several minutes before the processed product can be retrieved.
+            /// deleting a product input, it may take several minutes before the processed product can be retrieved. For
+            /// more information, see [Add and manage
+            /// products](https://developers.google.com/merchant/api/guides/products/add-manage) and [Make frequent
+            /// updates to your products](https://developers.google.com/merchant/api/guides/products/frequent-updates).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -521,7 +526,10 @@ namespace Google.Apis.Merchant.products_v1
             /// <summary>
             /// Updates the existing product input in your Merchant Center account. The name of the product input to
             /// update is taken from the `name` field within the `ProductInput` resource. After inserting, updating, or
-            /// deleting a product input, it may take several minutes before the processed product can be retrieved.
+            /// deleting a product input, it may take several minutes before the processed product can be retrieved. For
+            /// more information, see [Add and manage
+            /// products](https://developers.google.com/merchant/api/guides/products/add-manage) and [Make frequent
+            /// updates to your products](https://developers.google.com/merchant/api/guides/products/frequent-updates).
             /// </summary>
             public class PatchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.products_v1.Data.ProductInput>
             {
@@ -735,7 +743,8 @@ namespace Google.Apis.Merchant.products_v1
             /// Lists the processed products in your Merchant Center account. The response might contain fewer items
             /// than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested.
             /// After inserting, updating, or deleting a product input, it may take several minutes before the updated
-            /// processed product can be retrieved.
+            /// processed product can be retrieved. For more information, see [List your products data and product
+            /// issues](https://developers.google.com/merchant/api/guides/products/list-products-data-issues).
             /// </summary>
             /// <param name="parent">
             /// Required. The account to list processed products for. Format: `accounts/{account}`
@@ -749,7 +758,8 @@ namespace Google.Apis.Merchant.products_v1
             /// Lists the processed products in your Merchant Center account. The response might contain fewer items
             /// than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested.
             /// After inserting, updating, or deleting a product input, it may take several minutes before the updated
-            /// processed product can be retrieved.
+            /// processed product can be retrieved. For more information, see [List your products data and product
+            /// issues](https://developers.google.com/merchant/api/guides/products/list-products-data-issues).
             /// </summary>
             public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.products_v1.Data.ListProductsResponse>
             {
@@ -1536,7 +1546,11 @@ namespace Google.Apis.Merchant.products_v1.Data
     /// one primary data source product input, and multiple supplemental data source inputs. After inserting, updating,
     /// or deleting a product input, it may take several minutes before the updated processed product can be retrieved.
     /// All fields in the processed product and its sub-messages match the name of their corresponding attribute in the
-    /// [Product data specification](https://support.google.com/merchants/answer/7052112) with some exceptions.
+    /// [Product data specification](https://support.google.com/merchants/answer/7052112) with some exceptions. For
+    /// product ingestion workflows and status checks, see [Manage
+    /// products](https://developers.google.com/merchant/api/guides/products/overview), [Add and manage
+    /// products](https://developers.google.com/merchant/api/guides/products/add-manage), and [List your products data
+    /// and product issues](https://developers.google.com/merchant/api/guides/products/list-products-data-issues).
     /// </summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2460,8 +2474,9 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string SizeSystem { get; set; }
 
         /// <summary>
-        /// The cut of the item. It can be used to represent combined size types for apparel items. Maximum two of size
-        /// types can be provided, see [Size type](https://support.google.com/merchants/answer/6324497).
+        /// The cut of the item. It can be used to represent combined size types for apparel items. You can provide up
+        /// to two `SizeType` values, for example, `["PETITE", "MATERNITY"]` or `["BIG", "TALL"]`. For more information,
+        /// see [Size type](https://support.google.com/merchants/answer/6324497).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeTypes")]
         public virtual System.Collections.Generic.IList<string> SizeTypes { get; set; }
@@ -2736,8 +2751,11 @@ namespace Google.Apis.Merchant.products_v1.Data
     /// This resource represents input data you submit for a product, not the processed product that you see in Merchant
     /// Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are
     /// combined to create the processed Product. For more information, see [Manage
-    /// products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation
-    /// checks are primarily defined in the [Products Data
+    /// products](https://developers.google.com/merchant/api/guides/products/overview), [Add and manage
+    /// products](https://developers.google.com/merchant/api/guides/products/add-manage), [Make frequent updates to your
+    /// products](https://developers.google.com/merchant/api/guides/products/frequent-updates), and [Manage API data
+    /// sources](https://developers.google.com/merchant/api/guides/data-sources/api-sources#create-primary-data-source).
+    /// Required product input attributes to pass data validation checks are primarily defined in the [Products Data
     /// Specification](https://support.google.com/merchants/answer/188494). The following attributes are required:
     /// feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take
     /// several minutes before the processed product can be retrieved. All fields in the product input and its
@@ -3074,7 +3092,11 @@ namespace Google.Apis.Merchant.products_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
