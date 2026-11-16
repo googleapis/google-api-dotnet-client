@@ -1099,7 +1099,11 @@ namespace Google.Apis.Merchant.promotions_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
@@ -1224,7 +1228,9 @@ namespace Google.Apis.Merchant.promotions_v1.Data
     /// data validation checks are primarily defined below: * [Promotions data
     /// specification](https://support.google.com/merchants/answer/2906014) * [Local promotions data
     /// specification](https://support.google.com/merchants/answer/10146130) After inserting, updating a promotion
-    /// input, it may take several minutes before the final promotion can be retrieved.
+    /// input, it may take several minutes before the final promotion can be retrieved. For more information, see
+    /// [Manage promotions](https://developers.google.com/merchant/api/guides/promotions/overview) and [Troubleshoot
+    /// issues](https://developers.google.com/merchant/api/guides/promotions/troubleshooting).
     /// </summary>
     public class Promotion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1235,7 +1241,7 @@ namespace Google.Apis.Merchant.promotions_v1.Data
         /// <summary>
         /// Required. The two-letter [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1) language code for the
         /// promotion. Promotions is only for [selected
-        /// languages](https://support.google.com/merchants/answer/4588281?ref_topic=6396150&amp;amp;sjid=18314938579342094533-NC#option3&amp;amp;zippy=).
+        /// languages](https://support.google.com/merchants/answer/4588281#option3&amp;amp;zippy=).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; }
@@ -1260,8 +1266,8 @@ namespace Google.Apis.Merchant.promotions_v1.Data
 
         /// <summary>
         /// Required. The user provided promotion ID to uniquely identify the promotion. Follow [minimum
-        /// requirements](https://support.google.com/merchants/answer/7050148?ref_topic=7322920&amp;amp;sjid=871860036916537104-NC#minimum_requirements)
-        /// to prevent promotion disapprovals.
+        /// requirements](https://support.google.com/merchants/answer/7050148#minimum_requirements) to prevent promotion
+        /// disapprovals.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotionId")]
         public virtual string PromotionId { get; set; }
