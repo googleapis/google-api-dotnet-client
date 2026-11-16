@@ -1774,7 +1774,10 @@ namespace Google.Apis.DeveloperConnect.v1
                     }
 
                     /// <summary>Diff commits for a GitRepositoryLink.</summary>
-                    /// <param name="name">Required. The resource name of the GitRepositoryLink.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the GitRepositoryLink in the format
+                    /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                    /// </param>
                     public virtual DiffCommitRequest DiffCommit(string name)
                     {
                         return new DiffCommitRequest(this.service, name);
@@ -1790,7 +1793,10 @@ namespace Google.Apis.DeveloperConnect.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The resource name of the GitRepositoryLink.</summary>
+                        /// <summary>
+                        /// Required. The resource name of the GitRepositoryLink in the format
+                        /// `projects/*/locations/*/connections/*/gitRepositoryLinks/*`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -5026,12 +5032,15 @@ namespace Google.Apis.DeveloperConnect.v1.Data
     /// <summary>Request message for AddGitRepositoryLinkPullRequestReviewComment.</summary>
     public class AddGitRepositoryLinkPullRequestReviewCommentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The review comment to add.</summary>
+        /// <summary>
+        /// Required. The review comment to add. Input fields used: `body`, `path`, `first_line`, `last_line`, `side`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual PullRequestReviewComment Comment { get; set; }
 
         /// <summary>
-        /// Optional. The commit SHA to comment on. If not specified, defaults to the HEAD commit of the Pull Request.
+        /// Optional. The SHA of a commit in the pull request to comment on. If not specified, defaults to the HEAD
+        /// commit of the pull request. Set this only to comment on a specific, known commit in the pull request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitId")]
         public virtual string CommitId { get; set; }
@@ -7472,7 +7481,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("author")]
         public virtual string Author { get; set; }
 
-        /// <summary>Required. The target commit SHA of the base branch.</summary>
+        /// <summary>Required. The name of the target (base) branch that the changes are merged into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseRef")]
         public virtual string BaseRef { get; set; }
 
@@ -7595,7 +7604,7 @@ namespace Google.Apis.DeveloperConnect.v1.Data
             set => DeclineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Required. The source commit SHA of the head branch.</summary>
+        /// <summary>Required. The name of the source (head) branch that contains the changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headRef")]
         public virtual string HeadRef { get; set; }
 
@@ -7603,7 +7612,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("htmlUrl")]
         public virtual string HtmlUrl { get; set; }
 
-        /// <summary>Required. The ID of the PR.</summary>
+        /// <summary>
+        /// Optional. The ID of the PR, assigned by the SCM provider (for example, "45"). Ignored by
+        /// `OpenGitRepositoryLinkPullRequest`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -7801,7 +7813,10 @@ namespace Google.Apis.DeveloperConnect.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; }
 
-        /// <summary>Output only. The commit SHA the comment was actually applied to.</summary>
+        /// <summary>
+        /// Output only. The commit SHA the comment was actually applied to. Ignored in requests; to choose the commit
+        /// to comment on, set `AddGitRepositoryLinkPullRequestReviewCommentRequest.commit_id`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitId")]
         public virtual string CommitId { get; set; }
 
