@@ -2424,6 +2424,50 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deletedVmCount")]
         public virtual System.Nullable<int> DeletedVmCount { get; set; }
 
+        private string _estimatedAvailabilityTimeRaw;
+
+        private object _estimatedAvailabilityTime;
+
+        /// <summary>
+        /// Output only. [Output Only] The time when the scheduler expects capacity for this location. The field is set
+        /// only while the status is PENDING. The value 9999-12-31T23:59:59.999999999Z means that the scheduler expects
+        /// no capacity. The field is absent when the scheduler gives no estimate, and it is cleared when the status
+        /// changes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedAvailabilityTime")]
+        public virtual string EstimatedAvailabilityTimeRaw
+        {
+            get => _estimatedAvailabilityTimeRaw;
+            set
+            {
+                _estimatedAvailabilityTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _estimatedAvailabilityTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EstimatedAvailabilityTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EstimatedAvailabilityTimeDateTimeOffset instead.")]
+        public virtual object EstimatedAvailabilityTime
+        {
+            get => _estimatedAvailabilityTime;
+            set
+            {
+                _estimatedAvailabilityTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _estimatedAvailabilityTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EstimatedAvailabilityTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EstimatedAvailabilityTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EstimatedAvailabilityTimeRaw);
+            set => EstimatedAvailabilityTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>[Output Only] Count of VMs that started creating but encountered an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedToCreateVmCount")]
         public virtual System.Nullable<int> FailedToCreateVmCount { get; set; }
@@ -2832,8 +2876,31 @@ namespace Google.Apis.DeploymentManager.v2.Data
 
     public class GetVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineHbomInfo")]
+        public virtual GetVersionOperationMetadataHbomInfo InlineHbomInfo { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSbomInfo")]
         public virtual GetVersionOperationMetadataSbomInfo InlineSbomInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GetVersionOperationMetadataHbomInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A mapping of hardware sub-component categories to their component values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardwareComponentInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, GetVersionOperationMetadataHbomInfoComponentValues> HardwareComponentInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GetVersionOperationMetadataHbomInfoComponentValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of obfuscated hardware component identifiers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3038,6 +3105,68 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>[Output Only] Operation metadata for microVms.export.</summary>
+    public class MicroVmsExportOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output Only] SHA-256 hex digest of the exported archive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveSha256")]
+        public virtual string ArchiveSha256 { get; set; }
+
+        /// <summary>Output only. [Output Only] Target Cloud Storage bucket name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; }
+
+        /// <summary>Output only. [Output Only] Total bytes transferred to Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesTransferred")]
+        public virtual System.Nullable<long> BytesTransferred { get; set; }
+
+        /// <summary>Output only. [Output Only] Total files archived.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesTransferred")]
+        public virtual System.Nullable<long> FilesTransferred { get; set; }
+
+        /// <summary>Output only. [Output Only] Target Cloud Storage object name or prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
+        public virtual string ObjectName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[Output Only] Operation metadata for microVms.import.</summary>
+    public class MicroVmsImportOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output Only] SHA-256 hex digest of the imported archive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveSha256")]
+        public virtual string ArchiveSha256 { get; set; }
+
+        /// <summary>Output only. [Output Only] Source Cloud Storage bucket name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; }
+
+        /// <summary>Output only. [Output Only] Total bytes transferred from Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesTransferred")]
+        public virtual System.Nullable<long> BytesTransferred { get; set; }
+
+        /// <summary>Output only. [Output Only] Total files imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesTransferred")]
+        public virtual System.Nullable<long> FilesTransferred { get; set; }
+
+        /// <summary>Output only. [Output Only] Source Cloud Storage object name or prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
+        public virtual string ObjectName { get; set; }
+
+        /// <summary>Output only. [Output Only] The current phase of the import operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phase")]
+        public virtual string Phase { get; set; }
+
+        /// <summary>Output only. [Output Only] Size of the source object in bytes. Unset for DIRECTORY_SYNC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBytes")]
+        public virtual System.Nullable<long> TotalBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents an Operation resource. Google Compute Engine has three Operation resources: *
     /// [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) *
@@ -3136,6 +3265,14 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>Output only. [Output Only] Operation metadata for microVms.export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microVmsExportOperationMetadata")]
+        public virtual MicroVmsExportOperationMetadata MicroVmsExportOperationMetadata { get; set; }
+
+        /// <summary>Output only. [Output Only] Operation metadata for microVms.import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microVmsImportOperationMetadata")]
+        public virtual MicroVmsImportOperationMetadata MicroVmsImportOperationMetadata { get; set; }
 
         /// <summary>[Output Only] Name of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
