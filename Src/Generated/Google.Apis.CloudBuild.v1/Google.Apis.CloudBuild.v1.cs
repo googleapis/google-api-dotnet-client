@@ -5905,9 +5905,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string PubsubTopic { get; set; }
 
         /// <summary>
-        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
-        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region. This
-        /// field must be empty for the Build to be eligible to be paired with a pre-provisioned worker VM.
+        /// Optional. Deprecated: Use PrivatePoolV1Config.WorkerConfig.ranked_machine_series instead. This field has no
+        /// effect.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
         public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
@@ -8073,7 +8072,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
 
-        /// <summary>Immutable. Private Service Connect(PSC) Network configuration for the pool.</summary>
+        /// <summary>
+        /// Immutable. Deprecated: Private Service Connect is no longer supported. Private Service Connect(PSC) Network
+        /// configuration for the pool.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnect")]
         public virtual PrivateServiceConnect PrivateServiceConnect { get; set; }
 
@@ -8085,7 +8087,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines the Private Service Connect network configuration for the pool.</summary>
+    /// <summary>
+    /// Deprecated: Private Service Connect is no longer supported. Defines the Private Service Connect network
+    /// configuration for the pool.
+    /// </summary>
     public class PrivateServiceConnect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9328,7 +9333,9 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>
         /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
-        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region.
+        /// worker VMs. The pool's requirements will be matched to a [pre-sized machine
+        /// type](/compute/docs/general-purpose-machines) which is available in the pool's region. If left blank, Cloud
+        /// Build will use a sensible default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
         public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
