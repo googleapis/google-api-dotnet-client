@@ -13702,6 +13702,83 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
 
+            /// <summary>Cancel a plan transition for a subscription.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The package of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="token">
+            /// Required. The token provided to the user's device when the subscription was purchased.
+            /// </param>
+            public virtual CancelplantransitionRequest Cancelplantransition(Google.Apis.AndroidPublisher.v3.Data.CancelPlanTransitionRequest body, string packageName, string token)
+            {
+                return new CancelplantransitionRequest(this.service, body, packageName, token);
+            }
+
+            /// <summary>Cancel a plan transition for a subscription.</summary>
+            public class CancelplantransitionRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.CancelPlanTransitionResponse>
+            {
+                /// <summary>Constructs a new Cancelplantransition request.</summary>
+                public CancelplantransitionRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.CancelPlanTransitionRequest body, string packageName, string token) : base(service)
+                {
+                    PackageName = packageName;
+                    Token = token;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The package of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. The token provided to the user's device when the subscription was purchased.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.CancelPlanTransitionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "cancelplantransition";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:cancelPlanTransition";
+
+                /// <summary>Initializes Cancelplantransition parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>Defers the renewal of a subscription.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">
@@ -13903,6 +13980,83 @@ namespace Google.Apis.AndroidPublisher.v3
                 public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke";
 
                 /// <summary>Initializes Revoke parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Schedule a plan transition for a subscription.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The package of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="token">
+            /// Required. The token provided to the user's device when the subscription was purchased.
+            /// </param>
+            public virtual ScheduleplantransitionRequest Scheduleplantransition(Google.Apis.AndroidPublisher.v3.Data.SchedulePlanTransitionRequest body, string packageName, string token)
+            {
+                return new ScheduleplantransitionRequest(this.service, body, packageName, token);
+            }
+
+            /// <summary>Schedule a plan transition for a subscription.</summary>
+            public class ScheduleplantransitionRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SchedulePlanTransitionResponse>
+            {
+                /// <summary>Constructs a new Scheduleplantransition request.</summary>
+                public ScheduleplantransitionRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SchedulePlanTransitionRequest body, string packageName, string token) : base(service)
+                {
+                    PackageName = packageName;
+                    Token = token;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The package of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. The token provided to the user's device when the subscription was purchased.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.SchedulePlanTransitionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "scheduleplantransition";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:schedulePlanTransition";
+
+                /// <summary>Initializes Scheduleplantransition parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -15894,6 +16048,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installmentDetails")]
         public virtual InstallmentPlan InstallmentDetails { get; set; }
 
+        /// <summary>
+        /// The information of the associated plan transition. Will be present only if this plan has a transition plan
+        /// associated with it and will only include the latest transition details associated with the item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planTransitionDetails")]
+        public virtual PlanTransitionDetails PlanTransitionDetails { get; set; }
+
         /// <summary>The information of the last price change for the item since subscription signup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceChangeDetails")]
         public virtual SubscriptionItemPriceChangeDetails PriceChangeDetails { get; set; }
@@ -15971,6 +16132,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Transition target base plan information when this base plan has a transition plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionTargetConfig")]
+        public virtual TransitionTargetConfig TransitionTargetConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16433,6 +16598,32 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseOptionId")]
         public virtual string PurchaseOptionId { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the purchases.subscriptionsv2.cancelplantransition API.</summary>
+    public class CancelPlanTransitionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set, the API will fail if the etag does not match the latest etag for this subscription. The etag is
+        /// retrieved from purchases.subscriptionsv2.get:
+        /// https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2/get
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Required. The subscription product (for example, 'premium_plan') for which an in process plan transition
+        /// should be canceled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+    }
+
+    /// <summary>Response for the purchases.subscriptionsv2.cancelplantransition API.</summary>
+    public class CancelPlanTransitionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17295,6 +17486,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used to indicate that the plan transition is definite.</summary>
+    public class DefiniteTransition : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18706,7 +18904,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>
         /// Prices per buyer region. None of these can be zero, as in-app products are never free. Map key is region
-        /// code, as defined by ISO 3166-2.
+        /// code, as defined by ISO 3166-1 alpha-2.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prices")]
         public virtual System.Collections.Generic.IDictionary<string, Price> Prices { get; set; }
@@ -20107,7 +20305,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual OneTimeProductOfferNoPriceOverrideOptions NoOverride { get; set; }
 
         /// <summary>
-        /// Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g., "US".
+        /// Required. Region code this configuration applies to, as defined by ISO 3166-1 alpha-2, e.g., "US".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
@@ -20340,7 +20538,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual Money Price { get; set; }
 
         /// <summary>
-        /// Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g., "US".
+        /// Required. Region code this configuration applies to, as defined by ISO 3166-1 alpha-2, e.g., "US".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
@@ -20981,6 +21179,30 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// </summary>
     public class PendingCancellation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information related to a plan transition.</summary>
+    public class PlanTransitionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] The base plan ID to which this plan would be transitioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// [Required] The product ID to which this plan would be transitioned, (for example, 'monthly001').
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>
+        /// Additional info about the scheduled plan transition. Will be present only if a plan transition has been
+        /// scheduled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionInfo")]
+        public virtual TransitionInfo TransitionInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -21974,7 +22196,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Money Price { get; set; }
 
-        /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
+        /// <summary>
+        /// Required. Region code this configuration applies to, as defined by ISO 3166-1 alpha-2, e.g. "US".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
@@ -22036,7 +22260,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceIncreaseType")]
         public virtual string PriceIncreaseType { get; set; }
 
-        /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
+        /// <summary>
+        /// Required. Region code this configuration applies to, as defined by ISO 3166-1 alpha-2, e.g. "US".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
@@ -22051,7 +22277,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productAgeRatingTier")]
         public virtual string ProductAgeRatingTier { get; set; }
 
-        /// <summary>Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
+        /// <summary>Region code this configuration applies to, as defined by ISO 3166-1 alpha-2, e.g. "US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
@@ -22071,7 +22297,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual System.Nullable<bool> NewSubscriberAvailability { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".
+        /// Required. Immutable. Region code this configuration applies to, as defined by ISO 3166-1 alpha-2, e.g. "US".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
@@ -22139,7 +22365,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eligibleForStreamingServiceTaxRate")]
         public virtual System.Nullable<bool> EligibleForStreamingServiceTaxRate { get; set; }
 
-        /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
+        /// <summary>
+        /// Required. Region code this configuration applies to, as defined by ISO 3166-1 alpha-2, e.g. "US".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
@@ -22335,7 +22563,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class RestrictedPaymentCountries : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Region codes to impose payment restrictions on, as defined by ISO 3166-2, e.g. "US".
+        /// Required. Region codes to impose payment restrictions on, as defined by ISO 3166-1 alpha-2, e.g. "US".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCodes")]
         public virtual System.Collections.Generic.IList<string> RegionCodes { get; set; }
@@ -22561,6 +22789,91 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Response for SafetyLabelsUpdate rpc.</summary>
     public class SafetyLabelsUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the purchases.subscriptionsv2.schedulePlanTransition API.</summary>
+    public class SchedulePlanTransitionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When using this mode, the user's transition to the new plan is definite, and cannot be canceled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definiteTransition")]
+        public virtual DefiniteTransition DefiniteTransition { get; set; }
+
+        private string _earliestTransitionEffectiveTimeRaw;
+
+        private object _earliestTransitionEffectiveTime;
+
+        /// <summary>
+        /// Required. The earliest time at which the plan transition may take effect. The actual transition will take
+        /// place at the time of renewal on or after this time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earliestTransitionEffectiveTime")]
+        public virtual string EarliestTransitionEffectiveTimeRaw
+        {
+            get => _earliestTransitionEffectiveTimeRaw;
+            set
+            {
+                _earliestTransitionEffectiveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _earliestTransitionEffectiveTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="EarliestTransitionEffectiveTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EarliestTransitionEffectiveTimeDateTimeOffset instead.")]
+        public virtual object EarliestTransitionEffectiveTime
+        {
+            get => _earliestTransitionEffectiveTime;
+            set
+            {
+                _earliestTransitionEffectiveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _earliestTransitionEffectiveTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EarliestTransitionEffectiveTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EarliestTransitionEffectiveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EarliestTransitionEffectiveTimeRaw);
+            set => EarliestTransitionEffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// If set, the API will fail if the etag does not match the latest etag for this subscription. The etag is
+        /// retrieved from purchases.subscriptionsv2.get:
+        /// https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2/get
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Required. The subscription product (for example, 'premium_plan') for which the transition must be scheduled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>
+        /// When using this mode, the user's transition to the new plan is tentative, and can be canceled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tentativeTransition")]
+        public virtual TentativeTransition TentativeTransition { get; set; }
+    }
+
+    /// <summary>Response for the purchases.subscriptionsv2.schedulePlanTransition API.</summary>
+    public class SchedulePlanTransitionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The plan transition details of the subscription item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planTransitionDetails")]
+        public virtual PlanTransitionDetails PlanTransitionDetails { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -23617,6 +23930,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Used to indicate that the plan transition is tentative.</summary>
+    public class TentativeTransition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Whether this subscription purchase is a test purchase.</summary>
     public class TestPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -23865,6 +24185,78 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>All tracks (including tracks with no releases).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
         public virtual System.Collections.Generic.IList<Track> Tracks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information related to a scheduled plan transition.</summary>
+    public class TransitionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _expectedTransitionTimeRaw;
+
+        private object _expectedTransitionTime;
+
+        /// <summary>
+        /// The current expected time at which the plan may be transitioned. This is subject to change (to a future
+        /// time) due to cases where the renewal time shifts like pause and account hold.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedTransitionTime")]
+        public virtual string ExpectedTransitionTimeRaw
+        {
+            get => _expectedTransitionTimeRaw;
+            set
+            {
+                _expectedTransitionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expectedTransitionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpectedTransitionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpectedTransitionTimeDateTimeOffset instead.")]
+        public virtual object ExpectedTransitionTime
+        {
+            get => _expectedTransitionTime;
+            set
+            {
+                _expectedTransitionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expectedTransitionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpectedTransitionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpectedTransitionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpectedTransitionTimeRaw);
+            set => ExpectedTransitionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The default base plan price to which the plan will be transitioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Money Price { get; set; }
+
+        /// <summary>Output only. [Required] The current state of the transition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionState")]
+        public virtual string TransitionState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a transition target base plan.</summary>
+    public class TransitionTargetConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the transition target base plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
+        public virtual string BasePlanId { get; set; }
+
+        /// <summary>Required. The ID of the parent subscription this transition target base plan belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
