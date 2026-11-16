@@ -516,6 +516,17 @@ namespace Google.Apis.Bigquery.v2
                 /// <summary>View both dataset metadata and ACL information.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL = 3,
+
+                /// <summary>View both dataset metadata and ACL information.</summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 4,
+
+                /// <summary>
+                /// Includes everything from the BASIC view plus replication information. However, it will not include
+                /// sync_status or other fields requiring cross-region requests.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC_REPLICA_METADATA_VIEW")]
+                BASICREPLICAMETADATAVIEW = 5,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -5408,7 +5419,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Arrow RecordBatch. This feature is not yet available.</summary>
+    /// <summary>Arrow RecordBatch. [Preview](https://cloud.google.com/products/#product-launch-stages)</summary>
     public class ArrowRecordBatch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>IPC-serialized Arrow RecordBatch.</summary>
@@ -5422,7 +5433,8 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>
     /// Arrow schema as specified in https://arrow.apache.org/docs/python/api/datatypes.html and serialized to bytes
     /// using IPC: https://arrow.apache.org/docs/format/Columnar.html#serialization-and-interprocess-communication-ipc
-    /// See code samples on how this message can be deserialized. This feature is not yet available.
+    /// See code samples on how this message can be deserialized.
+    /// [Preview](https://cloud.google.com/products/#product-launch-stages)
     /// </summary>
     public class ArrowSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5434,7 +5446,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains options specific to Arrow Serialization. This feature is not yet available.</summary>
+    /// <summary>
+    /// Contains options specific to Arrow Serialization.
+    /// [Preview](https://cloud.google.com/products/#product-launch-stages)
+    /// </summary>
     public class ArrowSerializationOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The compression codec to use for Arrow buffers in serialized record batches.</summary>
@@ -5587,6 +5602,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. The file format the table data is stored in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
         public virtual string FileFormat { get; set; }
+
+        /// <summary>Optional. The type of Metadata Export for BigLake Managed Tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataExportMode")]
+        public virtual string MetadataExportMode { get; set; }
 
         /// <summary>
         /// Optional. The fully qualified location prefix of the external folder where table data is stored. The '*'
@@ -6504,6 +6523,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalDatasetReference")]
         public virtual ExternalDatasetReference ExternalDatasetReference { get; set; }
 
+        /// <summary>
+        /// Optional. The failover reservation associated with the dataset in the regionless format. Example: .. To
+        /// learn about about failover reservations see:
+        /// https://docs.cloud.google.com/bigquery/docs/managed-disaster-recovery#overview
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failoverReservationId")]
+        public virtual string FailoverReservationId { get; set; }
+
         /// <summary>Optional. A descriptive name for the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
         public virtual string FriendlyName { get; set; }
@@ -6570,6 +6597,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeTravelHours")]
         public virtual System.Nullable<long> MaxTimeTravelHours { get; set; }
+
+        /// <summary>Optional. The list of replicas in a cross region replicated or disaster recovery dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
+        public virtual System.Collections.Generic.IList<Replica> Replicas { get; set; }
 
         /// <summary>
         /// Optional. The [tags](https://cloud.google.com/bigquery/docs/tags) attached to this dataset. Tag keys are
@@ -8635,6 +8666,29 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary> Information about a package installed in the routine execution environment.</summary>
+    public class InstalledPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the installed package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The source repository from which this package was installed. Populated only when the package
+        /// was installed from an additional package repository. E.g.
+        /// 'https://my-region-python.pkg.dev/my-project/my-repo/simple'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRepository")]
+        public virtual string SourceRepository { get; set; }
+
+        /// <summary>Output only. The version of the installed package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An array of int.</summary>
     public class IntArray : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10136,6 +10190,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
 
+        /// <summary>Output only. Search indexing specific statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchIndexingStats")]
+        public virtual SearchIndexingStats SearchIndexingStats { get; set; }
+
         /// <summary>Output only. Search query specific statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchStatistics")]
         public virtual SearchStatistics SearchStatistics { get; set; }
@@ -10363,6 +10421,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("undeclaredQueryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> UndeclaredQueryParameters { get; set; }
+
+        /// <summary>Output only. Vector Search indexing specific statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorSearchIndexingStats")]
+        public virtual VectorSearchIndexingStats VectorSearchIndexingStats { get; set; }
 
         /// <summary>Output only. Vector Search query specific statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vectorSearchStatistics")]
@@ -11471,10 +11533,27 @@ namespace Google.Apis.Bigquery.v2.Data
     public class PythonOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Fully qualified name of the connection whose service account will be used to authenticate to
+        /// private package repositories during build-time. Format:
+        /// "projects/{project_id}/locations/{location_id}/connections/{connection_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildConnection")]
+        public virtual string BuildConnection { get; set; }
+
+        /// <summary>
         /// Required. The name of the function defined in Python code as the entry point when the Python UDF is invoked.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPoint")]
         public virtual string EntryPoint { get; set; }
+
+        /// <summary>
+        /// Optional. The list of additional package repositories to search when resolving Python packages. These
+        /// repositories are searched in addition to the default public PyPI. Only repositories hosted in Artifact
+        /// Registry (.pkg.dev) are supported. Only pre-compiled Wheel (.whl) packages are supported from these
+        /// repositories. E.g. ['https://my-region-python.pkg.dev/my-project/my-repo/simple']
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraPackageRepositories")]
+        public virtual System.Collections.Generic.IList<string> ExtraPackageRepositories { get; set; }
 
         /// <summary>
         /// Optional. A list of Python package names along with versions to be installed. Example:
@@ -11724,10 +11803,10 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Optional. The query results format. If the value is anything other than `STRUCT_ENCODING` or unspecified: *
-        /// The schema of the results will be provided in `QueryResponse.results_schema` field. * The results of the
-        /// first page will be provided in `QueryResponse.results` field. * The `QueryResponse.rows` will not be
-        /// populated. * The `QueryResponse.schema` for `QueryResponse.rows` will also not be populated since it is the
-        /// schema of the `QueryResponse.rows`. This feature is not yet available.
+        /// The schema of the results is provided in the `QueryResponse.results_schema` field. * The results of the
+        /// first page are provided in the `QueryResponse.results` field. * The `QueryResponse.rows` is not populated. *
+        /// The `QueryResponse.schema` for `QueryResponse.rows` is not populated since it is the schema of the
+        /// `QueryResponse.rows`. [Preview](https://cloud.google.com/products/#product-launch-stages)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryResultsFormat")]
         public virtual string QueryResultsFormat { get; set; }
@@ -11895,8 +11974,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
 
         /// <summary>
-        /// Output only. The number of rows out of `total_rows` returned in this response. This feature is not yet
-        /// available.
+        /// Output only. The number of rows out of `total_rows` returned in this response.
+        /// [Preview](https://cloud.google.com/products/#product-launch-stages)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageRowCount")]
         public virtual System.Nullable<long> PageRowCount { get; set; }
@@ -12374,6 +12453,252 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The replica metadata of the dataset. If the dataset has two or more replicas, it's considered a cross region
+    /// replicated (CRR) dataset.
+    /// </summary>
+    public class Replica : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _backfillCompletionTimeRaw;
+
+        private object _backfillCompletionTime;
+
+        /// <summary>Output only. The time when the backfill was completed and replica is ready to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backfillCompletionTime")]
+        public virtual string BackfillCompletionTimeRaw
+        {
+            get => _backfillCompletionTimeRaw;
+            set
+            {
+                _backfillCompletionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _backfillCompletionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="BackfillCompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use BackfillCompletionTimeDateTimeOffset instead.")]
+        public virtual object BackfillCompletionTime
+        {
+            get => _backfillCompletionTime;
+            set
+            {
+                _backfillCompletionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _backfillCompletionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="BackfillCompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? BackfillCompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(BackfillCompletionTimeRaw);
+            set => BackfillCompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the replica was created. For any dataset's first replica, this should be set
+        /// to the dataset's creation_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Failover reservation ID for the replica's region if this replica is used for DR.
+        /// Fully-qualified format, e.g. "projects/some-project/locations/US/reservations/some-reservation" The location
+        /// portion of the format is upper case if "US" or "EU", otherwise a lower case cloud region like
+        /// "asia-northeast1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failoverReservationUri")]
+        public virtual string FailoverReservationUri { get; set; }
+
+        /// <summary>
+        /// Required. The user-visible string identifier for this dataset replica. This is generally named after the
+        /// region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Required. The logical bigquery region where this replica is located. This is upper case if "US" or "EU",
+        /// otherwise a lower case cloud region like "asia-northeast1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        private string _primaryAssignmentCompletionTimeRaw;
+
+        private object _primaryAssignmentCompletionTime;
+
+        /// <summary>
+        /// Output only. After a new primary assignment is made, this is the time that the dataset's data has been fully
+        /// replicated to the replica, and after which the system will use current reads in the new primary replica.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryAssignmentCompletionTime")]
+        public virtual string PrimaryAssignmentCompletionTimeRaw
+        {
+            get => _primaryAssignmentCompletionTimeRaw;
+            set
+            {
+                _primaryAssignmentCompletionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _primaryAssignmentCompletionTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="PrimaryAssignmentCompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PrimaryAssignmentCompletionTimeDateTimeOffset instead.")]
+        public virtual object PrimaryAssignmentCompletionTime
+        {
+            get => _primaryAssignmentCompletionTime;
+            set
+            {
+                _primaryAssignmentCompletionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _primaryAssignmentCompletionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="PrimaryAssignmentCompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PrimaryAssignmentCompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PrimaryAssignmentCompletionTimeRaw);
+            set => PrimaryAssignmentCompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _primaryAssignmentTimeRaw;
+
+        private object _primaryAssignmentTime;
+
+        /// <summary>
+        /// Output only. The time at which the replica was assigned primary. Only one replica will have this field
+        /// populated at any point.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryAssignmentTime")]
+        public virtual string PrimaryAssignmentTimeRaw
+        {
+            get => _primaryAssignmentTimeRaw;
+            set
+            {
+                _primaryAssignmentTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _primaryAssignmentTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PrimaryAssignmentTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PrimaryAssignmentTimeDateTimeOffset instead.")]
+        public virtual object PrimaryAssignmentTime
+        {
+            get => _primaryAssignmentTime;
+            set
+            {
+                _primaryAssignmentTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _primaryAssignmentTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="PrimaryAssignmentTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PrimaryAssignmentTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PrimaryAssignmentTimeRaw);
+            set => PrimaryAssignmentTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Contains modify options on the replica such as set a kms key on the replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaOptions")]
+        public virtual ReplicaOptions ReplicaOptions { get; set; }
+
+        /// <summary>Output only. Gives an explicit indicator of the replica primary state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaState")]
+        public virtual string ReplicaState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options set by the user when creating the replica. These include region-specific dataset values, for example
+    /// default KMS key name. When a resource is replicated, the destination region's replica contains values that
+    /// should be overwritten in the destination region.
+    /// </summary>
+    public class ReplicaOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Default KMS encryption key name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
+        public virtual string DefaultKmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output-only policy member strings of a Google Cloud resource's built-in identity.</summary>
+    public class ResourcePolicyMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name
+        /// (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be
+        /// applicable to the new resource. Example:
+        /// `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyNamePrincipal")]
+        public virtual string IamPolicyNamePrincipal { get; set; }
+
+        /// <summary>
+        /// Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique
+        /// identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the
+        /// binding will not be applicable to the new resource Example:
+        /// `principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicyUidPrincipal")]
+        public virtual string IamPolicyUidPrincipal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class RestrictionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Specifies the type of dataset/table restriction.</summary>
@@ -12585,6 +12910,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. The size of the image in bytes. Populated only after the build succeeds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageSizeBytes")]
         public virtual System.Nullable<long> ImageSizeBytes { get; set; }
+
+        /// <summary>
+        /// Output only. The list of installed packages in the routine's execution environment. Populated only after the
+        /// build succeeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedPackages")]
+        public virtual System.Collections.Generic.IList<InstalledPackage> InstalledPackages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12864,6 +13196,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual System.Collections.Generic.IList<ScriptStackFrame> StackFrames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for a search indexing job. Populated as part of JobStatistics2.</summary>
+    public class SearchIndexingStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The base table for which the search index is being created or refreshed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTable")]
+        public virtual TableReference BaseTable { get; set; }
+
+        /// <summary>Output only. The name of the search index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexName")]
+        public virtual string IndexName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13629,6 +13976,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionDefinition")]
         public virtual PartitioningDefinition PartitionDefinition { get; set; }
+
+        /// <summary>
+        /// Output only. Contains the resource identity token of the view that users can use to include in their policy
+        /// bindings for authorization. This should be set only for views.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyMember")]
+        public virtual ResourcePolicyMember PolicyMember { get; set; }
 
         /// <summary>If specified, configures range partitioning for this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
@@ -15142,6 +15496,21 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for a vector search indexing job. Populated as part of JobStatistics2.</summary>
+    public class VectorSearchIndexingStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The base table for which the vector index is being created or refreshed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTable")]
+        public virtual TableReference BaseTable { get; set; }
+
+        /// <summary>Output only. The name of the vector index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexName")]
+        public virtual string IndexName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
