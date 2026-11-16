@@ -471,7 +471,10 @@ namespace Google.Apis.Merchant.ordertracking_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a business trade from which signals are extracted, such as shipping.</summary>
+    /// <summary>
+    /// Represents a business trade from which signals are extracted, such as shipping. For more information, see
+    /// [Manage order tracking signals](https://developers.google.com/merchant/api/guides/order/overview).
+    /// </summary>
     public class OrderTrackingSignal : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -501,8 +504,8 @@ namespace Google.Apis.Merchant.ordertracking_v1.Data
         /// <summary>
         /// Optional. The Google Merchant Center ID of this order tracking signal. This value is optional. If left
         /// unset, the caller's Merchant Center ID is used. You must request access in order to provide data on behalf
-        /// of another business. For more information, see [Submitting Order Tracking
-        /// Signals](/shopping-content/guides/order-tracking-signals).
+        /// of another business. For more information, see [Manage order tracking
+        /// signals](https://developers.google.com/merchant/api/guides/order/overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<long> MerchantId { get; set; }
@@ -594,7 +597,11 @@ namespace Google.Apis.Merchant.ordertracking_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
