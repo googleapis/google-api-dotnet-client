@@ -5713,7 +5713,7 @@ namespace Google.Apis.AgentRegistry.v1.Data
     /// <summary>Structured metadata attributes extracted from the package's local SKILL.md frontmatter.</summary>
     public class Frontmatter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Environmental dependencies or local sidecars.</summary>
+        /// <summary>Optional. Environmental dependencies or companion services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compatibility")]
         public virtual string Compatibility { get; set; }
 
