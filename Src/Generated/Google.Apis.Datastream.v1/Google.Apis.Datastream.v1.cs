@@ -3312,7 +3312,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("oracleProfile")]
         public virtual OracleProfile OracleProfile { get; set; }
 
-        /// <summary>Profile for connecting to a PostgreSQL source.</summary>
+        /// <summary>Profile for connecting to a PostgreSQL source or destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlProfile")]
         public virtual PostgresqlProfile PostgresqlProfile { get; set; }
 
@@ -5333,7 +5333,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Profile for connecting to a PostgreSQL source.</summary>
+    /// <summary>Profile for connecting to a PostgreSQL source or destination.</summary>
     public class PostgresqlProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Database for the PostgreSQL connection.</summary>
