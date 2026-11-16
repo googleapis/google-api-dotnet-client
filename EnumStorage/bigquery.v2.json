@@ -12,7 +12,9 @@
     "DATASET_VIEW_UNSPECIFIED",
     "METADATA",
     "ACL",
-    "FULL"
+    "FULL",
+    "BASIC",
+    "BASIC_REPLICA_METADATA_VIEW"
   ],
   "Google.Apis.Bigquery.v2.DatasetsResource+PatchRequest.UpdateModeEnum": [
     "UPDATE_MODE_UNSPECIFIED",
