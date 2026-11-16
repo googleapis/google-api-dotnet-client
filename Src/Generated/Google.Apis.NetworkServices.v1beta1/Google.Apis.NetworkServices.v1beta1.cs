@@ -1557,13 +1557,13 @@ namespace Google.Apis.NetworkServices.v1beta1
                     public virtual string CdnEdgeExtensionId { get; set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for 60 minutes since the first request. For example, consider a
-                    /// situation where you make an initial request and the request times out. If you make the request
-                    /// again with the same request ID, the server ignores the second request This prevents clients from
-                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
-                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
+                    /// request, the server can ignore the request if it has already been completed. The server
+                    /// guarantees this behavior for at least 60 minutes after the first request. For example, consider
+                    /// a situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that the zero UUID isn't supported (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1642,13 +1642,13 @@ namespace Google.Apis.NetworkServices.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for 60 minutes after the first request. For example, consider a
-                    /// situation where you make an initial request and the request times out. If you make the request
-                    /// again with the same request ID, the server ignores the second request This prevents clients from
-                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
-                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
+                    /// request, the server can ignore the request if it has already been completed. The server
+                    /// guarantees this behavior for at least 60 minutes after the first request. For example, consider
+                    /// a situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that the zero UUID isn't supported (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1687,8 +1687,8 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Gets details of the specified `CdnEdgeExtension` resource.</summary>
                 /// <param name="name">
-                /// Required. A name of the `CdnEdgeExtension` resource to get. Must be in the format
-                /// `projects/{project}/locations/{location}/cdnEdgeExtensions/{cdn_edge_extension}`.
+                /// Required. The name of the `CdnEdgeExtension` resource to get. It must be in the
+                /// `projects/{project}/locations/{location}/cdnEdgeExtensions/{cdn_edge_extension}` format.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1706,8 +1706,8 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. A name of the `CdnEdgeExtension` resource to get. Must be in the format
-                    /// `projects/{project}/locations/{location}/cdnEdgeExtensions/{cdn_edge_extension}`.
+                    /// Required. The name of the `CdnEdgeExtension` resource to get. It must be in the
+                    /// `projects/{project}/locations/{location}/cdnEdgeExtensions/{cdn_edge_extension}` format.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1736,7 +1736,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
                 }
 
-                /// <summary>Lists `CdnEdgeExtensions` resources in a given project and location.</summary>
+                /// <summary>Lists `CdnEdgeExtension` resources in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the `CdnEdgeExtension` resources are listed. These
                 /// values are specified in the following format: `projects/{project}/locations/{location}`.
@@ -1746,7 +1746,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists `CdnEdgeExtensions` resources in a given project and location.</summary>
+                /// <summary>Lists `CdnEdgeExtension` resources in a given project and location.</summary>
                 public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListCdnEdgeExtensionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1763,11 +1763,17 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results.</summary>
+                    /// <summary>
+                    /// Optional. Specifies a filter expression that restricts the resources listed in the response. The
+                    /// expression must be of the form ` `, where `` is a field name (in `snake_case` or `camelCase`)
+                    /// and `` is one of `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, or `:` (the `HAS`
+                    /// operator). Multiple expressions can be combined using `AND`, `OR`, and `NOT`. For example,
+                    /// `extension_chains.name = "my-chain"` or `labels.env = "prod"`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint about how to order the results.</summary>
+                    /// <summary>Optional. Comma-separated list of fields by which you can sort the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1868,13 +1874,13 @@ namespace Google.Apis.NetworkServices.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server can ignore the request if it has already been completed.
-                    /// The server guarantees that for 60 minutes since the first request. For example, consider a
-                    /// situation where you make an initial request and the request times out. If you make the request
-                    /// again with the same request ID, the server ignores the second request This prevents clients from
-                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
-                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your
+                    /// request, the server can ignore the request if it has already been completed. The server
+                    /// guarantees this behavior for at least 60 minutes after the first request. For example, consider
+                    /// a situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server ignores the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that the zero UUID isn't supported (`00000000-0000-0000-0000-000000000000`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -2823,7 +2829,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Deletes the specified `ExtensionBinding` resource.</summary>
                 /// <param name="name">
-                /// Required. A name of the `ExtensionBinding` resource to delete. Must be in the format
+                /// Required. The name of the `ExtensionBinding` resource to delete. Must be in the format
                 /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -2842,13 +2848,13 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. A name of the `ExtensionBinding` resource to delete. Must be in the format
+                    /// Required. The name of the `ExtensionBinding` resource to delete. Must be in the format
                     /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The etag of the ExtensionBinding to delete.</summary>
+                    /// <summary>Optional. The ETag of the `ExtensionBinding` to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
@@ -2886,7 +2892,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Gets details of the specified `ExtensionBinding` resource.</summary>
                 /// <param name="name">
-                /// Required. A name of the `ExtensionBinding` resource to get. Must be in the format
+                /// Required. The name of the `ExtensionBinding` resource to get. Must be in the format
                 /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -2905,7 +2911,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. A name of the `ExtensionBinding` resource to get. Must be in the format
+                    /// Required. The name of the `ExtensionBinding` resource to get. Must be in the format
                     /// `projects/{project}/locations/{location}/extensionBindings/{extension_binding}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2967,7 +2973,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The value returned by the last `ListExtensionBindingsResponse` Indicates that this is
+                    /// Optional. The value returned by the last `ListExtensionBindingsResponse`. Indicates that this is
                     /// a continuation of a prior `ListExtensionBindings` call, and that the system should return the
                     /// next page of data.
                     /// </summary>
@@ -3045,9 +3051,9 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Optional. Field mask is used to specify the fields to be overwritten in the `ExtensionBinding`
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
-                    /// provide a mask then all fields will be overwritten.
+                    /// resource by the update. The fields specified in the `update_mask` are relative to the resource,
+                    /// not the full request. A field is overwritten if it is in the mask. If the user does not provide
+                    /// a mask then all fields are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -6882,7 +6888,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. Short name of the `ProducerExtension` resource to be created.</summary>
+                    /// <summary>Required. The short name of the `ProducerExtension` resource to be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("producerExtensionId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProducerExtensionId { get; set; }
 
@@ -6926,7 +6932,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Deletes the specified `ProducerExtension` resource.</summary>
                 /// <param name="name">
-                /// Required. A name of the `ProducerExtension` resource to delete. Must be in the format
+                /// Required. The name of the `ProducerExtension` resource to delete. It must be in this format:
                 /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -6945,13 +6951,13 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. A name of the `ProducerExtension` resource to delete. Must be in the format
+                    /// Required. The name of the `ProducerExtension` resource to delete. It must be in this format:
                     /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The etag of the ProducerExtension to delete.</summary>
+                    /// <summary>Optional. The ETag of the `ProducerExtension` to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
@@ -6989,7 +6995,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                 /// <summary>Gets details of the specified `ProducerExtension` resource.</summary>
                 /// <param name="name">
-                /// Required. A name of the `ProducerExtension` resource to get. Must be in the format
+                /// Required. The name of the `ProducerExtension` resource to get. It must be in this format:
                 /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -7008,7 +7014,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. A name of the `ProducerExtension` resource to get. Must be in the format
+                    /// Required. The name of the `ProducerExtension` resource to get. It must be in this format:
                     /// `projects/{project}/locations/{location}/producerExtensions/{producer_extension}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7041,7 +7047,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Lists `ProducerExtension` resources in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which the `ProducerExtension` resources should be listed,
-                /// specified in the format `projects/{project}/locations/{location}`.
+                /// specified in this format: `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -7060,7 +7066,7 @@ namespace Google.Apis.NetworkServices.v1beta1
 
                     /// <summary>
                     /// Required. The project and location from which the `ProducerExtension` resources should be
-                    /// listed, specified in the format `projects/{project}/locations/{location}`.
+                    /// listed, specified in this format: `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7070,9 +7076,9 @@ namespace Google.Apis.NetworkServices.v1beta1
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// Optional. The value returned by the last `ListProducerExtensionsResponse` Indicates that this is
-                    /// a continuation of a prior `ListProducerExtensions` call, and that the system should return the
-                    /// next page of data.
+                    /// Optional. The value returned by the last `ListProducerExtensionsResponse`. It indicates that
+                    /// this is a continuation of a prior `ListProducerExtensions` call, and that the system should
+                    /// return the next page of data.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -9210,17 +9216,17 @@ namespace Google.Apis.NetworkServices.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Maximum number of `WasmPluginVersion` resources to return per call. If not specified, at
-                        /// most 50 `WasmPluginVersion` resources are returned. The maximum value is 1000; values above
-                        /// 1000 are coerced to 1000.
+                        /// Optional. Maximum number of `WasmPluginVersion` resources to return per call. If not
+                        /// specified, at most 50 `WasmPluginVersion` resources are returned. The maximum value is 1000;
+                        /// values above 1000 are coerced to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// The value returned by the last `ListWasmPluginVersionsResponse` call. Indicates that this is
-                        /// a continuation of a prior `ListWasmPluginVersions` call, and that the next page of data is
-                        /// to be returned.
+                        /// Optional. The value returned by the last `ListWasmPluginVersionsResponse` call. Indicates
+                        /// that this is a continuation of a prior `ListWasmPluginVersions` call, and that the next page
+                        /// of data is to be returned.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -9416,14 +9422,14 @@ namespace Google.Apis.NetworkServices.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Determines how much data must be returned in the response. See
+                    /// Optional. Determines how much data must be returned in the response. See
                     /// [AIP-157](https://google.aip.dev/157).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
                     /// <summary>
-                    /// Determines how much data must be returned in the response. See
+                    /// Optional. Determines how much data must be returned in the response. See
                     /// [AIP-157](https://google.aip.dev/157).
                     /// </summary>
                     public enum ViewEnum
@@ -9507,16 +9513,16 @@ namespace Google.Apis.NetworkServices.v1beta1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Maximum number of `WasmPlugin` resources to return per call. If not specified, at most 50
-                    /// `WasmPlugin` resources are returned. The maximum value is 1000; values above 1000 are coerced to
-                    /// 1000.
+                    /// Optional. Maximum number of `WasmPlugin` resources to return per call. If not specified, at most
+                    /// 50 `WasmPlugin` resources are returned. The maximum value is 1000; values above 1000 are coerced
+                    /// to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value returned by the last `ListWasmPluginsResponse` call. Indicates that this is a
-                    /// continuation of a prior `ListWasmPlugins` call, and that the next page of data is to be
+                    /// Optional. The value returned by the last `ListWasmPluginsResponse` call. Indicates that this is
+                    /// a continuation of a prior `ListWasmPlugins` call, and that the next page of data is to be
                     /// returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -10301,17 +10307,17 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The reference to the service that runs the extension. To configure a callout extension: For global
-        /// AuthzExtension, `service` must be a fully-qualified reference to a [backend
+        /// Required. The reference to the service that runs the extension. To configure a callout extension: For a
+        /// global AuthzExtension, `service` must be a fully qualified reference to a [backend
         /// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
-        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`. For
-        /// regional AuthzExtension, `service` must be a fully-qualified reference to one of the following: * a [backend
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`. For a
+        /// regional AuthzExtension, `service` must be a fully qualified reference to one of the following: * A [backend
         /// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
         /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`.
-        /// * a fully qualified domain name that can be resolved by the Google Cloud DNS. * `iap.googleapis.com` and it
-        /// can only be referenced by an AuthzPolicy with the policyProfile set to REQUEST_AUTHZ. *
-        /// `modelarmor..rep.googleapis.com` and it can only be referenced by an AuthzPolicy with the policyProfile set
-        /// to CONTENT_AUTHZ.
+        /// * A fully qualified domain name that can be resolved by Cloud DNS. * `iap.googleapis.com` and can be
+        /// referenced only by an `AuthzPolicy` with the `policyProfile` set to `REQUEST_AUTHZ`. *
+        /// `modelarmor..rep.googleapis.com` and it can only be referenced by an `AuthzPolicy` with the `policyProfile`
+        /// set to `CONTENT_AUTHZ`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -10382,7 +10388,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     /// <summary>
     /// `CdnEdgeExtension` is a resource that lets the extension service modify the headers of both requests to the
     /// cache and responses from the cache served by an
-    /// [`EdgeCacheService`](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheServices).
+    /// [`EdgeCacheService`](/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheServices).
     /// </summary>
     public class CdnEdgeExtension : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10451,7 +10457,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Specifies the set of resources to which this extension should be applied to.</summary>
+        /// <summary>Required. Specifies the set of resources to which this extension will be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual CdnEdgeExtensionTarget Target { get; set; }
 
@@ -10496,14 +10502,14 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specifies the set of targets to which `CdnEdgeExtension` should be applied to.</summary>
+    /// <summary>Specifies the set of targets to which a `CdnEdgeExtension` will be applied.</summary>
     public class CdnEdgeExtensionTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. A list of references to the resources that are targeted by `CdnEdgeExtension`. Types of resources
-        /// supported: `EdgeCacheService`. The format must be the full resource name of
-        /// [EdgeCacheService](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheServices)
-        /// in the following format:
+        /// supported: `EdgeCacheService`. The format must be the full resource name of an
+        /// [`EdgeCacheService`](/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheServices) in the
+        /// following format:
         /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/edgeCacheServices/{edgeCacheService}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
@@ -11177,7 +11183,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Optional. Determines the behavior of the extension binding when the call to the extension fails or times
-        /// out. Default value is `FALSE`. When set to `TRUE`, failures of the extension are silently ignored.
+        /// out. Default value is `false`. When set to `true`, failures of the extension are silently ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failOpen")]
         public virtual System.Nullable<bool> FailOpen { get; set; }
@@ -11209,7 +11215,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>
-        /// Required. The name of the extension that this binding should attach to target resources. Format: For
+        /// Required. The name of the extension that this binding should attach to target resources. Format: * For
         /// Google-provided extensions, specify the service endpoint, for example
         /// `modelarmor.us-central1.rep.googleapis.com`.
         /// </summary>
@@ -11307,7 +11313,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Contains { get; set; }
 
         /// <summary>
-        /// Optional. The input string must match exactly the string specified here. Examples: * `abc` only matches the
+        /// Optional. The input string must match exactly the string specified here. Examples: * `abc` matches only the
         /// value `abc`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exact")]
@@ -11351,8 +11357,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual ExtensionBindingMatchConditionToDestination Destination { get; set; }
 
         /// <summary>
-        /// Optional. Describes the negated properties of the request destination. Extension will not be invoked on
-        /// requests that match the criteria specified in this field. At least one of destination or not_destination
+        /// Optional. Describes the negated properties of the request destination. The extension will not be invoked on
+        /// requests that match the criteria specified in this field. At least one of `destination` or `not_destination`
         /// must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notDestination")]
@@ -11372,7 +11378,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual ExtensionBindingMatchConditionToDestinationHeaderSet HeaderSet { get; set; }
 
         /// <summary>
-        /// Optional. A list of HTTP Hosts to match against. Limited to 10 hosts. If not specified, any host is allowed.
+        /// Optional. A list of HTTP hosts to match against. Limited to 10 hosts. If not specified, any host is allowed.
         /// If specified, a match occurs if any of the hosts matches the host value in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
@@ -11380,17 +11386,17 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Optional. A list of paths to match against. Limited to 10 paths. If not specified, any path is allowed. Note
-        /// that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name
-        /// of the form /package.service/method.
+        /// that this path match includes the query parameters. For gRPC services, this should be a fully qualified name
+        /// of the form `/package.service/method`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<ExtensionBindingMatchConditionStringMatch> Paths { get; set; }
 
         /// <summary>
         /// Optional. A list of non-empty strings whose value is matched against the resource to which a request is sent
-        /// (e.g., an Agent in AiApplication). If not specified, any resource is allowed. If specified, a match occurs
-        /// if any of the resources matches the resource value in the request. Limited to 5 resources. When matching
-        /// against resources in the AgentRegistry, use the URNs of the registry resources.
+        /// (for example, an `Agent` in `AiApplication`). If not specified, any resource is allowed. If specified, a
+        /// match occurs if any of the resources matches the resource value in the request. Limited to 5 resources. When
+        /// matching against resources in the Agent Registry, use the URNs of the registry resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<ExtensionBindingMatchConditionStringMatch> Resources { get; set; }
@@ -11464,10 +11470,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     public class ExtensionChain : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A set of extensions to execute for the matching request. At least one extension is required. Up to
-        /// 3 extensions can be defined for each extension chain for `LbTrafficExtension` and `CdnEdgeExtension`
-        /// resources. `LbRouteExtension`, `LbEdgeExtension`, and `LbTcpExtension` chains are limited to 1 extension per
-        /// extension chain.
+        /// Required. A set of extensions to run for the matching request. Up to three extensions can be defined for
+        /// each extension chain for the `LbTrafficExtension` resource. You can define a maximum of two extensions for
+        /// each extension chain for the `CdnEdgeExtension` resource. `LbRouteExtension`, `LbEdgeExtension`, and
+        /// `LbTcpExtension` chains are limited to one extension per extension chain.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<ExtensionChainExtension> Extensions { get; set; }
@@ -11598,16 +11604,16 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Required. The reference to the service that runs the extension. To configure a callout extension, `service`
-        /// must be a fully-qualified reference to a [backend
+        /// must be a fully qualified reference to a [backend
         /// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
         /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
         /// or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`. To
         /// configure a plugin extension, `service` must be a reference to a [`WasmPlugin`
         /// resource](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.wasmPlugins)
         /// in the format: `projects/{project}/locations/{location}/wasmPlugins/{plugin}` or
-        /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`. Plugin
-        /// extensions are currently supported for the `LbTrafficExtension`, the `LbRouteExtension`, the
-        /// `LbEdgeExtension`, and the `CdnEdgeExtension` resources.
+        /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`.
+        /// Supports plugin extensions for `LbTrafficExtension`, `LbRouteExtension`, `LbEdgeExtension`, and
+        /// `CdnEdgeExtension` resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -13647,7 +13653,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for response to listing `CdnEdgeExtension` resources.</summary>
+    /// <summary>Contains the response from listing `CdnEdgeExtension` resources.</summary>
     public class ListCdnEdgeExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of `CdnEdgeExtension` resources.</summary>
@@ -14250,6 +14256,55 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for logging collection.</summary>
+    public class LoggingConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Indicates whether logging is enabled or disabled. Set to true to explicitly enable, or false to
+        /// explicitly disable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; }
+
+        /// <summary>
+        /// Optional. The list of HTTP request headers to be logged. This field can only be specified if logging is
+        /// enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingHttpRequestHeaders")]
+        public virtual System.Collections.Generic.IList<string> LoggingHttpRequestHeaders { get; set; }
+
+        /// <summary>
+        /// Optional. The list of HTTP response headers to be logged. This field can only be specified if logging is
+        /// enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingHttpResponseHeaders")]
+        public virtual System.Collections.Generic.IList<string> LoggingHttpResponseHeaders { get; set; }
+
+        /// <summary>
+        /// Optional. Contains a list of optional fields to include in the logs. This field can only be specified if
+        /// logging is enabled and `optional_mode` is set to `CUSTOM`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optionalFields")]
+        public virtual System.Collections.Generic.IList<string> OptionalFields { get; set; }
+
+        /// <summary>
+        /// Optional. Configures whether all, none, or a subset of optional fields should be added to the reported logs.
+        /// This field can only be specified if logging is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optionalMode")]
+        public virtual string OptionalMode { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the logging sampling rate. The sampling rate is a float number in the interval [0, 1].
+        /// This field can only be specified if logging is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRate")]
+        public virtual System.Nullable<float> SampleRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Mesh represents a logical configuration grouping for workload to workload communication within a service mesh.
     /// Routes that point to mesh dictate how requests are routed within this logical mesh boundary.
@@ -14607,7 +14662,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     }
 
     /// <summary>
-    /// `ProducerExtension` is a resource representing producer defined configuration for their service extension.
+    /// `ProducerExtension` is a resource that represents a producer-defined configuration for its service extension.
     /// </summary>
     public class ProducerExtension : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14653,8 +14708,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. Etag of the resource. If this is provided, it must match the server's etag. If the provided etag
-        /// does not match the server's etag, the request will fail with a 409 ABORTED error.
+        /// Optional. ETag of the resource. If this is provided, it must match the server's ETag. If the provided ETag
+        /// doesn't match the server's ETag, then the request fails with a `409 ABORTED` error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -14677,7 +14732,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. The phase in which this `ProducerExtension` should execute.</summary>
+        /// <summary>Required. The phase in which this `ProducerExtension` runs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase")]
         public virtual string Phase { get; set; }
 
@@ -14730,7 +14785,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMode")]
         public virtual System.Nullable<bool> ObservabilityMode { get; set; }
 
-        /// <summary>Required. URI of the PSC attachment.</summary>
+        /// <summary>Required. The URI of the Private Service Connect (PSC) attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
@@ -15387,6 +15442,13 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// <summary>Optional. Set of label tags associated with the TelemetryPolicy resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the top-level configuration block within the telemetry policy that contains all the
+        /// settings for how logging will be applied to the target resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfiguration")]
+        public virtual LoggingConfiguration LoggingConfiguration { get; set; }
 
         /// <summary>
         /// Optional. Specifies the top-level configuration block within the telemetry policy that contains all the
