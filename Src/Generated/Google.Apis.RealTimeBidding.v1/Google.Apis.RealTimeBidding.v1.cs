@@ -353,6 +353,47 @@ namespace Google.Apis.RealTimeBidding.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. The category taxonomy to use for the response. Overrides the default category taxonomy for
+                /// the bidder.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("adCategoryTaxonomyOverride", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AdCategoryTaxonomyOverrideEnum> AdCategoryTaxonomyOverride { get; set; }
+
+                /// <summary>
+                /// Optional. The category taxonomy to use for the response. Overrides the default category taxonomy for
+                /// the bidder.
+                /// </summary>
+                public enum AdCategoryTaxonomyOverrideEnum
+                {
+                    /// <summary>Default value that should never be used.</summary>
+                    [Google.Apis.Util.StringValueAttribute("AD_CATEGORY_TAXONOMY_UNSPECIFIED")]
+                    ADCATEGORYTAXONOMYUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Google ad categories taxonomy, including product categories and sensitive categories. Find the
+                    /// category lists at https://developers.google.com/authorized-buyers/rtb/data#reference-data
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("GOOGLE_AD_CATEGORY_TAXONOMY")]
+                    GOOGLEADCATEGORYTAXONOMY = 1,
+
+                    /// <summary>
+                    /// IAB Content Taxonomy 1.0. See [Content Taxonomy
+                    /// 1.0.tsv](https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Content%20Taxonomies/Content%20Taxonomy%201.0.tsv)
+                    /// for more details.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("IAB_CONTENT_1_0")]
+                    IABCONTENT10 = 2,
+
+                    /// <summary>
+                    /// IAB Content Taxonomy 2.2. See [Content Taxonomy
+                    /// 2.2.tsv](https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Content%20Taxonomies/Content%20Taxonomy%202.2.tsv)
+                    /// for more details.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("IAB_CONTENT_2_2")]
+                    IABCONTENT22 = 3,
+                }
+
+                /// <summary>
                 /// Query string to filter creatives. If no filter is specified, all active creatives will be returned.
                 /// Example: 'accountId=12345 AND (dealsStatus:DISAPPROVED AND disapprovalReason:UNACCEPTABLE_CONTENT)
                 /// OR declaredAttributes:IS_COOKIE_TARGETED'
@@ -428,6 +469,14 @@ namespace Google.Apis.RealTimeBidding.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^bidders/[^/]+$",
+                    });
+                    RequestParameters.Add("adCategoryTaxonomyOverride", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adCategoryTaxonomyOverride",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
@@ -2154,6 +2203,47 @@ namespace Google.Apis.RealTimeBidding.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
+                /// Optional. The category taxonomy to use for the response. Overrides the default category taxonomy for
+                /// the bidder.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("adCategoryTaxonomyOverride", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AdCategoryTaxonomyOverrideEnum> AdCategoryTaxonomyOverride { get; set; }
+
+                /// <summary>
+                /// Optional. The category taxonomy to use for the response. Overrides the default category taxonomy for
+                /// the bidder.
+                /// </summary>
+                public enum AdCategoryTaxonomyOverrideEnum
+                {
+                    /// <summary>Default value that should never be used.</summary>
+                    [Google.Apis.Util.StringValueAttribute("AD_CATEGORY_TAXONOMY_UNSPECIFIED")]
+                    ADCATEGORYTAXONOMYUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Google ad categories taxonomy, including product categories and sensitive categories. Find the
+                    /// category lists at https://developers.google.com/authorized-buyers/rtb/data#reference-data
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("GOOGLE_AD_CATEGORY_TAXONOMY")]
+                    GOOGLEADCATEGORYTAXONOMY = 1,
+
+                    /// <summary>
+                    /// IAB Content Taxonomy 1.0. See [Content Taxonomy
+                    /// 1.0.tsv](https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Content%20Taxonomies/Content%20Taxonomy%201.0.tsv)
+                    /// for more details.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("IAB_CONTENT_1_0")]
+                    IABCONTENT10 = 2,
+
+                    /// <summary>
+                    /// IAB Content Taxonomy 2.2. See [Content Taxonomy
+                    /// 2.2.tsv](https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Content%20Taxonomies/Content%20Taxonomy%202.2.tsv)
+                    /// for more details.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("IAB_CONTENT_2_2")]
+                    IABCONTENT22 = 3,
+                }
+
+                /// <summary>
                 /// Controls the amount of information included in the response. By default only creativeServingDecision
                 /// is included. To retrieve the entire creative resource (including the declared fields and the
                 /// creative content) specify the view as "FULL".
@@ -2204,6 +2294,14 @@ namespace Google.Apis.RealTimeBidding.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^buyers/[^/]+/creatives/[^/]+$",
+                    });
+                    RequestParameters.Add("adCategoryTaxonomyOverride", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adCategoryTaxonomyOverride",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                     {
@@ -2268,6 +2366,47 @@ namespace Google.Apis.RealTimeBidding.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The category taxonomy to use for the response. Overrides the default category taxonomy for
+                /// the bidder.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("adCategoryTaxonomyOverride", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AdCategoryTaxonomyOverrideEnum> AdCategoryTaxonomyOverride { get; set; }
+
+                /// <summary>
+                /// Optional. The category taxonomy to use for the response. Overrides the default category taxonomy for
+                /// the bidder.
+                /// </summary>
+                public enum AdCategoryTaxonomyOverrideEnum
+                {
+                    /// <summary>Default value that should never be used.</summary>
+                    [Google.Apis.Util.StringValueAttribute("AD_CATEGORY_TAXONOMY_UNSPECIFIED")]
+                    ADCATEGORYTAXONOMYUNSPECIFIED = 0,
+
+                    /// <summary>
+                    /// Google ad categories taxonomy, including product categories and sensitive categories. Find the
+                    /// category lists at https://developers.google.com/authorized-buyers/rtb/data#reference-data
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("GOOGLE_AD_CATEGORY_TAXONOMY")]
+                    GOOGLEADCATEGORYTAXONOMY = 1,
+
+                    /// <summary>
+                    /// IAB Content Taxonomy 1.0. See [Content Taxonomy
+                    /// 1.0.tsv](https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Content%20Taxonomies/Content%20Taxonomy%201.0.tsv)
+                    /// for more details.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("IAB_CONTENT_1_0")]
+                    IABCONTENT10 = 2,
+
+                    /// <summary>
+                    /// IAB Content Taxonomy 2.2. See [Content Taxonomy
+                    /// 2.2.tsv](https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Content%20Taxonomies/Content%20Taxonomy%202.2.tsv)
+                    /// for more details.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("IAB_CONTENT_2_2")]
+                    IABCONTENT22 = 3,
+                }
 
                 /// <summary>
                 /// Query string to filter creatives. If no filter is specified, all active creatives will be returned.
@@ -2345,6 +2484,14 @@ namespace Google.Apis.RealTimeBidding.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^buyers/[^/]+$",
+                    });
+                    RequestParameters.Add("adCategoryTaxonomyOverride", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "adCategoryTaxonomyOverride",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {

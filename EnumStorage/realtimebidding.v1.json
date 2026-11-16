@@ -1,13 +1,31 @@
 {
+  "Google.Apis.RealTimeBidding.v1.BiddersResource+CreativesResource+ListRequest.AdCategoryTaxonomyOverrideEnum": [
+    "AD_CATEGORY_TAXONOMY_UNSPECIFIED",
+    "GOOGLE_AD_CATEGORY_TAXONOMY",
+    "IAB_CONTENT_1_0",
+    "IAB_CONTENT_2_2"
+  ],
   "Google.Apis.RealTimeBidding.v1.BiddersResource+CreativesResource+ListRequest.ViewEnum": [
     "CREATIVE_VIEW_UNSPECIFIED",
     "SERVING_DECISION_ONLY",
     "FULL"
   ],
+  "Google.Apis.RealTimeBidding.v1.BuyersResource+CreativesResource+GetRequest.AdCategoryTaxonomyOverrideEnum": [
+    "AD_CATEGORY_TAXONOMY_UNSPECIFIED",
+    "GOOGLE_AD_CATEGORY_TAXONOMY",
+    "IAB_CONTENT_1_0",
+    "IAB_CONTENT_2_2"
+  ],
   "Google.Apis.RealTimeBidding.v1.BuyersResource+CreativesResource+GetRequest.ViewEnum": [
     "CREATIVE_VIEW_UNSPECIFIED",
     "SERVING_DECISION_ONLY",
     "FULL"
+  ],
+  "Google.Apis.RealTimeBidding.v1.BuyersResource+CreativesResource+ListRequest.AdCategoryTaxonomyOverrideEnum": [
+    "AD_CATEGORY_TAXONOMY_UNSPECIFIED",
+    "GOOGLE_AD_CATEGORY_TAXONOMY",
+    "IAB_CONTENT_1_0",
+    "IAB_CONTENT_2_2"
   ],
   "Google.Apis.RealTimeBidding.v1.BuyersResource+CreativesResource+ListRequest.ViewEnum": [
     "CREATIVE_VIEW_UNSPECIFIED",
