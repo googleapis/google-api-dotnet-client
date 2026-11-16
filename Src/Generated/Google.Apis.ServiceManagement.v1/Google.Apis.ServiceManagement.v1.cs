@@ -2688,7 +2688,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Required information for every language.</summary>
     public class CommonLanguageSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The destination where API teams want this client library to be published.</summary>
+        /// <summary>
+        /// Deprecated: Client libraries are published for all supported languages by default when a `library_settings`
+        /// entry is present with a `version` and `launch_stage`. The destination where API teams want this client
+        /// library to be published.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
         public virtual System.Collections.Generic.IList<string> Destinations { get; set; }
 
@@ -3543,6 +3547,27 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renamedServices")]
         public virtual System.Collections.Generic.IDictionary<string, string> RenamedServices { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rich semantic information of an API field beyond basic typing.</summary>
+    public class GoogleApiFieldInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The standard format of a field value. This does not explicitly configure any API consumer, just documents
+        /// the API's format for the field it is applied to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// The type(s) that the annotated, generic field may represent. Currently, this must only be used on fields of
+        /// type `google.protobuf.Any`. Supporting other generic types may be considered in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencedTypes")]
+        public virtual System.Collections.Generic.IList<TypeReference> ReferencedTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5598,6 +5623,23 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>The source syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to a message type, for use in FieldInfo.</summary>
+    public class TypeReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the type that the annotated, generic field may represent. If the type is in the same protobuf
+        /// package, the value can be the simple message name e.g., `"MyMessage"`. Otherwise, the value must be the
+        /// fully-qualified message name e.g., `"google.library.v1.Book"`. If the type(s) are unknown to the service
+        /// (e.g. the field accepts generic user input), use the wildcard `"*"` to denote this behavior. See
+        /// [AIP-202](https://google.aip.dev/202#type-references) for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeName")]
+        public virtual string TypeName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
