@@ -1062,7 +1062,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>
-                /// Returns permissions that a caller has on the specified Project. There are no permissions required
+                /// Returns permissions that a caller has on the specified Instance. There are no permissions required
                 /// for making this API call.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -1077,7 +1077,7 @@ namespace Google.Apis.CloudRun.v2
                 }
 
                 /// <summary>
-                /// Returns permissions that a caller has on the specified Project. There are no permissions required
+                /// Returns permissions that a caller has on the specified Instance. There are no permissions required
                 /// for making this API call.
                 /// </summary>
                 public class TestIamPermissionsRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleIamV1TestIamPermissionsResponse>
@@ -5180,6 +5180,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dockerBuild")]
         public virtual GoogleCloudRunV2BuildConfigurationDockerBuild DockerBuild { get; set; }
 
+        /// <summary>Optional. Environment variables for the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2EnvVar> EnvironmentVariables { get; set; }
+
         /// <summary>Required. Artifact Registry URI to store the built image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageRepositoryUri")]
         public virtual string ImageRepositoryUri { get; set; }
@@ -5214,7 +5218,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheImageUri")]
         public virtual string CacheImageUri { get; set; }
 
-        /// <summary>Optional. Environment variables for the build.</summary>
+        /// <summary>Optional. Deprecated: Use environment_variables in BuildConfiguration instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
 
@@ -5403,7 +5407,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         private object _lastTransitionTime;
 
-        /// <summary>Last time the condition transitioned from one status to another.</summary>
+        /// <summary>Output only. Last time the condition transitioned from one status to another.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastTransitionTime")]
         public virtual string LastTransitionTimeRaw
         {
@@ -5438,7 +5442,7 @@ namespace Google.Apis.CloudRun.v2.Data
             set => LastTransitionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Human readable message indicating details about the current status.</summary>
+        /// <summary>Output only. Human readable message indicating details about the current status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
@@ -5450,16 +5454,16 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionReason")]
         public virtual string RevisionReason { get; set; }
 
-        /// <summary>How to interpret failures of this condition, one of Error, Warning, Info</summary>
+        /// <summary>Output only. How to interpret failures of this condition, one of Error, Warning, Info</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>State of the condition.</summary>
+        /// <summary>Output only. State of the condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
         /// <summary>
-        /// type is used to communicate the status of the reconciliation process. See also:
+        /// Output only. type is used to communicate the status of the reconciliation process. See also:
         /// https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common
         /// to all resources include: * "Ready": True when the Resource is ready.
         /// </summary>
@@ -5642,6 +5646,20 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents CPU-related scaling settings.</summary>
+    public class GoogleCloudRunV2CpuScaling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between
+        /// `0.1` and `0.90` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
+        public virtual System.Nullable<float> CpuUtilization { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Build the source using Docker. This means the source has a Dockerfile.</summary>
     public class GoogleCloudRunV2DockerBuild : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5650,14 +5668,14 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>
-    /// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data
-    /// is destroyed with it (it does not persist across sandbox runs).
+    /// Represents in-memory (tmpfs) or disk-backed ephemeral storage. It is ephemeral in the sense that when the
+    /// sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
     /// </summary>
     public class GoogleCloudRunV2EmptyDirVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the
-        /// default will currently be backed by memory but could change over time. +optional
+        /// The medium on which the data is stored. Acceptable values are `MEMORY`, `DISK`, or unset
+        /// (`MEDIUM_UNSPECIFIED`). When unset, the default is currently memory-backed but could change over time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
@@ -5666,8 +5684,9 @@ namespace Google.Apis.CloudRun.v2.Data
         /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium.
         /// The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here
         /// and the sum of memory limits of all containers. The default is nil which means that the limit is undefined.
-        /// More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in
-        /// Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+        /// For more information, see [Configure in-memory volume
+        /// mounts](https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume) and the
+        /// [Kubernetes `emptyDir` volume documentation](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeLimit")]
         public virtual string SizeLimit { get; set; }
@@ -6328,20 +6347,6 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. The state of the overall export operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
         public virtual string OperationState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a volume backed by a Filestore instance.</summary>
-    public class GoogleCloudRunV2FilestoreVolumeSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The resource name of the Filestore volume. Format:
-        /// `projects/{project}/locations/{location}/volumePools/{volume_pool}/volumes/{volume}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("volume")]
-        public virtual string Volume { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9476,10 +9481,6 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
         public virtual GoogleCloudRunV2EmptyDirVolumeSource EmptyDir { get; set; }
 
-        /// <summary>Optional. Represents a volume backed by a Filestore instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filestore")]
-        public virtual GoogleCloudRunV2FilestoreVolumeSource Filestore { get; set; }
-
         /// <summary>Persistent storage backed by a Google Cloud Storage bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcs")]
         public virtual GoogleCloudRunV2GCSVolumeSource Gcs { get; set; }
@@ -10018,9 +10019,31 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Worker pool scaling settings.</summary>
     public class GoogleCloudRunV2WorkerPoolScaling : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The CPU scaling settings for the worker pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuScaling")]
+        public virtual GoogleCloudRunV2CpuScaling CpuScaling { get; set; }
+
         /// <summary>Optional. The total number of instances in manual scaling mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manualInstanceCount")]
         public virtual System.Nullable<int> ManualInstanceCount { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum count of instances distributed among revisions based on the specified instance split
+        /// percentages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
+        public virtual System.Nullable<int> MaxInstanceCount { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum count of instances distributed among revisions based on the specified instance split
+        /// percentages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
+        public virtual System.Nullable<int> MinInstanceCount { get; set; }
+
+        /// <summary>Optional. The scaling mode for the worker pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scalingMode")]
+        public virtual string ScalingMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10607,9 +10630,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string PubsubTopic { get; set; }
 
         /// <summary>
-        /// Optional. Ranked list (earlier items have higher priority) of Machine Series to consider when provisioning
-        /// Worker VMs. A concrete machine type will be selected based on machine availability in the given region. This
-        /// field must be empty for the Build to be eligible to be paired with a pre-provisioned worker VM.
+        /// Optional. Deprecated: Use PrivatePoolV1Config.WorkerConfig.ranked_machine_series instead. This field has no
+        /// effect.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankedMachineSeries")]
         public virtual System.Collections.Generic.IList<string> RankedMachineSeries { get; set; }
