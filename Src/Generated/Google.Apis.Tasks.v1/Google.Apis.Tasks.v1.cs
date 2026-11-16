@@ -1132,8 +1132,7 @@ namespace Google.Apis.Tasks.v1
 
             /// <summary>
             /// Optional. Destination task list identifier. If set, the task is moved from tasklist to the
-            /// destinationTasklist list. Otherwise the task is moved within its current list. Recurrent tasks cannot
-            /// currently be moved between lists.
+            /// destinationTasklist list. Otherwise the task is moved within its current list.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("destinationTasklist", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DestinationTasklist { get; set; }
