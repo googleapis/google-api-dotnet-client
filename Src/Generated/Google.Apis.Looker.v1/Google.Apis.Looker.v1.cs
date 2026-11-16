@@ -1704,10 +1704,6 @@ namespace Google.Apis.Looker.v1.Data
     /// <summary>ComponentMetrics contains sizing, timing, retries, and metrics for an exported component.</summary>
     public class ComponentMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of the exported component.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("componentType")]
-        public virtual string ComponentType { get; set; }
-
         /// <summary>Duration of the component export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
@@ -1793,6 +1789,10 @@ namespace Google.Apis.Looker.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Type of the exported component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1954,9 +1954,10 @@ namespace Google.Apis.Looker.v1.Data
     public class ExportMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Opaque capability token for O2C Elite System Activity (ESA) direct dataset migration. It is minted by the
-        /// exporter together with the cloned source dataset and presented back to Looker Original when the import
-        /// requests access to that dataset.
+        /// Opaque capability token for O2C Elite System Activity (ESA) direct dataset migration, encrypted by the
+        /// exporter with the export encryption key (base64-encoded Cloud KMS ciphertext). It is minted by the exporter
+        /// together with the cloned source dataset; Looker Core CLH decrypts it with the import's service account and
+        /// presents the plaintext to Looker Original when the import requests access to that dataset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("esaMigrationToken")]
         public virtual string EsaMigrationToken { get; set; }
