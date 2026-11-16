@@ -879,13 +879,21 @@ namespace Google.Apis.Merchant.accounts_v1
                 this.service = service;
             }
 
-            /// <summary>Retrieves the merchant account that the calling GCP is registered with.</summary>
+            /// <summary>
+            /// Retrieves the merchant account that the calling GCP is registered with. For more information, see
+            /// [Verify your account's connection to Merchant
+            /// API](https://developers.google.com/merchant/api/guides/accounts/verify-api-access).
+            /// </summary>
             public virtual GetAccountForGcpRegistrationRequest GetAccountForGcpRegistration()
             {
                 return new GetAccountForGcpRegistrationRequest(this.service);
             }
 
-            /// <summary>Retrieves the merchant account that the calling GCP is registered with.</summary>
+            /// <summary>
+            /// Retrieves the merchant account that the calling GCP is registered with. For more information, see
+            /// [Verify your account's connection to Merchant
+            /// API](https://developers.google.com/merchant/api/guides/accounts/verify-api-access).
+            /// </summary>
             public class GetAccountForGcpRegistrationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.GetAccountForGcpRegistrationResponse>
             {
                 /// <summary>Constructs a new GetAccountForGcpRegistration request.</summary>
@@ -963,7 +971,8 @@ namespace Google.Apis.Merchant.accounts_v1
             /// authenticated with the parent or the managing advanced account. * The caller account must have a
             /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test
             /// accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts) are not eligible for
-            /// registration.
+            /// registration. For step-by-step instructions, see [Register as a
+            /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -971,7 +980,7 @@ namespace Google.Apis.Merchant.accounts_v1
             /// will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must be
             /// the same account where user calling this API method is directly added to. Note: The account used must be
             /// a production account (can't be a [test
-            /// account](https://developers.google.com/merchant/api/guides/accounts/test-accounts) ) and must have a
+            /// account](https://developers.google.com/merchant/api/guides/accounts/test-accounts)) and must have a
             /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center.
             /// </param>
             public virtual RegisterGcpRequest RegisterGcp(Google.Apis.Merchant.accounts_v1.Data.RegisterGcpRequest body, string name)
@@ -987,7 +996,8 @@ namespace Google.Apis.Merchant.accounts_v1
             /// authenticated with the parent or the managing advanced account. * The caller account must have a
             /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test
             /// accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts) are not eligible for
-            /// registration.
+            /// registration. For step-by-step instructions, see [Register as a
+            /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration).
             /// </summary>
             public class RegisterGcpRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.DeveloperRegistration>
             {
@@ -1004,7 +1014,7 @@ namespace Google.Apis.Merchant.accounts_v1
                 /// will be registered with. Format: `accounts/{account}/developerRegistration` The {account} used must
                 /// be the same account where user calling this API method is directly added to. Note: The account used
                 /// must be a production account (can't be a [test
-                /// account](https://developers.google.com/merchant/api/guides/accounts/test-accounts) ) and must have a
+                /// account](https://developers.google.com/merchant/api/guides/accounts/test-accounts)) and must have a
                 /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1042,7 +1052,9 @@ namespace Google.Apis.Merchant.accounts_v1
 
             /// <summary>
             /// Unregister the calling GCP from the calling shopping account. Note that the GCP will still be able to
-            /// access the API for at most 1 day from the unregister succussful call.
+            /// access the API for at most 1 day from the unregister successful call. For more information, see [Manage
+            /// and transition Google Cloud
+            /// projects](https://developers.google.com/merchant/api/guides/accounts/manage-transition-gcp-projects).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1056,7 +1068,9 @@ namespace Google.Apis.Merchant.accounts_v1
 
             /// <summary>
             /// Unregister the calling GCP from the calling shopping account. Note that the GCP will still be able to
-            /// access the API for at most 1 day from the unregister succussful call.
+            /// access the API for at most 1 day from the unregister successful call. For more information, see [Manage
+            /// and transition Google Cloud
+            /// projects](https://developers.google.com/merchant/api/guides/accounts/manage-transition-gcp-projects).
             /// </summary>
             public class UnregisterGcpRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.Empty>
             {
@@ -3175,7 +3189,8 @@ namespace Google.Apis.Merchant.accounts_v1
 
             /// <summary>
             /// Creates one or more regions in your Merchant Center account. Executing this method requires admin
-            /// access.
+            /// access. For more information, see [Manage region
+            /// batching](https://developers.google.com/merchant/api/guides/accounts/manage-region-batching).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -3188,7 +3203,8 @@ namespace Google.Apis.Merchant.accounts_v1
 
             /// <summary>
             /// Creates one or more regions in your Merchant Center account. Executing this method requires admin
-            /// access.
+            /// access. For more information, see [Manage region
+            /// batching](https://developers.google.com/merchant/api/guides/accounts/manage-region-batching).
             /// </summary>
             public class BatchCreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.BatchCreateRegionsResponse>
             {
@@ -3238,7 +3254,8 @@ namespace Google.Apis.Merchant.accounts_v1
 
             /// <summary>
             /// Deletes multiple regions by name from your Merchant Center account. Executing this method requires admin
-            /// access.
+            /// access. For more information, see [Manage region
+            /// batching](https://developers.google.com/merchant/api/guides/accounts/manage-region-batching).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -3251,7 +3268,8 @@ namespace Google.Apis.Merchant.accounts_v1
 
             /// <summary>
             /// Deletes multiple regions by name from your Merchant Center account. Executing this method requires admin
-            /// access.
+            /// access. For more information, see [Manage region
+            /// batching](https://developers.google.com/merchant/api/guides/accounts/manage-region-batching).
             /// </summary>
             public class BatchDeleteRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.Empty>
             {
@@ -3301,7 +3319,8 @@ namespace Google.Apis.Merchant.accounts_v1
 
             /// <summary>
             /// Updates one or more regions in your Merchant Center account. Executing this method requires admin
-            /// access.
+            /// access. For more information, see [Manage region
+            /// batching](https://developers.google.com/merchant/api/guides/accounts/manage-region-batching).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -3314,7 +3333,8 @@ namespace Google.Apis.Merchant.accounts_v1
 
             /// <summary>
             /// Updates one or more regions in your Merchant Center account. Executing this method requires admin
-            /// access.
+            /// access. For more information, see [Manage region
+            /// batching](https://developers.google.com/merchant/api/guides/accounts/manage-region-batching).
             /// </summary>
             public class BatchUpdateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.BatchUpdateRegionsResponse>
             {
@@ -4933,7 +4953,8 @@ namespace Google.Apis.Merchant.accounts_v1
 
         /// <summary>
         /// Creates a Merchant Center account with additional configuration. Adds the user that makes the request as an
-        /// admin for the new account.
+        /// admin for the new account. For step-by-step instructions, see [Create
+        /// accounts](https://developers.google.com/merchant/api/guides/accounts/create-accounts).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateAndConfigureRequest CreateAndConfigure(Google.Apis.Merchant.accounts_v1.Data.CreateAndConfigureAccountRequest body)
@@ -4943,7 +4964,8 @@ namespace Google.Apis.Merchant.accounts_v1
 
         /// <summary>
         /// Creates a Merchant Center account with additional configuration. Adds the user that makes the request as an
-        /// admin for the new account.
+        /// admin for the new account. For step-by-step instructions, see [Create
+        /// accounts](https://developers.google.com/merchant/api/guides/accounts/create-accounts).
         /// </summary>
         public class CreateAndConfigureRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.Account>
         {
@@ -4983,7 +5005,8 @@ namespace Google.Apis.Merchant.accounts_v1
         /// account. Likewise, a regular account cannot be converted into a test account. - Non-Serving Products: Any
         /// products, offers, or data created within a test account will not be published or made visible to end-users
         /// on any Google surfaces. They are strictly for testing environments. - Separate Environment: Test accounts
-        /// operate in a sandbox-like manner, isolated from live serving and real user traffic.
+        /// operate in a sandbox-like manner, isolated from live serving and real user traffic. For more information,
+        /// see [Create test accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
@@ -5001,7 +5024,8 @@ namespace Google.Apis.Merchant.accounts_v1
         /// account. Likewise, a regular account cannot be converted into a test account. - Non-Serving Products: Any
         /// products, offers, or data created within a test account will not be published or made visible to end-users
         /// on any Google surfaces. They are strictly for testing environments. - Separate Environment: Test accounts
-        /// operate in a sandbox-like manner, isolated from live serving and real user traffic.
+        /// operate in a sandbox-like manner, isolated from live serving and real user traffic. For more information,
+        /// see [Create test accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts).
         /// </summary>
         public class CreateTestAccountRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.Account>
         {
@@ -5177,7 +5201,9 @@ namespace Google.Apis.Merchant.accounts_v1
         /// <summary>
         /// Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the
         /// Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the
-        /// `accounts.listSubaccounts` method, which is more suitable for advanced accounts use case.
+        /// `accounts.listSubaccounts` method, which is more suitable for advanced accounts use case. For more
+        /// information, see [Filter accounts you can
+        /// access](https://developers.google.com/merchant/api/guides/accounts/filter).
         /// </summary>
         public virtual ListRequest List()
         {
@@ -5187,7 +5213,9 @@ namespace Google.Apis.Merchant.accounts_v1
         /// <summary>
         /// Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the
         /// Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the
-        /// `accounts.listSubaccounts` method, which is more suitable for advanced accounts use case.
+        /// `accounts.listSubaccounts` method, which is more suitable for advanced accounts use case. For more
+        /// information, see [Filter accounts you can
+        /// access](https://developers.google.com/merchant/api/guides/accounts/filter).
         /// </summary>
         public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.ListAccountsResponse>
         {
@@ -5668,7 +5696,7 @@ namespace Google.Apis.Merchant.accounts_v1.Data
 
     /// <summary>
     /// Describes the [accepted terms of
-    /// service](https://developers.google.com/merchant/api/guides/accounts/create-and-configure#accept_the_merchant_center_terms_of_service).
+    /// service](https://developers.google.com/merchant/api/guides/accounts/manage-tos-agreements#accept-tos).
     /// </summary>
     public class Accepted : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5701,7 +5729,12 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// operate as standalone entities or be part of a advanced account structure. In an advanced account setup the
     /// parent account manages multiple sub-accounts. Establishing an account involves configuring attributes like the
     /// account name, time zone, and language preferences. The `Account` message is the parent entity for many other
-    /// resources, for example, `AccountRelationship`, `Homepage`, `BusinessInfo` and so on.
+    /// resources, for example, `AccountRelationship`, `Homepage`, `BusinessInfo` and so on. For more information, see
+    /// [Sign up for Merchant Center](https://support.google.com/merchants/answer/188924), [Manage accounts and
+    /// settings](https://developers.google.com/merchant/api/guides/accounts/overview), [Create
+    /// accounts](https://developers.google.com/merchant/api/guides/accounts/create-accounts), [Create test
+    /// accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts), and [Filter accounts you
+    /// can access](https://developers.google.com/merchant/api/guides/accounts/filter).
     /// </summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5762,8 +5795,8 @@ namespace Google.Apis.Merchant.accounts_v1.Data
 
     /// <summary>
     /// Issues with your Merchant Center account that can impact all your products. For more information, see
-    /// [Account-level issues in Merchant
-    /// Center](https://support.google.com/merchants/answer/12153802?sjid=17798438912526418908-EU#account).
+    /// [Account-level issues in Merchant Center](https://support.google.com/merchants/answer/12153802#account) and
+    /// [View account issues](https://developers.google.com/merchant/api/guides/accounts/view-issues).
     /// </summary>
     public class AccountIssue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5813,7 +5846,8 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// product management or campaign management. It specifies the access rights and permissions to the business's data
     /// relevant to those services. Establishing an account relationship involves linking the merchant's account with a
     /// provider's account. The provider could be another Google account (like Google Ads or Google My Business) or a
-    /// third-party platform (such as Shopify or WooCommerce).
+    /// third-party platform (such as Shopify or WooCommerce). For more information, see [Account
+    /// relationships](https://developers.google.com/merchant/api/guides/accounts/relationships).
     /// </summary>
     public class AccountRelationship : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5858,7 +5892,9 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// provider are aware of the services enabled. In scenarios where a user is an admin of both accounts, the approval
     /// can happen automatically. The mutability of a service is also managed through `AccountService`. Some services
     /// might be immutable, for example, if they were established through other systems or APIs, and you cannot alter
-    /// them through this API.
+    /// them through this API. For more information, see [Account
+    /// relationships](https://developers.google.com/merchant/api/guides/accounts/relationships) and [Account service
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/account-service-changes).
     /// </summary>
     public class AccountService : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6078,7 +6114,8 @@ namespace Google.Apis.Merchant.accounts_v1.Data
 
     /// <summary>
     /// Collection of information related to the [autofeed](https://support.google.com/merchants/answer/7538732)
-    /// settings.
+    /// settings. For more information, see [Configure Autofeed
+    /// settings](https://developers.google.com/merchant/api/guides/data-sources/manage-various-data-sources#autofeed-settings).
     /// </summary>
     public class AutofeedSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6140,7 +6177,9 @@ namespace Google.Apis.Merchant.accounts_v1.Data
 
     /// <summary>
     /// Collection of information related to the [automatic
-    /// improvements](https://developers.google.com/shopping-content/guides/automatic-improvements) of an account.
+    /// improvements](https://support.google.com/merchants/answer/12157888) of an account. For more information, see
+    /// [Enable automatic
+    /// improvements](https://developers.google.com/merchant/api/guides/automatic-improvements/overview).
     /// </summary>
     public class AutomaticImprovements : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6332,7 +6371,8 @@ namespace Google.Apis.Merchant.accounts_v1.Data
 
     /// <summary>
     /// Collection of information related to the [identity of a
-    /// business](https://support.google.com/merchants/answer/12564247).
+    /// business](https://support.google.com/merchants/answer/12564247). For more information, see [Manage business
+    /// identity](https://developers.google.com/merchant/api/guides/accounts/business-identity).
     /// </summary>
     public class BusinessIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6392,7 +6432,10 @@ namespace Google.Apis.Merchant.accounts_v1.Data
 
     /// <summary>
     /// The `BusinessInfo` message contains essential information about a business. This message captures key business
-    /// details such as physical address, customer service contacts, and region-specific identifiers.
+    /// details such as physical address, customer service contacts, and region-specific identifiers. For more
+    /// information, see [Add your business
+    /// information](https://support.google.com/merchants/answer/14286818#add_bus_info) and [Update your business
+    /// information](https://developers.google.com/merchant/api/guides/accounts/create-accounts#update_your_business_information).
     /// </summary>
     public class BusinessInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6483,7 +6526,9 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     }
 
     /// <summary>
-    /// [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for a specific merchant.
+    /// [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for a specific merchant. For more
+    /// information, see [Add a checkout link for your products](https://support.google.com/merchants/answer/13945960)
+    /// and [Manage checkout settings](https://developers.google.com/merchant/api/guides/products/checkout-settings).
     /// </summary>
     public class CheckoutSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6805,7 +6850,12 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a developer registration owned by a Merchant account.</summary>
+    /// <summary>
+    /// Represents a developer registration owned by a Merchant account. For more information, see [Register as a
+    /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration) and [Manage and transition
+    /// Google Cloud
+    /// projects](https://developers.google.com/merchant/api/guides/accounts/manage-transition-gcp-projects).
+    /// </summary>
     public class DeveloperRegistration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The GCP ids attached to this developer registration</summary>
@@ -6848,7 +6898,9 @@ namespace Google.Apis.Merchant.accounts_v1.Data
 
     /// <summary>
     /// The categories of notifications the user opted into / opted out of. The email preferences do not include
-    /// mandatory announcements as users can't opt out of them.
+    /// mandatory announcements as users can't opt out of them. For more information, see [Change your Merchant Center
+    /// email preferences](https://support.google.com/merchants/answer/9370919) and [Manage Merchant Center email
+    /// preferences](https://developers.google.com/merchant/api/guides/accounts/email-notifications).
     /// </summary>
     public class EmailPreferences : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6902,7 +6954,10 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Collection of information related to a Google Business Profile (GBP) account.</summary>
+    /// <summary>
+    /// Collection of information related to a Google Business Profile (GBP) account. For more information, see [Link a
+    /// Google business profile](https://developers.google.com/merchant/api/guides/accounts/link-business-profile).
+    /// </summary>
     public class GbpAccount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The id of the GBP account.</summary>
@@ -7034,7 +7089,9 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// The `Homepage` message represents a business's store homepage within the system. A business's homepage is the
     /// primary domain where customers interact with their store. The homepage can be claimed and verified as a proof of
     /// ownership and allows the business to unlock features that require a verified website. For more information, see
-    /// [Understanding online store URL verification](//support.google.com/merchants/answer/176793).
+    /// [Understanding online store URL verification](//support.google.com/merchants/answer/176793). For step-by-step
+    /// instructions, see [Manage homepage
+    /// settings](https://developers.google.com/merchant/api/guides/accounts/manage-homepage-settings).
     /// </summary>
     public class Homepage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7234,7 +7291,12 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Collection of information related to a Local Feed Partnership (LFP) provider.</summary>
+    /// <summary>
+    /// Collection of information related to a Local Feed Partnership (LFP) provider. For more information, see [Manage
+    /// Local Feeds Partnership (LFP)
+    /// providers](https://developers.google.com/merchant/api/guides/accounts/manage-lfp-providers) and [Manage local
+    /// feeds partnership](https://developers.google.com/merchant/api/guides/local-feeds-partnership/overview).
+    /// </summary>
     public class LfpProvider : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The display name of the LFP provider.</summary>
@@ -7587,7 +7649,10 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Collection of information related to the omnichannel settings of a merchant.</summary>
+    /// <summary>
+    /// Collection of information related to the omnichannel settings of a merchant. For more information, see [Manage
+    /// omnichannel settings](https://developers.google.com/merchant/api/guides/accounts/manage-omnichannel-settings).
+    /// </summary>
     public class OmnichannelSetting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The about page URI and state for this country.</summary>
@@ -7656,7 +7721,8 @@ namespace Google.Apis.Merchant.accounts_v1.Data
 
     /// <summary>
     /// [Online return policy](https://support.google.com/merchants/answer/10220642) object. This is currently used to
-    /// represent return policies for ads and free listings programs.
+    /// represent return policies for ads and free listings programs. For more information, see [Manage your online
+    /// return policies](https://developers.google.com/merchant/api/guides/online-return-policies/overview).
     /// </summary>
     public class OnlineReturnPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8047,7 +8113,11 @@ namespace Google.Apis.Merchant.accounts_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
@@ -8178,8 +8248,9 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// Defines participation in a given program for the specified account. Programs provide a mechanism for adding
     /// functionality to a Merchant Center accounts. A typical example of this is the [Free product
     /// listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a
-    /// business's store to be shown across Google for free. The following list is the available set of program resource
-    /// IDs accessible through the API: *
+    /// business's store to be shown across Google for free. For more information, see [Manage
+    /// programs](https://developers.google.com/merchant/api/guides/programs/overview). The following list is the
+    /// available set of program resource IDs accessible through the API: *
     /// [`checkout`](https://developers.google.com/merchant/api/guides/products/checkout-settings) * `free-listings` *
     /// [`loyalty`](https://developers.google.com/merchant/api/guides/loyalty/loyalty-programs) * `product-ratings` *
     /// `shopping-ads` * [`ucp-integration` (limited
@@ -8321,7 +8392,9 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// `ShippingSettings` services. You can define regions as collections of either postal codes, radius areas or, in
     /// some countries, using predefined geotargets. A region must be defined by specifying exactly one of
     /// `postal_code_area`, `geotarget_area`, or `radius_area`. For more information, see [Set up regions
-    /// ](https://support.google.com/merchants/answer/7410946#zippy=%2Ccreate-a-new-region) for more information.
+    /// ](https://support.google.com/merchants/answer/7410946#zippy=%2Ccreate-a-new-region), [Create and update
+    /// regions](https://developers.google.com/merchant/api/guides/accounts/regions), and [Manage region
+    /// batching](https://developers.google.com/merchant/api/guides/accounts/manage-region-batching).
     /// </summary>
     public class Region : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8620,7 +8693,8 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// <summary>
     /// The Merchant Center account's [shipping settings](https://support.google.com/merchants/answer/6069284). The
     /// `ShippingSettings` resource lets you retrieve and update the shipping settings of your advanced account and all
-    /// its associated sub-accounts.
+    /// its associated sub-accounts. For more information, see [Manage shipping
+    /// settings](https://developers.google.com/merchant/api/guides/accounts/manage-shipping-settings).
     /// </summary>
     public class ShippingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8761,7 +8835,8 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// Service](https://support.google.com/merchants/answer/160173). This message is important for the onboarding
     /// process, ensuring that merchants agree to the necessary legal agreements for using the service. Merchants can
     /// retrieve the latest terms of service for a given `kind` and `region` through `RetrieveLatestTermsOfService`, and
-    /// accept them as required through `AcceptTermsOfService`.
+    /// accept them as required through `AcceptTermsOfService`. For step-by-step instructions, see [Manage Terms of
+    /// Service](https://developers.google.com/merchant/api/guides/accounts/manage-tos-agreements).
     /// </summary>
     public class TermsOfService : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8809,7 +8884,8 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// services we expect third-party providers to display the text associated with the given terms of service
     /// agreement (the url to the file containing the text is added in the Required message below as `tos_file_uri`).
     /// The actual acceptance of the terms of service is done by calling accept on the `TermsOfService` resource.
-    /// `valid_until` field.
+    /// `valid_until` field. For more information, see [Manage Terms of
+    /// Service](https://developers.google.com/merchant/api/guides/accounts/manage-tos-agreements).
     /// </summary>
     public class TermsOfServiceAgreementState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8983,14 +9059,14 @@ namespace Google.Apis.Merchant.accounts_v1.Data
     /// <summary>
     /// The `User` resource represents a user associated with a Merchant Center account. It is used to manage user
     /// permissions and access rights within the account. For more information, see [Frequently asked questions about
-    /// people and access levels](//support.google.com/merchants/answer/12160472).
+    /// people and access levels](//support.google.com/merchants/answer/12160472) and [Control access to your
+    /// account](https://developers.google.com/merchant/api/guides/accounts/control-access).
     /// </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The [access
-        /// rights](https://support.google.com/merchants/answer/12160472?sjid=6789834943175119429-EU#accesstypes) the
-        /// user has.
+        /// Required. The [access rights](https://support.google.com/merchants/answer/12160472#accesstypes) the user
+        /// has.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessRights")]
         public virtual System.Collections.Generic.IList<string> AccessRights { get; set; }
