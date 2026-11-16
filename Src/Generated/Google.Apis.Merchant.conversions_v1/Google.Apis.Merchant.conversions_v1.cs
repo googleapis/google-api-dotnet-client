@@ -730,7 +730,8 @@ namespace Google.Apis.Merchant.conversions_v1.Data
 
     /// <summary>
     /// Represents a conversion source owned by a Merchant account. A merchant account can have up to 200 conversion
-    /// sources.
+    /// sources. For more information, see [Manage conversion
+    /// sources](https://developers.google.com/merchant/api/guides/conversion-sources/overview).
     /// </summary>
     public class ConversionSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -937,7 +938,11 @@ namespace Google.Apis.Merchant.conversions_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
