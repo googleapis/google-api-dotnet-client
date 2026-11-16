@@ -2248,7 +2248,10 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canDelete")]
         public virtual System.Nullable<bool> CanDelete { get; set; }
 
-        /// <summary>Output only. Indicates if the listing is eligible for business calls.</summary>
+        /// <summary>
+        /// Output only. Deprecated: Relates to the Call Tracking feature which is no longer supported. Indicates
+        /// whether the location is eligible for business calls.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canHaveBusinessCalls")]
         public virtual System.Nullable<bool> CanHaveBusinessCalls { get; set; }
 
@@ -2318,7 +2321,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         public virtual string NewReviewUri { get; set; }
 
         /// <summary>
-        /// Output only. If this locationappears on Google Maps, this field is populated with the place ID for the
+        /// Output only. If this location appears on Google Maps, this field is populated with the place ID for the
         /// location. This ID can be used in various Places APIs. This field can be set during Create calls, but not for
         /// Update.
         /// </summary>
