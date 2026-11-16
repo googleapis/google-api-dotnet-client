@@ -364,7 +364,10 @@ namespace Google.Apis.Merchant.datasources_v1
 
             /// <summary>
             /// Creates the new data source configuration for the given account. This method always creates a new data
-            /// source.
+            /// source. For more information, see [Manage API data
+            /// sources](https://developers.google.com/merchant/api/guides/data-sources/api-sources) and [Manage various
+            /// data source
+            /// types](https://developers.google.com/merchant/api/guides/data-sources/manage-various-data-sources).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -377,7 +380,10 @@ namespace Google.Apis.Merchant.datasources_v1
 
             /// <summary>
             /// Creates the new data source configuration for the given account. This method always creates a new data
-            /// source.
+            /// source. For more information, see [Manage API data
+            /// sources](https://developers.google.com/merchant/api/guides/data-sources/api-sources) and [Manage various
+            /// data source
+            /// types](https://developers.google.com/merchant/api/guides/data-sources/manage-various-data-sources).
             /// </summary>
             public class CreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.datasources_v1.Data.DataSource>
             {
@@ -479,7 +485,8 @@ namespace Google.Apis.Merchant.datasources_v1
             /// Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant
             /// Center Account. If you need to call this method more than once per day, you should use the Products
             /// service to update your product data instead. This method only works on data sources with a file input
-            /// set.
+            /// set. For more information, see [Monitor and trigger data source
+            /// processing](https://developers.google.com/merchant/api/guides/data-sources/monitor-status).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -495,7 +502,8 @@ namespace Google.Apis.Merchant.datasources_v1
             /// Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant
             /// Center Account. If you need to call this method more than once per day, you should use the Products
             /// service to update your product data instead. This method only works on data sources with a file input
-            /// set.
+            /// set. For more information, see [Monitor and trigger data source
+            /// processing](https://developers.google.com/merchant/api/guides/data-sources/monitor-status).
             /// </summary>
             public class FetchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.datasources_v1.Data.Empty>
             {
@@ -759,7 +767,10 @@ namespace Google.Apis.Merchant.datasources_v1
 namespace Google.Apis.Merchant.datasources_v1.Data
 {
     /// <summary>
-    /// The [data source](/merchant/api/guides/data-sources/overview) for the Merchant Center account.
+    /// The [data source](https://developers.google.com/merchant/api/guides/data-sources/overview) for the Merchant
+    /// Center account. For more information, see [Manage API data
+    /// sources](https://developers.google.com/merchant/api/guides/data-sources/api-sources) and [Manage various data
+    /// source types](https://developers.google.com/merchant/api/guides/data-sources/manage-various-data-sources).
     /// </summary>
     public class DataSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1005,7 +1016,9 @@ namespace Google.Apis.Merchant.datasources_v1.Data
     /// <summary>
     /// The file upload of a specific data source, that is, the result of the retrieval of the data source at a certain
     /// timestamp computed asynchronously when the data source processing is finished. Only applicable to file data
-    /// sources.
+    /// sources. For more information, see [Monitor and trigger data source
+    /// processing](https://developers.google.com/merchant/api/guides/data-sources/monitor-status) and [Manage various
+    /// data source types](https://developers.google.com/merchant/api/guides/data-sources/manage-various-data-sources).
     /// </summary>
     public class FileUpload : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1172,10 +1185,6 @@ namespace Google.Apis.Merchant.datasources_v1.Data
     /// <summary>The primary data source for local and online products.</summary>
     public class PrimaryProductDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Immutable. Specifies the type of data source channel.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channel")]
-        public virtual string Channel { get; set; }
-
         /// <summary>
         /// Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and
         /// `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without
@@ -1280,7 +1289,11 @@ namespace Google.Apis.Merchant.datasources_v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    /// <summary>
+    /// The message that the merchant will receive to notify about product status change event. For more information,
+    /// see [Product status
+    /// changes](https://developers.google.com/merchant/api/guides/notifications/product-status-changes).
+    /// </summary>
     public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
