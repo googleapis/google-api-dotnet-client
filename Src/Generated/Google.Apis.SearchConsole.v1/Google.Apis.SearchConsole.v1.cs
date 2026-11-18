@@ -1113,13 +1113,47 @@ namespace Google.Apis.SearchConsole.v1.Data
     /// </summary>
     public class ApiDimensionFilterGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A list of single-value filters in this group.</summary>
+        /// <summary>
+        /// Optional. Unlike the `filters` field which only supports a single value per entry, `filter_lists` allows
+        /// matching against a list of values for a single dimension in one filter. `filter_lists` supports `COUNTRY`
+        /// and `DEVICE` dimensions only. The maximum number of `expressions` allowed in a single filter list is 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterLists")]
+        public virtual System.Collections.Generic.IList<ApiDimensionFilterList> FilterLists { get; set; }
+
+        /// <summary>
+        /// Optional. A list of single-value filters in this group. A list of multi-value dimension filters. A row
+        /// matches if its value for the specified dimension matches any of the values in the filter list (implicit OR
+        /// logic, e.g., `COUNTRY` is `'usa'` OR `'can'`).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual System.Collections.Generic.IList<ApiDimensionFilter> Filters { get; set; }
 
         /// <summary>Optional. The logic operator between filters of the same group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
         public virtual string GroupType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A filter that allows specifying multiple values for a single dimension. The matching logic is an implicit OR of
+    /// equality matches (e.g., `COUNTRY` is `'usa'` OR `'can'`). Only supported for `COUNTRY` and `DEVICE`.
+    /// </summary>
+    public class ApiDimensionFilterList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The dimension to filter by. Only supported for `COUNTRY` and `DEVICE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
+        public virtual string Dimension { get; set; }
+
+        /// <summary>
+        /// Required. The values to filter against. A row matches if its value for the specified `dimension` equals any
+        /// of these `expressions` (implicit OR logic between the `expressions`). The maximum number of `expressions`
+        /// allowed is 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
+        public virtual System.Collections.Generic.IList<string> Expressions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
