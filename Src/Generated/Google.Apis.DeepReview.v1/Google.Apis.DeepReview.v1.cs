@@ -68,11 +68,6 @@ namespace Google.Apis.DeepReview.v1
             /// Account.
             /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-            /// <summary>
-            /// See, edit, create, and delete only the specific Google Drive files you use with this app
-            /// </summary>
-            public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Deep Review API.</summary>
@@ -83,11 +78,6 @@ namespace Google.Apis.DeepReview.v1
             /// Account.
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-            /// <summary>
-            /// See, edit, create, and delete only the specific Google Drive files you use with this app
-            /// </summary>
-            public const string DriveFile = "https://www.googleapis.com/auth/drive.file";
         }
 
         /// <summary>Gets the Documents resource.</summary>
