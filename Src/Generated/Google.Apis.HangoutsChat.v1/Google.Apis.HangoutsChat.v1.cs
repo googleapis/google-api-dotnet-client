@@ -6632,6 +6632,99 @@ namespace Google.Apis.HangoutsChat.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// Updates a user's read state within a thread, used to identify read and unread messages. For an
+                /// example, see [Update a user's thread read
+                /// state](https://developers.google.com/workspace/chat/update-thread-read-state). Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+                /// the [authorization
+                /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+                /// `https://www.googleapis.com/auth/chat.users.readstate`
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Resource name of the thread read state. Format:
+                /// `users/{user}/spaces/{space}/threads/{thread}/threadReadState`
+                /// </param>
+                public virtual UpdateThreadReadStateRequest UpdateThreadReadState(Google.Apis.HangoutsChat.v1.Data.ThreadReadState body, string name)
+                {
+                    return new UpdateThreadReadStateRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates a user's read state within a thread, used to identify read and unread messages. For an
+                /// example, see [Update a user's thread read
+                /// state](https://developers.google.com/workspace/chat/update-thread-read-state). Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with
+                /// the [authorization
+                /// scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): -
+                /// `https://www.googleapis.com/auth/chat.users.readstate`
+                /// </summary>
+                public class UpdateThreadReadStateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ThreadReadState>
+                {
+                    /// <summary>Constructs a new UpdateThreadReadState request.</summary>
+                    public UpdateThreadReadStateRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.ThreadReadState body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Resource name of the thread read state. Format:
+                    /// `users/{user}/spaces/{space}/threads/{thread}/threadReadState`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The field paths to update. Currently supported field paths: - `last_read_time` When
+                    /// `last_read_time` is before the latest message create time, the thread appears as unread in the
+                    /// UI. To mark the thread as read, set `last_read_time` to a timestamp equal to or later than the
+                    /// latest message create time. Future timestamps are coerced to the current request time. Setting a
+                    /// negative timestamp (before `1970-01-01T00:00:00Z`) returns an `INVALID_ARGUMENT` error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.HangoutsChat.v1.Data.ThreadReadState Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateThreadReadState";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes UpdateThreadReadState parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/spaces/[^/]+/threads/[^/]+/threadReadState$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>
