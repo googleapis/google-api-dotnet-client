@@ -6851,7 +6851,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Device network info.</summary>
     public class NetworkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>IMEI number of the GSM device. For example, A1000031212.</summary>
+        /// <summary>
+        /// IMEI number of the GSM device. For example, A1000031212. This value corresponds to the result of
+        /// TelephonyManager.getImei()(https://developer.android.com/reference/android/telephony/TelephonyManager#getImei()).
+        /// On dual-SIM devices, reports the IMEI associated with the default active subscription, such as the IMEI of
+        /// the eSIM slot when only an eSIM is active.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; }
 
