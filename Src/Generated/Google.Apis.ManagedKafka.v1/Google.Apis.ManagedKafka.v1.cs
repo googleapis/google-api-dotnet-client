@@ -8469,7 +8469,9 @@ namespace Google.Apis.ManagedKafka.v1.Data
     public class RebalanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`.
+        /// Optional. The rebalance behavior for the cluster. When not specified, defaults to
+        /// `AUTO_REBALANCE_ON_SCALE_UP`. Clusters created before July 2026 defaulted to `NO_REBALANCE` if created
+        /// without a gcloud, Terraform, or Cloud Console client.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
