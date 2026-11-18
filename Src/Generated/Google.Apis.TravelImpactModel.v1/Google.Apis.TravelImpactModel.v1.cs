@@ -954,6 +954,13 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual EmissionsMetadata EmissionsMetadata { get; set; }
 
         /// <summary>
+        /// Output only. Errors detailing why detailed emission estimates could not be returned for the flight. Empty
+        /// when emission estimates are present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>
         /// Output only. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flight")]
@@ -988,6 +995,13 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emissionsGramsPerPax")]
         public virtual EmissionsGramsPerPax EmissionsGramsPerPax { get; set; }
+
+        /// <summary>
+        /// Output only. Errors detailing why emission estimates could not be returned for the flight. Empty when
+        /// emission estimates are present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
 
         /// <summary>
         /// Identifier. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
@@ -1160,6 +1174,35 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Typical flight emission estimates for a certain market</summary>
     public class TypicalFlightEmissions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1171,6 +1214,13 @@ namespace Google.Apis.TravelImpactModel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emissionsGramsPerPax")]
         public virtual EmissionsGramsPerPax EmissionsGramsPerPax { get; set; }
+
+        /// <summary>
+        /// Output only. Errors detailing why typical flight emission estimates could not be returned for the market.
+        /// Empty when emission estimates are present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
 
         /// <summary>
         /// Identifier. Matches the flight identifiers in the request. Note: all IATA codes are capitalized.
