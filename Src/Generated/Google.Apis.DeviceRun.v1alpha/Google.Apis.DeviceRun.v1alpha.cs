@@ -2404,6 +2404,21 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about the client which invoked the session.</summary>
+    public class ClientInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Client name, such as gcloud. Maximum string size is 64 bytes (UTF-8 encoded).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Optional. Client version. Maximum string size is 64 bytes (UTF-8 encoded).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
@@ -3490,6 +3505,10 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
     /// <summary>SessionConfig is used to create a session.</summary>
     public class SessionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Information about the client which invoked the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientInfo")]
+        public virtual ClientInfo ClientInfo { get; set; }
+
         /// <summary>
         /// Optional. User-settable, human-readable name for the session. Maximum size is 63 bytes when encoded as
         /// UTF-8. If set, must match regex: `^A-Za-z0-9*$`.
@@ -3519,7 +3538,13 @@ namespace Google.Apis.DeviceRun.v1alpha.Data
         /// <summary>
         /// Optional. The Pub/Sub topics to which session events are published. Format:
         /// `projects/{project}/topics/{topic}`. See
-        /// https://cloud.google.com/pubsub/docs/admin#topic_and_subscription_name_restrictions
+        /// https://cloud.google.com/pubsub/docs/admin#topic_and_subscription_name_restrictions Each published Pub/Sub
+        /// message includes the following attributes: - `eventType`: The type of event (`JOB_ENDED` or
+        /// `SESSION_ENDED`). - `payloadFormat`: The format of the `data` field (`JSON`). - `sessionName`: The resource
+        /// name of the session, in the format `projects/{project}/locations/{location}/sessions/{session}`, where
+        /// `{project}` is the project number. The `data` field contains a UTF-8 JSON payload corresponding to
+        /// `eventType`: - `JOB_ENDED`: UTF-8 JSON representation of JobReport. - `SESSION_ENDED`: UTF-8 JSON
+        /// representation of SessionReport.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual System.Collections.Generic.IList<string> PubsubTopic { get; set; }
