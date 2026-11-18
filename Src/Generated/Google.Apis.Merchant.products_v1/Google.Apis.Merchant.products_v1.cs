@@ -1628,8 +1628,9 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>
         /// Output only. Your unique identifier for the product. This is the same for the product input and processed
         /// product. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a single
-        /// whitespace upon submission. See the [product data
-        /// specification](https://support.google.com/merchants/answer/188494#id) for details.
+        /// whitespace upon submission. This field corresponds to the [ID `[id]`
+        /// attribute](https://support.google.com/merchants/answer/6324405) in the [Product data
+        /// specification](https://support.google.com/merchants/answer/7052112).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; }
@@ -2851,8 +2852,9 @@ namespace Google.Apis.Merchant.products_v1.Data
         /// <summary>
         /// Required. Immutable. Your unique identifier for the product. This is the same for the product input and
         /// processed product. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a
-        /// single whitespace upon submission. See the [products data
-        /// specification](https://support.google.com/merchants/answer/188494#id) for details.
+        /// single whitespace upon submission. This field corresponds to the [ID `[id]`
+        /// attribute](https://support.google.com/merchants/answer/6324405) in the [Product data
+        /// specification](https://support.google.com/merchants/answer/7052112).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; }
