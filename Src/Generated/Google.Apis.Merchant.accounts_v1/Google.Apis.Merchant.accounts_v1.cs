@@ -964,12 +964,15 @@ namespace Google.Apis.Merchant.accounts_v1
             }
 
             /// <summary>
-            /// Registers the GCP used for the API call to the shopping account passed in the request. Will create a
-            /// user with an "API developer" and add the "developer_email" as a contact with "API notifications" email
-            /// preference on. Restrictions: * The caller account must be authenticated and must not impersonate another
-            /// account at registration time. Registering for subaccounts is not supported if the caller account is
-            /// authenticated with the parent or the managing advanced account. * The caller account must have a
-            /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test
+            /// Registers the GCP used for the API call to the Merchant Center account passed in the request. Will
+            /// create a user with an "API developer" and add the "developer_email" as a contact with "API
+            /// notifications" email preference on. Executing this method requires admin (`ADMIN`) access to the
+            /// Merchant Center account. For more information, see [Register as a
+            /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration#prerequisites).
+            /// Restrictions: * The caller account must be authenticated and must not impersonate another account at
+            /// registration time. Registering for subaccounts is not supported if the caller account is authenticated
+            /// with the parent or the managing advanced account. * The caller account must have a [verified
+            /// website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test
             /// accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts) are not eligible for
             /// registration. For step-by-step instructions, see [Register as a
             /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration).
@@ -989,12 +992,15 @@ namespace Google.Apis.Merchant.accounts_v1
             }
 
             /// <summary>
-            /// Registers the GCP used for the API call to the shopping account passed in the request. Will create a
-            /// user with an "API developer" and add the "developer_email" as a contact with "API notifications" email
-            /// preference on. Restrictions: * The caller account must be authenticated and must not impersonate another
-            /// account at registration time. Registering for subaccounts is not supported if the caller account is
-            /// authenticated with the parent or the managing advanced account. * The caller account must have a
-            /// [verified website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test
+            /// Registers the GCP used for the API call to the Merchant Center account passed in the request. Will
+            /// create a user with an "API developer" and add the "developer_email" as a contact with "API
+            /// notifications" email preference on. Executing this method requires admin (`ADMIN`) access to the
+            /// Merchant Center account. For more information, see [Register as a
+            /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration#prerequisites).
+            /// Restrictions: * The caller account must be authenticated and must not impersonate another account at
+            /// registration time. Registering for subaccounts is not supported if the caller account is authenticated
+            /// with the parent or the managing advanced account. * The caller account must have a [verified
+            /// website](https://support.google.com/merchants/answer/11586344) in Merchant Center. * [Test
             /// accounts](https://developers.google.com/merchant/api/guides/accounts/test-accounts) are not eligible for
             /// registration. For step-by-step instructions, see [Register as a
             /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration).
@@ -1051,10 +1057,14 @@ namespace Google.Apis.Merchant.accounts_v1
             }
 
             /// <summary>
-            /// Unregister the calling GCP from the calling shopping account. Note that the GCP will still be able to
-            /// access the API for at most 1 day from the unregister successful call. For more information, see [Manage
-            /// and transition Google Cloud
-            /// projects](https://developers.google.com/merchant/api/guides/accounts/manage-transition-gcp-projects).
+            /// Unregister the calling GCP from the calling Merchant Center account. Note that the GCP will still be
+            /// able to access the API for at most 1 day from the successful unregistration call. Executing this method
+            /// requires admin (`ADMIN`) access to the Merchant Center account. For more information, see [Manage and
+            /// transition Google Cloud
+            /// projects](https://developers.google.com/merchant/api/guides/accounts/manage-transition-gcp-projects),
+            /// [Set up authentication for Merchant
+            /// API](https://developers.google.com/merchant/api/guides/quickstart/authentication), and [Register as a
+            /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration#prerequisites).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1067,10 +1077,14 @@ namespace Google.Apis.Merchant.accounts_v1
             }
 
             /// <summary>
-            /// Unregister the calling GCP from the calling shopping account. Note that the GCP will still be able to
-            /// access the API for at most 1 day from the unregister successful call. For more information, see [Manage
-            /// and transition Google Cloud
-            /// projects](https://developers.google.com/merchant/api/guides/accounts/manage-transition-gcp-projects).
+            /// Unregister the calling GCP from the calling Merchant Center account. Note that the GCP will still be
+            /// able to access the API for at most 1 day from the successful unregistration call. Executing this method
+            /// requires admin (`ADMIN`) access to the Merchant Center account. For more information, see [Manage and
+            /// transition Google Cloud
+            /// projects](https://developers.google.com/merchant/api/guides/accounts/manage-transition-gcp-projects),
+            /// [Set up authentication for Merchant
+            /// API](https://developers.google.com/merchant/api/guides/quickstart/authentication), and [Register as a
+            /// developer](https://developers.google.com/merchant/api/guides/quickstart/registration#prerequisites).
             /// </summary>
             public class UnregisterGcpRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.Empty>
             {
@@ -4323,10 +4337,7 @@ namespace Google.Apis.Merchant.accounts_v1
                 }
             }
 
-            /// <summary>
-            /// Replace the shipping setting of a business with the request shipping setting. Executing this method
-            /// requires admin access.
-            /// </summary>
+            /// <summary>Replace the shipping setting of a business with the request shipping setting.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The account for which this shipping setting will be inserted. If you are using an advanced
@@ -4338,10 +4349,7 @@ namespace Google.Apis.Merchant.accounts_v1
                 return new InsertRequest(this.service, body, parent);
             }
 
-            /// <summary>
-            /// Replace the shipping setting of a business with the request shipping setting. Executing this method
-            /// requires admin access.
-            /// </summary>
+            /// <summary>Replace the shipping setting of a business with the request shipping setting.</summary>
             public class InsertRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1.Data.ShippingSettings>
             {
                 /// <summary>Constructs a new Insert request.</summary>
