@@ -578,6 +578,25 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata describes the input audio content. Set this in `Part.audio_metadata` or
+    /// `FunctionResponsePart.audio_metadata` when `inline_data` or `file_data` contains audio to configure static audio
+    /// preprocessing.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1AudioMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The end offset of the audio, relative to the start of the audio stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>Optional. The start offset of the audio, relative to the start of the audio stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for audio-specific output formatting.</summary>
     public class GoogleCloudAiplatformV1beta1AudioResponseFormat : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1145,6 +1164,33 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata describes the input document content. Set this in `Part.document_metadata` or
+    /// `FunctionResponsePart.document_metadata` when `inline_data` or `file_data` contains a document to configure
+    /// static document preprocessing.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1DocumentMediaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Content layers to return. If empty, defaults to [PAGE_IMAGE] when DocumentMediaMetadata is set.
+        /// When DocumentMediaMetadata is not set, default document processing is used (for example, page images for
+        /// PDFs).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLayers")]
+        public virtual System.Collections.Generic.IList<string> ContentLayers { get; set; }
+
+        /// <summary>Optional. 1-indexed inclusive end page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endPage")]
+        public virtual System.Nullable<int> EndPage { get; set; }
+
+        /// <summary>Optional. 1-indexed inclusive start page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startPage")]
+        public virtual System.Nullable<int> StartPage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes the options to customize dynamic retrieval.</summary>
     public class GoogleCloudAiplatformV1beta1DynamicRetrievalConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1496,9 +1542,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string Data { get; set; }
 
         /// <summary>
-        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs. This field is
-        /// only returned in PromptMessage for prompt management. It is currently used in the Gemini GenerateContent
-        /// calls only when server side tools (code_execution, google_search, and url_context) are enabled.
+        /// Optional. Display name of the blob. Used to provide a label or filename to distinguish blobs, and to
+        /// reference the blob from `FunctionResponse.response` (for example, via `{"$ref": ""}`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -1515,10 +1560,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1FunctionResponseFileData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Display name of the file data. Used to provide a label or filename to distinguish file datas. This
-        /// field is only returned in PromptMessage for prompt management. It is currently used in the Gemini
-        /// GenerateContent calls only when server side tools (code_execution, google_search, and url_context) are
-        /// enabled.
+        /// Optional. Display name of the file. Used to provide a label or filename to distinguish file data, and to
+        /// reference the file from `FunctionResponse.response` (for example, via `{"$ref": ""}`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -1535,6 +1578,17 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Media resolution for the input media of a `FunctionResponsePart`.</summary>
+    public class GoogleCloudAiplatformV1beta1FunctionResponseMediaResolution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tokenization quality used for given media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A datatype containing media that is part of a `FunctionResponse` message. A `FunctionResponsePart` consists of
     /// data which has an associated datatype. A `FunctionResponsePart` can only contain one of the accepted types in
@@ -1543,6 +1597,20 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1FunctionResponsePart : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Audio metadata. The metadata should only be specified while the audio data is presented in
+        /// inline_data or file_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1AudioMetadata AudioMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. Document metadata. The metadata should only be specified while the document data is presented in
+        /// inline_data or file_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1DocumentMediaMetadata DocumentMetadata { get; set; }
+
         /// <summary>URI based data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileData")]
         public virtual GoogleCloudAiplatformV1beta1FunctionResponseFileData FileData { get; set; }
@@ -1557,6 +1625,54 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaProcessing")]
         public virtual string MediaProcessing { get; set; }
+
+        /// <summary>Optional. Media resolution for the input media.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaResolution")]
+        public virtual GoogleCloudAiplatformV1beta1FunctionResponseMediaResolution MediaResolution { get; set; }
+
+        /// <summary>
+        /// Optional. Spreadsheet metadata. The metadata should only be specified while the spreadsheet data is
+        /// presented in inline_data or file_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1SpreadsheetMetadata SpreadsheetMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. Video metadata. The metadata should only be specified while the video data is presented in
+        /// inline_data or file_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1FunctionResponseVideoMetadata VideoMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata describes the input video content of a `FunctionResponsePart`. Set this in
+    /// `FunctionResponsePart.video_metadata` when `inline_data` or `file_data` contains video to configure static video
+    /// preprocessing.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1FunctionResponseVideoMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Content layers to return. If empty, defaults to [FRAMES, AUDIO].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLayers")]
+        public virtual System.Collections.Generic.IList<string> ContentLayers { get; set; }
+
+        /// <summary>Optional. The end offset of the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual object EndOffset { get; set; }
+
+        /// <summary>
+        /// Optional. The frame rate of the video sent to the model. If not specified, the default value is 1.0. The
+        /// valid range is (0.0, 24.0].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fps")]
+        public virtual System.Nullable<double> Fps { get; set; }
+
+        /// <summary>Optional. The start offset of the video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual object StartOffset { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2723,8 +2839,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1MultiSpeakerVoiceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations
-        /// must be provided.
+        /// Required. A list of configurations for the voices of the speakers. Between two and ten speaker voice
+        /// configurations must be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerVoiceConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SpeakerVoiceConfig> SpeakerVoiceConfigs { get; set; }
@@ -2742,6 +2858,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GoogleCloudAiplatformV1beta1Part : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Audio metadata. The metadata should only be specified while the audio data is presented in
+        /// inline_data or file_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1AudioMetadata AudioMetadata { get; set; }
+
+        /// <summary>
         /// Optional. Audio (input or output) transcription. This is only set when this `Part` contains audio data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioTranscription")]
@@ -2750,6 +2873,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. The result of executing the ExecutableCode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codeExecutionResult")]
         public virtual GoogleCloudAiplatformV1beta1CodeExecutionResult CodeExecutionResult { get; set; }
+
+        /// <summary>
+        /// Optional. Document metadata. The metadata should only be specified while the document data is presented in
+        /// inline_data or file_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1DocumentMediaMetadata DocumentMetadata { get; set; }
 
         /// <summary>Optional. Code generated by the model that is intended to be executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executableCode")]
@@ -2801,6 +2931,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1SpeechMetadata SpeechMetadata { get; set; }
 
         /// <summary>
+        /// Optional. Spreadsheet metadata. The metadata should only be specified while the spreadsheet data is
+        /// presented in inline_data or file_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spreadsheetMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1SpreadsheetMetadata SpreadsheetMetadata { get; set; }
+
+        /// <summary>
         /// Optional. The text content of the part. When sent from the VSCode Gemini Code Assist extension, references
         /// to @mentioned items will be converted to markdown boldface text. For example `@my-repo` will be converted to
         /// and sent as `**my-repo**` by the IDE agent.
@@ -2819,6 +2956,20 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ThoughtSignature { get; set; }
 
         /// <summary>
+        /// Optional. Server-side tool call. This field is populated when the model predicts a tool invocation that
+        /// should be executed on the server. The client is expected to echo this message back to the API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCall")]
+        public virtual GoogleCloudAiplatformV1beta1PartToolCall ToolCall { get; set; }
+
+        /// <summary>
+        /// Optional. The output from a server-side `ToolCall` execution. This field is populated by the client with the
+        /// results of executing the corresponding `ToolCall`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolResponse")]
+        public virtual GoogleCloudAiplatformV1beta1PartToolResponse ToolResponse { get; set; }
+
+        /// <summary>
         /// Optional. Video metadata. The metadata should only be specified while the video data is presented in
         /// inline_data or file_data.
         /// </summary>
@@ -2835,6 +2986,57 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>The tokenization quality used for given media.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
         public virtual string Level { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A predicted server-side `ToolCall` returned from the model. This message contains information about a tool that
+    /// the model wants to invoke. The client is NOT expected to execute this `ToolCall`. Instead, the client should
+    /// pass this `ToolCall` back to the API in a subsequent turn within a `Content` message, along with the
+    /// corresponding `ToolResponse`.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1PartToolCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Args { get; set; }
+
+        /// <summary>
+        /// Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. The type of tool that was called.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolType")]
+        public virtual string ToolType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The output from a server-side `ToolCall` execution. This message contains the results of a tool invocation that
+    /// was initiated by a `ToolCall` from the model. The client should pass this `ToolResponse` back to the API in a
+    /// subsequent turn within a `Content` message, along with the corresponding `ToolCall`.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1PartToolResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The identifier of the tool call this response is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. The tool response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>
+        /// Optional. The type of tool that was called, matching the `tool_type` in the corresponding `ToolCall`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolType")]
+        public virtual string ToolType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3445,6 +3647,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multiSpeakerVoiceConfig")]
         public virtual GoogleCloudAiplatformV1beta1MultiSpeakerVoiceConfig MultiSpeakerVoiceConfig { get; set; }
 
+        /// <summary>Optional. Controls text normalization before speech synthesis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textNormalization")]
+        public virtual string TextNormalization { get; set; }
+
         /// <summary>The configuration for the voice to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceConfig")]
         public virtual GoogleCloudAiplatformV1beta1VoiceConfig VoiceConfig { get; set; }
@@ -3463,6 +3669,37 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. Natural language description of the vocal style (e.g., "cheerful").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("style")]
         public virtual string Style { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata describes the input spreadsheet content. Set this in `Part.spreadsheet_metadata` or
+    /// `FunctionResponsePart.spreadsheet_metadata` when `inline_data` or `file_data` contains a spreadsheet to
+    /// configure static spreadsheet preprocessing.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1SpreadsheetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Content layers to return. If empty, defaults to [DATA, FORMULAS] when SpreadsheetMetadata is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLayers")]
+        public virtual System.Collections.Generic.IList<string> ContentLayers { get; set; }
+
+        /// <summary>
+        /// Optional. The 1-indexed index of the sheet to extract, in workbook order. If not set, all sheets are
+        /// extracted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheetIndex")]
+        public virtual System.Nullable<int> SheetIndex { get; set; }
+
+        /// <summary>
+        /// Optional. The range of cells to extract, in A1 notation (e.g. "A1:D10"). If not set, the full occupied area
+        /// of the sheet is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibleCells")]
+        public virtual string VisibleCells { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3932,6 +4169,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1VideoMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Content layers to return. If empty, defaults to [FRAMES, AUDIO].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLayers")]
+        public virtual System.Collections.Generic.IList<string> ContentLayers { get; set; }
+
         /// <summary>Optional. The end offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
         public virtual object EndOffset { get; set; }
