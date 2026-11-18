@@ -2175,16 +2175,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleWorkspaceAccount")]
         public virtual GoogleWorkspaceAccount GoogleWorkspaceAccount { get; set; }
 
-        /// <summary>
-        /// Input only. The preferred locale of the customer represented as a BCP47 language code. This field is
-        /// validated on input and requests containing unsupported language codes will be rejected. Supported language
-        /// codes: Arabic (ar) Chinese (Hong Kong) (zh-HK) Chinese (Simplified) (zh-CN) Chinese (Traditional) (zh-TW)
-        /// Czech (cs) Danish (da) Dutch (nl) English (UK) (en-GB) English (US) (en-US) Filipino (fil) Finnish (fi)
-        /// French (fr) German (de) Hebrew (iw) Hindi (hi) Hungarian (hu) Indonesian (id) Italian (it) Japanese (ja)
-        /// Korean (ko) Norwegian (Bokmal) (no) Polish (pl) Portuguese (Brazil) (pt-BR) Portuguese (Portugal) (pt-PT)
-        /// Russian (ru) Spanish (es) Spanish (Latin America) (es-419) Swedish (sv) Thai (th) Turkish (tr) Ukrainian
-        /// (uk) Vietnamese (vi)
-        /// </summary>
+        /// <summary>Input only. Deprecated: This field is no longer supported and is ignored by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
