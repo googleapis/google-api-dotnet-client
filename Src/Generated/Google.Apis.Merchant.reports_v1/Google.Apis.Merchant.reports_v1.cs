@@ -290,11 +290,12 @@ namespace Google.Apis.Merchant.reports_v1
 
             /// <summary>
             /// Retrieves a report defined by a search query. The response might contain fewer rows than specified by
-            /// `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. For more
-            /// information, see [Get started](https://developers.google.com/merchant/api/guides/reports/get-started),
-            /// [Use Merchant Center Query
-            /// Language](https://developers.google.com/merchant/api/guides/reports/query-language), and [Paginate query
-            /// results](https://developers.google.com/merchant/api/guides/reports/paging).
+            /// `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. Executing
+            /// this method requires the Performance and insights (`PERFORMANCE_REPORTING`) or admin (`ADMIN`) access
+            /// right. For more information, see [Get
+            /// started](https://developers.google.com/merchant/api/guides/reports/get-started), [Use Merchant Center
+            /// Query Language](https://developers.google.com/merchant/api/guides/reports/query-language), and [Paginate
+            /// query results](https://developers.google.com/merchant/api/guides/reports/paging).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -308,11 +309,12 @@ namespace Google.Apis.Merchant.reports_v1
 
             /// <summary>
             /// Retrieves a report defined by a search query. The response might contain fewer rows than specified by
-            /// `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. For more
-            /// information, see [Get started](https://developers.google.com/merchant/api/guides/reports/get-started),
-            /// [Use Merchant Center Query
-            /// Language](https://developers.google.com/merchant/api/guides/reports/query-language), and [Paginate query
-            /// results](https://developers.google.com/merchant/api/guides/reports/paging).
+            /// `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. Executing
+            /// this method requires the Performance and insights (`PERFORMANCE_REPORTING`) or admin (`ADMIN`) access
+            /// right. For more information, see [Get
+            /// started](https://developers.google.com/merchant/api/guides/reports/get-started), [Use Merchant Center
+            /// Query Language](https://developers.google.com/merchant/api/guides/reports/query-language), and [Paginate
+            /// query results](https://developers.google.com/merchant/api/guides/reports/paging).
             /// </summary>
             public class SearchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.reports_v1.Data.SearchResponse>
             {
