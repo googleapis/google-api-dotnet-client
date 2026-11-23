@@ -8842,7 +8842,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         }
 
         /// <summary>
-        /// Output only. If the state is FAILED, the corresponding error code and message. Defaults to code=OK for all
+        /// Output only. If the state is `FAILED`, the corresponding error code and message. Defaults to code=OK for all
         /// other states.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
@@ -10124,7 +10124,7 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
     /// specific Unit. Multiple UnitOperations can be created (requested) and scheduled in the future, however only one
     /// will be allowed to execute at a time (that can change in the future for non-mutating operations). UnitOperations
     /// allow different actors interacting with the same unit to focus only on the change they have requested. This is a
-    /// base object that contains the common fields in all unit operations. Next: 22
+    /// base object that contains the common fields in all unit operations.
     /// </summary>
     public class UnitOperation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10244,6 +10244,13 @@ namespace Google.Apis.SaaSServiceManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("engineState")]
         public virtual string EngineState { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. If the state is `FAILED`, the corresponding error code, message, and details. Unset
+        /// when there is no error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
 
         /// <summary>Optional. Output only. UnitOperationErrorCategory describe the error category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorCategory")]
