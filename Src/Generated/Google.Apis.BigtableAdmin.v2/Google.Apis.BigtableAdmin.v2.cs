@@ -2337,8 +2337,9 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Updates a cluster within an instance. Note that UpdateCluster does not support updating
-                /// cluster_config.cluster_autoscaling_config. In order to update it, you must use PartialUpdateCluster.
+                /// Updates a cluster within an instance. This method updates only the serve_nodes for a Cluster, and
+                /// can only be used on manually scaled clusters. To update autoscaled clusters or enable autoscaling
+                /// via cluster_config.cluster_autoscaling_config, use PartialUpdateCluster.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2351,8 +2352,9 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Updates a cluster within an instance. Note that UpdateCluster does not support updating
-                /// cluster_config.cluster_autoscaling_config. In order to update it, you must use PartialUpdateCluster.
+                /// Updates a cluster within an instance. This method updates only the serve_nodes for a Cluster, and
+                /// can only be used on manually scaled clusters. To update autoscaled clusters or enable autoscaling
+                /// via cluster_config.cluster_autoscaling_config, use PartialUpdateCluster.
                 /// </summary>
                 public class UpdateRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
                 {
