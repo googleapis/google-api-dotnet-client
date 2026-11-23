@@ -5298,8 +5298,8 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// A CEL expression to filter the results. The only supported filter is filtering by customer. For example:
-            /// `customer==customers/C0123abc`. Omitting the filter or specifying a filter of
-            /// `customer==customers/my_customer` will return the assignments for the customer that the caller
+            /// `customer=="customers/C0123abc"`. Omitting the filter or specifying a filter of
+            /// `customer=="customers/my_customer"` will return the assignments for the customer that the caller
             /// (authenticated user) belongs to.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
