@@ -2440,7 +2440,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         /// <summary>
         /// Org policy condition/expression. For example:
         /// `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or, `resource.management.auto_upgrade ==
-        /// true` The max length of the condition is 1000 characters.
+        /// true` The max length of the condition is 1,500 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
@@ -2549,7 +2549,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         /// <summary>
         /// A Common Expression Language (CEL) condition which is used in the evaluation of the constraint. For example:
         /// `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or, `resource.management.auto_upgrade ==
-        /// true` The max length of the condition is 1000 characters.
+        /// true` The max length of the condition is 1,500 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
