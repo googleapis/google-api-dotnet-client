@@ -5184,7 +5184,11 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2EnvVar> EnvironmentVariables { get; set; }
 
-        /// <summary>Required. Artifact Registry URI to store the built image.</summary>
+        /// <summary>
+        /// Optional. Stores the built image in the given Artifact Registry repository. When not specified, Cloud Run
+        /// will generate an Artifact Registry repository. The user is responsible for managing the repository, cleaning
+        /// up images, and setting deletion policy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageRepositoryUri")]
         public virtual string ImageRepositoryUri { get; set; }
 
