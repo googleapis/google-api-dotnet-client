@@ -1620,8 +1620,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1FunctionResponseBlob InlineData { get; set; }
 
         /// <summary>
-        /// Optional. Processes this part's media for understanding. Only meaningful for video parts (`inline_data` or
-        /// `file_data` with video mime). Non-video parts ignore this field.
+        /// Optional. The strategy used by the model to process this part's media. This field is only meaningful for
+        /// video parts (`inline_data` or `file_data` with a video MIME type). Non-video parts ignore this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaProcessing")]
         public virtual string MediaProcessing { get; set; }
@@ -2913,8 +2913,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual GoogleCloudAiplatformV1beta1Blob InlineData { get; set; }
 
         /// <summary>
-        /// Optional. How the model processes this part's media for understanding. Only meaningful for video parts
-        /// (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
+        /// Optional. The strategy used by the model to process this part's media. This field is only meaningful for
+        /// video parts (`inline_data` or `file_data` with a video MIME type). Non-video parts ignore this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaProcessing")]
         public virtual string MediaProcessing { get; set; }
