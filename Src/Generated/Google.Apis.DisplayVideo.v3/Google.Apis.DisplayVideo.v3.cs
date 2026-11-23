@@ -373,7 +373,9 @@ namespace Google.Apis.DisplayVideo.v3
                 this.service = service;
             }
 
-            /// <summary>Creates an ad group ad.</summary>
+            /// <summary>
+            /// Creates an ad group ad. This method is only supported for Demand Gen and video performance ads.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
             public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.AdGroupAd body, long advertiserId)
@@ -381,7 +383,9 @@ namespace Google.Apis.DisplayVideo.v3
                 return new CreateRequest(this.service, body, advertiserId);
             }
 
-            /// <summary>Creates an ad group ad.</summary>
+            /// <summary>
+            /// Creates an ad group ad. This method is only supported for Demand Gen and video performance ads.
+            /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -426,7 +430,9 @@ namespace Google.Apis.DisplayVideo.v3
                 }
             }
 
-            /// <summary>Deletes an ad group ad.</summary>
+            /// <summary>
+            /// Deletes an ad group ad. This method is only supported for Demand Gen and video performance ads.
+            /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser the ad belongs to.</param>
             /// <param name="adGroupAdId">Required. The ID of the ad to delete.</param>
             public virtual DeleteRequest Delete(long advertiserId, long adGroupAdId)
@@ -434,7 +440,9 @@ namespace Google.Apis.DisplayVideo.v3
                 return new DeleteRequest(this.service, advertiserId, adGroupAdId);
             }
 
-            /// <summary>Deletes an ad group ad.</summary>
+            /// <summary>
+            /// Deletes an ad group ad. This method is only supported for Demand Gen and video performance ads.
+            /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -660,7 +668,9 @@ namespace Google.Apis.DisplayVideo.v3
                 }
             }
 
-            /// <summary>Updates an ad group ad.</summary>
+            /// <summary>
+            /// Updates an ad group ad. This method is only supported for Demand Gen and video performance ads.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Output only. The unique ID of the advertiser the ad belongs to.</param>
             /// <param name="adGroupAdId">Output only. The unique ID of the ad. Assigned by the system.</param>
@@ -669,7 +679,9 @@ namespace Google.Apis.DisplayVideo.v3
                 return new PatchRequest(this.service, body, advertiserId, adGroupAdId);
             }
 
-            /// <summary>Updates an ad group ad.</summary>
+            /// <summary>
+            /// Updates an ad group ad. This method is only supported for Demand Gen and video performance ads.
+            /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.AdGroupAd>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -19911,9 +19923,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual VideoDiscoveryAd VideoDiscoverAd { get; set; }
 
         /// <summary>
-        /// Optional. Details of an [ad used in a video action
-        /// campaign](//support.google.com/google-ads/answer/10147229) to drive actions to the business, service or
-        /// product.
+        /// Optional. Details of a YouTube ad that can be served across various formats, such as in-stream (bumper,
+        /// skippable, non-skippable), Shorts, and in-feed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPerformanceAd")]
         public virtual VideoPerformanceAd VideoPerformanceAd { get; set; }
@@ -22899,6 +22910,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Output only. The exclusion status of the category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionStatus")]
+        public virtual string ExclusionStatus { get; set; }
+
         /// <summary>Indicates if this option is being negatively targeted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; }
@@ -22920,6 +22935,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>Output only. The display name of the category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The exclusion status of the category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionStatus")]
+        public virtual string ExclusionStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29500,8 +29519,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual System.Collections.Generic.IList<string> ActionButtonLabels { get; set; }
 
         /// <summary>
-        /// Optional. The business name shown on the ad. This setting is required unless a default value is set at the
-        /// advertiser level. If left unset, the default value will be applied.
+        /// Optional. The business name shown on the ad. This setting is required unless defaultBusinessName is set for
+        /// the parent advertiser. If this field is unset, the advertiser's default business name is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessName")]
         public virtual string BusinessName { get; set; }
@@ -29546,8 +29565,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual System.Collections.Generic.IList<string> Headlines { get; set; }
 
         /// <summary>
-        /// Optional. The logo image used by this ad. This setting is required unless a default value is set at the
-        /// advertiser level. If left unset, the default value will be applied.
+        /// Optional. The logo image used by this ad. This setting is required unless defaultLogoAssetId is set for the
+        /// parent advertiser. If this field is unset, the advertiser's default logo asset is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual ImageAsset Logo { get; set; }
