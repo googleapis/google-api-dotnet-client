@@ -1561,8 +1561,21 @@ namespace Google.Apis.Backupdr.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. A filter expression that filters resources listed in the response. The following
-                    /// fields are filterable:
+                    /// Optional. A filter expression that filters resources listed in the response. Filtering follows
+                    /// AIP-160 (https://google.aip.dev/160). The following fields are filterable: * `name` *
+                    /// `description` * `state` * `create_time` * `update_time` * `backup_plan_details.resource_type` *
+                    /// `backup_plan_details.backup_plan` * `criteria.matching_conditions.label_condition.key` *
+                    /// `criteria.matching_conditions.label_condition.values` * `binding_summary.project_count` *
+                    /// `policy_evaluation_summary.matching_resource_count` *
+                    /// `policy_evaluation_summary.protected_resource_count` *
+                    /// `policy_evaluation_summary.failed_resource_count` Note: `backup_plan_details` and
+                    /// `criteria.matching_conditions` are repeated fields, so filters on their subfields must use the
+                    /// `:` (has) operator rather than `=` (for example,
+                    /// `backup_plan_details.resource_type:"compute.googleapis.com/Disk"` or
+                    /// `criteria.matching_conditions.label_condition.key:"env"`). Examples: * `state:ACTIVE` *
+                    /// `backup_plan_details.resource_type:"compute.googleapis.com/Disk"` *
+                    /// `criteria.matching_conditions.label_condition.key:"env"` *
+                    /// `policy_evaluation_summary.protected_resource_count&amp;gt;0`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -13500,6 +13513,14 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
+
+        /// <summary>
+        /// Optional. If set to `true`, only provisions the Backup and DR service agent for the project and skips
+        /// creating the default BackupVault and BackupPlan resources. When set to `true`, `validate_only` must also be
+        /// set to `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentOnly")]
+        public virtual System.Nullable<bool> ServiceAgentOnly { get; set; }
 
         /// <summary>
         /// Optional. If set, validates the request and returns the result, but does not actually run it.
